@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Akinori Koda</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .header {
+            padding: 2rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #64ffda, #bb86fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #cccccc;
+            font-size: 1.1rem;
+        }
+
+        .nav {
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+        .nav a {
+            color: #64ffda;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #bb86fc;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #64ffda;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid rgba(100, 255, 218, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .about-section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .about-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #cccccc;
+        }
+
+        .skills-comprehensive {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-group {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(187, 134, 252, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-group:hover {
+            transform: translateY(-3px);
+            border-color: rgba(187, 134, 252, 0.5);
+            box-shadow: 0 10px 25px rgba(187, 134, 252, 0.2);
+        }
+
+        .skill-group h3 {
+            color: #bb86fc;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .skill-name {
+            color: #cccccc;
+            font-weight: 500;
+        }
+
+        .skill-level {
+            width: 100px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(45deg, #64ffda, #bb86fc);
+            border-radius: 3px;
+            transition: width 1s ease;
+        }
+
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #64ffda, #bb86fc);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border-left: 3px solid #64ffda;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            background: #64ffda;
+            border-radius: 50%;
+            border: 3px solid #0f0f0f;
+        }
+
+        .timeline-date {
+            color: #64ffda;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            color: #bb86fc;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .achievement-card {
+            background: linear-gradient(145deg, rgba(100, 255, 218, 0.1), rgba(187, 134, 252, 0.1));
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .achievement-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-title {
+            color: #64ffda;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-description {
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .about-section {
+                padding: 2rem;
+            }
+            .skills-comprehensive {
+                grid-template-columns: 1fr;
+            }
+            .achievements {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Portfolio</h1>
+        <p>次世代データ分析エンジニアとしてのキャリアと実績</p>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">← ホームに戻る</a>
+        <a href="projects.html">プロジェクト</a>
+        <a href="mailto:dragonrondo@gmail.com">お問い合わせ</a>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <div class="about-section">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <p>
+                        次世代のデータ分析手法開拓に情熱を注ぐPython AIエンジニアです。
+                        従来の分析手法にとらわれず、Vibe Codingアプローチを取り入れながら、
+                        革新的で効率的なデータソリューションの構築を目指しています。
+                    </p>
+                    <br>
+                    <p>
+                        機械学習とクラウド技術を組み合わせることにより、スケーラブルで
+                        実用的なAIシステムの開発に取り組んでいます。特にAWS環境での
+                        データ基盤構築とSQLを活用したデータベース設計に力を入れており、
+                        ビジネス価値を最大化するデータドリブンなソリューションを提供します。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-comprehensive">
+                <div class="skill-group">
+                    <h3>🐍 Programming Languages</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Python</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">SQL</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">R</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 65%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h3>🤖 Machine Learning</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Scikit-learn</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 88%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">TensorFlow</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">PyTorch</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">K-means & Clustering</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h3>☁️ Cloud & Infrastructure</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">AWS (S3, EC2, Lambda)</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 82%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">PostgreSQL</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 78%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Docker</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Apache Airflow</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 72%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h3>📊 Data Analysis</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Pandas</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 92%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">NumPy</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Matplotlib/Seaborn</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Jupyter Notebooks</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 88%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - Present</div>
+                    <div class="timeline-title">Python AI Engineer</div>
+                    <div class="timeline-company">フリーランス・コンサルタント</div>
+                    <div class="timeline-description">
+                        次世代データ分析手法の研究開発に従事。Vibe Codingアプローチを活用した
+                        革新的なデータパイプライン構築と、AWS上でのスケーラブルなMLシステム設計を担当。
+                        複数の企業でデータドリブンな意思決定支援システムの導入をリード。
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2021 - 2023</div>
+                    <div class="timeline-title">データアナリスト</div>
+                    <div class="timeline-company">テック系スタートアップ</div>
+                    <div class="timeline-description">
+                        機械学習モデルを活用した予測分析システムの開発。K-meansクラスタリングによる
+                        顧客セグメンテーション、時系列予測モデルの構築、SQLを使用した大規模データベースの
+                        設計・最適化を実施。データ可視化ダッシュボードの開発も担当。
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2019 - 2021</div>
+                    <div class="timeline-title">データサイエンス研修生</div>
+                    <div class="timeline-company">データ分析コンサルティング会社</div>
+                    <div class="timeline-description">
+                        Python、R、SQLの基礎からAWS環境でのデータ処理まで幅広くスキルを習得。
+                        統計学的手法とディープラーニングを組み合わせた分析手法を学び、
+                        実務プロジェクトでの実践経験を積む。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Key Achievements</h2>
+            <div class="achievements">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🚀</div>
+                    <div class="achievement-title">革新的データパイプライン</div>
+                    <div class="achievement-description">
+                        処理速度を3倍向上させるVibe Coding手法を開発
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">☁️</div>
+                    <div class="achievement-title">AWS認定取得</div>
+                    <div class="achievement-description">
+                        AWS Solutions Architect Associate認定を取得
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">📊</div>
+                    <div class="achievement-title">予測精度向上</div>
+                    <div class="achievement-description">
+                        機械学習モデルで85%以上の予測精度を達成
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎯</div>
+                    <div class="achievement-title">コスト削減実現</div>
+                    <div class="achievement-description">
+                        データ処理コストを40%削減するシステムを構築
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">🔄</div>
+                    <div class="achievement-title">自動化システム</div>
+                    <div class="achievement-description">
+                        手作業を90%削減する自動化パイプラインを開発
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">📈</div>
+                    <div class="achievement-title">ビジネス価値創出</div>
+                    <div class="achievement-description">
+                        データ分析により年間売上20%向上に貢献
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Philosophy & Approach</h2>
+            <div class="about-section">
+                <div class="about-content">
+                    <p>
+                        <strong>Vibe Coding</strong>とは、従来の機械的なコーディングではなく、
+                        データの「流れ」や「リズム」を感じ取りながら、直感的かつ効率的な
+                        プログラミングを行うアプローチです。
+                    </p>
+                    <br>
+                    <p>
+                        技術的な完璧さを追求するだけでなく、ユーザビリティとビジネス価値を
+                        両立させることを重視。次世代のデータ分析手法として、AI倫理や
+                        持続可能性も考慮したソリューション開発を心がけています。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
