@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Akinori Koda</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .header {
+            padding: 2rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #64ffda, #bb86fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #cccccc;
+            font-size: 1.1rem;
+        }
+
+        .nav {
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+        .nav a {
+            color: #64ffda;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #bb86fc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(100, 255, 218, 0.5);
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            color: #64ffda;
+            font-weight: 600;
+        }
+
+        .project-status {
+            background: rgba(187, 134, 252, 0.2);
+            border: 1px solid rgba(187, 134, 252, 0.3);
+            border-radius: 12px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            color: #bb86fc;
+        }
+
+        .project-description {
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(100, 255, 218, 0.1);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            border-radius: 8px;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.8rem;
+            color: #64ffda;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid #64ffda;
+            border-radius: 15px;
+            color: #64ffda;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: #64ffda;
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #64ffda;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .featured-section {
+            margin-bottom: 4rem;
+        }
+
+        .featured-project {
+            background: linear-gradient(145deg, rgba(100, 255, 218, 0.1), rgba(187, 134, 252, 0.1));
+            border: 2px solid rgba(100, 255, 218, 0.3);
+            border-radius: 25px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .featured-project h3 {
+            font-size: 1.8rem;
+            color: #64ffda;
+            margin-bottom: 1rem;
+        }
+
+        .featured-project p {
+            font-size: 1.1rem;
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .project-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Projects & Portfolio</h1>
+        <p>次世代データ分析手法の実装事例</p>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">← ホームに戻る</a>
+        <a href="portfolio.html">ポートフォリオ</a>
+        <a href="mailto:dragonrondo@gmail.com">お問い合わせ</a>
+    </div>
+
+    <div class="container">
+        <div class="featured-section">
+            <div class="featured-project">
+                <h3>🚀 Next-Gen Data Analytics Platform</h3>
+                <p>
+                    Vibe Codingを活用した革新的なデータ分析プラットフォーム。
+                    AWS上でスケーラブルなデータパイプラインを構築し、
+                    リアルタイムでの予測分析を実現。
+                </p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Machine Learning Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">K-means Customer Segmentation</h3>
+                    <span class="project-status">完成</span>
+                </div>
+                <p class="project-description">
+                    顧客データを用いたクラスタリング分析により、効果的な顧客セグメンテーションを実現。
+                    AWS上でのデータ処理とSQLクエリ最適化を組み合わせたソリューション。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Scikit-learn</span>
+                    <span class="tech-tag">AWS</span>
+                    <span class="tech-tag">SQL</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Tenormusica2024" class="project-link">GitHub</a>
+                    <a href="#" class="project-link">Demo</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Time Series Forecasting</h3>
+                    <span class="project-status">進行中</span>
+                </div>
+                <p class="project-description">
+                    TensorFlowを使用した時系列予測モデル。
+                    売上予測や需要予測に応用可能な汎用的なフレームワークを開発。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">NumPy</span>
+                    <span class="tech-tag">AWS</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Tenormusica2024" class="project-link">GitHub</a>
+                    <a href="#" class="project-link">詳細</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Natural Language Processing</h3>
+                    <span class="project-status">企画中</span>
+                </div>
+                <p class="project-description">
+                    日本語テキストマイニングによる感情分析システム。
+                    PyTorchを活用した深層学習モデルで高精度な分析を実現。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">PyTorch</span>
+                    <span class="tech-tag">NLP</span>
+                    <span class="tech-tag">Japanese</span>
+                    <span class="tech-tag">Cloud</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">Coming Soon</a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Cloud & Database Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">AWS Data Lake Architecture</h3>
+                    <span class="project-status">完成</span>
+                </div>
+                <p class="project-description">
+                    スケーラブルなデータレイク設計とETLパイプライン構築。
+                    S3、Glue、Athenaを活用したモダンなデータアーキテクチャ。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">AWS S3</span>
+                    <span class="tech-tag">AWS Glue</span>
+                    <span class="tech-tag">Athena</span>
+                    <span class="tech-tag">SQL</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Tenormusica2024" class="project-link">アーキテクチャ</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Real-time Analytics Dashboard</h3>
+                    <span class="project-status">進行中</span>
+                </div>
+                <p class="project-description">
+                    リアルタイムデータ可視化ダッシュボード。
+                    ストリーミングデータの処理とインタラクティブな分析環境を提供。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Streamlit</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Docker</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">プレビュー</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Automated Data Pipeline</h3>
+                    <span class="project-status">完成</span>
+                </div>
+                <p class="project-description">
+                    Vibe Codingアプローチによる自動化データパイプライン。
+                    効率的なデータ処理とエラーハンドリングを実装。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Apache Airflow</span>
+                    <span class="tech-tag">AWS</span>
+                    <span class="tech-tag">Docker</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Tenormusica2024" class="project-link">GitHub</a>
+                    <a href="#" class="project-link">ドキュメント</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
