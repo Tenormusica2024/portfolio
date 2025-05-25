@@ -3,14 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Market Share Racing Chart</title>
-    <meta name="description" content="Interactive racing bar chart showing cloud service market share evolution from 2019-2025">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <title>Akinori Koda - LLM-Driven Development & Data Science</title>
     <style>
-        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -18,1075 +12,297 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #0c0c0f 0%, #1a1a2e 30%, #16213e 70%, #0f172a 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            color: #e2e8f0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+            color: #ffffff;
             overflow-x: hidden;
-            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 2rem 8rem 2rem;
             position: relative;
         }
 
-        /* Subtle animated background overlay */
-        body::before {
-            content: '';
-            position: fixed;
+        .background-pattern {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(
-                ellipse at 20% 80%,
-                rgba(0, 212, 255, 0.08) 0%,
-                transparent 50%
-            ),
-            radial-gradient(
-                ellipse at 80% 20%,
-                rgba(183, 148, 246, 0.06) 0%,
-                transparent 50%
-            );
-            pointer-events: none;
-            z-index: 0;
+            opacity: 0.1;
+            background-image: 
+                radial-gradient(circle at 25% 25%, #64ffda 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, #bb86fc 0%, transparent 50%);
+            animation: float 6s ease-in-out infinite;
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            position: relative;
-            z-index: 1;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
-        /* Header */
-        .header {
+        .hero-section {
             text-align: center;
-            margin-bottom: 50px;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            background: linear-gradient(45deg, #64ffda, #bb86fc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(100, 255, 218, 0.5); }
+            to { box-shadow: 0 0 40px rgba(187, 134, 252, 0.8); }
+        }
+
+        .name {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #64ffda, #bb86fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .title {
-            font-size: clamp(2.2rem, 4vw, 3.5rem);
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 15px;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            letter-spacing: -0.025em;
-            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #cbd5e1 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 1.5rem;
+            color: #a0a0a0;
+            margin-bottom: 2rem;
+            font-weight: 300;
         }
 
-        .subtitle {
-            font-size: clamp(0.95rem, 2vw, 1.1rem);
-            font-weight: 400;
-            color: #94a3b8;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #cccccc;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Chart Wrapper */
-        .chart-wrapper {
-            background: linear-gradient(135deg, 
-                rgba(15, 23, 42, 0.95) 0%, 
-                rgba(30, 41, 59, 0.9) 50%, 
-                rgba(15, 23, 42, 0.95) 100%
-            );
-            backdrop-filter: blur(20px) saturate(180%);
-            border-radius: 24px;
-            padding: 40px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(148, 163, 184, 0.1);
-            box-shadow: 
-                0 25px 50px -12px rgba(0, 0, 0, 0.4),
-                0 0 0 1px rgba(255, 255, 255, 0.05),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
+        .skills-section {
+            margin-bottom: 3rem;
         }
 
-        .chart-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(0, 212, 255, 0.4) 20%, 
-                rgba(183, 148, 246, 0.4) 80%, 
-                transparent
-            );
-        }
-
-        /* Date Display - Fixed width for stable positioning */
-        .date-display {
-            font-size: clamp(1.4rem, 3vw, 1.8rem);
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 35px;
-            color: #ffffff;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-            letter-spacing: 0.05em;
-            min-height: 2.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(183, 148, 246, 0.1));
-            border-radius: 12px;
-            padding: 12px 24px;
-            border: 1px solid rgba(148, 163, 184, 0.1);
-        }
-
-        /* Chart Container */
-        .chart-container {
-            position: relative;
-            height: 400px;
-            margin: 25px 0;
-        }
-
-        /* Grid Lines */
-        .grid-lines {
-            position: absolute;
-            top: 0;
-            left: 120px;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .grid-line {
-            position: absolute;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, 
-                rgba(148, 163, 184, 0.08), 
-                rgba(148, 163, 184, 0.15), 
-                rgba(148, 163, 184, 0.08)
-            );
-        }
-
-        .grid-label {
-            position: absolute;
-            right: 15px;
-            top: -10px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: #64748b;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9));
-            padding: 4px 10px;
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(148, 163, 184, 0.1);
-        }
-
-        /* Bars Container */
-        .bars-container {
-            position: relative;
-            height: 100%;
-            z-index: 2;
-        }
-
-        .bar-row {
-            position: absolute;
-            width: 100%;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            /* Smooth transitions for position changes */
-            transition: top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .company-label {
-            width: 100px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: #e2e8f0;
-            text-align: right;
-            padding-right: 15px;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-            flex-shrink: 0;
-        }
-
-        .bar {
-            height: 42px;
-            border-radius: 21px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding-right: 18px;
-            box-shadow: 
-                0 4px 12px rgba(0, 0, 0, 0.15),
-                0 2px 4px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            min-width: 60px;
-            position: relative;
-            overflow: hidden;
-            /* Smooth transitions for bar animations */
-            transition: width 0.1s ease-out;
-        }
-
-        .bar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.1) 0%, 
-                transparent 50%, 
-                rgba(255, 255, 255, 0.05) 100%
-            );
-            pointer-events: none;
-        }
-
-        .percentage {
-            font-weight: 700;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.95);
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-            background: rgba(0, 0, 0, 0.25);
-            padding: 6px 12px;
-            border-radius: 12px;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: absolute;
-            right: 18px; /* Fixed position from right edge */
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1;
-            /* Fixed positioning for stable display */
-            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-            min-width: 70px; /* Fixed minimum width to prevent movement */
-            text-align: center; /* Center align text within fixed width */
-            display: inline-block; /* Ensure consistent box model */
-        }
-
-        /* Controls */
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 25px;
-        }
-
-        .btn {
-            background: linear-gradient(135deg, 
-                rgba(30, 41, 59, 0.8) 0%, 
-                rgba(15, 23, 42, 0.9) 100%
-            );
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            color: #e2e8f0;
-            padding: 12px 24px;
-            border-radius: 24px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            font-family: inherit;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(0, 212, 255, 0.3), 
-                transparent
-            );
-            transition: left 0.5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn:hover {
-            background: linear-gradient(135deg, 
-                rgba(0, 212, 255, 0.1) 0%, 
-                rgba(30, 41, 59, 0.9) 100%
-            );
-            border-color: rgba(0, 212, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn:active {
-            transform: translateY(0);
-        }
-
-        /* Speed Control & Seek Control */
-        .speed-control, .seek-control {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 18px;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, 
-                rgba(30, 41, 59, 0.6) 0%, 
-                rgba(15, 23, 42, 0.8) 100%
-            );
-            backdrop-filter: blur(12px);
-            padding: 18px 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(148, 163, 184, 0.1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .speed-control label, .seek-control label {
-            font-weight: 600;
-            color: #cbd5e1;
-            min-width: 70px;
-            font-size: 0.9rem;
-        }
-
-        .speed-slider, .seek-slider {
-            width: 220px;
-            height: 6px;
-            border-radius: 3px;
-            background: linear-gradient(135deg, 
-                rgba(148, 163, 184, 0.2), 
-                rgba(148, 163, 184, 0.1)
-            );
-            outline: none;
-            -webkit-appearance: none;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .speed-slider::-webkit-slider-thumb, .seek-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #00d4ff 0%, #0ea5e9 100%);
-            cursor: pointer;
-            box-shadow: 
-                0 4px 12px rgba(0, 212, 255, 0.4),
-                0 2px 4px rgba(0, 0, 0, 0.2);
-            transition: all 0.2s ease;
-        }
-
-        .speed-slider::-webkit-slider-thumb:hover, .seek-slider::-webkit-slider-thumb:hover {
-            transform: scale(1.1);
-            box-shadow: 
-                0 6px 16px rgba(0, 212, 255, 0.5),
-                0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .speed-slider::-moz-range-thumb, .seek-slider::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #00d4ff 0%, #0ea5e9 100%);
-            cursor: pointer;
-            border: none;
-            box-shadow: 
-                0 4px 12px rgba(0, 212, 255, 0.4),
-                0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .seek-slider::-webkit-slider-thumb {
-            background: linear-gradient(135deg, #b794f6 0%, #8b5cf6 100%);
-            box-shadow: 
-                0 4px 12px rgba(183, 148, 246, 0.4),
-                0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .seek-slider::-webkit-slider-thumb:hover {
-            box-shadow: 
-                0 6px 16px rgba(183, 148, 246, 0.5),
-                0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .seek-slider::-moz-range-thumb {
-            background: linear-gradient(135deg, #b794f6 0%, #8b5cf6 100%);
-            box-shadow: 
-                0 4px 12px rgba(183, 148, 246, 0.4),
-                0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        #speedDisplay, #timelineDisplay {
-            font-weight: 700;
-            min-width: 90px;
-            text-align: center;
-            font-size: 0.9rem;
-            /* Fixed positioning for stable display */
-            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-            display: inline-block;
-        }
-
-        #speedDisplay {
-            color: #00d4ff;
-            text-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
-            min-width: 80px; /* Fixed width for speed display */
-        }
-
-        #timelineDisplay {
-            color: #b794f6;
-            text-shadow: 0 0 8px rgba(183, 148, 246, 0.3);
-            font-size: 0.85rem;
-            min-width: 140px; /* Fixed width for date display */
-            text-align: center;
-        }
-
-        /* Ranking Panel */
-        .ranking-panel {
-            background: linear-gradient(135deg, 
-                rgba(15, 23, 42, 0.95) 0%, 
-                rgba(30, 41, 59, 0.9) 50%, 
-                rgba(15, 23, 42, 0.95) 100%
-            );
-            backdrop-filter: blur(20px) saturate(180%);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid rgba(148, 163, 184, 0.1);
-            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3);
-        }
-
-        .ranking-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 25px;
-            color: #ffffff;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .ranking-grid {
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 14px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
 
-        .rank-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 18px;
-            background: linear-gradient(135deg, 
-                rgba(30, 41, 59, 0.6) 0%, 
-                rgba(15, 23, 42, 0.8) 100%
-            );
-            backdrop-filter: blur(10px);
-            border-radius: 14px;
-            border: 1px solid rgba(148, 163, 184, 0.1);
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
             transition: all 0.3s ease;
         }
 
-        .rank-item:hover {
-            background: linear-gradient(135deg, 
-                rgba(0, 212, 255, 0.1) 0%, 
-                rgba(30, 41, 59, 0.8) 100%
-            );
-            border-color: rgba(0, 212, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        .skill-category:hover {
+            background: rgba(100, 255, 218, 0.1);
+            border-color: rgba(100, 255, 218, 0.5);
+            transform: translateY(-3px);
         }
 
-        .rank-number {
-            font-weight: 800;
-            font-size: 1rem;
-            color: #00d4ff;
-            text-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
-            width: 24px;
-        }
-
-        .rank-company {
+        .skill-category h3 {
+            color: #64ffda;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
             font-weight: 600;
-            flex: 1;
-            color: #e2e8f0;
         }
 
-        .rank-value {
-            font-weight: 700;
-            color: #b794f6;
-            text-shadow: 0 0 8px rgba(183, 148, 246, 0.3);
-            /* Fixed positioning for ranking panel */
-            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-            min-width: 55px;
-            text-align: right;
-            display: inline-block;
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
         }
 
-        /* Responsive Design */
+        .skill-tag {
+            background: rgba(187, 134, 252, 0.2);
+            border: 1px solid rgba(187, 134, 252, 0.3);
+            border-radius: 12px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.85rem;
+            color: #bb86fc;
+            font-weight: 500;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #64ffda, #bb86fc);
+            color: #000;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #64ffda;
+            border: 2px solid #64ffda;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
+        }
+
+        .social-links {
+            position: absolute;
+            bottom: 3rem;
+            display: flex;
+            gap: 2rem;
+            z-index: 10;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link:hover {
+            background: rgba(100, 255, 218, 0.2);
+            transform: scale(1.1);
+        }
+
         @media (max-width: 768px) {
+            .name { font-size: 2.5rem; }
+            .title { font-size: 1.2rem; }
+            .description { font-size: 1rem; }
+            .skills-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .skill-category { padding: 1.2rem; }
+            .cta-buttons { 
+                flex-direction: column; 
+                align-items: center;
+                margin-bottom: 2rem;
+            }
+            .social-links { 
+                position: static; 
+                margin-top: 1rem; 
+                justify-content: center;
+            }
             .container {
-                padding: 25px 15px;
-            }
-
-            .chart-wrapper {
-                padding: 25px 20px;
-            }
-
-            .chart-container {
-                height: 350px;
-            }
-
-            .grid-lines {
-                left: 80px;
-            }
-
-            .company-label {
-                width: 70px;
-                font-size: 0.8rem;
-                padding-right: 8px;
-            }
-
-            .bar {
-                height: 38px;
-            }
-
-            .bar-row {
-                height: 45px;
-            }
-
-            .controls {
-                flex-wrap: wrap;
-                gap: 12px;
-            }
-
-            .btn {
-                padding: 10px 20px;
-                font-size: 0.8rem;
-            }
-
-            .speed-control, .seek-control {
-                flex-direction: column;
-                gap: 12px;
-                padding: 15px 20px;
-            }
-
-            .speed-slider, .seek-slider {
-                width: 180px;
-            }
-
-            .ranking-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .chart-container {
-                height: 300px;
-            }
-
-            .company-label {
-                width: 60px;
-                font-size: 0.75rem;
-            }
-
-            .bar {
-                height: 35px;
-            }
-
-            .bar-row {
-                height: 42px;
-            }
-
-            .percentage {
-                font-size: 0.8rem;
-                padding: 4px 10px;
+                padding: 2rem 1rem 2rem 1rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <div class="title">Cloud Market Analytics</div>
-            <div class="subtitle">Market Share Evolution • 2019-2025</div>
-        </div>
+        <div class="background-pattern"></div>
         
-        <div class="chart-wrapper">
-            <div class="date-display" id="dateDisplay">2019年01月01日</div>
+        <div class="hero-section">
+            <div class="profile-image">AK</div>
+            <h1 class="name">Akinori Koda</h1>
+            <p class="title">LLM-Driven Development & Data Science</p>
+            <p class="description">
+                LLM（大規模言語モデル）を活用したソフトウェア開発と業務自動化を専門とするAIエンジニアです。
+                Claude、ChatGPT、GitHub Copilot等のAIツールを駆使し、従来の開発フローを大幅に効率化する手法を実践しています。
+                データサイエンス分野では、SageMaker、Snowflake等の実装経験を活かし、
+                効率的なデータ分析パイプライン構築を行っています。また、最新式のVibe Codingアプローチによる
+                直感的なプログラム開発手法の研究も行っています。
+            </p>
             
-            <div class="chart-container">
-                <div class="grid-lines" id="gridLines"></div>
-                <div class="bars-container" id="barsContainer"></div>
+            <div class="skills-section">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>LLM駆動開発</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Claude API</span>
+                            <span class="skill-tag">GitHub Copilot</span>
+                            <span class="skill-tag">Cursor IDE</span>
+                            <span class="skill-tag">AI統合開発</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>データサイエンス</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">SageMaker</span>
+                            <span class="skill-tag">Snowflake</span>
+                            <span class="skill-tag">機械学習</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>業務自動化</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Webスクレイピング</span>
+                            <span class="skill-tag">GitHub Actions</span>
+                            <span class="skill-tag">VBA</span>
+                            <span class="skill-tag">PowerShell</span>
+                            <span class="skill-tag">デイリータスク自動化</span>
+                            <span class="skill-tag">RPA</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>開発手法・創作</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Vibe Coding</span>
+                            <span class="skill-tag">AI絵作成</span>
+                            <span class="skill-tag">AI音楽制作</span>
+                            <span class="skill-tag">創作支援</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="projects.html" class="btn btn-primary">プロジェクトを見る</a>
+                <a href="portfolio.html" class="btn btn-secondary">ポートフォリオ</a>
             </div>
         </div>
-        
-        <div class="controls">
-            <button class="btn" onclick="startAnimation()">▶ Play</button>
-            <button class="btn" onclick="pauseAnimation()">⏸ Pause</button>
-            <button class="btn" onclick="resetAnimation()">↻ Reset</button>
-        </div>
-        
-        <div class="speed-control">
-            <label>Speed:</label>
-            <input type="range" class="speed-slider" min="10" max="3000" value="1000" id="speedSlider">
-            <span id="speedDisplay">1.00s</span>
-        </div>
-        
-        <div class="seek-control">
-            <label>Timeline:</label>
-            <input type="range" class="seek-slider" min="0" max="100" value="0" id="seekSlider">
-            <span id="timelineDisplay">2019年01月01日</span>
-        </div>
-        
-        <div class="ranking-panel">
-            <div class="ranking-title">🏆 Current Rankings (April 2025)</div>
-            <div class="ranking-grid" id="rankingGrid"></div>
+
+        <div class="social-links">
+            <a href="mailto:dragonrondo@gmail.com" class="social-link" title="Email">📧</a>
+            <a href="https://linkedin.com/in/yourprofile" class="social-link" title="LinkedIn">💼</a>
+            <a href="https://github.com/Tenormusica2024" class="social-link" title="GitHub" target="_blank">🐱</a>
         </div>
     </div>
-    
-    <script>
-        // Cloud Market Share Data with stylish dark theme colors
-        const companyColors = {
-            'AWS': 'linear-gradient(135deg, #00d4ff 0%, #0ea5e9 50%, #0284c7 100%)',
-            'Azure': 'linear-gradient(135deg, #b794f6 0%, #8b5cf6 50%, #7c3aed 100%)',
-            'Google': 'linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%)',
-            'Alibaba': 'linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%)',
-            'IBM': 'linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #4338ca 100%)',
-            'Oracle': 'linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%)'
-        };
-
-        // Base yearly benchmarks
-        const yearlyBenchmarks = {
-            2019: { AWS: 32, Azure: 17, Google: 6, Alibaba: 5, IBM: 4, Oracle: 2 },
-            2020: { AWS: 32, Azure: 19, Google: 7, Alibaba: 6, IBM: 4, Oracle: 2 },
-            2021: { AWS: 33, Azure: 21, Google: 8, Alibaba: 7, IBM: 4, Oracle: 2 },
-            2022: { AWS: 34, Azure: 23, Google: 9, Alibaba: 8, IBM: 3, Oracle: 2 },
-            2023: { AWS: 32, Azure: 25, Google: 10, Alibaba: 8, IBM: 3, Oracle: 2 },
-            2024: { AWS: 31, Azure: 26, Google: 11, Alibaba: 8, IBM: 3, Oracle: 2 }
-        };
-
-        // Latest 2025 data
-        const latest2025Data = {
-            1: { AWS: 30.8, Azure: 26.5, Google: 11.2, Alibaba: 8.1, IBM: 2.9, Oracle: 2.0 },
-            2: { AWS: 30.6, Azure: 27.0, Google: 11.4, Alibaba: 8.2, IBM: 2.8, Oracle: 2.0 },
-            3: { AWS: 30.4, Azure: 27.5, Google: 11.6, Alibaba: 8.3, IBM: 2.7, Oracle: 2.0 },
-            4: { AWS: 30.2, Azure: 28.0, Google: 11.8, Alibaba: 8.4, IBM: 2.6, Oracle: 2.0 }
-        };
-
-        // Generate monthly dataset with specific dates (zero-padded formatting)
-        function generateCloudData() {
-            const data = [];
-            
-            // Generate 2019-2024 data with specific dates
-            for (let year = 2019; year <= 2024; year++) {
-                for (let month = 1; month <= 12; month++) {
-                    // Add multiple data points per month for smoother transitions
-                    const daysInMonth = [1, 5, 10, 15, 20, 25, 28]; // 7 points per month
-                    
-                    daysInMonth.forEach((day, dayIndex) => {
-                        const currentYearData = yearlyBenchmarks[year];
-                        const nextYearData = yearlyBenchmarks[year + 1] || currentYearData;
-                        const monthProgress = (month - 1) / 11;
-                        const dayProgress = dayIndex / (daysInMonth.length - 1) / 12; // Small daily variation
-                        const totalProgress = monthProgress + dayProgress;
-                        
-                        const monthData = {
-                            year: year,
-                            month: month,
-                            day: day,
-                            // Zero-padded formatting for consistent display
-                            displayDate: `${year}年${String(month).padStart(2, '0')}月${String(day).padStart(2, '0')}日`
-                        };
-                        
-                        Object.keys(currentYearData).forEach(service => {
-                            const currentValue = currentYearData[service];
-                            const nextValue = nextYearData[service];
-                            const interpolatedValue = currentValue + (nextValue - currentValue) * totalProgress;
-                            const randomVariation = (Math.random() - 0.5) * 0.2;
-                            monthData[service] = Math.max(0, Math.round((interpolatedValue + randomVariation) * 100) / 100);
-                        });
-                        
-                        data.push(monthData);
-                    });
-                }
-            }
-            
-            // Add 2025 data with specific dates (zero-padded)
-            const months2025 = [
-                { month: 1, days: [1, 8, 15, 22, 29] },
-                { month: 2, days: [5, 12, 19, 26] },
-                { month: 3, days: [5, 12, 19, 26] },
-                { month: 4, days: [2, 9, 16, 23, 30] }
-            ];
-            
-            months2025.forEach(({ month, days }) => {
-                const baseData = latest2025Data[month];
-                days.forEach((day, dayIndex) => {
-                    const monthData = {
-                        year: 2025,
-                        month: month,
-                        day: day,
-                        // Zero-padded formatting
-                        displayDate: `2025年${String(month).padStart(2, '0')}月${String(day).padStart(2, '0')}日`,
-                        ...baseData
-                    };
-                    
-                    // Add slight daily variations for realism
-                    Object.keys(baseData).forEach(service => {
-                        const variation = (Math.random() - 0.5) * 0.15;
-                        monthData[service] = Math.max(0, Math.round((baseData[service] + variation) * 100) / 100);
-                    });
-                    
-                    data.push(monthData);
-                });
-            });
-            
-            return data;
-        }
-
-        const cloudMarketData = generateCloudData();
-
-        // Chart state
-        let currentIndex = 0;
-        let nextIndex = 1;
-        let animationTimer = null;
-        let frameTimer = null;
-        let animationSpeed = 1000; // Default speed
-        let isPlaying = false;
-        let frameProgress = 0; // 0 to 1, progress between current and next data
-        const FRAME_RATE = 60; // Back to 60 FPS for optimal balance
-        const FRAME_INTERVAL = 1000 / FRAME_RATE; // ~16.67ms
-        
-        // Cache for smooth DOM updates
-        let barElements = [];
-        let isInitialized = false;
-
-        // Create grid lines
-        function createGridLines() {
-            const gridContainer = document.getElementById('gridLines');
-            if (!gridContainer) return;
-            
-            gridContainer.innerHTML = '';
-            
-            for (let i = 0; i <= 40; i += 10) {
-                const line = document.createElement('div');
-                line.className = 'grid-line';
-                line.style.bottom = `${(i / 40) * 100}%`;
-                
-                const label = document.createElement('div');
-                label.className = 'grid-label';
-                label.textContent = `${i}%`;
-                line.appendChild(label);
-                
-                gridContainer.appendChild(line);
-            }
-        }
-
-        // Interpolate between two data points with smooth easing for 60 FPS
-        function interpolateData(currentData, nextData, progress) {
-            // Apply smooth easing function for 60 FPS
-            const easedProgress = easeInOutQuad(progress);
-            
-            const interpolated = {
-                year: currentData.year,
-                month: currentData.month,
-                day: currentData.day,
-                displayDate: currentData.displayDate
-            };
-            
-            // Only update date at significant milestones to reduce flickering
-            // Keep date stable during most of the transition
-            if (progress >= 0.9) {
-                // Near end of transition, show next date
-                interpolated.displayDate = nextData.displayDate;
-            } else {
-                // Keep current date stable for most of the transition
-                interpolated.displayDate = currentData.displayDate;
-            }
-            
-            const companies = ['AWS', 'Azure', 'Google', 'Alibaba', 'IBM', 'Oracle'];
-            companies.forEach(company => {
-                const current = currentData[company] || 0;
-                const next = nextData[company] || 0;
-                interpolated[company] = current + (next - current) * easedProgress;
-            });
-            
-            return interpolated;
-        }
-
-        // Smooth easing function for 60 FPS
-        function easeInOutQuad(t) {
-            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-        }
-
-        // Update chart with optimized smooth rendering (60 FPS)
-        function updateChart(data) {
-            try {
-                if (!data) return;
-                
-                const dateDisplay = document.getElementById('dateDisplay');
-                const barsContainer = document.getElementById('barsContainer');
-                const rankingGrid = document.getElementById('rankingGrid');
-                
-                // Update date display with reduced frequency for stability
-                if (dateDisplay) {
-                    dateDisplay.textContent = data.displayDate;
-                }
-                
-                // Sort companies by market share with high precision
-                const companies = ['AWS', 'Azure', 'Google', 'Alibaba', 'IBM', 'Oracle'];
-                const sortedData = companies
-                    .map(company => ({ 
-                        name: company, 
-                        value: data[company] || 0
-                    }))
-                    .sort((a, b) => b.value - a.value);
-                
-                // Initialize or update bars with smooth DOM manipulation
-                if (!isInitialized || barsContainer.children.length === 0) {
-                    // Initial setup - create all bar elements
-                    barsContainer.innerHTML = '';
-                    barElements = [];
-                    
-                    sortedData.forEach((item, i) => {
-                        const barRow = document.createElement('div');
-                        barRow.className = 'bar-row';
-                        barRow.style.top = `${i * 60}px`;
-                        
-                        const companyLabel = document.createElement('div');
-                        companyLabel.className = 'company-label';
-                        companyLabel.textContent = item.name;
-                        
-                        const bar = document.createElement('div');
-                        bar.className = 'bar';
-                        bar.style.background = companyColors[item.name] || '#ccc';
-                        bar.style.width = `${Math.max(5, (item.value / 40) * 100)}%`;
-                        
-                        const percentage = document.createElement('span');
-                        percentage.className = 'percentage';
-                        percentage.textContent = `${item.value.toFixed(2)}%`;
-                        
-                        bar.appendChild(percentage);
-                        barRow.appendChild(companyLabel);
-                        barRow.appendChild(bar);
-                        barsContainer.appendChild(barRow);
-                        
-                        // Cache elements for smooth updates
-                        barElements.push({
-                            row: barRow,
-                            bar: bar,
-                            percentage: percentage,
-                            company: item.name
-                        });
-                    });
-                    
-                    isInitialized = true;
-                } else {
-                    // Smooth updates - only modify existing elements
-                    sortedData.forEach((item, i) => {
-                        const barElement = barElements.find(el => el.company === item.name);
-                        if (barElement) {
-                            // Smooth position updates
-                            barElement.row.style.top = `${i * 60}px`;
-                            
-                            // Smooth width updates
-                            barElement.bar.style.width = `${Math.max(5, (item.value / 40) * 100)}%`;
-                            
-                            // Fixed position percentage updates
-                            barElement.percentage.textContent = `${item.value.toFixed(2)}%`;
-                        }
-                    });
-                }
-                
-                // Update ranking panel (less frequently to avoid flicker)
-                if (rankingGrid && frameProgress < 0.1) {
-                    rankingGrid.innerHTML = '';
-                    sortedData.forEach((item, i) => {
-                        const rankItem = document.createElement('div');
-                        rankItem.className = 'rank-item';
-                        rankItem.innerHTML = `
-                            <span class="rank-number">${i + 1}</span>
-                            <span class="rank-company">${item.name}</span>
-                            <span class="rank-value">${item.value.toFixed(2)}%</span>
-                        `;
-                        rankingGrid.appendChild(rankItem);
-                    });
-                }
-                
-            } catch (error) {
-                console.error('Chart update error:', error);
-            }
-        }
-
-        // Frame-based animation loop (60 FPS Optimized) with seek position updates
-        function animateFrame() {
-            if (!isPlaying) return;
-            
-            const currentData = cloudMarketData[currentIndex];
-            const nextData = cloudMarketData[nextIndex];
-            
-            if (!currentData || !nextData) {
-                pauseAnimation();
-                return;
-            }
-            
-            // Interpolate between current and next data with smooth easing
-            const interpolatedData = interpolateData(currentData, nextData, frameProgress);
-            updateChart(interpolatedData);
-            
-            // Update seek position during animation
-            updateSeekPosition();
-            
-            // Update progress (60 FPS increment)
-            frameProgress += FRAME_INTERVAL / animationSpeed;
-            
-            // Move to next data point when progress reaches 1
-            if (frameProgress >= 1) {
-                frameProgress = 0;
-                currentIndex = nextIndex;
-                nextIndex++;
-                
-                // Loop back to beginning
-                if (nextIndex >= cloudMarketData.length) {
-                    nextIndex = 0;
-                }
-                if (currentIndex >= cloudMarketData.length) {
-                    currentIndex = 0;
-                }
-            }
-        }
-
-        // Animation controls
-        function startAnimation() {
-            if (isPlaying) return;
-            
-            isPlaying = true;
-            frameTimer = setInterval(animateFrame, FRAME_INTERVAL);
-        }
-
-        function pauseAnimation() {
-            if (frameTimer) {
-                clearInterval(frameTimer);
-                frameTimer = null;
-                isPlaying = false;
-            }
-        }
-
-        function resetAnimation() {
-            pauseAnimation();
-            currentIndex = 0;
-            nextIndex = 1;
-            frameProgress = 0;
-            updateChart(cloudMarketData[0]);
-            updateSeekPosition(); // Update seek position on reset
-        }
-
-        // Speed control with consistent formatting
-        function updateSpeed() {
-            const speedSlider = document.getElementById('speedSlider');
-            const speedDisplay = document.getElementById('speedDisplay');
-            
-            if (speedSlider && speedDisplay) {
-                animationSpeed = parseInt(speedSlider.value);
-                // Always display with 2 decimal places
-                speedDisplay.textContent = `${(animationSpeed / 1000).toFixed(2)}s`;
-            }
-        }
-
-        // Seek control for timeline navigation
-        function updateSeek() {
-            const seekSlider = document.getElementById('seekSlider');
-            const timelineDisplay = document.getElementById('timelineDisplay');
-            
-            if (seekSlider && timelineDisplay && cloudMarketData.length > 0) {
-                const seekValue = parseInt(seekSlider.value);
-                const targetIndex = Math.floor((seekValue / 100) * (cloudMarketData.length - 1));
-                
-                // Pause animation and jump to specific point
-                pauseAnimation();
-                currentIndex = targetIndex;
-                nextIndex = currentIndex + 1;
-                if (nextIndex >= cloudMarketData.length) nextIndex = 0;
-                frameProgress = 0;
-                
-                // Update display
-                updateChart(cloudMarketData[currentIndex]);
-                timelineDisplay.textContent = cloudMarketData[currentIndex].displayDate;
-            }
-        }
-
-        // Update seek slider position during animation
-        function updateSeekPosition() {
-            const seekSlider = document.getElementById('seekSlider');
-            const timelineDisplay = document.getElementById('timelineDisplay');
-            
-            if (seekSlider && timelineDisplay && cloudMarketData.length > 0) {
-                const progress = (currentIndex / (cloudMarketData.length - 1)) * 100;
-                seekSlider.value = progress;
-                timelineDisplay.textContent = cloudMarketData[currentIndex].displayDate;
-            }
-        }
-
-        // Initialize with seek control
-        function initialize() {
-            try {
-                createGridLines();
-                updateChart(cloudMarketData[0]);
-                updateSeekPosition(); // Initialize seek position
-                
-                const speedSlider = document.getElementById('speedSlider');
-                const seekSlider = document.getElementById('seekSlider');
-                
-                if (speedSlider) {
-                    speedSlider.addEventListener('input', updateSpeed);
-                }
-                
-                if (seekSlider) {
-                    seekSlider.addEventListener('input', updateSeek);
-                    // Set initial max value
-                    seekSlider.max = 100;
-                }
-                
-                // Keyboard shortcuts
-                document.addEventListener('keydown', (e) => {
-                    if (e.code === 'Space') {
-                        e.preventDefault();
-                        isPlaying ? pauseAnimation() : startAnimation();
-                    } else if (e.code === 'KeyR') {
-                        resetAnimation();
-                    } else if (e.code === 'ArrowLeft') {
-                        pauseAnimation();
-                        currentIndex = Math.max(0, currentIndex - 1);
-                        nextIndex = currentIndex + 1;
-                        if (nextIndex >= cloudMarketData.length) nextIndex = 0;
-                        frameProgress = 0;
-                        updateChart(cloudMarketData[currentIndex]);
-                        updateSeekPosition();
-                    } else if (e.code === 'ArrowRight') {
-                        pauseAnimation();
-                        currentIndex = Math.min(cloudMarketData.length - 1, currentIndex + 1);
-                        nextIndex = currentIndex + 1;
-                        if (nextIndex >= cloudMarketData.length) nextIndex = 0;
-                        frameProgress = 0;
-                        updateChart(cloudMarketData[currentIndex]);
-                        updateSeekPosition();
-                    }
-                });
-                
-            } catch (error) {
-                console.error('Initialization error:', error);
-            }
-        }
-
-        // Start when page loads
-        document.addEventListener('DOMContentLoaded', initialize);
-
-        // Make functions globally available
-        window.startAnimation = startAnimation;
-        window.pauseAnimation = pauseAnimation;
-        window.resetAnimation = resetAnimation;
-    </script>
 </body>
 </html>
