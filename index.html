@@ -25,7 +25,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 2rem;
+            padding: 2rem 2rem 8rem 2rem;
             position: relative;
         }
 
@@ -154,6 +154,7 @@
             gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: 4rem;
         }
 
         .btn {
@@ -216,12 +217,18 @@
             .description { font-size: 1rem; }
             .skills-grid { grid-template-columns: 1fr; gap: 1rem; }
             .skill-category { padding: 1.2rem; }
-            .cta-buttons { flex-direction: column; align-items: center; }
+            .cta-buttons { 
+                flex-direction: column; 
+                align-items: center;
+                margin-bottom: 2rem;
+            }
             .social-links { 
-                position: relative; 
-                bottom: auto; 
-                margin-top: 2rem; 
+                position: static; 
+                margin-top: 1rem; 
                 justify-content: center;
+            }
+            .container {
+                padding: 2rem 1rem 2rem 1rem;
             }
         }
     </style>
@@ -267,6 +274,8 @@
                         <div class="skill-tags">
                             <span class="skill-tag">Webスクレイピング</span>
                             <span class="skill-tag">GitHub Actions</span>
+                            <span class="skill-tag">VBA</span>
+                            <span class="skill-tag">PowerShell</span>
                             <span class="skill-tag">デイリータスク自動化</span>
                             <span class="skill-tag">RPA</span>
                         </div>
