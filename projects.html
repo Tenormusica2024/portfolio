@@ -1,4 +1,4 @@
-<div class="featured-section"><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -123,6 +123,15 @@
             color: #bb86fc;
         }
 
+        .featured-badge {
+            background: #ffd700;
+            color: #000;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
         .project-description {
             color: #cccccc;
             line-height: 1.6;
@@ -179,17 +188,18 @@
         }
 
         .featured-project {
-            background: linear-gradient(145deg, rgba(100, 255, 218, 0.1), rgba(187, 134, 252, 0.1));
-            border: 2px solid rgba(100, 255, 218, 0.3);
+            background: linear-gradient(145deg, rgba(255, 215, 0, 0.1), rgba(100, 255, 218, 0.1));
+            border: 2px solid #ffd700;
             border-radius: 25px;
             padding: 3rem;
             text-align: center;
             margin-bottom: 3rem;
+            position: relative;
         }
 
         .featured-project h3 {
             font-size: 1.8rem;
-            color: #64ffda;
+            color: #ffd700;
             margin-bottom: 1rem;
         }
 
@@ -197,6 +207,30 @@
             font-size: 1.1rem;
             color: #cccccc;
             line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .featured-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .featured-link {
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            border: 2px solid #ffd700;
+            border-radius: 25px;
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .featured-link:hover {
+            background: #ffd700;
+            color: #000;
+            transform: translateY(-3px);
         }
 
         @media (max-width: 768px) {
@@ -209,13 +243,17 @@
             .project-card {
                 padding: 1.5rem;
             }
+            .featured-links {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>Projects & Portfolio</h1>
-        <p>次世代データ分析手法の実装事例</p>
+        <p>LLM駆動開発による実装事例</p>
     </div>
 
     <div class="nav">
@@ -227,155 +265,203 @@
     <div class="container">
         <div class="featured-section">
             <div class="featured-project">
-                <h3>🚀 Enterprise Data Analytics Platform</h3>
+                <h3>🚀 AI News Daily - 自動更新システム</h3>
                 <p>
-                    Claude Code・Cursor・Clineを統合したVibe Codingアプローチによる
-                    次世代データ分析プラットフォーム。AWS上でエンタープライズレベルの
-                    スケーラブルなデータパイプラインを構築し、リアルタイム予測分析と
-                    高度なデータ可視化を実現。
+                    LLMとGitHub Actionsを活用し、AIニュースを毎日自動収集・整理・公開するシステム。
+                    Webスクレイピング、自然言語処理、自動デプロイメントを統合した実用的な自動化ソリューション。
+                    Claude APIによる記事の要約・分類機能により、質の高い情報を効率的に配信しています。
                 </p>
+                <div class="featured-links">
+                    <a href="https://tenormusica2024.github.io/ai-news-daily/" class="featured-link" target="_blank">Live Demo</a>
+                    <a href="https://github.com/tenormusica2024/ai-news-daily" class="featured-link" target="_blank">GitHub</a>
+                </div>
             </div>
         </div>
 
-        <h2 class="section-title">AI/ML Engineering Projects</h2>
+        <h2 class="section-title">LLM駆動開発プロジェクト</h2>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title">Advanced Customer Segmentation</h3>
-                    <span class="project-status">Production</span>
+                    <h3 class="project-title">Claude Memory System</h3>
+                    <span class="project-status">Active</span>
                 </div>
                 <p class="project-description">
-                    K-meansクラスタリングとChatGPT APIを統合した高度顧客セグメンテーション。
-                    AWS環境でのスケーラブルデータ処理とTableau Desktopによる
-                    インタラクティブダッシュボード構築により、マーケティング効率を大幅改善。
+                    AIアシスタントの記憶を永続化するメモリ管理システム。
+                    セッション追跡、コード例保存、洞察記録機能により、継続的な開発体験を実現。
+                    JSONベースのデータ構造でセッション間の情報共有を可能にします。
                 </p>
                 <div class="tech-stack">
                     <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Scikit-learn</span>
-                    <span class="tech-tag">AWS</span>
-                    <span class="tech-tag">Tableau</span>
-                    <span class="tech-tag">ChatGPT API</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/Tenormusica2024" class="project-link">GitHub</a>
-                    <a href="#" class="project-link">Live Demo</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">Intelligent Time Series Forecasting</h3>
-                    <span class="project-status">Active Development</span>
-                </div>
-                <p class="project-description">
-                    TensorFlow・Claude APIを活用した高精度時系列予測システム。
-                    Linuxサーバー環境での大規模データ処理とWSL開発環境最適化により、
-                    企業の需要予測・売上予測業務を革新。
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">JSON</span>
+                    <span class="tech-tag">CLI</span>
                     <span class="tech-tag">Claude API</span>
-                    <span class="tech-tag">Linux</span>
-                    <span class="tech-tag">WSL</span>
-                    <span class="tech-tag">PostgreSQL</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/Tenormusica2024" class="project-link">GitHub</a>
-                    <a href="#" class="project-link">Technical Docs</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">Multi-Modal NLP Analytics</h3>
-                    <span class="project-status">Planning Phase</span>
-                </div>
-                <p class="project-description">
-                    日本語特化型自然言語処理システム。Cursor・Clineを活用したVibe Coding開発手法で
-                    高速プロトタイピングを実現。感情分析・テキストマイニング・要約生成機能を統合した
-                    包括的NLPソリューション。
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">PyTorch</span>
-                    <span class="tech-tag">Transformers</span>
-                    <span class="tech-tag">Cursor</span>
-                    <span class="tech-tag">Cline</span>
-                    <span class="tech-tag">AWS</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link">Coming Soon</a>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="section-title">Infrastructure & Automation</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">AWS Enterprise Data Lake</h3>
-                    <span class="project-status">Production</span>
-                </div>
-                <p class="project-description">
-                    エンタープライズレベルデータレイクアーキテクチャの設計・構築。
-                    S3・Glue・Athenaを核としたモダンデータスタック実装により、
-                    ペタバイト規模データの効率的処理・分析基盤を確立。
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">AWS S3</span>
-                    <span class="tech-tag">AWS Glue</span>
-                    <span class="tech-tag">Athena</span>
-                    <span class="tech-tag">CloudFormation</span>
-                    <span class="tech-tag">Linux</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/Tenormusica2024" class="project-link">Architecture</a>
-                    <a href="#" class="project-link">Case Study</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">Real-time Business Intelligence</h3>
-                    <span class="project-status">Active Development</span>
-                </div>
-                <p class="project-description">
-                    Tableau Desktop・UiPath RPAを統合したリアルタイムBI環境。
-                    ストリーミングデータ処理・自動レポート生成・アラート機能により、
-                    経営陣の迅速な意思決定を支援する包括的BIソリューション。
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Tableau Desktop</span>
-                    <span class="tech-tag">UiPath</span>
-                    <span class="tech-tag">Apache Kafka</span>
-                    <span class="tech-tag">Redis</span>
-                    <span class="tech-tag">Docker</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link">Dashboard Preview</a>
+                    <a href="#" class="project-link">GitHub</a>
                     <a href="#" class="project-link">Documentation</a>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title">Intelligent Process Automation</h3>
+                    <h3 class="project-title">データ分析パイプライン</h3>
                     <span class="project-status">Production</span>
                 </div>
                 <p class="project-description">
-                    VBA・UiPath RPA・Python統合による高度業務自動化システム。
-                    既存Excelワークフローの最適化からWebアプリケーション自動操作まで、
-                    エンドツーエンドの業務プロセス自動化を実現。
+                    SageMaker、Snowflakeを活用したスケーラブルなデータ分析基盤。
+                    顧客セグメンテーション、売上予測モデルを統合し、
+                    エンドツーエンドの分析ワークフローを実現しています。
                 </p>
                 <div class="tech-stack">
-                    <span class="tech-tag">UiPath Studio</span>
-                    <span class="tech-tag">VBA</span>
+                    <span class="tech-tag">SageMaker</span>
+                    <span class="tech-tag">Snowflake</span>
                     <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Selenium</span>
-                    <span class="tech-tag">API Integration</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">scikit-learn</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/Tenormusica2024" class="project-link">GitHub</a>
-                    <a href="#" class="project-link">ROI Analysis</a>
+                    <a href="#" class="project-link">GitHub</a>
+                    <a href="#" class="project-link">Case Study</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">LLM統合開発環境</h3>
+                    <span class="project-status">Development</span>
+                </div>
+                <p class="project-description">
+                    Cursor IDE、Claude Code、GitHub Copilotを活用したAI駆動開発環境の構築。
+                    効率的なコード生成、デバッグ、ドキュメント作成を可能にする統合ワークフロー。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Cursor IDE</span>
+                    <span class="tech-tag">Claude Code</span>
+                    <span class="tech-tag">GitHub Copilot</span>
+                    <span class="tech-tag">WSL2</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">Setup Guide</a>
+                    <a href="#" class="project-link">Best Practices</a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">業務自動化・Webスクレイピング</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">デイリータスク自動化スイート</h3>
+                    <span class="project-status">Production</span>
+                </div>
+                <p class="project-description">
+                    日常的なデータ処理、レポート生成、ファイル管理を自動化するPythonスクリプト集。
+                    Excel処理、メール送信、ファイル同期等の実務タスクを効率化。
+                    GitHub Actionsによるスケジュール実行で完全自動化を実現。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">GitHub Actions</span>
+                    <span class="tech-tag">openpyxl</span>
+                    <span class="tech-tag">requests</span>
+                    <span class="tech-tag">schedule</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">GitHub</a>
+                    <a href="#" class="project-link">ROI Report</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">マルチサイト情報収集システム</h3>
+                    <span class="project-status">Active</span>
+                </div>
+                <p class="project-description">
+                    複数のWebサイトから情報を自動収集・分析するスクレイピングシステム。
+                    BeautifulSoup、Seleniumを活用し、動的コンテンツも対応。
+                    収集データをLLMで自動分類・要約し、構造化された情報として出力。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">BeautifulSoup</span>
+                    <span class="tech-tag">Selenium</span>
+                    <span class="tech-tag">Claude API</span>
+                    <span class="tech-tag">pandas</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">GitHub</a>
+                    <a href="#" class="project-link">Demo</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">レポート自動生成システム</h3>
+                    <span class="project-status">Production</span>
+                </div>
+                <p class="project-description">
+                    収集データから自動的にレポートを生成するシステム。
+                    LLMによる自然言語での洞察生成、チャート自動作成、
+                    PDF/HTMLレポートの自動配信機能を統合。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">matplotlib</span>
+                    <span class="tech-tag">reportlab</span>
+                    <span class="tech-tag">OpenAI API</span>
+                    <span class="tech-tag">Jinja2</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">Sample Report</a>
+                    <a href="#" class="project-link">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">音楽制作・創作活動</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Vibe Coding Music Project</h3>
+                    <span class="project-status">Ongoing</span>
+                </div>
+                <p class="project-description">
+                    AIツールを活用した楽曲制作とサウンドデザイン。
+                    Vibe Codingの手法を用いた創造的なプログラミングと音楽の融合。
+                    Logic Pro、AI音楽生成ツールを組み合わせた実験的アプローチ。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Logic Pro</span>
+                    <span class="tech-tag">AI Music Tools</span>
+                    <span class="tech-tag">Audio Processing</span>
+                    <span class="tech-tag">Creative Coding</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">Listen</a>
+                    <a href="#" class="project-link">Process Blog</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">AI音楽生成実験</h3>
+                    <span class="project-status">Experimental</span>
+                </div>
+                <p class="project-description">
+                    機械学習モデルを活用した音楽生成システムの実装。
+                    MIDI生成、音色合成、リズムパターン解析などの技術を組み合わせ、
+                    AIと人間の創造性の協調による新しい音楽制作手法を探求。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">MIDI処理</span>
+                    <span class="tech-tag">音響解析</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">Samples</a>
+                    <a href="#" class="project-link">Technical Notes</a>
                 </div>
             </div>
         </div>
