@@ -233,6 +233,20 @@
             transform: translateY(-3px);
         }
 
+        .new-project {
+            background: linear-gradient(145deg, rgba(255, 0, 128, 0.1), rgba(0, 245, 255, 0.1));
+            border: 2px solid #ff0080;
+        }
+
+        .new-badge {
+            background: #ff0080;
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
         @media (max-width: 768px) {
             .projects-grid {
                 grid-template-columns: 1fr;
@@ -514,24 +528,27 @@
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card new-project">
                 <div class="project-header">
-                    <h3 class="project-title">AI音楽制作プロジェクト</h3>
-                    <span class="project-status">Planning</span>
+                    <h3 class="project-title">🎮 Modern Breakout Game</h3>
+                    <span class="new-badge">NEW</span>
                 </div>
                 <p class="project-description">
-                    機械学習モデルを活用した音楽生成システムの開発計画。
-                    MIDI生成、音色合成、リズムパターン解析などの技術を組み合わせ、
-                    AIと人間の創造性の協調による新しい音楽制作手法を探求予定。
+                    LLM駆動開発で制作した超モダンデザインのブロック崩しゲーム。
+                    ネオングロー効果、パーティクルシステム、グラスモーフィズムを活用した
+                    最新のWeb技術によるゲーム体験。HTML5 Canvas APIとCSS3アニメーションで
+                    視覚的に魅力的なインタラクティブエンターテインメントを実現。
                 </p>
                 <div class="tech-stack">
-                    <span class="tech-tag">AI Music Generation</span>
-                    <span class="tech-tag">MIDI Processing</span>
-                    <span class="tech-tag">TensorFlow</span>
-                    <span class="tech-tag">Audio Processing</span>
+                    <span class="tech-tag">HTML5 Canvas</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">CSS3 Animations</span>
+                    <span class="tech-tag">パーティクルシステム</span>
+                    <span class="tech-tag">LLM駆動開発</span>
                 </div>
                 <div class="project-links">
-                    <a href="#" class="project-link">Coming Soon</a>
+                    <a href="https://tenormusica2024.github.io/modernbreakoutgame/" class="project-link" target="_blank">Play Game</a>
+                    <a href="https://github.com/tenormusica2024/modernbreakoutgame" class="project-link" target="_blank">GitHub</a>
                 </div>
             </div>
 
