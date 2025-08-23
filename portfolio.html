@@ -253,9 +253,67 @@
                 grid-template-columns: 1fr;
             }
         }
+        .contact-dropdown {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 1000;
+        }
+
+        .email-option {
+            display: block;
+            color: #64ffda;
+            text-decoration: none;
+            padding: 0.5rem;
+            margin: 0.3rem 0;
+            border-radius: 5px;
+            transition: background 0.3s;
+            white-space: nowrap;
+        }
+
+        .email-option:hover {
+            background: rgba(100, 255, 218, 0.1);
+        }
+
+        .contact-link {
+            position: relative;
+        }
     </style>
 </head>
 <body>
+    <div id="contactDropdown" class="contact-dropdown">
+        <a href="mailto:dragonrondo@gmail.com" class="email-option">📧 メールクライアント</a>
+        <a href="https://mail.google.com/mail/?view=cm&to=dragonrondo@gmail.com" target="_blank" class="email-option">🌐 Gmail Web</a>
+        <a href="#" onclick="copyEmail()" class="email-option">📋 アドレスコピー</a>
+    </div>
+
+    <script>
+        function openEmailOptions() {
+            const dropdown = document.getElementById('contactDropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function copyEmail() {
+            navigator.clipboard.writeText('dragonrondo@gmail.com').then(() => {
+                alert('メールアドレスがコピーされました: dragonrondo@gmail.com');
+            }).catch(() => {
+                prompt('メールアドレス:', 'dragonrondo@gmail.com');
+            });
+            document.getElementById('contactDropdown').style.display = 'none';
+        }
+
+        // クリック外でドロップダウンを閉じる
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.contact-link') && !event.target.closest('.contact-dropdown')) {
+                document.getElementById('contactDropdown').style.display = 'none';
+            }
+        });
+    </script>
     <div class="header">
         <h1>Portfolio</h1>
         <p>LLM駆動開発エンジニアとしてのキャリアと実績</p>
@@ -264,7 +322,7 @@
     <div class="nav">
         <a href="index.html">← ホームに戻る</a>
         <a href="projects.html">プロジェクト</a>
-        <a href="mailto:dragonrondo@gmail.com">お問い合わせ</a>
+        <a href="#" onclick="openEmailOptions()" class="contact-link">お問い合わせ ▼</a>
     </div>
 
     <div class="container">

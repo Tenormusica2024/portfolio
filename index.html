@@ -231,9 +231,82 @@
                 padding: 2rem 1rem 2rem 1rem;
             }
         }
+
+        .contact-dropdown {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid rgba(100, 255, 218, 0.5);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+            display: none;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .email-option {
+            display: block;
+            color: #64ffda;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            transition: all 0.3s;
+            white-space: nowrap;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+        }
+
+        .email-option:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.3);
+        }
     </style>
 </head>
 <body>
+    <div id="contactDropdown" class="contact-dropdown">
+        <h3 style="color: #64ffda; margin-bottom: 1rem; text-align: center;">📧 お問い合わせ方法</h3>
+        <a href="mailto:dragonrondo@gmail.com" class="email-option">📧 メールクライアントで開く</a>
+        <a href="https://mail.google.com/mail/?view=cm&to=dragonrondo@gmail.com" target="_blank" class="email-option">🌐 Gmail Webで開く</a>
+        <a href="#" onclick="copyEmail()" class="email-option">📋 メールアドレスをコピー</a>
+        <a href="#" onclick="closeDropdown()" class="email-option" style="color: #bb86fc; margin-top: 1rem;">❌ 閉じる</a>
+    </div>
+
+    <script>
+        function openEmailOptions() {
+            document.getElementById('contactDropdown').style.display = 'block';
+        }
+
+        function closeDropdown() {
+            document.getElementById('contactDropdown').style.display = 'none';
+        }
+
+        function copyEmail() {
+            navigator.clipboard.writeText('dragonrondo@gmail.com').then(() => {
+                alert('✅ メールアドレスがコピーされました!\ndragonrondo@gmail.com');
+            }).catch(() => {
+                prompt('メールアドレス:', 'dragonrondo@gmail.com');
+            });
+            closeDropdown();
+        }
+
+        // ESCキーでドロップダウンを閉じる
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeDropdown();
+            }
+        });
+
+        // 背景クリックでドロップダウンを閉じる
+        document.addEventListener('click', function(event) {
+            if (event.target.id === 'contactDropdown') {
+                closeDropdown();
+            }
+        });
+    </script>
     <div class="container">
         <div class="background-pattern"></div>
         
@@ -301,7 +374,7 @@
         </div>
 
         <div class="social-links">
-            <a href="mailto:dragonrondo@gmail.com" class="social-link" title="Email">📧</a>
+            <a href="#" onclick="openEmailOptions()" class="social-link" title="Email">📧</a>
             <a href="https://linkedin.com/in/yourprofile" class="social-link" title="LinkedIn">💼</a>
             <a href="https://github.com/Tenormusica2024" class="social-link" title="GitHub" target="_blank">🐱</a>
         </div>
