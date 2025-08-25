@@ -188,8 +188,8 @@
         }
 
         .featured-project {
-            background: linear-gradient(145deg, rgba(255, 215, 0, 0.1), rgba(100, 255, 218, 0.1));
-            border: 2px solid #ffd700;
+            background: linear-gradient(145deg, rgba(100, 255, 218, 0.1), rgba(187, 134, 252, 0.1));
+            border: 2px solid #64ffda;
             border-radius: 25px;
             padding: 3rem;
             text-align: center;
@@ -199,8 +199,20 @@
 
         .featured-project h3 {
             font-size: 1.8rem;
-            color: #ffd700;
+            color: #64ffda;
             margin-bottom: 1rem;
+        }
+        
+        .featured-project:first-child {
+            background: linear-gradient(145deg, rgba(187, 134, 252, 0.15), rgba(100, 255, 218, 0.1));
+            border: 2px solid #bb86fc;
+        }
+        
+        .featured-project:first-child h3 {
+            background: linear-gradient(45deg, #bb86fc, #64ffda);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .featured-project p {
@@ -219,18 +231,28 @@
         .featured-link {
             padding: 0.8rem 1.5rem;
             background: transparent;
-            border: 2px solid #ffd700;
+            border: 2px solid #64ffda;
             border-radius: 25px;
-            color: #ffd700;
+            color: #64ffda;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
         }
 
         .featured-link:hover {
-            background: #ffd700;
+            background: #64ffda;
             color: #000;
             transform: translateY(-3px);
+        }
+        
+        .featured-project:first-child .featured-link {
+            border: 2px solid #bb86fc;
+            color: #bb86fc;
+        }
+        
+        .featured-project:first-child .featured-link:hover {
+            background: #bb86fc;
+            color: #000;
         }
 
         .new-project {
