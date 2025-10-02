@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Akinori Koda</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1a1a1a;
+        }
+
+        .page-header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .portfolio-section {
+            margin-bottom: 5rem;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-card {
+            background: #f8f8f8;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e5e5e5;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e5e5e5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #999;
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .portfolio-description {
+            color: #444;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-tag {
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 20px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .portfolio-link {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background: #1a1a1a;
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-link:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        .skills-section {
+            background: #f8f8f8;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid #e5e5e5;
+        }
+
+        .skill-category h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-item {
+            padding: 0.5rem 0;
+            color: #666;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .skill-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e5e5e5;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 3rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -2.3rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: #1a1a1a;
+            border-radius: 50%;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .timeline-date {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            color: #444;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-timeline {
+                padding-left: 2rem;
+            }
+
+            .timeline-dot {
+                left: -1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index_v2.html" class="logo">AK</a>
+            <div class="nav-links">
+                <a href="index_v2.html">Home</a>
+                <a href="projects_v2.html">Projects</a>
+                <a href="portfolio_v2.html">Portfolio</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Portfolio</h1>
+        <p>実績とスキルセット</p>
+    </div>
+
+    <div class="container">
+        <section class="skills-section">
+            <h2 class="section-title">Core Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>LLM駆動開発</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Claude API Integration</li>
+                        <li class="skill-item">GitHub Copilot</li>
+                        <li class="skill-item">Cursor IDE</li>
+                        <li class="skill-item">Prompt Engineering</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>データサイエンス</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Python (Pandas, NumPy)</li>
+                        <li class="skill-item">SageMaker</li>
+                        <li class="skill-item">Snowflake</li>
+                        <li class="skill-item">機械学習 (scikit-learn)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Web開発</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">HTML/CSS/JavaScript</li>
+                        <li class="skill-item">Flask</li>
+                        <li class="skill-item">Firebase</li>
+                        <li class="skill-item">Cloud Run</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>業務自動化</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Web Scraping</li>
+                        <li class="skill-item">GitHub Actions</li>
+                        <li class="skill-item">PowerShell</li>
+                        <li class="skill-item">VBA</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="portfolio-section">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">厳選したプロジェクト実績</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-image">APP</div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">AI FM Podcast Platform</h3>
+                        <p class="portfolio-description">
+                            Firebase認証とCloud Firestoreを活用した音楽配信プラットフォーム。
+                            アカウントシステム、プレイリスト管理、オフライン再生対応を実装。
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Flask</span>
+                            <span class="portfolio-tag">Firebase</span>
+                            <span class="portfolio-tag">Cloud Run</span>
+                            <span class="portfolio-tag">PWA</span>
+                        </div>
+                        <a href="https://podcast-app-ycqe3vmjva-uc.a.run.app/" class="portfolio-link" target="_blank">View Project</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">CHART</div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">SP500 & FANG+ Charts</h3>
+                        <p class="portfolio-description">
+                            金融データの可視化プラットフォーム。Cyberpunk MatrixとSynthwave Retroの
+                            デュアルテーマで株価推移をインタラクティブに表示。
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Chart.js</span>
+                            <span class="portfolio-tag">JavaScript</span>
+                            <span class="portfolio-tag">CSS3</span>
+                        </div>
+                        <a href="https://tenormusica2024.github.io/neon-charts/" class="portfolio-link" target="_blank">View Project</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">GAME</div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">EV: Pocket Skirmish</h3>
+                        <p class="portfolio-description">
+                            GPT-5で生成した本格2Dスペースシューティング。
+                            リアルタイム物理演算とAI敵船システムを実装。
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML5 Canvas</span>
+                            <span class="portfolio-tag">Physics</span>
+                            <span class="portfolio-tag">GPT-5</span>
+                        </div>
+                        <a href="https://asteroid-game-ycqe3vmjva-uc.a.run.app/" class="portfolio-link" target="_blank">Play Game</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">AUTO</div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Claude Code Hook System</h3>
+                        <p class="portfolio-description">
+                            イベント駆動型Hook機能による完全自動GitHub Issue報告システム。
+                            開発プロセスの完全な追跡可能性を実現。
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Node.js</span>
+                            <span class="portfolio-tag">Python</span>
+                            <span class="portfolio-tag">GitHub API</span>
+                        </div>
+                        <a href="https://github.com/Tenormusica2024/Private/issues/1" class="portfolio-link" target="_blank">View Details</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">VIZ</div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Cloud Market Racing Chart</h3>
+                        <p class="portfolio-description">
+                            AI駆動で作成したクラウドサービスのシェア率レーシングバーチャート。
+                            D3.jsによる動的可視化を実装。
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">D3.js</span>
+                            <span class="portfolio-tag">Data Viz</span>
+                            <span class="portfolio-tag">AI-Driven</span>
+                        </div>
+                        <a href="https://tenormusica2024.github.io/cloud-market-racing-chart/" class="portfolio-link" target="_blank">View Project</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">WEB</div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Esports Tournament Landing</h3>
+                        <p class="portfolio-description">
+                            GPT-5の単一プロンプトで生成されたeスポーツ大会ランディングページ。
+                            ネオン効果とHTML5 Canvas動画を統合。
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">GPT-5</span>
+                            <span class="portfolio-tag">Flask</span>
+                            <span class="portfolio-tag">Cloud Run</span>
+                        </div>
+                        <a href="https://esports-tournament-ycqe3vmjva-uc.a.run.app/" class="portfolio-link" target="_blank">View Demo</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="portfolio-section">
+            <div class="section-header">
+                <h2 class="section-title">Experience</h2>
+                <p class="section-subtitle">開発実績と経験</p>
+            </div>
+
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>LLM駆動開発スペシャリスト</h3>
+                        <div class="timeline-date">2023 - Present</div>
+                        <p class="timeline-description">
+                            Claude、ChatGPT、GitHub Copilotを活用した次世代AI駆動開発手法の実践。
+                            従来の開発フローを大幅に効率化し、個人の生産性を10倍以上に向上。
+                            Cursor IDEとの統合により、シームレスなAI協働開発環境を構築。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>データサイエンティスト</h3>
+                        <div class="timeline-date">2022 - Present</div>
+                        <p class="timeline-description">
+                            SageMaker、Snowflakeを活用したエンドツーエンド分析基盤の構築。
+                            顧客セグメンテーション、売上予測モデルの実装により、
+                            データドリブンな意思決定を支援。Python、Pandas、scikit-learnによる
+                            効率的なデータ分析ワークフローを確立。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>業務自動化エンジニア</h3>
+                        <div class="timeline-date">2021 - Present</div>
+                        <p class="timeline-description">
+                            Pythonを使用したWebスクレイピング、デイリータスク自動化の実装。
+                            GitHub Actionsによる完全自動化により、月間100時間以上の工数削減を達成。
+                            Excel処理、メール送信、ファイル管理等の実務タスクを効率化。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>クリエイティブテクノロジスト</h3>
+                        <div class="timeline-date">2020 - Present</div>
+                        <p class="timeline-description">
+                            Stable Diffusion、AI音楽生成ツールを活用した創作活動。
+                            プロンプトエンジニアリング技術により高品質なアート作品を生成。
+                            技術と創造性を融合させた革新的な表現手法を探求。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

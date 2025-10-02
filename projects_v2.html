@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Akinori Koda</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1a1a1a;
+        }
+
+        .page-header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .project-card {
+            background: #f8f8f8;
+            border-radius: 16px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e5e5e5;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .project-badge {
+            background: #1a1a1a;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .project-description {
+            color: #444;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 20px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            padding: 0.6rem 1.2rem;
+            background: transparent;
+            border: 1px solid #1a1a1a;
+            border-radius: 20px;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .featured-project {
+            background: #1a1a1a;
+            color: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .featured-project h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .featured-project p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e5e5e5;
+            margin-bottom: 2rem;
+        }
+
+        .featured-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .featured-link {
+            padding: 0.8rem 1.5rem;
+            background: white;
+            color: #1a1a1a;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .featured-link:hover {
+            background: #e5e5e5;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .featured-project {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index_v2.html" class="logo">AK</a>
+            <div class="nav-links">
+                <a href="index_v2.html">Home</a>
+                <a href="projects_v2.html">Projects</a>
+                <a href="portfolio_v2.html">Portfolio</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Projects</h1>
+        <p>LLM駆動開発による実装事例</p>
+    </div>
+
+    <div class="container">
+        <div class="featured-project">
+            <h3>AI FM Podcast Platform - 初のアカウントシステム実装</h3>
+            <p>
+                個人開発において初めて実装した本格的なアカウントシステムを搭載した音楽・ポッドキャスト配信プラットフォーム。
+                Firebase AuthenticationとCloud Firestoreによるユーザー管理から、プレイリスト・お気に入り・再生履歴まで
+                包括的なユーザー体験を実現。Progressive Web App技術によるオフライン再生対応、
+                レスポンシブデザイン・ダークモードで最適化されたモダンなUI/UXを提供。
+            </p>
+            <div class="featured-links">
+                <a href="https://podcast-app-ycqe3vmjva-uc.a.run.app/" class="featured-link" target="_blank">Live Platform</a>
+                <a href="https://github.com/Tenormusica2024/portfolio" class="featured-link" target="_blank">Source Code</a>
+            </div>
+        </div>
+
+        <div class="featured-project">
+            <h3>GPT-5 Coding Examples - Cloud Run Deployment</h3>
+            <p>
+                OpenAIのGPT-5 Coding Examplesリポジトリから厳選したアプリケーションをGoogle Cloud Runに自動デプロイ。
+                単一プロンプトで生成された高品質なWebアプリケーションを本格的なクラウド環境で実装・運用。
+                Flask + Docker + Cloud Runを活用したスケーラブルな実装により、エンタープライズレベルの可用性を実現。
+            </p>
+            <div class="featured-links">
+                <a href="https://esports-tournament-ycqe3vmjva-uc.a.run.app/" class="featured-link" target="_blank">Esports Tournament</a>
+                <a href="https://ai-fm-inspired-ycqe3vmjva-uc.a.run.app/" class="featured-link" target="_blank">AI.fm Inspired</a>
+                <a href="https://asteroid-game-ycqe3vmjva-uc.a.run.app/" class="featured-link" target="_blank">Asteroid Game</a>
+            </div>
+        </div>
+
+        <h2 class="section-title">データ可視化・分析プロジェクト</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">SP500 & FANG+ デュアルチャート</h3>
+                    <span class="project-badge">NEW</span>
+                </div>
+                <p class="project-description">
+                    SP500とFANG+指数の価格推移を同時に可視化するWebアプリケーション。
+                    左側にCyberpunk Matrix風、右側にSynthwave Retro風のデザインを適用し、
+                    日次・週次・月次の時間軸切り替え機能を実装。Chart.jsを使用したリアルタイム
+                    データ更新とCSS3アニメーションによる視覚効果を組み合わせています。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Chart.js</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">Financial Data</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://tenormusica2024.github.io/neon-charts/" class="project-link" target="_blank">Live Demo</a>
+                    <a href="https://github.com/tenormusica2024/neon-charts" class="project-link" target="_blank">GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Cloud Market Racing Chart</h3>
+                    <span class="project-badge">LIVE</span>
+                </div>
+                <p class="project-description">
+                    AI駆動で作成したクラウドサービスのシェア率レーシングバーチャート。
+                    AWS、Azure、Google Cloudの市場シェア推移を動的に可視化し、
+                    時系列データの変化を直感的に理解できるインタラクティブな分析ツール。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">D3.js</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Data Visualization</span>
+                    <span class="tech-tag">AI-Driven</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://tenormusica2024.github.io/cloud-market-racing-chart/" class="project-link" target="_blank">Live Demo</a>
+                    <a href="https://github.com/tenormusica2024/cloud-market-racing-chart" class="project-link" target="_blank">GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">データ分析基盤構築</h3>
+                    <span class="project-badge">PRODUCTION</span>
+                </div>
+                <p class="project-description">
+                    SageMaker、Snowflakeを活用したエンドツーエンドの分析基盤。
+                    顧客セグメンテーション、売上予測モデルを統合し、
+                    効率的なデータ分析ワークフローを実現しています。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">SageMaker</span>
+                    <span class="tech-tag">Snowflake</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">ML</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">LLM駆動開発プロジェクト</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Claude Code Hook自動化システム</h3>
+                    <span class="project-badge">NEW</span>
+                </div>
+                <p class="project-description">
+                    Claude Code のイベント駆動型Hook機能を活用した完全自動GitHub Issue報告システム。
+                    SessionEnd HookとToolResult Hookにより、タスク完了・ツール実行を自動検知し、
+                    GitHub Issue #1へリアルタイム報告を投稿。Node.jsとPythonの連携により、
+                    ユーザーの手動指示を完全排除した自動化ワークフローを実現。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Claude Code</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">GitHub API</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Tenormusica2024/Private/issues/1" class="project-link" target="_blank">GitHub Issue</a>
+                    <a href="https://github.com/Tenormusica2024/Private" class="project-link" target="_blank">Repository</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Esports Tournament Landing</h3>
+                    <span class="project-badge">NEW</span>
+                </div>
+                <p class="project-description">
+                    GPT-5の単一プロンプトで生成されたeスポーツ大会のランディングページ。
+                    ネオン効果、HTML5 Canvas動画、インタラクティブトーナメント表を統合。
+                    Google Cloud Runでの本格運用により、高トラフィック対応とスケーラビリティを実現。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">GPT-5</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">Cloud Run</span>
+                    <span class="tech-tag">Docker</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://esports-tournament-ycqe3vmjva-uc.a.run.app/" class="project-link" target="_blank">Live Demo</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">AI.fm Inspired Music App</h3>
+                    <span class="project-badge">NEW</span>
+                </div>
+                <p class="project-description">
+                    Web Audio APIを活用したジェネラティブ・ミュージック・アプリケーション。
+                    GPT-5の創造力により、リアルタイム音響合成とビジュアライゼーションを実現。
+                    ネオンサイバーパンクUIで包まれた没入型音楽体験を提供。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Web Audio API</span>
+                    <span class="tech-tag">Generative Music</span>
+                    <span class="tech-tag">Cloud Run</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://ai-fm-inspired-ycqe3vmjva-uc.a.run.app/" class="project-link" target="_blank">Live Demo</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">EV: Pocket Skirmish</h3>
+                    <span class="project-badge">NEW</span>
+                </div>
+                <p class="project-description">
+                    GPT-5プロンプトから生成された本格的な2Dスペースシューティングゲーム。
+                    リアルタイム物理エンジン、知的AI敵船、パーティクルエフェクトを統合。
+                    HTML5 Canvasによる60FPS描画で滑らかなゲームプレイを実現。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">HTML5 Canvas</span>
+                    <span class="tech-tag">Game Physics</span>
+                    <span class="tech-tag">AI Enemies</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://asteroid-game-ycqe3vmjva-uc.a.run.app/" class="project-link" target="_blank">Play Game</a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">業務自動化・Webスクレイピング</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">デイリータスク自動化スイート</h3>
+                    <span class="project-badge">PRODUCTION</span>
+                </div>
+                <p class="project-description">
+                    日常的なデータ処理、レポート生成、ファイル管理を自動化するPythonスクリプト集。
+                    Excel処理、メール送信、ファイル同期等の実務タスクを効率化。
+                    GitHub Actionsによるスケジュール実行で完全自動化を実現。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">GitHub Actions</span>
+                    <span class="tech-tag">openpyxl</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">マルチサイト情報収集システム</h3>
+                    <span class="project-badge">ACTIVE</span>
+                </div>
+                <p class="project-description">
+                    複数のWebサイトから情報を自動収集・分析するスクレイピングシステム。
+                    BeautifulSoup、Seleniumを活用し、動的コンテンツも対応。
+                    収集データをLLMで自動分類・要約し、構造化された情報として出力。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">BeautifulSoup</span>
+                    <span class="tech-tag">Selenium</span>
+                    <span class="tech-tag">Claude API</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

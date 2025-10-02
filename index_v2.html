@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akinori Koda - LLM-Driven Development & Data Science</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1a1a1a;
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .profile-section {
+            margin-bottom: 3rem;
+        }
+
+        .profile-initial {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #1a1a1a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0 auto 2rem;
+        }
+
+        .name {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .description {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        .skills-grid {
+            max-width: 1000px;
+            margin: 0 auto 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: #f8f8f8;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 20px;
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .cta-section {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #1a1a1a;
+        }
+
+        .btn-primary {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1a1a1a;
+        }
+
+        .btn-secondary:hover {
+            background: #1a1a1a;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .contact-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: #f8f8f8;
+            border-radius: 20px;
+        }
+
+        .contact-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .contact-section p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .contact-email {
+            font-size: 1.3rem;
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border: 2px solid #1a1a1a;
+            border-radius: 50px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .contact-email:hover {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .footer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: #999;
+            border-top: 1px solid #e5e5e5;
+            margin-top: 4rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #1a1a1a;
+        }
+
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2.5rem;
+            }
+
+            .title {
+                font-size: 1.2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index_v2.html" class="logo">AK</a>
+            <div class="nav-links">
+                <a href="index_v2.html">Home</a>
+                <a href="projects_v2.html">Projects</a>
+                <a href="portfolio_v2.html">Portfolio</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="profile-section">
+                <div class="profile-initial">AK</div>
+                <h1 class="name">Akinori Koda</h1>
+                <p class="title">LLM-Driven Development & Data Science</p>
+            </div>
+
+            <p class="description">
+                LLM（大規模言語モデル）を活用したソフトウェア開発と業務自動化を専門とするAIエンジニアです。
+                Claude、ChatGPT、GitHub Copilot等のAIツールを駆使し、従来の開発フローを大幅に効率化する手法を実践しています。
+                データサイエンス分野では、SageMaker、Snowflake等の実装経験を活かし、効率的なデータ分析パイプライン構築を行っています。
+                <br><br>
+                <strong>「AIは仕事を奪うのではなく、一人ができる仕事を10倍以上にする」</strong>
+                これが私の指針です。AI技術との協働により、個人の生産性と創造性を飛躍的に向上させることを目指しています。
+            </p>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>LLM駆動開発</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Claude API</span>
+                        <span class="skill-tag">GitHub Copilot</span>
+                        <span class="skill-tag">Cursor IDE</span>
+                        <span class="skill-tag">AI統合開発</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3>データサイエンス</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SageMaker</span>
+                        <span class="skill-tag">Snowflake</span>
+                        <span class="skill-tag">機械学習</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3>業務自動化</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Webスクレイピング</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">RPA</span>
+                        <span class="skill-tag">PowerShell</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3>開発手法・創作</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Vibe Coding</span>
+                        <span class="skill-tag">AI絵作成</span>
+                        <span class="skill-tag">AI音楽制作</span>
+                        <span class="skill-tag">創作支援</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <a href="projects_v2.html" class="btn btn-primary">プロジェクトを見る</a>
+                <a href="portfolio_v2.html" class="btn btn-secondary">ポートフォリオ</a>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <h2>お問い合わせ</h2>
+            <p>プロジェクトのご相談やお仕事のご依頼など、お気軽にご連絡ください</p>
+            <a href="mailto:dragonrondo@gmail.com" class="contact-email">dragonrondo@gmail.com</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="mailto:dragonrondo@gmail.com" class="social-link">Email</a>
+            <a href="https://github.com/Tenormusica2024" class="social-link" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/yourprofile" class="social-link" target="_blank">LinkedIn</a>
+        </div>
+        <p>&copy; 2024 Akinori Koda. All rights reserved.</p>
+    </footer>
+</body>
+</html>
