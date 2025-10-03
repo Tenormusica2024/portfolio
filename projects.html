@@ -12,49 +12,72 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
-            color: #ffffff;
-            min-height: 100vh;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
         }
 
         .header {
-            padding: 2rem;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.05);
+            background: #ffffff;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+            background: rgba(255, 255, 255, 0.95);
         }
 
-        .header h1 {
-            font-size: 2.5rem;
-            background: linear-gradient(45deg, #64ffda, #bb86fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .header p {
-            color: #cccccc;
-            font-size: 1.1rem;
-        }
-
-        .nav {
-            padding: 1rem 2rem;
-            text-align: center;
-        }
-
-        .nav a {
-            color: #64ffda;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
             text-decoration: none;
-            margin: 0 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
+            cursor: pointer;
         }
 
-        .nav a:hover {
-            color: #bb86fc;
+        .nav-links a:hover {
+            color: #1a1a1a;
+        }
+
+        .page-header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #666;
         }
 
         .container {
@@ -63,42 +86,31 @@
             padding: 3rem 2rem;
         }
 
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            border-radius: 20px;
+            background: #f8f8f8;
+            border-radius: 16px;
             padding: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .project-card:hover::before {
-            left: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e5e5e5;
         }
 
         .project-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(100, 255, 218, 0.5);
-            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
         }
 
         .project-header {
@@ -110,31 +122,40 @@
 
         .project-title {
             font-size: 1.4rem;
-            color: #64ffda;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .project-badge {
+            background: #1a1a1a;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .new-badge {
+            background: #1a1a1a;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
             font-weight: 600;
         }
 
         .project-status {
-            background: rgba(187, 134, 252, 0.2);
-            border: 1px solid rgba(187, 134, 252, 0.3);
-            border-radius: 12px;
+            background: #f0f0f0;
+            color: #666;
             padding: 0.3rem 0.8rem;
-            font-size: 0.8rem;
-            color: #bb86fc;
-        }
-
-        .featured-badge {
-            background: #ffd700;
-            color: #000;
-            padding: 0.3rem 0.8rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: bold;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
         }
 
         .project-description {
-            color: #cccccc;
-            line-height: 1.6;
+            color: #444;
+            line-height: 1.7;
             margin-bottom: 1.5rem;
         }
 
@@ -146,39 +167,40 @@
         }
 
         .tech-tag {
-            background: rgba(100, 255, 218, 0.1);
-            border: 1px solid rgba(100, 255, 218, 0.3);
-            border-radius: 8px;
-            padding: 0.3rem 0.6rem;
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 20px;
+            padding: 0.3rem 0.8rem;
             font-size: 0.8rem;
-            color: #64ffda;
+            color: #666;
         }
 
         .project-links {
             display: flex;
             gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .project-link {
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.2rem;
             background: transparent;
-            border: 1px solid #64ffda;
-            border-radius: 15px;
-            color: #64ffda;
+            border: 1px solid #1a1a1a;
+            border-radius: 20px;
+            color: #1a1a1a;
             text-decoration: none;
             font-size: 0.9rem;
+            font-weight: 500;
             transition: all 0.3s ease;
         }
 
         .project-link:hover {
-            background: #64ffda;
-            color: #000;
-            transform: translateY(-2px);
+            background: #1a1a1a;
+            color: white;
         }
 
         .project-link.under-construction {
-            border: 1px solid #888;
-            color: #888;
+            border: 1px solid #ccc;
+            color: #999;
             cursor: not-allowed;
             pointer-events: none;
             opacity: 0.6;
@@ -188,9 +210,50 @@
             content: " 🚧";
         }
 
+        .featured-project {
+            background: #1a1a1a;
+            color: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .featured-project h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .featured-project p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e5e5e5;
+            margin-bottom: 2rem;
+        }
+
+        .featured-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .featured-link {
+            padding: 0.8rem 1.5rem;
+            background: white;
+            color: #1a1a1a;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .featured-link:hover {
+            background: #e5e5e5;
+            transform: translateY(-2px);
+        }
+
         .featured-link.under-construction {
-            border: 1px solid #888;
-            color: #888;
+            background: #666;
+            color: #ccc;
             cursor: not-allowed;
             pointer-events: none;
             opacity: 0.6;
@@ -200,222 +263,171 @@
             content: " 🚧";
         }
 
-        .section-title {
-            font-size: 2rem;
-            color: #64ffda;
-            margin-bottom: 2rem;
+        .contact-dropdown {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffffff;
+            border: 2px solid #e5e5e5;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            display: none;
+            z-index: 1000;
+            min-width: 320px;
+        }
+
+        .contact-dropdown h3 {
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
             text-align: center;
+            font-size: 1.3rem;
         }
 
-        .featured-section {
-            margin-bottom: 4rem;
-        }
-
-        .featured-project {
-            background: linear-gradient(145deg, rgba(100, 255, 218, 0.1), rgba(187, 134, 252, 0.1));
-            border: 2px solid #64ffda;
-            border-radius: 25px;
-            padding: 3rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .featured-project h3 {
-            font-size: 1.8rem;
-            color: #64ffda;
-            margin-bottom: 1rem;
-        }
-        
-        .featured-project:first-child {
-            background: linear-gradient(145deg, rgba(187, 134, 252, 0.15), rgba(100, 255, 218, 0.1));
-            border: 2px solid #bb86fc;
-        }
-        
-        .featured-project:first-child h3 {
-            background: linear-gradient(45deg, #bb86fc, #64ffda);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .featured-project p {
-            font-size: 1.1rem;
-            color: #cccccc;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-
-        .featured-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .featured-link {
-            padding: 0.8rem 1.5rem;
-            background: transparent;
-            border: 2px solid #64ffda;
-            border-radius: 25px;
-            color: #64ffda;
+        .email-option {
+            display: block;
+            color: #1a1a1a;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            padding: 0.8rem 1.2rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            transition: all 0.3s;
+            white-space: nowrap;
+            border: 1px solid #e5e5e5;
+            background: #f8f8f8;
+            text-align: center;
         }
 
-        .featured-link:hover {
-            background: #64ffda;
-            color: #000;
-            transform: translateY(-3px);
-        }
-        
-        .featured-project:first-child .featured-link {
-            border: 2px solid #bb86fc;
-            color: #bb86fc;
-        }
-        
-        .featured-project:first-child .featured-link:hover {
-            background: #bb86fc;
-            color: #000;
+        .email-option:hover {
+            background: #1a1a1a;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .new-project {
-            background: linear-gradient(145deg, rgba(255, 0, 128, 0.1), rgba(0, 245, 255, 0.1));
-            border: 2px solid #ff0080;
+        .email-option.close-btn {
+            background: #f0f0f0;
+            color: #666;
+            margin-top: 1rem;
         }
 
-        .new-badge {
-            background: #ff0080;
-            color: #fff;
-            padding: 0.3rem 0.8rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: bold;
+        .email-option.close-btn:hover {
+            background: #e5e5e5;
+            color: #1a1a1a;
         }
 
         @media (max-width: 768px) {
             .projects-grid {
                 grid-template-columns: 1fr;
             }
-            .header h1 {
+
+            .page-header h1 {
                 font-size: 2rem;
             }
-            .project-card {
+
+            .featured-project {
+                padding: 2rem;
+            }
+
+            .contact-dropdown {
+                min-width: 280px;
                 padding: 1.5rem;
             }
-            .featured-links {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-        .contact-dropdown {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.9);
-            border: 1px solid rgba(100, 255, 218, 0.3);
-            border-radius: 10px;
-            padding: 1rem;
-            margin-top: 0.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            display: none;
-            z-index: 1000;
-        }
-
-        .email-option {
-            display: block;
-            color: #64ffda;
-            text-decoration: none;
-            padding: 0.5rem;
-            margin: 0.3rem 0;
-            border-radius: 5px;
-            transition: background 0.3s;
-            white-space: nowrap;
-        }
-
-        .email-option:hover {
-            background: rgba(100, 255, 218, 0.1);
-        }
-
-        .contact-link {
-            position: relative;
         }
     </style>
 </head>
 <body>
     <div id="contactDropdown" class="contact-dropdown">
-        <a href="mailto:dragonrondo@gmail.com" class="email-option">メールクライアント</a>
-        <a href="https://mail.google.com/mail/?view=cm&to=dragonrondo@gmail.com" target="_blank" class="email-option">Gmail Web</a>
-        <a href="#" onclick="copyEmail()" class="email-option">アドレスコピー</a>
+        <h3>お問い合わせ方法</h3>
+        <a href="mailto:dragonrondo@gmail.com" class="email-option">メールクライアントで開く</a>
+        <a href="https://mail.google.com/mail/?view=cm&to=dragonrondo@gmail.com" target="_blank" class="email-option">Gmail Webで開く</a>
+        <a href="#" onclick="copyEmail()" class="email-option">メールアドレスをコピー</a>
         <a href="https://github.com/Tenormusica2024" class="email-option" target="_blank">GitHub</a>
+        <a href="#" onclick="closeDropdown()" class="email-option close-btn">閉じる</a>
     </div>
 
     <script>
         function openEmailOptions() {
-            const dropdown = document.getElementById('contactDropdown');
-            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            document.getElementById('contactDropdown').style.display = 'block';
+        }
+
+        function closeDropdown() {
+            document.getElementById('contactDropdown').style.display = 'none';
         }
 
         function copyEmail() {
             navigator.clipboard.writeText('dragonrondo@gmail.com').then(() => {
-                alert('メールアドレスがコピーされました: dragonrondo@gmail.com');
+                alert('メールアドレスがコピーされました\ndragonrondo@gmail.com');
             }).catch(() => {
                 prompt('メールアドレス:', 'dragonrondo@gmail.com');
             });
-            document.getElementById('contactDropdown').style.display = 'none';
+            closeDropdown();
         }
 
-        // クリック外でドロップダウンを閉じる
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeDropdown();
+            }
+        });
+
         document.addEventListener('click', function(event) {
-            if (!event.target.closest('.contact-link') && !event.target.closest('.contact-dropdown')) {
-                document.getElementById('contactDropdown').style.display = 'none';
+            if (event.target.id === 'contactDropdown') {
+                closeDropdown();
             }
         });
     </script>
-    <div class="header">
-        <h1>Projects & Portfolio</h1>
+
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">AK</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="profile.html">プロフィール</a>
+                <a onclick="openEmailOptions()">お問い合わせ</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Projects</h1>
         <p>LLM駆動開発による実装事例</p>
     </div>
 
-    <div class="nav">
-        <a href="index.html">← ホームに戻る</a>
-        <a href="profile.html">プロフィール</a>
-        <a href="#" onclick="openEmailOptions()" class="contact-link">お問い合わせ ▼</a>
-    </div>
-
     <div class="container">
-        <div class="featured-section">
-            <div class="featured-project">
-                <h3>🎵 AI FM Podcast Platform - 初のアカウントシステム実装</h3>
-                <p>
-                    個人開発において初めて実装した本格的なアカウントシステムを搭載した音楽・ポッドキャスト配信プラットフォーム。
-                    Firebase AuthenticationとCloud Firestoreによるユーザー管理から、プレイリスト・お気に入り・再生履歴まで
-                    包括的なユーザー体験を実現。Progressive Web App技術によるオフライン再生対応、
-                    レスポンシブデザイン・ダークモードで最適化されたモダンなUI/UXを提供。
-                </p>
-                <div class="featured-links">
-                    <a href="https://yt-transcript-ycqe3vmjva-an.a.run.app/" class="featured-link" target="_blank">Live Platform</a>
-                    <a href="#" class="featured-link under-construction">Source Code</a>
-                </div>
+        <div class="featured-project">
+            <h3>🎵 AI FM Podcast Platform - 初のアカウントシステム実装</h3>
+            <p>
+                個人開発において初めて実装した本格的なアカウントシステムを搭載した音楽・ポッドキャスト配信プラットフォーム。
+                Firebase AuthenticationとCloud Firestoreによるユーザー管理から、プレイリスト・お気に入り・再生履歴まで
+                包括的なユーザー体験を実現。Progressive Web App技術によるオフライン再生対応、
+                レスポンシブデザイン・ダークモードで最適化されたモダンなUI/UXを提供。
+            </p>
+            <div class="featured-links">
+                <a href="https://podcast-app-ycqe3vmjva-uc.a.run.app/" class="featured-link" target="_blank">Live Platform</a>
+                <a href="https://github.com/Tenormusica2024/portfolio" class="featured-link" target="_blank">Source Code</a>
             </div>
-            
-            <div class="featured-project">
-                <h3>🚀 GPT-5 Coding Examples - Cloud Run Deployment</h3>
-                <p>
-                    OpenAIのGPT-5 Coding Examplesリポジトリから厳選したアプリケーションをGoogle Cloud Runに自動デプロイ。
-                    単一プロンプトで生成された高品質なWebアプリケーションを本格的なクラウド環境で実装・運用。
-                    Flask + Docker + Cloud Runを活用したスケーラブルな実装により、エンタープライズレベルの可用性を実現。
-                </p>
-                <div class="featured-links">
-                    <a href="https://esports-tournament-ycqe3vmjva-uc.a.run.app/" class="featured-link" target="_blank">Esports Tournament</a>
-                    <a href="https://ai-fm-inspired-ycqe3vmjva-uc.a.run.app/" class="featured-link" target="_blank">AI.fm Inspired</a>
-                    <a href="https://asteroid-game-ycqe3vmjva-uc.a.run.app/" class="featured-link" target="_blank">Asteroid Game</a>
-                    <a href="https://github.com/openai/gpt-5-coding-examples" class="featured-link" target="_blank">Source Repository</a>
-                </div>
+        </div>
+
+        <div class="featured-project">
+            <h3>🚀 GPT-5 Coding Examples - Cloud Run Deployment</h3>
+            <p>
+                OpenAIのGPT-5 Coding Examplesリポジトリから厳選したアプリケーションをGoogle Cloud Runに自動デプロイ。
+                単一プロンプトで生成された高品質なWebアプリケーションを本格的なクラウド環境で実装・運用。
+                Flask + Docker + Cloud Runを活用したスケーラブルな実装により、エンタープライズレベルの可用性を実現。
+            </p>
+            <div class="featured-links">
+                <a href="https://esports-tournament-ycqe3vmjva-uc.a.run.app/" class="featured-link" target="_blank">Esports Tournament</a>
+                <a href="https://ai-fm-inspired-ycqe3vmjva-uc.a.run.app/" class="featured-link" target="_blank">AI.fm Inspired</a>
+                <a href="https://asteroid-game-ycqe3vmjva-uc.a.run.app/" class="featured-link" target="_blank">Asteroid Game</a>
+                <a href="https://github.com/openai/gpt-5-coding-examples" class="featured-link" target="_blank">Source Repository</a>
             </div>
         </div>
 
         <h2 class="section-title">データ可視化・分析プロジェクト</h2>
         <div class="projects-grid">
-            <div class="project-card new-project">
+            <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title">📊 SP500 & FANG+ デュアルチャート</h3>
                     <span class="new-badge">NEW</span>
@@ -442,7 +454,7 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title">Cloud Market Racing Chart</h3>
-                    <span class="project-status">Live</span>
+                    <span class="project-badge">LIVE</span>
                 </div>
                 <p class="project-description">
                     AI駆動で作成したクラウドサービスのシェア率レーシングバーチャート。
@@ -510,7 +522,7 @@
 
         <h2 class="section-title">LLM駆動開発プロジェクト</h2>
         <div class="projects-grid">
-            <div class="project-card new-project">
+            <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title">🤖 Claude Code Hook自動化システム</h3>
                     <span class="new-badge">NEW</span>
@@ -536,7 +548,7 @@
                 </div>
             </div>
 
-            <div class="project-card new-project">
+            <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title">🎮 Esports Tournament Landing</h3>
                     <span class="new-badge">NEW</span>
@@ -560,7 +572,7 @@
                 </div>
             </div>
 
-            <div class="project-card new-project">
+            <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title">🎵 AI.fm Inspired Music App</h3>
                     <span class="new-badge">NEW</span>
@@ -584,7 +596,7 @@
                 </div>
             </div>
 
-            <div class="project-card new-project">
+            <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title">🚀 EV: Pocket Skirmish</h3>
                     <span class="new-badge">NEW</span>
@@ -627,29 +639,6 @@
                 <div class="project-links">
                     <a href="#" class="project-link under-construction">GitHub</a>
                     <a href="#" class="project-link under-construction">Documentation</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">データ分析パイプライン</h3>
-                    <span class="project-status">Production</span>
-                </div>
-                <p class="project-description">
-                    SageMaker、Snowflakeを活用したスケーラブルなデータ分析基盤。
-                    顧客セグメンテーション、売上予測モデルを統合し、
-                    エンドツーエンドの分析ワークフローを実現しています。
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">SageMaker</span>
-                    <span class="tech-tag">Snowflake</span>
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Pandas</span>
-                    <span class="tech-tag">scikit-learn</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link under-construction">GitHub</a>
-                    <a href="#" class="project-link under-construction">Case Study</a>
                 </div>
             </div>
 
@@ -715,185 +704,20 @@
                     <span class="tech-tag">BeautifulSoup</span>
                     <span class="tech-tag">Selenium</span>
                     <span class="tech-tag">Claude API</span>
-                    <span class="tech-tag">pandas</span>
                 </div>
                 <div class="project-links">
                     <a href="#" class="project-link under-construction">GitHub</a>
-                    <a href="#" class="project-link under-construction">Demo</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">レポート自動生成システム</h3>
-                    <span class="project-status">Production</span>
-                </div>
-                <p class="project-description">
-                    収集データから自動的にレポートを生成するシステム。
-                    LLMによる自然言語での洞察生成、チャート自動作成、
-                    PDF/HTMLレポートの自動配信機能を統合。
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">matplotlib</span>
-                    <span class="tech-tag">reportlab</span>
-                    <span class="tech-tag">OpenAI API</span>
-                    <span class="tech-tag">Jinja2</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link under-construction">Sample Report</a>
-                    <a href="#" class="project-link under-construction">GitHub</a>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="section-title">ゲーム開発プロジェクト</h2>
-        <div class="projects-grid">
-            <div class="project-card new-project">
-                <div class="project-header">
-                    <h3 class="project-title">🚀 EV: Pocket Skirmish - Asteroid Game</h3>
-                    <span class="new-badge">NEW</span>
-                </div>
-                <p class="project-description">
-                    GPT-5の単一プロンプトで生成されたフル機能2Dスペースシューティング。
-                    リアルタイム物理演算、知的AI敵船、動的パーティクルシステムを実装。
-                    WASD+マウス操作、レベル進行システム、衝突検知により
-                    AAA品質のゲームプレイ体験を web技術で実現。
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">HTML5 Canvas</span>
-                    <span class="tech-tag">JavaScript Game Engine</span>
-                    <span class="tech-tag">Physics Simulation</span>
-                    <span class="tech-tag">AI Pathfinding</span>
-                    <span class="tech-tag">Particle Systems</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://asteroid-game-ycqe3vmjva-uc.a.run.app/" class="project-link" target="_blank">Play Game</a>
-                    <a href="https://github.com/openai/gpt-5-coding-examples/tree/main/apps/asteroid-game" class="project-link" target="_blank">Source</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">Modern Breakout Game</h3>
-                    <span class="project-status">Live</span>
-                </div>
-                <p class="project-description">
-                    LLM駆動開発で制作したブロック崩しゲーム。
-                    ネオングロー効果、パーティクルシステム、グラスモーフィズムを活用した
-                    Web技術によるゲーム体験。HTML5 Canvas APIとCSS3アニメーションで
-                    視覚的に魅力的なインタラクティブエンターテインメントを実現。
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">HTML5 Canvas</span>
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">CSS3 Animations</span>
-                    <span class="tech-tag">パーティクルシステム</span>
-                    <span class="tech-tag">LLM駆動開発</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://tenormusica2024.github.io/modernbreakoutgame/" class="project-link" target="_blank">Play Game</a>
-                    <a href="https://github.com/tenormusica2024/modernbreakoutgame" class="project-link" target="_blank">GitHub</a>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="section-title">AI創作・アート制作</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">AI Art Gallery - Stable Diffusion</h3>
-                    <span class="project-status">Active</span>
-                </div>
-                <p class="project-description">
-                    Stable Diffusionを活用したAI絵画作品の制作・公開プロジェクト。
-                    プロンプトエンジニアリング技術により高品質なアート作品を生成し、
-                    Instagramを通じて定期的に作品を発表。AI技術と芸術表現の融合を探求。
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Stable Diffusion</span>
-                    <span class="tech-tag">プロンプトエンジニアリング</span>
-                    <span class="tech-tag">AI Art</span>
-                    <span class="tech-tag">Instagram</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://www.instagram.com/musicaexmachina2023/" class="project-link" target="_blank">Instagram Gallery</a>
-                    <a href="#" class="project-link under-construction">制作プロセス</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">Vibe Coding研究</h3>
-                    <span class="project-status">Experimental</span>
-                </div>
-                <p class="project-description">
-                    直感的プログラム開発手法の研究・実践。
-                    従来のロジカルなコーディングを超越し、創造性と技術を融合させた
-                    革新的な開発アプローチの確立を目指す実験的プロジェクト。
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Vibe Coding</span>
-                    <span class="tech-tag">創造的プログラミング</span>
-                    <span class="tech-tag">実験的手法</span>
-                    <span class="tech-tag">研究開発</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link under-construction">Research Notes</a>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="section-title">音楽制作・創作活動</h2>
-        <div class="projects-grid">
-            <div class="project-card new-project">
-                <div class="project-header">
-                    <h3 class="project-title">🎵 AI FM Podcast Platform</h3>
-                    <span class="new-badge">NEW</span>
-                </div>
-                <p class="project-description">
-                    AI駆動の音楽・ポッドキャスト配信プラットフォーム。個人開発において初めてのアカウントシステム実装プロジェクト。
-                    Firebase AuthenticationとCloud Firestoreによる完全なユーザー管理システムを実装。
-                    ユーザー登録・ログイン機能から始まり、プレイリスト管理、お気に入り機能、再生履歴追跡、オフライン再生対応まで
-                    包括的なユーザー体験を構築。レスポンシブデザインとダークモード対応により、あらゆるデバイスで最適な体験を提供。
-                    Google Cloud Runでのスケーラブルな配信により、高可用性を実現。
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Flask</span>
-                    <span class="tech-tag">Firebase</span>
-                    <span class="tech-tag">Cloud Firestore</span>
-                    <span class="tech-tag">HTML5 Audio</span>
-                    <span class="tech-tag">Cloud Run</span>
-                    <span class="tech-tag">Progressive Web App</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://yt-transcript-ycqe3vmjva-an.a.run.app/" class="project-link" target="_blank">Live Demo</a>
-                    <a href="#" class="project-link under-construction">GitHub</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">クリエイティブ・テクノロジー融合</h3>
-                    <span class="project-status">Ongoing</span>
-                </div>
-                <p class="project-description">
-                    技術と創造性を融合させた実験的プロジェクト。
-                    プログラミング技術を活用したサウンドデザイン、
-                    アルゴリズミック作曲などの創作手法を探求しています。
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Creative Coding</span>
-                    <span class="tech-tag">Algorithmic Composition</span>
-                    <span class="tech-tag">Sound Design</span>
-                    <span class="tech-tag">Experimental</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link under-construction">Works</a>
-                    <a href="#" class="project-link under-construction">Process</a>
                 </div>
             </div>
         </div>
     </div>
+
+    <footer style="max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; text-align: center; color: #999; border-top: 1px solid #e5e5e5; margin-top: 4rem;">
+        <div style="display: flex; gap: 2rem; justify-content: center; margin-bottom: 2rem;">
+            <a href="mailto:dragonrondo@gmail.com" style="color: #666; text-decoration: none; font-weight: 500; transition: color 0.3s ease;" onmouseover="this.style.color='#1a1a1a'" onmouseout="this.style.color='#666'">Email</a>
+            <a href="https://github.com/Tenormusica2024" target="_blank" style="color: #666; text-decoration: none; font-weight: 500; transition: color 0.3s ease;" onmouseover="this.style.color='#1a1a1a'" onmouseout="this.style.color='#666'">GitHub</a>
+        </div>
+        <p>&copy; 2025 Akinori Koda. All rights reserved.</p>
+    </footer>
 </body>
 </html>

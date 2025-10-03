@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Akinori Koda</title>
+    <title>プロフィール - Akinori Koda</title>
     <style>
         * {
             margin: 0;
@@ -12,49 +12,72 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
-            color: #ffffff;
-            min-height: 100vh;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
         }
 
         .header {
-            padding: 2rem;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.05);
+            background: #ffffff;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+            background: rgba(255, 255, 255, 0.95);
         }
 
-        .header h1 {
-            font-size: 2.5rem;
-            background: linear-gradient(45deg, #64ffda, #bb86fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .header p {
-            color: #cccccc;
-            font-size: 1.1rem;
-        }
-
-        .nav {
-            padding: 1rem 2rem;
-            text-align: center;
-        }
-
-        .nav a {
-            color: #64ffda;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
             text-decoration: none;
-            margin: 0 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
+            cursor: pointer;
         }
 
-        .nav a:hover {
-            color: #bb86fc;
+        .nav-links a:hover {
+            color: #1a1a1a;
+        }
+
+        .page-header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #666;
         }
 
         .container {
@@ -69,15 +92,16 @@
 
         .section-title {
             font-size: 2rem;
-            color: #64ffda;
+            color: #1a1a1a;
             margin-bottom: 2rem;
-            border-bottom: 2px solid rgba(100, 255, 218, 0.3);
+            border-bottom: 2px solid #e5e5e5;
             padding-bottom: 0.5rem;
+            font-weight: 600;
         }
 
         .about-section {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(100, 255, 218, 0.2);
+            background: #f8f8f8;
+            border: 1px solid #e5e5e5;
             border-radius: 20px;
             padding: 3rem;
             margin-bottom: 3rem;
@@ -86,7 +110,7 @@
         .about-content {
             font-size: 1.1rem;
             line-height: 1.8;
-            color: #cccccc;
+            color: #444;
         }
 
         .skills-comprehensive {
@@ -96,8 +120,8 @@
         }
 
         .skill-group {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(187, 134, 252, 0.2);
+            background: #f8f8f8;
+            border: 1px solid #e5e5e5;
             border-radius: 15px;
             padding: 2rem;
             transition: all 0.3s ease;
@@ -105,12 +129,11 @@
 
         .skill-group:hover {
             transform: translateY(-3px);
-            border-color: rgba(187, 134, 252, 0.5);
-            box-shadow: 0 10px 25px rgba(187, 134, 252, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .skill-group h3 {
-            color: #bb86fc;
+            color: #1a1a1a;
             font-size: 1.3rem;
             margin-bottom: 1rem;
             font-weight: 600;
@@ -129,21 +152,21 @@
         }
 
         .skill-name {
-            color: #cccccc;
+            color: #444;
             font-weight: 500;
         }
 
         .skill-level {
             width: 100px;
             height: 6px;
-            background: rgba(255, 255, 255, 0.1);
+            background: #e5e5e5;
             border-radius: 3px;
             overflow: hidden;
         }
 
         .skill-progress {
             height: 100%;
-            background: linear-gradient(45deg, #64ffda, #bb86fc);
+            background: #1a1a1a;
             border-radius: 3px;
             transition: width 1s ease;
         }
@@ -159,16 +182,16 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(to bottom, #64ffda, #bb86fc);
+            background: linear-gradient(to bottom, #1a1a1a, #666);
         }
 
         .timeline-item {
             position: relative;
             margin-bottom: 3rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: #f8f8f8;
             border-radius: 15px;
             padding: 2rem;
-            border-left: 3px solid #64ffda;
+            border-left: 3px solid #1a1a1a;
         }
 
         .timeline-item::before {
@@ -178,33 +201,33 @@
             top: 2rem;
             width: 12px;
             height: 12px;
-            background: #64ffda;
+            background: #1a1a1a;
             border-radius: 50%;
-            border: 3px solid #0f0f0f;
+            border: 3px solid #ffffff;
         }
 
         .timeline-date {
-            color: #64ffda;
+            color: #1a1a1a;
             font-weight: 600;
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
         }
 
         .timeline-title {
-            color: #ffffff;
+            color: #1a1a1a;
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
         .timeline-company {
-            color: #bb86fc;
+            color: #666;
             font-weight: 500;
             margin-bottom: 1rem;
         }
 
         .timeline-description {
-            color: #cccccc;
+            color: #444;
             line-height: 1.6;
         }
 
@@ -215,11 +238,17 @@
         }
 
         .achievement-card {
-            background: linear-gradient(145deg, rgba(100, 255, 218, 0.1), rgba(187, 134, 252, 0.1));
-            border: 1px solid rgba(100, 255, 218, 0.3);
+            background: #f8f8f8;
+            border: 1px solid #e5e5e5;
             border-radius: 15px;
             padding: 2rem;
             text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .achievement-icon {
@@ -228,19 +257,73 @@
         }
 
         .achievement-title {
-            color: #64ffda;
+            color: #1a1a1a;
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
         .achievement-description {
-            color: #cccccc;
+            color: #666;
             font-size: 0.9rem;
         }
 
+        .contact-dropdown {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffffff;
+            border: 2px solid #e5e5e5;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            display: none;
+            z-index: 1000;
+            min-width: 320px;
+        }
+
+        .contact-dropdown h3 {
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .email-option {
+            display: block;
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            transition: all 0.3s;
+            white-space: nowrap;
+            border: 1px solid #e5e5e5;
+            background: #f8f8f8;
+            text-align: center;
+        }
+
+        .email-option:hover {
+            background: #1a1a1a;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .email-option.close-btn {
+            background: #f0f0f0;
+            color: #666;
+            margin-top: 1rem;
+        }
+
+        .email-option.close-btn:hover {
+            background: #e5e5e5;
+            color: #1a1a1a;
+        }
+
         @media (max-width: 768px) {
-            .header h1 {
+            .page-header h1 {
                 font-size: 2rem;
             }
             .about-section {
@@ -252,78 +335,69 @@
             .achievements {
                 grid-template-columns: 1fr;
             }
-        }
-        .contact-dropdown {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.9);
-            border: 1px solid rgba(100, 255, 218, 0.3);
-            border-radius: 10px;
-            padding: 1rem;
-            margin-top: 0.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            display: none;
-            z-index: 1000;
-        }
-
-        .email-option {
-            display: block;
-            color: #64ffda;
-            text-decoration: none;
-            padding: 0.5rem;
-            margin: 0.3rem 0;
-            border-radius: 5px;
-            transition: background 0.3s;
-            white-space: nowrap;
-        }
-
-        .email-option:hover {
-            background: rgba(100, 255, 218, 0.1);
-        }
-
-        .contact-link {
-            position: relative;
+            .contact-dropdown {
+                min-width: 280px;
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <div id="contactDropdown" class="contact-dropdown">
-        <a href="mailto:dragonrondo@gmail.com" class="email-option">メールクライアント</a>
-        <a href="https://mail.google.com/mail/?view=cm&to=dragonrondo@gmail.com" target="_blank" class="email-option">Gmail Web</a>
-        <a href="#" onclick="copyEmail()" class="email-option">アドレスコピー</a>
+        <h3>お問い合わせ方法</h3>
+        <a href="mailto:dragonrondo@gmail.com" class="email-option">メールクライアントで開く</a>
+        <a href="https://mail.google.com/mail/?view=cm&to=dragonrondo@gmail.com" target="_blank" class="email-option">Gmail Webで開く</a>
+        <a href="#" onclick="copyEmail()" class="email-option">メールアドレスをコピー</a>
         <a href="https://github.com/Tenormusica2024" class="email-option" target="_blank">GitHub</a>
+        <a href="#" onclick="closeDropdown()" class="email-option close-btn">閉じる</a>
     </div>
 
     <script>
         function openEmailOptions() {
-            const dropdown = document.getElementById('contactDropdown');
-            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            document.getElementById('contactDropdown').style.display = 'block';
+        }
+
+        function closeDropdown() {
+            document.getElementById('contactDropdown').style.display = 'none';
         }
 
         function copyEmail() {
             navigator.clipboard.writeText('dragonrondo@gmail.com').then(() => {
-                alert('メールアドレスがコピーされました: dragonrondo@gmail.com');
+                alert('メールアドレスがコピーされました\ndragonrondo@gmail.com');
             }).catch(() => {
                 prompt('メールアドレス:', 'dragonrondo@gmail.com');
             });
-            document.getElementById('contactDropdown').style.display = 'none';
+            closeDropdown();
         }
 
-        // クリック外でドロップダウンを閉じる
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeDropdown();
+            }
+        });
+
         document.addEventListener('click', function(event) {
-            if (!event.target.closest('.contact-link') && !event.target.closest('.contact-dropdown')) {
-                document.getElementById('contactDropdown').style.display = 'none';
+            if (event.target.id === 'contactDropdown') {
+                closeDropdown();
             }
         });
     </script>
-    <div class="header">
-        <h1>Portfolio</h1>
-        <p>LLM駆動開発エンジニアとしてのキャリアと実績</p>
-    </div>
 
-    <div class="nav">
-        <a href="index.html">← ホームに戻る</a>
-        <a href="projects.html">プロジェクト</a>
-        <a href="#" onclick="openEmailOptions()" class="contact-link">お問い合わせ ▼</a>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">AK</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="profile.html">プロフィール</a>
+                <a onclick="openEmailOptions()">お問い合わせ</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>プロフィール</h1>
+        <p>LLM駆動開発エンジニアとしてのキャリアと実績</p>
     </div>
 
     <div class="container">
@@ -517,7 +591,7 @@
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">AI音楽制作</span>
+                            <span class="-name">AI音楽制作</span>
                             <div class="skill-level">
                                 <div class="skill-progress" style="width: 35%;"></div>
                             </div>
@@ -682,5 +756,13 @@
             </div>
         </div>
     </div>
+
+    <footer style="max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; text-align: center; color: #999; border-top: 1px solid #e5e5e5; margin-top: 4rem;">
+        <div style="display: flex; gap: 2rem; justify-content: center; margin-bottom: 2rem;">
+            <a href="mailto:dragonrondo@gmail.com" style="color: #666; text-decoration: none; font-weight: 500; transition: color 0.3s ease;" onmouseover="this.style.color='#1a1a1a'" onmouseout="this.style.color='#666'">Email</a>
+            <a href="https://github.com/Tenormusica2024" target="_blank" style="color: #666; text-decoration: none; font-weight: 500; transition: color 0.3s ease;" onmouseover="this.style.color='#1a1a1a'" onmouseout="this.style.color='#666'">GitHub</a>
+        </div>
+        <p>&copy; 2025 Akinori Koda. All rights reserved.</p>
+    </footer>
 </body>
 </html>
