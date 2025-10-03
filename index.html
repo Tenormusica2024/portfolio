@@ -268,11 +268,11 @@
 </head>
 <body>
     <div id="contactDropdown" class="contact-dropdown">
-        <h3 style="color: #64ffda; margin-bottom: 1rem; text-align: center;">📧 お問い合わせ方法</h3>
-        <a href="mailto:dragonrondo@gmail.com" class="email-option">📧 メールクライアントで開く</a>
-        <a href="https://mail.google.com/mail/?view=cm&to=dragonrondo@gmail.com" target="_blank" class="email-option">🌐 Gmail Webで開く</a>
-        <a href="#" onclick="copyEmail()" class="email-option">📋 メールアドレスをコピー</a>
-        <a href="#" onclick="closeDropdown()" class="email-option" style="color: #bb86fc; margin-top: 1rem;">❌ 閉じる</a>
+        <h3 style="color: #64ffda; margin-bottom: 1rem; text-align: center;">お問い合わせ方法</h3>
+        <a href="mailto:dragonrondo@gmail.com" class="email-option">メールクライアントで開く</a>
+        <a href="https://mail.google.com/mail/?view=cm&to=dragonrondo@gmail.com" target="_blank" class="email-option">Gmail Webで開く</a>
+        <a href="#" onclick="copyEmail()" class="email-option">メールアドレスをコピー</a>
+        <a href="#" onclick="closeDropdown()" class="email-option" style="color: #bb86fc; margin-top: 1rem;">閉じる</a>
     </div>
 
     <script>
@@ -286,7 +286,7 @@
 
         function copyEmail() {
             navigator.clipboard.writeText('dragonrondo@gmail.com').then(() => {
-                alert('✅ メールアドレスがコピーされました!\ndragonrondo@gmail.com');
+                alert('メールアドレスがコピーされました\ndragonrondo@gmail.com');
             }).catch(() => {
                 prompt('メールアドレス:', 'dragonrondo@gmail.com');
             });
