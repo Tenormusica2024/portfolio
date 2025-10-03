@@ -211,23 +211,52 @@
         }
 
         .featured-project {
-            background: #1a1a1a;
-            color: white;
+            background: #ffffff;
+            color: #1a1a1a;
+            border: 2px solid #e5e5e5;
             border-radius: 20px;
             padding: 3rem;
             margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .featured-project::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.1) 50%, transparent 70%);
+            transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            transition: transform 0.6s ease;
+        }
+
+        .featured-project:hover::before {
+            transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+
+        .featured-project:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.15);
         }
 
         .featured-project h3 {
             font-size: 2rem;
             margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
         }
 
         .featured-project p {
             font-size: 1.1rem;
             line-height: 1.8;
-            color: #e5e5e5;
+            color: #444;
             margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .featured-links {
@@ -238,17 +267,20 @@
 
         .featured-link {
             padding: 0.8rem 1.5rem;
-            background: white;
-            color: #1a1a1a;
+            background: #1a1a1a;
+            color: white;
             border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
 
         .featured-link:hover {
-            background: #e5e5e5;
+            background: #333;
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .featured-link.under-construction {
@@ -397,7 +429,7 @@
 
     <div class="container">
         <div class="featured-project">
-            <h3>🎵 AI FM Podcast Platform - 初のアカウントシステム実装</h3>
+            <h3>AI FM Podcast Platform - 初のアカウントシステム実装</h3>
             <p>
                 個人開発において初めて実装した本格的なアカウントシステムを搭載した音楽・ポッドキャスト配信プラットフォーム。
                 Firebase AuthenticationとCloud Firestoreによるユーザー管理から、プレイリスト・お気に入り・再生履歴まで
@@ -411,7 +443,7 @@
         </div>
 
         <div class="featured-project">
-            <h3>🚀 GPT-5 Coding Examples - Cloud Run Deployment</h3>
+            <h3>GPT-5 Coding Examples - Cloud Run Deployment</h3>
             <p>
                 OpenAIのGPT-5 Coding Examplesリポジトリから厳選したアプリケーションをGoogle Cloud Runに自動デプロイ。
                 単一プロンプトで生成された高品質なWebアプリケーションを本格的なクラウド環境で実装・運用。
@@ -429,7 +461,7 @@
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title">📊 SP500 & FANG+ デュアルチャート</h3>
+                    <h3 class="project-title">SP500 & FANG+ デュアルチャート</h3>
                     <span class="new-badge">NEW</span>
                 </div>
                 <p class="project-description">
@@ -524,7 +556,7 @@
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title">🤖 Claude Code Hook自動化システム</h3>
+                    <h3 class="project-title">Claude Code Hook自動化システム</h3>
                     <span class="new-badge">NEW</span>
                 </div>
                 <p class="project-description">
@@ -550,7 +582,7 @@
 
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title">🎮 Esports Tournament Landing</h3>
+                    <h3 class="project-title">Esports Tournament Landing</h3>
                     <span class="new-badge">NEW</span>
                 </div>
                 <p class="project-description">
@@ -574,7 +606,7 @@
 
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title">🎵 AI.fm Inspired Music App</h3>
+                    <h3 class="project-title">AI.fm Inspired Music App</h3>
                     <span class="new-badge">NEW</span>
                 </div>
                 <p class="project-description">
@@ -598,7 +630,7 @@
 
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title">🚀 EV: Pocket Skirmish</h3>
+                    <h3 class="project-title">EV: Pocket Skirmish</h3>
                     <span class="new-badge">NEW</span>
                 </div>
                 <p class="project-description">
