@@ -229,18 +229,19 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.1) 50%, transparent 70%);
+            background: linear-gradient(45deg, transparent 30%, rgba(192, 192, 192, 0.15) 50%, transparent 70%);
             transform: translateX(-100%) translateY(-100%) rotate(45deg);
-            transition: transform 6s ease;
+            transition: transform 0s ease;
         }
 
         .featured-project:hover::before {
             transform: translateX(100%) translateY(100%) rotate(45deg);
+            transition: transform 6s ease;
         }
 
         .featured-project:hover {
-            border-color: rgba(59, 130, 246, 0.3);
-            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.15);
+            border-color: rgba(192, 192, 192, 0.3);
+            box-shadow: 0 10px 40px rgba(192, 192, 192, 0.15);
         }
 
         .featured-project h3 {
