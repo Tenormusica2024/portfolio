@@ -187,6 +187,77 @@
             transform: translateY(-2px);
         }
 
+        .article-section {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            padding: 2.5rem;
+            background: #f8f8f8;
+            border-radius: 16px;
+            border: 1px solid #e5e5e5;
+        }
+
+        .article-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+            text-align: center;
+        }
+
+        .article-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #e5e5e5;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-badge {
+            display: inline-block;
+            background: #1a1a1a;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .article-title {
+            font-size: 1.3rem;
+            color: #1a1a1a;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .article-description {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+
+        .article-link {
+            display: inline-block;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.6rem 1.5rem;
+            border: 2px solid #1a1a1a;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .article-link:hover {
+            background: #1a1a1a;
+            color: white;
+            transform: translateY(-2px);
+        }
+
         .contact-section {
             max-width: 800px;
             margin: 0 auto;
@@ -444,6 +515,19 @@
                         <span class="skill-tag">AI音楽制作</span>
                         <span class="skill-tag">動画制作</span>
                     </div>
+                </div>
+            </div>
+
+            <div class="article-section">
+                <h2>📝 最新記事</h2>
+                <div class="article-card">
+                    <span class="article-badge">NEW</span>
+                    <h3 class="article-title">AnthropicのLLM Poisoning研究論文解説</h3>
+                    <p class="article-description">
+                        AIモデルの学習データに悪意ある情報を注入する「LLM Poisoning」攻撃について、Anthropicの最新研究を詳しく解説。
+                        セキュリティリスク、防御手法、今後の展望まで包括的にカバーしています。
+                    </p>
+                    <a href="https://zenn.dev/tenormusica/articles/anthropic-llm-poisoning-research" class="article-link" target="_blank">記事を読む →</a>
                 </div>
             </div>
 
