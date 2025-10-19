@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akinori Koda - LLM活用で業務効率300%改善するAIエンジニア</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 2rem 8rem 2rem;
+            position: relative;
+        }
+
+        .background-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: 
+                radial-gradient(circle at 25% 25%, #64ffda 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, #bb86fc 0%, transparent 50%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-section {
+            text-align: center;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            background: linear-gradient(45deg, #64ffda, #bb86fc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(100, 255, 218, 0.5); }
+            to { box-shadow: 0 0 40px rgba(187, 134, 252, 0.8); }
+        }
+
+        .name {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #64ffda, #bb86fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            color: #64ffda;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #cccccc;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
+        }
+
+        .stat-card {
+            background: rgba(100, 255, 218, 0.05);
+            border: 2px solid rgba(100, 255, 218, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #64ffda;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+            line-height: 1.4;
+        }
+
+        .skills-section {
+            margin-bottom: 3rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            background: rgba(100, 255, 218, 0.1);
+            border-color: rgba(100, 255, 218, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .skill-category h3 {
+            color: #64ffda;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: rgba(187, 134, 252, 0.2);
+            border: 1px solid rgba(187, 134, 252, 0.3);
+            border-radius: 12px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.85rem;
+            color: #bb86fc;
+            font-weight: 500;
+        }
+
+        .pricing-section {
+            background: rgba(187, 134, 252, 0.05);
+            border: 2px solid rgba(187, 134, 252, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+        }
+
+        .pricing-section h2 {
+            color: #bb86fc;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .pricing-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .pricing-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(187, 134, 252, 0.2);
+        }
+
+        .pricing-item strong {
+            color: #bb86fc;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-item span {
+            color: #cccccc;
+            font-size: 0.95rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #64ffda, #bb86fc);
+            color: #000;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #64ffda;
+            border: 2px solid #64ffda;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
+        }
+
+        .social-links {
+            position: absolute;
+            bottom: 3rem;
+            display: flex;
+            gap: 2rem;
+            z-index: 10;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link:hover {
+            background: rgba(100, 255, 218, 0.2);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .name { font-size: 2.5rem; }
+            .title { font-size: 1.2rem; }
+            .description { font-size: 1rem; }
+            .stats-section { grid-template-columns: 1fr; gap: 1rem; }
+            .pricing-details { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .skill-category { padding: 1.2rem; }
+            .cta-buttons { 
+                flex-direction: column; 
+                align-items: center;
+                margin-bottom: 2rem;
+            }
+            .social-links { 
+                position: static; 
+                margin-top: 1rem; 
+                justify-content: center;
+            }
+            .container {
+                padding: 2rem 1rem 2rem 1rem;
+            }
+        }
+
+        .contact-dropdown {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid rgba(100, 255, 218, 0.5);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+            display: none;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .email-option {
+            display: block;
+            color: #64ffda;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            transition: all 0.3s;
+            white-space: nowrap;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+        }
+
+        .email-option:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div id="contactDropdown" class="contact-dropdown">
+        <h3 style="color: #64ffda; margin-bottom: 1rem; text-align: center;">📧 お問い合わせ方法</h3>
+        <a href="mailto:dragonrondo@gmail.com" class="email-option">📧 メールクライアントで開く</a>
+        <a href="https://mail.google.com/mail/?view=cm&to=dragonrondo@gmail.com" target="_blank" class="email-option">🌐 Gmail Webで開く</a>
+        <a href="#" onclick="copyEmail()" class="email-option">📋 メールアドレスをコピー</a>
+        <a href="#" onclick="closeDropdown()" class="email-option" style="color: #bb86fc; margin-top: 1rem;">❌ 閉じる</a>
+    </div>
+
+    <script>
+        function openEmailOptions() {
+            document.getElementById('contactDropdown').style.display = 'block';
+        }
+
+        function closeDropdown() {
+            document.getElementById('contactDropdown').style.display = 'none';
+        }
+
+        function copyEmail() {
+            navigator.clipboard.writeText('dragonrondo@gmail.com').then(() => {
+                alert('✅ メールアドレスがコピーされました!\ndragonrondo@gmail.com');
+            }).catch(() => {
+                prompt('メールアドレス:', 'dragonrondo@gmail.com');
+            });
+            closeDropdown();
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeDropdown();
+            }
+        });
+
+        document.addEventListener('click', function(event) {
+            if (event.target.id === 'contactDropdown') {
+                closeDropdown();
+            }
+        });
+    </script>
+    <div class="container">
+        <div class="background-pattern"></div>
+        
+        <div class="hero-section">
+            <div class="profile-image">AK</div>
+            <h1 class="name">Akinori Koda</h1>
+            <p class="title">LLM活用で業務効率を300%改善するAIエンジニア</p>
+            <p class="subtitle">Claude・ChatGPT・GitHub Copilot専門 | フリーランス</p>
+            
+            <!-- 実績統計セクション（数値で訴求） -->
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-number">83%</div>
+                    <div class="stat-label">業務工数削減<br>（手作業30時間 → 5時間/月）</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">LLM活用プロジェクト<br>納品実績</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">¥2M+</div>
+                    <div class="stat-label">クライアント累計<br>コスト削減額</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">72h</div>
+                    <div class="stat-label">平均納品期間<br>（プロトタイプ → 本番）</div>
+                </div>
+            </div>
+
+            <div class="description">
+                <p style="margin-bottom: 1rem;">
+                    <strong style="color: #64ffda;">Claude Code、ChatGPT、GitHub Copilotを駆使した「LLM開発」で、従来の開発工数を1/3〜1/10に圧縮します。</strong>
+                </p>
+                <p style="margin-bottom: 1rem;">
+                    <strong>✅ 実現できること：</strong><br>
+                    • レポート作成自動化（30時間 → 5時間、83%削減）<br>
+                    • カスタマーサポート応答時間60%短縮（AIチャットボット導入）<br>
+                    • データ分析レポート完全自動化（Claude API + Python）<br>
+                    • Webアプリ開発の超高速プロトタイピング（72時間以内）
+                </p>
+                <p style="margin-bottom: 1rem;">
+                    データサイエンス分野では、SageMaker・Snowflakeを活用した効率的なデータパイプライン構築、BIダッシュボード（Tableau）による可視化、機械学習モデルのデプロイまで一貫対応。
+                </p>
+                <p style="color: #64ffda; font-weight: 600;">
+                    「AIは仕事を奪うのではなく、一人ができる仕事を10倍以上にする」— これが私の実証済みの方法論です。
+                </p>
+            </div>
+            
+            <!-- 料金体系セクション（発注の敷居を下げる） -->
+            <div class="pricing-section">
+                <h2>💰 料金目安・稼働体制</h2>
+                <div class="pricing-details">
+                    <div class="pricing-item">
+                        <strong>時給制</strong>
+                        <span>¥5,000〜¥8,000/時<br>（プロジェクト規模により変動）</span>
+                    </div>
+                    <div class="pricing-item">
+                        <strong>月額制</strong>
+                        <span>¥400,000〜¥600,000/月<br>（週20〜40時間稼働）</span>
+                    </div>
+                    <div class="pricing-item">
+                        <strong>プロジェクト単位</strong>
+                        <span>¥150,000〜<br>（要件定義 → 納品まで）</span>
+                    </div>
+                    <div class="pricing-item">
+                        <strong>初回相談</strong>
+                        <span>無料（30分）<br>課題ヒアリング・見積提示</span>
+                    </div>
+                </div>
+                <p style="margin-top: 1rem; text-align: center; color: #a0a0a0; font-size: 0.9rem;">
+                    稼働可能時間: 週20〜40時間（柔軟対応可）| リモート完結 | 即日対応可能
+                </p>
+            </div>
+
+            <div class="skills-section">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>LLM駆動開発</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Claude API</span>
+                            <span class="skill-tag">ChatGPT</span>
+                            <span class="skill-tag">GitHub Copilot</span>
+                            <span class="skill-tag">Cursor IDE</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>データサイエンス</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">SageMaker</span>
+                            <span class="skill-tag">Snowflake</span>
+                            <span class="skill-tag">Tableau</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>業務自動化</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">RPA</span>
+                            <span class="skill-tag">GitHub Actions</span>
+                            <span class="skill-tag">PowerShell</span>
+                            <span class="skill-tag">Webスクレイピング</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>クラウド・インフラ</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Google Cloud</span>
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Cloud Run</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="projects.html" class="btn btn-primary">実績プロジェクトを見る</a>
+                <a href="profile.html" class="btn btn-secondary">詳細プロフィール</a>
+                <a href="#" onclick="openEmailOptions()" class="btn btn-secondary">無料相談を申し込む</a>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <a href="#" onclick="openEmailOptions()" class="social-link" title="Email">📧</a>
+            <a href="https://zenn.dev/your-profile" class="social-link" title="Zenn">📝</a>
+            <a href="https://github.com/Tenormusica2024" class="social-link" title="GitHub" target="_blank">🐱</a>
+        </div>
+    </div>
+</body>
+</html>
