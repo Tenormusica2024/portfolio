@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIツールトレンド分析 | Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 1px solid rgba(192, 192, 192, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #c0c0c0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: #999;
+            font-size: 1.1rem;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(192, 192, 192, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #c0c0c0;
+        }
+
+        .description {
+            color: #ccc;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .graph-container {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .graph-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .graph-title {
+            color: #1a1a1a;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+        }
+
+        .info-box {
+            background: rgba(192, 192, 192, 0.05);
+            border-left: 3px solid #c0c0c0;
+            padding: 1rem 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .info-box h3 {
+            color: #c0c0c0;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box p {
+            color: #999;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.4rem 0.8rem;
+            background: rgba(192, 192, 192, 0.1);
+            border: 1px solid rgba(192, 192, 192, 0.2);
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #c0c0c0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(192, 192, 192, 0.2);
+            border-radius: 8px;
+            color: #c0c0c0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(192, 192, 192, 0.1);
+            border-color: #c0c0c0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(192, 192, 192, 0.1);
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AIツールトレンド分析</h1>
+            <p class="subtitle">AI画像生成・動画生成ツールの人気推移を自動追跡</p>
+        </header>
+
+        <div class="info-box">
+            <h3>📊 プロジェクト概要</h3>
+            <p>
+                Google TrendsとWikipedia Pageviewsを活用し、AI画像生成・動画生成ツール（計20ツール）の人気推移を自動追跡。
+                毎日午前3時に自動データ収集・グラフ生成を実行し、最新トレンドをリアルタイム可視化。
+                SQLiteデータベースで90日間のトレンドデータを管理。
+            </p>
+            <div class="tech-stack">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Google Trends API</span>
+                <span class="tech-tag">Wikipedia API</span>
+                <span class="tech-tag">SQLite</span>
+                <span class="tech-tag">Matplotlib</span>
+                <span class="tech-tag">Task Scheduler</span>
+                <span class="tech-tag">GitHub Pages</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎨 AI画像生成ツール</h2>
+            <p class="description">
+                主要なAI画像生成ツール（Midjourney, DALL-E, Stable Diffusion等）の検索トレンドとWikipediaページビュー数の推移を可視化。
+            </p>
+
+            <div class="graph-container">
+                <div class="graph-title">Google Trends 推移（90日間）</div>
+                <img src="https://tenormusica2024.github.io/portfolio/graphs/ai_image_google_trends.png" 
+                     alt="AI画像生成ツール Google Trendsグラフ"
+                     loading="lazy">
+            </div>
+
+            <div class="graph-container">
+                <div class="graph-title">Wikipedia Pageviews 推移（90日間）</div>
+                <img src="https://tenormusica2024.github.io/portfolio/graphs/ai_image_wikipedia_pageviews.png" 
+                     alt="AI画像生成ツール Wikipedia Pageviewsグラフ"
+                     loading="lazy">
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎬 AI動画生成ツール</h2>
+            <p class="description">
+                主要なAI動画生成ツール（Runway, Pika, Sora等）のWikipediaページビュー数の推移を可視化。
+            </p>
+
+            <div class="graph-container">
+                <div class="graph-title">Wikipedia Pageviews 推移（90日間）</div>
+                <img src="https://tenormusica2024.github.io/portfolio/graphs/ai_video_wikipedia_pageviews.png" 
+                     alt="AI動画生成ツール Wikipedia Pageviewsグラフ"
+                     loading="lazy">
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>🔄 自動更新について</h3>
+            <p>
+                このページのグラフは毎日午前3時（JST）に自動更新されます。
+                最新のトレンドデータを反映するため、ページを再読み込みしてください。
+            </p>
+        </div>
+
+        <a href="projects.html" class="back-link">← プロジェクト一覧に戻る</a>
+
+        <footer>
+            <p>&copy; 2025 Portfolio. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                <a href="https://github.com/Tenormusica2024/Private/issues/1" 
+                   target="_blank" 
+                   style="color: #666; text-decoration: none;">
+                    📝 更新履歴を見る
+                </a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
