@@ -260,8 +260,16 @@
         }
 
         .achievement-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1.5rem;
+            display: block;
+        }
+        
+        .achievement-icon svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
         }
 
         .achievement-title {
@@ -671,6 +679,24 @@
             <h2 class="section-title">Key Achievements</h2>
             <div class="achievements">
                 <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="aiDevGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="32" cy="32" r="28" fill="none" stroke="url(#aiDevGradient)" stroke-width="2"/>
+                            <path d="M 20 32 L 28 24 L 36 32 L 44 24" stroke="url(#aiDevGradient)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                            <circle cx="20" cy="32" r="3" fill="url(#aiDevGradient)"/>
+                            <circle cx="28" cy="24" r="3" fill="url(#aiDevGradient)"/>
+                            <circle cx="36" cy="32" r="3" fill="url(#aiDevGradient)"/>
+                            <circle cx="44" cy="24" r="3" fill="url(#aiDevGradient)"/>
+                            <path d="M 28 40 L 36 40" stroke="url(#aiDevGradient)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M 24 44 L 40 44" stroke="url(#aiDevGradient)" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
                     <div class="achievement-title">AI駆動開発手法の構築</div>
                     <div class="achievement-description">
                         AIエージェントによるノーコードでのアプリ開発
@@ -678,6 +704,21 @@
                 </div>
 
                 <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="newsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect x="12" y="16" width="40" height="36" rx="2" fill="none" stroke="url(#newsGradient)" stroke-width="2.5"/>
+                            <line x1="18" y1="24" x2="46" y2="24" stroke="url(#newsGradient)" stroke-width="2.5" stroke-linecap="round"/>
+                            <line x1="18" y1="32" x2="38" y2="32" stroke="url(#newsGradient)" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="18" y1="38" x2="42" y2="38" stroke="url(#newsGradient)" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="18" y1="44" x2="36" y2="44" stroke="url(#newsGradient)" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
                     <div class="achievement-title">AI News Daily構築</div>
                     <div class="achievement-description">
                         完全自動化されたニュース収集・公開システム
@@ -685,6 +726,21 @@
                 </div>
 
                 <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="dataGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect x="16" y="12" width="32" height="10" rx="2" fill="url(#dataGradient)"/>
+                            <rect x="16" y="27" width="32" height="10" rx="2" fill="url(#dataGradient)" opacity="0.7"/>
+                            <rect x="16" y="42" width="32" height="10" rx="2" fill="url(#dataGradient)" opacity="0.5"/>
+                            <line x1="32" y1="22" x2="32" y2="27" stroke="url(#dataGradient)" stroke-width="2"/>
+                            <line x1="32" y1="37" x2="32" y2="42" stroke="url(#dataGradient)" stroke-width="2"/>
+                        </svg>
+                    </div>
                     <div class="achievement-title">データ分析基盤構築</div>
                     <div class="achievement-description">
                         SageMaker・Snowflake活用の実装経験
@@ -692,6 +748,23 @@
                 </div>
 
                 <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="autoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#fa709a;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#fee140;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="32" cy="32" r="20" fill="none" stroke="url(#autoGradient)" stroke-width="2.5"/>
+                            <path d="M 32 20 L 32 32 L 40 40" stroke="url(#autoGradient)" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="32" cy="12" r="2" fill="url(#autoGradient)"/>
+                            <circle cx="52" cy="32" r="2" fill="url(#autoGradient)"/>
+                            <circle cx="32" cy="52" r="2" fill="url(#autoGradient)"/>
+                            <circle cx="12" cy="32" r="2" fill="url(#autoGradient)"/>
+                            <path d="M 48 20 L 52 16 M 48 44 L 52 48 M 16 20 L 12 16 M 16 44 L 12 48" stroke="url(#autoGradient)" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
                     <div class="achievement-title">業務自動化実装</div>
                     <div class="achievement-description">
                         デイリータスクの90%以上を自動化達成
@@ -699,6 +772,22 @@
                 </div>
 
                 <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="scrapingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#30cfd0;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#330867;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect x="10" y="14" width="44" height="36" rx="3" fill="none" stroke="url(#scrapingGradient)" stroke-width="2.5"/>
+                            <line x1="10" y1="22" x2="54" y2="22" stroke="url(#scrapingGradient)" stroke-width="2"/>
+                            <circle cx="16" cy="18" r="1.5" fill="url(#scrapingGradient)"/>
+                            <circle cx="22" cy="18" r="1.5" fill="url(#scrapingGradient)"/>
+                            <circle cx="28" cy="18" r="1.5" fill="url(#scrapingGradient)"/>
+                            <path d="M 20 32 L 28 40 L 44 28" stroke="url(#scrapingGradient)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                     <div class="achievement-title">Webスクレイピング専門性</div>
                     <div class="achievement-description">
                         複雑な動的サイトからの情報収集システム構築
@@ -706,6 +795,21 @@
                 </div>
 
                 <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="artGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#f06595;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#cc5de8;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect x="12" y="12" width="40" height="40" rx="3" fill="none" stroke="url(#artGradient)" stroke-width="2.5"/>
+                            <path d="M 24 32 Q 28 24 32 32 T 40 32" stroke="url(#artGradient)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                            <circle cx="22" cy="26" r="3" fill="url(#artGradient)"/>
+                            <path d="M 20 44 L 28 36 L 36 42 L 44 36" stroke="url(#artGradient)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </div>
                     <div class="achievement-title">AI Art作品制作</div>
                     <div class="achievement-description">
                         Stable Diffusionによるアート作品をInstagramで発表
@@ -713,6 +817,21 @@
                 </div>
 
                 <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="shareGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#56ab2f;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#a8e063;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="20" cy="32" r="6" fill="none" stroke="url(#shareGradient)" stroke-width="2.5"/>
+                            <circle cx="44" cy="20" r="6" fill="none" stroke="url(#shareGradient)" stroke-width="2.5"/>
+                            <circle cx="44" cy="44" r="6" fill="none" stroke="url(#shareGradient)" stroke-width="2.5"/>
+                            <line x1="26" y1="30" x2="38" y2="22" stroke="url(#shareGradient)" stroke-width="2.5" stroke-linecap="round"/>
+                            <line x1="26" y1="34" x2="38" y2="42" stroke="url(#shareGradient)" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
                     <div class="achievement-title">AI駆動開発手法の共有</div>
                     <div class="achievement-description">
                         最新のAI支援による効率的開発手法の研究・共有
