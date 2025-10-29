@@ -56,6 +56,24 @@
         .nav-links {
             display: flex;
             gap: 2rem;
+            align-items: center;
+        }
+
+        .lang-switch {
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .lang-switch:hover {
+            background: #333;
+            transform: translateY(-2px);
         }
 
         .nav-links a {
@@ -362,14 +380,151 @@
 </head>
 <body>
     <div id="contactDropdown" class="contact-dropdown">
-        <h3>お問い合わせ方法</h3>
+        <h3 data-i18n="contact_title">お問い合わせ方法</h3>
         <a href="https://x.com/SundererD27468" target="_blank" class="email-option">X (Twitter)</a>
-        <a href="https://mail.google.com/mail/?view=cm&to=dragonrondo@gmail.com" target="_blank" class="email-option">Gmail Webで開く</a>
+        <a href="https://mail.google.com/mail/?view=cm&to=dragonrondo@gmail.com" target="_blank" class="email-option" data-i18n="gmail_web">Gmail Webで開く</a>
         <a href="https://github.com/Tenormusica2024" class="email-option" target="_blank">GitHub</a>
-        <a href="#" onclick="closeDropdown()" class="email-option close-btn">閉じる</a>
+        <a href="#" onclick="closeDropdown()" class="email-option close-btn" data-i18n="close_btn">閉じる</a>
     </div>
 
     <script>
+        const translations = {
+            ja: {
+                nav_home: "Home",
+                nav_projects: "Projects",
+                nav_profile: "Profile",
+                nav_contact: "Contact",
+                lang_button: "EN",
+                page_title: "Profile",
+                page_subtitle: "データエンジニアからAIエンジニアまでのキャリアと実績",
+                about_me_title: "About Me",
+                about_me_p1: "データエンジニア、機械学習エンジニアなどの経歴を経て、現在はAIを活用したソフトウェア開発と業務自動化を主軸とするAIエンジニアとしてフリーランスという形で就労しています。",
+                about_me_p2: "現在はClaude Code、ChatGPT5、GitHub Copilot等のAIツールを駆使し、従来の定常業務、開発フローを大幅に効率化する手法やそのナレッジの社内展開なども行っています。",
+                about_me_p3: "データサイエンス分野では、SageMaker、Snowflakeの実装経験を活かし、効率的なデータ分析パイプライン構築を行っています。また、Webスクレイピングやデイリータスクの自動化により、手作業を大幅に削減する手法は常にアップデート。さらにバイブコーディングによるプログラム開発の多種多様な条件下による最適化手法の構築にも取り組んでいます。またAI画像生成、AI音楽作成やそれを組み合わせた作品の動画化フローの自動化など、最新AI技術のキャッチアップは創作方面についてもセカンドタスクとして行っています。",
+                skills_title: "Technical Skills",
+                skill_llm: "LLM駆動開発",
+                skill_programming: "プログラミング・開発",
+                skill_datascience: "データサイエンス・ML",
+                skill_automation: "自動化・Webスクレイピング",
+                skill_cloud: "クラウド・インフラ",
+                skill_creative: "創作・開発手法",
+                experience_title: "Professional Experience",
+                exp_1_title: "AI Engineer & Automation Specialist",
+                exp_1_company: "Independent Consultant",
+                exp_1_desc: "LLM駆動開発手法の実践・研究および業務自動化コンサルティングに従事。Claude、ChatGPT、GitHub Copilotを活用した効率的な開発フローの確立。SageMaker、Snowflakeを活用したデータ分析パイプライン構築、Webスクレイピングによる情報収集自動化システムの開発を手がける。",
+                exp_2_title: "Data Analysis Engineer",
+                exp_2_company: "Technology Solutions Provider",
+                exp_2_desc: "データ分析基盤の設計・実装を担当。Pythonを中心とした分析パイプライン構築、機械学習モデルの開発・運用、自動化スクリプトによる業務効率化を実施。デイリータスクの自動化により手作業を大幅に削減し、生産性向上に貢献。",
+                exp_3_title: "Junior Data Engineer",
+                exp_3_company: "Data Analytics Consulting",
+                exp_3_desc: "データサイエンスの基礎技術習得およびプロジェクト実装経験を積む。Python、SQL、統計解析手法の習得、機械学習モデルの実装、データ可視化によるレポート作成、クライアント向け分析ソリューションの提供。",
+                achievements_title: "Key Achievements",
+                achieve_1_title: "AI駆動開発手法の構築",
+                achieve_1_desc: "AIエージェントによるノーコードでのアプリ開発",
+                achieve_2_title: "AI News Daily構築",
+                achieve_2_desc: "自動化されたニュース収集・公開システム",
+                achieve_3_title: "データ分析基盤構築",
+                achieve_3_desc: "SageMaker・Snowflake活用の実装経験",
+                achieve_4_title: "業務自動化実装",
+                achieve_4_desc: "デイリータスクの90%以上を自動化達成",
+                achieve_5_title: "Webスクレイピング専門性",
+                achieve_5_desc: "複雑な動的サイトからの情報収集システム構築",
+                achieve_6_title: "AI Art作品制作",
+                achieve_6_desc: "Stable Diffusionによるアート作品をInstagramで発表",
+                achieve_7_title: "AI駆動開発手法の共有",
+                achieve_7_desc: "最新のAI支援による効率的開発手法の研究・共有",
+                philosophy_title: "Development Philosophy",
+                philosophy_p1: "現在AI駆動開発を中核とした効率的なソフトウェア開発アプローチを実務環境で実践しています。Claude Code、ChatGPT、Codex CLI等のAIツールを適切に活用することで、従来の開発プロセスを根本的に見直し、より上流工程となる意思決定の作業に集中できる環境の構築を実現します。",
+                philosophy_p2: "自動化ファーストの姿勢で、反復的なタスクを徹底的に効率化。ツールの情報を持たせたAIによるマニュアル生成など、従来の自動化プログラムのような俗人化・維持管理の工数の排除。AIエージェントの開発手法の研究を通じて、多様な社内環境に応じた広範囲のソリューションの提案を心がけています。",
+                ai_vision_title: "AI Philosophy & Vision",
+                ai_vision_p1: "「AIは仕事を奪い生産性を向上させ人々はその分楽になる、そして働きたい人はよりクリエイティブな仕事に移行できる」これが私の未来予想です。ずいぶん肯定的に考えていますが、単純に食糧生産過程も今後ロボットに代替されていくので、 人々が飢えに苦しむような状況がまた生まれる可能性は低いです。（ただし戦争や犯罪リスクはまた別に存在するとおもいますが）",
+                ai_vision_p2: "肯定的な面だけ見ると、AIが浸透した未来は人間の単純労働を代替して人々が本来やりたかった、憧れていたセクションに移行できるチャンスが来ていると考えています。",
+                ai_vision_p3: "ただ、そこには当然競争があるので、日々代替されていく束の間の最新技術によって今までできなかったことを切り開いていく事が我々AIエンジニアの価値なのでしょう。これからの時代に持つべきものはAIによって能力が代替されていってもそれを肯定的に捉え、常にキャッチアップし続けるブレない意志と目的なのかなと思います。",
+                footer_rights: "© 2025 Urayaha Days. All rights reserved.",
+                contact_title: "お問い合わせ方法",
+                gmail_web: "Gmail Webで開く",
+                close_btn: "閉じる"
+            },
+            en: {
+                nav_home: "Home",
+                nav_projects: "Projects",
+                nav_profile: "Profile",
+                nav_contact: "Contact",
+                lang_button: "日本語",
+                page_title: "Profile",
+                page_subtitle: "Career Journey from Data Engineer to AI Engineer",
+                about_me_title: "About Me",
+                about_me_p1: "Having progressed through roles as a Data Engineer and Machine Learning Engineer, I currently work as a freelance AI Engineer specializing in AI-powered software development and business automation.",
+                about_me_p2: "I leverage AI tools such as Claude Code, ChatGPT5, and GitHub Copilot to dramatically streamline traditional operational workflows and development processes, while also facilitating internal knowledge sharing of these methodologies.",
+                about_me_p3: "In the data science domain, I build efficient data analysis pipelines utilizing my implementation experience with SageMaker and Snowflake. I continuously update methodologies for significantly reducing manual work through web scraping and daily task automation. Additionally, I pursue optimization techniques for program development under diverse conditions through live coding approaches, while maintaining a secondary focus on the latest AI technology catchup in creative fields, including AI image generation, AI music creation, and automated workflows for combining these into video content.",
+                skills_title: "Technical Skills",
+                skill_llm: "LLM-Driven Development",
+                skill_programming: "Programming & Development",
+                skill_datascience: "Data Science & ML",
+                skill_automation: "Automation & Web Scraping",
+                skill_cloud: "Cloud & Infrastructure",
+                skill_creative: "Creative & Development Methods",
+                experience_title: "Professional Experience",
+                exp_1_title: "AI Engineer & Automation Specialist",
+                exp_1_company: "Independent Consultant",
+                exp_1_desc: "Engaged in practical research of LLM-driven development methodologies and business automation consulting. Established efficient development workflows utilizing Claude, ChatGPT, and GitHub Copilot. Developed data analysis pipelines leveraging SageMaker and Snowflake, and created automated information collection systems through web scraping.",
+                exp_2_title: "Data Analysis Engineer",
+                exp_2_company: "Technology Solutions Provider",
+                exp_2_desc: "Responsible for designing and implementing data analysis infrastructure. Built analysis pipelines centered on Python, developed and operated machine learning models, and improved operational efficiency through automation scripts. Significantly reduced manual work through daily task automation, contributing to enhanced productivity.",
+                exp_3_title: "Junior Data Engineer",
+                exp_3_company: "Data Analytics Consulting",
+                exp_3_desc: "Acquired fundamental data science skills and gained project implementation experience. Mastered Python, SQL, and statistical analysis methods, implemented machine learning models, created reports through data visualization, and provided analytical solutions for clients.",
+                achievements_title: "Key Achievements",
+                achieve_1_title: "AI-Driven Development Framework",
+                achieve_1_desc: "No-code application development via AI agents",
+                achieve_2_title: "AI News Daily Platform",
+                achieve_2_desc: "Automated news collection and publishing system",
+                achieve_3_title: "Data Analysis Infrastructure",
+                achieve_3_desc: "Implementation experience with SageMaker & Snowflake",
+                achieve_4_title: "Business Automation Implementation",
+                achieve_4_desc: "Achieved over 90% automation of daily tasks",
+                achieve_5_title: "Web Scraping Expertise",
+                achieve_5_desc: "Information collection systems from complex dynamic sites",
+                achieve_6_title: "AI Art Production",
+                achieve_6_desc: "Published art works created with Stable Diffusion on Instagram",
+                achieve_7_title: "Sharing AI-Driven Methods",
+                achieve_7_desc: "Research and sharing of efficient development methods with AI assistance",
+                philosophy_title: "Development Philosophy",
+                philosophy_p1: "I currently practice an efficient software development approach centered on AI-driven development in real-world business environments. By appropriately leveraging AI tools such as Claude Code, ChatGPT, and Codex CLI, I fundamentally reconsider traditional development processes and create environments that enable focus on higher-level decision-making tasks.",
+                philosophy_p2: "With an automation-first attitude, I thoroughly streamline repetitive tasks. Through AI-generated manuals equipped with tool information, I eliminate the personalization and maintenance overhead typical of traditional automation programs. Through research on AI agent development methodologies, I strive to propose a wide range of solutions adapted to diverse internal environments.",
+                ai_vision_title: "AI Philosophy & Vision",
+                ai_vision_p1: "\"AI will replace jobs, increase productivity, allowing people to live more comfortably, and those who want to work can transition to more creative roles.\" This is my vision of the future. While it may seem overly optimistic, as food production processes will also be replaced by robots, the likelihood of people suffering from hunger again is low. (Though risks of war and crime remain separate concerns)",
+                ai_vision_p2: "Looking only at the positive aspects, I believe the AI-permeated future presents an opportunity for humans to transition away from simple labor toward sectors they originally aspired to and dreamed of.",
+                ai_vision_p3: "However, competition will naturally exist, so the value of us AI engineers likely lies in pioneering what was previously impossible through the fleeting latest technologies that are constantly being replaced. I believe what we should possess in this coming era is an unwavering will and purpose to positively embrace the replacement of our capabilities by AI and to continuously catch up.",
+                footer_rights: "© 2025 Urayaha Days. All rights reserved.",
+                contact_title: "Contact",
+                gmail_web: "Open in Gmail Web",
+                close_btn: "Close"
+            }
+        };
+
+        let currentLang = localStorage.getItem('language') || 'ja';
+
+        function switchLanguage() {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            localStorage.setItem('language', currentLang);
+            updateContent();
+        }
+
+        function updateContent() {
+            document.documentElement.lang = currentLang;
+            const t = translations[currentLang];
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) {
+                    el.textContent = t[key];
+                }
+            });
+
+            document.querySelector('.lang-switch').textContent = t.lang_button;
+        }
+
         function openEmailOptions() {
             document.getElementById('contactDropdown').style.display = 'block';
         }
@@ -398,38 +553,43 @@
                 closeDropdown();
             }
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateContent();
+        });
     </script>
 
     <header class="header">
         <nav class="nav-container">
             <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="projects.html">Projects</a>
-                <a href="profile.html">Profile</a>
-                <a onclick="openEmailOptions()">Contact</a>
+                <a href="index.html" data-i18n="nav_home">Home</a>
+                <a href="projects.html" data-i18n="nav_projects">Projects</a>
+                <a href="profile.html" data-i18n="nav_profile">Profile</a>
+                <a onclick="openEmailOptions()" data-i18n="nav_contact">Contact</a>
+                <button class="lang-switch" onclick="switchLanguage()">EN</button>
             </div>
         </nav>
     </header>
 
     <div class="page-header">
-        <h1>Profile</h1>
-        <p>データエンジニアからAIエンジニアまでのキャリアと実績</p>
+        <h1 data-i18n="page_title">Profile</h1>
+        <p data-i18n="page_subtitle">データエンジニアからAIエンジニアまでのキャリアと実績</p>
     </div>
 
     <div class="container">
         <div class="section">
             <div class="about-section">
-                <h2 class="section-title">About Me</h2>
+                <h2 class="section-title" data-i18n="about_me_title">About Me</h2>
                 <div class="about-content">
-                    <p>
+                    <p data-i18n="about_me_p1">
                         データエンジニア、機械学習エンジニアなどの経歴を経て、現在はAIを活用したソフトウェア開発と業務自動化を主軸とするAIエンジニアとしてフリーランスという形で就労しています。
                     </p>
                     <br>
-                    <p>
+                    <p data-i18n="about_me_p2">
                         現在はClaude Code、ChatGPT5、GitHub Copilot等のAIツールを駆使し、従来の定常業務、開発フローを大幅に効率化する手法やそのナレッジの社内展開なども行っています。
                     </p>
                     <br>
-                    <p>
+                    <p data-i18n="about_me_p3">
                         データサイエンス分野では、SageMaker、Snowflakeの実装経験を活かし、効率的なデータ分析パイプライン構築を行っています。
                         また、Webスクレイピングやデイリータスクの自動化により、手作業を大幅に削減する手法は常にアップデート。
                         さらにバイブコーディングによるプログラム開発の多種多様な条件下による最適化手法の構築にも取り組んでいます。
@@ -440,10 +600,10 @@
         </div>
 
         <div class="section">
-            <h2 class="section-title">Technical Skills</h2>
+            <h2 class="section-title" data-i18n="skills_title">Technical Skills</h2>
             <div class="skills-comprehensive">
                 <div class="skill-group">
-                    <h3>LLM駆動開発</h3>
+                    <h3 data-i18n="skill_llm">LLM駆動開発</h3>
                     <div class="skill-list">
                         <div class="skill-item">
                             <span class="skill-name">Claude API</span>
@@ -479,7 +639,7 @@
                 </div>
 
                 <div class="skill-group">
-                    <h3>プログラミング・開発</h3>
+                    <h3 data-i18n="skill_programming">プログラミング・開発</h3>
                     <div class="skill-list">
                         <div class="skill-item">
                             <span class="skill-name">Python</span>
@@ -509,7 +669,7 @@
                 </div>
 
                 <div class="skill-group">
-                    <h3>データサイエンス・ML</h3>
+                    <h3 data-i18n="skill_datascience">データサイエンス・ML</h3>
                     <div class="skill-list">
                         <div class="skill-item">
                             <span class="skill-name">SageMaker</span>
@@ -539,7 +699,7 @@
                 </div>
 
                 <div class="skill-group">
-                    <h3>自動化・Webスクレイピング</h3>
+                    <h3 data-i18n="skill_automation">自動化・Webスクレイピング</h3>
                     <div class="skill-list">
                         <div class="skill-item">
                             <span class="skill-name">Playwright MCP</span>
@@ -569,7 +729,7 @@
                 </div>
 
                 <div class="skill-group">
-                    <h3>クラウド・インフラ</h3>
+                    <h3 data-i18n="skill_cloud">クラウド・インフラ</h3>
                     <div class="skill-list">
                         <div class="skill-item">
                             <span class="skill-name">Cloud Run</span>
@@ -605,7 +765,7 @@
                 </div>
 
                 <div class="skill-group">
-                    <h3>創作・開発手法</h3>
+                    <h3 data-i18n="skill_creative">創作・開発手法</h3>
                     <div class="skill-list">
                         <div class="skill-item">
                             <span class="skill-name">AI駆動開発</span>
@@ -637,15 +797,15 @@
         </div>
 
         <div class="section">
-            <h2 class="section-title">Professional Experience</h2>
+            <h2 class="section-title" data-i18n="experience_title">Professional Experience</h2>
             <div class="experience-timeline">
                 <div class="timeline-line"></div>
                 
                 <div class="timeline-item">
                     <div class="timeline-date">2024 - Present</div>
-                    <div class="timeline-title">AI Engineer & Automation Specialist</div>
-                    <div class="timeline-company">Independent Consultant</div>
-                    <div class="timeline-description">
+                    <div class="timeline-title" data-i18n="exp_1_title">AI Engineer & Automation Specialist</div>
+                    <div class="timeline-company" data-i18n="exp_1_company">Independent Consultant</div>
+                    <div class="timeline-description" data-i18n="exp_1_desc">
                         LLM駆動開発手法の実践・研究および業務自動化コンサルティングに従事。
                         Claude、ChatGPT、GitHub Copilotを活用した効率的な開発フローの確立。
                         SageMaker、Snowflakeを活用したデータ分析パイプライン構築、
@@ -655,9 +815,9 @@
 
                 <div class="timeline-item">
                     <div class="timeline-date">2022 - 2024</div>
-                    <div class="timeline-title">Data Analysis Engineer</div>
-                    <div class="timeline-company">Technology Solutions Provider</div>
-                    <div class="timeline-description">
+                    <div class="timeline-title" data-i18n="exp_2_title">Data Analysis Engineer</div>
+                    <div class="timeline-company" data-i18n="exp_2_company">Technology Solutions Provider</div>
+                    <div class="timeline-description" data-i18n="exp_2_desc">
                         データ分析基盤の設計・実装を担当。Pythonを中心とした分析パイプライン構築、
                         機械学習モデルの開発・運用、自動化スクリプトによる業務効率化を実施。
                         デイリータスクの自動化により手作業を大幅に削減し、生産性向上に貢献。
@@ -666,9 +826,9 @@
 
                 <div class="timeline-item">
                     <div class="timeline-date">2020 - 2022</div>
-                    <div class="timeline-title">Junior Data Engineer</div>
-                    <div class="timeline-company">Data Analytics Consulting</div>
-                    <div class="timeline-description">
+                    <div class="timeline-title" data-i18n="exp_3_title">Junior Data Engineer</div>
+                    <div class="timeline-company" data-i18n="exp_3_company">Data Analytics Consulting</div>
+                    <div class="timeline-description" data-i18n="exp_3_desc">
                         データサイエンスの基礎技術習得およびプロジェクト実装経験を積む。
                         Python、SQL、統計解析手法の習得、機械学習モデルの実装、
                         データ可視化によるレポート作成、クライアント向け分析ソリューションの提供。
@@ -678,7 +838,7 @@
         </div>
 
         <div class="section">
-            <h2 class="section-title">Key Achievements</h2>
+            <h2 class="section-title" data-i18n="achievements_title">Key Achievements</h2>
             <div class="achievements">
                 <div class="achievement-card">
                     <div class="achievement-icon">
@@ -699,8 +859,8 @@
                             <path d="M 24 44 L 40 44" stroke="url(#aiDevGradient)" stroke-width="2" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <div class="achievement-title">AI駆動開発手法の構築</div>
-                    <div class="achievement-description">
+                    <div class="achievement-title" data-i18n="achieve_1_title">AI駆動開発手法の構築</div>
+                    <div class="achievement-description" data-i18n="achieve_1_desc">
                         AIエージェントによるノーコードでのアプリ開発
                     </div>
                 </div>
@@ -721,8 +881,8 @@
                             <line x1="18" y1="44" x2="36" y2="44" stroke="url(#newsGradient)" stroke-width="2" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <div class="achievement-title">AI News Daily構築</div>
-                    <div class="achievement-description">
+                    <div class="achievement-title" data-i18n="achieve_2_title">AI News Daily構築</div>
+                    <div class="achievement-description" data-i18n="achieve_2_desc">
                         自動化されたニュース収集・公開システム
                     </div>
                 </div>
@@ -743,8 +903,8 @@
                             <line x1="32" y1="37" x2="32" y2="42" stroke="url(#dataGradient)" stroke-width="2"/>
                         </svg>
                     </div>
-                    <div class="achievement-title">データ分析基盤構築</div>
-                    <div class="achievement-description">
+                    <div class="achievement-title" data-i18n="achieve_3_title">データ分析基盤構築</div>
+                    <div class="achievement-description" data-i18n="achieve_3_desc">
                         SageMaker・Snowflake活用の実装経験
                     </div>
                 </div>
@@ -767,8 +927,8 @@
                             <path d="M 48 20 L 52 16 M 48 44 L 52 48 M 16 20 L 12 16 M 16 44 L 12 48" stroke="url(#autoGradient)" stroke-width="2" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <div class="achievement-title">業務自動化実装</div>
-                    <div class="achievement-description">
+                    <div class="achievement-title" data-i18n="achieve_4_title">業務自動化実装</div>
+                    <div class="achievement-description" data-i18n="achieve_4_desc">
                         デイリータスクの90%以上を自動化達成
                     </div>
                 </div>
@@ -790,8 +950,8 @@
                             <path d="M 20 32 L 28 40 L 44 28" stroke="url(#scrapingGradient)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <div class="achievement-title">Webスクレイピング専門性</div>
-                    <div class="achievement-description">
+                    <div class="achievement-title" data-i18n="achieve_5_title">Webスクレイピング専門性</div>
+                    <div class="achievement-description" data-i18n="achieve_5_desc">
                         複雑な動的サイトからの情報収集システム構築
                     </div>
                 </div>
@@ -812,8 +972,8 @@
                             <path d="M 20 44 L 28 36 L 36 42 L 44 36" stroke="url(#artGradient)" stroke-width="2" fill="none" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <div class="achievement-title">AI Art作品制作</div>
-                    <div class="achievement-description">
+                    <div class="achievement-title" data-i18n="achieve_6_title">AI Art作品制作</div>
+                    <div class="achievement-description" data-i18n="achieve_6_desc">
                         Stable Diffusionによるアート作品をInstagramで発表
                     </div>
                 </div>
@@ -834,8 +994,8 @@
                             <line x1="26" y1="34" x2="38" y2="42" stroke="url(#shareGradient)" stroke-width="2.5" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <div class="achievement-title">AI駆動開発手法の共有</div>
-                    <div class="achievement-description">
+                    <div class="achievement-title" data-i18n="achieve_7_title">AI駆動開発手法の共有</div>
+                    <div class="achievement-description" data-i18n="achieve_7_desc">
                         最新のAI支援による効率的開発手法の研究・共有
                     </div>
                 </div>
@@ -843,16 +1003,16 @@
         </div>
 
         <div class="section">
-            <h2 class="section-title">Development Philosophy</h2>
+            <h2 class="section-title" data-i18n="philosophy_title">Development Philosophy</h2>
             <div class="about-section">
                 <div class="about-content">
-                    <p>
+                    <p data-i18n="philosophy_p1">
                         現在<strong>AI駆動開発</strong>を中核とした効率的なソフトウェア開発アプローチを実務環境で実践しています。
                         Claude Code、ChatGPT、Codex CLI等のAIツールを適切に活用することで、
                         従来の開発プロセスを根本的に見直し、より上流工程となる意思決定の作業に集中できる環境の構築を実現します。
                     </p>
                     <br>
-                    <p>
+                    <p data-i18n="philosophy_p2">
                         自動化ファーストの姿勢で、反復的なタスクを徹底的に効率化。ツールの情報を持たせたAIによるマニュアル生成など、
                         従来の自動化プログラムのような俗人化・維持管理の工数の排除。AIエージェントの開発手法の研究を通じて、
                         多様な社内環境に応じた広範囲のソリューションの提案を心がけています。
@@ -862,19 +1022,19 @@
         </div>
 
         <div class="section">
-            <h2 class="section-title">AI Philosophy & Vision</h2>
+            <h2 class="section-title" data-i18n="ai_vision_title">AI Philosophy & Vision</h2>
             <div class="about-section">
                 <div class="about-content">
-                    <p>
+                    <p data-i18n="ai_vision_p1">
                         <strong>「AIは仕事を奪い生産性を向上させ人々はその分楽になる、そして働きたい人はよりクリエイティブな仕事に移行できる」</strong><br>
                         これが私の未来予想です。ずいぶん肯定的に考えていますが、単純に食糧生産過程も今後ロボットに代替されていくので、 人々が飢えに苦しむような状況がまた生まれる可能性は低いです。（ただし戦争や犯罪リスクはまた別に存在するとおもいますが）
                     </p>
                     <br>
-                    <p>
+                    <p data-i18n="ai_vision_p2">
                         肯定的な面だけ見ると、AIが浸透した未来は人間の単純労働を代替して人々が本来やりたかった、憧れていたセクションに移行できるチャンスが来ていると考えています。
                     </p>
                     <br>
-                    <p>
+                    <p data-i18n="ai_vision_p3">
                         ただ、そこには当然競争があるので、日々代替されていく束の間の最新技術によって今までできなかったことを切り開いていく事が我々AIエンジニアの価値なのでしょう。これからの時代に持つべきものはAIによって能力が代替されていってもそれを肯定的に捉え、常にキャッチアップし続けるブレない意志と目的なのかなと思います。
                     </p>
                 </div>
@@ -887,7 +1047,7 @@
             <a href="mailto:dragonrondo@gmail.com" style="color: #666; text-decoration: none; font-weight: 500; transition: color 0.3s ease;" onmouseover="this.style.color='#1a1a1a'" onmouseout="this.style.color='#666'">Email</a>
             <a href="https://github.com/Tenormusica2024" target="_blank" style="color: #666; text-decoration: none; font-weight: 500; transition: color 0.3s ease;" onmouseover="this.style.color='#1a1a1a'" onmouseout="this.style.color='#666'">GitHub</a>
         </div>
-        <p>&copy; 2025 Urayaha Days. All rights reserved.</p>
+        <p data-i18n="footer_rights">&copy; 2025 Urayaha Days. All rights reserved.</p>
     </footer>
 </body>
 </html>
