@@ -56,6 +56,7 @@
         .nav-links {
             display: flex;
             gap: 2rem;
+            align-items: center;
         }
 
         .nav-links a {
@@ -68,6 +69,23 @@
 
         .nav-links a:hover {
             color: #1a1a1a;
+        }
+
+        .lang-switch {
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .lang-switch:hover {
+            background: #333;
+            transform: translateY(-2px);
         }
 
         .hero {
@@ -423,19 +441,100 @@
                 min-width: 280px;
                 padding: 1.5rem;
             }
+
+            .nav-links {
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
     <div id="contactDropdown" class="contact-dropdown">
-        <h3>Contact</h3>
+        <h3 data-i18n="contact_title">Contact</h3>
         <a href="https://x.com/SundererD27468" target="_blank" class="email-option">X (Twitter)</a>
-        <a href="https://mail.google.com/mail/?view=cm&to=dragonrondo@gmail.com" target="_blank" class="email-option">Gmail Webで開く</a>
+        <a href="https://mail.google.com/mail/?view=cm&to=dragonrondo@gmail.com" target="_blank" class="email-option" data-i18n="gmail_web">Gmail Webで開く</a>
         <a href="https://github.com/Tenormusica2024" class="email-option" target="_blank">GitHub</a>
-        <a href="#" onclick="closeDropdown()" class="email-option close-btn">閉じる</a>
+        <a href="#" onclick="closeDropdown()" class="email-option close-btn" data-i18n="close_btn">閉じる</a>
     </div>
 
     <script>
+        const translations = {
+            ja: {
+                nav_home: "Home",
+                nav_projects: "Projects",
+                nav_profile: "Profile",
+                nav_contact: "Contact",
+                lang_button: "EN",
+                job_title: "AI Engineer & Data Engineer",
+                description_1: "LLM（大規模言語モデル）を活用したソフトウェア開発と業務自動化、業務活用を推進するAIエンジニアです。Claude Code、Codex CLI、GitHub Copilot等のAIツールを駆使し、従来の開発フローを大幅に効率化する手法を実践・提案しています。また、2023年までのデータエンジニアとしての経験、機械学習によるデータ分析、BI、AWSやSnowflake等クラウドDBの構築経験を活かし、効率的なデータ分析パイプライン構築をAIエージェントに移行しながら行っています。これ以外のAIによる技術革新領域についても並行して情報をブラッシュアップしています。",
+                description_2: "「AIが当たり前の時代に向けて日々情報をキャッチアップ、最新の手法を提案・実践し、ビジネスパートナーに目に見える形で還元する」",
+                description_3: "これが私の今の指針です。Claude Code・ChatGPT等のAIツールを実務活用することで、個人、組織の生産性を従来の3〜10倍に向上する多数のプランを用意しています。",
+                skill_1_title: "AI駆動開発",
+                skill_2_title: "データサイエンス",
+                skill_3_title: "業務自動化",
+                skill_4_title: "開発手法・創作",
+                article_section_title: "最新投稿記事",
+                article_badge: "NEW",
+                article_title: "Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実",
+                article_link: "記事を読む →",
+                btn_projects: "プロジェクトを見る",
+                btn_profile: "Profile",
+                contact_title: "Contact",
+                contact_description: "プロジェクトのご相談やお仕事のご依頼など、お気軽にご連絡ください",
+                footer_rights: "© 2025 Urayaha Days. All rights reserved.",
+                gmail_web: "Gmail Webで開く",
+                close_btn: "閉じる"
+            },
+            en: {
+                nav_home: "Home",
+                nav_projects: "Projects",
+                nav_profile: "Profile",
+                nav_contact: "Contact",
+                lang_button: "日本語",
+                job_title: "AI Engineer & Data Engineer",
+                description_1: "I am an AI Engineer specializing in software development, business automation, and practical implementation leveraging Large Language Models (LLMs). I utilize advanced AI tools such as Claude Code, Codex CLI, and GitHub Copilot to practice and propose methodologies that significantly enhance traditional development workflows. Drawing on my data engineering experience through 2023, including machine learning-based data analysis, BI, and cloud database construction with AWS and Snowflake, I am transitioning efficient data analysis pipeline development to AI agents. I am also continuously updating my knowledge across other AI-driven technology innovation domains.",
+                description_2: "\"Stay current with daily information updates toward an AI-native era, propose and practice the latest methodologies, and deliver tangible value to business partners.\"",
+                description_3: "This is my guiding principle. By implementing AI tools such as Claude Code and ChatGPT in practical business applications, I have prepared numerous plans to improve individual and organizational productivity by 3-10 times compared to conventional approaches.",
+                skill_1_title: "AI-Driven Development",
+                skill_2_title: "Data Science",
+                skill_3_title: "Business Automation",
+                skill_4_title: "Development Methods & Creation",
+                article_section_title: "Latest Article",
+                article_badge: "NEW",
+                article_title: "Sora 2 vs Grok Imagine: Which One Works? - The Reality of 6-Second vs 60-Second Videos",
+                article_link: "Read Article →",
+                btn_projects: "View Projects",
+                btn_profile: "Profile",
+                contact_title: "Contact",
+                contact_description: "Feel free to contact me for project consultations, job inquiries, and more",
+                footer_rights: "© 2025 Urayaha Days. All rights reserved.",
+                gmail_web: "Open in Gmail Web",
+                close_btn: "Close"
+            }
+        };
+
+        let currentLang = localStorage.getItem('language') || 'ja';
+
+        function switchLanguage() {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            localStorage.setItem('language', currentLang);
+            updateContent();
+        }
+
+        function updateContent() {
+            document.documentElement.lang = currentLang;
+            const t = translations[currentLang];
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) {
+                    el.textContent = t[key];
+                }
+            });
+
+            document.querySelector('.lang-switch').textContent = t.lang_button;
+        }
+
         function openEmailOptions() {
             document.getElementById('contactDropdown').style.display = 'block';
         }
@@ -464,15 +563,20 @@
                 closeDropdown();
             }
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateContent();
+        });
     </script>
 
     <header class="header">
         <nav class="nav-container">
             <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="projects.html">Projects</a>
-                <a href="profile.html">Profile</a>
-                <a onclick="openEmailOptions()">Contact</a>
+                <a href="index.html" data-i18n="nav_home">Home</a>
+                <a href="projects.html" data-i18n="nav_projects">Projects</a>
+                <a href="profile.html" data-i18n="nav_profile">Profile</a>
+                <a onclick="openEmailOptions()" data-i18n="nav_contact">Contact</a>
+                <button class="lang-switch" onclick="switchLanguage()">EN</button>
             </div>
         </nav>
     </header>
@@ -482,21 +586,19 @@
             <div class="profile-section">
                 <div class="profile-initial"><span>UD</span></div>
                 <h1 class="name">Urayaha Days</h1>
-                <p class="title">AI Engineer & Data Engineer</p>
+                <p class="title" data-i18n="job_title">AI Engineer & Data Engineer</p>
             </div>
 
             <p class="description">
-                LLM（大規模言語モデル）を活用したソフトウェア開発と業務自動化、業務活用を推進するAIエンジニアです。
-                Claude Code、Codex CLI、GitHub Copilot等のAIツールを駆使し、従来の開発フローを大幅に効率化する手法を実践・提案しています。
-                また、2023年までのデータエンジニアとしての経験、機械学習によるデータ分析、BI、AWSやSnowflake等クラウドDBの構築経験を活かし、効率的なデータ分析パイプライン構築をAIエージェントに移行しながら行っています。これ以外のAIによる技術革新領域についても並行して情報をブラッシュアップしています。
+                <span data-i18n="description_1">LLM（大規模言語モデル）を活用したソフトウェア開発と業務自動化、業務活用を推進するAIエンジニアです。Claude Code、Codex CLI、GitHub Copilot等のAIツールを駆使し、従来の開発フローを大幅に効率化する手法を実践・提案しています。また、2023年までのデータエンジニアとしての経験、機械学習によるデータ分析、BI、AWSやSnowflake等クラウドDBの構築経験を活かし、効率的なデータ分析パイプライン構築をAIエージェントに移行しながら行っています。これ以外のAIによる技術革新領域についても並行して情報をブラッシュアップしています。</span>
                 <br><br>
-                <strong>「AIが当たり前の時代に向けて日々情報をキャッチアップ、最新の手法を提案・実践し、ビジネスパートナーに目に見える形で還元する」</strong>
-                これが私の今の指針です。Claude Code・ChatGPT等のAIツールを実務活用することで、個人、組織の生産性を従来の3〜10倍に向上する多数のプランを用意しています。
+                <strong data-i18n="description_2">「AIが当たり前の時代に向けて日々情報をキャッチアップ、最新の手法を提案・実践し、ビジネスパートナーに目に見える形で還元する」</strong>
+                <span data-i18n="description_3">これが私の今の指針です。Claude Code・ChatGPT等のAIツールを実務活用することで、個人、組織の生産性を従来の3〜10倍に向上する多数のプランを用意しています。</span>
             </p>
 
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h3>AI駆動開発</h3>
+                    <h3 data-i18n="skill_1_title">AI駆動開発</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Claude Code</span>
                         <span class="skill-tag">Codex CLI</span>
@@ -506,7 +608,7 @@
                 </div>
 
                 <div class="skill-card">
-                    <h3>データサイエンス</h3>
+                    <h3 data-i18n="skill_2_title">データサイエンス</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Python</span>
                         <span class="skill-tag">BI (Tableau)</span>
@@ -516,7 +618,7 @@
                 </div>
 
                 <div class="skill-card">
-                    <h3>業務自動化</h3>
+                    <h3 data-i18n="skill_3_title">業務自動化</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Webスクレイピング</span>
                         <span class="skill-tag">GitHub Actions</span>
@@ -526,7 +628,7 @@
                 </div>
 
                 <div class="skill-card">
-                    <h3>開発手法・創作</h3>
+                    <h3 data-i18n="skill_4_title">開発手法・創作</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">AI駆動開発</span>
                         <span class="skill-tag">AI-Art</span>
@@ -537,28 +639,28 @@
             </div>
 
             <div class="article-section">
-                <h2>最新投稿記事</h2>
+                <h2 data-i18n="article_section_title">最新投稿記事</h2>
                 <div class="article-card">
-                    <span class="article-badge">NEW</span>
-                    <h3 class="article-title">Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実</h3>
+                    <span class="article-badge" data-i18n="article_badge">NEW</span>
+                    <h3 class="article-title" data-i18n="article_title">Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実</h3>
                     <p class="article-description">Sora 2 is here | OpenAIhttps://openai.com/index/sora-2/
 
 xAI Grok Imagine 0.9 brings speed and quality improvements for AI video generationhttps://www.eonmsk.com/2025/10/05/xai-grok-imagine-0-9-ai-video/
 
 Veo 3 vs. Sora by OpenAI: Side-by-Side Comparison for 2025https://www.powtoon.com/blog/veo-3-vs-sora/</p>
-                    <a href="https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025" class="article-link" target="_blank">記事を読む →</a>
+                    <a href="https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025" class="article-link" target="_blank" data-i18n="article_link">記事を読む →</a>
                 </div>
             </div>
 
             <div class="cta-section">
-                <a href="projects.html" class="btn btn-primary">プロジェクトを見る</a>
-                <a href="profile.html" class="btn btn-secondary">Profile</a>
+                <a href="projects.html" class="btn btn-primary" data-i18n="btn_projects">プロジェクトを見る</a>
+                <a href="profile.html" class="btn btn-secondary" data-i18n="btn_profile">Profile</a>
             </div>
         </section>
 
         <section class="contact-section">
-            <h2>Contact</h2>
-            <p>プロジェクトのご相談やお仕事のご依頼など、お気軽にご連絡ください</p>
+            <h2 data-i18n="contact_title">Contact</h2>
+            <p data-i18n="contact_description">プロジェクトのご相談やお仕事のご依頼など、お気軽にご連絡ください</p>
             <a onclick="openEmailOptions()" class="contact-email">dragonrondo@gmail.com</a>
         </section>
     </main>
@@ -568,7 +670,7 @@ Veo 3 vs. Sora by OpenAI: Side-by-Side Comparison for 2025https://www.powtoon.co
             <a href="mailto:dragonrondo@gmail.com" class="social-link">Email</a>
             <a href="https://github.com/Tenormusica2024" class="social-link" target="_blank">GitHub</a>
         </div>
-        <p>&copy; 2025 Urayaha Days. All rights reserved.</p>
+        <p data-i18n="footer_rights">&copy; 2025 Urayaha Days. All rights reserved.</p>
     </footer>
 </body>
 </html>
