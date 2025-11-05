@@ -438,6 +438,8 @@
                 project_data_platform_desc: "SageMaker、Snowflakeを活用したエンドツーエンドの分析基盤。顧客セグメンテーション、売上予測モデルを統合し、効率的なデータ分析ワークフローを実現しています。",
                 project_code_reviewer_title: "Code Reviewer Subagent System",
                 project_code_reviewer_desc: "Claude Codeに統合された自動コードレビューサブエージェントシステム。ユーザーの「レビュー」指示やコード変更後にプロアクティブに実行されるTask toolベースの独立エージェント。コード品質・セキュリティ・ベストプラクティス・パフォーマンス・エラーハンドリングを多角的に検証し、実装の妥当性を自動評価。CLAUDE.md統合により、セッション開始時から自動起動プロトコルが有効化され、継続的なコード品質維持を実現。",
+                project_voicevox_title: "VOICEVOX MCP Notification System",
+                project_voicevox_desc: "Claude Codeのタスク実行時に、ずんだもんボイスで進捗・完了を音声通知するMCPサーバー。VOICEVOX APIとNode.jsを活用し、タスク状態（開始・進行中・完了・エラー）を100文字以内の簡潔なメッセージで音声化。クロスプラットフォーム対応で、Windows/Mac/Linuxで動作。音声速度・話者選択も設定可能。開発作業中のハンズフリー進捗確認を実現し、作業効率を大幅に向上。",
                 project_claude_hook_title: "Claude Code Hook 自動化システム",
                 project_claude_hook_desc: "Claude Code のイベント駆動型Hook機能を活用した完全自動GitHub Issue報告システム。SessionEnd HookとToolResult Hookにより、タスク完了・ツール実行を自動検知し、GitHub Issue #1へリアルタイム報告を投稿。Node.jsとPythonの連携により、ユーザーの手動指示を完全排除した自動化ワークフローを実現。開発プロセスの完全な追跡可能性と継続的なドキュメント化を達成。",
                 project_esports_title: "Esports Tournament Landing",
@@ -491,6 +493,8 @@
                 project_data_platform_desc: "End-to-end analytical infrastructure leveraging SageMaker and Snowflake. Integrates customer segmentation and sales forecasting models to realize efficient data analysis workflows.",
                 project_code_reviewer_title: "Code Reviewer Subagent System",
                 project_code_reviewer_desc: "Automated code review subagent system integrated with Claude Code. Independent agent based on Task tool that proactively executes on user's 'review' command or after code changes. Multi-dimensionally verifies code quality, security, best practices, performance, and error handling to automatically evaluate implementation validity. CLAUDE.md integration enables auto-trigger protocol from session start, realizing continuous code quality maintenance.",
+                project_voicevox_title: "VOICEVOX MCP Notification System",
+                project_voicevox_desc: "MCP server that provides voice notifications using Zundamon voice for Claude Code task execution progress and completion. Leverages VOICEVOX API and Node.js to vocalize task states (start, progress, complete, error) in concise messages within 100 characters. Cross-platform support for Windows/Mac/Linux with configurable speech speed and voice actor selection. Realizes hands-free progress monitoring during development work, significantly improving work efficiency.",
                 project_claude_hook_title: "Claude Code Hook Automation System",
                 project_claude_hook_desc: "Fully automated GitHub Issue reporting system leveraging Claude Code's event-driven Hook functionality. SessionEnd Hook and ToolResult Hook automatically detect task completion and tool execution, posting real-time reports to GitHub Issue #1. Node.js and Python integration realizes automated workflow completely eliminating manual user instructions. Achieves complete traceability of development process and continuous documentation.",
                 project_esports_title: "Esports Tournament Landing",
@@ -769,6 +773,31 @@
                 <div class="project-links">
                     <a href="https://github.com/Tenormusica2024/Private/blob/master/Documents/github-projects/code-reviewer-subagent.md" class="project-link" target="_blank">Documentation</a>
                     <a href="https://github.com/Tenormusica2024/Private" class="project-link" target="_blank">Repository</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-i18n="project_voicevox_title">VOICEVOX MCP<br>Notification System</h3>
+                    <span class="new-badge">NEW</span>
+                </div>
+                <p class="project-description" data-i18n="project_voicevox_desc">
+                    Claude Codeのタスク実行時に、ずんだもんボイスで進捗・完了を音声通知するMCPサーバー。
+                    VOICEVOX APIとNode.jsを活用し、タスク状態（開始・進行中・完了・エラー）を
+                    100文字以内の簡潔なメッセージで音声化。クロスプラットフォーム対応で、
+                    Windows/Mac/Linuxで動作。音声速度・話者選択も設定可能。
+                    開発作業中のハンズフリー進捗確認を実現し、作業効率を大幅に向上。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">VOICEVOX API</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">MCP Server</span>
+                    <span class="tech-tag">Zundamon Voice</span>
+                    <span class="tech-tag">Text-to-Speech</span>
+                    <span class="tech-tag">Cross-platform</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Tenormusica2024/voicevox-mcp-notification" class="project-link" target="_blank">Repository</a>
                 </div>
             </div>
 
