@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ1WP1J2NQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YJ1WP1J2NQ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urayaha Days - AI Engineer & Data Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: #1a1a1a;
+        }
+
+        .lang-switch {
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .lang-switch:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .profile-section {
+            margin-bottom: 3rem;
+        }
+
+        .profile-initial {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #1a1a1a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0 auto 2rem;
+            background-image: url('profile.jpg');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+        
+        .profile-initial span {
+            display: none;
+        }
+
+        .name {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .description {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        .skills-grid {
+            max-width: 1000px;
+            margin: 0 auto 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: #f8f8f8;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 20px;
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .cta-section {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #1a1a1a;
+        }
+
+        .btn-primary {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1a1a1a;
+        }
+
+        .btn-secondary:hover {
+            background: #1a1a1a;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .article-section {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            padding: 2.5rem;
+            background: #f8f8f8;
+            border-radius: 16px;
+            border: 1px solid #e5e5e5;
+        }
+
+        .article-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+            text-align: center;
+        }
+
+        .article-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #e5e5e5;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-badge {
+            display: inline-block;
+            background: #1a1a1a;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .article-title {
+            font-size: 1.3rem;
+            color: #1a1a1a;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .article-description {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .article-link {
+            display: inline-block;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.6rem 1.5rem;
+            border: 2px solid #1a1a1a;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .article-link:hover {
+            background: #1a1a1a;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .contact-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: #f8f8f8;
+            border-radius: 20px;
+        }
+
+        .contact-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .contact-section p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .contact-email {
+            font-size: 1.3rem;
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border: 2px solid #1a1a1a;
+            border-radius: 50px;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-email:hover {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .footer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: #999;
+            border-top: 1px solid #e5e5e5;
+            margin-top: 4rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #1a1a1a;
+        }
+
+        .contact-dropdown {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffffff;
+            border: 2px solid #e5e5e5;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            display: none;
+            z-index: 1000;
+            min-width: 320px;
+        }
+
+        .contact-dropdown h3 {
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .email-option {
+            display: block;
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            transition: all 0.3s;
+            white-space: nowrap;
+            border: 1px solid #e5e5e5;
+            background: #f8f8f8;
+            text-align: center;
+        }
+
+        .email-option:hover {
+            background: #1a1a1a;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .email-option.close-btn {
+            background: #f0f0f0;
+            color: #666;
+            margin-top: 1rem;
+        }
+
+        .email-option.close-btn:hover {
+            background: #e5e5e5;
+            color: #1a1a1a;
+        }
+
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2.5rem;
+            }
+
+            .title {
+                font-size: 1.2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .contact-dropdown {
+                min-width: 280px;
+                padding: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="contactDropdown" class="contact-dropdown">
+        <h3 data-i18n="contact_title">Contact</h3>
+        <a href="https://x.com/SundererD27468" target="_blank" class="email-option">X (Twitter)</a>
+        <a href="https://mail.google.com/mail/?view=cm&to=dragonrondo@gmail.com" target="_blank" class="email-option" data-i18n="gmail_web">Gmail Webで開く</a>
+        <a href="https://github.com/Tenormusica2024" class="email-option" target="_blank">GitHub</a>
+        <a href="#" onclick="closeDropdown()" class="email-option close-btn" data-i18n="close_btn">閉じる</a>
+    </div>
+
+    <script>
+        const translations = {
+            ja: {
+                nav_home: "Home",
+                nav_projects: "Projects",
+                nav_profile: "Profile",
+                nav_contact: "Contact",
+                lang_button: "EN",
+                job_title: "AI Engineer & Data Engineer",
+                description_1: "LLM（大規模言語モデル）を活用したソフトウェア開発と業務自動化、業務活用を推進するAIエンジニアです。Claude Code、Codex CLI、GitHub Copilot等のAIツールを駆使し、従来の開発フローを大幅に効率化する手法を実践・提案しています。また、2023年までのデータエンジニアとしての経験、機械学習によるデータ分析、BI、AWSやSnowflake等クラウドDBの構築経験を活かし、効率的なデータ分析パイプライン構築をAIエージェントに移行しながら行っています。これ以外のAIによる技術革新領域についても並行して情報をブラッシュアップしています。",
+                description_2: "「AIが当たり前の時代に向けて日々情報をキャッチアップ、最新の手法を提案・実践し、ビジネスパートナーに目に見える形で還元する」",
+                description_3: "これが私の今の指針です。Claude Code・ChatGPT等のAIツールを実務活用することで、個人、組織の生産性を従来の3〜10倍に向上する多数のプランを用意しています。",
+                skill_1_title: "AI駆動開発",
+                skill_2_title: "データサイエンス",
+                skill_3_title: "業務自動化",
+                skill_4_title: "開発手法・創作",
+                article_section_title: "最新投稿記事",
+                article_badge: "NEW",
+                article_title: "Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実",
+                article_link: "記事を読む →",
+                btn_projects: "プロジェクトを見る",
+                btn_profile: "Profile",
+                contact_title: "Contact",
+                contact_description: "プロジェクトのご相談やお仕事のご依頼など、お気軽にご連絡ください",
+                footer_rights: "© 2025 Urayaha Days. All rights reserved.",
+                gmail_web: "Gmail Webで開く",
+                close_btn: "閉じる"
+            },
+            en: {
+                nav_home: "Home",
+                nav_projects: "Projects",
+                nav_profile: "Profile",
+                nav_contact: "Contact",
+                lang_button: "日本語",
+                job_title: "AI Engineer & Data Engineer",
+                description_1: "I am an AI Engineer specializing in software development, business automation, and practical implementation leveraging Large Language Models (LLMs). I utilize advanced AI tools such as Claude Code, Codex CLI, and GitHub Copilot to practice and propose methodologies that significantly enhance traditional development workflows. Drawing on my data engineering experience through 2023, including machine learning-based data analysis, BI, and cloud database construction with AWS and Snowflake, I am transitioning efficient data analysis pipeline development to AI agents. I am also continuously updating my knowledge across other AI-driven technology innovation domains.",
+                description_2: "\"Stay current with daily information updates toward an AI-native era, propose and practice the latest methodologies, and deliver tangible value to business partners.\"",
+                description_3: "This is my guiding principle. By implementing AI tools such as Claude Code and ChatGPT in practical business applications, I have prepared numerous plans to improve individual and organizational productivity by 3-10 times compared to conventional approaches.",
+                skill_1_title: "AI-Driven Development",
+                skill_2_title: "Data Science",
+                skill_3_title: "Business Automation",
+                skill_4_title: "Development Methods & Creation",
+                article_section_title: "Latest Article",
+                article_badge: "NEW",
+                article_title: "Sora 2 vs Grok Imagine: Which One Works? - The Reality of 6-Second vs 60-Second Videos",
+                article_link: "Read Article →",
+                btn_projects: "View Projects",
+                btn_profile: "Profile",
+                contact_title: "Contact",
+                contact_description: "Feel free to contact me for project consultations, job inquiries, and more",
+                footer_rights: "© 2025 Urayaha Days. All rights reserved.",
+                gmail_web: "Open in Gmail Web",
+                close_btn: "Close"
+            }
+        };
+
+        let currentLang = localStorage.getItem('language') || 'ja';
+
+        function switchLanguage() {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            localStorage.setItem('language', currentLang);
+            updateContent();
+        }
+
+        function updateContent() {
+            document.documentElement.lang = currentLang;
+            const t = translations[currentLang];
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) {
+                    el.textContent = t[key];
+                }
+            });
+
+            document.querySelector('.lang-switch').textContent = t.lang_button;
+        }
+
+        function openEmailOptions() {
+            document.getElementById('contactDropdown').style.display = 'block';
+        }
+
+        function closeDropdown() {
+            document.getElementById('contactDropdown').style.display = 'none';
+        }
+
+        function copyEmail() {
+            navigator.clipboard.writeText('dragonrondo@gmail.com').then(() => {
+                alert('メールアドレスがコピーされました\ndragonrondo@gmail.com');
+            }).catch(() => {
+                prompt('メールアドレス:', 'dragonrondo@gmail.com');
+            });
+            closeDropdown();
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeDropdown();
+            }
+        });
+
+        document.addEventListener('click', function(event) {
+            if (event.target.id === 'contactDropdown') {
+                closeDropdown();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateContent();
+        });
+    </script>
+
+    <header class="header">
+        <nav class="nav-container">
+            <div class="nav-links">
+                <a href="index-improved.html" data-i18n="nav_home">Home</a>
+                <a href="projects-improved.html" data-i18n="nav_projects">Projects</a>
+                <a href="profile-improved.html" data-i18n="nav_profile">Profile</a>
+                <a onclick="openEmailOptions()" data-i18n="nav_contact">Contact</a>
+            </div>
+            <button class="lang-switch" onclick="switchLanguage()">EN</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="profile-section">
+                <div class="profile-initial"><span>UD</span></div>
+                <h1 class="name">Urayaha Days</h1>
+                <p class="title" data-i18n="job_title">AI Engineer & Data Engineer</p>
+            </div>
+
+            <p class="description">
+                <span data-i18n="description_1">LLM（大規模言語モデル）を活用したソフトウェア開発と業務自動化、業務活用を推進するAIエンジニアです。Claude Code、Codex CLI、GitHub Copilot等のAIツールを駆使し、従来の開発フローを大幅に効率化する手法を実践・提案しています。また、2023年までのデータエンジニアとしての経験、機械学習によるデータ分析、BI、AWSやSnowflake等クラウドDBの構築経験を活かし、効率的なデータ分析パイプライン構築をAIエージェントに移行しながら行っています。これ以外のAIによる技術革新領域についても並行して情報をブラッシュアップしています。</span>
+                <br><br>
+                <strong data-i18n="description_2">「AIが当たり前の時代に向けて日々情報をキャッチアップ、最新の手法を提案・実践し、ビジネスパートナーに目に見える形で還元する」</strong>
+                <span data-i18n="description_3">これが私の今の指針です。Claude Code・ChatGPT等のAIツールを実務活用することで、個人、組織の生産性を従来の3〜10倍に向上する多数のプランを用意しています。</span>
+            </p>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3 data-i18n="skill_1_title">AI駆動開発</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Claude Code</span>
+                        <span class="skill-tag">Codex CLI</span>
+                        <span class="skill-tag">GitHub Copilot</span>
+                        <span class="skill-tag">Cursor IDE</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3 data-i18n="skill_2_title">データサイエンス</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">BI (Tableau)</span>
+                        <span class="skill-tag">Snowflake</span>
+                        <span class="skill-tag">機械学習</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3 data-i18n="skill_3_title">業務自動化</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Webスクレイピング</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">Python Watchdog</span>
+                        <span class="skill-tag">PowerShellスクリプト</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3 data-i18n="skill_4_title">開発手法・創作</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AI駆動開発</span>
+                        <span class="skill-tag">AI-Art</span>
+                        <span class="skill-tag">AI音楽制作</span>
+                        <span class="skill-tag">動画制作</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-section">
+                <h2 data-i18n="article_section_title">最新投稿記事</h2>
+                <div class="article-card">
+                    <span class="article-badge" data-i18n="article_badge">NEW</span>
+                    <h3 class="article-title" data-i18n="article_title">Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実</h3>
+                    <p class="article-description">Sora 2 is here | OpenAIhttps://openai.com/index/sora-2/
+
+xAI Grok Imagine 0.9 brings speed and quality improvements for AI video generationhttps://www.eonmsk.com/2025/10/05/xai-grok-imagine-0-9-ai-video/
+
+Veo 3 vs. Sora by OpenAI: Side-by-Side Comparison for 2025https://www.powtoon.com/blog/veo-3-vs-sora/</p>
+                    <a href="https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025" class="article-link" target="_blank" data-i18n="article_link">記事を読む →</a>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <a href="projects-improved.html" class="btn btn-primary" data-i18n="btn_projects">プロジェクトを見る</a>
+                <a href="profile-improved.html" class="btn btn-secondary" data-i18n="btn_profile">Profile</a>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <h2 data-i18n="contact_title">Contact</h2>
+            <p data-i18n="contact_description">プロジェクトのご相談やお仕事のご依頼など、お気軽にご連絡ください</p>
+            <a onclick="openEmailOptions()" class="contact-email">dragonrondo@gmail.com</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="mailto:dragonrondo@gmail.com" class="social-link">Email</a>
+            <a href="https://github.com/Tenormusica2024" class="social-link" target="_blank">GitHub</a>
+        </div>
+        <p data-i18n="footer_rights">&copy; 2025 Urayaha Days. All rights reserved.</p>
+    </footer>
+</body>
+</html>
