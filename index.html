@@ -564,8 +564,37 @@
             }
         });
 
+        async function fetchLatestZennArticle() {
+            try {
+                const response = await fetch('https://zenn.dev/tenormusica/feed');
+                const text = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(text, 'text/xml');
+                const items = xmlDoc.querySelectorAll('item');
+                
+                if (items.length > 0) {
+                    const latestItem = items[0];
+                    const title = latestItem.querySelector('title')?.textContent || '';
+                    const link = latestItem.querySelector('link')?.textContent || '';
+                    const description = latestItem.querySelector('description')?.textContent || '';
+                    
+                    const cleanDescription = description.replace(/<[^>]*>/g, '').substring(0, 200) + '...';
+                    
+                    translations.ja.article_title = title;
+                    translations.en.article_title = title;
+                    
+                    document.querySelector('.article-title').textContent = title;
+                    document.querySelector('.article-description').textContent = cleanDescription;
+                    document.querySelector('.article-link').href = link;
+                }
+            } catch (error) {
+                console.log('Zenn RSS取得エラー:', error);
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             updateContent();
+            fetchLatestZennArticle();
         });
     </script>
 
