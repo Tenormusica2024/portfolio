@@ -566,29 +566,26 @@
 
         async function fetchLatestZennArticle() {
             try {
-                const response = await fetch('https://zenn.dev/tenormusica/feed');
-                const text = await response.text();
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(text, 'text/xml');
-                const items = xmlDoc.querySelectorAll('item');
+                const response = await fetch('./latest-article.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
                 
-                if (items.length > 0) {
-                    const latestItem = items[0];
-                    const title = latestItem.querySelector('title')?.textContent || '';
-                    const link = latestItem.querySelector('link')?.textContent || '';
-                    const description = latestItem.querySelector('description')?.textContent || '';
+                if (data.title && data.link) {
+                    translations.ja.article_title = data.title;
+                    translations.en.article_title = data.title;
                     
-                    const cleanDescription = description.replace(/<[^>]*>/g, '').substring(0, 200) + '...';
+                    const titleElement = document.querySelector('.article-title');
+                    const descElement = document.querySelector('.article-description');
+                    const linkElement = document.querySelector('.article-link');
                     
-                    translations.ja.article_title = title;
-                    translations.en.article_title = title;
-                    
-                    document.querySelector('.article-title').textContent = title;
-                    document.querySelector('.article-description').textContent = cleanDescription;
-                    document.querySelector('.article-link').href = link;
+                    if (titleElement) titleElement.textContent = data.title;
+                    if (descElement) descElement.textContent = data.description;
+                    if (linkElement) linkElement.href = data.link;
                 }
             } catch (error) {
-                console.log('Zenn RSS取得エラー:', error);
+                console.log('Zenn記事取得エラー（静的コンテンツを表示）:', error);
             }
         }
 
