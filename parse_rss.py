@@ -35,7 +35,8 @@ def parse_zenn_rss():
             'updated': True
         }
         
-        print(json.dumps(article_data, ensure_ascii=False, indent=2))
+        output = json.dumps(article_data, ensure_ascii=False, indent=2)
+        sys.stdout.buffer.write(output.encode('utf-8'))
         
     except Exception as e:
         fallback = {
@@ -45,7 +46,8 @@ def parse_zenn_rss():
             'updated': False,
             'error': str(e)
         }
-        print(json.dumps(fallback, ensure_ascii=False, indent=2))
+        output = json.dumps(fallback, ensure_ascii=False, indent=2)
+        sys.stdout.buffer.write(output.encode('utf-8'))
 
 if __name__ == '__main__':
     parse_zenn_rss()
