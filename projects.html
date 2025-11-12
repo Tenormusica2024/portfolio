@@ -315,6 +315,29 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
+        .featured-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            margin-top: 2rem;
+        }
+
+        .featured-text {
+            flex: 1;
+        }
+
+        .featured-image {
+            width: 320px;
+            flex-shrink: 0;
+        }
+
+        .featured-image img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid #e5e5e5;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
         .featured-link.under-construction {
             background: #666;
             color: #ccc;
@@ -392,6 +415,15 @@
 
             .featured-project {
                 padding: 2rem;
+            }
+
+            .featured-content {
+                flex-direction: column;
+            }
+
+            .featured-image {
+                width: 100%;
+                margin-top: 1rem;
             }
 
             .contact-dropdown {
@@ -621,13 +653,17 @@
                 トレンドランキングを自動収集・可視化。GitHub Trendは毎日9時、AI画像/動画ランキングは3時間ごとに
                 自動更新。Gemini API翻訳機能により全ての説明文を自然な日本語で提供。
             </p>
-            <div class="featured-image">
-                <img src="https://tenormusica2024.github.io/portfolio/ai-trend-dashboard.png" 
-                     alt="AIツールトレンド分析 ダッシュボード">
-            </div>
-            <div class="featured-links">
-                <a href="https://tenormusica2024.github.io/ai-trend-daily/home.html" class="featured-link" target="_blank">Dashboard</a>
-                <a href="https://github.com/Tenormusica2024/ai-trend-daily" class="featured-link" target="_blank">GitHub</a>
+            <div class="featured-content">
+                <div class="featured-text">
+                    <div class="featured-links">
+                        <a href="https://tenormusica2024.github.io/ai-trend-daily/home.html" class="featured-link" target="_blank">Dashboard</a>
+                        <a href="https://github.com/Tenormusica2024/ai-trend-daily" class="featured-link" target="_blank">GitHub</a>
+                    </div>
+                </div>
+                <div class="featured-image">
+                    <img src="https://tenormusica2024.github.io/portfolio/ai-trend-dashboard.png" 
+                         alt="AIツールトレンド分析 ダッシュボード">
+                </div>
             </div>
         </div>
 
