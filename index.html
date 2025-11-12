@@ -12,6 +12,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Urayaha Days - AI Engineer & Data Engineer</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="LLMを活用したAIエンジニア。Claude Code、Cursor等のAI開発ツールで業務効率化を推進。データ分析・クラウド構築経験を活かしAIエージェント開発を実践。">
+    <meta name="keywords" content="AIエンジニア,データエンジニア,Claude Code,Cursor,LLM,機械学習,Python,業務自動化,GCP,AI駆動開発">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tenormusica2024.github.io/portfolio/">
+    <meta property="og:title" content="Urayaha Days - AI Engineer & Data Engineer">
+    <meta property="og:description" content="LLMを活用したAIエンジニア。Claude Code、Cursor等のAI開発ツールで業務効率化を推進。">
+    <meta property="og:image" content="https://tenormusica2024.github.io/portfolio/favicon-512x512.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://tenormusica2024.github.io/portfolio/">
+    <meta name="twitter:title" content="Urayaha Days - AI Engineer & Data Engineer">
+    <meta name="twitter:description" content="LLMを活用したAIエンジニア。Claude Code、Cursor等のAI開発ツールで業務効率化を推進。">
+    <meta name="twitter:image" content="https://tenormusica2024.github.io/portfolio/favicon-512x512.png">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -377,6 +395,12 @@
             display: none;
             z-index: 1000;
             min-width: 320px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .contact-dropdown.active {
+            opacity: 1;
         }
 
         .contact-dropdown h3 {
@@ -540,11 +564,15 @@
         }
 
         function openEmailOptions() {
-            document.getElementById('contactDropdown').style.display = 'block';
+            const dropdown = document.getElementById('contactDropdown');
+            dropdown.style.display = 'block';
+            setTimeout(() => dropdown.classList.add('active'), 10);
         }
 
         function closeDropdown() {
-            document.getElementById('contactDropdown').style.display = 'none';
+            const dropdown = document.getElementById('contactDropdown');
+            dropdown.classList.remove('active');
+            setTimeout(() => dropdown.style.display = 'none', 300);
         }
 
         function copyEmail() {
@@ -632,8 +660,8 @@
                     <div class="skill-tags">
                         <span class="skill-tag">Claude Code</span>
                         <span class="skill-tag">Codex CLI</span>
-                        <span class="skill-tag">GitHub Copilot</span>
-                        <span class="skill-tag">Cursor IDE</span>
+                        <span class="skill-tag">Cursor</span>
+                        <span class="skill-tag">AI-Agent</span>
                     </div>
                 </div>
 
@@ -642,7 +670,7 @@
                     <div class="skill-tags">
                         <span class="skill-tag">Python</span>
                         <span class="skill-tag">BI (Tableau)</span>
-                        <span class="skill-tag">Snowflake</span>
+                        <span class="skill-tag">GCP</span>
                         <span class="skill-tag">機械学習</span>
                     </div>
                 </div>
