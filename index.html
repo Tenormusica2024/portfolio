@@ -81,16 +81,145 @@
             align-items: center;
         }
 
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 2rem;
+            background: transparent;
+            z-index: 999;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: calc(100% + 1rem);
+            left: 0;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.08),
+                0 2px 8px rgba(0, 0, 0, 0.04),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+            min-width: 300px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .dropdown::after {
+            content: '';
+            position: absolute;
+            top: -1rem;
+            left: -1rem;
+            right: -1rem;
+            height: 1rem;
+            background: transparent;
+        }
+
+        .dropdown::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .nav-item:hover .dropdown::before {
+            opacity: 1;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dropdown a:first-child {
+            border-radius: 16px 16px 0 0;
+        }
+
+        .dropdown a:last-child {
+            border-bottom: none;
+            border-radius: 0 0 16px 16px;
+        }
+
+        .dropdown a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #222;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .dropdown a:first-child::before {
+            border-radius: 16px 16px 0 0;
+        }
+
+        .dropdown a:last-child::before {
+            border-radius: 0 0 16px 16px;
+        }
+
+        .dropdown a:hover {
+            color: #ffffff;
+            padding-left: 2rem;
+        }
+
+        .dropdown a:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
         .nav-links a {
             color: #666;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.2s ease;
             cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            position: relative;
         }
 
         .nav-links a:hover {
-            color: #222;
+            background: #333;
+            color: #ffffff;
         }
 
         .lang-switch {
@@ -631,7 +760,15 @@
         <nav class="nav-container">
             <div class="nav-links">
                 <a href="index.html" data-i18n="nav_home">Home</a>
-                <a href="projects.html" data-i18n="nav_projects">Projects</a>
+                <div class="nav-item">
+                    <a href="projects.html" data-i18n="nav_projects">Projects</a>
+                    <div class="dropdown">
+                        <a href="projects.html#section-data-viz" data-i18n="section_data_viz">データ可視化・分析プロジェクト</a>
+                        <a href="projects.html#section-ai-dev" data-i18n="section_ai_dev">AI駆動開発プロジェクト</a>
+                        <a href="projects.html#section-automation" data-i18n="section_automation">業務自動化・Webスクレイピング</a>
+                        <a href="projects.html#section-ai-creation">AI創作プロジェクト</a>
+                    </div>
+                </div>
                 <a href="profile.html" data-i18n="nav_profile">Profile</a>
                 <a onclick="openEmailOptions()" data-i18n="nav_contact">Contact</a>
             </div>
