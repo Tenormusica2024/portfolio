@@ -179,19 +179,34 @@
             margin: 0 auto;
             padding: 4rem 2rem 2rem;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .page-header h1 {
             font-size: 5rem;
-            margin-bottom: 0.5rem;
+            margin: 0;
             color: #222;
             font-weight: 700;
             letter-spacing: 0.05em;
+            display: inline;
         }
 
         .page-header p {
             font-size: 1.8rem;
             color: #666;
+            font-weight: 700;
+            display: inline;
+            margin-left: 2rem;
+        }
+
+        .title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0 2rem;
         }
 
         .container {
@@ -499,6 +514,11 @@
 
             .page-header p {
                 font-size: 1.3rem;
+                margin-left: 1rem;
+            }
+
+            .title-container {
+                gap: 0 1rem;
             }
 
             .featured-project {
@@ -748,8 +768,10 @@
     </header>
 
     <div class="page-header">
-        <h1 data-i18n="page_title">Projects</h1>
-        <p data-i18n="page_subtitle">AI駆動開発による実装事例</p>
+        <div class="title-container">
+            <h1 data-i18n="page_title">Projects</h1>
+            <p data-i18n="page_subtitle">AI駆動開発による実装事例</p>
+        </div>
     </div>
 
     <div class="container">
