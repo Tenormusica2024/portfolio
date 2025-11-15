@@ -634,41 +634,35 @@
     </div>
 
     <div class="container">
-        <div class="featured-project">
-            <h3 data-i18n="featured_sound_title">AI Integrated Sound Platform - 自身初のアカウントシステム実装</h3>
-            <p data-i18n="featured_sound_desc">
-                Claude Code Maxプラン活用による100%個人開発の自身初のアカウントシステムを実装した音楽・ポッドキャスト配信プラットフォーム。 Firebase AuthenticationとCloud Firestoreによるユーザー管理から、プレイリスト・フレンド登録・音楽トラックのシェア機能など 包括的なユーザー体験を提供。Progressive Web App技術によるオフライン再生対応、 レスポンシブデザイン・ダークモードでデザインされたUI/UXを提供。SUNO AIで作成したAI音楽もシェア機能を追加予定。
-            </p>
-            <div class="featured-links">
-                <a href="https://sound-platform-v5-ycqe3vmjva-an.a.run.app/" class="featured-link" target="_blank">Live Platform</a>
-                <a href="https://github.com/Tenormusica2024" class="featured-link" target="_blank">GitHub</a>
-            </div>
-        </div>
-
-
-        <div class="featured-project">
-            <h3 data-i18n="project_ai_trend_title">AIツールトレンド分析</h3>
-            <p data-i18n="project_ai_trend_desc">
-                GitHub TrendingとWikipedia Pageviews APIを活用し、AIプロジェクト・画像生成・動画生成ツールの
-                トレンドランキングを自動収集・可視化。GitHub Trendは毎日9時、AI画像/動画ランキングは3時間ごとに
-                自動更新。Gemini API翻訳機能により全ての説明文を自然な日本語で提供。
-            </p>
-            <div class="featured-content">
-                <div class="featured-text">
-                    <div class="featured-links">
-                        <a href="https://tenormusica2024.github.io/ai-trend-daily/home.html" class="featured-link" target="_blank">Dashboard</a>
-                        <a href="https://github.com/Tenormusica2024/ai-trend-daily" class="featured-link" target="_blank">GitHub</a>
-                    </div>
-                </div>
-                <div class="featured-image">
-                    <img src="https://tenormusica2024.github.io/portfolio/ai-trend-dashboard.png" 
-                         alt="AIツールトレンド分析 ダッシュボード">
-                </div>
-            </div>
-        </div>
-
         <h2 class="section-title" data-i18n="section_data_viz">データ可視化・分析プロジェクト</h2>
         <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-i18n="project_ai_trend_title">AIツールトレンド分析</h3>
+                    <span class="new-badge">NEW</span>
+                </div>
+                <div style="margin: 1rem 0;">
+                    <img src="https://tenormusica2024.github.io/portfolio/ai-trend-dashboard.png" 
+                         alt="AIツールトレンド分析 ダッシュボード" 
+                         style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
+                </div>
+                <p class="project-description" data-i18n="project_ai_trend_desc">
+                    GitHub TrendingとWikipedia Pageviews APIを活用し、AIプロジェクト・画像生成・動画生成ツールの
+                    トレンドランキングを自動収集・可視化。GitHub Trendは毎日9時、AI画像/動画ランキングは3時間ごとに
+                    自動更新。Gemini API翻訳機能により全ての説明文を自然な日本語で提供。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">GitHub Trending</span>
+                    <span class="tech-tag">Wikipedia API</span>
+                    <span class="tech-tag">Gemini API</span>
+                    <span class="tech-tag">Auto-Update</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://tenormusica2024.github.io/ai-trend-daily/home.html" class="project-link" target="_blank">Dashboard</a>
+                    <a href="https://github.com/Tenormusica2024/ai-trend-daily" class="project-link" target="_blank">GitHub</a>
+                </div>
+            </div>
+
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_sp500_title">SP500 & FANG+<br>デュアルチャート</h3>
@@ -769,6 +763,27 @@
 
         <h2 class="section-title" data-i18n="section_ai_dev">AI駆動開発プロジェクト</h2>
         <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-i18n="featured_sound_title">AI Integrated Sound Platform</h3>
+                    <span class="new-badge">NEW</span>
+                </div>
+                <p class="project-description" data-i18n="featured_sound_desc">
+                    Claude Code Maxプラン活用による100%個人開発の自身初のアカウントシステムを実装した音楽・ポッドキャスト配信プラットフォーム。 Firebase AuthenticationとCloud Firestoreによるユーザー管理から、プレイリスト・フレンド登録・音楽トラックのシェア機能など 包括的なユーザー体験を提供。Progressive Web App技術によるオフライン再生対応、 レスポンシブデザイン・ダークモードでデザインされたUI/UXを提供。SUNO AIで作成したAI音楽もシェア機能を追加予定。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Firebase Auth</span>
+                    <span class="tech-tag">Cloud Firestore</span>
+                    <span class="tech-tag">PWA</span>
+                    <span class="tech-tag">Cloud Run</span>
+                    <span class="tech-tag">Responsive Design</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://sound-platform-v5-ycqe3vmjva-an.a.run.app/" class="project-link" target="_blank">Live Platform</a>
+                    <a href="https://github.com/Tenormusica2024" class="project-link" target="_blank">GitHub</a>
+                </div>
+            </div>
+
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="featured_gpt5_title">GPT-5 Coding Examples<br>Cloud Run Deployment</h3>
