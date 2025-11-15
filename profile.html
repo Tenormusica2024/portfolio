@@ -480,6 +480,12 @@
                 section_ai_dev: "AI駆動開発プロジェクト",
                 section_automation: "業務自動化・Webスクレイピング",
                 section_ai_creation: "AI創作プロジェクト",
+                profile_about: "About Me",
+                profile_skills: "Technical Skills",
+                profile_experience: "Professional Experience",
+                profile_achievements: "Key Achievements",
+                profile_philosophy: "Development Philosophy",
+                profile_vision: "AI Philosophy & Vision",
                 page_title: "Profile",
                 page_subtitle: "データエンジニアからAIエンジニアまでのキャリアと実績",
                 about_me_title: "About Me",
@@ -540,6 +546,12 @@
                 section_ai_dev: "AI-Driven Development Projects",
                 section_automation: "Business Automation & Web Scraping",
                 section_ai_creation: "AI Creative Projects",
+                profile_about: "About Me",
+                profile_skills: "Technical Skills",
+                profile_experience: "Professional Experience",
+                profile_achievements: "Key Achievements",
+                profile_philosophy: "Development Philosophy",
+                profile_vision: "AI Philosophy & Vision",
                 page_title: "Profile",
                 page_subtitle: "Career Journey from Data Engineer to AI Engineer",
                 about_me_title: "About Me",
@@ -661,7 +673,17 @@
                         <a href="projects.html#section-ai-creation" data-i18n="section_ai_creation">AI創作プロジェクト</a>
                     </div>
                 </div>
-                <a href="profile.html" data-i18n="nav_profile">Profile</a>
+                <div class="nav-item">
+                    <a href="profile.html" data-i18n="nav_profile">Profile</a>
+                    <div class="dropdown">
+                        <a href="#section-about" data-i18n="profile_about">About Me</a>
+                        <a href="#section-skills" data-i18n="profile_skills">Technical Skills</a>
+                        <a href="#section-experience" data-i18n="profile_experience">Professional Experience</a>
+                        <a href="#section-achievements" data-i18n="profile_achievements">Key Achievements</a>
+                        <a href="#section-philosophy" data-i18n="profile_philosophy">Development Philosophy</a>
+                        <a href="#section-vision" data-i18n="profile_vision">AI Philosophy & Vision</a>
+                    </div>
+                </div>
                 <a onclick="openEmailOptions()" data-i18n="nav_contact">Contact</a>
             </div>
             <button class="lang-switch" onclick="switchLanguage()">EN</button>
@@ -674,7 +696,7 @@
     </div>
 
     <div class="container">
-        <div class="section">
+        <div class="section" id="section-about">
             <div class="about-section">
                 <h2 class="section-title" data-i18n="about_me_title">About Me</h2>
                 <div class="about-content">
@@ -696,7 +718,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" id="section-skills">
             <h2 class="section-title" data-i18n="skills_title">Technical Skills</h2>
             <div class="skills-comprehensive">
                 <div class="skill-group">
@@ -893,7 +915,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" id="section-experience">
             <h2 class="section-title" data-i18n="experience_title">Professional Experience</h2>
             <div class="experience-timeline">
                 <div class="timeline-line"></div>
@@ -934,7 +956,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" id="section-achievements">
             <h2 class="section-title" data-i18n="achievements_title">Key Achievements</h2>
             <div class="achievements">
                 <div class="achievement-card">
@@ -1099,7 +1121,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" id="section-philosophy">
             <h2 class="section-title" data-i18n="philosophy_title">Development Philosophy</h2>
             <div class="about-section">
                 <div class="about-content">
@@ -1118,7 +1140,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" id="section-vision">
             <h2 class="section-title" data-i18n="ai_vision_title">AI Philosophy & Vision</h2>
             <div class="about-section">
                 <div class="about-content">
