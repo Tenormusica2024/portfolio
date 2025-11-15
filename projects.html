@@ -107,7 +107,7 @@
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
             border: 1px solid rgba(255, 255, 255, 0.3);
@@ -117,13 +117,24 @@
                 0 2px 8px rgba(0, 0, 0, 0.04),
                 inset 0 0 0 1px rgba(255, 255, 255, 0.5);
             min-width: 300px;
-            margin-top: 0.8rem;
+            margin-top: 0.5rem;
+            padding-top: 0.3rem;
             z-index: 1000;
             opacity: 0;
             transform: translateX(-50%) translateY(-10px);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             pointer-events: none;
             overflow: hidden;
+        }
+
+        .dropdown::after {
+            content: '';
+            position: absolute;
+            top: -0.3rem;
+            left: 0;
+            right: 0;
+            height: 0.3rem;
+            background: transparent;
         }
 
         .dropdown::before {
