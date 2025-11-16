@@ -1,0 +1,36 @@
+name: Update Zenn Feed
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # 6時間ごと
+  workflow_dispatch:  # 手動実行も可能
+
+jobs:
+  fetch-zenn:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Fetch and parse Zenn RSS
+        run: |
+          curl -s 'https://zenn.dev/tenormusica/feed' | python3 parse_rss.py > latest-article.json
+          cat latest-article.json
+      
+      - name: Configure Git
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+      
+      - name: Commit and push if changed
+        run: |
+          git add latest-article.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update Zenn feed [skip ci]" && git push)

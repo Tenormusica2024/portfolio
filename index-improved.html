@@ -12,28 +12,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Urayaha Days - AI Engineer & Data Engineer</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="LLMを活用したAIエンジニア。Claude Code、Cursor等のAI開発ツールで業務効率化を推進。データ分析・クラウド構築経験を活かしAIエージェント開発を実践。">
-    <meta name="keywords" content="AIエンジニア,データエンジニア,Claude Code,Cursor,LLM,機械学習,Python,業務自動化,GCP,AI駆動開発">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tenormusica2024.github.io/portfolio/">
-    <meta property="og:title" content="Urayaha Days - AI Engineer & Data Engineer">
-    <meta property="og:description" content="LLMを活用したAIエンジニア。Claude Code、Cursor等のAI開発ツールで業務効率化を推進。">
-    <meta property="og:image" content="https://tenormusica2024.github.io/portfolio/favicon-512x512.png">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://tenormusica2024.github.io/portfolio/">
-    <meta name="twitter:title" content="Urayaha Days - AI Engineer & Data Engineer">
-    <meta name="twitter:description" content="LLMを活用したAIエンジニア。Claude Code、Cursor等のAI開発ツールで業務効率化を推進。">
-    <meta name="twitter:image" content="https://tenormusica2024.github.io/portfolio/favicon-512x512.png">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon-180x180.png">
     <style>
         * {
             margin: 0;
@@ -44,7 +22,7 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: #ffffff;
-            color: #222;
+            color: #1a1a1a;
             line-height: 1.6;
         }
 
@@ -71,7 +49,7 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #222;
+            color: #1a1a1a;
             text-decoration: none;
         }
 
@@ -81,97 +59,20 @@
             align-items: center;
         }
 
-        .nav-item {
-            position: relative;
-        }
-
-        .nav-item::before {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            height: 2rem;
-            background: transparent;
-            z-index: 999;
-        }
-
-        .dropdown {
-            display: none;
-            position: absolute;
-            top: calc(100% + 1rem);
-            left: 0;
-            background: transparent;
-            min-width: 300px;
-            z-index: 1000;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            pointer-events: none;
-        }
-
-        .nav-item:hover .dropdown {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-
-        .dropdown a {
-            display: block;
-            padding: 1rem 1.5rem;
-            color: #666;
-            text-decoration: none;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            font-weight: 500;
-            font-size: 0.95rem;
-            background: transparent;
-        }
-
-        .dropdown a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #222;
-            border-radius: 8px;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: -1;
-        }
-
-        .dropdown a:hover {
-            color: #ffffff;
-            padding-left: 2rem;
-        }
-
-        .dropdown a:hover::before {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
         .nav-links a {
             color: #666;
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.2s ease;
+            transition: color 0.3s ease;
             cursor: pointer;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            position: relative;
         }
 
         .nav-links a:hover {
-            background: #333;
-            color: #ffffff;
+            color: #1a1a1a;
         }
 
         .lang-switch {
-            background: #222;
+            background: #1a1a1a;
             color: white;
             border: none;
             padding: 0.5rem 1rem;
@@ -202,7 +103,7 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            background: #222;
+            background: #1a1a1a;
             color: white;
             display: flex;
             align-items: center;
@@ -221,30 +122,17 @@
         }
 
         .name {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 700;
-            margin: 0;
-            color: #222;
-            letter-spacing: 0.05em;
-            display: inline;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
         }
 
         .title {
             font-size: 1.5rem;
             color: #666;
-            margin-bottom: 0;
-            font-weight: 700;
-            display: inline;
-            margin-left: 1rem;
-        }
-
-        .title-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0 1rem;
             margin-bottom: 2rem;
+            font-weight: 400;
         }
 
         .description {
@@ -278,7 +166,7 @@
         .skill-card h3 {
             font-size: 1.2rem;
             margin-bottom: 1rem;
-            color: #222;
+            color: #1a1a1a;
         }
 
         .skill-tags {
@@ -309,11 +197,11 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            border: 2px solid #222;
+            border: 2px solid #1a1a1a;
         }
 
         .btn-primary {
-            background: #222;
+            background: #1a1a1a;
             color: white;
         }
 
@@ -324,11 +212,11 @@
 
         .btn-secondary {
             background: transparent;
-            color: #222;
+            color: #1a1a1a;
         }
 
         .btn-secondary:hover {
-            background: #222;
+            background: #1a1a1a;
             color: white;
             transform: translateY(-2px);
         }
@@ -345,7 +233,7 @@
         .article-section h2 {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
-            color: #222;
+            color: #1a1a1a;
             text-align: center;
         }
 
@@ -364,7 +252,7 @@
 
         .article-badge {
             display: inline-block;
-            background: #222;
+            background: #1a1a1a;
             color: white;
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
@@ -375,7 +263,7 @@
 
         .article-title {
             font-size: 1.3rem;
-            color: #222;
+            color: #1a1a1a;
             margin-bottom: 0.8rem;
             font-weight: 600;
         }
@@ -392,17 +280,17 @@
 
         .article-link {
             display: inline-block;
-            color: #222;
+            color: #1a1a1a;
             text-decoration: none;
             font-weight: 600;
             padding: 0.6rem 1.5rem;
-            border: 2px solid #222;
+            border: 2px solid #1a1a1a;
             border-radius: 25px;
             transition: all 0.3s ease;
         }
 
         .article-link:hover {
-            background: #222;
+            background: #1a1a1a;
             color: white;
             transform: translateY(-2px);
         }
@@ -419,7 +307,7 @@
         .contact-section h2 {
             font-size: 2rem;
             margin-bottom: 1.5rem;
-            color: #222;
+            color: #1a1a1a;
         }
 
         .contact-section p {
@@ -429,10 +317,10 @@
 
         .contact-email {
             font-size: 1.3rem;
-            color: #222;
+            color: #1a1a1a;
             text-decoration: none;
             padding: 1rem 2rem;
-            border: 2px solid #222;
+            border: 2px solid #1a1a1a;
             border-radius: 50px;
             display: inline-block;
             transition: all 0.3s ease;
@@ -440,7 +328,7 @@
         }
 
         .contact-email:hover {
-            background: #222;
+            background: #1a1a1a;
             color: white;
         }
 
@@ -469,7 +357,7 @@
         }
 
         .social-link:hover {
-            color: #222;
+            color: #1a1a1a;
         }
 
         .contact-dropdown {
@@ -485,16 +373,10 @@
             display: none;
             z-index: 1000;
             min-width: 320px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .contact-dropdown.active {
-            opacity: 1;
         }
 
         .contact-dropdown h3 {
-            color: #222;
+            color: #1a1a1a;
             margin-bottom: 1.5rem;
             text-align: center;
             font-size: 1.3rem;
@@ -502,7 +384,7 @@
 
         .email-option {
             display: block;
-            color: #222;
+            color: #1a1a1a;
             text-decoration: none;
             padding: 0.8rem 1.2rem;
             margin: 0.5rem 0;
@@ -515,7 +397,7 @@
         }
 
         .email-option:hover {
-            background: #222;
+            background: #1a1a1a;
             color: white;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -529,7 +411,7 @@
 
         .email-option.close-btn:hover {
             background: #e5e5e5;
-            color: #222;
+            color: #1a1a1a;
         }
 
         @media (max-width: 768px) {
@@ -539,11 +421,6 @@
 
             .title {
                 font-size: 1.2rem;
-                margin-left: 0.5rem;
-            }
-
-            .title-container {
-                gap: 0 0.5rem;
             }
 
             .skills-grid {
@@ -588,20 +465,10 @@
                 nav_profile: "Profile",
                 nav_contact: "Contact",
                 lang_button: "EN",
-                section_data_viz: "データ可視化・分析プロジェクト",
-                section_ai_dev: "AI駆動開発プロジェクト",
-                section_automation: "業務自動化・Webスクレイピング",
-                section_ai_creation: "AI創作プロジェクト",
-                profile_about: "About Me",
-                profile_skills: "Technical Skills",
-                profile_experience: "Professional Experience",
-                profile_achievements: "Key Achievements",
-                profile_philosophy: "Development Philosophy",
-                profile_vision: "AI Philosophy & Vision",
                 job_title: "AI Engineer & Data Engineer",
-                description_1: "LLM（大規模言語モデル）を活用したソフトウェア開発と業務自動化、業務活用を推進するAIエンジニアです。Claude Code、Codex CLI、Cursor等のAIツールを駆使し、従来の開発フローを大幅に効率化する手法を実践・提案しています。また、2023年までのデータエンジニアとしての経験、機械学習によるデータ分析、BI、GCP等のクラウド構築経験を活かし、効率的なデータ分析パイプライン構築をAIエージェントに移行しながら行っています。これ以外のAIによる技術革新領域についても並行して情報をブラッシュアップしています。",
+                description_1: "Claude Code・GitHub Copilot等のLLMツールを実プロジェクトに導入し、開発生産性を3〜10倍に向上させた実績を持つAIエンジニアです。2023年までのデータエンジニア経験（機械学習、BI、AWS/Snowflake）を活かし、従来手動で行っていたデータパイプライン構築をAIエージェントで自動化。現在は最新のAI技術動向をキャッチアップし、ビジネス現場で即座に活用できる形で提案・実装しています。",
                 description_2: "「AIが当たり前の時代に向けて日々情報をキャッチアップ、最新の手法を提案・実践し、ビジネスパートナーに目に見える形で還元する」",
-                description_3: "これが私の今の指針です。AIツールの業務活用、推進経験を活かし、個人、組織の生産性を飛躍的に向上させるプランを用意しています。",
+                description_3: "これが私の今の指針です。Claude Code・ChatGPT等のAIツールを実務活用することで、個人、組織の生産性を従来の3〜10倍に向上する多数のプランを用意しています。",
                 skill_1_title: "AI駆動開発",
                 skill_2_title: "データサイエンス",
                 skill_3_title: "業務自動化",
@@ -624,20 +491,10 @@
                 nav_profile: "Profile",
                 nav_contact: "Contact",
                 lang_button: "日本語",
-                section_data_viz: "Data Visualization & Analysis Projects",
-                section_ai_dev: "AI-Driven Development Projects",
-                section_automation: "Business Automation & Web Scraping",
-                section_ai_creation: "AI Creative Projects",
-                profile_about: "About Me",
-                profile_skills: "Technical Skills",
-                profile_experience: "Professional Experience",
-                profile_achievements: "Key Achievements",
-                profile_philosophy: "Development Philosophy",
-                profile_vision: "AI Philosophy & Vision",
                 job_title: "AI Engineer & Data Engineer",
-                description_1: "I am an AI Engineer specializing in software development, business automation, and practical implementation leveraging Large Language Models (LLMs). I utilize advanced AI tools such as Claude Code, Codex CLI, and Cursor to practice and propose methodologies that significantly enhance traditional development workflows. Drawing on my data engineering experience through 2023, including machine learning-based data analysis, BI, and cloud construction experience with GCP, I am transitioning efficient data analysis pipeline development to AI agents. I am also continuously updating my knowledge across other AI-driven technology innovation domains.",
+                description_1: "AI Engineer with proven track record of implementing LLM tools (Claude Code, GitHub Copilot) in real projects to achieve 3-10x productivity improvements. Leveraging data engineering experience through 2023 (ML, BI, AWS/Snowflake), I automate data pipeline development previously done manually with AI agents. Currently staying current with the latest AI technology trends and implementing them in business contexts with immediate practical value.",
                 description_2: "\"Stay current with daily information updates toward an AI-native era, propose and practice the latest methodologies, and deliver tangible value to business partners.\"",
-                description_3: "This is my guiding principle. Leveraging my experience in utilizing and driving AI tool adoption in business operations, I have prepared plans to dramatically improve individual and organizational productivity.",
+                description_3: "This is my guiding principle. By implementing AI tools such as Claude Code and ChatGPT in practical business applications, I have prepared numerous plans to improve individual and organizational productivity by 3-10 times compared to conventional approaches.",
                 skill_1_title: "AI-Driven Development",
                 skill_2_title: "Data Science",
                 skill_3_title: "Business Automation",
@@ -679,15 +536,11 @@
         }
 
         function openEmailOptions() {
-            const dropdown = document.getElementById('contactDropdown');
-            dropdown.style.display = 'block';
-            setTimeout(() => dropdown.classList.add('active'), 10);
+            document.getElementById('contactDropdown').style.display = 'block';
         }
 
         function closeDropdown() {
-            const dropdown = document.getElementById('contactDropdown');
-            dropdown.classList.remove('active');
-            setTimeout(() => dropdown.style.display = 'none', 300);
+            document.getElementById('contactDropdown').style.display = 'none';
         }
 
         function copyEmail() {
@@ -711,61 +564,17 @@
             }
         });
 
-        async function fetchLatestZennArticle() {
-            try {
-                const response = await fetch('./latest-article.json');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
-                
-                if (data.title && data.link) {
-                    translations.ja.article_title = data.title;
-                    translations.en.article_title = data.title;
-                    
-                    const titleElement = document.querySelector('.article-title');
-                    const descElement = document.querySelector('.article-description');
-                    const linkElement = document.querySelector('.article-link');
-                    
-                    if (titleElement) titleElement.textContent = data.title;
-                    if (descElement) descElement.textContent = data.description;
-                    if (linkElement) linkElement.href = data.link;
-                }
-            } catch (error) {
-                console.log('Zenn記事取得エラー（静的コンテンツを表示）:', error);
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
             updateContent();
-            fetchLatestZennArticle();
         });
     </script>
 
     <header class="header">
         <nav class="nav-container">
             <div class="nav-links">
-                <a href="index.html" data-i18n="nav_home">Home</a>
-                <div class="nav-item">
-                    <a href="projects.html" data-i18n="nav_projects">Projects</a>
-                    <div class="dropdown">
-                        <a href="projects.html#section-data-viz" data-i18n="section_data_viz">データ可視化・分析プロジェクト</a>
-                        <a href="projects.html#section-ai-dev" data-i18n="section_ai_dev">AI駆動開発プロジェクト</a>
-                        <a href="projects.html#section-automation" data-i18n="section_automation">業務自動化・Webスクレイピング</a>
-                        <a href="projects.html#section-ai-creation" data-i18n="section_ai_creation">AI創作プロジェクト</a>
-                    </div>
-                </div>
-                <div class="nav-item">
-                    <a href="profile.html" data-i18n="nav_profile">Profile</a>
-                    <div class="dropdown">
-                        <a href="profile.html#section-about" data-i18n="profile_about">About Me</a>
-                        <a href="profile.html#section-skills" data-i18n="profile_skills">Technical Skills</a>
-                        <a href="profile.html#section-experience" data-i18n="profile_experience">Professional Experience</a>
-                        <a href="profile.html#section-achievements" data-i18n="profile_achievements">Key Achievements</a>
-                        <a href="profile.html#section-philosophy" data-i18n="profile_philosophy">Development Philosophy</a>
-                        <a href="profile.html#section-vision" data-i18n="profile_vision">AI Philosophy & Vision</a>
-                    </div>
-                </div>
+                <a href="index-improved.html" data-i18n="nav_home">Home</a>
+                <a href="projects-improved.html" data-i18n="nav_projects">Projects</a>
+                <a href="profile-improved.html" data-i18n="nav_profile">Profile</a>
                 <a onclick="openEmailOptions()" data-i18n="nav_contact">Contact</a>
             </div>
             <button class="lang-switch" onclick="switchLanguage()">EN</button>
@@ -776,17 +585,15 @@
         <section class="hero">
             <div class="profile-section">
                 <div class="profile-initial"><span>UD</span></div>
-                <div class="title-container">
-                    <h1 class="name">Urayaha Days</h1>
-                    <p class="title" data-i18n="job_title">AI Engineer & Data Engineer</p>
-                </div>
+                <h1 class="name">Urayaha Days</h1>
+                <p class="title" data-i18n="job_title">AI Engineer & Data Engineer</p>
             </div>
 
             <p class="description">
-                <span data-i18n="description_1">LLM（大規模言語モデル）を活用したソフトウェア開発と業務自動化、業務活用を推進するAIエンジニアです。Claude Code、Codex CLI、Cursor等のAIツールを駆使し、従来の開発フローを大幅に効率化する手法を実践・提案しています。また、2023年までのデータエンジニアとしての経験、機械学習によるデータ分析、BI、GCP等のクラウド構築経験を活かし、効率的なデータ分析パイプライン構築をAIエージェントに移行しながら行っています。これ以外のAIによる技術革新領域についても並行して情報をブラッシュアップしています。</span>
+                <span data-i18n="description_1">LLM（大規模言語モデル）を活用したソフトウェア開発と業務自動化、業務活用を推進するAIエンジニアです。Claude Code、Codex CLI、GitHub Copilot等のAIツールを駆使し、従来の開発フローを大幅に効率化する手法を実践・提案しています。また、2023年までのデータエンジニアとしての経験、機械学習によるデータ分析、BI、AWSやSnowflake等クラウドDBの構築経験を活かし、効率的なデータ分析パイプライン構築をAIエージェントに移行しながら行っています。これ以外のAIによる技術革新領域についても並行して情報をブラッシュアップしています。</span>
                 <br><br>
                 <strong data-i18n="description_2">「AIが当たり前の時代に向けて日々情報をキャッチアップ、最新の手法を提案・実践し、ビジネスパートナーに目に見える形で還元する」</strong>
-                <span data-i18n="description_3">これが私の今の指針です。AIツールの業務活用、推進経験を活かし、個人、組織の生産性を飛躍的に向上させるプランを用意しています。</span>
+                <span data-i18n="description_3">これが私の今の指針です。Claude Code・ChatGPT等のAIツールを実務活用することで、個人、組織の生産性を従来の3〜10倍に向上する多数のプランを用意しています。</span>
             </p>
 
             <div class="skills-grid">
@@ -795,8 +602,8 @@
                     <div class="skill-tags">
                         <span class="skill-tag">Claude Code</span>
                         <span class="skill-tag">Codex CLI</span>
-                        <span class="skill-tag">Cursor</span>
-                        <span class="skill-tag">AI-Agent</span>
+                        <span class="skill-tag">GitHub Copilot</span>
+                        <span class="skill-tag">Cursor IDE</span>
                     </div>
                 </div>
 
@@ -805,7 +612,7 @@
                     <div class="skill-tags">
                         <span class="skill-tag">Python</span>
                         <span class="skill-tag">BI (Tableau)</span>
-                        <span class="skill-tag">GCP</span>
+                        <span class="skill-tag">Snowflake</span>
                         <span class="skill-tag">機械学習</span>
                     </div>
                 </div>
@@ -815,8 +622,8 @@
                     <div class="skill-tags">
                         <span class="skill-tag">Webスクレイピング</span>
                         <span class="skill-tag">GitHub Actions</span>
-                        <span class="skill-tag">AI-Agent Automation</span>
-                        <span class="skill-tag">Workflow Orchestration</span>
+                        <span class="skill-tag">Python Watchdog</span>
+                        <span class="skill-tag">PowerShellスクリプト</span>
                     </div>
                 </div>
 
@@ -846,8 +653,8 @@ Veo 3 vs. Sora by OpenAI: Side-by-Side Comparison for 2025https://www.powtoon.co
             </div>
 
             <div class="cta-section">
-                <a href="projects.html" class="btn btn-primary" data-i18n="btn_projects">プロジェクトを見る</a>
-                <a href="profile.html" class="btn btn-secondary" data-i18n="btn_profile">Profile</a>
+                <a href="projects-improved.html" class="btn btn-primary" data-i18n="btn_projects">プロジェクトを見る</a>
+                <a href="profile-improved.html" class="btn btn-secondary" data-i18n="btn_profile">Profile</a>
             </div>
         </section>
 

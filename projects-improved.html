@@ -12,10 +12,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Akinori Koda</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon-180x180.png">
     <style>
         * {
             margin: 0;
@@ -23,14 +19,10 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: #ffffff;
-            color: #222;
+            color: #1a1a1a;
             line-height: 1.6;
         }
 
@@ -57,7 +49,7 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #222;
+            color: #1a1a1a;
             text-decoration: none;
         }
 
@@ -66,20 +58,16 @@
             color: #666;
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.2s ease;
+            transition: color 0.3s ease;
             cursor: pointer;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            position: relative;
         }
 
         .nav-links a:hover {
-            background: #333;
-            color: #ffffff;
+            color: #1a1a1a;
         }
 
         .lang-switch {
-            background: #222;
+            background: #1a1a1a;
             color: white;
             border: none;
             padding: 0.5rem 1rem;
@@ -101,112 +89,22 @@
             align-items: center;
         }
 
-        .nav-item {
-            position: relative;
-        }
-
-        .nav-item::before {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            height: 2rem;
-            background: transparent;
-            z-index: 999;
-        }
-
-        .dropdown {
-            display: none;
-            position: absolute;
-            top: calc(100% + 1rem);
-            left: 0;
-            background: transparent;
-            min-width: 300px;
-            z-index: 1000;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            pointer-events: none;
-        }
-
-        .nav-item:hover .dropdown {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-
-        .dropdown a {
-            display: block;
-            padding: 1rem 1.5rem;
-            color: #666;
-            text-decoration: none;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            font-weight: 500;
-            font-size: 0.95rem;
-            background: transparent;
-        }
-
-        .dropdown a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #222;
-            border-radius: 8px;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: -1;
-        }
-
-        .dropdown a:hover {
-            color: #ffffff;
-            padding-left: 2rem;
-        }
-
-        .dropdown a:hover::before {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
         .page-header {
             max-width: 1200px;
             margin: 0 auto;
             padding: 4rem 2rem 2rem;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         .page-header h1 {
-            font-size: 4rem;
-            margin: 0;
-            color: #222;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            display: inline;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
         }
 
         .page-header p {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #666;
-            font-weight: 700;
-            display: inline;
-            margin-left: 1rem;
-        }
-
-        .title-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0 1rem;
         }
 
         .container {
@@ -218,9 +116,8 @@
         .section-title {
             font-size: 2rem;
             margin-bottom: 2rem;
-            color: #222;
+            color: #1a1a1a;
             font-weight: 600;
-            scroll-margin-top: 100px;
         }
 
         .projects-grid {
@@ -252,12 +149,12 @@
 
         .project-title {
             font-size: 1.4rem;
-            color: #222;
+            color: #1a1a1a;
             font-weight: 600;
         }
 
         .project-badge {
-            background: #222;
+            background: #1a1a1a;
             color: white;
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
@@ -266,7 +163,7 @@
         }
 
         .new-badge {
-            background: #222;
+            background: #1a1a1a;
             color: white;
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
@@ -314,9 +211,9 @@
         .project-link {
             padding: 0.6rem 1.2rem;
             background: transparent;
-            border: 1px solid #222;
+            border: 1px solid #1a1a1a;
             border-radius: 20px;
-            color: #222;
+            color: #1a1a1a;
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
@@ -324,7 +221,7 @@
         }
 
         .project-link:hover {
-            background: #222;
+            background: #1a1a1a;
             color: white;
         }
 
@@ -342,7 +239,7 @@
 
         .featured-project {
             background: #ffffff;
-            color: #222;
+            color: #1a1a1a;
             border: 2px solid #e5e5e5;
             border-radius: 20px;
             padding: 3rem;
@@ -398,7 +295,7 @@
 
         .featured-link {
             padding: 0.8rem 1.5rem;
-            background: #222;
+            background: #1a1a1a;
             color: white;
             border-radius: 25px;
             text-decoration: none;
@@ -412,29 +309,6 @@
             background: #333;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .featured-content {
-            display: flex;
-            gap: 2rem;
-            align-items: flex-start;
-            margin-top: 2rem;
-        }
-
-        .featured-text {
-            flex: 1;
-        }
-
-        .featured-image {
-            width: 320px;
-            flex-shrink: 0;
-        }
-
-        .featured-image img {
-            width: 100%;
-            border-radius: 12px;
-            border: 1px solid #e5e5e5;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
 
         .featured-link.under-construction {
@@ -465,7 +339,7 @@
         }
 
         .contact-dropdown h3 {
-            color: #222;
+            color: #1a1a1a;
             margin-bottom: 1.5rem;
             text-align: center;
             font-size: 1.3rem;
@@ -473,7 +347,7 @@
 
         .email-option {
             display: block;
-            color: #222;
+            color: #1a1a1a;
             text-decoration: none;
             padding: 0.8rem 1.2rem;
             margin: 0.5rem 0;
@@ -486,7 +360,7 @@
         }
 
         .email-option:hover {
-            background: #222;
+            background: #1a1a1a;
             color: white;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -500,7 +374,7 @@
 
         .email-option.close-btn:hover {
             background: #e5e5e5;
-            color: #222;
+            color: #1a1a1a;
         }
 
         @media (max-width: 768px) {
@@ -509,29 +383,11 @@
             }
 
             .page-header h1 {
-                font-size: 2.5rem;
-            }
-
-            .page-header p {
-                font-size: 1.2rem;
-                margin-left: 0.5rem;
-            }
-
-            .title-container {
-                gap: 0 0.5rem;
+                font-size: 2rem;
             }
 
             .featured-project {
                 padding: 2rem;
-            }
-
-            .featured-content {
-                flex-direction: column;
-            }
-
-            .featured-image {
-                width: 100%;
-                margin-top: 1rem;
             }
 
             .contact-dropdown {
@@ -558,58 +414,52 @@
                 nav_profile: "Profile",
                 nav_contact: "Contact",
                 lang_button: "EN",
-                page_title: "PROJECTS",
+                page_title: "Projects",
                 page_subtitle: "実装プロジェクト一覧",
-                featured_sound_title: "AI Integrated Sound Platform - 自身初のアカウントシステム実装",
-                featured_sound_desc: "Claude Code Maxプランを活用した個人開発による音楽・ポッドキャスト配信プラットフォーム。自身初のアカウントシステム実装。Firebase AuthenticationとCloud Firestoreによるユーザー管理、プレイリスト・フレンド登録・音楽トラックのシェア機能を実装。Progressive Web App技術によるオフライン再生対応、レスポンシブデザイン・ダークモード対応のUI/UXを提供。SUNO AIで作成したAI音楽のシェア機能を追加予定。",
-                featured_gpt5_title: "GPT-5 Coding Examples - Cloud Run Deployment",
-                featured_gpt5_desc: "OpenAIのGPT-5 Coding Examplesリポジトリから選定したアプリケーションをGoogle Cloud Runにデプロイ。単一プロンプトで生成されたWebアプリケーションをクラウド環境で実装・運用。Flask + Docker + Cloud Runを活用したスケーラブルな構成。",
+                featured_sound_title: "AIツールトレンド分析ダッシュボード",
+                featured_sound_desc: "GitHub Trending & Wikipedia Pageviews API連携で、AI関連ツールのトレンドを自動収集・可視化。3時間ごと自動更新。",
+                featured_gpt5_title: "AI Integrated Sound Platform",
+                featured_gpt5_desc: "Firebase認証・Firestore統合の音楽・ポッドキャスト配信プラットフォーム。プレイリスト作成、フレンド機能、PWA対応オフライン再生を実装。",
                 section_data_viz: "データ可視化・分析プロジェクト",
-                section_ai_dev: "AI駆動開発プロジェクト",
+                section_ai_dev: "開発ツール・自動化",
                 section_automation: "業務自動化・Webスクレイピング",
                 section_music: "AI Music Creation",
-                profile_about: "About Me",
-                profile_skills: "Technical Skills",
-                profile_experience: "Professional Experience",
-                profile_achievements: "Key Achievements",
-                profile_philosophy: "Development Philosophy",
-                profile_vision: "AI Philosophy & Vision",
-                music_project_title: "🎵 Alternative Rock - AI駆動による音楽制作プロジェクト",
-                music_project_desc: "Suno AIで楽曲制作、Midjourneyでビジュアル生成、Canvaで動画編集を行ったオルタナティブロックトラック。 AI生成ボーカルとAI制作による楽曲の組み合わせです。 複数のAIツールを駆使した、クリエイティブワークフローの実践例としてもご覧いただけます。",
-                project_ai_trend_title: "AIツールトレンド分析",
-                project_ai_trend_desc: "GitHub TrendingとWikipedia Pageviews APIを活用し、AIプロジェクト・画像生成・動画生成ツールのトレンドランキングを自動収集・可視化。GitHub Trendは毎日9時、AI画像/動画ランキングは3時間ごとに自動更新。Gemini API翻訳機能により全ての説明文を自然な日本語で提供。",
+                music_project_title: "🎵 Alternative Rock",
+                music_project_desc: "Suno AI + Midjourney + Canvaで制作したオルタナティブロックトラック。",
+                project_ai_trend_title: "AIツールトレンド分析ダッシュボード",
+                project_ai_trend_desc: "GitHub Trending & Wikipedia Pageviews API連携で、AI関連ツールのトレンドを自動収集・可視化。3時間ごと自動更新。",
                 project_sp500_title: "SP500 & FANG+ デュアルチャート",
-                project_sp500_desc: "SP500とFANG+指数の価格推移を同時に可視化するWebアプリケーション。左側にCyberpunk Matrix風、右側にSynthwave Retro風のデザインを適用し、日次・週次・月次の時間軸切り替え機能を実装。Chart.jsを使用したリアルタイムデータ更新とCSS3アニメーションによる視覚効果を組み合わせています。",
+                project_sp500_desc: "SP500とFANG+指数の価格推移をサイバーパンク/シンセウェーブデザインで可視化。Chart.js実装。",
                 project_bi_dashboard_title: "インタラクティブ分析ダッシュボード",
-                project_bi_dashboard_desc: "AI駆動によるフロントエンド開発によって独自のBIイメージを作成。デザインコンセプトからの実装経験を活かし、本格的なビジネスインテリジェンスツールとしての実用化にも対応可能。",
+                project_bi_dashboard_desc: "React + Chart.jsでインタラクティブなBIダッシュボードを実装。リアルタイムデータ可視化対応。",
                 project_cloud_racing_title: "Cloud Market Racing Chart",
-                project_cloud_racing_desc: "AI駆動で作成したクラウドサービスのシェア率レーシングバーチャート。AWS、Azure、Google Cloudの市場シェア推移を動的に可視化し、時系列データの変化を直感的に理解できるインタラクティブな分析ツール。",
+                project_cloud_racing_desc: "AWS、Azure、GCPのシェア率推移をレーシングバーチャートで動的に可視化。D3.js実装。",
                 project_data_platform_title: "データ分析基盤構築",
-                project_data_platform_desc: "SageMaker、Snowflakeを活用したエンドツーエンドの分析基盤。顧客セグメンテーション、売上予測モデルを統合し、効率的なデータ分析ワークフローを実現しています。",
+                project_data_platform_desc: "SageMaker + Snowflake統合による分析基盤。顧客セグメンテーション・売上予測モデルを実装。",
                 project_code_reviewer_title: "Code Reviewer Subagent System",
-                project_code_reviewer_desc: "Claude Codeに統合された自動コードレビューサブエージェントシステム。ユーザーの「レビュー」指示やコード変更後に実行されるTask toolベースのエージェント。コード品質・セキュリティ・ベストプラクティス・パフォーマンス・エラーハンドリングを検証し、実装の妥当性を評価。CLAUDE.md統合により、セッション開始時から自動起動プロトコルが有効化。",
+                project_code_reviewer_desc: "Claude Code統合の自動コードレビューサブエージェント。コード品質・セキュリティ・パフォーマンスを自動評価。",
                 project_voicevox_title: "VOICEVOX MCP Notification System",
-                project_voicevox_desc: "Claude Codeのタスク実行時に、ずんだもんボイスで進捗・完了を音声通知するMCPサーバー。VOICEVOX APIとNode.jsを活用し、タスク状態（開始・進行中・完了・エラー）を100文字以内の簡潔なメッセージで音声化。クロスプラットフォーム対応で、Windows/Mac/Linuxで動作。音声速度・話者選択も設定可能。開発作業中のハンズフリー進捗確認が可能。",
+                project_voicevox_desc: "Claude Codeタスク実行時に、ずんだもんボイスで進捗・完了を音声通知するMCPサーバー。VOICEVOX API + Node.js実装。",
                 project_claude_hook_title: "Claude Code Hook 自動化システム",
-                project_claude_hook_desc: "Claude Code のイベント駆動型Hook機能を活用した自動GitHub Issue報告システム。SessionEnd HookとToolResult Hookにより、タスク完了・ツール実行を自動検知し、GitHub Issue #1へ報告を投稿。Node.jsとPythonの連携により、ユーザーの手動指示を不要とした自動化ワークフローを実現。開発プロセスの追跡可能性と継続的なドキュメント化を提供。",
+                project_claude_hook_desc: "Claude Code Hook機能でタスク完了・ツール実行を自動検知、GitHub Issueにリアルタイム報告。Node.js + Python連携。",
                 project_zenn_audio_title: "Zenn Article Audio Reader",
-                project_zenn_audio_desc: "Zenn投稿記事を高品質音声で朗読するWebアプリケーション。Google Cloud TTS（Neural2音声）とVOICEVOXによる自然な音声合成、チャンク分割による長文対応、再生速度調整・シーク機能を実装。GitHub Pagesで配信し、複数記事のプレイリスト再生に対応。レスポンシブデザインでモバイル・デスクトップ両対応。",
+                project_zenn_audio_desc: "Zenn記事を高品質音声で朗読するWebアプリ。Google Cloud TTS + VOICEVOX実装、プレイリスト再生対応。",
                 project_esports_title: "Esports Tournament Landing",
-                project_esports_desc: "GPT-5の単一プロンプトで生成されたeスポーツ大会のランディングページ。ネオン効果、HTML5 Canvas動画、インタラクティブトーナメント表を統合。Google Cloud Runで運用し、スケーラブルな構成を実現。ICSカレンダーエクスポート機能でイベント管理に対応。",
+                project_esports_desc: "GPT-5生成のeスポーツ大会ランディングページ。HTML5 Canvas + Cloud Run実装。",
                 project_aifm_title: "AI.fm Inspired Music App",
-                project_aifm_desc: "Web Audio APIを活用したジェネラティブ・ミュージック・アプリケーション。GPT-5により生成されたリアルタイム音響合成とビジュアライゼーションを実装。ネオンサイバーパンクUIによる音楽体験を提供。Cloud Runで配信。",
+                project_aifm_desc: "GPT-5生成のジェネラティブ・ミュージックアプリ。Web Audio APIでリアルタイム音響合成。",
                 project_asteroid_title: "EV: Pocket Skirmish",
-                project_asteroid_desc: "GPT-5プロンプトから生成された2Dスペースシューティングゲーム。リアルタイム物理エンジン、AI敵船、パーティクルエフェクトを実装。HTML5 Canvasによる60FPS描画。Cloud Runで配信。",
+                project_asteroid_desc: "GPT-5生成の2Dスペースシューティングゲーム。HTML5 Canvasで60FPS描画実装。",
                 project_claude_memory_title: "Claude Memory System",
-                project_claude_memory_desc: "AIアシスタントの記憶を永続化するメモリ管理システム。セッション追跡、コード例保存、洞察記録機能により、継続的な開発体験を実現。JSONベースのデータ構造でセッション間の情報共有を可能にします。",
+                project_claude_memory_desc: "AIアシスタントの記憶を永続化するメモリ管理システム。JSONベースでセッション間情報共有を実現。",
                 project_llm_ide_title: "LLM統合開発環境",
-                project_llm_ide_desc: "Cursor IDE、Claude Code、GitHub Copilotを活用したAI駆動開発環境の構築。効率的なコード生成、デバッグ、ドキュメント作成を可能にする統合ワークフロー。",
+                project_llm_ide_desc: "Cursor IDE + Claude Code + GitHub Copilot統合開発環境。効率的なコード生成・デバッグを実現。",
                 project_faq_system_title: "社内FAQデータベース検索システム",
-                project_faq_system_desc: "RAG（Retrieval-Augmented Generation）技術を活用した社内FAQ検索システム。過去の問い合わせデータをベクトル化し、自然言語での質問に対して最適な回答を提示。従業員の問い合わせ対応時間を大幅に削減し、知識共有を促進。",
+                project_faq_system_desc: "RAG技術で過去の問い合わせデータをベクトル化。自然言語質問に最適な回答を提示。",
                 project_daily_automation_title: "デイリータスク自動化スイート",
-                project_daily_automation_desc: "日常的なデータ処理、レポート生成、ファイル管理を自動化するPythonスクリプト集。Excel処理、メール送信、ファイル同期等の実務タスクを効率化。GitHub Actionsによるスケジュール実行で自動化を実現。",
+                project_daily_automation_desc: "Excel処理・メール送信・ファイル同期をPythonで自動化。GitHub Actionsでスケジュール実行。",
                 project_web_scraping_title: "マルチサイト情報収集システム",
-                project_web_scraping_desc: "複数のWebサイトから情報を自動収集・分析するスクレイピングシステム。BeautifulSoup、Seleniumを活用し、動的コンテンツも対応。収集データをLLMで自動分類・要約し、構造化された情報として出力。",
+                project_web_scraping_desc: "BeautifulSoup + Seleniumで複数サイトから情報自動収集。LLMで分類・要約実装。",
                 footer_rights: "© 2025 Urayaha Days. All rights reserved.",
                 contact_title: "Contact",
                 gmail_web: "Gmail Webで開く",
@@ -621,59 +471,52 @@
                 nav_profile: "Profile",
                 nav_contact: "Contact",
                 lang_button: "日本語",
-                page_title: "PROJECTS",
+                page_title: "Projects",
                 page_subtitle: "Implementation Portfolio",
-                featured_sound_title: "AI Integrated Sound Platform - First Account System Implementation",
-                featured_sound_desc: "An individual-developed music and podcast distribution platform featuring my first account system implementation using Claude Code Max plan. Implements user management with Firebase Authentication and Cloud Firestore, along with playlist creation, friend registration, and music track sharing features. Offers offline playback support through Progressive Web App technology and UI/UX with responsive design and dark mode support. AI music created with SUNO AI will also add sharing functionality.",
-                featured_gpt5_title: "GPT-5 Coding Examples - Cloud Run Deployment",
-                featured_gpt5_desc: "Deployment of selected applications from OpenAI's GPT-5 Coding Examples repository to Google Cloud Run. Implementation and operation of web applications generated from single prompts in a cloud environment. Scalable architecture leveraging Flask + Docker + Cloud Run.",
+                featured_sound_title: "AI Tool Trend Analysis Dashboard",
+                featured_sound_desc: "Automated AI tool trend collection and visualization via GitHub Trending & Wikipedia Pageviews API. Updates every 3 hours.",
+                featured_gpt5_title: "AI Integrated Sound Platform",
+                featured_gpt5_desc: "Music & podcast platform with Firebase Auth and Firestore. Features playlist creation, friend system, and PWA offline playback.",
                 section_data_viz: "Data Visualization & Analysis Projects",
-                section_ai_dev: "AI-Driven Development Projects",
+                section_ai_dev: "Development Tools & Automation",
                 section_automation: "Business Automation & Web Scraping",
-                section_ai_creation: "AI Creative Projects",
                 section_music: "AI Music Creation",
-                profile_about: "About Me",
-                profile_skills: "Technical Skills",
-                profile_experience: "Professional Experience",
-                profile_achievements: "Key Achievements",
-                profile_philosophy: "Development Philosophy",
-                profile_vision: "AI Philosophy & Vision",
-                music_project_title: "🎵 Alternative Rock - AI-Driven Music Production Project",
-                music_project_desc: "An alternative rock track created with music production by Suno AI, visual generation by Midjourney, and video editing by Canva. A combination of AI-generated vocals and AI-produced music. You can also view it as a practical example of creative workflows utilizing multiple AI tools.",
+                music_project_title: "🎵 Alternative Rock - AI Music Production",
+                music_project_desc: "Alternative rock track produced with Suno AI, Midjourney visuals, and Canva editing. AI-generated vocals and music.",
                 project_ai_trend_title: "AI Tool Trend Analysis",
-                project_ai_trend_desc: "Automated collection and visualization of AI project, image generation, and video generation tool trend rankings using GitHub Trending and Wikipedia Pageviews API. GitHub Trends update daily at 9 AM, AI image/video rankings update every 3 hours. All descriptions are provided in natural Japanese through Gemini API translation.",
+                project_ai_trend_desc: "Automated AI tool trend collection via GitHub Trending & Wikipedia API. Updates every 3 hours with Gemini-translated descriptions.",
                 project_sp500_title: "SP500 & FANG+ Dual Chart",
-                project_sp500_desc: "Web application simultaneously visualizing price trends of SP500 and FANG+ indices. Features Cyberpunk Matrix-style design on the left and Synthwave Retro-style on the right, with daily/weekly/monthly time-axis switching. Combines real-time data updates using Chart.js with CSS3 animation visual effects.",
+                project_sp500_desc: "SP500 & FANG+ visualization with Cyberpunk/Synthwave dual design. Chart.js implementation.",
                 project_bi_dashboard_title: "Interactive Analysis Dashboard",
-                project_bi_dashboard_desc: "Created custom BI imagery through AI-driven frontend development. Leveraging design concept implementation experience for practical application as professional business intelligence tools.",
+                project_bi_dashboard_desc: "Custom BI dashboard with interactive data visualization. React-based implementation.",
                 project_cloud_racing_title: "Cloud Market Racing Chart",
-                project_cloud_racing_desc: "AI-driven racing bar chart of cloud service market share. Dynamically visualizes market share trends of AWS, Azure, and Google Cloud as an interactive analytical tool for intuitively understanding time-series data changes.",
+                project_cloud_racing_desc: "Racing bar chart visualizing AWS, Azure, GCP market share trends. D3.js implementation.",
                 project_data_platform_title: "Data Analysis Platform Development",
-                project_data_platform_desc: "End-to-end analytical infrastructure leveraging SageMaker and Snowflake. Integrates customer segmentation and sales forecasting models to realize efficient data analysis workflows.",
+                project_data_platform_desc: "Analytics platform with SageMaker and Snowflake integration. Customer segmentation and forecasting models.",
                 project_code_reviewer_title: "Code Reviewer Subagent System",
-                project_code_reviewer_desc: "Automated code review subagent system integrated with Claude Code. Task tool-based agent that executes on user's 'review' command or after code changes. Verifies code quality, security, best practices, performance, and error handling to evaluate implementation validity. CLAUDE.md integration enables auto-trigger protocol from session start.",
+                project_code_reviewer_desc: "Claude Code integrated automated code review subagent. Auto-evaluates code quality, security, and performance.",
                 project_voicevox_title: "VOICEVOX MCP Notification System",
-                project_voicevox_desc: "MCP server that provides voice notifications using Zundamon voice for Claude Code task execution progress and completion. Leverages VOICEVOX API and Node.js to vocalize task states (start, progress, complete, error) in concise messages within 100 characters. Cross-platform support for Windows/Mac/Linux with configurable speech speed and voice actor selection. Enables hands-free progress monitoring during development work.",
+                project_voicevox_desc: "MCP server providing Zundamon voice notifications for Claude Code tasks. VOICEVOX API + Node.js implementation.",
                 project_claude_hook_title: "Claude Code Hook Automation System",
-                project_claude_hook_desc: "Automated GitHub Issue reporting system leveraging Claude Code's event-driven Hook functionality. SessionEnd Hook and ToolResult Hook automatically detect task completion and tool execution, posting reports to GitHub Issue #1. Node.js and Python integration realizes automated workflow eliminating manual user instructions. Provides traceability of development process and continuous documentation.",
+                project_claude_hook_desc: "Claude Code Hook automation detecting task completion, auto-reporting to GitHub Issue. Node.js + Python integration.",
                 project_zenn_audio_title: "Zenn Article Audio Reader",
-                project_zenn_audio_desc: "Web application that reads Zenn articles aloud with high-quality voice synthesis. Implements natural voice synthesis using Google Cloud TTS (Neural2 voices) and VOICEVOX, chunk-based processing for long articles, playback speed control, and seek functionality. Deployed on GitHub Pages with multi-article playlist support. Responsive design compatible with both mobile and desktop devices.",
+                project_zenn_audio_desc: "Zenn article audio reader with Google Cloud TTS and VOICEVOX. Playback control and responsive design.",
                 project_esports_title: "Esports Tournament Landing",
-                project_esports_desc: "Esports tournament landing page generated from GPT-5 single prompt. Integrates neon effects, HTML5 Canvas videos, and interactive tournament brackets. Operated on Google Cloud Run with scalable architecture. Supports event management with ICS calendar export functionality.",
+                project_esports_desc: "Esports tournament landing page with neon effects, Canvas videos, and interactive brackets. Cloud Run deployment.",
                 project_aifm_title: "AI.fm Inspired Music App",
-                project_aifm_desc: "Generative music application leveraging Web Audio API. Implements real-time sound synthesis and visualization generated by GPT-5. Provides music experience with neon cyberpunk UI. Deployed on Cloud Run.",
+                project_aifm_desc: "Generative music app with Web Audio API. Real-time synthesis and neon cyberpunk UI.",
                 project_asteroid_title: "EV: Pocket Skirmish",
-                project_asteroid_desc: "2D space shooting game generated from GPT-5 prompt. Implements real-time physics engine, AI enemy ships, and particle effects. 60FPS rendering via HTML5 Canvas. Deployed on Cloud Run.",
+                project_asteroid_desc: "2D space shooter with physics engine, AI enemies, and particle effects. 60FPS HTML5 Canvas rendering.",
                 project_claude_memory_title: "Claude Memory System",
-                project_claude_memory_desc: "Memory management system persisting AI assistant memories. Session tracking, code example storage, and insight recording features realize continuous development experience. JSON-based data structure enables cross-session information sharing.",
+                project_claude_memory_desc: "AI assistant memory management system. Session tracking and JSON-based cross-session sharing.",
                 project_llm_ide_title: "LLM Integrated Development Environment",
-                project_llm_ide_desc: "Construction of AI-driven development environment leveraging Cursor IDE, Claude Code, and GitHub Copilot. Integrated workflow enabling efficient code generation, debugging, and documentation.",
+                project_llm_ide_desc: "AI development environment with Cursor IDE, Claude Code, and GitHub Copilot integration.",
                 project_faq_system_title: "Internal FAQ Database Search System",
-                project_faq_system_desc: "Internal FAQ search system leveraging RAG (Retrieval-Augmented Generation) technology. Vectorizes past inquiry data to present optimal answers for natural language questions. Significantly reduces employee inquiry response time and promotes knowledge sharing.",
+                project_faq_system_desc: "RAG-based FAQ search system with vectorized inquiry data for natural language questions.",
                 project_daily_automation_title: "Daily Task Automation Suite",
-                project_daily_automation_desc: "Python script collection automating routine data processing, report generation, and file management. Streamlines practical tasks like Excel processing, email sending, and file synchronization. Automation through GitHub Actions scheduled execution.",
+                project_daily_automation_desc: "Python automation suite for data processing, reports, and file management. GitHub Actions scheduled execution.",
                 project_web_scraping_title: "Multi-Site Information Collection System",
-                project_web_scraping_desc: "Scraping system automatically collecting and analyzing information from multiple websites. Supports dynamic content using BeautifulSoup and Selenium. Automatically classifies and summarizes collected data with LLM, outputting as structured information.",
+                project_web_scraping_desc: "Multi-site scraping system with BeautifulSoup and Selenium. LLM-based classification and summarization.",
                 footer_rights: "© 2025 Urayaha Days. All rights reserved.",
                 contact_title: "Contact",
                 gmail_web: "Open in Gmail Web",
@@ -740,27 +583,9 @@
     <header class="header">
         <nav class="nav-container">
             <div class="nav-links">
-                <a href="index.html" data-i18n="nav_home">Home</a>
-                <div class="nav-item">
-                    <a href="projects.html" data-i18n="nav_projects">Projects</a>
-                    <div class="dropdown">
-                        <a href="#section-data-viz" data-i18n="section_data_viz">データ可視化・分析プロジェクト</a>
-                        <a href="#section-ai-dev" data-i18n="section_ai_dev">AI駆動開発プロジェクト</a>
-                        <a href="#section-automation" data-i18n="section_automation">業務自動化・Webスクレイピング</a>
-                        <a href="#section-ai-creation" data-i18n="section_ai_creation">AI創作プロジェクト</a>
-                    </div>
-                </div>
-                <div class="nav-item">
-                    <a href="profile.html" data-i18n="nav_profile">Profile</a>
-                    <div class="dropdown">
-                        <a href="profile.html#section-about" data-i18n="profile_about">About Me</a>
-                        <a href="profile.html#section-skills" data-i18n="profile_skills">Technical Skills</a>
-                        <a href="profile.html#section-experience" data-i18n="profile_experience">Professional Experience</a>
-                        <a href="profile.html#section-achievements" data-i18n="profile_achievements">Key Achievements</a>
-                        <a href="profile.html#section-philosophy" data-i18n="profile_philosophy">Development Philosophy</a>
-                        <a href="profile.html#section-vision" data-i18n="profile_vision">AI Philosophy & Vision</a>
-                    </div>
-                </div>
+                <a href="index-improved.html" data-i18n="nav_home">Home</a>
+                <a href="projects-improved.html" data-i18n="nav_projects">Projects</a>
+                <a href="profile-improved.html" data-i18n="nav_profile">Profile</a>
                 <a onclick="openEmailOptions()" data-i18n="nav_contact">Contact</a>
             </div>
             <button class="lang-switch" onclick="switchLanguage()">EN</button>
@@ -768,42 +593,66 @@
     </header>
 
     <div class="page-header">
-        <div class="title-container">
-            <h1 data-i18n="page_title">Projects</h1>
-            <p data-i18n="page_subtitle">AI駆動開発による実装事例</p>
-        </div>
+        <h1 data-i18n="page_title">Projects</h1>
+        <p data-i18n="page_subtitle">AI駆動開発による実装事例</p>
     </div>
 
     <div class="container">
-        <h2 id="section-data-viz" class="section-title" data-i18n="section_data_viz">データ可視化・分析プロジェクト</h2>
+        <div class="featured-project">
+            <h3 data-i18n="featured_sound_title">AI Integrated Sound Platform - 自身初のアカウントシステム実装</h3>
+            <p data-i18n="featured_sound_desc">
+                Claude Code Maxプラン活用による100%個人開発の自身初のアカウントシステムを実装した音楽・ポッドキャスト配信プラットフォーム。 Firebase AuthenticationとCloud Firestoreによるユーザー管理から、プレイリスト・フレンド登録・音楽トラックのシェア機能など 包括的なユーザー体験を提供。Progressive Web App技術によるオフライン再生対応、 レスポンシブデザイン・ダークモードでデザインされたUI/UXを提供。SUNO AIで作成したAI音楽もシェア機能を追加予定。
+            </p>
+            <div class="featured-links">
+                <a href="https://sound-platform-v5-ycqe3vmjva-an.a.run.app/" class="featured-link" target="_blank">Live Platform</a>
+                <a href="https://github.com/Tenormusica2024" class="featured-link" target="_blank">GitHub</a>
+            </div>
+        </div>
+
+        <div class="featured-project">
+            <h3 data-i18n="featured_gpt5_title">GPT-5 Coding Examples - Cloud Run Deployment</h3>
+            <p data-i18n="featured_gpt5_desc">
+                OpenAIのGPT-5 Coding Examplesリポジトリから厳選したアプリケーションをGoogle Cloud Runに自動デプロイ。
+                単一プロンプトで生成された高品質なWebアプリケーションを本格的なクラウド環境で実装・運用。
+                Flask + Docker + Cloud Runを活用したスケーラブルな実装により、エンタープライズレベルの可用性を実現。
+            </p>
+            <div class="featured-links">
+                <a href="https://esports-tournament-ycqe3vmjva-uc.a.run.app/" class="featured-link" target="_blank">Esports Tournament</a>
+                <a href="https://ai-fm-inspired-ycqe3vmjva-uc.a.run.app/" class="featured-link" target="_blank">AI.fm Inspired</a>
+                <a href="https://asteroid-game-ycqe3vmjva-uc.a.run.app/" class="featured-link" target="_blank">Asteroid Game</a>
+            </div>
+        </div>
+
+        <h2 class="section-title" data-i18n="section_data_viz">データ可視化・分析プロジェクト</h2>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_ai_trend_title">AIツールトレンド分析</h3>
                     <span class="new-badge">NEW</span>
                 </div>
-                <div style="margin: 1rem 0;">
-                    <img src="https://tenormusica2024.github.io/portfolio/ai-trend-dashboard.png" 
-                         alt="AIツールトレンド分析 ダッシュボード" 
-                         style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
-                </div>
                 <p class="project-description" data-i18n="project_ai_trend_desc">
                     GitHub TrendingとWikipedia Pageviews APIを活用し、AIプロジェクト・画像生成・動画生成ツールの
                     トレンドランキングを自動収集・可視化。GitHub Trendは毎日9時、AI画像/動画ランキングは3時間ごとに
                     自動更新。Gemini API翻訳機能により全ての説明文を自然な日本語で提供。
                 </p>
+                <div style="margin: 1rem 0;">
+                    <img src="https://tenormusica2024.github.io/portfolio/ai-trend-dashboard.png" 
+                         alt="AIツールトレンド分析 ダッシュボード" 
+                         style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
+                </div>
                 <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Wikipedia Pageviews API</span>
                     <span class="tech-tag">GitHub Trending</span>
-                    <span class="tech-tag">Wikipedia API</span>
                     <span class="tech-tag">Gemini API</span>
-                    <span class="tech-tag">Auto-Update</span>
+                    <span class="tech-tag">BeautifulSoup</span>
+                    <span class="tech-tag">Task Scheduler</span>
                 </div>
                 <div class="project-links">
                     <a href="https://tenormusica2024.github.io/ai-trend-daily/home.html" class="project-link" target="_blank">Dashboard</a>
                     <a href="https://github.com/Tenormusica2024/ai-trend-daily" class="project-link" target="_blank">GitHub</a>
                 </div>
             </div>
-
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_sp500_title">SP500 & FANG+<br>デュアルチャート</h3>
@@ -833,16 +682,16 @@
                     <h3 class="project-title" data-i18n="project_bi_dashboard_title">インタラクティブ分析ダッシュボード</h3>
                     <span class="new-badge">NEW</span>
                 </div>
-                <div style="margin: 1rem 0;">
-                    <img src="https://tenormusica2024.github.io/portfolio/bi-dashboard.png" 
-                         alt="インタラクティブ分析ダッシュボード" 
-                         style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
-                </div>
                 <p class="project-description" data-i18n="project_bi_dashboard_desc">
                     AI駆動によるフロントエンド開発によって独自のBIイメージを作成。
                     デザインコンセプトからの実装経験を活かし、
                     本格的なビジネスインテリジェンスツールとしての実用化にも対応可能。
                 </p>
+                <div style="margin: 1rem 0;">
+                    <img src="https://tenormusica2024.github.io/portfolio/bi-dashboard.png" 
+                         alt="インタラクティブ分析ダッシュボード" 
+                         style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
+                </div>
                 <div class="tech-stack">
                     <span class="tech-tag">React</span>
                     <span class="tech-tag">Chart.js</span>
@@ -902,53 +751,8 @@
             </div>
         </div>
 
-        <h2 id="section-ai-dev" class="section-title" data-i18n="section_ai_dev">AI駆動開発プロジェクト</h2>
+        <h2 class="section-title" data-i18n="section_ai_dev">AI駆動開発プロジェクト</h2>
         <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title" data-i18n="featured_sound_title">AI Integrated Sound Platform</h3>
-                    <span class="new-badge">NEW</span>
-                </div>
-                <p class="project-description" data-i18n="featured_sound_desc">
-                    Claude Code Maxプラン活用による100%個人開発の音楽・ポッドキャスト配信プラットフォーム。Firebase AuthenticationとCloud Firestoreによるユーザー管理から、プレイリスト・フレンド登録・音楽トラックのシェア機能など包括的なユーザー体験を提供。Progressive Web App技術によるオフライン再生対応、レスポンシブデザイン・ダークモードでデザインされたUI/UXを提供。SUNO AIで作成したAI音楽もシェア機能を追加予定。
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Firebase Auth</span>
-                    <span class="tech-tag">Cloud Firestore</span>
-                    <span class="tech-tag">PWA</span>
-                    <span class="tech-tag">Cloud Run</span>
-                    <span class="tech-tag">Responsive Design</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://sound-platform-v5-ycqe3vmjva-an.a.run.app/" class="project-link" target="_blank">Live Platform</a>
-                    <a href="https://github.com/Tenormusica2024" class="project-link" target="_blank">GitHub</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title" data-i18n="featured_gpt5_title">GPT-5 Coding Examples<br>Cloud Run Deployment</h3>
-                    <span class="new-badge">NEW</span>
-                </div>
-                <p class="project-description" data-i18n="featured_gpt5_desc">
-                    OpenAIのGPT-5 Coding Examplesリポジトリから厳選したアプリケーションをGoogle Cloud Runに自動デプロイ。
-                    単一プロンプトで生成された高品質なWebアプリケーションを本格的なクラウド環境で実装・運用。
-                    Flask + Docker + Cloud Runを活用したスケーラブルな実装により、エンタープライズレベルの可用性を実現。
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">GPT-5</span>
-                    <span class="tech-tag">Flask</span>
-                    <span class="tech-tag">Docker</span>
-                    <span class="tech-tag">Cloud Run</span>
-                    <span class="tech-tag">Single Prompt</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://esports-tournament-ycqe3vmjva-uc.a.run.app/" class="project-link" target="_blank">Esports Tournament</a>
-                    <a href="https://ai-fm-inspired-ycqe3vmjva-uc.a.run.app/" class="project-link" target="_blank">AI.fm Inspired</a>
-                    <a href="https://asteroid-game-ycqe3vmjva-uc.a.run.app/" class="project-link" target="_blank">Asteroid Game</a>
-                </div>
-            </div>
-
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_code_reviewer_title">Code Reviewer<br>Subagent System</h3>
@@ -1006,11 +810,6 @@
                     <h3 class="project-title" data-i18n="project_claude_hook_title">Claude Code Hook<br>自動化システム</h3>
                     <span class="new-badge">NEW</span>
                 </div>
-                <div style="margin: 1rem 0;">
-                    <img src="https://tenormusica2024.github.io/portfolio/claude-hook-system.png" 
-                         alt="Claude Code Hook自動化システム" 
-                         style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
-                </div>
                 <p class="project-description" data-i18n="project_claude_hook_desc">
                     Claude Code のイベント駆動型Hook機能を活用した完全自動GitHub Issue報告システム。
                     SessionEnd HookとToolResult Hookにより、タスク完了・ツール実行を自動検知し、
@@ -1018,6 +817,11 @@
                     ユーザーの手動指示を完全排除した自動化ワークフローを実現。
                     開発プロセスの完全な追跡可能性と継続的なドキュメント化を達成。
                 </p>
+                <div style="margin: 1rem 0;">
+                    <img src="https://tenormusica2024.github.io/portfolio/claude-hook-system.png" 
+                         alt="Claude Code Hook自動化システム" 
+                         style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
+                </div>
                 <div class="tech-stack">
                     <span class="tech-tag">Claude Code Hooks</span>
                     <span class="tech-tag">Node.js</span>
@@ -1037,11 +841,6 @@
                     <h3 class="project-title" data-i18n="project_zenn_audio_title">Zenn Article Audio Reader</h3>
                     <span class="new-badge">NEW</span>
                 </div>
-                <div style="margin: 1rem 0;">
-                    <img src="https://tenormusica2024.github.io/zenn-ai-news/audio-reader/web/affinity-thumbnail.jpg" 
-                         alt="Zenn Article Audio Reader" 
-                         style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
-                </div>
                 <p class="project-description" data-i18n="project_zenn_audio_desc">
                     Zenn投稿記事を高品質音声で朗読するWebアプリケーション。
                     Google Cloud TTS（Neural2音声）とVOICEVOXによる自然な音声合成、
@@ -1049,6 +848,11 @@
                     GitHub Pagesで配信し、複数記事のプレイリスト再生に対応。
                     レスポンシブデザインでモバイル・デスクトップ両対応。
                 </p>
+                <div style="margin: 1rem 0;">
+                    <img src="https://tenormusica2024.github.io/zenn-ai-news/audio-reader/web/affinity-thumbnail.jpg" 
+                         alt="Zenn Article Audio Reader" 
+                         style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
+                </div>
                 <div class="tech-stack">
                     <span class="tech-tag">Google Cloud TTS</span>
                     <span class="tech-tag">VOICEVOX</span>
@@ -1068,17 +872,17 @@
                     <h3 class="project-title" data-i18n="project_esports_title">Esports Tournament Landing</h3>
                     <span class="new-badge">NEW</span>
                 </div>
-                <div style="margin: 1rem 0;">
-                    <img src="https://tenormusica2024.github.io/portfolio/esports-tournament.png" 
-                         alt="Esports Tournament Landing" 
-                         style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
-                </div>
                 <p class="project-description" data-i18n="project_esports_desc">
                     GPT-5の単一プロンプトで生成されたeスポーツ大会のランディングページ。
                     ネオン効果、HTML5 Canvas動画、インタラクティブトーナメント表を統合。
                     Google Cloud Runでの本格運用により、高トラフィック対応とスケーラビリティを実現。
                     ICSカレンダーエクスポート機能でイベント管理も完全対応。
                 </p>
+                <div style="margin: 1rem 0;">
+                    <img src="https://tenormusica2024.github.io/portfolio/esports-tournament.png" 
+                         alt="Esports Tournament Landing" 
+                         style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
+                </div>
                 <div class="tech-stack">
                     <span class="tech-tag">GPT-5 Generated</span>
                     <span class="tech-tag">Flask</span>
@@ -1097,17 +901,17 @@
                     <h3 class="project-title" data-i18n="project_aifm_title">AI.fm Inspired Music App</h3>
                     <span class="new-badge">NEW</span>
                 </div>
-                <div style="margin: 1rem 0;">
-                    <img src="https://tenormusica2024.github.io/portfolio/aifm-music-app.png" 
-                         alt="AI.fm Inspired Music App" 
-                         style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
-                </div>
                 <p class="project-description" data-i18n="project_aifm_desc">
                     Web Audio APIを活用したジェネラティブ・ミュージック・アプリケーション。
                     GPT-5の創造力により、リアルタイム音響合成とビジュアライゼーションを実現。
                     ネオンサイバーパンクUIで包まれた没入型音楽体験を提供。
                     Cloud Runでのグローバル展開により、世界中からアクセス可能。
                 </p>
+                <div style="margin: 1rem 0;">
+                    <img src="https://tenormusica2024.github.io/portfolio/aifm-music-app.png" 
+                         alt="AI.fm Inspired Music App" 
+                         style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
+                </div>
                 <div class="tech-stack">
                     <span class="tech-tag">Web Audio API</span>
                     <span class="tech-tag">Generative Music</span>
@@ -1126,17 +930,17 @@
                     <h3 class="project-title" data-i18n="project_asteroid_title">EV: Pocket Skirmish</h3>
                     <span class="new-badge">NEW</span>
                 </div>
-                <div style="margin: 1rem 0;">
-                    <img src="https://tenormusica2024.github.io/portfolio/asteroid-game.png" 
-                         alt="EV: Pocket Skirmish" 
-                         style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
-                </div>
                 <p class="project-description" data-i18n="project_asteroid_desc">
                     GPT-5プロンプトから生成された本格的な2Dスペースシューティングゲーム。
                     リアルタイム物理エンジン、知的AI敵船、パーティクルエフェクトを統合。
                     HTML5 Canvasによる60FPS描画で滑らかなゲームプレイを実現。
                     Cloud Runでのスケーラブル配信により、グローバルマルチプレイヤー対応可能。
                 </p>
+                <div style="margin: 1rem 0;">
+                    <img src="https://tenormusica2024.github.io/portfolio/asteroid-game.png" 
+                         alt="EV: Pocket Skirmish" 
+                         style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
+                </div>
                 <div class="tech-stack">
                     <span class="tech-tag">HTML5 Canvas</span>
                     <span class="tech-tag">Game Physics</span>
@@ -1194,7 +998,7 @@
             </div>
         </div>
 
-        <h2 id="section-automation" class="section-title" data-i18n="section_automation">業務自動化・Webスクレイピング</h2>
+        <h2 class="section-title" data-i18n="section_automation">業務自動化・Webスクレイピング</h2>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-header">
@@ -1259,72 +1063,33 @@
             </div>
         </div>
 
-        <h2 id="section-ai-creation" class="section-title" data-i18n="section_ai_creation">AI創作プロジェクト</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">AI駆動による音楽動画制作プロジェクト</h3>
-                    <span class="new-badge">NEW</span>
-                </div>
-                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 1rem; border-radius: 8px;">
-                    <iframe 
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
-                        src="https://www.youtube.com/embed/COqLy7Rnfzo" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <p class="project-description">
-                    Suno AIで楽曲制作、Midjourneyでビジュアル生成、Canvaで動画編集を行ったオルタナティブロックトラック。
-                    AI生成ボーカルとAI制作による楽曲の組み合わせです。
-                    複数のAIツールを駆使した、クリエイティブワークフローの実践例としてもご覧いただけます。
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Suno AI</span>
-                    <span class="tech-tag">Midjourney</span>
-                    <span class="tech-tag">Canva</span>
-                    <span class="tech-tag">AI Vocals</span>
-                    <span class="tech-tag">Alternative Rock</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://www.youtube.com/watch?v=COqLy7Rnfzo&list=LL" class="project-link" target="_blank">YouTubeで視聴</a>
-                </div>
+        <h2 class="section-title" data-i18n="section_music">AI Music Creation</h2>
+        <div class="featured-project">
+            <h3 data-i18n="music_project_title">🎵 Alternative Rock - AI駆動による音楽制作プロジェクト</h3>
+            <p data-i18n="music_project_desc">
+                Suno AIで楽曲制作、Midjourneyでビジュアル生成、Canvaで動画編集を行ったオルタナティブロックトラック。
+                AI生成ボーカルとAI制作による楽曲の組み合わせです。
+                複数のAIツールを駆使した、クリエイティブワークフローの実践例としてもご覧いただけます。
+            </p>
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                <iframe 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px;" 
+                    src="https://www.youtube.com/embed/COqLy7Rnfzo" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
             </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">Media Portfolio - AI Video Gallery</h3>
-                    <span class="new-badge">NEW</span>
-                </div>
-                <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #000000 0%, #0a0a0f 100%); border-radius: 8px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                    <video style="width: 100%; height: 100%; object-fit: cover;" muted>
-                        <source src="https://tenormusica2024.github.io/media-portfolio/videos/kling_ai_video_sample.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <p class="project-description">
-                    Kling AI Image to Video技術で生成したAI動画作品を展示するメディアポートフォリオ。
-                    漆黒から青みがかった黒へのグラデーション背景、ゴールド・ブラウン系のアクセントカラーで
-                    高級感のあるギャラリーデザインを実現。AI生成動画の可能性を視覚的に表現。
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Kling AI</span>
-                    <span class="tech-tag">Image to Video</span>
-                    <span class="tech-tag">Gradient Design</span>
-                    <span class="tech-tag">GitHub Pages</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://tenormusica2024.github.io/media-portfolio/" class="project-link" target="_blank">Live Gallery</a>
-                    <a href="https://github.com/Tenormusica2024/media-portfolio" class="project-link" target="_blank">GitHub</a>
-                </div>
+            <div class="featured-links">
+                <a href="https://www.youtube.com/watch?v=COqLy7Rnfzo&list=LL" class="featured-link" target="_blank">YouTubeで視聴</a>
             </div>
         </div>
     </div>
 
     <footer style="max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; text-align: center; color: #999; border-top: 1px solid #e5e5e5; margin-top: 4rem;">
         <div style="display: flex; gap: 2rem; justify-content: center; margin-bottom: 2rem;">
-            <a href="mailto:dragonrondo@gmail.com" style="color: #666; text-decoration: none; font-weight: 500; transition: color 0.3s ease;" onmouseover="this.style.color='#222'" onmouseout="this.style.color='#666'">Email</a>
-            <a href="https://github.com/Tenormusica2024" target="_blank" style="color: #666; text-decoration: none; font-weight: 500; transition: color 0.3s ease;" onmouseover="this.style.color='#222'" onmouseout="this.style.color='#666'">GitHub</a>
+            <a href="mailto:dragonrondo@gmail.com" style="color: #666; text-decoration: none; font-weight: 500; transition: color 0.3s ease;" onmouseover="this.style.color='#1a1a1a'" onmouseout="this.style.color='#666'">Email</a>
+            <a href="https://github.com/Tenormusica2024" target="_blank" style="color: #666; text-decoration: none; font-weight: 500; transition: color 0.3s ease;" onmouseover="this.style.color='#1a1a1a'" onmouseout="this.style.color='#666'">GitHub</a>
         </div>
         <p data-i18n="footer_rights">&copy; 2025 Urayaha Days. All rights reserved.</p>
     </footer>

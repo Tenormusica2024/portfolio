@@ -12,10 +12,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - Akinori Koda</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon-180x180.png">
     <style>
         * {
             margin: 0;
@@ -26,7 +22,7 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: #ffffff;
-            color: #222;
+            color: #1a1a1a;
             line-height: 1.6;
         }
 
@@ -53,7 +49,7 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #222;
+            color: #1a1a1a;
             text-decoration: none;
         }
 
@@ -63,81 +59,8 @@
             align-items: center;
         }
 
-        .nav-item {
-            position: relative;
-        }
-
-        .nav-item::before {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            height: 2rem;
-            background: transparent;
-            z-index: 999;
-        }
-
-        .dropdown {
-            display: none;
-            position: absolute;
-            top: calc(100% + 1rem);
-            left: 0;
-            background: transparent;
-            min-width: 300px;
-            z-index: 1000;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            pointer-events: none;
-        }
-
-        .nav-item:hover .dropdown {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-
-        .dropdown a {
-            display: block;
-            padding: 1rem 1.5rem;
-            color: #666;
-            text-decoration: none;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            font-weight: 500;
-            font-size: 0.95rem;
-            background: transparent;
-        }
-
-        .dropdown a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #222;
-            border-radius: 8px;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: -1;
-        }
-
-        .dropdown a:hover {
-            color: #ffffff;
-            padding-left: 2rem;
-        }
-
-        .dropdown a:hover::before {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
         .lang-switch {
-            background: #222;
+            background: #1a1a1a;
             color: white;
             border: none;
             padding: 0.5rem 1rem;
@@ -157,16 +80,12 @@
             color: #666;
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.2s ease;
+            transition: color 0.3s ease;
             cursor: pointer;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            position: relative;
         }
 
         .nav-links a:hover {
-            background: #333;
-            color: #ffffff;
+            color: #1a1a1a;
         }
 
         .page-header {
@@ -174,34 +93,17 @@
             margin: 0 auto;
             padding: 4rem 2rem 2rem;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         .page-header h1 {
-            font-size: 4rem;
-            margin: 0;
-            color: #222;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            display: inline;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
         }
 
         .page-header p {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #666;
-            font-weight: 700;
-            display: inline;
-            margin-left: 1rem;
-        }
-
-        .title-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0 1rem;
         }
 
         .container {
@@ -212,12 +114,11 @@
 
         .section {
             margin-bottom: 4rem;
-            scroll-margin-top: 100px;
         }
 
         .section-title {
             font-size: 2rem;
-            color: #222;
+            color: #1a1a1a;
             margin-bottom: 2rem;
             border-bottom: 2px solid #e5e5e5;
             padding-bottom: 0.5rem;
@@ -258,7 +159,7 @@
         }
 
         .skill-group h3 {
-            color: #222;
+            color: #1a1a1a;
             font-size: 1.3rem;
             margin-bottom: 1rem;
             font-weight: 600;
@@ -291,7 +192,7 @@
 
         .skill-progress {
             height: 100%;
-            background: #222;
+            background: #1a1a1a;
             border-radius: 3px;
             transition: width 1s ease;
         }
@@ -307,7 +208,7 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(to bottom, #222, #666);
+            background: linear-gradient(to bottom, #1a1a1a, #666);
         }
 
         .timeline-item {
@@ -316,7 +217,7 @@
             background: #f8f8f8;
             border-radius: 15px;
             padding: 2rem;
-            border-left: 3px solid #222;
+            border-left: 3px solid #1a1a1a;
         }
 
         .timeline-item::before {
@@ -326,20 +227,20 @@
             top: 2rem;
             width: 12px;
             height: 12px;
-            background: #222;
+            background: #1a1a1a;
             border-radius: 50%;
             border: 3px solid #ffffff;
         }
 
         .timeline-date {
-            color: #222;
+            color: #1a1a1a;
             font-weight: 600;
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
         }
 
         .timeline-title {
-            color: #222;
+            color: #1a1a1a;
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
@@ -392,7 +293,7 @@
         }
 
         .achievement-title {
-            color: #222;
+            color: #1a1a1a;
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
@@ -419,7 +320,7 @@
         }
 
         .contact-dropdown h3 {
-            color: #222;
+            color: #1a1a1a;
             margin-bottom: 1.5rem;
             text-align: center;
             font-size: 1.3rem;
@@ -427,7 +328,7 @@
 
         .email-option {
             display: block;
-            color: #222;
+            color: #1a1a1a;
             text-decoration: none;
             padding: 0.8rem 1.2rem;
             margin: 0.5rem 0;
@@ -440,7 +341,7 @@
         }
 
         .email-option:hover {
-            background: #222;
+            background: #1a1a1a;
             color: white;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -454,21 +355,12 @@
 
         .email-option.close-btn:hover {
             background: #e5e5e5;
-            color: #222;
+            color: #1a1a1a;
         }
 
         @media (max-width: 768px) {
             .page-header h1 {
-                font-size: 2.5rem;
-            }
-
-            .page-header p {
-                font-size: 1.2rem;
-                margin-left: 0.5rem;
-            }
-
-            .title-container {
-                gap: 0 0.5rem;
+                font-size: 2rem;
             }
             .about-section {
                 padding: 2rem;
@@ -503,22 +395,12 @@
                 nav_profile: "Profile",
                 nav_contact: "Contact",
                 lang_button: "EN",
-                section_data_viz: "データ可視化・分析プロジェクト",
-                section_ai_dev: "AI駆動開発プロジェクト",
-                section_automation: "業務自動化・Webスクレイピング",
-                section_ai_creation: "AI創作プロジェクト",
-                profile_about: "About Me",
-                profile_skills: "Technical Skills",
-                profile_experience: "Professional Experience",
-                profile_achievements: "Key Achievements",
-                profile_philosophy: "Development Philosophy",
-                profile_vision: "AI Philosophy & Vision",
-                page_title: "PROFILE",
-                page_subtitle: "経歴・スキル",
+                page_title: "Profile",
+                page_subtitle: "データエンジニアからAIエンジニアまでのキャリアと実績",
                 about_me_title: "About Me",
-                about_me_p1: "データエンジニア、機械学習エンジニアなどの経歴を経て、現在はAIを活用したソフトウェア開発と業務自動化を主軸とするAIエンジニアとしてフリーランスという形で就労しています。",
-                about_me_p2: "現在はClaude Code、ChatGPT5、GitHub Copilot等のAIツールを駆使し、従来の定常業務、開発フローを大幅に効率化する手法やそのナレッジの社内展開なども行っています。",
-                about_me_p3: "データサイエンス分野では、SageMaker、Snowflakeの実装経験を活かし、効率的なデータ分析パイプライン構築を行っています。また、Webスクレイピングやデイリータスクの自動化により、手作業を大幅に削減する手法は常にアップデート。さらにバイブコーディングによるプログラム開発の多種多様な条件下による最適化手法の構築にも取り組んでいます。またAI画像生成、AI音楽作成やそれを組み合わせた作品の動画化フローの自動化など、最新AI技術のキャッチアップは創作方面についてもセカンドタスクとして行っています。",
+                about_me_p1: "データエンジニア・機械学習エンジニアを経て、現在はAI活用ソフトウェア開発と業務自動化を専門とするフリーランスAIエンジニアとして活動中。",
+                about_me_p2: "Claude Code・ChatGPT・GitHub Copilot等のAIツールを実プロジェクトに導入し、開発生産性を3〜10倍に向上。社内へのナレッジ展開も実施。",
+                about_me_p3: "SageMaker・Snowflake実装経験を活かしたデータパイプライン構築、Webスクレイピング・デイリータスク自動化による手作業削減を実践。AI画像生成・AI音楽制作・動画化フローの自動化など、創作分野での最新AI技術も継続的にキャッチアップ。",
                 skills_title: "Technical Skills",
                 skill_llm: "LLM駆動開発",
                 skill_programming: "プログラミング・開発",
@@ -552,8 +434,8 @@
                 achieve_7_title: "AI駆動開発手法の共有",
                 achieve_7_desc: "最新のAI支援による効率的開発手法の研究・共有",
                 philosophy_title: "Development Philosophy",
-                philosophy_p1: "現在AI駆動開発を中核とした効率的なソフトウェア開発アプローチを実務環境で実践しています。Claude Code、ChatGPT、Codex CLI等のAIツールを適切に活用することで、従来の開発プロセスを根本的に見直し、より上流工程となる意思決定の作業に集中できる環境の構築を実現します。",
-                philosophy_p2: "自動化ファーストの姿勢で、反復的なタスクを徹底的に効率化。ツールの情報を持たせたAIによるマニュアル生成など、従来の自動化プログラムのような俗人化・維持管理の工数の排除。AIエージェントの開発手法の研究を通じて、多様な社内環境に応じた広範囲のソリューションの提案を心がけています。",
+                philosophy_p1: "AI駆動開発を実務で実践。Claude Code・ChatGPT・Codex CLI等のAIツールで開発プロセスを再設計し、より上流の意思決定に集中できる環境を構築。",
+                philosophy_p2: "自動化ファーストで反復タスクを効率化。AIによるマニュアル生成で属人化・保守工数を削減。多様な環境に対応するソリューション提案を実施。",
                 ai_vision_title: "AI Philosophy & Vision",
                 ai_vision_p1: "「AIは仕事を奪い生産性を向上させ人々はその分楽になる、そして働きたい人はよりクリエイティブな仕事に移行できる」これが私の未来予想です。ずいぶん肯定的に考えていますが、単純に食糧生産過程も今後ロボットに代替されていくので、 人々が飢えに苦しむような状況がまた生まれる可能性は低いです。（ただし戦争や犯罪リスクはまた別に存在するとおもいますが）",
                 ai_vision_p2: "肯定的な面だけ見ると、AIが浸透した未来は人間の単純労働を代替して人々が本来やりたかった、憧れていたセクションに移行できるチャンスが来ていると考えています。",
@@ -569,22 +451,12 @@
                 nav_profile: "Profile",
                 nav_contact: "Contact",
                 lang_button: "日本語",
-                section_data_viz: "Data Visualization & Analysis Projects",
-                section_ai_dev: "AI-Driven Development Projects",
-                section_automation: "Business Automation & Web Scraping",
-                section_ai_creation: "AI Creative Projects",
-                profile_about: "About Me",
-                profile_skills: "Technical Skills",
-                profile_experience: "Professional Experience",
-                profile_achievements: "Key Achievements",
-                profile_philosophy: "Development Philosophy",
-                profile_vision: "AI Philosophy & Vision",
-                page_title: "PROFILE",
-                page_subtitle: "Career & Skills",
+                page_title: "Profile",
+                page_subtitle: "Career Journey from Data Engineer to AI Engineer",
                 about_me_title: "About Me",
-                about_me_p1: "Having progressed through roles as a Data Engineer and Machine Learning Engineer, I currently work as a freelance AI Engineer specializing in AI-powered software development and business automation.",
-                about_me_p2: "I leverage AI tools such as Claude Code, ChatGPT5, and GitHub Copilot to dramatically streamline traditional operational workflows and development processes, while also facilitating internal knowledge sharing of these methodologies.",
-                about_me_p3: "In the data science domain, I build efficient data analysis pipelines utilizing my implementation experience with SageMaker and Snowflake. I continuously update methodologies for significantly reducing manual work through web scraping and daily task automation. Additionally, I pursue optimization techniques for program development under diverse conditions through live coding approaches, while maintaining a secondary focus on the latest AI technology catchup in creative fields, including AI image generation, AI music creation, and automated workflows for combining these into video content.",
+                about_me_p1: "Freelance AI Engineer specializing in AI-powered software development and business automation, with background in Data Engineering and Machine Learning.",
+                about_me_p2: "Implemented AI tools (Claude Code, ChatGPT, GitHub Copilot) in real projects to achieve 3-10x productivity improvements. Facilitate internal knowledge sharing of these methodologies.",
+                about_me_p3: "Build data pipelines leveraging SageMaker and Snowflake experience. Automate manual work through web scraping and daily task automation. Continuously catchup latest AI technologies in creative fields including AI image generation, music creation, and automated video production workflows.",
                 skills_title: "Technical Skills",
                 skill_llm: "LLM-Driven Development",
                 skill_programming: "Programming & Development",
@@ -618,8 +490,8 @@
                 achieve_7_title: "Sharing AI-Driven Methods",
                 achieve_7_desc: "Research and sharing of efficient development methods with AI assistance",
                 philosophy_title: "Development Philosophy",
-                philosophy_p1: "I currently practice an efficient software development approach centered on AI-driven development in real-world business environments. By appropriately leveraging AI tools such as Claude Code, ChatGPT, and Codex CLI, I fundamentally reconsider traditional development processes and create environments that enable focus on higher-level decision-making tasks.",
-                philosophy_p2: "With an automation-first attitude, I thoroughly streamline repetitive tasks. Through AI-generated manuals equipped with tool information, I eliminate the personalization and maintenance overhead typical of traditional automation programs. Through research on AI agent development methodologies, I strive to propose a wide range of solutions adapted to diverse internal environments.",
+                philosophy_p1: "Practice AI-driven development in real business environments. Redesign development processes with AI tools (Claude Code, ChatGPT, Codex CLI) to enable focus on higher-level decision-making.",
+                philosophy_p2: "Automation-first approach to streamline repetitive tasks. Eliminate personalization and maintenance overhead through AI-generated manuals. Propose solutions adapted to diverse environments.",
                 ai_vision_title: "AI Philosophy & Vision",
                 ai_vision_p1: "\"AI will replace jobs, increase productivity, allowing people to live more comfortably, and those who want to work can transition to more creative roles.\" This is my vision of the future. While it may seem overly optimistic, as food production processes will also be replaced by robots, the likelihood of people suffering from hunger again is low. (Though risks of war and crime remain separate concerns)",
                 ai_vision_p2: "Looking only at the positive aspects, I believe the AI-permeated future presents an opportunity for humans to transition away from simple labor toward sectors they originally aspired to and dreamed of.",
@@ -690,27 +562,9 @@
     <header class="header">
         <nav class="nav-container">
             <div class="nav-links">
-                <a href="index.html" data-i18n="nav_home">Home</a>
-                <div class="nav-item">
-                    <a href="projects.html" data-i18n="nav_projects">Projects</a>
-                    <div class="dropdown">
-                        <a href="projects.html#section-data-viz" data-i18n="section_data_viz">データ可視化・分析プロジェクト</a>
-                        <a href="projects.html#section-ai-dev" data-i18n="section_ai_dev">AI駆動開発プロジェクト</a>
-                        <a href="projects.html#section-automation" data-i18n="section_automation">業務自動化・Webスクレイピング</a>
-                        <a href="projects.html#section-ai-creation" data-i18n="section_ai_creation">AI創作プロジェクト</a>
-                    </div>
-                </div>
-                <div class="nav-item">
-                    <a href="profile.html" data-i18n="nav_profile">Profile</a>
-                    <div class="dropdown">
-                        <a href="#section-about" data-i18n="profile_about">About Me</a>
-                        <a href="#section-skills" data-i18n="profile_skills">Technical Skills</a>
-                        <a href="#section-experience" data-i18n="profile_experience">Professional Experience</a>
-                        <a href="#section-achievements" data-i18n="profile_achievements">Key Achievements</a>
-                        <a href="#section-philosophy" data-i18n="profile_philosophy">Development Philosophy</a>
-                        <a href="#section-vision" data-i18n="profile_vision">AI Philosophy & Vision</a>
-                    </div>
-                </div>
+                <a href="index-improved.html" data-i18n="nav_home">Home</a>
+                <a href="projects-improved.html" data-i18n="nav_projects">Projects</a>
+                <a href="profile-improved.html" data-i18n="nav_profile">Profile</a>
                 <a onclick="openEmailOptions()" data-i18n="nav_contact">Contact</a>
             </div>
             <button class="lang-switch" onclick="switchLanguage()">EN</button>
@@ -718,14 +572,12 @@
     </header>
 
     <div class="page-header">
-        <div class="title-container">
-            <h1 data-i18n="page_title">Profile</h1>
-            <p data-i18n="page_subtitle">データエンジニアからAIエンジニアまでのキャリアと実績</p>
-        </div>
+        <h1 data-i18n="page_title">Profile</h1>
+        <p data-i18n="page_subtitle">データエンジニアからAIエンジニアまでのキャリアと実績</p>
     </div>
 
     <div class="container">
-        <div class="section" id="section-about">
+        <div class="section">
             <div class="about-section">
                 <h2 class="section-title" data-i18n="about_me_title">About Me</h2>
                 <div class="about-content">
@@ -747,7 +599,7 @@
             </div>
         </div>
 
-        <div class="section" id="section-skills">
+        <div class="section">
             <h2 class="section-title" data-i18n="skills_title">Technical Skills</h2>
             <div class="skills-comprehensive">
                 <div class="skill-group">
@@ -944,7 +796,7 @@
             </div>
         </div>
 
-        <div class="section" id="section-experience">
+        <div class="section">
             <h2 class="section-title" data-i18n="experience_title">Professional Experience</h2>
             <div class="experience-timeline">
                 <div class="timeline-line"></div>
@@ -985,7 +837,7 @@
             </div>
         </div>
 
-        <div class="section" id="section-achievements">
+        <div class="section">
             <h2 class="section-title" data-i18n="achievements_title">Key Achievements</h2>
             <div class="achievements">
                 <div class="achievement-card">
@@ -1150,7 +1002,7 @@
             </div>
         </div>
 
-        <div class="section" id="section-philosophy">
+        <div class="section">
             <h2 class="section-title" data-i18n="philosophy_title">Development Philosophy</h2>
             <div class="about-section">
                 <div class="about-content">
@@ -1169,7 +1021,7 @@
             </div>
         </div>
 
-        <div class="section" id="section-vision">
+        <div class="section">
             <h2 class="section-title" data-i18n="ai_vision_title">AI Philosophy & Vision</h2>
             <div class="about-section">
                 <div class="about-content">
@@ -1192,8 +1044,8 @@
 
     <footer style="max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; text-align: center; color: #999; border-top: 1px solid #e5e5e5; margin-top: 4rem;">
         <div style="display: flex; gap: 2rem; justify-content: center; margin-bottom: 2rem;">
-            <a href="mailto:dragonrondo@gmail.com" style="color: #666; text-decoration: none; font-weight: 500; transition: color 0.3s ease;" onmouseover="this.style.color='#222'" onmouseout="this.style.color='#666'">Email</a>
-            <a href="https://github.com/Tenormusica2024" target="_blank" style="color: #666; text-decoration: none; font-weight: 500; transition: color 0.3s ease;" onmouseover="this.style.color='#222'" onmouseout="this.style.color='#666'">GitHub</a>
+            <a href="mailto:dragonrondo@gmail.com" style="color: #666; text-decoration: none; font-weight: 500; transition: color 0.3s ease;" onmouseover="this.style.color='#1a1a1a'" onmouseout="this.style.color='#666'">Email</a>
+            <a href="https://github.com/Tenormusica2024" target="_blank" style="color: #666; text-decoration: none; font-weight: 500; transition: color 0.3s ease;" onmouseover="this.style.color='#1a1a1a'" onmouseout="this.style.color='#666'">GitHub</a>
         </div>
         <p data-i18n="footer_rights">&copy; 2025 Urayaha Days. All rights reserved.</p>
     </footer>
