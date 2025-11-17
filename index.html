@@ -673,6 +673,8 @@
                 btn_profile: "Profile",
                 contact_title: "Contact",
                 contact_description: "プロジェクトのご相談やお仕事のご依頼など、お気軽にご連絡ください",
+                contact_x: "X (Twitter)",
+                contact_github: "GitHub",
                 footer_rights: "© 2025 Urayaha Days. All rights reserved.",
                 gmail_web: "Gmail Webで開く",
                 close_btn: "閉じる"
@@ -721,6 +723,8 @@
                 btn_profile: "Profile",
                 contact_title: "Contact",
                 contact_description: "Feel free to contact me for project consultations, job inquiries, and more",
+                contact_x: "X (Twitter)",
+                contact_github: "GitHub",
                 footer_rights: "© 2025 Urayaha Days. All rights reserved.",
                 gmail_web: "Open in Gmail Web",
                 close_btn: "Close"
@@ -837,7 +841,13 @@
                         <a href="profile.html#section-vision" data-i18n="profile_vision">AI Philosophy & Vision</a>
                     </div>
                 </div>
-                <a onclick="openEmailOptions()" data-i18n="nav_contact">Contact</a>
+                <div class="nav-item">
+                    <a href="#contact" data-i18n="nav_contact">Contact</a>
+                    <div class="dropdown">
+                        <a href="https://x.com/Tenormusica2024" target="_blank" data-i18n="contact_x">X (Twitter)</a>
+                        <a href="https://github.com/Tenormusica2024" target="_blank" data-i18n="contact_github">GitHub</a>
+                    </div>
+                </div>
             </div>
             <button class="lang-switch" onclick="switchLanguage()">EN</button>
         </nav>

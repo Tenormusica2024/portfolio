@@ -612,6 +612,8 @@
                 project_web_scraping_desc: "複数のWebサイトから情報を自動収集・分析するスクレイピングシステム。BeautifulSoup、Seleniumを活用し、動的コンテンツも対応。収集データをLLMで自動分類・要約し、構造化された情報として出力。",
                 footer_rights: "© 2025 Urayaha Days. All rights reserved.",
                 contact_title: "Contact",
+                contact_x: "X (Twitter)",
+                contact_github: "GitHub",
                 gmail_web: "Gmail Webで開く",
                 close_btn: "閉じる"
             },
@@ -676,6 +678,8 @@
                 project_web_scraping_desc: "Scraping system automatically collecting and analyzing information from multiple websites. Supports dynamic content using BeautifulSoup and Selenium. Automatically classifies and summarizes collected data with LLM, outputting as structured information.",
                 footer_rights: "© 2025 Urayaha Days. All rights reserved.",
                 contact_title: "Contact",
+                contact_x: "X (Twitter)",
+                contact_github: "GitHub",
                 gmail_web: "Open in Gmail Web",
                 close_btn: "Close"
             }
@@ -761,7 +765,13 @@
                         <a href="profile.html#section-vision" data-i18n="profile_vision">AI Philosophy & Vision</a>
                     </div>
                 </div>
-                <a onclick="openEmailOptions()" data-i18n="nav_contact">Contact</a>
+                <div class="nav-item">
+                    <a href="index.html#contact" data-i18n="nav_contact">Contact</a>
+                    <div class="dropdown">
+                        <a href="https://x.com/Tenormusica2024" target="_blank" data-i18n="contact_x">X (Twitter)</a>
+                        <a href="https://github.com/Tenormusica2024" target="_blank" data-i18n="contact_github">GitHub</a>
+                    </div>
+                </div>
             </div>
             <button class="lang-switch" onclick="switchLanguage()">EN</button>
         </nav>
