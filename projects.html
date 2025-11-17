@@ -239,6 +239,18 @@
             border: 1px solid #e5e5e5;
         }
 
+        .project-screenshot {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .project-screenshot:hover {
+            transform: scale(1.02);
+        }
+
         .project-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
@@ -920,6 +932,7 @@
                     <h3 class="project-title" data-i18n="featured_sound_title">AI Integrated Sound Platform</h3>
                     <span class="new-badge">NEW</span>
                 </div>
+                <img src="images/sound_platform_screenshot.png" alt="Sound Platform Main Menu" class="project-screenshot">
                 <p class="project-description" data-i18n="featured_sound_desc">
                     Claude Code Maxプラン活用による100%個人開発の音楽・ポッドキャスト配信プラットフォーム。Firebase AuthenticationとCloud Firestoreによるユーザー管理から、プレイリスト・フレンド登録・音楽トラックのシェア機能など包括的なユーザー体験を提供。Progressive Web App技術によるオフライン再生対応、レスポンシブデザイン・ダークモードでデザインされたUI/UXを提供。SUNO AIで作成したAI音楽もシェア機能を追加予定。
                 </p>
