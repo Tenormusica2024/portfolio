@@ -1,0 +1,732 @@
+[main 3e2f589] Update latest Zenn article
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+git: 'credential-manager-core' is not a git command. See 'git --help'.
+To https://github.com/Tenormusica2024/portfolio.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/Tenormusica2024/portfolio.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+=== Zenn Article Update Script - 2025-10-19 20:53:59.824916 ===
+Latest article: Karpathy「AIエージェントは1年ではなく10年かかる」- 過剰予測への警告
+Published: Sun, 19 Oct 2025 05:43:30 GMT
+URL: https://zenn.dev/tenormusica/articles/karpathy-ai-agents-decade-not-year
+Updated index.html with latest article: Karpathy「AIエージェントは1年ではなく10年かかる」- 過剰予測への警告
+Git operation failed: Command '['git', 'push', 'origin', 'main']' returned non-zero exit status 1.
+=== Zenn Article Update Script - 2025-10-20 02:54:01.700883 ===
+Latest article: Karpathy「AIエージェントは1年ではなく10年かかる」- 過剰予測への警告
+Published: Sun, 19 Oct 2025 05:43:30 GMT
+URL: https://zenn.dev/tenormusica/articles/karpathy-ai-agents-decade-not-year
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-20 08:54:00.419009 ===
+Latest article: Karpathy「AIエージェントは1年ではなく10年かかる」- 過剰予測への警告
+Published: Sun, 19 Oct 2025 05:43:30 GMT
+URL: https://zenn.dev/tenormusica/articles/karpathy-ai-agents-decade-not-year
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-20 14:54:01.289772 ===
+Latest article: Karpathy「AIエージェントは1年ではなく10年かかる」- 過剰予測への警告
+Published: Sun, 19 Oct 2025 05:43:30 GMT
+URL: https://zenn.dev/tenormusica/articles/karpathy-ai-agents-decade-not-year
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-20 20:54:11.308879 ===
+Latest article: Karpathy「AIエージェントは1年ではなく10年かかる」- 過剰予測への警告
+Published: Sun, 19 Oct 2025 05:43:30 GMT
+URL: https://zenn.dev/tenormusica/articles/karpathy-ai-agents-decade-not-year
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-21 02:54:00.650657 ===
+Latest article: Karpathy「AIエージェントは1年ではなく10年かかる」- 過剰予測への警告
+Published: Sun, 19 Oct 2025 05:43:30 GMT
+URL: https://zenn.dev/tenormusica/articles/karpathy-ai-agents-decade-not-year
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-21 08:54:01.660021 ===
+Latest article: Karpathy「AIエージェントは1年ではなく10年かかる」- 過剰予測への警告
+Published: Sun, 19 Oct 2025 05:43:30 GMT
+URL: https://zenn.dev/tenormusica/articles/karpathy-ai-agents-decade-not-year
+No changes detected - article is already up to date
+No update needed
+[main 24087cd] Update latest Zenn article
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+git: 'credential-manager-core' is not a git command. See 'git --help'.
+To https://github.com/Tenormusica2024/portfolio.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/Tenormusica2024/portfolio.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+=== Zenn Article Update Script - 2025-10-21 14:54:00.356428 ===
+Latest article: Claude Code がウェブ・iOS版を正式リリース！CLI版との違いなど
+Published: Tue, 21 Oct 2025 03:03:06 GMT
+URL: https://zenn.dev/tenormusica/articles/claude-code-web-release-2025-v2
+Updated index.html with latest article: Claude Code がウェブ・iOS版を正式リリース！CLI版との違いなど
+Git operation failed: Command '['git', 'push', 'origin', 'main']' returned non-zero exit status 1.
+=== Zenn Article Update Script - 2025-10-21 20:54:00.038787 ===
+Latest article: Claude Code がウェブ・iOS版を正式リリース！CLI版との違いなど
+Published: Tue, 21 Oct 2025 03:03:06 GMT
+URL: https://zenn.dev/tenormusica/articles/claude-code-web-release-2025-v2
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-22 02:53:59.435817 ===
+Latest article: Claude Code がウェブ・iOS版を正式リリース！CLI版との違いなど
+Published: Tue, 21 Oct 2025 03:03:06 GMT
+URL: https://zenn.dev/tenormusica/articles/claude-code-web-release-2025-v2
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-22 08:53:59.713276 ===
+Latest article: Claude Code がウェブ・iOS版を正式リリース！CLI版との違いなど
+Published: Tue, 21 Oct 2025 03:03:06 GMT
+URL: https://zenn.dev/tenormusica/articles/claude-code-web-release-2025-v2
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-22 14:53:59.461996 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: Wed, 22 Oct 2025 04:59:44 GMT
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-22 20:54:00.236934 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: Wed, 22 Oct 2025 04:59:44 GMT
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-23 02:53:59.351121 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: Wed, 22 Oct 2025 04:59:44 GMT
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-23 08:53:59.665531 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: Wed, 22 Oct 2025 04:59:44 GMT
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-23 14:53:59.315049 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: Wed, 22 Oct 2025 04:59:44 GMT
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-23 20:53:59.471332 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: Wed, 22 Oct 2025 04:59:44 GMT
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-24 02:53:59.490097 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: Wed, 22 Oct 2025 04:59:44 GMT
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-24 08:54:00.556295 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: Wed, 22 Oct 2025 04:59:44 GMT
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-24 14:53:59.396197 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: 2025-10-22T13:59:44.202+09:00
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-24 20:54:00.379614 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: 2025-10-22T13:59:44.202+09:00
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-25 02:54:00.289072 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: 2025-10-22T13:59:44.202+09:00
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-25 08:54:07.221963 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: 2025-10-22T13:59:44.202+09:00
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-25 14:54:01.847902 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: 2025-10-22T13:59:44.202+09:00
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-25 20:54:00.395679 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: 2025-10-22T13:59:44.202+09:00
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-26 02:54:00.226283 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: 2025-10-22T13:59:44.202+09:00
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-26 08:54:02.034150 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: 2025-10-22T13:59:44.202+09:00
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-26 14:53:59.511009 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: 2025-10-22T13:59:44.202+09:00
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-26 20:53:59.571293 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: 2025-10-22T13:59:44.202+09:00
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-27 02:53:59.601314 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: 2025-10-22T13:59:44.202+09:00
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-27 08:53:59.652994 ===
+Latest article: ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フローと検索戦争の激化
+Published: 2025-10-22T13:59:44.202+09:00
+URL: https://zenn.dev/tenormusica/articles/chatgpt-atlas-google-search-war-2025
+No changes detected - article is already up to date
+No update needed
+[main 6687d43] Update latest Zenn article
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+git: 'credential-manager-core' is not a git command. See 'git --help'.
+To https://github.com/Tenormusica2024/portfolio.git
+   f60358d..6687d43  main -> main
+=== Zenn Article Update Script - 2025-10-27 14:53:59.773408 ===
+Latest article: Meta 600人レイオフの裏側：AI投資数百億ドルと人員削減の矛盾
+Published: 2025-10-27T11:17:58.349+09:00
+URL: https://zenn.dev/tenormusica/articles/tech-layoffs-ai-investment-paradox-2025
+Updated index.html with latest article: Meta 600人レイオフの裏側：AI投資数百億ドルと人員削減の矛盾
+Successfully committed and pushed to GitHub
+=== Zenn Article Update Script - 2025-10-27 20:53:59.707455 ===
+Latest article: Meta 600人レイオフの裏側：AI投資数百億ドルと人員削減の矛盾
+Published: 2025-10-27T11:17:58.349+09:00
+URL: https://zenn.dev/tenormusica/articles/tech-layoffs-ai-investment-paradox-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-28 02:53:59.534540 ===
+Latest article: Meta 600人レイオフの裏側：AI投資数百億ドルと人員削減の矛盾
+Published: 2025-10-27T11:17:58.349+09:00
+URL: https://zenn.dev/tenormusica/articles/tech-layoffs-ai-investment-paradox-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-28 08:53:59.550945 ===
+Latest article: Meta 600人レイオフの裏側：AI投資数百億ドルと人員削減の矛盾
+Published: 2025-10-27T11:17:58.349+09:00
+URL: https://zenn.dev/tenormusica/articles/tech-layoffs-ai-investment-paradox-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-28 14:53:59.575813 ===
+Latest article: Meta 600人レイオフの裏側：AI投資数百億ドルと人員削減の矛盾
+Published: 2025-10-27T11:17:58.349+09:00
+URL: https://zenn.dev/tenormusica/articles/tech-layoffs-ai-investment-paradox-2025
+No changes detected - article is already up to date
+No update needed
+[main b350708] Update latest Zenn article
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+git: 'credential-manager-core' is not a git command. See 'git --help'.
+To https://github.com/Tenormusica2024/portfolio.git
+   5bccf17..b350708  main -> main
+=== Zenn Article Update Script - 2025-10-28 20:54:00.242035 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+Updated index.html with latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Successfully committed and pushed to GitHub
+=== Zenn Article Update Script - 2025-10-29 02:53:58.537889 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-29 08:53:58.835222 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-29 14:53:58.992103 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-29 20:53:58.854438 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-30 02:53:59.259243 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-30 08:53:59.097406 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-30 14:53:59.160447 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-30 20:53:59.066878 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-31 02:53:59.533156 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-31 08:53:59.634965 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-31 14:53:59.877393 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-10-31 20:53:59.778086 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-01 02:54:01.820971 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-01 08:54:00.410317 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-01 14:54:00.909904 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-01 20:54:00.899389 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-02 02:53:59.879422 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-02 08:53:59.867784 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-02 14:54:01.939157 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-02 20:54:01.085641 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-03 02:54:00.178214 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-03 08:53:58.974206 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-03 14:53:59.262106 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-03 20:53:59.429223 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-04 02:53:59.623751 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-04 08:53:59.080120 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-04 14:53:59.597704 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-04 20:53:59.157527 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-05 02:53:59.317348 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-05 08:53:59.242280 ===
+Latest article: Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実
+Published: 2025-10-28T17:37:14.573+09:00
+URL: https://zenn.dev/tenormusica/articles/sora2-grok-video-generation-reality-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-05 14:53:59.177268 ===
+Latest article: OpenAI、Amazon と5.8兆円契約。でもその資金どこから？
+Published: 2025-11-05T14:38:41.535+09:00
+URL: https://zenn.dev/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-05 20:53:59.230294 ===
+Latest article: OpenAI、Amazon と5.8兆円契約。でもその資金どこから？
+Published: 2025-11-05T14:38:41.535+09:00
+URL: https://zenn.dev/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-06 02:53:59.587200 ===
+Latest article: OpenAI、Amazon と5.8兆円契約。でもその資金どこから？
+Published: 2025-11-05T14:38:41.535+09:00
+URL: https://zenn.dev/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-06 08:53:59.611797 ===
+Latest article: OpenAI、Amazon と5.8兆円契約。でもその資金どこから？
+Published: 2025-11-05T14:38:41.535+09:00
+URL: https://zenn.dev/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-06 14:53:59.260768 ===
+Latest article: OpenAI、Amazon と5.8兆円契約。でもその資金どこから？
+Published: 2025-11-05T14:38:41.535+09:00
+URL: https://zenn.dev/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-06 20:53:59.282676 ===
+Latest article: OpenAI、Amazon と5.8兆円契約。でもその資金どこから？
+Published: 2025-11-05T14:38:41.535+09:00
+URL: https://zenn.dev/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-07 02:53:59.693011 ===
+Latest article: OpenAI、Amazon と5.8兆円契約。でもその資金どこから？
+Published: 2025-11-05T14:38:41.535+09:00
+URL: https://zenn.dev/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-07 08:56:00.652515 ===
+Latest article: OpenAI、Amazon と5.8兆円契約。でもその資金どこから？
+Published: 2025-11-05T14:38:41.535+09:00
+URL: https://zenn.dev/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-07 14:53:59.406338 ===
+Latest article: OpenAI、Amazon と5.8兆円契約。でもその資金どこから？
+Published: 2025-11-05T14:38:41.535+09:00
+URL: https://zenn.dev/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-07 20:54:36.958556 ===
+Latest article: OpenAI、Amazon と5.8兆円契約。でもその資金どこから？
+Published: 2025-11-05T14:38:41.535+09:00
+URL: https://zenn.dev/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-08 02:53:59.576511 ===
+Latest article: OpenAI、Amazon と5.8兆円契約。でもその資金どこから？
+Published: 2025-11-05T14:38:41.535+09:00
+URL: https://zenn.dev/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-08 08:53:58.633375 ===
+Latest article: OpenAI、Amazon と5.8兆円契約。でもその資金どこから？
+Published: 2025-11-05T14:38:41.535+09:00
+URL: https://zenn.dev/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-08 14:53:59.140585 ===
+Latest article: OpenAI、Amazon と5.8兆円契約。でもその資金どこから？
+Published: 2025-11-05T14:38:41.535+09:00
+URL: https://zenn.dev/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-08 20:53:58.935657 ===
+Latest article: Affinityが完全無料化 - Canvaの「基本無料・AI有料」戦略
+Published: 2025-11-08T15:23:15.098+09:00
+URL: https://zenn.dev/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-09 02:53:59.045770 ===
+Latest article: Affinityが完全無料化 - Canvaの「基本無料・AI有料」戦略
+Published: 2025-11-08T15:23:15.098+09:00
+URL: https://zenn.dev/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-09 08:53:59.060261 ===
+Latest article: Affinityが完全無料化 - Canvaの「基本無料・AI有料」戦略
+Published: 2025-11-08T15:23:15.098+09:00
+URL: https://zenn.dev/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-09 14:53:59.051564 ===
+Latest article: Affinityが完全無料化 - Canvaの「基本無料・AI有料」戦略
+Published: 2025-11-08T15:23:15.098+09:00
+URL: https://zenn.dev/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-09 20:53:58.939050 ===
+Latest article: Affinityが完全無料化 - Canvaの「基本無料・AI有料」戦略
+Published: 2025-11-08T15:23:15.098+09:00
+URL: https://zenn.dev/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-10 02:53:58.857231 ===
+Latest article: Affinityが完全無料化 - Canvaの「基本無料・AI有料」戦略
+Published: 2025-11-08T15:23:15.098+09:00
+URL: https://zenn.dev/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-10 08:53:58.557528 ===
+Latest article: Affinityが完全無料化 - Canvaの「基本無料・AI有料」戦略
+Published: 2025-11-08T15:23:15.098+09:00
+URL: https://zenn.dev/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-10 14:53:58.640824 ===
+Latest article: GitHub Agent HQ登場 - AIエージェント乱立時代の統一プラットフォーム
+Published: 2025-11-10T11:42:19.883+09:00
+URL: https://zenn.dev/tenormusica/articles/github-agent-hq-unified-ai-coding-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-10 20:53:58.676870 ===
+Latest article: GitHub Agent HQ登場 - AIエージェント乱立時代の統一プラットフォーム
+Published: 2025-11-10T11:42:19.883+09:00
+URL: https://zenn.dev/tenormusica/articles/github-agent-hq-unified-ai-coding-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-11 02:53:59.036778 ===
+Latest article: GitHub Agent HQ登場 - AIエージェント乱立時代の統一プラットフォーム
+Published: 2025-11-10T11:42:19.883+09:00
+URL: https://zenn.dev/tenormusica/articles/github-agent-hq-unified-ai-coding-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-11 08:53:58.675663 ===
+Latest article: GitHub Agent HQ登場 - AIエージェント乱立時代の統一プラットフォーム
+Published: 2025-11-10T11:42:19.883+09:00
+URL: https://zenn.dev/tenormusica/articles/github-agent-hq-unified-ai-coding-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-11 14:53:58.668069 ===
+Latest article: GitHub Agent HQ登場 - AIエージェント乱立時代の統一プラットフォーム
+Published: 2025-11-10T11:42:19.883+09:00
+URL: https://zenn.dev/tenormusica/articles/github-agent-hq-unified-ai-coding-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-11 20:53:59.211920 ===
+Latest article: GitHub Agent HQ登場 - AIエージェント乱立時代の統一プラットフォーム
+Published: 2025-11-10T11:42:19.883+09:00
+URL: https://zenn.dev/tenormusica/articles/github-agent-hq-unified-ai-coding-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-12 02:53:58.699022 ===
+Latest article: GitHub Agent HQ登場 - AIエージェント乱立時代の統一プラットフォーム
+Published: 2025-11-10T11:42:19.883+09:00
+URL: https://zenn.dev/tenormusica/articles/github-agent-hq-unified-ai-coding-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-12 08:53:58.979574 ===
+Latest article: GitHub Agent HQ登場 - AIエージェント乱立時代の統一プラットフォーム
+Published: 2025-11-10T11:42:19.883+09:00
+URL: https://zenn.dev/tenormusica/articles/github-agent-hq-unified-ai-coding-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-12 14:53:58.635704 ===
+Latest article: GitHub Agent HQ登場 - AIエージェント乱立時代の統一プラットフォーム
+Published: 2025-11-10T11:42:19.883+09:00
+URL: https://zenn.dev/tenormusica/articles/github-agent-hq-unified-ai-coding-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-12 20:53:58.814082 ===
+Latest article: GitHub Agent HQ登場 - AIエージェント乱立時代の統一プラットフォーム
+Published: 2025-11-10T11:42:19.883+09:00
+URL: https://zenn.dev/tenormusica/articles/github-agent-hq-unified-ai-coding-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-13 08:53:58.752279 ===
+Latest article: GitHub Agent HQ登場 - AIエージェント乱立時代の統一プラットフォーム
+Published: 2025-11-10T11:42:19.883+09:00
+URL: https://zenn.dev/tenormusica/articles/github-agent-hq-unified-ai-coding-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-13 14:53:58.612972 ===
+Latest article: GitHub Agent HQ登場 - AIエージェント乱立時代の統一プラットフォーム
+Published: 2025-11-10T11:42:19.883+09:00
+URL: https://zenn.dev/tenormusica/articles/github-agent-hq-unified-ai-coding-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-13 20:53:59.061087 ===
+Latest article: GitHub Agent HQ登場 - AIエージェント乱立時代の統一プラットフォーム
+Published: 2025-11-10T11:42:19.883+09:00
+URL: https://zenn.dev/tenormusica/articles/github-agent-hq-unified-ai-coding-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-14 02:53:59.822910 ===
+Latest article: GitHub Agent HQ登場 - AIエージェント乱立時代の統一プラットフォーム
+Published: 2025-11-10T11:42:19.883+09:00
+URL: https://zenn.dev/tenormusica/articles/github-agent-hq-unified-ai-coding-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-14 08:53:59.629899 ===
+Latest article: GitHub Agent HQ登場 - AIエージェント乱立時代の統一プラットフォーム
+Published: 2025-11-10T11:42:19.883+09:00
+URL: https://zenn.dev/tenormusica/articles/github-agent-hq-unified-ai-coding-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-14 14:53:59.615043 ===
+Latest article: GitHub Agent HQ登場 - AIエージェント乱立時代の統一プラットフォーム
+Published: 2025-11-10T11:42:19.883+09:00
+URL: https://zenn.dev/tenormusica/articles/github-agent-hq-unified-ai-coding-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-14 20:53:59.517738 ===
+Latest article: GitHub Agent HQ登場 - AIエージェント乱立時代の統一プラットフォーム
+Published: 2025-11-10T11:42:19.883+09:00
+URL: https://zenn.dev/tenormusica/articles/github-agent-hq-unified-ai-coding-2025
+No changes detected - article is already up to date
+No update needed
+=== Zenn Article Update Script - 2025-11-15 02:53:59.640746 ===
+Traceback (most recent call last):
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 139, in <module>
+    main()
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 129, in main
+    print(f"Latest article: {article['title']}")
+UnicodeEncodeError: 'cp932' codec can't encode character '\u2013' in position 45: illegal multibyte sequence
+=== Zenn Article Update Script - 2025-11-15 08:53:59.194735 ===
+Traceback (most recent call last):
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 139, in <module>
+    main()
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 129, in main
+    print(f"Latest article: {article['title']}")
+UnicodeEncodeError: 'cp932' codec can't encode character '\u2013' in position 45: illegal multibyte sequence
+=== Zenn Article Update Script - 2025-11-15 14:53:59.567324 ===
+Traceback (most recent call last):
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 139, in <module>
+    main()
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 129, in main
+    print(f"Latest article: {article['title']}")
+UnicodeEncodeError: 'cp932' codec can't encode character '\u2013' in position 45: illegal multibyte sequence
+=== Zenn Article Update Script - 2025-11-15 20:53:59.204451 ===
+Traceback (most recent call last):
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 139, in <module>
+    main()
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 129, in main
+    print(f"Latest article: {article['title']}")
+UnicodeEncodeError: 'cp932' codec can't encode character '\u2013' in position 45: illegal multibyte sequence
+=== Zenn Article Update Script - 2025-11-16 02:53:59.014295 ===
+Traceback (most recent call last):
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 139, in <module>
+    main()
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 129, in main
+    print(f"Latest article: {article['title']}")
+UnicodeEncodeError: 'cp932' codec can't encode character '\u2013' in position 45: illegal multibyte sequence
+=== Zenn Article Update Script - 2025-11-16 08:53:59.390972 ===
+Traceback (most recent call last):
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 139, in <module>
+    main()
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 129, in main
+    print(f"Latest article: {article['title']}")
+UnicodeEncodeError: 'cp932' codec can't encode character '\u2013' in position 45: illegal multibyte sequence
+=== Zenn Article Update Script - 2025-11-16 14:53:59.338224 ===
+Traceback (most recent call last):
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 139, in <module>
+    main()
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 129, in main
+    print(f"Latest article: {article['title']}")
+UnicodeEncodeError: 'cp932' codec can't encode character '\u2013' in position 45: illegal multibyte sequence
+=== Zenn Article Update Script - 2025-11-16 20:53:59.206136 ===
+Traceback (most recent call last):
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 139, in <module>
+    main()
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 129, in main
+    print(f"Latest article: {article['title']}")
+UnicodeEncodeError: 'cp932' codec can't encode character '\u2013' in position 45: illegal multibyte sequence
+=== Zenn Article Update Script - 2025-11-17 02:53:58.922007 ===
+Traceback (most recent call last):
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 139, in <module>
+    main()
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 129, in main
+    print(f"Latest article: {article['title']}")
+UnicodeEncodeError: 'cp932' codec can't encode character '\u2013' in position 45: illegal multibyte sequence
+=== Zenn Article Update Script - 2025-11-17 08:53:58.653976 ===
+Traceback (most recent call last):
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 139, in <module>
+    main()
+  File "C:\Users\Tenormusica\portfolio\update_zenn_article.py", line 129, in main
+    print(f"Latest article: {article['title']}")
+UnicodeEncodeError: 'cp932' codec can't encode character '\u2013' in position 45: illegal multibyte sequence
+=== Zenn Article Update Script - 2025-11-17 14:53:58.597478 ===
+Latest article: Cursor 2.0で8つのAIエージェントが並列稼働 - Composerモデルの裏側
+Published: 2025-11-17T10:40:29.186+09:00
+URL: https://zenn.dev/tenormusica/articles/cursor-2-composer-parallel-agents-2025
+No changes detected - article is already up to date
+No update needed
