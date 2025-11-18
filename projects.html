@@ -558,6 +558,40 @@
         }
 
         @media (max-width: 768px) {
+            /* モバイルではドロップダウンを無効化（overflow問題を回避） */
+            .dropdown {
+                display: none !important;
+            }
+
+            /* ナビゲーションの横スクロール実装 */
+            .nav-links {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                touch-action: pan-x;
+                scrollbar-width: thin;
+                scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+            }
+
+            .nav-links::-webkit-scrollbar {
+                height: 4px;
+            }
+
+            .nav-links::-webkit-scrollbar-track {
+                background: transparent;
+            }
+
+            .nav-links::-webkit-scrollbar-thumb {
+                background: rgba(0, 0, 0, 0.2);
+                border-radius: 2px;
+            }
+
+            .nav-item {
+                flex-shrink: 0;
+                white-space: nowrap;
+            }
+
             .projects-grid {
                 grid-template-columns: 1fr;
             }
