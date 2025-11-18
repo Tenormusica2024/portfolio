@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Screen Pattern 4 - Urayaha Days</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .loading-content {
+            text-align: center;
+            position: relative;
+        }
+
+        .logo-text {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #222;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.8rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            color: #999;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 4rem;
+        }
+
+        .bars-container {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            align-items: flex-end;
+            height: 60px;
+            margin-bottom: 3rem;
+        }
+
+        .bar {
+            width: 4px;
+            background: #222;
+            border-radius: 2px;
+            animation: barPulse 1.2s ease-in-out infinite;
+        }
+
+        .bar:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .bar:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .bar:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .bar:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .bar:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .bar:nth-child(6) {
+            animation-delay: 0.3s;
+        }
+
+        .bar:nth-child(7) {
+            animation-delay: 0.2s;
+        }
+
+        .bar:nth-child(8) {
+            animation-delay: 0.1s;
+        }
+
+        @keyframes barPulse {
+            0%, 100% {
+                height: 20px;
+                opacity: 0.3;
+            }
+            50% {
+                height: 60px;
+                opacity: 1;
+            }
+        }
+
+        .loading-status {
+            font-size: 0.9rem;
+            color: #666;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .percentage-display {
+            font-size: 1rem;
+            color: #999;
+            font-weight: 300;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .decorative-border {
+            width: 1px;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent 0%, #e5e5e5 50%, transparent 100%);
+            margin: 3rem auto 0;
+        }
+
+        .radial-dots {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            pointer-events: none;
+        }
+
+        .radial-dot {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #e5e5e5;
+            border-radius: 50%;
+            animation: dotFade 3s ease-in-out infinite;
+        }
+
+        @keyframes dotFade {
+            0%, 100% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        .radial-dot:nth-child(1) { top: 0; left: 50%; animation-delay: 0s; }
+        .radial-dot:nth-child(2) { top: 15%; right: 15%; animation-delay: 0.4s; }
+        .radial-dot:nth-child(3) { top: 50%; right: 0; animation-delay: 0.8s; }
+        .radial-dot:nth-child(4) { bottom: 15%; right: 15%; animation-delay: 1.2s; }
+        .radial-dot:nth-child(5) { bottom: 0; left: 50%; animation-delay: 1.6s; }
+        .radial-dot:nth-child(6) { bottom: 15%; left: 15%; animation-delay: 2s; }
+        .radial-dot:nth-child(7) { top: 50%; left: 0; animation-delay: 2.4s; }
+        .radial-dot:nth-child(8) { top: 15%; left: 15%; animation-delay: 2.8s; }
+
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 2rem;
+            }
+
+            .bars-container {
+                height: 50px;
+            }
+
+            .radial-dots {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-screen">
+        <div class="radial-dots">
+            <div class="radial-dot"></div>
+            <div class="radial-dot"></div>
+            <div class="radial-dot"></div>
+            <div class="radial-dot"></div>
+            <div class="radial-dot"></div>
+            <div class="radial-dot"></div>
+            <div class="radial-dot"></div>
+            <div class="radial-dot"></div>
+        </div>
+
+        <div class="loading-content">
+            <div class="logo-text">URAYAHA DAYS</div>
+            <div class="logo-subtitle">Portfolio Loading</div>
+
+            <div class="bars-container">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+
+            <div class="loading-status">INITIALIZING</div>
+            <div class="percentage-display">
+                <span id="percentage4">0</span>%
+            </div>
+
+            <div class="decorative-border"></div>
+        </div>
+    </div>
+
+    <script>
+        let percentage = 0;
+        const percentageElement = document.getElementById('percentage4');
+        const statusElement = document.querySelector('.loading-status');
+
+        const interval = setInterval(() => {
+            if (percentage < 100) {
+                percentage += Math.floor(Math.random() * 4) + 1;
+                if (percentage > 100) percentage = 100;
+                
+                percentageElement.textContent = percentage;
+
+                if (percentage < 30) {
+                    statusElement.textContent = 'INITIALIZING';
+                } else if (percentage < 70) {
+                    statusElement.textContent = 'LOADING ASSETS';
+                } else if (percentage < 100) {
+                    statusElement.textContent = 'FINALIZING';
+                } else {
+                    statusElement.textContent = 'COMPLETE';
+                }
+            } else {
+                clearInterval(interval);
+                setTimeout(() => {
+                    document.querySelector('.loading-screen').style.opacity = '0';
+                    document.querySelector('.loading-screen').style.transition = 'opacity 0.6s ease';
+                    setTimeout(() => {
+                        document.querySelector('.loading-screen').style.display = 'none';
+                    }, 600);
+                }, 300);
+            }
+        }, 30);
+    </script>
+</body>
+</html>

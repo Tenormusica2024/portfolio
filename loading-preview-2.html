@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Screen Pattern 2 - Urayaha Days</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .loading-content {
+            text-align: center;
+            position: relative;
+        }
+
+        .circular-progress {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            margin: 0 auto 3rem;
+        }
+
+        .circle-bg {
+            fill: none;
+            stroke: #f0f0f0;
+            stroke-width: 2;
+        }
+
+        .circle-progress {
+            fill: none;
+            stroke: #222;
+            stroke-width: 2;
+            stroke-linecap: round;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            transition: stroke-dashoffset 0.3s ease;
+        }
+
+        .percentage-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            font-weight: 300;
+            color: #222;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #222;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+        }
+
+        .tagline {
+            font-size: 0.85rem;
+            color: #999;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .grid-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(34, 34, 34, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(34, 34, 34, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% {
+                background-position: 0 0, 0 0;
+            }
+            100% {
+                background-position: 50px 50px, 50px 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .circular-progress {
+                width: 120px;
+                height: 120px;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .percentage-center {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-screen">
+        <div class="grid-pattern"></div>
+        
+        <div class="loading-content">
+            <div class="circular-progress">
+                <svg width="150" height="150">
+                    <circle class="circle-bg" cx="75" cy="75" r="70"></circle>
+                    <circle class="circle-progress" cx="75" cy="75" r="70" 
+                            stroke-dasharray="439.6" stroke-dashoffset="439.6"></circle>
+                </svg>
+                <div class="percentage-center">
+                    <span id="percentage2">0</span>%
+                </div>
+            </div>
+
+            <div class="logo-text">URAYAHA DAYS</div>
+            <div class="tagline">AI Engineer & Data Engineer</div>
+        </div>
+    </div>
+
+    <script>
+        let percentage = 0;
+        const percentageElement = document.getElementById('percentage2');
+        const circleProgress = document.querySelector('.circle-progress');
+        const circumference = 439.6;
+
+        const interval = setInterval(() => {
+            if (percentage < 100) {
+                percentage += Math.floor(Math.random() * 3) + 1;
+                if (percentage > 100) percentage = 100;
+                
+                percentageElement.textContent = percentage;
+                const offset = circumference - (percentage / 100) * circumference;
+                circleProgress.style.strokeDashoffset = offset;
+            } else {
+                clearInterval(interval);
+                setTimeout(() => {
+                    document.querySelector('.loading-screen').style.opacity = '0';
+                    document.querySelector('.loading-screen').style.transition = 'opacity 0.5s ease';
+                    setTimeout(() => {
+                        document.querySelector('.loading-screen').style.display = 'none';
+                    }, 500);
+                }, 500);
+            }
+        }, 30);
+    </script>
+</body>
+</html>
