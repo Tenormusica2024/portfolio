@@ -473,21 +473,16 @@
             animation: fadeInUp 0.6s cubic-bezier(0.05, 0.7, 0.3, 0.99) forwards;
         }
 
-        .name span:nth-child(1) { animation-delay: 0.1s; }
-        .name span:nth-child(2) { animation-delay: 0.15s; }
-        .name span:nth-child(3) { animation-delay: 0.2s; }
-        .name span:nth-child(4) { animation-delay: 0.25s; }
-        .name span:nth-child(5) { animation-delay: 0.3s; }
-        .name span:nth-child(6) { animation-delay: 0.35s; }
-        .name span:nth-child(7) { animation-delay: 0.4s; }
-        .name span:nth-child(8) { animation-delay: 0.45s; }
-        .name span:nth-child(9) { animation-delay: 0.5s; }
-        .name span:nth-child(10) { animation-delay: 0.55s; }
-        .name span:nth-child(11) { animation-delay: 0.6s; }
-        .name span:nth-child(12) { animation-delay: 0.65s; }
-
         @keyframes fadeInUp {
             to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .name span {
+                animation: none;
                 opacity: 1;
                 transform: translateY(0);
             }
@@ -1140,6 +1135,9 @@
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (t[key]) {
+                    if (el.classList.contains('name')) {
+                        return;
+                    }
                     el.textContent = t[key];
                 }
             });
@@ -1235,13 +1233,23 @@
             if (!nameElement) return;
             
             const text = nameElement.textContent;
+            nameElement.setAttribute('aria-label', text);
+            nameElement.style.visibility = 'hidden';
             nameElement.textContent = '';
+            
+            const fragment = document.createDocumentFragment();
+            const baseDelay = 0.1;
+            const delayIncrement = 0.05;
             
             text.split('').forEach((char, index) => {
                 const span = document.createElement('span');
                 span.textContent = char === ' ' ? '\u00A0' : char;
-                nameElement.appendChild(span);
+                span.style.animationDelay = `${baseDelay + (index * delayIncrement)}s`;
+                fragment.appendChild(span);
             });
+            
+            nameElement.appendChild(fragment);
+            nameElement.style.visibility = 'visible';
         }
 
         document.addEventListener('DOMContentLoaded', function() {
