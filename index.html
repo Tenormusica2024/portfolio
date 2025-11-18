@@ -863,7 +863,9 @@
                 gap: 1.5rem;
                 flex-wrap: nowrap;
                 overflow-x: auto;
+                overflow-y: hidden;
                 -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
             }
 
             /* 項目の圧縮防止 */
@@ -876,6 +878,10 @@
             /* スクロールバーのスタイリング（オプション） */
             .nav-links::-webkit-scrollbar {
                 height: 4px;
+            }
+
+            .nav-links::-webkit-scrollbar-track {
+                background: transparent;
             }
 
             .nav-links::-webkit-scrollbar-thumb {
