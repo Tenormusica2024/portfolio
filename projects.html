@@ -1425,6 +1425,11 @@
             }
             
             if (video.paused) {
+                // preload="none"の場合、最初にload()を実行してメタデータを読み込む
+                if (video.readyState === 0) {
+                    video.load();
+                }
+                
                 video.play().then(() => {
                     overlay.style.opacity = '0';
                     setTimeout(() => {
