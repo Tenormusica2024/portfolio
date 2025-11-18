@@ -1178,16 +1178,9 @@
         }
 
         function initLoadingScreen() {
-            const hasVisited = sessionStorage.getItem('hasVisitedHomepage');
             const loadingScreen = document.getElementById('loadingScreen');
             const mainContent = document.getElementById('mainContent');
             
-            if (hasVisited) {
-                loadingScreen.style.display = 'none';
-                mainContent.classList.add('fade-in');
-                return;
-            }
-
             let percentage = 0;
             const percentageElement = document.getElementById('loadingPercentage');
 
@@ -1198,7 +1191,6 @@
                     percentageElement.textContent = percentage;
                 } else {
                     clearInterval(interval);
-                    sessionStorage.setItem('hasVisitedHomepage', 'true');
                     setTimeout(() => {
                         loadingScreen.classList.add('hidden');
                         mainContent.classList.add('fade-in');
