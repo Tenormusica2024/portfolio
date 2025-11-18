@@ -496,60 +496,34 @@
         }
 
         @media (max-width: 768px) {
-            /* モバイルではドロップダウンを完全無効化 */
+            /* ドロップダウン無効化（display: noneのみで完結） */
             .dropdown {
-                display: none !important;
-                visibility: hidden !important;
-                opacity: 0 !important;
-                pointer-events: none !important;
+                display: none;
             }
 
-            /* hover動作も無効化 */
-            .nav-item:hover .dropdown {
-                display: none !important;
-            }
-
-            /* ナビゲーションの横スクロール実装（斜めスクロール完全防止） */
+            /* ナビゲーション横スクロール（最小限の実装） */
             .nav-links {
+                gap: 1.5rem;
                 flex-wrap: nowrap;
                 overflow-x: auto;
-                overflow-y: hidden;
                 -webkit-overflow-scrolling: touch;
-                touch-action: pan-x;
-                overscroll-behavior-x: contain;
-                overscroll-behavior-y: none;
-                scrollbar-width: thin;
-                scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
             }
 
-            .nav-links::-webkit-scrollbar {
-                height: 4px;
-            }
-
-            .nav-links::-webkit-scrollbar-track {
-                background: transparent;
-            }
-
-            .nav-links::-webkit-scrollbar-thumb {
-                background: rgba(0, 0, 0, 0.2);
-                border-radius: 2px;
-            }
-
-            .nav-item {
-                flex-shrink: 0;
-                white-space: nowrap;
-            }
-
-            /* 直下のaタグも圧縮防止 */
+            /* 項目の圧縮防止 */
+            .nav-item,
             .nav-links > a {
                 flex-shrink: 0;
                 white-space: nowrap;
             }
 
-            /* ページ全体の斜めスクロール防止 */
-            body {
-                overflow-x: hidden;
-                overscroll-behavior-x: none;
+            /* スクロールバーのスタイリング（オプション） */
+            .nav-links::-webkit-scrollbar {
+                height: 4px;
+            }
+
+            .nav-links::-webkit-scrollbar-thumb {
+                background: rgba(0, 0, 0, 0.2);
+                border-radius: 2px;
             }
 
             .page-header h1 {
