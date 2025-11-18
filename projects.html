@@ -192,7 +192,7 @@
             font-weight: 700;
             letter-spacing: 0.05em;
             display: inline;
-            animation: slideInFromLeft 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            animation: slideInFromLeft 1s cubic-bezier(0.05, 0.7, 0.3, 0.99) forwards;
         }
 
         .page-header p {
@@ -201,7 +201,7 @@
             font-weight: 700;
             display: inline;
             margin-left: 1rem;
-            animation: slideInFromRight 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            animation: slideInFromRight 1s cubic-bezier(0.05, 0.7, 0.3, 0.99) forwards;
         }
 
         .title-container {
@@ -218,6 +218,9 @@
                 transform: translateX(-150%);
                 color: rgba(34, 34, 34, 0);
             }
+            60% {
+                color: rgba(34, 34, 34, 0.3);
+            }
             100% {
                 opacity: 1;
                 transform: translateX(0);
@@ -230,6 +233,9 @@
                 opacity: 0;
                 transform: translateX(150%);
                 color: rgba(102, 102, 102, 0);
+            }
+            60% {
+                color: rgba(102, 102, 102, 0.3);
             }
             100% {
                 opacity: 1;
