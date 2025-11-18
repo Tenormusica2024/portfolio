@@ -650,6 +650,16 @@
                 min-width: 280px;
                 padding: 1.5rem;
             }
+
+            /* セクションタイトルの「・」を改行に変換（モバイルのみ） */
+            .section-title[data-i18n="section_data_viz"]::after {
+                content: "\Aデータ可視化\A分析プロジェクト";
+                white-space: pre;
+            }
+
+            .section-title[data-i18n="section_data_viz"] {
+                font-size: 0;  /* 元のテキストを非表示 */
+            }
         }
 
     </style>
