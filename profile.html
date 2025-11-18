@@ -496,18 +496,28 @@
         }
 
         @media (max-width: 768px) {
-            /* モバイルではドロップダウンを無効化（overflow問題を回避） */
+            /* モバイルではドロップダウンを完全無効化 */
             .dropdown {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
+            }
+
+            /* hover動作も無効化 */
+            .nav-item:hover .dropdown {
                 display: none !important;
             }
 
-            /* ナビゲーションの横スクロール実装 */
+            /* ナビゲーションの横スクロール実装（斜めスクロール完全防止） */
             .nav-links {
                 flex-wrap: nowrap;
                 overflow-x: auto;
                 overflow-y: hidden;
                 -webkit-overflow-scrolling: touch;
                 touch-action: pan-x;
+                overscroll-behavior-x: contain;
+                overscroll-behavior-y: none;
                 scrollbar-width: thin;
                 scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
             }
@@ -528,6 +538,18 @@
             .nav-item {
                 flex-shrink: 0;
                 white-space: nowrap;
+            }
+
+            /* 直下のaタグも圧縮防止 */
+            .nav-links > a {
+                flex-shrink: 0;
+                white-space: nowrap;
+            }
+
+            /* ページ全体の斜めスクロール防止 */
+            body {
+                overflow-x: hidden;
+                overscroll-behavior-x: none;
             }
 
             .page-header h1 {
