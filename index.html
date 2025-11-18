@@ -486,6 +486,15 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+            
+            .achievement-card {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .achievement-card.animate-in {
+                animation: none;
+            }
         }
 
         .title {
@@ -611,6 +620,24 @@
             padding: 2rem;
             text-align: center;
             transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        .achievement-card.animate-in {
+            animation: fadeInUp 0.8s cubic-bezier(0.05, 0.7, 0.3, 0.99) forwards;
+        }
+        
+        .achievement-card:nth-child(1).animate-in {
+            animation-delay: 0.1s;
+        }
+        
+        .achievement-card:nth-child(2).animate-in {
+            animation-delay: 0.2s;
+        }
+        
+        .achievement-card:nth-child(3).animate-in {
+            animation-delay: 0.3s;
         }
 
         .achievement-card:hover {
@@ -1293,10 +1320,31 @@
             }
         }
 
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.achievement-card').forEach(card => {
+                observer.observe(card);
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             initLoadingScreen();
             updateContent();
             fetchLatestZennArticle();
+            initScrollAnimations();
         });
     </script>
 
