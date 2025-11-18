@@ -853,6 +853,39 @@
         }
 
         @media (max-width: 768px) {
+            /* モバイルではドロップダウンを無効化（overflow問題を回避） */
+            .dropdown {
+                display: none !important;
+            }
+
+            /* ナビゲーションの横スクロール実装 */
+            .nav-links {
+                gap: 1.5rem;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+                scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+            }
+
+            .nav-links::-webkit-scrollbar {
+                height: 4px;
+            }
+
+            .nav-links::-webkit-scrollbar-track {
+                background: transparent;
+            }
+
+            .nav-links::-webkit-scrollbar-thumb {
+                background: rgba(0, 0, 0, 0.2);
+                border-radius: 2px;
+            }
+
+            .nav-item {
+                flex-shrink: 0;
+                white-space: nowrap;
+            }
+
             .name {
                 font-size: 2.5rem;
             }
@@ -883,10 +916,6 @@
             .contact-dropdown {
                 min-width: 280px;
                 padding: 1.5rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
             }
         }
     </style>
