@@ -10,7 +10,7 @@
       gtag('config', 'G-YJ1WP1J2NQ');
     </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Urayaha Days - AI Engineer & Data Engineer</title>
     
     <!-- SEO Meta Tags -->
@@ -853,19 +853,41 @@
         }
 
         @media (max-width: 768px) {
-            /* ドロップダウン無効化（display: noneのみで完結） */
+            /* ドロップダウン無効化 */
             .dropdown {
                 display: none;
             }
 
-            /* ナビゲーション横スクロール（最小限の実装） */
+            /* ヘッダー全体の縦スクロール禁止 */
+            header {
+                overflow-y: hidden;
+                overflow-x: visible;
+            }
+            
+            /* ナビゲーションコンテナの縦スクロール禁止 */
+            .nav-container {
+                overflow-y: hidden;
+                overflow-x: visible;
+            }
+
+            /* ナビゲーション横スクロール（完全修正版） */
             .nav-links {
                 gap: 1.5rem;
                 flex-wrap: nowrap;
                 overflow-x: auto;
                 overflow-y: hidden;
+                touch-action: pan-x;  /* 横スクロールのみ許可 */
                 -webkit-overflow-scrolling: touch;
                 scrollbar-width: thin;
+                padding: 0.5rem 0;
+            }
+            
+            /* リンクのダブルタップズーム無効化 */
+            .nav-links a,
+            .nav-item a {
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
+                user-select: none;
             }
 
             /* 項目の圧縮防止 */
@@ -875,7 +897,7 @@
                 white-space: nowrap;
             }
 
-            /* スクロールバーのスタイリング（オプション） */
+            /* スクロールバーのスタイリング */
             .nav-links::-webkit-scrollbar {
                 height: 4px;
             }
