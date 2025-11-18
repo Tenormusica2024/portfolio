@@ -493,9 +493,17 @@
             color: #666;
             margin-bottom: 0;
             font-weight: 700;
-            display: inline;
+            display: inline-block;
             margin-left: 1rem;
-            animation: slideInFromRight 1s cubic-bezier(0.05, 0.7, 0.3, 0.99) forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .title span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s cubic-bezier(0.05, 0.7, 0.3, 0.99) forwards;
         }
 
         .title-container {
@@ -1135,7 +1143,7 @@
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (t[key]) {
-                    if (el.classList.contains('name')) {
+                    if (el.classList.contains('name') || el.classList.contains('title')) {
                         return;
                     }
                     el.textContent = t[key];
@@ -1234,27 +1242,51 @@
         }
 
         function initTextAnimation() {
+            // .name要素のアニメーション処理
             const nameElement = document.querySelector('.name');
-            if (!nameElement) return;
+            if (nameElement) {
+                const text = nameElement.textContent;
+                nameElement.setAttribute('aria-label', text);
+                nameElement.style.visibility = 'hidden';
+                nameElement.textContent = '';
+                
+                const fragment = document.createDocumentFragment();
+                const baseDelay = 0.1;
+                const delayIncrement = 0.05;
+                
+                text.split('').forEach((char, index) => {
+                    const span = document.createElement('span');
+                    span.textContent = char === ' ' ? '\u00A0' : char;
+                    span.style.animationDelay = `${baseDelay + (index * delayIncrement)}s`;
+                    fragment.appendChild(span);
+                });
+                
+                nameElement.appendChild(fragment);
+                nameElement.style.visibility = 'visible';
+            }
             
-            const text = nameElement.textContent;
-            nameElement.setAttribute('aria-label', text);
-            nameElement.style.visibility = 'hidden';
-            nameElement.textContent = '';
-            
-            const fragment = document.createDocumentFragment();
-            const baseDelay = 0.1;
-            const delayIncrement = 0.05;
-            
-            text.split('').forEach((char, index) => {
-                const span = document.createElement('span');
-                span.textContent = char === ' ' ? '\u00A0' : char;
-                span.style.animationDelay = `${baseDelay + (index * delayIncrement)}s`;
-                fragment.appendChild(span);
-            });
-            
-            nameElement.appendChild(fragment);
-            nameElement.style.visibility = 'visible';
+            // .title要素のアニメーション処理
+            const titleElement = document.querySelector('.title');
+            if (titleElement) {
+                const text = titleElement.textContent;
+                titleElement.setAttribute('aria-label', text);
+                titleElement.style.visibility = 'hidden';
+                titleElement.textContent = '';
+                
+                const fragment = document.createDocumentFragment();
+                const baseDelay = 0.8;
+                const delayIncrement = 0.05;
+                
+                text.split('').forEach((char, index) => {
+                    const span = document.createElement('span');
+                    span.textContent = char === ' ' ? '\u00A0' : char;
+                    span.style.animationDelay = `${baseDelay + (index * delayIncrement)}s`;
+                    fragment.appendChild(span);
+                });
+                
+                titleElement.appendChild(fragment);
+                titleElement.style.visibility = 'visible';
+            }
         }
 
         document.addEventListener('DOMContentLoaded', function() {
