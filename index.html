@@ -1220,6 +1220,11 @@
                     setTimeout(() => {
                         loadingScreen.classList.add('hidden');
                         mainContent.classList.add('fade-in');
+                        
+                        setTimeout(() => {
+                            initTextAnimation();
+                        }, 100);
+                        
                         setTimeout(() => {
                             loadingScreen.style.display = 'none';
                         }, 500);
@@ -1254,7 +1259,6 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             initLoadingScreen();
-            initTextAnimation();
             updateContent();
             fetchLatestZennArticle();
         });
