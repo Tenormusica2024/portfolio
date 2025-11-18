@@ -1428,6 +1428,23 @@
                 // preload="none"の場合、最初にload()を実行してメタデータを読み込む
                 if (video.readyState === 0) {
                     video.load();
+                    // loadedmetadataイベントを待ってから再生
+                    video.addEventListener('loadedmetadata', function playAfterLoad() {
+                        video.removeEventListener('loadedmetadata', playAfterLoad);
+                        video.play().then(() => {
+                            overlay.style.opacity = '0';
+                            setTimeout(() => {
+                                overlay.style.display = 'none';
+                                overlay.textContent = '⏸️ 一時停止';
+                                isProcessing = false;
+                            }, ANIMATION_DURATION);
+                        }).catch(error => {
+                            console.error('Video playback failed:', error);
+                            overlay.textContent = '⚠️ 再生に失敗しました';
+                            isProcessing = false;
+                        });
+                    }, { once: true });
+                    return;
                 }
                 
                 video.play().then(() => {
