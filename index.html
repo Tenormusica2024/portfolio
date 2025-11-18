@@ -271,6 +271,15 @@
             margin-left: 0.2rem;
         }
 
+        .main-content {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .main-content.fade-in {
+            opacity: 1;
+        }
+
         .header {
             background: #ffffff;
             border-bottom: 1px solid #e5e5e5;
@@ -1110,9 +1119,11 @@
         function initLoadingScreen() {
             const hasVisited = sessionStorage.getItem('hasVisitedHomepage');
             const loadingScreen = document.getElementById('loadingScreen');
+            const mainContent = document.getElementById('mainContent');
             
             if (hasVisited) {
                 loadingScreen.style.display = 'none';
+                mainContent.classList.add('fade-in');
                 return;
             }
 
@@ -1129,6 +1140,7 @@
                     sessionStorage.setItem('hasVisitedHomepage', 'true');
                     setTimeout(() => {
                         loadingScreen.classList.add('hidden');
+                        mainContent.classList.add('fade-in');
                         setTimeout(() => {
                             loadingScreen.style.display = 'none';
                         }, 500);
@@ -1180,6 +1192,7 @@
         </nav>
     </header>
 
+    <div id="mainContent" class="main-content">
     <main>
         <section class="hero">
             <div class="profile-section">
@@ -1456,5 +1469,6 @@ Veo 3 vs. Sora by OpenAI: Side-by-Side Comparison for 2025https://www.powtoon.co
         </div>
         <p data-i18n="footer_rights">&copy; 2025 Urayaha Days. All rights reserved.</p>
     </footer>
+    </div>
 </body>
 </html>
