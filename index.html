@@ -496,13 +496,13 @@
                 animation: none;
             }
 
-            .achievement-icon svg {
+            .achievement-icon {
                 opacity: 1;
+                transform: scale(1);
             }
 
-            .achievement-icon::before,
-            .achievement-icon::after {
-                display: none;
+            .achievement-card.animate-in .achievement-icon {
+                animation: none;
             }
 
             .achievement-icon.reveal-icon svg,
@@ -725,12 +725,57 @@
             height: 64px;
             margin: 0 auto 1.5rem;
             display: block;
+            opacity: 0;
+            transform: scale(0.5);
         }
         
         .achievement-icon svg {
             width: 100%;
             height: 100%;
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+        }
+
+        /* Icon popup fade-in animation */
+        .achievement-card.animate-in .achievement-icon {
+            animation: popupFadeIn 0.6s cubic-bezier(0.05, 0.7, 0.3, 0.99) forwards;
+        }
+
+        .achievement-card:nth-child(1).animate-in .achievement-icon {
+            animation-delay: 0s;
+        }
+
+        .achievement-card:nth-child(2).animate-in .achievement-icon {
+            animation-delay: 0.1s;
+        }
+
+        .achievement-card:nth-child(3).animate-in .achievement-icon {
+            animation-delay: 0.2s;
+        }
+
+        .achievement-card:nth-child(4).animate-in .achievement-icon {
+            animation-delay: 0.3s;
+        }
+
+        .achievement-card:nth-child(5).animate-in .achievement-icon {
+            animation-delay: 0.4s;
+        }
+
+        .achievement-card:nth-child(6).animate-in .achievement-icon {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes popupFadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .achievement-title {
