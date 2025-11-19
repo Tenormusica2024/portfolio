@@ -667,6 +667,71 @@
             }
         }
 
+        /* Fade-in animation for project cards */
+        .project-card {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.3s ease;
+        }
+
+        .project-card.animate-in {
+            animation: fadeInUp 1.5s cubic-bezier(0.05, 0.7, 0.3, 0.99) forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card:nth-child(1).animate-in {
+            animation-delay: 0s;
+        }
+
+        .project-card:nth-child(2).animate-in {
+            animation-delay: 0.3s;
+        }
+
+        .project-card:nth-child(3).animate-in {
+            animation-delay: 0.6s;
+        }
+
+        .project-card:nth-child(4).animate-in {
+            animation-delay: 0s;
+        }
+
+        .project-card:nth-child(5).animate-in {
+            animation-delay: 0.3s;
+        }
+
+        .project-card:nth-child(6).animate-in {
+            animation-delay: 0.6s;
+        }
+
+        .project-card:nth-child(7).animate-in {
+            animation-delay: 0s;
+        }
+
+        .project-card:nth-child(8).animate-in {
+            animation-delay: 0.3s;
+        }
+
+        .project-card:nth-child(9).animate-in {
+            animation-delay: 0.6s;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .project-card {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .project-card.animate-in {
+                animation: none;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1465,6 +1530,29 @@
         </div>
         <p data-i18n="footer_rights">&copy; 2025 Urayaha Days. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Intersection Observer for fade-in animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.project-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
 
 </body>
 </html>
