@@ -1,6 +1,6 @@
 {
-  "title": "Cursor 2.0で8つのAIエージェントが並列稼働 - Composerモデルの裏側",
-  "link": "https://zenn.dev/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
-  "description": "参照元\nIntroducing Cursor 2.0 and Composer - Cursor公式ブログ\nhttps://cursor.com/blog/2-0\nComposer: Building a fast frontier model with RL - Cursor\nhttps://cursor.com/blog/composer\n\n Hacker Newsで賛否両論、4倍速を謳うCo...",
+  "title": "Gemini 3 Pro が LMArena 1501 Elo達成 - GPT-5.1・Claude 4.5を上回る歴史的スコア",
+  "link": "https://zenn.dev/tenormusica/articles/gemini-3-pro-preview-release",
+  "description": "参照元\nGemini 3: Introducing the latest Gemini AI model from Google - Google Blog\nhttps://blog.google/products/gemini/gemini-3/\nGemini 3 Pro benchmark leak shows Google's AI outperforms GPT-5.1, Claude 4...",
   "updated": true
 }
