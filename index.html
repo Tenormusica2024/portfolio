@@ -669,6 +669,42 @@
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
 
+        /* Fade-in animation for skill cards */
+        .skill-card {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .skill-card.animate-in {
+            animation: fadeInUp 1.5s cubic-bezier(0.05, 0.7, 0.3, 0.99) forwards;
+        }
+
+        .skill-card:nth-child(1).animate-in {
+            animation-delay: 0s;
+        }
+
+        .skill-card:nth-child(2).animate-in {
+            animation-delay: 0.3s;
+        }
+
+        .skill-card:nth-child(3).animate-in {
+            animation-delay: 0.6s;
+        }
+
+        .skill-card:nth-child(4).animate-in {
+            animation-delay: 0.9s;
+        }
+
+        /* Fade-in animation for article cards */
+        .article-card {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .article-card.animate-in {
+            animation: fadeInUp 1.5s cubic-bezier(0.05, 0.7, 0.3, 0.99) forwards;
+        }
+
         .achievement-icon {
             width: 64px;
             height: 64px;
@@ -1360,6 +1396,14 @@
             }, observerOptions);
             
             document.querySelectorAll('.achievement-card').forEach(card => {
+                observer.observe(card);
+            });
+            
+            document.querySelectorAll('.skill-card').forEach(card => {
+                observer.observe(card);
+            });
+            
+            document.querySelectorAll('.article-card').forEach(card => {
                 observer.observe(card);
             });
         }
