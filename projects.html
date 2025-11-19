@@ -304,6 +304,24 @@
             font-size: 1.4rem;
             color: #222;
             font-weight: 600;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        /* Title fade-in animation after panel appears */
+        .project-card.animate-in .project-title {
+            animation: titleFadeIn 0.8s 0.5s cubic-bezier(0.05, 0.7, 0.3, 0.99) forwards;
+        }
+
+        @keyframes titleFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .project-badge {
@@ -728,6 +746,15 @@
             }
 
             .project-card.animate-in {
+                animation: none;
+            }
+
+            .project-title {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .project-card.animate-in .project-title {
                 animation: none;
             }
         }
