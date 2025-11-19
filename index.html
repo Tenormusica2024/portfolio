@@ -736,7 +736,7 @@
             opacity: 0;
         }
 
-        /* Icon reveal animation: transparent -> black circle -> gradient reveal */
+        /* Icon reveal animation: transparent -> colored circle -> gradient reveal */
         .achievement-icon::before {
             content: '';
             position: absolute;
@@ -746,7 +746,7 @@
             height: 0;
             transform: translate(-50%, -50%);
             border-radius: 50%;
-            background: #222;
+            background: radial-gradient(circle, #667eea 0%, #764ba2 100%);
             z-index: 2;
             pointer-events: none;
             opacity: 0;
@@ -1513,6 +1513,16 @@
 
         function revealIcons() {
             const icons = document.querySelectorAll('.achievement-icon');
+            
+            // Remove reveal-icon class first to reset animation
+            icons.forEach(icon => {
+                icon.classList.remove('reveal-icon');
+            });
+            
+            // Force reflow to restart animation
+            void document.body.offsetHeight;
+            
+            // Add reveal-icon class with delay
             icons.forEach((icon, index) => {
                 setTimeout(() => {
                     icon.classList.add('reveal-icon');
