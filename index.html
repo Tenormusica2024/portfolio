@@ -821,27 +821,16 @@
         .btn-primary::before {
             content: '';
             position: absolute;
-            top: 0;
+            top: 100%;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to top, #222 0%, #fff 100%);
-            opacity: 0;
-            transition: opacity 2s ease;
+            background: #fff;
+            transition: top 2s ease;
         }
 
         .btn-primary.animate::before {
-            opacity: 1;
-            animation: gradientFromBottom 2s ease forwards;
-        }
-
-        @keyframes gradientFromBottom {
-            0% {
-                background: linear-gradient(to top, #fff 0%, #fff 0%, #222 0%);
-            }
-            100% {
-                background: linear-gradient(to top, #222 100%, #fff 100%, #fff 100%);
-            }
+            top: 0;
         }
 
         .btn-primary span {
@@ -864,27 +853,16 @@
         .btn-secondary::before {
             content: '';
             position: absolute;
-            top: 0;
+            top: -100%;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, #fff 0%, #222 100%);
-            opacity: 0;
-            transition: opacity 2s ease;
+            background: #222;
+            transition: top 2s ease;
         }
 
         .btn-secondary.animate::before {
-            opacity: 1;
-            animation: gradientFromTop 2s ease forwards;
-        }
-
-        @keyframes gradientFromTop {
-            0% {
-                background: linear-gradient(to bottom, #222 0%, #222 0%, #fff 0%);
-            }
-            100% {
-                background: linear-gradient(to bottom, #fff 100%, #222 100%, #222 100%);
-            }
+            top: 0;
         }
 
         .btn-secondary span {
