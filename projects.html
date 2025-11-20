@@ -259,6 +259,20 @@
             color: #222;
             font-weight: 600;
             scroll-margin-top: 100px;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: fadeInFromTop 1s cubic-bezier(0.05, 0.7, 0.3, 0.99) forwards;
+        }
+
+        @keyframes fadeInFromTop {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .projects-grid {
