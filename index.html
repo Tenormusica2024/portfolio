@@ -814,6 +814,39 @@
         .btn-primary {
             background: #222;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, #222 0%, #fff 100%);
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+
+        .btn-primary.animate::before {
+            opacity: 1;
+            animation: gradientFromBottom 2s ease forwards;
+        }
+
+        @keyframes gradientFromBottom {
+            0% {
+                background: linear-gradient(to top, #fff 0%, #fff 0%, #222 0%);
+            }
+            100% {
+                background: linear-gradient(to top, #222 100%, #fff 100%, #fff 100%);
+            }
+        }
+
+        .btn-primary span {
+            position: relative;
+            z-index: 1;
         }
 
         .btn-primary:hover {
@@ -824,6 +857,39 @@
         .btn-secondary {
             background: transparent;
             color: #222;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #fff 0%, #222 100%);
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+
+        .btn-secondary.animate::before {
+            opacity: 1;
+            animation: gradientFromTop 2s ease forwards;
+        }
+
+        @keyframes gradientFromTop {
+            0% {
+                background: linear-gradient(to bottom, #222 0%, #222 0%, #fff 0%);
+            }
+            100% {
+                background: linear-gradient(to bottom, #fff 100%, #222 100%, #222 100%);
+            }
+        }
+
+        .btn-secondary span {
+            position: relative;
+            z-index: 1;
         }
 
         .btn-secondary:hover {
@@ -1504,6 +1570,33 @@
                     sessionStorage.setItem('skipLoadingScreen', 'true');
                 });
             }
+
+            // CTA ボタンのグラデーション演出
+            const initButtonAnimation = () => {
+                const btnPrimary = document.querySelector('.btn-primary');
+                const btnSecondary = document.querySelector('.btn-secondary');
+                
+                const observerOptions = {
+                    threshold: 0.5,
+                    rootMargin: '0px'
+                };
+                
+                const observerCallback = (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate');
+                        }
+                    });
+                };
+                
+                const observer = new IntersectionObserver(observerCallback, observerOptions);
+                
+                if (btnPrimary) observer.observe(btnPrimary);
+                if (btnSecondary) observer.observe(btnSecondary);
+            };
+
+            // ボタンアニメーション初期化
+            initButtonAnimation();
         });
     </script>
 
@@ -1801,8 +1894,8 @@ Veo 3 vs. Sora by OpenAI: Side-by-Side Comparison for 2025https://www.powtoon.co
             </div>
 
             <div class="cta-section">
-                <a href="projects.html" class="btn btn-primary" data-i18n="btn_projects">プロジェクトを見る</a>
-                <a href="profile.html" class="btn btn-secondary" data-i18n="btn_profile">Profile</a>
+                <a href="projects.html" class="btn btn-primary" data-i18n="btn_projects"><span>プロジェクトを見る</span></a>
+                <a href="profile.html" class="btn btn-secondary" data-i18n="btn_profile"><span>Profile</span></a>
             </div>
         </section>
 
