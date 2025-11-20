@@ -1366,7 +1366,13 @@
                     if (el.classList.contains('name') || el.classList.contains('title')) {
                         return;
                     }
-                    el.textContent = t[key];
+                    // CTAボタンの場合、span内のテキストのみを書き換える
+                    const span = el.querySelector('span');
+                    if (span) {
+                        span.textContent = t[key];
+                    } else {
+                        el.textContent = t[key];
+                    }
                 }
             });
 
