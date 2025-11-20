@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akira Sato | Digital Designer</title>
+    <meta name="description" content="Portfolio of Akira Sato, a digital designer based in Tokyo. Specializing in interactive web experiences and brand identity.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <header class="header">
+        <div class="logo">AS</div>
+        <nav class="nav">
+            <a href="#about" class="nav-link"><span>About</span></a>
+            <a href="#work" class="nav-link"><span>Work</span></a>
+            <a href="#contact" class="nav-link"><span>Contact</span></a>
+        </nav>
+        <div class="menu-trigger">
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="section hero">
+            <div class="hero-bg">
+                <div class="gradient-orb"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <div class="title-line"><span class="reveal-text">Digital</span></div>
+                    <div class="title-line"><span class="reveal-text">Craftsmanship</span></div>
+                </h1>
+                <div class="hero-meta">
+                    <p class="hero-subtitle">Tokyo based Designer & Developer</p>
+                    <div class="scroll-indicator">
+                        <span class="scroll-text">Scroll</span>
+                        <div class="scroll-line"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="vertical-text">
+                <span>デ</span><span>ザ</span><span>イ</span><span>ン</span><span>と</span><span>技</span><span>術</span><span>の</span><span>融</span><span>合</span>
+            </div>
+        </section>
+
+        <section id="about" class="section about">
+            <div class="container">
+                <h2 class="section-title">Philosophy</h2>
+                <div class="about-text">
+                    <p>デザインは、単なる装飾ではありません。<br>それは、思考の具現化であり、<br>静寂の中にある力強さです。</p>
+                    <p>Design is not just decoration.<br>It is the embodiment of thought,<br>strength found in silence.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="work" class="section work">
+            <div class="work-container-wrapper">
+                <div class="work-container">
+                    <div class="work-title-vertical">
+                        <span>選</span><span>り</span><span>す</span><span>ぐ</span><span>り</span><span>の</span><span>作</span><span>品</span>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-image-wrapper">
+                            <div class="work-image" style="background-image: url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2787&auto=format&fit=crop');"></div>
+                        </div>
+                        <div class="work-info">
+                            <span class="work-num">01</span>
+                            <h3>Project Alpha</h3>
+                            <p>Brand Identity</p>
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-image-wrapper">
+                            <div class="work-image" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop');"></div>
+                        </div>
+                        <div class="work-info">
+                            <span class="work-num">02</span>
+                            <h3>Neon City</h3>
+                            <p>Web Experience</p>
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-image-wrapper">
+                            <div class="work-image" style="background-image: url('https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=2670&auto=format&fit=crop');"></div>
+                        </div>
+                        <div class="work-info">
+                            <span class="work-num">03</span>
+                            <h3>Silence</h3>
+                            <p>Editorial Design</p>
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-image-wrapper">
+                            <div class="work-image" style="background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop');"></div>
+                        </div>
+                        <div class="work-info">
+                            <span class="work-num">04</span>
+                            <h3>Flow State</h3>
+                            <p>Interactive Art</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact">
+            <div class="container">
+                <h2 class="section-title">Contact</h2>
+                <a href="mailto:hello@akirasato.design" class="contact-link">hello@akirasato.design</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Akira Sato. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
