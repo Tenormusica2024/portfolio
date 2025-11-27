@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Atelier | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f9f9f7; /* Off-white */
+            --text-color: #1a1a1a;
+            --secondary-text: #666;
+            --font-main: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            padding: 60px;
+        }
+
+        header {
+            margin-bottom: 120px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .meta {
+            font-size: 0.8rem;
+            color: var(--secondary-text);
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .project-item {
+            grid-column: span 4;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            margin-bottom: 100px;
+            transition: opacity 0.3s;
+        }
+
+        .project-item:hover {
+            opacity: 0.7;
+        }
+
+        /* Asymmetric Layout */
+        .project-item:nth-child(1) {
+            grid-column: 2 / span 5;
+        }
+
+        .project-item:nth-child(2) {
+            grid-column: 8 / span 4;
+            margin-top: 150px;
+        }
+
+        .project-item:nth-child(3) {
+            grid-column: 3 / span 4;
+            margin-top: -50px;
+        }
+
+        .image-container {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background-color: #eee;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .project-item:hover .image-placeholder {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+
+        .project-cat {
+            font-size: 0.8rem;
+            color: var(--secondary-text);
+        }
+
+        .back-link {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.8rem;
+            border: 1px solid #ccc;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: background 0.3s;
+        }
+
+        .back-link:hover {
+            background: #e0e0e0;
+        }
+
+        /* Placeholders */
+        .ph-gym { background: #111; }
+        .ph-cafe { background: #dcdcdc; }
+        .ph-portfolio { background: #888; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Antigravity Archives</h1>
+        <div class="meta">Est. 2024</div>
+    </header>
+
+    <div class="gallery-container">
+        <a href="../gym_site/index.html" class="project-item">
+            <div class="image-container">
+                <div class="image-placeholder" style="background-image: url('assets/thumb_gym.jpg');"></div>
+            </div>
+            <div class="project-info">
+                <h2 class="project-title">Iron Core</h2>
+                <span class="project-cat">Fitness / Web</span>
+            </div>
+        </a>
+
+        <a href="../cafe_site/index.html" class="project-item">
+            <div class="image-container">
+                <div class="image-placeholder" style="background-image: url('assets/thumb_cafe.png');"></div>
+            </div>
+            <div class="project-info">
+                <h2 class="project-title">Zen Cafe</h2>
+                <span class="project-cat">Hospitality / Web</span>
+            </div>
+        </a>
+
+        <a href="../designer_portfolio/index.html" class="project-item">
+            <div class="image-container">
+                <div class="image-placeholder" style="background-image: url('assets/thumb_portfolio.jpg');"></div>
+            </div>
+            <div class="project-info">
+                <h2 class="project-title">Creative Folio</h2>
+                <span class="project-cat">Personal / Web</span>
+            </div>
+        </a>
+    </div>
+
+    <a href="index.html" class="back-link">Back</a>
+</body>
+</html>

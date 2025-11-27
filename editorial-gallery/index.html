@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Experience | Antigravity</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: #050505;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #fff, #999);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .menu-container {
+            display: flex;
+            gap: 40px;
+        }
+
+        .menu-item {
+            text-decoration: none;
+            color: #fff;
+            width: 250px;
+            height: 350px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-10px);
+            border-color: #fff;
+        }
+
+        .menu-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            z-index: 2;
+        }
+
+        .menu-desc {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 2;
+        }
+
+        .bg-hover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0) 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .menu-item:hover .bg-hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .menu-container {
+                flex-direction: column;
+            }
+
+            .menu-item {
+                width: 100%;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Select Experience</h1>
+
+    <div class="menu-container">
+        <a href="gallery_luxury.html" class="menu-item">
+            <div class="bg-hover"></div>
+            <span class="menu-title">The Executive</span>
+            <span class="menu-desc">Luxury & Dark</span>
+        </a>
+
+        <a href="gallery_minimal.html" class="menu-item">
+            <div class="bg-hover"></div>
+            <span class="menu-title">The Atelier</span>
+            <span class="menu-desc">Minimal & Light</span>
+        </a>
+
+        <a href="gallery_editorial.html" class="menu-item">
+            <div class="bg-hover"></div>
+            <span class="menu-title">The Showcase</span>
+            <span class="menu-desc">Editorial & Bold</span>
+        </a>
+    </div>
+
+</body>
+</html>

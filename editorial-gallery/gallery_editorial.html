@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Showcase | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --accent-color: #ff3333;
+            --font-display: 'Oswald', sans-serif;
+            --font-serif: 'Bodoni Moda', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .project-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-content {
+            width: 50%;
+            padding: 80px;
+            z-index: 2;
+            background: #fff;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-image {
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 1s ease;
+        }
+
+        .project-section:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .index-num {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: block;
+            border-bottom: 2px solid var(--text-color);
+            padding-bottom: 5px;
+            width: fit-content;
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: 5rem;
+            text-transform: uppercase;
+            line-height: 0.9;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            max-width: 400px;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        .btn {
+            font-family: var(--font-display);
+            text-decoration: none;
+            color: #fff;
+            background: #000;
+            padding: 15px 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--accent-color);
+        }
+
+        /* Alternating Layout */
+        .project-section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .project-section:nth-child(even) .project-image {
+            left: 0;
+            right: auto;
+        }
+
+        .back-link {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            font-family: var(--font-display);
+            text-decoration: none;
+            color: #000;
+            background: #fff;
+            padding: 10px 20px;
+            border: 2px solid #000;
+        }
+
+        /* Placeholders */
+        .img-gym { background: linear-gradient(to right, #000, #434343); }
+        .img-cafe { background: linear-gradient(to right, #5D4157, #A8CABA); }
+        .img-portfolio { background: linear-gradient(to right, #232526, #414345); }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">MENU</a>
+
+    <section class="project-section">
+        <div class="project-content">
+            <span class="index-num">001</span>
+            <h2>Iron<br>Core</h2>
+            <p>Strength meets sophistication. A digital experience designed for the modern athlete.</p>
+            <a href="../gym_site/index.html" class="btn">View Project</a>
+        </div>
+        <div class="project-image" style="background-image: url('assets/thumb_gym.jpg');"></div>
+    </section>
+
+    <section class="project-section">
+        <div class="project-content">
+            <span class="index-num">002</span>
+            <h2>Zen<br>Cafe</h2>
+            <p>A taste of tranquility. Minimalist design serving peace of mind.</p>
+            <a href="../cafe_site/index.html" class="btn">View Project</a>
+        </div>
+        <div class="project-image" style="background-image: url('assets/thumb_cafe.png');"></div>
+    </section>
+
+    <section class="project-section">
+        <div class="project-content">
+            <span class="index-num">003</span>
+            <h2>Creative<br>Folio</h2>
+            <p>The art of display. A canvas for your digital masterpiece.</p>
+            <a href="../designer_portfolio/index.html" class="btn">View Project</a>
+        </div>
+        <div class="project-image" style="background-image: url('assets/thumb_portfolio.jpg');"></div>
+    </section>
+</body>
+</html>
