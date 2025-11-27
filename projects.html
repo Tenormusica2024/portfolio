@@ -516,7 +516,7 @@
         }
 
         .btn-primary {
-            background: #FF6B6B;
+            background: #222;
             color: white;
             padding: 1rem 2rem;
             border-radius: 8px;
@@ -531,9 +531,9 @@
         }
 
         .btn-primary:hover {
-            background: #E85555;
+            background: #444;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .btn-secondary {
@@ -1192,20 +1192,6 @@
         </div>
     </div>
 
-    <!-- Gallery CTA Section -->
-    <div class="hero-cta">
-        <h2>🎨 制作依頼・お問い合わせ</h2>
-        <p>AI駆動開発による業務効率化、Webアプリケーション開発、データ分析基盤構築など、お気軽にご相談ください。</p>
-        <div class="cta-buttons">
-            <a href="index.html#contact?utm_source=portfolio&utm_medium=cta&utm_campaign=contact_request" 
-               class="btn-primary"
-               onclick="gtag('event', 'cta_click', {'event_category': 'engagement', 'event_label': '制作依頼CTA', 'value': 1});">✉️ 制作依頼はこちら</a>
-            <a href="profile.html?utm_source=gallery&utm_medium=cta&utm_campaign=view_profile" 
-               class="btn-secondary"
-               onclick="gtag('event', 'cta_click', {'event_category': 'engagement', 'event_label': 'プロフィール閲覧CTA', 'value': 1});">📂 プロフィールを見る</a>
-        </div>
-    </div>
-
     <div class="container">
         <h2 id="section-data-viz" class="section-title" data-i18n="section_data_viz">データ可視化・分析プロジェクト</h2>
         <div class="projects-grid">
@@ -1844,6 +1830,19 @@
         </div>
     </div>
 
+    <!-- CTA Section -->
+    <div class="hero-cta">
+        <h2>制作依頼・お問い合わせ</h2>
+        <p>AI駆動開発による業務効率化、Webアプリケーション開発、データ分析基盤構築など、お気軽にご相談ください。</p>
+        <div class="cta-buttons">
+            <a href="index.html#contact?utm_source=portfolio&utm_medium=cta&utm_campaign=contact_request" 
+               class="btn-primary"
+               onclick="gtag('event', 'cta_click', {'event_category': 'engagement', 'event_label': '制作依頼CTA', 'value': 1});">制作依頼はこちら</a>
+            <a href="profile.html?utm_source=gallery&utm_medium=cta&utm_campaign=view_profile" 
+               class="btn-secondary"
+               onclick="gtag('event', 'cta_click', {'event_category': 'engagement', 'event_label': 'プロフィール閲覧CTA', 'value': 1});">プロフィールを見る</a>
+        </div>
+    </div>
 
     <footer style="max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; text-align: center; color: #999; border-top: 1px solid #e5e5e5; margin-top: 4rem;">
         <div style="display: flex; gap: 2rem; justify-content: center; margin-bottom: 2rem;">
