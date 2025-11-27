@@ -1,0 +1,18 @@
+# robots.txt for Urayaha Days Portfolio
+# https://tenormusica2024.github.io/portfolio/
+
+User-agent: *
+Allow: /
+
+# Disallow backup and test files
+Disallow: /*-improved.html
+Disallow: /*_v2.html
+Disallow: /*_new.html
+Disallow: /loading-preview*.html
+Disallow: /portfolio_v2.html
+
+# Sitemap
+Sitemap: https://tenormusica2024.github.io/portfolio/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
