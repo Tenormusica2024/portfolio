@@ -264,23 +264,15 @@ LLM・機械学習・クラウド技術で課題解決を支援。
     <url>
         <loc>https://tenormusica2024.github.io/portfolio/</loc>
         <lastmod>2025-11-27</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
     </url>
     <!-- 他のページも同様 -->
 </urlset>
 ```
 
-#### 5.2 優先度設定
-- トップページ: 1.0（最優先）
-- プロジェクトページ: 0.9（高優先度）
-- プロフィールページ: 0.8
-- コードレビューシステム: 0.7
-- その他ページ: 0.4-0.6
-
-#### 5.3 changefreq設定
-- トップ・プロジェクト: weekly（毎週更新）
-- プロフィール・その他: monthly（毎月更新）
+**実装方針:**
+- **priority/changefreqは削除済み**（Googleが無視する設定のため除去）
+- lastmodのみ記載する最小構成を採用
+- 全8ページを網羅（トップ、プロジェクト、プロフィール、AI Trends等）
 
 **期待される効果:**
 - ✅ 検索エンジンのクロール効率向上が期待される
