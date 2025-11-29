@@ -192,5 +192,31 @@
             <p class="card-desc">Empowering consistency. A high-performance interface for building life-changing habits.</p>
         </a>
     </div>
+
+    <footer style="text-align: center; padding: 80px 20px 60px; background: var(--bg-color);">
+        <a href="../index.html" class="portfolio-btn" style="font-family: var(--font-heading); font-size: 0.9rem; text-decoration: none; color: var(--accent-color); background: transparent; padding: 16px 45px; border: 2px solid var(--accent-color); display: inline-block; text-transform: uppercase; letter-spacing: 3px; transition: all 0.5s; position: relative; overflow: hidden;">
+            <span style="position: relative; z-index: 2;">← Portfolio Home</span>
+        </a>
+    </footer>
+
+    <style>
+        .portfolio-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-color);
+            transition: left 0.5s;
+            z-index: 1;
+        }
+        .portfolio-btn:hover::before {
+            left: 0;
+        }
+        .portfolio-btn:hover {
+            color: #0b1016 !important;
+        }
+    </style>
 </body>
 </html>
