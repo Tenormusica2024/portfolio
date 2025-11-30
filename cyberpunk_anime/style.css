@@ -452,10 +452,10 @@ body {
 .design-d-blue {
     font-size: 7rem;
     font-weight: 900;
-    color: #ccff00;
+    color: #00f3ff;
     line-height: 0.8;
     letter-spacing: -2px;
-    text-shadow: 0 0 20px rgba(204, 255, 0, 0.6);
+    text-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
 }
 
 .design-d-divider {
@@ -484,7 +484,7 @@ body {
     position: absolute;
     width: 150%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #ccff00, transparent);
+    background: linear-gradient(90deg, transparent, #00f3ff, transparent);
     top: 50%;
     left: -25%;
     z-index: -1;
