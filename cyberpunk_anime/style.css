@@ -423,74 +423,6 @@ body {
     opacity: 0.7;
 }
 
-/* ===========================
-   DESIGN D: MODERN KINETIC
-   =========================== */
-.design-d-logo {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    transform: skewX(-15deg);
-}
-
-.design-d-text-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.design-d-neon {
-    font-size: 5rem;
-    font-weight: 900;
-    color: #fff;
-    line-height: 0.8;
-    letter-spacing: 2px;
-}
-
-.design-d-blue {
-    font-size: 7rem;
-    font-weight: 900;
-    color: #00f3ff;
-    line-height: 0.8;
-    letter-spacing: -2px;
-    text-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
-}
-
-.design-d-divider {
-    width: 4px;
-    height: 120px;
-    background: #fff;
-    box-shadow: 0 0 10px #fff;
-}
-
-.design-d-jp {
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #fff;
-    letter-spacing: 0.5em;
-    opacity: 0.7;
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.design-d-decor {
-    position: absolute;
-    width: 150%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #00f3ff, transparent);
-    top: 50%;
-    left: -25%;
-    z-index: -1;
-    transform: rotate(-5deg);
-}
-
 .hero-tagline {
     font-size: 1.1rem;
     color: var(--color-text-secondary);
@@ -520,6 +452,9 @@ body {
     transition: transform 0.5s ease;
     box-shadow: -20px 20px 60px rgba(0,0,0,0.5);
     border: 1px solid rgba(0, 243, 255, 0.3);
+    background-image: url('assets/hero_image_new.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .hero-image-wrapper:hover .hero-image-container {
@@ -666,6 +601,9 @@ section {
 /* ===========================
    CHARACTERS SECTION
    =========================== */
+/* ===========================
+   CHARACTERS SECTION (REDESIGNED)
+   =========================== */
 .characters-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
@@ -673,54 +611,171 @@ section {
 }
 
 .character-card {
-    background: rgba(10, 10, 16, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: var(--spacing-md);
-    transition: all 0.4s ease;
     position: relative;
-}
-
-.character-card:hover {
-    border-color: var(--color-neon-cyan);
-    transform: translateY(-10px);
-    background: rgba(10, 10, 16, 0.9);
-}
-
-.character-image {
-    width: 100%;
-    height: 500px;
-    margin-bottom: var(--spacing-md);
+    height: 600px;
+    background: #000;
+    border: 1px solid #333;
     overflow: hidden;
-    border-bottom: 2px solid var(--color-neon-purple);
-    position: relative;
+    transition: border-color 0.5s ease;
+    cursor: pointer;
 }
 
-.character-image img {
+/* Scanline Effect */
+.character-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.3) 3px,
+        rgba(0, 0, 0, 0.3) 4px
+    );
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+/* Image Styles */
+.character-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    filter: grayscale(100%);
+    transition: all 0.5s ease;
+    z-index: 1;
+}
+
+.character-card:hover .character-img {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+/* Overlay */
+.character-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #000 0%, rgba(0,0,0,0.8) 30%, transparent 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Background Number */
+.character-bg-number {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: var(--font-heading);
+    font-size: 6rem;
+    font-weight: 900;
+    color: #fff;
+    opacity: 0.1;
+    z-index: 3;
+    transition: opacity 0.5s ease;
+}
+
+.character-card:hover .character-bg-number {
+    opacity: 0.3;
+}
+
+/* Content */
+.character-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 4;
+    transform: translateY(20px);
     transition: transform 0.5s ease;
 }
 
-.character-card:hover .character-image img {
-    transform: scale(1.05);
+.character-card:hover .character-content {
+    transform: translateY(0);
 }
 
 .character-name {
     font-family: var(--font-heading);
     font-size: 2.5rem;
     font-weight: 700;
-    letter-spacing: 5px;
-    color: var(--color-text-primary);
+    color: #fff;
     margin-bottom: 0.5rem;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
 .character-role {
     font-family: var(--font-heading);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     letter-spacing: 3px;
     color: var(--color-neon-cyan);
-    margin-bottom: var(--spacing-md);
-    display: inline-block;
-    border-bottom: 1px solid var(--color-neon-cyan);
-    padding-bottom: 5px;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+/* Decorative Bar */
+.character-bar {
+    width: 50px;
+    height: 4px;
+    background: var(--color-neon-blue);
+    margin-bottom: 1rem;
+    transition: width 0.5s ease;
+}
+
+.character-card:hover .character-bar {
+    width: 100%;
+}
+
+/* Description */
+.character-description {
+    font-size: 0.9rem;
+    color: #ccc;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
+    transition-delay: 0.1s;
+}
+
+.character-card:hover .character-description {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Specific Card Colors */
+.kaito-card:hover {
+    border-color: var(--color-neon-blue);
+}
+
+.kaito-card .character-role {
+    color: var(--color-neon-blue);
+}
+
+.kaito-card .character-bar {
+    background: var(--color-neon-blue);
+}
+
+.aria-card:hover {
+    border-color: var(--color-neon-purple);
+}
+
+.aria-card .character-role {
+    color: var(--color-neon-purple);
+}
+
+.aria-card .character-bar {
+    background: var(--color-neon-purple);
 }
 
 /* ===========================
@@ -865,6 +920,272 @@ section {
     transition: transform 0.3s ease;
 }
 
-.media-image-container:hover .media-label {
-    transform: translateY(0);
+/* ===========================
+   DESIGN A: AZURE HORIZON
+   =========================== */
+.design-a-logo {
+    position: relative;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.design-a-neon {
+    font-size: 8rem;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px #00f3ff;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.5));
+}
+
+.design-a-blue {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(180deg, #fff 0%, #0011ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    letter-spacing: 20px;
+    mix-blend-mode: overlay;
+    white-space: nowrap;
+}
+
+.design-a-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 100px;
+    background: radial-gradient(ellipse at center, rgba(0, 17, 255, 0.4) 0%, rgba(0, 0, 0, 0) 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ===========================
+   DESIGN B: SYSTEM OVERRIDE
+   =========================== */
+.design-b-logo {
+    position: relative;
+    font-family: 'Orbitron', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    transform: skewX(-10deg);
+}
+
+.design-b-text {
+    font-size: 6rem;
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 0.8;
+    position: relative;
+    text-shadow:
+        4px 4px 0px #0011ff,
+        -2px -2px 0px #00f3ff;
+    animation: design-b-pulse 2s infinite;
+}
+
+.design-b-text.neon {
+    letter-spacing: 5px;
+}
+
+.design-b-text.blue {
+    font-size: 7rem;
+    letter-spacing: 15px;
+    color: #00f3ff;
+    text-shadow:
+        4px 4px 0px #0011ff,
+        0 0 20px rgba(0, 243, 255, 0.8);
+}
+
+.design-b-glitch-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: -1;
+}
+
+.design-b-glitch-layer::before,
+.design-b-glitch-layer::after {
+    content: "NEON BLUE";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+}
+
+.design-b-glitch-layer::before {
+    color: #ff0055;
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.design-b-glitch-layer::after {
+    color: #00f3ff;
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+/* ===========================
+   DESIGN C: RETRO-FUTURE INDUSTRIAL
+   =========================== */
+.design-c-logo {
+    position: relative;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    margin-bottom: 2rem;
+    border: 2px solid #ffb700;
+    padding: 2rem 4rem;
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow:
+        0 0 15px rgba(255, 183, 0, 0.3),
+        inset 0 0 20px rgba(255, 183, 0, 0.1);
+}
+
+.design-c-logo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 183, 0, 0.1) 3px,
+        rgba(255, 183, 0, 0.1) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+.design-c-main {
+    font-size: 6rem;
+    font-weight: 900;
+    color: #ffb700;
+    text-transform: uppercase;
+    letter-spacing: 15px;
+    position: relative;
+    z-index: 1;
+    text-shadow:
+        2px 2px 0px #553300,
+        4px 4px 0px rgba(0,0,0,0.5);
+    background: linear-gradient(180deg, #ffedcc 0%, #ffb700 50%, #996e00 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.design-c-sub {
+    font-size: 2rem;
+    color: #888;
+    letter-spacing: 8px;
+    margin-top: -10px;
+    font-weight: 500;
+    text-shadow: none;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    display: block;
+}
+
+.design-c-jp {
+    margin-top: 1.5rem;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1rem;
+    color: #ffb700;
+    letter-spacing: 0.5em;
+    opacity: 0.8;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.design-c-jp span {
+    position: relative;
+}
+
+/* ===========================
+   DESIGN D: MODERN KINETIC
+   =========================== */
+.design-d-logo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transform: skewX(-15deg);
+}
+
+.design-d-text-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.design-d-neon {
+    font-size: 5rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 0.8;
+    letter-spacing: 2px;
+}
+
+.design-d-blue {
+    font-size: 7rem;
+    font-weight: 900;
+    color: var(--color-neon-cyan);
+    line-height: 0.8;
+    letter-spacing: -2px;
+    text-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+}
+
+.design-d-divider {
+    width: 4px;
+    height: 120px;
+    background: #fff;
+    box-shadow: 0 0 10px #fff;
+}
+
+.design-d-jp {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #fff;
+    letter-spacing: 0.5em;
+    opacity: 0.7;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.design-d-decor {
+    position: absolute;
+    width: 150%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-neon-cyan), transparent);
+    top: 50%;
+    left: -25%;
+    z-index: -1;
+    transform: rotate(-5deg);
 }

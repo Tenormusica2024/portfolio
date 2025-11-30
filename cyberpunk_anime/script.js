@@ -198,7 +198,7 @@ function initTechTyping() {
 // ===========================
 function loadHeroImage() {
     const heroImageContainer = document.querySelector('.hero-image-container');
-    const heroImagePath = 'assets/hero_cyberpunk_city_new.jpg';
+    const heroImagePath = 'assets/hero_cyberpunk_city.png';
 
     // Create image element
     const img = new Image();
@@ -368,8 +368,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initTechTyping();
 
     // Load images
-    loadHeroImage();
-    loadCharacterImages();
+    // loadHeroImage(); // Removed: Handled via CSS
+    // loadCharacterImages(); // Removed: Handled via HTML/CSS
 
     // Add initial fade-in to body
     document.body.style.opacity = '0';
