@@ -198,7 +198,7 @@ function initTechTyping() {
 // ===========================
 function loadHeroImage() {
     const heroImageContainer = document.querySelector('.hero-image-container');
-    const heroImagePath = 'assets/hero_cyberpunk_city.png';
+    const heroImagePath = 'assets/hero_cyberpunk_city_new.jpg';
 
     // Create image element
     const img = new Image();
