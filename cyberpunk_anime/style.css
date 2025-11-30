@@ -424,107 +424,71 @@ body {
 }
 
 /* ===========================
-   DESIGN D LOGO (MODERN KINETIC)
+   DESIGN D: MODERN KINETIC
    =========================== */
 .design-d-logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
     position: relative;
-}
-
-.design-d-decor {
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        var(--color-neon-cyan) 20%, 
-        var(--color-neon-cyan) 80%, 
-        transparent 100%);
-    box-shadow: 0 0 10px var(--color-neon-cyan);
-    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transform: skewX(-15deg);
 }
 
 .design-d-text-group {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    line-height: 0.85;
+    align-items: flex-end;
 }
 
 .design-d-neon {
-    font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-size: 5rem;
     font-weight: 900;
-    letter-spacing: 20px;
-    color: var(--color-neon-cyan);
-    text-shadow: 
-        0 0 20px rgba(0, 243, 255, 0.8),
-        0 0 40px rgba(0, 243, 255, 0.5),
-        0 0 60px rgba(0, 243, 255, 0.3);
-    animation: pulseGlow 3s ease-in-out infinite;
+    color: #fff;
+    line-height: 0.8;
+    letter-spacing: 2px;
 }
 
 .design-d-blue {
-    font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-size: 7rem;
     font-weight: 900;
-    letter-spacing: 20px;
-    color: transparent;
-    -webkit-text-stroke: 2px var(--color-neon-purple);
-    text-stroke: 2px var(--color-neon-purple);
-    filter: drop-shadow(0 0 15px rgba(188, 19, 254, 0.6));
-    margin-left: 3rem;
+    color: #ccff00;
+    line-height: 0.8;
+    letter-spacing: -2px;
+    text-shadow: 0 0 20px rgba(204, 255, 0, 0.6);
 }
 
 .design-d-divider {
-    width: 80%;
-    height: 1px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        var(--color-neon-purple) 50%, 
-        transparent 100%);
-    margin: 0.5rem 0;
+    width: 4px;
+    height: 120px;
+    background: #fff;
+    box-shadow: 0 0 10px #fff;
 }
 
 .design-d-jp {
-    display: flex;
-    gap: 0.3rem;
-    margin-top: 0.5rem;
-}
-
-.design-d-jp span {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
     font-family: 'Noto Sans JP', sans-serif;
     font-weight: 700;
-    font-size: 1rem;
-    color: var(--color-text-secondary);
-    background: rgba(0, 243, 255, 0.1);
-    padding: 0.3rem 0.5rem;
-    border-left: 2px solid var(--color-neon-cyan);
-    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    color: #fff;
+    letter-spacing: 0.5em;
+    opacity: 0.7;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.design-d-jp span:hover {
-    background: rgba(0, 243, 255, 0.3);
-    color: var(--color-neon-cyan);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 243, 255, 0.4);
-}
-
-@keyframes pulseGlow {
-    0%, 100% {
-        text-shadow: 
-            0 0 20px rgba(0, 243, 255, 0.8),
-            0 0 40px rgba(0, 243, 255, 0.5),
-            0 0 60px rgba(0, 243, 255, 0.3);
-    }
-    50% {
-        text-shadow: 
-            0 0 30px rgba(0, 243, 255, 1),
-            0 0 60px rgba(0, 243, 255, 0.7),
-            0 0 90px rgba(0, 243, 255, 0.5);
-    }
+.design-d-decor {
+    position: absolute;
+    width: 150%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ccff00, transparent);
+    top: 50%;
+    left: -25%;
+    z-index: -1;
+    transform: rotate(-5deg);
 }
 
 .hero-tagline {
