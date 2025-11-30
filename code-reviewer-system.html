@@ -83,6 +83,79 @@
             align-items: center;
         }
 
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 2rem;
+            background: transparent;
+            z-index: 999;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: calc(100% + 1rem);
+            left: 0;
+            background: transparent;
+            min-width: 300px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: #666;
+            text-decoration: none;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            font-weight: 500;
+            font-size: 0.95rem;
+            background: transparent;
+        }
+
+        .dropdown a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #222;
+            border-radius: 8px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .dropdown a:hover {
+            color: #ffffff;
+            padding-left: 2rem;
+        }
+
+        .dropdown a:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
         .page-header {
             max-width: 1200px;
             margin: 0 auto;
@@ -313,7 +386,13 @@
             <nav class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="projects.html">Projects</a>
-                <a href="editorial-gallery/gallery_editorial.html">Creation</a>
+                <div class="nav-item">
+                    <a href="#">Creation</a>
+                    <div class="dropdown">
+                        <a href="editorial-gallery/gallery_editorial.html">エディトリアルギャラリー</a>
+                        <a href="cyberpunk_anime/index.html">SF Anime LP</a>
+                    </div>
+                </div>
                 <a href="profile.html">Profile</a>
                 <a href="https://note.com/dragonrondo" target="_blank">Note</a>
                 <a href="https://github.com/Tenormusica2024" target="_blank">GitHub</a>
