@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ1WP1J2NQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YJ1WP1J2NQ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Urayaha Days</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="AI駆動開発、データ分析、業務自動化のご相談はこちらから。お気軽にお問い合わせください。">
+    <meta name="keywords" content="お問い合わせ,AIエンジニア,プロジェクト相談,業務依頼">
+    
+    <!-- EmailJS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #222;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #222;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .contact-card {
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-intro {
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-intro h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-intro p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #222;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #222;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: #222;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .contact-info {
+            margin-top: 2.5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid #e5e5e5;
+            text-align: center;
+        }
+
+        .contact-info-item {
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .contact-info-item strong {
+            color: #222;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: #f8f8f8;
+            border-top: 1px solid #e5e5e5;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .container {
+                padding: 6rem 1rem 2rem;
+            }
+
+            .contact-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Urayaha Days</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">Let's Work Together</h1>
+            <p class="page-subtitle">お気軽にご連絡ください</p>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-intro">
+                <h2>お問い合わせ</h2>
+                <p>AI駆動開発、データ分析、業務自動化に関するご相談を承ります。<br>
+                プロジェクトのご依頼や技術的なご質問など、お気軽にお問い合わせください。</p>
+            </div>
+
+            <div id="alert" class="alert"></div>
+
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">お名前 *</label>
+                    <input type="text" id="name" name="name" required placeholder="Your Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">メールアドレス *</label>
+                    <input type="email" id="email" name="email" required placeholder="example@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">件名 *</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">選択してください</option>
+                        <option value="プロジェクト相談">プロジェクト相談</option>
+                        <option value="採用・求人">採用・求人</option>
+                        <option value="技術的な質問">技術的な質問</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">メッセージ *</label>
+                    <textarea id="message" name="message" required placeholder="ご用件をお書きください"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submit-btn">
+                    Send Message →
+                </button>
+            </form>
+
+            <div class="contact-info">
+                <div class="contact-info-item">
+                    <strong>Email:</strong> dragonrondo@gmail.com
+                </div>
+                <div class="contact-info-item">
+                    <strong>Response time:</strong> 24 hours
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Urayaha Days. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // TODO: EmailJS設定（EMAILJS_SETUP.mdを参照して設定してください）
+        // ========================================
+        // ⚠️ 以下の3つの値を自分の値に書き換えてください
+        // ========================================
+        
+        const EMAILJS_PUBLIC_KEY = 'oqWkJmla4GHVOiXGI';
+        const EMAILJS_SERVICE_ID = 'service_a03vmce';
+        const EMAILJS_TEMPLATE_ID = 'template_gib6m2l';
+        
+        // EmailJS初期化
+        (function() {
+            if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+                console.warn('⚠️ EmailJSの設定が未完了です。EMAILJS_SETUP.mdを参照して設定してください。');
+            }
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+        })();
+
+        const form = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const alert = document.getElementById('alert');
+
+        function showAlert(message, type) {
+            alert.textContent = message;
+            alert.className = `alert alert-${type} show`;
+            setTimeout(() => {
+                alert.className = 'alert';
+            }, 5000);
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+                showAlert('❌ EmailJSの設定が完了していません。EMAILJS_SETUP.mdを参照してください。', 'error');
+                return;
+            }
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            const templateParams = {
+                from_name: name,
+                reply_to: email,
+                subject: subject,
+                message: message
+            };
+
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                .then(function(response) {
+                    showAlert('✅ メッセージを送信しました！24時間以内に返信いたします。', 'success');
+                    form.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message →';
+                }, function(error) {
+                    showAlert('❌ 送信に失敗しました。お手数ですが、直接メールでご連絡ください。', 'error');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message →';
+                    console.error('EmailJS Error:', error);
+                });
+        });
+    </script>
+</body>
+</html>
