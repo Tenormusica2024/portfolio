@@ -196,71 +196,73 @@ function initTechTyping() {
 // ===========================
 // HERO IMAGE LOADER
 // ===========================
-function loadHeroImage() {
-    const heroImageContainer = document.querySelector('.hero-image-container');
-    const heroImagePath = 'assets/hero_cyberpunk_city_new.jpg';
-
-    // Create image element
-    const img = new Image();
-    img.src = heroImagePath;
-    img.style.width = '100%';
-    img.style.height = '100%';
-    img.style.objectFit = 'cover';
-    img.style.opacity = '0';
-    img.style.transition = 'opacity 1s ease';
-
-    img.onload = () => {
-        // Remove scan line
-        const scanLine = heroImageContainer.querySelector('.scan-line');
-        if (scanLine) {
-            scanLine.remove();
-        }
-
-        // Add image
-        heroImageContainer.appendChild(img);
-        setTimeout(() => {
-            img.style.opacity = '0.9';
-        }, 100);
-    };
-
-    img.onerror = () => {
-        console.log('Hero image not found, keeping placeholder');
-    };
-}
+// NOTE: This function is no longer used as hero image is now handled via CSS background
+// function loadHeroImage() {
+//     const heroImageContainer = document.querySelector('.hero-image-container');
+//     const heroImagePath = 'assets/hero_cyberpunk_city.png';
+//
+//     // Create image element
+//     const img = new Image();
+//     img.src = heroImagePath;
+//     img.style.width = '100%';
+//     img.style.height = '100%';
+//     img.style.objectFit = 'cover';
+//     img.style.opacity = '0';
+//     img.style.transition = 'opacity 1s ease';
+//
+//     img.onload = () => {
+//         // Remove scan line
+//         const scanLine = heroImageContainer.querySelector('.scan-line');
+//         if (scanLine) {
+//             scanLine.remove();
+//         }
+//
+//         // Add image
+//         heroImageContainer.appendChild(img);
+//         setTimeout(() => {
+//             img.style.opacity = '0.9';
+//         }, 100);
+//     };
+//
+//     img.onerror = () => {
+//         console.log('Hero image not found, keeping placeholder');
+//     };
+// }
 
 // ===========================
 // CHARACTER IMAGE LOADER
 // ===========================
-function loadCharacterImages() {
-    const characterCards = document.querySelectorAll('.character-card');
-    const characterImages = [
-        'assets/character_protagonist_male.png',
-        'assets/character_heroine_female.png'
-    ];
-
-    characterCards.forEach((card, index) => {
-        const imagePlaceholder = card.querySelector('.image-placeholder');
-        const img = new Image();
-        img.src = characterImages[index];
-        img.style.width = '100%';
-        img.style.height = '100%';
-        img.style.objectFit = 'cover';
-        img.style.opacity = '0';
-        img.style.transition = 'opacity 1s ease';
-
-        img.onload = () => {
-            imagePlaceholder.innerHTML = '';
-            imagePlaceholder.appendChild(img);
-            setTimeout(() => {
-                img.style.opacity = '1';
-            }, 100);
-        };
-
-        img.onerror = () => {
-            console.log(`Character image ${index} not found, keeping placeholder`);
-        };
-    });
-}
+// NOTE: This function is no longer used as character images are now handled directly in HTML
+// function loadCharacterImages() {
+//     const characterCards = document.querySelectorAll('.character-card');
+//     const characterImages = [
+//         'assets/character_protagonist_male.png',
+//         'assets/character_heroine_female.png'
+//     ];
+//
+//     characterCards.forEach((card, index) => {
+//         const imagePlaceholder = card.querySelector('.image-placeholder');
+//         const img = new Image();
+//         img.src = characterImages[index];
+//         img.style.width = '100%';
+//         img.style.height = '100%';
+//         img.style.objectFit = 'cover';
+//         img.style.opacity = '0';
+//         img.style.transition = 'opacity 1s ease';
+//
+//         img.onload = () => {
+//             imagePlaceholder.innerHTML = '';
+//             imagePlaceholder.appendChild(img);
+//             setTimeout(() => {
+//                 img.style.opacity = '1';
+//             }, 100);
+//         };
+//
+//         img.onerror = () => {
+//             console.log(`Character image ${index} not found, keeping placeholder`);
+//         };
+//     });
+// }
 
 // ===========================
 // PARALLAX EFFECT
@@ -368,8 +370,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initTechTyping();
 
     // Load images
-    loadHeroImage();
-    loadCharacterImages();
+    // loadHeroImage(); // Removed: Handled via CSS
+    // loadCharacterImages(); // Removed: Handled via HTML/CSS
 
     // Add initial fade-in to body
     document.body.style.opacity = '0';
