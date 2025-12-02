@@ -556,7 +556,7 @@
                         <thead>
                             <tr>
                                 <th>Rank</th>
-                                <th>Referrer URL</th>
+                                <th>Source</th>
                                 <th>Landing Page</th>
                                 <th class="sortable sorted-desc" data-sort-referrer="sessions" style="text-align: right;">Sessions</th>
                                 <th class="sortable" data-sort-referrer="users" style="text-align: right;">Users</th>
@@ -803,16 +803,43 @@
             const tbody = document.getElementById('topReferrersBody');
             tbody.innerHTML = '';
             
-            sorted.forEach((ref, index) => {
-                const truncateUrl = (url, maxLength = 60) => {
-                    return url.length > maxLength ? url.substring(0, maxLength) + '...' : url;
-                };
+            const getSourceName = (referrerUrl) => {
+                const url = referrerUrl.toLowerCase();
+                if (url.includes('google.com')) return 'Google検索';
+                if (url.includes('bing.com')) return 'Bing検索';
+                if (url.includes('yahoo.co.jp') || url.includes('yahoo.com')) return 'Yahoo検索';
+                if (url.includes('t.co') || url.includes('twitter.com') || url.includes('x.com')) return 'Twitter/X';
+                if (url.includes('zenn.dev')) return 'Zenn';
+                if (url.includes('github.com')) return 'GitHub';
+                if (url.includes('menthas.com')) return 'Menthas';
+                if (url.includes('hatena.ne.jp')) return 'はてなブックマーク';
+                if (url.includes('facebook.com')) return 'Facebook';
+                if (url.includes('chatgpt.com')) return 'ChatGPT';
+                if (url.includes('bsky.app')) return 'Bluesky';
+                if (url.includes('inoreader.com')) return 'Inoreader';
+                if (url.includes('linkedin.com')) return 'LinkedIn';
+                if (url.includes('reddit.com')) return 'Reddit';
+                if (url.includes('qiita.com')) return 'Qiita';
                 
+                try {
+                    const hostname = new URL(referrerUrl).hostname.replace('www.', '');
+                    return hostname;
+                } catch {
+                    return referrerUrl;
+                }
+            };
+            
+            const truncateUrl = (url, maxLength = 50) => {
+                return url.length > maxLength ? url.substring(0, maxLength) + '...' : url;
+            };
+            
+            sorted.forEach((ref, index) => {
+                const sourceName = getSourceName(ref.referrer);
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td class="rank-cell">${(index + 1).toString().padStart(2, '0')}</td>
-                    <td class="path-cell" title="${ref.referrer}">${truncateUrl(ref.referrer)}</td>
-                    <td class="path-cell" title="${ref.landingPage}">${truncateUrl(ref.landingPage, 40)}</td>
+                    <td class="path-cell" title="${ref.referrer}">${sourceName}</td>
+                    <td class="path-cell" title="${ref.landingPage}">${truncateUrl(ref.landingPage, 45)}</td>
                     <td class="metric-cell">${ref.sessions.toLocaleString()}</td>
                     <td class="metric-cell">${ref.users.toLocaleString()}</td>
                 `;
