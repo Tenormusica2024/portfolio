@@ -569,6 +569,13 @@
                     form.reset();
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Send Message →';
+                    
+                    // GA4 フォーム送信イベント
+                    gtag('event', 'form_submit', {
+                        'event_category': 'engagement',
+                        'event_label': 'contact_form',
+                        'value': 1
+                    });
                 }, function(error) {
                     showAlert('❌ 送信に失敗しました。お手数ですが、直接メールでご連絡ください。', 'error');
                     submitBtn.disabled = false;
