@@ -30,8 +30,8 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #ffffff;
-            color: #222;
+            background: #f5f1e8;
+            color: #3a3a3a;
             line-height: 1.6;
         }
 
@@ -39,10 +39,10 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(245, 241, 232, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid #e5e5e5;
+            border-bottom: 1px solid #d4c9b0;
         }
 
         .nav-container {
@@ -57,7 +57,7 @@
         .nav-logo {
             font-size: 1.2rem;
             font-weight: 700;
-            color: #222;
+            color: #5a4a3a;
             text-decoration: none;
         }
 
@@ -68,14 +68,14 @@
         }
 
         .nav-links a {
-            color: #666;
+            color: #7a6a5a;
             text-decoration: none;
             transition: color 0.3s;
         }
 
         .nav-links a:hover,
         .nav-links a.active {
-            color: #222;
+            color: #5a4a3a;
         }
 
         .container {
@@ -101,11 +101,11 @@
         }
 
         .contact-card {
-            background: #ffffff;
-            border: 1px solid #e5e5e5;
+            background: #faf8f3;
+            border: 1px solid #d4c9b0;
             border-radius: 12px;
             padding: 3rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px rgba(90, 74, 58, 0.08);
         }
 
         .contact-intro {
@@ -115,16 +115,17 @@
         .contact-intro h2 {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            color: #5a4a3a;
         }
 
         .contact-intro p {
-            color: #666;
+            color: #7a6a5a;
             line-height: 1.8;
         }
 
         .availability-notice {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-left: 4px solid #222;
+            background: linear-gradient(135deg, #f0ede3 0%, #e8e1d3 100%);
+            border-left: 4px solid #8b7355;
             border-radius: 12px;
             padding: 2rem;
             margin-bottom: 2.5rem;
@@ -133,30 +134,32 @@
         .availability-notice h3 {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
-            color: #222;
+            color: #5a4a3a;
         }
 
         .availability-content {
-            color: #444;
+            color: #5a4a3a;
         }
 
         .availability-option {
-            background: #ffffff;
+            background: #faf8f3;
             border-radius: 8px;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 4px rgba(90, 74, 58, 0.08);
+            border: 1px solid #e8e1d3;
         }
 
         .availability-option h4 {
             font-size: 1.2rem;
             margin-bottom: 0.75rem;
-            color: #222;
+            color: #5a4a3a;
         }
 
         .availability-option p {
             margin-bottom: 1rem;
             line-height: 1.7;
+            color: #6a5a4a;
         }
 
         .availability-option ul {
@@ -183,18 +186,18 @@
         }
 
         .availability-note a {
-            color: #222;
+            color: #8b7355;
             text-decoration: underline;
             font-weight: 500;
         }
 
         .availability-note a:hover {
-            color: #555;
+            color: #5a4a3a;
         }
 
         .availability-strengths {
-            background: #fff9e6;
-            border-left: 4px solid #ffc107;
+            background: #f5efd9;
+            border-left: 4px solid #b8985f;
             border-radius: 8px;
             padding: 1.5rem;
             margin-bottom: 1rem;
@@ -203,7 +206,7 @@
         .availability-strengths h4 {
             font-size: 1.2rem;
             margin-bottom: 0.75rem;
-            color: #222;
+            color: #5a4a3a;
         }
 
         .availability-strengths ul {
@@ -216,13 +219,13 @@
         }
 
         .availability-strengths a {
-            color: #222;
+            color: #8b7355;
             text-decoration: underline;
             font-weight: 500;
         }
 
         .availability-strengths a:hover {
-            color: #555;
+            color: #5a4a3a;
         }
 
         .form-group {
@@ -233,7 +236,7 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
-            color: #222;
+            color: #5a4a3a;
         }
 
         .form-group input,
@@ -241,19 +244,21 @@
         .form-group textarea {
             width: 100%;
             padding: 0.75rem 1rem;
-            border: 1px solid #e5e5e5;
+            border: 1px solid #d4c9b0;
             border-radius: 8px;
             font-family: inherit;
             font-size: 1rem;
             transition: all 0.3s;
+            background: #faf8f3;
+            color: #3a3a3a;
         }
 
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #222;
-            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+            border-color: #8b7355;
+            box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1);
         }
 
         .form-group textarea {
@@ -264,7 +269,7 @@
         .submit-btn {
             width: 100%;
             padding: 1rem 2rem;
-            background: #222;
+            background: #8b7355;
             color: #ffffff;
             border: none;
             border-radius: 8px;
@@ -275,9 +280,9 @@
         }
 
         .submit-btn:hover {
-            background: #000;
+            background: #6a5a4a;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(90, 74, 58, 0.3);
         }
 
         .submit-btn:disabled {
@@ -295,11 +300,11 @@
 
         .contact-info-item {
             margin-bottom: 0.5rem;
-            color: #666;
+            color: #7a6a5a;
         }
 
         .contact-info-item strong {
-            color: #222;
+            color: #5a4a3a;
         }
 
         .alert {
@@ -328,13 +333,13 @@
         footer {
             text-align: center;
             padding: 3rem 2rem;
-            background: #f8f8f8;
-            border-top: 1px solid #e5e5e5;
+            background: #e8e1d3;
+            border-top: 1px solid #d4c9b0;
             margin-top: 4rem;
         }
 
         footer p {
-            color: #666;
+            color: #7a6a5a;
         }
 
         @media (max-width: 768px) {
@@ -390,7 +395,7 @@
                 <h3>現在募集中のお仕事</h3>
                 <div class="availability-content">
                     <div class="availability-option">
-                        <h4>🚀 業務委託（即時対応可能）</h4>
+                        <h4>業務委託（即時対応可能）</h4>
                         <p>現在派遣社員として勤務中のため、<strong>時間拘束のない柔軟なプロジェクト</strong>を募集しています。</p>
                         <ul>
                             <li><strong>稼働時間:</strong> 週20時間まで（平日夜間・週末中心）</li>
@@ -418,7 +423,7 @@
                         </ul>
                     </div>
                     <div class="availability-option">
-                        <h4>💼 フルタイム正社員（2026年度以降）</h4>
+                        <h4>フルタイム正社員（2026年度以降）</h4>
                         <p><strong>2026年度以降（2026年9月以降）のフルタイム勤務</strong>をご検討いただける企業様も募集しています。</p>
                         <ul>
                             <li><strong>開始時期:</strong> 2026年9月以降（現在の派遣契約満了後）</li>
@@ -442,16 +447,16 @@
                         </ul>
                     </div>
                     <div class="availability-strengths">
-                        <h4>✨ 強み・実績</h4>
+                        <h4>強み・実績</h4>
                         <ul>
                             <li><strong>AI駆動開発:</strong> Claude Code/Cursor活用により通常の約3倍速で実装</li>
                             <li><strong>要件定義〜デプロイまで一貫対応:</strong> フルスタック開発の実務経験</li>
                             <li><strong>機械学習経験:</strong> 本業でクラスタリング・Transformerモデル改修・チューニング実績</li>
-                            <li><strong>個人開発実績:</strong> <a href="index.html#projects" style="color: #222; text-decoration: underline;">Sound Platform</a>（AI音声投稿プラットフォーム）設計・開発・運用</li>
+                            <li><strong>個人開発実績:</strong> <a href="index.html#projects" style="color: #8b7355; text-decoration: underline;">Sound Platform</a>（AI音声投稿プラットフォーム）設計・開発・運用</li>
                             <li><strong>非同期コミュニケーション:</strong> Slack/GitHub中心の効率的な進捗報告</li>
                         </ul>
                     </div>
-                    <p class="availability-note">まずはカジュアル面談からでも大歓迎です。ポートフォリオ・詳細な技術スタックは<a href="profile.html" style="color: #222; text-decoration: underline;">Profileページ</a>をご覧ください。</p>
+                    <p class="availability-note">まずはカジュアル面談からでも大歓迎です。ポートフォリオ・詳細な技術スタックは<a href="profile.html" style="color: #8b7355; text-decoration: underline;">Profileページ</a>をご覧ください。</p>
                 </div>
             </div>
 
