@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Portfolio Analytics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Archivo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #f5f1ea;
+            --color-surface: #ffffff;
+            --color-surface-alt: #faf8f4;
+            --color-accent-primary: #c9a875;
+            --color-accent-secondary: #8b7355;
+            --color-text-primary: #2c2416;
+            --color-text-secondary: #6b5d4f;
+            --color-text-muted: #9b8d7f;
+            --color-border: #e5dfd5;
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Archivo', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            background: var(--color-bg);
+            color: var(--color-text-primary);
+            min-height: 100vh;
+            padding: 60px 40px;
+            line-height: 1.6;
+        }
+        
+        /* Login Screen Styles */
+        #loginScreen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: -60px -40px;
+            padding: 40px;
+        }
+        
+        .login-box {
+            background: var(--color-surface);
+            border: 2px solid var(--color-accent-primary);
+            padding: 60px 50px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .login-box h1 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--color-text-primary);
+            margin-bottom: 10px;
+        }
+        
+        .login-box p {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 40px;
+        }
+        
+        .login-box input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid var(--color-border);
+            background: var(--color-surface-alt);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: var(--color-text-primary);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .login-box input:focus {
+            outline: none;
+            border-color: var(--color-accent-primary);
+            box-shadow: 0 0 0 3px rgba(201, 168, 117, 0.1);
+        }
+        
+        .login-box button {
+            width: 100%;
+            padding: 16px 20px;
+            background: var(--color-accent-primary);
+            border: none;
+            color: var(--color-surface);
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .login-box button:hover {
+            background: var(--color-accent-secondary);
+        }
+        
+        .login-box button:active {
+            transform: scale(0.98);
+        }
+        
+        .error-message {
+            color: #c53030;
+            font-size: 0.875rem;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        /* Dashboard Styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            margin-bottom: 80px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid var(--color-accent-primary);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 40px;
+        }
+        
+        h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 300;
+            color: var(--color-text-primary);
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+        }
+        
+        .header-meta {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            text-align: right;
+            min-width: 200px;
+        }
+        
+        .period-badge {
+            background: var(--color-accent-primary);
+            color: var(--color-surface);
+            padding: 8px 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .stats-layout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--color-border);
+            margin-bottom: 80px;
+            border: 1px solid var(--color-border);
+            animation: fadeIn 1s ease-out 0.2s both;
+        }
+        
+        .stat-item {
+            background: var(--color-surface);
+            padding: 40px 30px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .stat-item:hover {
+            background: var(--color-surface-alt);
+            transform: scale(1.02);
+            z-index: 10;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        .stat-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 30px;
+            right: 30px;
+            height: 2px;
+            background: var(--color-accent-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .stat-item:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--color-text-muted);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .stat-value {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            font-weight: 300;
+            color: var(--color-accent-secondary);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .stat-description {
+            font-size: 0.813rem;
+            color: var(--color-text-secondary);
+            font-weight: 300;
+        }
+        
+        .section-header {
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+        
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            color: var(--color-text-primary);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        
+        .section-subtitle {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            font-weight: 300;
+        }
+        
+        .table-wrapper {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        thead {
+            background: var(--color-surface-alt);
+            border-bottom: 2px solid var(--color-accent-primary);
+        }
+        
+        th {
+            padding: 20px 24px;
+            text-align: left;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--color-text-secondary);
+            font-weight: 700;
+        }
+        
+        td {
+            padding: 24px;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 0.875rem;
+            transition: background 0.2s ease;
+        }
+        
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tbody tr:hover td {
+            background: var(--color-surface-alt);
+        }
+        
+        .rank-cell {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-accent-primary);
+            width: 80px;
+        }
+        
+        .path-cell {
+            font-family: var(--font-sans);
+            color: var(--color-text-primary);
+            font-weight: 400;
+            font-size: 0.875rem;
+        }
+        
+        .metric-cell {
+            font-family: var(--font-serif);
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--color-accent-secondary);
+            text-align: right;
+            width: 100px;
+        }
+        
+        footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+            animation: fadeIn 1s ease-out 0.8s both;
+        }
+        
+        .footer-text {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            letter-spacing: 0.05em;
+        }
+        
+        .updated-time {
+            font-weight: 600;
+            color: var(--color-accent-secondary);
+            margin: 10px 0;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 100px 20px;
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: var(--color-accent-secondary);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .error {
+            background: #fff5f5;
+            border: 2px solid #e53e3e;
+            color: #c53030;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.4;
+            }
+        }
+        
+        @media (max-width: 968px) {
+            body {
+                padding: 40px 20px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .header-meta {
+                text-align: left;
+                min-width: auto;
+            }
+            
+            .stats-layout {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stat-item {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .stats-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            th, td {
+                padding: 16px 12px;
+            }
+            
+            .rank-cell {
+                width: 60px;
+            }
+            
+            .metric-cell {
+                width: 80px;
+            }
+            
+            .login-box {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen">
+        <div class="login-box">
+            <h1>Analytics</h1>
+            <p>Protected Dashboard</p>
+            <input type="password" id="passwordInput" placeholder="Enter password" autocomplete="off">
+            <button onclick="checkPassword()">Access</button>
+            <div class="error-message" id="errorMessage">Incorrect password</div>
+        </div>
+    </div>
+    
+    <!-- Dashboard Content -->
+    <div id="dashboardContent" style="display: none;">
+        <div class="container">
+            <div id="loading" class="loading">Loading...</div>
+            <div id="error" class="error" style="display: none;"></div>
+            
+            <div id="content" style="display: none;">
+                <header>
+                    <div class="header-content">
+                        <h1>Portfolio<br>Insights</h1>
+                        <div class="header-meta">
+                            <div>Analytics Dashboard</div>
+                            <div class="period-badge" id="periodBadge">—</div>
+                        </div>
+                    </div>
+                </header>
+                
+                <div class="stats-layout">
+                    <div class="stat-item">
+                        <div class="stat-label">Total Users</div>
+                        <div class="stat-value" id="totalUsers">—</div>
+                        <div class="stat-description">Active users in period</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-label">Sessions</div>
+                        <div class="stat-value" id="totalSessions">—</div>
+                        <div class="stat-description">Total sessions</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-label">Page Views</div>
+                        <div class="stat-value" id="totalPageViews">—</div>
+                        <div class="stat-description">Total page views</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-label">Countries</div>
+                        <div class="stat-value" id="uniqueCountries">—</div>
+                        <div class="stat-description">Unique countries</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-label">Pages</div>
+                        <div class="stat-value" id="uniquePages">—</div>
+                        <div class="stat-description">Unique pages accessed</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-label">Engagement</div>
+                        <div class="stat-value" id="avgPageViews">—</div>
+                        <div class="stat-description">Avg views per session</div>
+                    </div>
+                </div>
+                
+                <div class="section-header">
+                    <h2 class="section-title">Most Popular Pages</h2>
+                    <p class="section-subtitle">Top 20 pages by user engagement</p>
+                </div>
+                
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Page Path</th>
+                                <th style="text-align: right;">Users</th>
+                                <th style="text-align: right;">Sessions</th>
+                                <th style="text-align: right;">Views</th>
+                            </tr>
+                        </thead>
+                        <tbody id="topPagesBody"></tbody>
+                    </table>
+                </div>
+                
+                <footer>
+                    <div class="footer-text">Last Updated</div>
+                    <div class="updated-time" id="updatedAt">—</div>
+                    <div class="footer-text" style="margin-top: 20px;">Auto-refresh every 60 seconds</div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Password Protection
+        const CORRECT_PASSWORD = 'Tbbr43gb';
+        
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            const error = document.getElementById('errorMessage');
+            
+            if (input.value === CORRECT_PASSWORD) {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('dashboardContent').style.display = 'block';
+                sessionStorage.setItem('authenticated', 'true');
+                loadData();
+            } else {
+                error.style.display = 'block';
+                input.value = '';
+                input.focus();
+            }
+        }
+        
+        // Enter key support
+        document.getElementById('passwordInput')?.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+        
+        // Check if already authenticated in this session
+        if (sessionStorage.getItem('authenticated') === 'true') {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('dashboardContent').style.display = 'block';
+            loadData();
+        }
+        
+        // Dashboard Data Loading
+        async function loadData() {
+            try {
+                const response = await fetch('data/latest.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load analytics data');
+                }
+                
+                const data = await response.json();
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+                
+                const period = `${data.period.start_date} — ${data.period.end_date}`;
+                document.getElementById('periodBadge').textContent = period;
+                
+                document.getElementById('totalUsers').textContent = data.summary.total_users.toLocaleString();
+                document.getElementById('totalSessions').textContent = data.summary.total_sessions.toLocaleString();
+                document.getElementById('totalPageViews').textContent = data.summary.total_page_views.toLocaleString();
+                document.getElementById('uniqueCountries').textContent = data.summary.unique_countries;
+                document.getElementById('uniquePages').textContent = data.summary.unique_pages;
+                document.getElementById('avgPageViews').textContent = data.summary.avg_page_views_per_session;
+                
+                const pageStats = {};
+                data.details.forEach(row => {
+                    const path = row.page_path;
+                    if (!pageStats[path]) {
+                        pageStats[path] = {
+                            users: 0,
+                            sessions: 0,
+                            pageViews: 0,
+                        };
+                    }
+                    pageStats[path].users += row.active_users;
+                    pageStats[path].sessions += row.sessions;
+                    pageStats[path].pageViews += row.page_views;
+                });
+                
+                const topPages = Object.entries(pageStats)
+                    .map(([path, stats]) => ({path, ...stats}))
+                    .sort((a, b) => b.users - a.users)
+                    .slice(0, 20);
+                
+                const tbody = document.getElementById('topPagesBody');
+                tbody.innerHTML = '';
+                
+                topPages.forEach((page, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="rank-cell">${(index + 1).toString().padStart(2, '0')}</td>
+                        <td class="path-cell">${page.path}</td>
+                        <td class="metric-cell">${page.users.toLocaleString()}</td>
+                        <td class="metric-cell">${page.sessions.toLocaleString()}</td>
+                        <td class="metric-cell">${page.pageViews.toLocaleString()}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+                
+                const collectedAt = new Date(data.collected_at);
+                document.getElementById('updatedAt').textContent = collectedAt.toLocaleString('ja-JP');
+                
+            } catch (error) {
+                document.getElementById('loading').style.display = 'none';
+                const errorDiv = document.getElementById('error');
+                errorDiv.textContent = `Error: ${error.message}`;
+                errorDiv.style.display = 'block';
+                console.error('Analytics data loading error:', error);
+            }
+        }
+        
+        // Auto-refresh every 60 seconds (only if authenticated)
+        setInterval(() => {
+            if (sessionStorage.getItem('authenticated') === 'true') {
+                loadData();
+            }
+        }, 60000);
+    </script>
+</body>
+</html>

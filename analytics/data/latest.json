@@ -1,0 +1,4436 @@
+{
+  "collected_at": "2025-12-02T21:14:14.397504",
+  "period": {
+    "start_date": "2025-11-02",
+    "end_date": "2025-12-02"
+  },
+  "summary": {
+    "total_users": 1889,
+    "total_sessions": 2436,
+    "total_page_views": 3928,
+    "unique_countries": 16,
+    "unique_pages": 70,
+    "avg_page_views_per_session": 1.61
+  },
+  "details": [
+    {
+      "date": "20251126",
+      "page_path": "/tenormusica/articles/claude-opus-4-5-coding-crown-2025",
+      "country": "Japan",
+      "active_users": 128,
+      "sessions": 153,
+      "page_views": 163,
+      "avg_session_duration": 123.37300536601307
+    },
+    {
+      "date": "20251120",
+      "page_path": "/tenormusica/articles/gemini-3-pro-preview-release",
+      "country": "Japan",
+      "active_users": 97,
+      "sessions": 108,
+      "page_views": 129,
+      "avg_session_duration": 191.6444429814815
+    },
+    {
+      "date": "20251127",
+      "page_path": "/tenormusica/articles/claude-opus-4-5-coding-crown-2025",
+      "country": "Japan",
+      "active_users": 81,
+      "sessions": 97,
+      "page_views": 107,
+      "avg_session_duration": 151.71529929896906
+    },
+    {
+      "date": "20251106",
+      "page_path": "/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025",
+      "country": "Japan",
+      "active_users": 42,
+      "sessions": 45,
+      "page_views": 54,
+      "avg_session_duration": 117.15474920000001
+    },
+    {
+      "date": "20251112",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 33,
+      "sessions": 39,
+      "page_views": 43,
+      "avg_session_duration": 133.26969802564102
+    },
+    {
+      "date": "20251117",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "Japan",
+      "active_users": 30,
+      "sessions": 32,
+      "page_views": 35,
+      "avg_session_duration": 99.06859834375
+    },
+    {
+      "date": "20251202",
+      "page_path": "/tenormusica/articles/ai-screen-capture-tools-2025",
+      "country": "Japan",
+      "active_users": 29,
+      "sessions": 37,
+      "page_views": 43,
+      "avg_session_duration": 148.9703224054054
+    },
+    {
+      "date": "20251110",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Japan",
+      "active_users": 27,
+      "sessions": 34,
+      "page_views": 37,
+      "avg_session_duration": 122.96469976470587
+    },
+    {
+      "date": "20251121",
+      "page_path": "/tenormusica/articles/gemini-3-pro-preview-release",
+      "country": "Japan",
+      "active_users": 27,
+      "sessions": 32,
+      "page_views": 35,
+      "avg_session_duration": 150.05515090625
+    },
+    {
+      "date": "20251105",
+      "page_path": "/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025",
+      "country": "Japan",
+      "active_users": 26,
+      "sessions": 29,
+      "page_views": 31,
+      "avg_session_duration": 35.657753586206894
+    },
+    {
+      "date": "20251115",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Japan",
+      "active_users": 26,
+      "sessions": 40,
+      "page_views": 44,
+      "avg_session_duration": 86.177805775
+    },
+    {
+      "date": "20251128",
+      "page_path": "/tenormusica/articles/claude-opus-4-5-coding-crown-2025",
+      "country": "Japan",
+      "active_users": 26,
+      "sessions": 28,
+      "page_views": 33,
+      "avg_session_duration": 93.33914032142857
+    },
+    {
+      "date": "20251118",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "Japan",
+      "active_users": 24,
+      "sessions": 29,
+      "page_views": 32,
+      "avg_session_duration": 66.17499365517241
+    },
+    {
+      "date": "20251117",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Japan",
+      "active_users": 23,
+      "sessions": 31,
+      "page_views": 33,
+      "avg_session_duration": 185.26322622580645
+    },
+    {
+      "date": "20251119",
+      "page_path": "/tenormusica/articles/gemini-3-pro-preview-release",
+      "country": "Japan",
+      "active_users": 22,
+      "sessions": 23,
+      "page_views": 31,
+      "avg_session_duration": 162.2999434347826
+    },
+    {
+      "date": "20251111",
+      "page_path": "/tenormusica/articles/github-agent-hq-unified-ai-coding-2025",
+      "country": "Japan",
+      "active_users": 21,
+      "sessions": 24,
+      "page_views": 27,
+      "avg_session_duration": 194.66410745833332
+    },
+    {
+      "date": "20251113",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 21,
+      "sessions": 29,
+      "page_views": 28,
+      "avg_session_duration": 107.32539596551725
+    },
+    {
+      "date": "20251121",
+      "page_path": "/tenormusica/articles/gemini3-nanobanana2-antigravity-november-2025",
+      "country": "Japan",
+      "active_users": 21,
+      "sessions": 25,
+      "page_views": 28,
+      "avg_session_duration": 225.05966619999998
+    },
+    {
+      "date": "20251110",
+      "page_path": "/tenormusica/articles/github-agent-hq-unified-ai-coding-2025",
+      "country": "Japan",
+      "active_users": 20,
+      "sessions": 22,
+      "page_views": 25,
+      "avg_session_duration": 47.49844286363636
+    },
+    {
+      "date": "20251111",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Japan",
+      "active_users": 18,
+      "sessions": 22,
+      "page_views": 24,
+      "avg_session_duration": 129.52953854545456
+    },
+    {
+      "date": "20251107",
+      "page_path": "/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025",
+      "country": "Japan",
+      "active_users": 17,
+      "sessions": 18,
+      "page_views": 24,
+      "avg_session_duration": 96.95524805555556
+    },
+    {
+      "date": "20251112",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Japan",
+      "active_users": 17,
+      "sessions": 18,
+      "page_views": 17,
+      "avg_session_duration": 150.95734166666665
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/ai-screen-capture-tools-2025",
+      "country": "Japan",
+      "active_users": 17,
+      "sessions": 17,
+      "page_views": 26,
+      "avg_session_duration": 65.91362182352941
+    },
+    {
+      "date": "20251109",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Japan",
+      "active_users": 15,
+      "sessions": 19,
+      "page_views": 20,
+      "avg_session_duration": 38.433872842105266
+    },
+    {
+      "date": "20251119",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 15,
+      "sessions": 24,
+      "page_views": 90,
+      "avg_session_duration": 313.76349016666666
+    },
+    {
+      "date": "20251114",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Japan",
+      "active_users": 14,
+      "sessions": 15,
+      "page_views": 17,
+      "avg_session_duration": 266.00540233333334
+    },
+    {
+      "date": "20251116",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Japan",
+      "active_users": 14,
+      "sessions": 16,
+      "page_views": 21,
+      "avg_session_duration": 116.503685125
+    },
+    {
+      "date": "20251119",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 14,
+      "sessions": 26,
+      "page_views": 190,
+      "avg_session_duration": 764.0505715769231
+    },
+    {
+      "date": "20251119",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "Japan",
+      "active_users": 14,
+      "sessions": 17,
+      "page_views": 21,
+      "avg_session_duration": 53.549172176470584
+    },
+    {
+      "date": "20251126",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Japan",
+      "active_users": 14,
+      "sessions": 18,
+      "page_views": 17,
+      "avg_session_duration": 36.21448288888889
+    },
+    {
+      "date": "20251120",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 13,
+      "sessions": 21,
+      "page_views": 60,
+      "avg_session_duration": 602.2781447142858
+    },
+    {
+      "date": "20251128",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Japan",
+      "active_users": 13,
+      "sessions": 15,
+      "page_views": 14,
+      "avg_session_duration": 61.1255702
+    },
+    {
+      "date": "20251115",
+      "page_path": "/tenormusica/articles/test-long-article-100chunks",
+      "country": "Japan",
+      "active_users": 12,
+      "sessions": 12,
+      "page_views": 13,
+      "avg_session_duration": 66.52266508333334
+    },
+    {
+      "date": "20251118",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Japan",
+      "active_users": 12,
+      "sessions": 14,
+      "page_views": 18,
+      "avg_session_duration": 56.83708485714286
+    },
+    {
+      "date": "20251103",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 11,
+      "sessions": 16,
+      "page_views": 15,
+      "avg_session_duration": 22.0515440625
+    },
+    {
+      "date": "20251112",
+      "page_path": "/tenormusica/articles/github-agent-hq-unified-ai-coding-2025",
+      "country": "Japan",
+      "active_users": 11,
+      "sessions": 12,
+      "page_views": 12,
+      "avg_session_duration": 140.68443708333334
+    },
+    {
+      "date": "20251113",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Japan",
+      "active_users": 11,
+      "sessions": 13,
+      "page_views": 12,
+      "avg_session_duration": 106.66819953846154
+    },
+    {
+      "date": "20251122",
+      "page_path": "/tenormusica/articles/gemini3-nanobanana2-antigravity-november-2025",
+      "country": "Japan",
+      "active_users": 11,
+      "sessions": 14,
+      "page_views": 12,
+      "avg_session_duration": 60.944549071428575
+    },
+    {
+      "date": "20251108",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Japan",
+      "active_users": 10,
+      "sessions": 11,
+      "page_views": 11,
+      "avg_session_duration": 44.60855863636363
+    },
+    {
+      "date": "20251113",
+      "page_path": "/tenormusica/articles/github-agent-hq-unified-ai-coding-2025",
+      "country": "Japan",
+      "active_users": 10,
+      "sessions": 14,
+      "page_views": 14,
+      "avg_session_duration": 39.6897085
+    },
+    {
+      "date": "20251117",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Japan",
+      "active_users": 10,
+      "sessions": 10,
+      "page_views": 11,
+      "avg_session_duration": 68.466813
+    },
+    {
+      "date": "20251118",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 10,
+      "sessions": 17,
+      "page_views": 81,
+      "avg_session_duration": 247.66309347058825
+    },
+    {
+      "date": "20251118",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Japan",
+      "active_users": 10,
+      "sessions": 12,
+      "page_views": 13,
+      "avg_session_duration": 80.74701008333334
+    },
+    {
+      "date": "20251122",
+      "page_path": "/tenormusica/articles/gemini-3-pro-preview-release",
+      "country": "Japan",
+      "active_users": 10,
+      "sessions": 11,
+      "page_views": 11,
+      "avg_session_duration": 108.24123054545454
+    },
+    {
+      "date": "20251125",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Japan",
+      "active_users": 10,
+      "sessions": 14,
+      "page_views": 13,
+      "avg_session_duration": 170.63331542857142
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Japan",
+      "active_users": 10,
+      "sessions": 12,
+      "page_views": 12,
+      "avg_session_duration": 72.79309183333334
+    },
+    {
+      "date": "20251129",
+      "page_path": "/tenormusica/articles/claude-opus-4-5-coding-crown-2025",
+      "country": "Japan",
+      "active_users": 9,
+      "sessions": 13,
+      "page_views": 14,
+      "avg_session_duration": 144.25361707692306
+    },
+    {
+      "date": "20251117",
+      "page_path": "/tenormusica/articles/github-agent-hq-unified-ai-coding-2025",
+      "country": "Japan",
+      "active_users": 8,
+      "sessions": 13,
+      "page_views": 11,
+      "avg_session_duration": 50.82417792307692
+    },
+    {
+      "date": "20251120",
+      "page_path": "/portfolio/",
+      "country": "Japan",
+      "active_users": 8,
+      "sessions": 9,
+      "page_views": 10,
+      "avg_session_duration": 1.5438823333333334
+    },
+    {
+      "date": "20251120",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 8,
+      "sessions": 14,
+      "page_views": 51,
+      "avg_session_duration": 266.9889542142857
+    },
+    {
+      "date": "20251123",
+      "page_path": "/tenormusica/articles/gemini3-nanobanana2-antigravity-november-2025",
+      "country": "Japan",
+      "active_users": 8,
+      "sessions": 8,
+      "page_views": 10,
+      "avg_session_duration": 189.424449
+    },
+    {
+      "date": "20251125",
+      "page_path": "/tenormusica/articles/gemini-3-pro-preview-release",
+      "country": "Japan",
+      "active_users": 8,
+      "sessions": 12,
+      "page_views": 8,
+      "avg_session_duration": 136.96357241666666
+    },
+    {
+      "date": "20251104",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 7,
+      "sessions": 8,
+      "page_views": 7,
+      "avg_session_duration": 182.956138
+    },
+    {
+      "date": "20251116",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Japan",
+      "active_users": 7,
+      "sessions": 7,
+      "page_views": 7,
+      "avg_session_duration": 277.81445214285714
+    },
+    {
+      "date": "20251118",
+      "page_path": "/tenormusica/articles/github-agent-hq-unified-ai-coding-2025",
+      "country": "Japan",
+      "active_users": 7,
+      "sessions": 8,
+      "page_views": 9,
+      "avg_session_duration": 233.5413545
+    },
+    {
+      "date": "20251121",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "Japan",
+      "active_users": 7,
+      "sessions": 7,
+      "page_views": 9,
+      "avg_session_duration": 18.50548642857143
+    },
+    {
+      "date": "20251114",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Japan",
+      "active_users": 6,
+      "sessions": 7,
+      "page_views": 9,
+      "avg_session_duration": 178.5940282857143
+    },
+    {
+      "date": "20251117",
+      "page_path": "/tenormusica/articles/test-long-article-100chunks",
+      "country": "Japan",
+      "active_users": 6,
+      "sessions": 7,
+      "page_views": 7,
+      "avg_session_duration": 43.042964285714284
+    },
+    {
+      "date": "20251119",
+      "page_path": "/portfolio/profile.html",
+      "country": "Japan",
+      "active_users": 6,
+      "sessions": 12,
+      "page_views": 34,
+      "avg_session_duration": 30.980045416666666
+    },
+    {
+      "date": "20251126",
+      "page_path": "/portfolio-dev/",
+      "country": "United States",
+      "active_users": 6,
+      "sessions": 6,
+      "page_views": 6,
+      "avg_session_duration": 3.1522406666666662
+    },
+    {
+      "date": "20251126",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 6,
+      "sessions": 7,
+      "page_views": 28,
+      "avg_session_duration": 482.7492851428571
+    },
+    {
+      "date": "20251126",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "Japan",
+      "active_users": 6,
+      "sessions": 8,
+      "page_views": 6,
+      "avg_session_duration": 48.530598875
+    },
+    {
+      "date": "20251126",
+      "page_path": "/tenormusica/articles/gemini3-nanobanana2-antigravity-november-2025",
+      "country": "Japan",
+      "active_users": 6,
+      "sessions": 9,
+      "page_views": 12,
+      "avg_session_duration": 222.72024577777776
+    },
+    {
+      "date": "20251110",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 5,
+      "sessions": 5,
+      "page_views": 5,
+      "avg_session_duration": 494.723478
+    },
+    {
+      "date": "20251114",
+      "page_path": "/tenormusica/articles/github-agent-hq-unified-ai-coding-2025",
+      "country": "Japan",
+      "active_users": 5,
+      "sessions": 8,
+      "page_views": 9,
+      "avg_session_duration": 1498.16091825
+    },
+    {
+      "date": "20251118",
+      "page_path": "/index.html",
+      "country": "Japan",
+      "active_users": 5,
+      "sessions": 5,
+      "page_views": 5,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251118",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 5,
+      "sessions": 11,
+      "page_views": 216,
+      "avg_session_duration": 2350.082182272727
+    },
+    {
+      "date": "20251118",
+      "page_path": "/portfolio/profile.html",
+      "country": "Japan",
+      "active_users": 5,
+      "sessions": 10,
+      "page_views": 45,
+      "avg_session_duration": 215.7772148
+    },
+    {
+      "date": "20251120",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 5,
+      "sessions": 11,
+      "page_views": 21,
+      "avg_session_duration": 509.4061085454545
+    },
+    {
+      "date": "20251120",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "Japan",
+      "active_users": 5,
+      "sessions": 5,
+      "page_views": 8,
+      "avg_session_duration": 85.2130458
+    },
+    {
+      "date": "20251120",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Japan",
+      "active_users": 5,
+      "sessions": 7,
+      "page_views": 8,
+      "avg_session_duration": 98.97769028571429
+    },
+    {
+      "date": "20251121",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Japan",
+      "active_users": 5,
+      "sessions": 12,
+      "page_views": 7,
+      "avg_session_duration": 8.291359416666667
+    },
+    {
+      "date": "20251125",
+      "page_path": "/tenormusica/articles/gemini3-nanobanana2-antigravity-november-2025",
+      "country": "Japan",
+      "active_users": 5,
+      "sessions": 6,
+      "page_views": 6,
+      "avg_session_duration": 7.749607666666667
+    },
+    {
+      "date": "20251125",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 5,
+      "sessions": 5,
+      "page_views": 6,
+      "avg_session_duration": 483.131837
+    },
+    {
+      "date": "20251126",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 5,
+      "sessions": 6,
+      "page_views": 12,
+      "avg_session_duration": 354.64209066666666
+    },
+    {
+      "date": "20251126",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 5,
+      "sessions": 5,
+      "page_views": 10,
+      "avg_session_duration": 508.0287182
+    },
+    {
+      "date": "20251127",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 5,
+      "sessions": 9,
+      "page_views": 16,
+      "avg_session_duration": 149.06514155555556
+    },
+    {
+      "date": "20251127",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 5,
+      "sessions": 7,
+      "page_views": 21,
+      "avg_session_duration": 495.97625999999997
+    },
+    {
+      "date": "20251128",
+      "page_path": "/tenormusica/articles/swe-bench-pro-coding-ai-benchmark",
+      "country": "Japan",
+      "active_users": 5,
+      "sessions": 6,
+      "page_views": 7,
+      "avg_session_duration": 159.82281966666667
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 5,
+      "sessions": 7,
+      "page_views": 25,
+      "avg_session_duration": 1016.7701147142858
+    },
+    {
+      "date": "20251102",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 4,
+      "page_views": 5,
+      "avg_session_duration": 22.11342825
+    },
+    {
+      "date": "20251104",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 4,
+      "page_views": 5,
+      "avg_session_duration": 79.31412825
+    },
+    {
+      "date": "20251106",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 7,
+      "page_views": 6,
+      "avg_session_duration": 111.56459385714287
+    },
+    {
+      "date": "20251110",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 6,
+      "page_views": 9,
+      "avg_session_duration": 448.85968499999996
+    },
+    {
+      "date": "20251111",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 6,
+      "page_views": 12,
+      "avg_session_duration": 265.80702116666663
+    },
+    {
+      "date": "20251112",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 7,
+      "page_views": 20,
+      "avg_session_duration": 743.9854728571428
+    },
+    {
+      "date": "20251112",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 6,
+      "page_views": 15,
+      "avg_session_duration": 930.7593871666667
+    },
+    {
+      "date": "20251113",
+      "page_path": "/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 6,
+      "page_views": 4,
+      "avg_session_duration": 1.6748468333333333
+    },
+    {
+      "date": "20251115",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 5,
+      "page_views": 5,
+      "avg_session_duration": 28.603274399999997
+    },
+    {
+      "date": "20251116",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 4,
+      "page_views": 4,
+      "avg_session_duration": 25.29027175
+    },
+    {
+      "date": "20251117",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 8,
+      "page_views": 13,
+      "avg_session_duration": 305.747770875
+    },
+    {
+      "date": "20251118",
+      "page_path": "/tenormusica/articles/test-long-article-100chunks",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 4,
+      "page_views": 4,
+      "avg_session_duration": 16.3448715
+    },
+    {
+      "date": "20251119",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 6,
+      "page_views": 9,
+      "avg_session_duration": 374.6360916666667
+    },
+    {
+      "date": "20251119",
+      "page_path": "/tenormusica/articles/github-agent-hq-unified-ai-coding-2025",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 5,
+      "page_views": 5,
+      "avg_session_duration": 7.131741
+    },
+    {
+      "date": "20251119",
+      "page_path": "/tenormusica/articles/swe-bench-pro-coding-ai-benchmark",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 4,
+      "page_views": 5,
+      "avg_session_duration": 43.90993025
+    },
+    {
+      "date": "20251120",
+      "page_path": "/tenormusica/articles/test-long-article-100chunks",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 4,
+      "page_views": 4,
+      "avg_session_duration": 96.91744575
+    },
+    {
+      "date": "20251121",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 4,
+      "page_views": 9,
+      "avg_session_duration": 485.8195875
+    },
+    {
+      "date": "20251121",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 4,
+      "page_views": 5,
+      "avg_session_duration": 172.2865035
+    },
+    {
+      "date": "20251124",
+      "page_path": "/tenormusica/articles/gemini3-nanobanana2-antigravity-november-2025",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 4,
+      "page_views": 5,
+      "avg_session_duration": 384.086054
+    },
+    {
+      "date": "20251124",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 5,
+      "page_views": 5,
+      "avg_session_duration": 62.8333442
+    },
+    {
+      "date": "20251126",
+      "page_path": "/tenormusica/articles/gemini-3-pro-preview-release",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 4,
+      "page_views": 7,
+      "avg_session_duration": 796.49276825
+    },
+    {
+      "date": "20251127",
+      "page_path": "/tenormusica/articles/gemini-3-pro-preview-release",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 5,
+      "page_views": 5,
+      "avg_session_duration": 3.4361258
+    },
+    {
+      "date": "20251128",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 4,
+      "page_views": 4,
+      "avg_session_duration": 63.933381
+    },
+    {
+      "date": "20251130",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 4,
+      "page_views": 4,
+      "avg_session_duration": 158.7496495
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/claude-opus-4-5-coding-crown-2025",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 6,
+      "page_views": 6,
+      "avg_session_duration": 30.0464125
+    },
+    {
+      "date": "20251202",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Japan",
+      "active_users": 4,
+      "sessions": 4,
+      "page_views": 5,
+      "avg_session_duration": 11.0543645
+    },
+    {
+      "date": "20251105",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 4,
+      "avg_session_duration": 30.171366333333335
+    },
+    {
+      "date": "20251105",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 4,
+      "avg_session_duration": 87.05021599999999
+    },
+    {
+      "date": "20251106",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 3,
+      "avg_session_duration": 16.036276333333333
+    },
+    {
+      "date": "20251110",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 5,
+      "page_views": 8,
+      "avg_session_duration": 421.15436120000004
+    },
+    {
+      "date": "20251110",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 9,
+      "page_views": 22,
+      "avg_session_duration": 804.501078111111
+    },
+    {
+      "date": "20251110",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 4,
+      "avg_session_duration": 100.87655566666666
+    },
+    {
+      "date": "20251111",
+      "page_path": "/portfolio/profile.html",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 6,
+      "avg_session_duration": 28.108220333333335
+    },
+    {
+      "date": "20251111",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 7,
+      "page_views": 22,
+      "avg_session_duration": 551.1257868571429
+    },
+    {
+      "date": "20251112",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 24,
+      "avg_session_duration": 1735.2542746666668
+    },
+    {
+      "date": "20251112",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 5,
+      "avg_session_duration": 233.763538
+    },
+    {
+      "date": "20251113",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 4,
+      "avg_session_duration": 6.713160333333334
+    },
+    {
+      "date": "20251113",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 3,
+      "avg_session_duration": 3.722147
+    },
+    {
+      "date": "20251115",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 10,
+      "page_views": 15,
+      "avg_session_duration": 447.8767873
+    },
+    {
+      "date": "20251115",
+      "page_path": "/tenormusica/articles/github-agent-hq-unified-ai-coding-2025",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 3,
+      "avg_session_duration": 6.836709333333334
+    },
+    {
+      "date": "20251116",
+      "page_path": "/tenormusica/articles/github-agent-hq-unified-ai-coding-2025",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 6,
+      "avg_session_duration": 522.282204
+    },
+    {
+      "date": "20251116",
+      "page_path": "/tenormusica/articles/test-long-article-100chunks",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 4,
+      "page_views": 4,
+      "avg_session_duration": 125.5105685
+    },
+    {
+      "date": "20251117",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 7,
+      "page_views": 42,
+      "avg_session_duration": 1428.13439
+    },
+    {
+      "date": "20251118",
+      "page_path": "/portfolio/",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 5,
+      "avg_session_duration": 5.186214333333333
+    },
+    {
+      "date": "20251119",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 3,
+      "avg_session_duration": 72.68875233333334
+    },
+    {
+      "date": "20251120",
+      "page_path": "/portfolio/profile.html",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 6,
+      "page_views": 8,
+      "avg_session_duration": 5.875148
+    },
+    {
+      "date": "20251121",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 3,
+      "avg_session_duration": 22.09511566666667
+    },
+    {
+      "date": "20251121",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 4,
+      "page_views": 4,
+      "avg_session_duration": 7.4380505
+    },
+    {
+      "date": "20251121",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 3,
+      "avg_session_duration": 48.797911
+    },
+    {
+      "date": "20251122",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 6,
+      "page_views": 7,
+      "avg_session_duration": 339.87956733333334
+    },
+    {
+      "date": "20251122",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 7,
+      "page_views": 16,
+      "avg_session_duration": 1108.1876027142857
+    },
+    {
+      "date": "20251123",
+      "page_path": "/tenormusica/articles/gemini-3-pro-preview-release",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 4,
+      "page_views": 4,
+      "avg_session_duration": 69.46713975
+    },
+    {
+      "date": "20251123",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 3,
+      "avg_session_duration": 53.73783366666667
+    },
+    {
+      "date": "20251124",
+      "page_path": "/tenormusica/articles/gemini-3-pro-preview-release",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 6,
+      "page_views": 7,
+      "avg_session_duration": 83.952059
+    },
+    {
+      "date": "20251125",
+      "page_path": "/tenormusica/articles/tech-layoffs-ai-investment-paradox-2025",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 4,
+      "avg_session_duration": 87.93803533333333
+    },
+    {
+      "date": "20251126",
+      "page_path": "/portfolio-dev/profile.html",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 4,
+      "page_views": 14,
+      "avg_session_duration": 562.41204425
+    },
+    {
+      "date": "20251126",
+      "page_path": "/portfolio/profile.html",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 13,
+      "avg_session_duration": 365.7081103333333
+    },
+    {
+      "date": "20251126",
+      "page_path": "/tenormusica/articles/claude-opus-4-5-coding-crown-2025",
+      "country": "United States",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 3,
+      "avg_session_duration": 6.380815666666667
+    },
+    {
+      "date": "20251126",
+      "page_path": "/tenormusica/articles/github-agent-hq-unified-ai-coding-2025",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 4,
+      "page_views": 4,
+      "avg_session_duration": 225.27755625
+    },
+    {
+      "date": "20251127",
+      "page_path": "/portfolio/profile.html",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 4,
+      "page_views": 6,
+      "avg_session_duration": 44.25806575
+    },
+    {
+      "date": "20251127",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 5,
+      "page_views": 5,
+      "avg_session_duration": 55.89803980000001
+    },
+    {
+      "date": "20251128",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 6,
+      "page_views": 10,
+      "avg_session_duration": 223.29282933333332
+    },
+    {
+      "date": "20251130",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 6,
+      "page_views": 20,
+      "avg_session_duration": 178.51309633333335
+    },
+    {
+      "date": "20251130",
+      "page_path": "/portfolio/profile.html",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 7,
+      "page_views": 6,
+      "avg_session_duration": 10.017889714285715
+    },
+    {
+      "date": "20251130",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 7,
+      "page_views": 35,
+      "avg_session_duration": 874.0874837142857
+    },
+    {
+      "date": "20251130",
+      "page_path": "/tenormusica/articles/claude-opus-4-5-coding-crown-2025",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 3,
+      "page_views": 3,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251202",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 3,
+      "sessions": 4,
+      "page_views": 7,
+      "avg_session_duration": 173.94697525
+    },
+    {
+      "date": "20251102",
+      "page_path": "/tenormusica/articles/swe-bench-pro-coding-ai-benchmark",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 23762.5718235
+    },
+    {
+      "date": "20251103",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 3,
+      "avg_session_duration": 490.873794
+    },
+    {
+      "date": "20251103",
+      "page_path": "/tenormusica/articles/swe-bench-pro-coding-ai-benchmark",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 3,
+      "page_views": 3,
+      "avg_session_duration": 2383.8864556666667
+    },
+    {
+      "date": "20251103",
+      "page_path": "/tenormusica/articles/tech-layoffs-ai-investment-paradox-2025",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 3,
+      "page_views": 3,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251104",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 3,
+      "avg_session_duration": 65.713147
+    },
+    {
+      "date": "20251105",
+      "page_path": "/portfolio/profile.html",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 10.5835875
+    },
+    {
+      "date": "20251105",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 4,
+      "page_views": 4,
+      "avg_session_duration": 441.73660125
+    },
+    {
+      "date": "20251105",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 6,
+      "page_views": 9,
+      "avg_session_duration": 242.30034
+    },
+    {
+      "date": "20251105",
+      "page_path": "/tenormusica/articles/karpathy-llms-fear-exceptions",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 21.9339305
+    },
+    {
+      "date": "20251105",
+      "page_path": "/tenormusica/articles/tech-layoffs-ai-investment-paradox-2025",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 63.628939
+    },
+    {
+      "date": "20251109",
+      "page_path": "/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 384.9266855
+    },
+    {
+      "date": "20251109",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 74.0212885
+    },
+    {
+      "date": "20251111",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 6,
+      "page_views": 8,
+      "avg_session_duration": 369.4902006666667
+    },
+    {
+      "date": "20251111",
+      "page_path": "/tenormusica/articles/swe-bench-pro-coding-ai-benchmark",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 3,
+      "avg_session_duration": 388.0003885
+    },
+    {
+      "date": "20251112",
+      "page_path": "/portfolio/profile.html",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 3,
+      "page_views": 4,
+      "avg_session_duration": 35.762456
+    },
+    {
+      "date": "20251112",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 3,
+      "page_views": 4,
+      "avg_session_duration": 5.038627
+    },
+    {
+      "date": "20251112",
+      "page_path": "/tenormusica/articles/anthropic-llm-poisoning-research",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 3,
+      "page_views": 2,
+      "avg_session_duration": 139.84518433333332
+    },
+    {
+      "date": "20251112",
+      "page_path": "/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 49.630741
+    },
+    {
+      "date": "20251113",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 4,
+      "page_views": 4,
+      "avg_session_duration": 4.1927705
+    },
+    {
+      "date": "20251114",
+      "page_path": "/portfolio/index.html",
+      "country": "United States",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251114",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 9,
+      "avg_session_duration": 1347.120464
+    },
+    {
+      "date": "20251115",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 10,
+      "page_views": 68,
+      "avg_session_duration": 827.5630779999999
+    },
+    {
+      "date": "20251116",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 6,
+      "page_views": 18,
+      "avg_session_duration": 893.0769871666666
+    },
+    {
+      "date": "20251116",
+      "page_path": "/portfolio/projects.html",
+      "country": "United States",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 2.5341735
+    },
+    {
+      "date": "20251116",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 3,
+      "page_views": 5,
+      "avg_session_duration": 311.79685033333334
+    },
+    {
+      "date": "20251117",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 4,
+      "page_views": 16,
+      "avg_session_duration": 1076.251275
+    },
+    {
+      "date": "20251117",
+      "page_path": "/tenormusica/articles/anthropic-llm-poisoning-research",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251118",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 3,
+      "page_views": 5,
+      "avg_session_duration": 913.7261629999999
+    },
+    {
+      "date": "20251119",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 3,
+      "page_views": 2,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251119",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 10.8974585
+    },
+    {
+      "date": "20251119",
+      "page_path": "/tenormusica/articles/test-long-article-100chunks",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251120",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 3,
+      "avg_session_duration": 2.8906205
+    },
+    {
+      "date": "20251120",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 23.107591
+    },
+    {
+      "date": "20251121",
+      "page_path": "/tenormusica/articles/gemini-3-pro-preview-release",
+      "country": "United States",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251122",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 380.585852
+    },
+    {
+      "date": "20251122",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 60.709593
+    },
+    {
+      "date": "20251124",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 3,
+      "page_views": 3,
+      "avg_session_duration": 1.9525513333333333
+    },
+    {
+      "date": "20251124",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251124",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 143.6646045
+    },
+    {
+      "date": "20251125",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 3,
+      "page_views": 3,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251125",
+      "page_path": "/tenormusica/articles/swe-bench-pro-coding-ai-benchmark",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 3,
+      "avg_session_duration": 65.833795
+    },
+    {
+      "date": "20251126",
+      "page_path": "/portfolio-dev/profile.html",
+      "country": "United States",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 1,
+      "avg_session_duration": 3.5602295
+    },
+    {
+      "date": "20251127",
+      "page_path": "/portfolio/",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 4,
+      "avg_session_duration": 303.099222
+    },
+    {
+      "date": "20251127",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 8,
+      "page_views": 11,
+      "avg_session_duration": 432.007012625
+    },
+    {
+      "date": "20251127",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 3,
+      "page_views": 2,
+      "avg_session_duration": 39.753990333333334
+    },
+    {
+      "date": "20251127",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 182.380133
+    },
+    {
+      "date": "20251128",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 3,
+      "avg_session_duration": 20.075854
+    },
+    {
+      "date": "20251128",
+      "page_path": "/tenormusica/articles/gemini3-nanobanana2-antigravity-november-2025",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 37.219335
+    },
+    {
+      "date": "20251129",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 3,
+      "page_views": 14,
+      "avg_session_duration": 1205.017506
+    },
+    {
+      "date": "20251130",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 51.660396
+    },
+    {
+      "date": "20251201",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 7,
+      "page_views": 18,
+      "avg_session_duration": 512.1273294285714
+    },
+    {
+      "date": "20251201",
+      "page_path": "/portfolio/profile.html",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 4,
+      "page_views": 5,
+      "avg_session_duration": 3.69769125
+    },
+    {
+      "date": "20251201",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 6,
+      "page_views": 14,
+      "avg_session_duration": 436.035232
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/gemini-3-pro-preview-release",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 4,
+      "page_views": 5,
+      "avg_session_duration": 43.62502975
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 10.657705
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/tech-layoffs-ai-investment-paradox-2025",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 3,
+      "avg_session_duration": 202.7995255
+    },
+    {
+      "date": "20251202",
+      "page_path": "/portfolio/contact.html",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 3,
+      "page_views": 6,
+      "avg_session_duration": 947.157381
+    },
+    {
+      "date": "20251202",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 5,
+      "page_views": 13,
+      "avg_session_duration": 543.3296058
+    },
+    {
+      "date": "20251202",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 5,
+      "page_views": 7,
+      "avg_session_duration": 450.47859660000006
+    },
+    {
+      "date": "20251202",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 11.945097
+    },
+    {
+      "date": "20251202",
+      "page_path": "/tenormusica/articles/gemini3-nanobanana2-antigravity-november-2025",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 3,
+      "avg_session_duration": 216.640485
+    },
+    {
+      "date": "20251202",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 14.374986
+    },
+    {
+      "date": "20251202",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 2,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 32.2493015
+    },
+    {
+      "date": "20251102",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 4,
+      "page_views": 4,
+      "avg_session_duration": 166.50543625
+    },
+    {
+      "date": "20251102",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 609.004265
+    },
+    {
+      "date": "20251102",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 3,
+      "page_views": 7,
+      "avg_session_duration": 133.17739533333335
+    },
+    {
+      "date": "20251102",
+      "page_path": "/tenormusica/articles/karpathy-llms-fear-exceptions",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 219.97072
+    },
+    {
+      "date": "20251102",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "China",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251102",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Singapore",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.722871
+    },
+    {
+      "date": "20251102",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251102",
+      "page_path": "/tenormusica/articles/tech-layoffs-ai-investment-paradox-2025",
+      "country": "China",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251102",
+      "page_path": "/tenormusica/articles/tech-layoffs-ai-investment-paradox-2025",
+      "country": "Singapore",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 2.477918
+    },
+    {
+      "date": "20251103",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 2,
+      "page_views": 3,
+      "avg_session_duration": 267.142709
+    },
+    {
+      "date": "20251103",
+      "page_path": "/tenormusica/articles/claude-code-web-release-2025-v2",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 653.019922
+    },
+    {
+      "date": "20251103",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 44.554445
+    },
+    {
+      "date": "20251103",
+      "page_path": "/tenormusica/articles/karpathy-llms-fear-exceptions",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251103",
+      "page_path": "/tenormusica/articles/karpathy-nanochat-100-dollar-llm",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 5.964189
+    },
+    {
+      "date": "20251104",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 4,
+      "avg_session_duration": 2355.766524
+    },
+    {
+      "date": "20251104",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 2,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251104",
+      "page_path": "/tenormusica/articles/chatgpt-atlas-google-search-war-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 11.697208
+    },
+    {
+      "date": "20251105",
+      "page_path": "/portfolio/",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 1.143756
+    },
+    {
+      "date": "20251105",
+      "page_path": "/tenormusica/articles/anthropic-llm-poisoning-research",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 1429.212402
+    },
+    {
+      "date": "20251105",
+      "page_path": "/tenormusica/articles/chatgpt-atlas-google-search-war-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 2.759968
+    },
+    {
+      "date": "20251106",
+      "page_path": "/antway/articles/e8710a23e0364a",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 15.54342
+    },
+    {
+      "date": "20251106",
+      "page_path": "/articles",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 41,
+      "avg_session_duration": 2451.999567
+    },
+    {
+      "date": "20251106",
+      "page_path": "/ats030/articles/how-to-operate-posting-bot",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 15.623601
+    },
+    {
+      "date": "20251106",
+      "page_path": "/dkato/articles/bcd104e8c1b494",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 11.100489
+    },
+    {
+      "date": "20251106",
+      "page_path": "/genai/articles/cursor-update-v-2_0",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 5.54788
+    },
+    {
+      "date": "20251106",
+      "page_path": "/headwaters/articles/e7aa970af23ff5",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 9.224507
+    },
+    {
+      "date": "20251106",
+      "page_path": "/hiroppy123/articles/9f7e67e05481d3",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 14.309537
+    },
+    {
+      "date": "20251106",
+      "page_path": "/jugem_jugem/articles/622bbcf0eaf013",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 7.773211
+    },
+    {
+      "date": "20251106",
+      "page_path": "/kentakki416/articles/2f01dc6ea0e9a0",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251106",
+      "page_path": "/koshitake/articles/d9880c1b5bbc31",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 7.47239
+    },
+    {
+      "date": "20251106",
+      "page_path": "/ktdatascience/articles/c479c0d7e60e89",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 23.434642
+    },
+    {
+      "date": "20251106",
+      "page_path": "/mn329/articles/95a755391542c6",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 20.300872
+    },
+    {
+      "date": "20251106",
+      "page_path": "/moneymog/articles/b65646ab40df16",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 11.530814
+    },
+    {
+      "date": "20251106",
+      "page_path": "/monokaai/articles/favorite-tools-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 6.03432
+    },
+    {
+      "date": "20251106",
+      "page_path": "/noranuko13/articles/7bc0b7cac51ec6",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 9.9145
+    },
+    {
+      "date": "20251106",
+      "page_path": "/pdfractal/articles/535ffbba1cc124",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 14.729327
+    },
+    {
+      "date": "20251106",
+      "page_path": "/pdfractal/articles/6feecad834d1c1",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251106",
+      "page_path": "/portalkeyinc/articles/bd725865b7fea8",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 26.94782
+    },
+    {
+      "date": "20251106",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 5.3603
+    },
+    {
+      "date": "20251106",
+      "page_path": "/spacemarket/articles/database-anti-pattern",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 5.000237
+    },
+    {
+      "date": "20251106",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 5,
+      "page_views": 17,
+      "avg_session_duration": 1822.4267496
+    },
+    {
+      "date": "20251106",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 4.102335
+    },
+    {
+      "date": "20251106",
+      "page_path": "/tenormusica/articles/anthropic-llm-poisoning-research",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251106",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 303.304181
+    },
+    {
+      "date": "20251106",
+      "page_path": "/torakm/articles/510848199fc216",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 11.944677
+    },
+    {
+      "date": "20251106",
+      "page_path": "/xtm_blog/articles/717b1c7447aab3",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251107",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251107",
+      "page_path": "/tenormusica/articles/chatgpt-atlas-google-search-war-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 6.215579
+    },
+    {
+      "date": "20251107",
+      "page_path": "/tenormusica/articles/karpathy-nanochat-100-dollar-llm",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 61.620894
+    },
+    {
+      "date": "20251107",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 1409.105269
+    },
+    {
+      "date": "20251107",
+      "page_path": "/tenormusica/articles/swe-bench-pro-coding-ai-benchmark",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 3,
+      "avg_session_duration": 147.478918
+    },
+    {
+      "date": "20251108",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 1.697968
+    },
+    {
+      "date": "20251108",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 3.3987015
+    },
+    {
+      "date": "20251108",
+      "page_path": "/tenormusica",
+      "country": "China",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 3.305366
+    },
+    {
+      "date": "20251108",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 10.434653
+    },
+    {
+      "date": "20251108",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 135.934073
+    },
+    {
+      "date": "20251108",
+      "page_path": "/tenormusica/articles/karpathy-nanochat-100-dollar-llm",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251109",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 4,
+      "page_views": 6,
+      "avg_session_duration": 110.0651205
+    },
+    {
+      "date": "20251109",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 6,
+      "page_views": 12,
+      "avg_session_duration": 508.3592396666666
+    },
+    {
+      "date": "20251109",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 5,
+      "page_views": 4,
+      "avg_session_duration": 1.9904486
+    },
+    {
+      "date": "20251109",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 47.702116
+    },
+    {
+      "date": "20251109",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "Thailand",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 760.544239
+    },
+    {
+      "date": "20251109",
+      "page_path": "/tenormusica/articles/anthropic-llm-poisoning-research",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 86.973874
+    },
+    {
+      "date": "20251110",
+      "page_path": "/tenormusica/articles/anthropic-llm-poisoning-research",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 42.621331
+    },
+    {
+      "date": "20251110",
+      "page_path": "/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025",
+      "country": "China",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251110",
+      "page_path": "/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025",
+      "country": "Singapore",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.18197
+    },
+    {
+      "date": "20251111",
+      "page_path": "/portfolio/",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 910.237932
+    },
+    {
+      "date": "20251111",
+      "page_path": "/portfolio/index-improved.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 4,
+      "avg_session_duration": 2681.272626
+    },
+    {
+      "date": "20251111",
+      "page_path": "/portfolio/profile-improved.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 17.545016
+    },
+    {
+      "date": "20251111",
+      "page_path": "/portfolio/projects-improved.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 2,
+      "page_views": 5,
+      "avg_session_duration": 408.831098
+    },
+    {
+      "date": "20251111",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 87.093803
+    },
+    {
+      "date": "20251111",
+      "page_path": "/tenormusica/articles/anthropic-llm-poisoning-research",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251111",
+      "page_path": "/tenormusica/articles/chatgpt-atlas-google-search-war-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 67.841848
+    },
+    {
+      "date": "20251111",
+      "page_path": "/tenormusica/articles/github-agent-hq-unified-ai-coding-2025",
+      "country": "Singapore",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 16.278341
+    },
+    {
+      "date": "20251111",
+      "page_path": "/tenormusica/articles/karpathy-llms-fear-exceptions",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251111",
+      "page_path": "/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 418.694348
+    },
+    {
+      "date": "20251111",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 4.626627
+    },
+    {
+      "date": "20251111",
+      "page_path": "/tenormusica/articles/tech-layoffs-ai-investment-paradox-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251111",
+      "page_path": "/zenn-ai-news/",
+      "country": "(not set)",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251111",
+      "page_path": "/zenn-ai-news/",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 1477.513881
+    },
+    {
+      "date": "20251112",
+      "page_path": "/portfolio/",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 120.528566
+    },
+    {
+      "date": "20251112",
+      "page_path": "/portfolio/index-improved.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.552169
+    },
+    {
+      "date": "20251112",
+      "page_path": "/portfolio/profile-improved.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 2,
+      "page_views": 1,
+      "avg_session_duration": 3.7746685
+    },
+    {
+      "date": "20251112",
+      "page_path": "/portfolio/projects-improved.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 4,
+      "avg_session_duration": 515.354485
+    },
+    {
+      "date": "20251112",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Germany",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 67.207646
+    },
+    {
+      "date": "20251112",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251112",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251113",
+      "page_path": "/portfolio/profile.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 8.672997
+    },
+    {
+      "date": "20251113",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "China",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251113",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Singapore",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 11.24541
+    },
+    {
+      "date": "20251113",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 22.493577
+    },
+    {
+      "date": "20251113",
+      "page_path": "/tenormusica/articles/anthropic-llm-poisoning-research",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251113",
+      "page_path": "/tenormusica/articles/karpathy-nanochat-100-dollar-llm",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251113",
+      "page_path": "/zenn-ai-news/",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.006577
+    },
+    {
+      "date": "20251114",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 4.2532545
+    },
+    {
+      "date": "20251114",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "China",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251114",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Singapore",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 1.421505
+    },
+    {
+      "date": "20251114",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 1317.703363
+    },
+    {
+      "date": "20251114",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 3.1750995
+    },
+    {
+      "date": "20251114",
+      "page_path": "/tenormusica/articles/chatgpt-atlas-google-search-war-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 128.495413
+    },
+    {
+      "date": "20251114",
+      "page_path": "/tenormusica/articles/claude-code-web-release-2025-v2",
+      "country": "China",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251114",
+      "page_path": "/tenormusica/articles/github-agent-hq-unified-ai-coding-2025",
+      "country": "China",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 6.312859
+    },
+    {
+      "date": "20251114",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 2,
+      "page_views": 1,
+      "avg_session_duration": 7.0450285
+    },
+    {
+      "date": "20251114",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 144.812829
+    },
+    {
+      "date": "20251114",
+      "page_path": "/tenormusica/articles/swe-bench-pro-coding-ai-benchmark",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 4.951713
+    },
+    {
+      "date": "20251115",
+      "page_path": "/portfolio/profile.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 6,
+      "page_views": 43,
+      "avg_session_duration": 175.50433066666668
+    },
+    {
+      "date": "20251115",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 9,
+      "page_views": 98,
+      "avg_session_duration": 668.2658653333333
+    },
+    {
+      "date": "20251115",
+      "page_path": "/portfolio/projects.html",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251115",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251115",
+      "page_path": "/tenormusica/articles/swe-bench-pro-coding-ai-benchmark",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 156.159754
+    },
+    {
+      "date": "20251115",
+      "page_path": "/tenormusica/articles/test-long-article-100chunks",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251115",
+      "page_path": "/tenormusica/articles/test-long-article-combined",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 28.559578
+    },
+    {
+      "date": "20251115",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Thailand",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251115",
+      "page_path": "/tenormusica/articles/x-grok-feed-algorithm-2025-zenn-rules",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 13.186198
+    },
+    {
+      "date": "20251116",
+      "page_path": "/portfolio/profile.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 3,
+      "page_views": 5,
+      "avg_session_duration": 7.6076326666666665
+    },
+    {
+      "date": "20251116",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 4,
+      "page_views": 10,
+      "avg_session_duration": 932.536615
+    },
+    {
+      "date": "20251116",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "India",
+      "active_users": 1,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 2.8471405
+    },
+    {
+      "date": "20251116",
+      "page_path": "/tenormusica/articles/github-agent-hq-unified-ai-coding-2025",
+      "country": "China",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.283312
+    },
+    {
+      "date": "20251116",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 153.01541
+    },
+    {
+      "date": "20251116",
+      "page_path": "/tenormusica/articles/tech-layoffs-ai-investment-paradox-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 3,
+      "page_views": 3,
+      "avg_session_duration": 2.096419
+    },
+    {
+      "date": "20251116",
+      "page_path": "/tenormusica/articles/test-long-article-100chunks",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 4.921486
+    },
+    {
+      "date": "20251117",
+      "page_path": "/portfolio/profile.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 5,
+      "page_views": 24,
+      "avg_session_duration": 422.9882196
+    },
+    {
+      "date": "20251117",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "India",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 5.133592
+    },
+    {
+      "date": "20251117",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 403.378044
+    },
+    {
+      "date": "20251117",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "China",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251117",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "Singapore",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 3.38455
+    },
+    {
+      "date": "20251117",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "South Korea",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 5.621746
+    },
+    {
+      "date": "20251117",
+      "page_path": "/tenormusica/articles/karpathy-nanochat-100-dollar-llm",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 3.452862
+    },
+    {
+      "date": "20251117",
+      "page_path": "/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 70.965233
+    },
+    {
+      "date": "20251117",
+      "page_path": "/tenormusica/articles/tech-layoffs-ai-investment-paradox-2025",
+      "country": "China",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 7.159253
+    },
+    {
+      "date": "20251118",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "South Korea",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 5.517227
+    },
+    {
+      "date": "20251118",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 5.302438
+    },
+    {
+      "date": "20251118",
+      "page_path": "/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 7.661455
+    },
+    {
+      "date": "20251118",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 155.548348
+    },
+    {
+      "date": "20251118",
+      "page_path": "/tenormusica/articles/swe-bench-pro-coding-ai-benchmark",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251118",
+      "page_path": "/tenormusica/articles/swe-bench-pro-coding-ai-benchmark",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 5.877119
+    },
+    {
+      "date": "20251119",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "Thailand",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 21.164284
+    },
+    {
+      "date": "20251119",
+      "page_path": "/tenormusica/articles/tech-layoffs-ai-investment-paradox-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 31.116484
+    },
+    {
+      "date": "20251119",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 3,
+      "page_views": 5,
+      "avg_session_duration": 100.54537766666665
+    },
+    {
+      "date": "20251120",
+      "page_path": "/kun432/scraps/3db3cc0de8bb1e",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.832732
+    },
+    {
+      "date": "20251120",
+      "page_path": "/otot_dev/articles/e338ae523908cb",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 134.05881
+    },
+    {
+      "date": "20251120",
+      "page_path": "/search",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 4.970086
+    },
+    {
+      "date": "20251120",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 23.34542
+    },
+    {
+      "date": "20251120",
+      "page_path": "/tenormusica/articles/gemini-3-pro-preview-release",
+      "country": "Thailand",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 346.537554
+    },
+    {
+      "date": "20251120",
+      "page_path": "/tenormusica/articles/karpathy-nanochat-100-dollar-llm",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 182.26442
+    },
+    {
+      "date": "20251120",
+      "page_path": "/tenormusica/articles/swe-bench-pro-coding-ai-benchmark",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 4.359227
+    },
+    {
+      "date": "20251120",
+      "page_path": "/tenormusica/articles/tech-layoffs-ai-investment-paradox-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 197.257014
+    },
+    {
+      "date": "20251120",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "China",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251120",
+      "page_path": "/topics/cursor",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 209.287982
+    },
+    {
+      "date": "20251121",
+      "page_path": "/articles",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 5.027993
+    },
+    {
+      "date": "20251121",
+      "page_path": "/portfolio/profile.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 73.523375
+    },
+    {
+      "date": "20251121",
+      "page_path": "/satto_workspace/articles/a12faf6131ac4e",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 5.015507
+    },
+    {
+      "date": "20251121",
+      "page_path": "/search",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 405.583193
+    },
+    {
+      "date": "20251121",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 823.399023
+    },
+    {
+      "date": "20251121",
+      "page_path": "/tenormusica/articles/gemini-3-pro-preview-release",
+      "country": "South Korea",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 3,
+      "avg_session_duration": 71.861296
+    },
+    {
+      "date": "20251121",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Indonesia",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 290.028539
+    },
+    {
+      "date": "20251121",
+      "page_path": "/tenormusica/articles/test-long-article-100chunks",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 897.934242
+    },
+    {
+      "date": "20251121",
+      "page_path": "/tenormusica/articles/test-long-article-100chunks",
+      "country": "New Zealand",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251121",
+      "page_path": "/topics/gemini",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 199.231173
+    },
+    {
+      "date": "20251122",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 3,
+      "page_views": 3,
+      "avg_session_duration": 23.110517333333334
+    },
+    {
+      "date": "20251122",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 5.568432
+    },
+    {
+      "date": "20251122",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 54.298403
+    },
+    {
+      "date": "20251122",
+      "page_path": "/tenormusica/articles/gemini3-nanobanana2-antigravity-november-2025",
+      "country": "China",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251122",
+      "page_path": "/tenormusica/articles/gemini3-nanobanana2-antigravity-november-2025",
+      "country": "Singapore",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 1.448028
+    },
+    {
+      "date": "20251122",
+      "page_path": "/tenormusica/articles/gemini3-nanobanana2-antigravity-november-2025",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251122",
+      "page_path": "/tenormusica/articles/tech-layoffs-ai-investment-paradox-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251122",
+      "page_path": "/tenormusica/articles/test-long-article-100chunks",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 1.716385
+    },
+    {
+      "date": "20251123",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 6.869123
+    },
+    {
+      "date": "20251123",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 5,
+      "page_views": 3,
+      "avg_session_duration": 1.1708484000000001
+    },
+    {
+      "date": "20251123",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 223.472053
+    },
+    {
+      "date": "20251123",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251123",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "South Korea",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 718.181241
+    },
+    {
+      "date": "20251123",
+      "page_path": "/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 123.188914
+    },
+    {
+      "date": "20251123",
+      "page_path": "/tenormusica/articles/test-long-article-100chunks",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 448.926027
+    },
+    {
+      "date": "20251124",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 2,
+      "page_views": 9,
+      "avg_session_duration": 429.1242245
+    },
+    {
+      "date": "20251124",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251124",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 2.73717
+    },
+    {
+      "date": "20251124",
+      "page_path": "/tenormusica/articles/chatgpt-atlas-google-search-war-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 12.627578
+    },
+    {
+      "date": "20251124",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 2,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251124",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "South Korea",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 1116.157728
+    },
+    {
+      "date": "20251124",
+      "page_path": "/tenormusica/articles/gemini3-nanobanana2-antigravity-november-2025",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251124",
+      "page_path": "/tenormusica/articles/karpathy-nanochat-100-dollar-llm",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 212.290469
+    },
+    {
+      "date": "20251124",
+      "page_path": "/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025",
+      "country": "China",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 2.385951
+    },
+    {
+      "date": "20251124",
+      "page_path": "/tenormusica/articles/swe-bench-pro-coding-ai-benchmark",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 1277.423564
+    },
+    {
+      "date": "20251124",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251125",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 148.676277
+    },
+    {
+      "date": "20251125",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251125",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251125",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 5.112635
+    },
+    {
+      "date": "20251125",
+      "page_path": "/tenormusica/articles/github-agent-hq-unified-ai-coding-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 66.766894
+    },
+    {
+      "date": "20251126",
+      "page_path": "/kazuph/articles/claude-opus-tikz-comparison",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.289739
+    },
+    {
+      "date": "20251126",
+      "page_path": "/portfolio-dev/",
+      "country": "Germany",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 4.03854
+    },
+    {
+      "date": "20251126",
+      "page_path": "/portfolio-dev/",
+      "country": "Netherlands",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 1.2356
+    },
+    {
+      "date": "20251126",
+      "page_path": "/portfolio-dev/",
+      "country": "Russia",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251126",
+      "page_path": "/portfolio-dev/index.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 3,
+      "page_views": 14,
+      "avg_session_duration": 948.6991816666667
+    },
+    {
+      "date": "20251126",
+      "page_path": "/portfolio-dev/projects.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.992795
+    },
+    {
+      "date": "20251126",
+      "page_path": "/portfolio-dev/projects.html",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 49.446816
+    },
+    {
+      "date": "20251126",
+      "page_path": "/search",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 5.5606525
+    },
+    {
+      "date": "20251126",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 359.670423
+    },
+    {
+      "date": "20251126",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 521.27628
+    },
+    {
+      "date": "20251126",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 23.125206
+    },
+    {
+      "date": "20251126",
+      "page_path": "/tenormusica/articles/claude-opus-4-5-coding-crown-2025",
+      "country": "South Korea",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 79.465423
+    },
+    {
+      "date": "20251126",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 78.343996
+    },
+    {
+      "date": "20251126",
+      "page_path": "/tenormusica/articles/swe-bench-pro-coding-ai-benchmark",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 88.6652
+    },
+    {
+      "date": "20251126",
+      "page_path": "/tenormusica/articles/test-long-article-100chunks",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 4.629652
+    },
+    {
+      "date": "20251126",
+      "page_path": "/topics/ai",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 174.847
+    },
+    {
+      "date": "20251126",
+      "page_path": "/topics/ccls",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 7.017318
+    },
+    {
+      "date": "20251126",
+      "page_path": "/yareyare/articles/4070e0b83fee92",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251127",
+      "page_path": "/portfolio-dev/",
+      "country": "United Kingdom",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 9.916499
+    },
+    {
+      "date": "20251127",
+      "page_path": "/search",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 976.382865
+    },
+    {
+      "date": "20251127",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Peru",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 5.377888
+    },
+    {
+      "date": "20251127",
+      "page_path": "/tenormusica/articles/claude-opus-4-5-coding-crown-2025",
+      "country": "Canada",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 449.356895
+    },
+    {
+      "date": "20251127",
+      "page_path": "/tenormusica/articles/claude-opus-4-5-coding-crown-2025",
+      "country": "United Kingdom",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 5.028426
+    },
+    {
+      "date": "20251127",
+      "page_path": "/tenormusica/articles/claude-opus-4-5-coding-crown-2025",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 4.583787
+    },
+    {
+      "date": "20251127",
+      "page_path": "/tenormusica/articles/gemini-3-pro-preview-release",
+      "country": "Singapore",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251127",
+      "page_path": "/tenormusica/articles/gemini3-nanobanana2-antigravity-november-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 86.087751
+    },
+    {
+      "date": "20251127",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "China",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251127",
+      "page_path": "/tenormusica/articles/swe-bench-pro-coding-ai-benchmark",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251127",
+      "page_path": "/tenormusica/articles/test-long-article-100chunks",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 214.915326
+    },
+    {
+      "date": "20251127",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 5,
+      "page_views": 3,
+      "avg_session_duration": 0.5047912
+    },
+    {
+      "date": "20251128",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 4,
+      "page_views": 3,
+      "avg_session_duration": 97.5003985
+    },
+    {
+      "date": "20251128",
+      "page_path": "/portfolio/projects.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 2,
+      "page_views": 0,
+      "avg_session_duration": 179.9824615
+    },
+    {
+      "date": "20251128",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 59.154105
+    },
+    {
+      "date": "20251128",
+      "page_path": "/tenormusica/articles/claude-opus-4-5-coding-crown-2025",
+      "country": "South Korea",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 5.552147
+    },
+    {
+      "date": "20251128",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "Singapore",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251128",
+      "page_path": "/tenormusica/articles/gemini-3-pro-preview-release",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 2,
+      "page_views": 1,
+      "avg_session_duration": 78.8306485
+    },
+    {
+      "date": "20251128",
+      "page_path": "/tenormusica/articles/karpathy-llms-fear-exceptions",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251128",
+      "page_path": "/topics/grok",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 62.12309
+    },
+    {
+      "date": "20251129",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 2,
+      "page_views": 9,
+      "avg_session_duration": 524.0344145
+    },
+    {
+      "date": "20251129",
+      "page_path": "/portfolio/profile.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 2,
+      "page_views": 2,
+      "avg_session_duration": 3.2171175
+    },
+    {
+      "date": "20251129",
+      "page_path": "/tenormusica",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 1654.21491
+    },
+    {
+      "date": "20251129",
+      "page_path": "/tenormusica/articles/gemini3-nanobanana2-antigravity-november-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251129",
+      "page_path": "/tenormusica/articles/gemini3-nanobanana2-antigravity-november-2025",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 5.183058
+    },
+    {
+      "date": "20251129",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 196.107041
+    },
+    {
+      "date": "20251129",
+      "page_path": "/tenormusica/articles/swe-bench-pro-coding-ai-benchmark",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 16.805823
+    },
+    {
+      "date": "20251129",
+      "page_path": "/tenormusica/articles/test-long-article-100chunks",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 1.020025
+    },
+    {
+      "date": "20251129",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "China",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 1.837234
+    },
+    {
+      "date": "20251129",
+      "page_path": "/tenormusica/articles/x-grok-algorithm-quality-over-quantity-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 4,
+      "page_views": 3,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251130",
+      "page_path": "/portfolio/",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 248.285209
+    },
+    {
+      "date": "20251130",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 156.520448
+    },
+    {
+      "date": "20251130",
+      "page_path": "/tenormusica/articles/chatgpt-atlas-google-search-war-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251130",
+      "page_path": "/tenormusica/articles/gemini3-nanobanana2-antigravity-november-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 140.141781
+    },
+    {
+      "date": "20251130",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251130",
+      "page_path": "/tenormusica/articles/test-long-article-100chunks",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 540.210465
+    },
+    {
+      "date": "20251201",
+      "page_path": "/portfolio/code-reviewer-system.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 49.469111
+    },
+    {
+      "date": "20251201",
+      "page_path": "/portfolio/contact.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 3,
+      "avg_session_duration": 12.338665
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 646.748544
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/ai-screen-capture-tools-2025",
+      "country": "India",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 53.219774
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/ai-screen-capture-tools-2025",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 1.302638
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 95.789601
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/claude-code-web-release-2025-v2",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 24.388613
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/gemini3-nanobanana2-antigravity-november-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 231.522295
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/gemini3-nanobanana2-antigravity-november-2025",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/github-agent-hq-unified-ai-coding-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 56.192333
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 92.070201
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/sora2-grok-video-generation-reality-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 116.696818
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/test-long-article-100chunks",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 5.259303
+    },
+    {
+      "date": "20251202",
+      "page_path": "/portfolio/",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 11.522666
+    },
+    {
+      "date": "20251202",
+      "page_path": "/portfolio/profile.html",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 2,
+      "avg_session_duration": 18.278029
+    },
+    {
+      "date": "20251202",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251202",
+      "page_path": "/tenormusica/articles/claude-opus-4-5-coding-crown-2025",
+      "country": "China",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251202",
+      "page_path": "/tenormusica/articles/claude-opus-4-5-coding-crown-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 352.898108
+    },
+    {
+      "date": "20251202",
+      "page_path": "/tenormusica/articles/claude-opus-4-5-coding-crown-2025",
+      "country": "United States",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 3.458007
+    },
+    {
+      "date": "20251202",
+      "page_path": "/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025",
+      "country": "Japan",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 4.965608
+    },
+    {
+      "date": "20251102",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 0,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251111",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 0,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251114",
+      "page_path": "/portfolio/profile.html",
+      "country": "Japan",
+      "active_users": 0,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251119",
+      "page_path": "/tenormusica/articles/openai-amazon-38b-infrastructure-deal-2025",
+      "country": "Japan",
+      "active_users": 0,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251120",
+      "page_path": "/tenormusica/articles/github-agent-hq-unified-ai-coding-2025",
+      "country": "Japan",
+      "active_users": 0,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251121",
+      "page_path": "/tenormusica/articles/anthropic-llm-poisoning-research",
+      "country": "Japan",
+      "active_users": 0,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251121",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 0,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251122",
+      "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
+      "country": "Japan",
+      "active_users": 0,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251125",
+      "page_path": "/portfolio/index.html",
+      "country": "Japan",
+      "active_users": 0,
+      "sessions": 2,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251125",
+      "page_path": "/tenormusica/articles/claude-code-web-release-2025-v2",
+      "country": "Japan",
+      "active_users": 0,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251126",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 0,
+      "sessions": 2,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251127",
+      "page_path": "/tenormusica/articles/anthropic-context-engineering-agents",
+      "country": "Japan",
+      "active_users": 0,
+      "sessions": 3,
+      "page_views": 2,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251128",
+      "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
+      "country": "Japan",
+      "active_users": 0,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251130",
+      "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
+      "country": "South Korea",
+      "active_users": 0,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/claude-opus-4-5-coding-crown-2025",
+      "country": "South Korea",
+      "active_users": 0,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20251201",
+      "page_path": "/tenormusica/articles/swe-bench-pro-coding-ai-benchmark",
+      "country": "Japan",
+      "active_users": 0,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.0
+    }
+  ]
+}
