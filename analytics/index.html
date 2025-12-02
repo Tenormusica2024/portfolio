@@ -278,6 +278,42 @@
             font-weight: 700;
         }
         
+        th.sortable {
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+        
+        th.sortable:hover {
+            color: var(--color-accent-primary);
+        }
+        
+        th.sortable::after {
+            content: '';
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.3;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-bottom: 6px solid var(--color-text-secondary);
+        }
+        
+        th.sortable.sorted-asc::after {
+            opacity: 1;
+            border-bottom: 6px solid var(--color-accent-primary);
+        }
+        
+        th.sortable.sorted-desc::after {
+            opacity: 1;
+            border-bottom: none;
+            border-top: 6px solid var(--color-accent-primary);
+        }
+        
         td {
             padding: 24px;
             border-bottom: 1px solid var(--color-border);
@@ -501,9 +537,9 @@
                             <tr>
                                 <th>Rank</th>
                                 <th>Page Path</th>
-                                <th style="text-align: right;">Users</th>
-                                <th style="text-align: right;">Sessions</th>
-                                <th style="text-align: right;">Views</th>
+                                <th class="sortable" data-sort="users" style="text-align: right;">Users</th>
+                                <th class="sortable" data-sort="sessions" style="text-align: right;">Sessions</th>
+                                <th class="sortable sorted-desc" data-sort="pageViews" style="text-align: right;">Views</th>
                             </tr>
                         </thead>
                         <tbody id="topPagesBody"></tbody>
@@ -531,6 +567,7 @@
                 document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('dashboardContent').style.display = 'block';
                 sessionStorage.setItem('authenticated', 'true');
+                setupSortHandlers();
                 loadData();
             } else {
                 error.style.display = 'block';
@@ -550,8 +587,14 @@
         if (sessionStorage.getItem('authenticated') === 'true') {
             document.getElementById('loginScreen').style.display = 'none';
             document.getElementById('dashboardContent').style.display = 'block';
+            setupSortHandlers();
             loadData();
         }
+        
+        // Sort State
+        let currentSortKey = 'pageViews';
+        let currentSortOrder = 'desc';
+        let pagesData = [];
         
         // Dashboard Data Loading
         async function loadData() {
@@ -591,25 +634,10 @@
                     pageStats[path].pageViews += row.page_views;
                 });
                 
-                const topPages = Object.entries(pageStats)
-                    .map(([path, stats]) => ({path, ...stats}))
-                    .sort((a, b) => b.users - a.users)
-                    .slice(0, 20);
+                pagesData = Object.entries(pageStats)
+                    .map(([path, stats]) => ({path, ...stats}));
                 
-                const tbody = document.getElementById('topPagesBody');
-                tbody.innerHTML = '';
-                
-                topPages.forEach((page, index) => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td class="rank-cell">${(index + 1).toString().padStart(2, '0')}</td>
-                        <td class="path-cell">${page.path}</td>
-                        <td class="metric-cell">${page.users.toLocaleString()}</td>
-                        <td class="metric-cell">${page.sessions.toLocaleString()}</td>
-                        <td class="metric-cell">${page.pageViews.toLocaleString()}</td>
-                    `;
-                    tbody.appendChild(row);
-                });
+                renderTable();
                 
                 const collectedAt = new Date(data.collected_at);
                 document.getElementById('updatedAt').textContent = collectedAt.toLocaleString('ja-JP');
@@ -621,6 +649,56 @@
                 errorDiv.style.display = 'block';
                 console.error('Analytics data loading error:', error);
             }
+        }
+        
+        function renderTable() {
+            const sorted = [...pagesData].sort((a, b) => {
+                const aVal = a[currentSortKey];
+                const bVal = b[currentSortKey];
+                return currentSortOrder === 'desc' ? bVal - aVal : aVal - bVal;
+            }).slice(0, 20);
+            
+            const tbody = document.getElementById('topPagesBody');
+            tbody.innerHTML = '';
+            
+            sorted.forEach((page, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="rank-cell">${(index + 1).toString().padStart(2, '0')}</td>
+                    <td class="path-cell">${page.path}</td>
+                    <td class="metric-cell">${page.users.toLocaleString()}</td>
+                    <td class="metric-cell">${page.sessions.toLocaleString()}</td>
+                    <td class="metric-cell">${page.pageViews.toLocaleString()}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+        
+        function setupSortHandlers() {
+            document.querySelectorAll('th.sortable').forEach(th => {
+                th.addEventListener('click', () => {
+                    const sortKey = th.getAttribute('data-sort');
+                    
+                    if (currentSortKey === sortKey) {
+                        currentSortOrder = currentSortOrder === 'desc' ? 'asc' : 'desc';
+                    } else {
+                        currentSortKey = sortKey;
+                        currentSortOrder = 'desc';
+                    }
+                    
+                    document.querySelectorAll('th.sortable').forEach(header => {
+                        header.classList.remove('sorted-asc', 'sorted-desc');
+                    });
+                    
+                    th.classList.add(currentSortOrder === 'desc' ? 'sorted-desc' : 'sorted-asc');
+                    
+                    renderTable();
+                });
+            });
+        }
+        
+        if (sessionStorage.getItem('authenticated') === 'true') {
+            setupSortHandlers();
         }
         
         // Auto-refresh every 60 seconds (only if authenticated)
