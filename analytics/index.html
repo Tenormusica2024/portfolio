@@ -527,6 +527,26 @@
                 </div>
                 
                 <div class="section-header">
+                    <h2 class="section-title">Traffic Sources</h2>
+                    <p class="section-subtitle">Top referral sources by sessions</p>
+                </div>
+                
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Source</th>
+                                <th class="sortable sorted-desc" data-sort-source="sessions" style="text-align: right;">Sessions</th>
+                                <th class="sortable" data-sort-source="users" style="text-align: right;">Users</th>
+                                <th class="sortable" data-sort-source="pageViews" style="text-align: right;">Views</th>
+                            </tr>
+                        </thead>
+                        <tbody id="topSourcesBody"></tbody>
+                    </table>
+                </div>
+                
+                <div class="section-header" style="margin-top: 80px;">
                     <h2 class="section-title">Most Popular Pages</h2>
                     <p class="section-subtitle">Top 20 pages by user engagement</p>
                 </div>
@@ -568,6 +588,7 @@
                 document.getElementById('dashboardContent').style.display = 'block';
                 sessionStorage.setItem('authenticated', 'true');
                 setupSortHandlers();
+                setupSourceSortHandlers();
                 loadData();
             } else {
                 error.style.display = 'block';
@@ -588,6 +609,7 @@
             document.getElementById('loginScreen').style.display = 'none';
             document.getElementById('dashboardContent').style.display = 'block';
             setupSortHandlers();
+            setupSourceSortHandlers();
             loadData();
         }
         
@@ -595,6 +617,10 @@
         let currentSortKey = 'pageViews';
         let currentSortOrder = 'desc';
         let pagesData = [];
+        
+        let currentSourceSortKey = 'sessions';
+        let currentSourceSortOrder = 'desc';
+        let sourcesData = [];
         
         // Dashboard Data Loading
         async function loadData() {
@@ -620,6 +646,8 @@
                 document.getElementById('avgPageViews').textContent = data.summary.avg_page_views_per_session;
                 
                 const pageStats = {};
+                const sourceStats = {};
+                
                 data.details.forEach(row => {
                     const path = row.page_path;
                     if (!pageStats[path]) {
@@ -632,13 +660,30 @@
                     pageStats[path].users += row.active_users;
                     pageStats[path].sessions += row.sessions;
                     pageStats[path].pageViews += row.page_views;
+                    
+                    const source = row.session_source || '(direct)';
+                    if (!sourceStats[source]) {
+                        sourceStats[source] = {
+                            users: 0,
+                            sessions: 0,
+                            pageViews: 0,
+                        };
+                    }
+                    sourceStats[source].users += row.active_users;
+                    sourceStats[source].sessions += row.sessions;
+                    sourceStats[source].pageViews += row.page_views;
                 });
                 
                 pagesData = Object.entries(pageStats)
                     .map(([path, stats]) => ({path, ...stats}));
                 
+                sourcesData = Object.entries(sourceStats)
+                    .map(([source, stats]) => ({source, ...stats}));
+                
                 renderTable();
+                renderSourcesTable();
                 setupSortHandlers();
+                setupSourceSortHandlers();
                 
                 const collectedAt = new Date(data.collected_at);
                 document.getElementById('updatedAt').textContent = collectedAt.toLocaleString('ja-JP');
@@ -675,8 +720,32 @@
             });
         }
         
+        function renderSourcesTable() {
+            const sorted = [...sourcesData].sort((a, b) => {
+                const aVal = a[currentSourceSortKey];
+                const bVal = b[currentSourceSortKey];
+                return currentSourceSortOrder === 'desc' ? bVal - aVal : aVal - bVal;
+            }).slice(0, 15);
+            
+            const tbody = document.getElementById('topSourcesBody');
+            tbody.innerHTML = '';
+            
+            sorted.forEach((source, index) => {
+                const displaySource = source.source === '(direct)' ? 'Direct Traffic' : source.source;
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="rank-cell">${(index + 1).toString().padStart(2, '0')}</td>
+                    <td class="path-cell">${displaySource}</td>
+                    <td class="metric-cell">${source.sessions.toLocaleString()}</td>
+                    <td class="metric-cell">${source.users.toLocaleString()}</td>
+                    <td class="metric-cell">${source.pageViews.toLocaleString()}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+        
         function setupSortHandlers() {
-            document.querySelectorAll('th.sortable').forEach(th => {
+            document.querySelectorAll('th.sortable[data-sort]').forEach(th => {
                 th.removeEventListener('click', handleSort);
                 th.addEventListener('click', handleSort);
             });
@@ -693,7 +762,7 @@
                 currentSortOrder = 'desc';
             }
             
-            document.querySelectorAll('th.sortable').forEach(header => {
+            document.querySelectorAll('th.sortable[data-sort]').forEach(header => {
                 header.classList.remove('sorted-asc', 'sorted-desc');
             });
             
@@ -702,8 +771,36 @@
             renderTable();
         }
         
+        function setupSourceSortHandlers() {
+            document.querySelectorAll('th.sortable[data-sort-source]').forEach(th => {
+                th.removeEventListener('click', handleSourceSort);
+                th.addEventListener('click', handleSourceSort);
+            });
+        }
+        
+        function handleSourceSort(event) {
+            const th = event.currentTarget;
+            const sortKey = th.getAttribute('data-sort-source');
+            
+            if (currentSourceSortKey === sortKey) {
+                currentSourceSortOrder = currentSourceSortOrder === 'desc' ? 'asc' : 'desc';
+            } else {
+                currentSourceSortKey = sortKey;
+                currentSourceSortOrder = 'desc';
+            }
+            
+            document.querySelectorAll('th.sortable[data-sort-source]').forEach(header => {
+                header.classList.remove('sorted-asc', 'sorted-desc');
+            });
+            
+            th.classList.add(currentSourceSortOrder === 'desc' ? 'sorted-desc' : 'sorted-asc');
+            
+            renderSourcesTable();
+        }
+        
         if (sessionStorage.getItem('authenticated') === 'true') {
             setupSortHandlers();
+            setupSourceSortHandlers();
         }
         
         // Auto-refresh every 60 seconds (only if authenticated)
