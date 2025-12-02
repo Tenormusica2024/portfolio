@@ -638,6 +638,7 @@
                     .map(([path, stats]) => ({path, ...stats}));
                 
                 renderTable();
+                setupSortHandlers();
                 
                 const collectedAt = new Date(data.collected_at);
                 document.getElementById('updatedAt').textContent = collectedAt.toLocaleString('ja-JP');
@@ -676,25 +677,29 @@
         
         function setupSortHandlers() {
             document.querySelectorAll('th.sortable').forEach(th => {
-                th.addEventListener('click', () => {
-                    const sortKey = th.getAttribute('data-sort');
-                    
-                    if (currentSortKey === sortKey) {
-                        currentSortOrder = currentSortOrder === 'desc' ? 'asc' : 'desc';
-                    } else {
-                        currentSortKey = sortKey;
-                        currentSortOrder = 'desc';
-                    }
-                    
-                    document.querySelectorAll('th.sortable').forEach(header => {
-                        header.classList.remove('sorted-asc', 'sorted-desc');
-                    });
-                    
-                    th.classList.add(currentSortOrder === 'desc' ? 'sorted-desc' : 'sorted-asc');
-                    
-                    renderTable();
-                });
+                th.removeEventListener('click', handleSort);
+                th.addEventListener('click', handleSort);
             });
+        }
+        
+        function handleSort(event) {
+            const th = event.currentTarget;
+            const sortKey = th.getAttribute('data-sort');
+            
+            if (currentSortKey === sortKey) {
+                currentSortOrder = currentSortOrder === 'desc' ? 'asc' : 'desc';
+            } else {
+                currentSortKey = sortKey;
+                currentSortOrder = 'desc';
+            }
+            
+            document.querySelectorAll('th.sortable').forEach(header => {
+                header.classList.remove('sorted-asc', 'sorted-desc');
+            });
+            
+            th.classList.add(currentSortOrder === 'desc' ? 'sorted-desc' : 'sorted-asc');
+            
+            renderTable();
         }
         
         if (sessionStorage.getItem('authenticated') === 'true') {
