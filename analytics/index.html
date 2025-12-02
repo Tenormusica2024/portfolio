@@ -547,6 +547,26 @@
                 </div>
                 
                 <div class="section-header" style="margin-top: 80px;">
+                    <h2 class="section-title">External Referrers</h2>
+                    <p class="section-subtitle">Detailed external referral URLs (excluding internal navigation)</p>
+                </div>
+                
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Referrer URL</th>
+                                <th>Landing Page</th>
+                                <th class="sortable sorted-desc" data-sort-referrer="sessions" style="text-align: right;">Sessions</th>
+                                <th class="sortable" data-sort-referrer="users" style="text-align: right;">Users</th>
+                            </tr>
+                        </thead>
+                        <tbody id="topReferrersBody"></tbody>
+                    </table>
+                </div>
+                
+                <div class="section-header" style="margin-top: 80px;">
                     <h2 class="section-title">Most Popular Pages</h2>
                     <p class="section-subtitle">Top 20 pages by user engagement</p>
                 </div>
@@ -589,6 +609,7 @@
                 sessionStorage.setItem('authenticated', 'true');
                 setupSortHandlers();
                 setupSourceSortHandlers();
+                setupReferrerSortHandlers();
                 loadData();
             } else {
                 error.style.display = 'block';
@@ -610,6 +631,7 @@
             document.getElementById('dashboardContent').style.display = 'block';
             setupSortHandlers();
             setupSourceSortHandlers();
+            setupReferrerSortHandlers();
             loadData();
         }
         
@@ -621,6 +643,10 @@
         let currentSourceSortKey = 'sessions';
         let currentSourceSortOrder = 'desc';
         let sourcesData = [];
+        
+        let currentReferrerSortKey = 'sessions';
+        let currentReferrerSortOrder = 'desc';
+        let referrersData = [];
         
         // Dashboard Data Loading
         async function loadData() {
@@ -647,6 +673,8 @@
                 
                 const pageStats = {};
                 const sourceStats = {};
+                const referrerStats = {};
+                const portfolioDomain = 'tenormusica2024.github.io';
                 
                 data.details.forEach(row => {
                     const path = row.page_path;
@@ -672,6 +700,23 @@
                     sourceStats[source].users += row.active_users;
                     sourceStats[source].sessions += row.sessions;
                     sourceStats[source].pageViews += row.page_views;
+                    
+                    const referrer = row.page_referrer || '(none)';
+                    const landingPage = row.landing_page || '/';
+                    
+                    if (referrer !== '(none)' && !referrer.includes(portfolioDomain)) {
+                        const key = `${referrer}|${landingPage}`;
+                        if (!referrerStats[key]) {
+                            referrerStats[key] = {
+                                referrer: referrer,
+                                landingPage: landingPage,
+                                users: 0,
+                                sessions: 0,
+                            };
+                        }
+                        referrerStats[key].users += row.active_users;
+                        referrerStats[key].sessions += row.sessions;
+                    }
                 });
                 
                 pagesData = Object.entries(pageStats)
@@ -680,10 +725,14 @@
                 sourcesData = Object.entries(sourceStats)
                     .map(([source, stats]) => ({source, ...stats}));
                 
+                referrersData = Object.values(referrerStats);
+                
                 renderTable();
                 renderSourcesTable();
+                renderReferrersTable();
                 setupSortHandlers();
                 setupSourceSortHandlers();
+                setupReferrerSortHandlers();
                 
                 const collectedAt = new Date(data.collected_at);
                 document.getElementById('updatedAt').textContent = collectedAt.toLocaleString('ja-JP');
@@ -744,6 +793,33 @@
             });
         }
         
+        function renderReferrersTable() {
+            const sorted = [...referrersData].sort((a, b) => {
+                const aVal = a[currentReferrerSortKey];
+                const bVal = b[currentReferrerSortKey];
+                return currentReferrerSortOrder === 'desc' ? bVal - aVal : aVal - bVal;
+            }).slice(0, 20);
+            
+            const tbody = document.getElementById('topReferrersBody');
+            tbody.innerHTML = '';
+            
+            sorted.forEach((ref, index) => {
+                const truncateUrl = (url, maxLength = 60) => {
+                    return url.length > maxLength ? url.substring(0, maxLength) + '...' : url;
+                };
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="rank-cell">${(index + 1).toString().padStart(2, '0')}</td>
+                    <td class="path-cell" title="${ref.referrer}">${truncateUrl(ref.referrer)}</td>
+                    <td class="path-cell" title="${ref.landingPage}">${truncateUrl(ref.landingPage, 40)}</td>
+                    <td class="metric-cell">${ref.sessions.toLocaleString()}</td>
+                    <td class="metric-cell">${ref.users.toLocaleString()}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+        
         function setupSortHandlers() {
             document.querySelectorAll('th.sortable[data-sort]').forEach(th => {
                 th.removeEventListener('click', handleSort);
@@ -798,9 +874,37 @@
             renderSourcesTable();
         }
         
+        function setupReferrerSortHandlers() {
+            document.querySelectorAll('th.sortable[data-sort-referrer]').forEach(th => {
+                th.removeEventListener('click', handleReferrerSort);
+                th.addEventListener('click', handleReferrerSort);
+            });
+        }
+        
+        function handleReferrerSort(event) {
+            const th = event.currentTarget;
+            const sortKey = th.getAttribute('data-sort-referrer');
+            
+            if (currentReferrerSortKey === sortKey) {
+                currentReferrerSortOrder = currentReferrerSortOrder === 'desc' ? 'asc' : 'desc';
+            } else {
+                currentReferrerSortKey = sortKey;
+                currentReferrerSortOrder = 'desc';
+            }
+            
+            document.querySelectorAll('th.sortable[data-sort-referrer]').forEach(header => {
+                header.classList.remove('sorted-asc', 'sorted-desc');
+            });
+            
+            th.classList.add(currentReferrerSortOrder === 'desc' ? 'sorted-desc' : 'sorted-asc');
+            
+            renderReferrersTable();
+        }
+        
         if (sessionStorage.getItem('authenticated') === 'true') {
             setupSortHandlers();
             setupSourceSortHandlers();
+            setupReferrerSortHandlers();
         }
         
         // Auto-refresh every 60 seconds (only if authenticated)
