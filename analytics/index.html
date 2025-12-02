@@ -528,7 +528,7 @@
                 
                 <div class="section-header">
                     <h2 class="section-title">Traffic Sources</h2>
-                    <p class="section-subtitle">Top referral sources by sessions</p>
+                    <p class="section-subtitle">External referral sources (excluding internal navigation)</p>
                 </div>
                 
                 <div class="table-wrapper">
@@ -537,29 +537,9 @@
                             <tr>
                                 <th>Rank</th>
                                 <th>Source</th>
-                                <th class="sortable sorted-desc" data-sort-source="sessions" style="text-align: right;">Sessions</th>
-                                <th class="sortable" data-sort-source="users" style="text-align: right;">Users</th>
-                                <th class="sortable" data-sort-source="pageViews" style="text-align: right;">Views</th>
-                            </tr>
-                        </thead>
-                        <tbody id="topSourcesBody"></tbody>
-                    </table>
-                </div>
-                
-                <div class="section-header" style="margin-top: 80px;">
-                    <h2 class="section-title">External Referrers</h2>
-                    <p class="section-subtitle">Detailed external referral URLs (excluding internal navigation)</p>
-                </div>
-                
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Rank</th>
-                                <th>Source</th>
-                                <th>Landing Page</th>
                                 <th class="sortable sorted-desc" data-sort-referrer="sessions" style="text-align: right;">Sessions</th>
                                 <th class="sortable" data-sort-referrer="users" style="text-align: right;">Users</th>
+                                <th class="sortable" data-sort-referrer="pageViews" style="text-align: right;">Views</th>
                             </tr>
                         </thead>
                         <tbody id="topReferrersBody"></tbody>
@@ -608,7 +588,6 @@
                 document.getElementById('dashboardContent').style.display = 'block';
                 sessionStorage.setItem('authenticated', 'true');
                 setupSortHandlers();
-                setupSourceSortHandlers();
                 setupReferrerSortHandlers();
                 loadData();
             } else {
@@ -630,7 +609,6 @@
             document.getElementById('loginScreen').style.display = 'none';
             document.getElementById('dashboardContent').style.display = 'block';
             setupSortHandlers();
-            setupSourceSortHandlers();
             setupReferrerSortHandlers();
             loadData();
         }
@@ -639,10 +617,6 @@
         let currentSortKey = 'pageViews';
         let currentSortOrder = 'desc';
         let pagesData = [];
-        
-        let currentSourceSortKey = 'sessions';
-        let currentSourceSortOrder = 'desc';
-        let sourcesData = [];
         
         let currentReferrerSortKey = 'sessions';
         let currentReferrerSortOrder = 'desc';
@@ -672,9 +646,35 @@
                 document.getElementById('avgPageViews').textContent = data.summary.avg_page_views_per_session;
                 
                 const pageStats = {};
-                const sourceStats = {};
                 const referrerStats = {};
                 const portfolioDomain = 'tenormusica2024.github.io';
+                
+                const getSourceName = (referrerUrl) => {
+                    const url = referrerUrl.toLowerCase();
+                    if (url.includes('google.com') || url.includes('google.co.jp')) return 'Google検索';
+                    if (url.includes('bing.com')) return 'Bing検索';
+                    if (url.includes('yahoo.co.jp') || url.includes('yahoo.com')) return 'Yahoo検索';
+                    if (url.includes('t.co') || url.includes('twitter.com') || url.includes('x.com')) return 'Twitter/X';
+                    if (url.includes('zenn.dev')) return 'Zenn';
+                    if (url.includes('github.com')) return 'GitHub';
+                    if (url.includes('menthas.com')) return 'Menthas';
+                    if (url.includes('hatena.ne.jp')) return 'はてなブックマーク';
+                    if (url.includes('facebook.com')) return 'Facebook';
+                    if (url.includes('chatgpt.com')) return 'ChatGPT';
+                    if (url.includes('bsky.app')) return 'Bluesky';
+                    if (url.includes('inoreader.com')) return 'Inoreader';
+                    if (url.includes('linkedin.com')) return 'LinkedIn';
+                    if (url.includes('reddit.com')) return 'Reddit';
+                    if (url.includes('qiita.com')) return 'Qiita';
+                    if (url.includes('android-app://com.google')) return 'Googleアプリ';
+                    
+                    try {
+                        const hostname = new URL(referrerUrl).hostname.replace('www.', '');
+                        return hostname;
+                    } catch {
+                        return referrerUrl;
+                    }
+                };
                 
                 data.details.forEach(row => {
                     const path = row.page_path;
@@ -689,49 +689,32 @@
                     pageStats[path].sessions += row.sessions;
                     pageStats[path].pageViews += row.page_views;
                     
-                    const source = row.session_source || '(direct)';
-                    if (!sourceStats[source]) {
-                        sourceStats[source] = {
-                            users: 0,
-                            sessions: 0,
-                            pageViews: 0,
-                        };
-                    }
-                    sourceStats[source].users += row.active_users;
-                    sourceStats[source].sessions += row.sessions;
-                    sourceStats[source].pageViews += row.page_views;
+                    const referrer = row.page_referrer || '';
                     
-                    const referrer = row.page_referrer || '(none)';
-                    const landingPage = row.landing_page || '/';
-                    
-                    if (referrer !== '(none)' && !referrer.includes(portfolioDomain)) {
-                        const key = `${referrer}|${landingPage}`;
-                        if (!referrerStats[key]) {
-                            referrerStats[key] = {
-                                referrer: referrer,
-                                landingPage: landingPage,
+                    if (referrer && !referrer.includes(portfolioDomain)) {
+                        const sourceName = getSourceName(referrer);
+                        if (!referrerStats[sourceName]) {
+                            referrerStats[sourceName] = {
+                                source: sourceName,
                                 users: 0,
                                 sessions: 0,
+                                pageViews: 0,
                             };
                         }
-                        referrerStats[key].users += row.active_users;
-                        referrerStats[key].sessions += row.sessions;
+                        referrerStats[sourceName].users += row.active_users;
+                        referrerStats[sourceName].sessions += row.sessions;
+                        referrerStats[sourceName].pageViews += row.page_views;
                     }
                 });
                 
                 pagesData = Object.entries(pageStats)
                     .map(([path, stats]) => ({path, ...stats}));
                 
-                sourcesData = Object.entries(sourceStats)
-                    .map(([source, stats]) => ({source, ...stats}));
-                
                 referrersData = Object.values(referrerStats);
                 
                 renderTable();
-                renderSourcesTable();
                 renderReferrersTable();
                 setupSortHandlers();
-                setupSourceSortHandlers();
                 setupReferrerSortHandlers();
                 
                 const collectedAt = new Date(data.collected_at);
@@ -769,30 +752,6 @@
             });
         }
         
-        function renderSourcesTable() {
-            const sorted = [...sourcesData].sort((a, b) => {
-                const aVal = a[currentSourceSortKey];
-                const bVal = b[currentSourceSortKey];
-                return currentSourceSortOrder === 'desc' ? bVal - aVal : aVal - bVal;
-            }).slice(0, 15);
-            
-            const tbody = document.getElementById('topSourcesBody');
-            tbody.innerHTML = '';
-            
-            sorted.forEach((source, index) => {
-                const displaySource = source.source === '(direct)' ? 'Direct Traffic' : source.source;
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td class="rank-cell">${(index + 1).toString().padStart(2, '0')}</td>
-                    <td class="path-cell">${displaySource}</td>
-                    <td class="metric-cell">${source.sessions.toLocaleString()}</td>
-                    <td class="metric-cell">${source.users.toLocaleString()}</td>
-                    <td class="metric-cell">${source.pageViews.toLocaleString()}</td>
-                `;
-                tbody.appendChild(row);
-            });
-        }
-        
         function renderReferrersTable() {
             const sorted = [...referrersData].sort((a, b) => {
                 const aVal = a[currentReferrerSortKey];
@@ -803,45 +762,14 @@
             const tbody = document.getElementById('topReferrersBody');
             tbody.innerHTML = '';
             
-            const getSourceName = (referrerUrl) => {
-                const url = referrerUrl.toLowerCase();
-                if (url.includes('google.com')) return 'Google検索';
-                if (url.includes('bing.com')) return 'Bing検索';
-                if (url.includes('yahoo.co.jp') || url.includes('yahoo.com')) return 'Yahoo検索';
-                if (url.includes('t.co') || url.includes('twitter.com') || url.includes('x.com')) return 'Twitter/X';
-                if (url.includes('zenn.dev')) return 'Zenn';
-                if (url.includes('github.com')) return 'GitHub';
-                if (url.includes('menthas.com')) return 'Menthas';
-                if (url.includes('hatena.ne.jp')) return 'はてなブックマーク';
-                if (url.includes('facebook.com')) return 'Facebook';
-                if (url.includes('chatgpt.com')) return 'ChatGPT';
-                if (url.includes('bsky.app')) return 'Bluesky';
-                if (url.includes('inoreader.com')) return 'Inoreader';
-                if (url.includes('linkedin.com')) return 'LinkedIn';
-                if (url.includes('reddit.com')) return 'Reddit';
-                if (url.includes('qiita.com')) return 'Qiita';
-                
-                try {
-                    const hostname = new URL(referrerUrl).hostname.replace('www.', '');
-                    return hostname;
-                } catch {
-                    return referrerUrl;
-                }
-            };
-            
-            const truncateUrl = (url, maxLength = 50) => {
-                return url.length > maxLength ? url.substring(0, maxLength) + '...' : url;
-            };
-            
             sorted.forEach((ref, index) => {
-                const sourceName = getSourceName(ref.referrer);
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td class="rank-cell">${(index + 1).toString().padStart(2, '0')}</td>
-                    <td class="path-cell" title="${ref.referrer}">${sourceName}</td>
-                    <td class="path-cell" title="${ref.landingPage}">${truncateUrl(ref.landingPage, 45)}</td>
+                    <td class="path-cell">${ref.source}</td>
                     <td class="metric-cell">${ref.sessions.toLocaleString()}</td>
                     <td class="metric-cell">${ref.users.toLocaleString()}</td>
+                    <td class="metric-cell">${ref.pageViews.toLocaleString()}</td>
                 `;
                 tbody.appendChild(row);
             });
@@ -874,33 +802,6 @@
             renderTable();
         }
         
-        function setupSourceSortHandlers() {
-            document.querySelectorAll('th.sortable[data-sort-source]').forEach(th => {
-                th.removeEventListener('click', handleSourceSort);
-                th.addEventListener('click', handleSourceSort);
-            });
-        }
-        
-        function handleSourceSort(event) {
-            const th = event.currentTarget;
-            const sortKey = th.getAttribute('data-sort-source');
-            
-            if (currentSourceSortKey === sortKey) {
-                currentSourceSortOrder = currentSourceSortOrder === 'desc' ? 'asc' : 'desc';
-            } else {
-                currentSourceSortKey = sortKey;
-                currentSourceSortOrder = 'desc';
-            }
-            
-            document.querySelectorAll('th.sortable[data-sort-source]').forEach(header => {
-                header.classList.remove('sorted-asc', 'sorted-desc');
-            });
-            
-            th.classList.add(currentSourceSortOrder === 'desc' ? 'sorted-desc' : 'sorted-asc');
-            
-            renderSourcesTable();
-        }
-        
         function setupReferrerSortHandlers() {
             document.querySelectorAll('th.sortable[data-sort-referrer]').forEach(th => {
                 th.removeEventListener('click', handleReferrerSort);
@@ -930,7 +831,6 @@
         
         if (sessionStorage.getItem('authenticated') === 'true') {
             setupSortHandlers();
-            setupSourceSortHandlers();
             setupReferrerSortHandlers();
         }
         
