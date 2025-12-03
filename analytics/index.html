@@ -436,6 +436,30 @@
             }
         }
         
+        .filter-btn {
+            padding: 8px 16px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            color: var(--color-text-secondary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+        }
+        
+        .filter-btn:hover {
+            background: var(--color-surface-alt);
+            border-color: var(--color-accent-primary);
+            color: var(--color-accent-primary);
+        }
+        
+        .filter-btn.active {
+            background: var(--color-accent-primary);
+            border-color: var(--color-accent-primary);
+            color: var(--color-surface);
+        }
+        
         @media (max-width: 640px) {
             .stats-layout {
                 grid-template-columns: 1fr;
@@ -455,6 +479,11 @@
             
             .login-box {
                 padding: 40px 30px;
+            }
+            
+            .filter-btn {
+                padding: 6px 12px;
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -547,8 +576,17 @@
                 </div>
                 
                 <div class="section-header" style="margin-top: 80px;">
-                    <h2 class="section-title">Most Popular Pages</h2>
-                    <p class="section-subtitle">Top 20 pages by user engagement</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <div>
+                            <h2 class="section-title">Most Popular Pages</h2>
+                            <p class="section-subtitle">Top 20 pages by user engagement</p>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="filter-btn active" data-filter="all" onclick="filterPages('all')">All</button>
+                            <button class="filter-btn" data-filter="portfolio" onclick="filterPages('portfolio')">Portfolio</button>
+                            <button class="filter-btn" data-filter="zenn" onclick="filterPages('zenn')">Zenn Articles</button>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="table-wrapper">
@@ -617,6 +655,7 @@
         let currentSortKey = 'pageViews';
         let currentSortOrder = 'desc';
         let pagesData = [];
+        let currentFilter = 'all';
         
         let currentReferrerSortKey = 'sessions';
         let currentReferrerSortOrder = 'desc';
@@ -729,6 +768,19 @@
             }
         }
         
+        function getPageCategory(path) {
+            // Zenn記事判定
+            if (path.includes('zenn.dev') || path.includes('/tenormusica/articles/')) {
+                return 'zenn';
+            }
+            // Portfolio/Projects判定
+            if (path.includes('/portfolio/') || path.includes('tenormusica2024.github.io')) {
+                return 'portfolio';
+            }
+            // その他（プロジェクト用ドメイン等）
+            return 'portfolio';
+        }
+        
         function getPageName(path) {
             const pageNames = {
                 '/portfolio/': 'ホーム（トップページ）',
@@ -794,8 +846,30 @@
             return null;
         }
         
+        function filterPages(filter) {
+            currentFilter = filter;
+            
+            // ボタンのアクティブ状態を更新
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.filter-btn[data-filter="${filter}"]`).classList.add('active');
+            
+            renderTable();
+        }
+        
         function renderTable() {
-            const sorted = [...pagesData].sort((a, b) => {
+            let filtered = pagesData;
+            
+            // カテゴリフィルタリング
+            if (currentFilter !== 'all') {
+                filtered = pagesData.filter(page => {
+                    const category = getPageCategory(page.path);
+                    return category === currentFilter;
+                });
+            }
+            
+            const sorted = [...filtered].sort((a, b) => {
                 const aVal = a[currentSortKey];
                 const bVal = b[currentSortKey];
                 return currentSortOrder === 'desc' ? bVal - aVal : aVal - bVal;
