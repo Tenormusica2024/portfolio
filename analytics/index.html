@@ -729,6 +729,40 @@
             }
         }
         
+        function getPageName(path) {
+            const pageNames = {
+                '/portfolio/': 'ホーム（トップページ）',
+                '/portfolio/index.html': 'ホーム（トップページ）',
+                '/portfolio/projects.html': 'プロジェクト一覧',
+                '/portfolio/profile.html': 'プロフィール',
+                '/portfolio/contact.html': 'お問い合わせ',
+                '/portfolio/code-reviewer-system.html': 'Code Reviewer詳細',
+                '/portfolio/analytics/': 'Analytics Dashboard',
+                '/portfolio/analytics/index.html': 'Analytics Dashboard',
+                '/ai-trend-daily/home.html': 'AI Trend Dashboard（ホーム）',
+                '/ai-trend-daily/index.html': 'AI Trend Dashboard（ランキング）',
+                '/ai-trend-daily/image-ai-ranking.html': '画像生成AIランキング',
+                '/ai-trend-daily/video-ai-ranking.html': '動画生成AIランキング',
+            };
+            
+            // 完全一致を試行
+            if (pageNames[path]) return pageNames[path];
+            
+            // 部分一致でプロジェクト名を推測
+            if (path.includes('sound-platform')) return 'Sound Platform';
+            if (path.includes('ai-trend')) return 'AI Trend Dashboard';
+            if (path.includes('neon-charts')) return 'Neon Charts';
+            if (path.includes('ai-buzz')) return 'AI Buzz Extractor';
+            if (path.includes('zenn-ai-news')) return 'Zenn Audio Reader';
+            if (path.includes('media-portfolio')) return 'Media Portfolio';
+            if (path.includes('editorial-gallery')) return 'Editorial Gallery';
+            if (path.includes('cyberpunk')) return 'Cyberpunk Anime';
+            if (path.includes('esports-tournament')) return 'Esports Tournament';
+            if (path.includes('asteroid-game')) return 'Asteroid Game';
+            
+            return null;
+        }
+        
         function renderTable() {
             const sorted = [...pagesData].sort((a, b) => {
                 const aVal = a[currentSortKey];
@@ -741,9 +775,14 @@
             
             sorted.forEach((page, index) => {
                 const row = document.createElement('tr');
+                const pageName = getPageName(page.path);
+                const displayText = pageName 
+                    ? `<strong>${pageName}</strong><br><span style="font-size: 0.85em; color: var(--color-text-muted);">${page.path}</span>`
+                    : page.path;
+                
                 row.innerHTML = `
                     <td class="rank-cell">${(index + 1).toString().padStart(2, '0')}</td>
-                    <td class="path-cell">${page.path}</td>
+                    <td class="path-cell">${displayText}</td>
                     <td class="metric-cell">${page.users.toLocaleString()}</td>
                     <td class="metric-cell">${page.sessions.toLocaleString()}</td>
                     <td class="metric-cell">${page.pageViews.toLocaleString()}</td>
