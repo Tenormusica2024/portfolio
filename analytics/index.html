@@ -460,6 +460,19 @@
             color: var(--color-surface);
         }
         
+        .device-browser-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        @media (max-width: 968px) {
+            .device-browser-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
         @media (max-width: 640px) {
             .stats-layout {
                 grid-template-columns: 1fr;
@@ -602,6 +615,67 @@
                         </thead>
                         <tbody id="topPagesBody"></tbody>
                     </table>
+                </div>
+                
+                <div class="section-header" style="margin-top: 80px;">
+                    <h2 class="section-title">Page Performance</h2>
+                    <p class="section-subtitle">Pages sorted by average session duration</p>
+                </div>
+                
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Page Path</th>
+                                <th class="sortable sorted-desc" data-sort-performance="avg_time" style="text-align: right;">Avg Time</th>
+                                <th class="sortable" data-sort-performance="users" style="text-align: right;">Users</th>
+                                <th class="sortable" data-sort-performance="sessions" style="text-align: right;">Sessions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pagePerformanceBody"></tbody>
+                    </table>
+                </div>
+                
+                <div class="section-header" style="margin-top: 80px;">
+                    <h2 class="section-title">Device & Browser Analytics</h2>
+                    <p class="section-subtitle">User distribution by device type and browser</p>
+                </div>
+                
+                <div class="device-browser-grid">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th colspan="4" style="background: var(--color-accent-primary); color: var(--color-surface); text-align: center; font-size: 0.875rem; padding: 15px;">Devices</th>
+                                </tr>
+                                <tr>
+                                    <th>Device</th>
+                                    <th style="text-align: right;">Users</th>
+                                    <th style="text-align: right;">Sessions</th>
+                                    <th style="text-align: right;">%</th>
+                                </tr>
+                            </thead>
+                            <tbody id="deviceStatsBody"></tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th colspan="4" style="background: var(--color-accent-secondary); color: var(--color-surface); text-align: center; font-size: 0.875rem; padding: 15px;">Browsers</th>
+                                </tr>
+                                <tr>
+                                    <th>Browser</th>
+                                    <th style="text-align: right;">Users</th>
+                                    <th style="text-align: right;">Sessions</th>
+                                    <th style="text-align: right;">%</th>
+                                </tr>
+                            </thead>
+                            <tbody id="browserStatsBody"></tbody>
+                        </table>
+                    </div>
                 </div>
                 
                 <footer>
@@ -753,8 +827,11 @@
                 
                 renderTable();
                 renderReferrersTable();
+                renderPagePerformance(data);
+                renderDeviceBrowser(data);
                 setupSortHandlers();
                 setupReferrerSortHandlers();
+                setupPerformanceSortHandlers();
                 
                 const collectedAt = new Date(data.collected_at);
                 document.getElementById('updatedAt').textContent = collectedAt.toLocaleString('ja-JP');
@@ -973,9 +1050,137 @@
             renderReferrersTable();
         }
         
+        // Page Performance rendering
+        let performanceData = [];
+        let currentPerformanceSortKey = 'avg_time';
+        let currentPerformanceSortOrder = 'desc';
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        function renderPagePerformance(data) {
+            if (!data.page_performance || data.page_performance.length === 0) {
+                document.getElementById('pagePerformanceBody').innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--color-text-muted); padding: 40px;">No page performance data available</td></tr>';
+                return;
+            }
+            
+            performanceData = data.page_performance.map(page => ({
+                ...page,
+                avg_time: page.avg_time_seconds
+            }));
+            
+            renderPagePerformanceTable();
+        }
+        
+        function renderPagePerformanceTable() {
+            const sorted = [...performanceData].sort((a, b) => {
+                const aVal = a[currentPerformanceSortKey];
+                const bVal = b[currentPerformanceSortKey];
+                return currentPerformanceSortOrder === 'desc' ? bVal - aVal : aVal - bVal;
+            });
+            
+            const tbody = document.getElementById('pagePerformanceBody');
+            tbody.innerHTML = '';
+            
+            sorted.forEach((page, index) => {
+                const row = document.createElement('tr');
+                const pageName = getPageName(page.page_path);
+                const displayText = pageName 
+                    ? `<strong>${pageName}</strong><br><span style="font-size: 0.85em; color: var(--color-text-muted);">${escapeHtml(page.page_path)}</span>`
+                    : escapeHtml(page.page_path);
+                
+                row.innerHTML = `
+                    <td class="rank-cell">${(index + 1).toString().padStart(2, '0')}</td>
+                    <td class="path-cell">${displayText}</td>
+                    <td class="metric-cell">${page.avg_time_formatted}</td>
+                    <td class="metric-cell">${page.users.toLocaleString()}</td>
+                    <td class="metric-cell">${page.sessions.toLocaleString()}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+        
+        function setupPerformanceSortHandlers() {
+            document.querySelectorAll('th.sortable[data-sort-performance]').forEach(th => {
+                th.removeEventListener('click', handlePerformanceSort);
+                th.addEventListener('click', handlePerformanceSort);
+            });
+        }
+        
+        function handlePerformanceSort(event) {
+            const th = event.currentTarget;
+            const sortKey = th.getAttribute('data-sort-performance');
+            
+            if (currentPerformanceSortKey === sortKey) {
+                currentPerformanceSortOrder = currentPerformanceSortOrder === 'desc' ? 'asc' : 'desc';
+            } else {
+                currentPerformanceSortKey = sortKey;
+                currentPerformanceSortOrder = 'desc';
+            }
+            
+            document.querySelectorAll('th.sortable[data-sort-performance]').forEach(header => {
+                header.classList.remove('sorted-asc', 'sorted-desc');
+            });
+            
+            th.classList.add(currentPerformanceSortOrder === 'desc' ? 'sorted-desc' : 'sorted-asc');
+            
+            renderPagePerformanceTable();
+        }
+        
+        // Device & Browser rendering
+        function renderDeviceBrowser(data) {
+            if (!data.device_browser) {
+                document.getElementById('deviceStatsBody').innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--color-text-muted); padding: 40px;">No device data available</td></tr>';
+                document.getElementById('browserStatsBody').innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--color-text-muted); padding: 40px;">No browser data available</td></tr>';
+                return;
+            }
+            
+            // Devices
+            const deviceBody = document.getElementById('deviceStatsBody');
+            deviceBody.innerHTML = '';
+            
+            if (data.device_browser.devices && data.device_browser.devices.length > 0) {
+                data.device_browser.devices.forEach((device) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="path-cell">${escapeHtml(device.device)}</td>
+                        <td class="metric-cell">${device.users.toLocaleString()}</td>
+                        <td class="metric-cell">${device.sessions.toLocaleString()}</td>
+                        <td class="metric-cell">${device.percentage}%</td>
+                    `;
+                    deviceBody.appendChild(row);
+                });
+            } else {
+                deviceBody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--color-text-muted); padding: 40px;">No device data available</td></tr>';
+            }
+            
+            // Browsers
+            const browserBody = document.getElementById('browserStatsBody');
+            browserBody.innerHTML = '';
+            
+            if (data.device_browser.browsers && data.device_browser.browsers.length > 0) {
+                data.device_browser.browsers.forEach((browser) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="path-cell">${escapeHtml(browser.browser)}</td>
+                        <td class="metric-cell">${browser.users.toLocaleString()}</td>
+                        <td class="metric-cell">${browser.sessions.toLocaleString()}</td>
+                        <td class="metric-cell">${browser.percentage}%</td>
+                    `;
+                    browserBody.appendChild(row);
+                });
+            } else {
+                browserBody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--color-text-muted); padding: 40px;">No browser data available</td></tr>';
+            }
+        }
+        
         if (sessionStorage.getItem('authenticated') === 'true') {
             setupSortHandlers();
             setupReferrerSortHandlers();
+            setupPerformanceSortHandlers();
         }
         
         // Auto-refresh every 60 seconds (only if authenticated)
