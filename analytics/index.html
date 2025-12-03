@@ -745,8 +745,39 @@
                 '/ai-trend-daily/video-ai-ranking.html': '動画生成AIランキング',
             };
             
+            // Zenn記事マッピング
+            const zennArticles = {
+                'ai-screen-capture-tools-2025': 'AIエージェントのための画面キャプチャツールを作った話',
+                'claude-opus-4-5-coding-crown-2025': 'Claude Opus 4.5がコーディング最強の座を奪還',
+                'gemini3-nanobanana2-antigravity-november-2025': 'Gemini 3・Nano Banana Pro・Antigravity登場',
+                'gemini-3-pro-preview-release': 'Gemini 3 Pro が LMArena 1501 Elo達成',
+                'cursor-2-composer-parallel-agents-2025': 'Cursor 2.0で8つのAIエージェントが並列稼働',
+                'x-grok-algorithm-quality-over-quantity-2025': 'X (Twitter) が11月から「いいね数」を捨てる',
+                'test-long-article-100chunks': 'Affinityが完全無料化 - Canvaの「基本無料・AI有料」戦略',
+                'github-agent-hq-unified-ai-coding-2025': 'GitHub Agent HQ登場 - AIエージェント乱立時代の統一プラットフォーム',
+                'affinity-3-free-canva-ai-strategy-2025': 'Affinityが完全無料化 - Canvaの「基本無料・AI有料」戦略',
+                'openai-amazon-38b-infrastructure-deal-2025': 'OpenAI、Amazon と5.8兆円契約。でもその資金どこから？',
+                'sora2-grok-video-generation-reality-2025': 'Sora 2とGrok Imagine、どっちが使えるのか',
+                'tech-layoffs-ai-investment-paradox-2025': 'Meta 600人レイオフの裏側：AI投資数百億ドルと人員削減の矛盾',
+                'chatgpt-atlas-google-search-war-2025': 'ChatGPT Atlas vs Google：AIブラウザがもたらす新時代の検索フロー',
+                'claude-code-web-release-2025-v2': 'Claude Code がウェブ・iOS版を正式リリース！',
+                'karpathy-ai-agents-decade-not-year': 'Karpathy「AIエージェントは1年ではなく10年かかる」',
+                'karpathy-nanochat-100-dollar-llm': 'Karpathyが$100でChatGPT作る8000行コード公開',
+                'karpathy-llms-fear-exceptions': 'Karpathy指摘: LLMが書くコードは防御的すぎる',
+                'swe-bench-pro-coding-ai-benchmark': 'SWE-Bench Pro登場: AIコーディングエージェントの限界が露呈',
+                'anthropic-llm-poisoning-research': 'Anthropic研究: LLMはわずか250件の悪意あるデータで「汚染」可能',
+                'anthropic-context-engineering-agents': 'Anthropicが提唱する「Context Engineering」',
+            };
+            
             // 完全一致を試行
             if (pageNames[path]) return pageNames[path];
+            
+            // Zenn記事のパスをチェック
+            for (const [slug, title] of Object.entries(zennArticles)) {
+                if (path.includes(slug)) {
+                    return `📝 ${title}`;
+                }
+            }
             
             // 部分一致でプロジェクト名を推測
             if (path.includes('sound-platform')) return 'Sound Platform';
