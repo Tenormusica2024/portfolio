@@ -1,6 +1,6 @@
 {
-  "title": "ClaudeのAIには「魂の文書」が埋め込まれていた——14000トークンの発見が意味すること",
-  "link": "https://zenn.dev/tenormusica/articles/claude-soul-document-discovery-original",
-  "description": "Claudeの魂が露出？\n2025年12月2日、AIコミュニティがざわついた理由がこれです。\nRichard Weissという開発者が、Claude Opus 4.5から14000トークン（約1万語）の文書を抽出したんです。タイトルは「Soul overview」。Anthropic社内では「soul doc（魂の文書）」と呼ばれているらしい。\nで、これが本物だとAnthropicの研究者Aman...",
+  "title": "AIコーディングツール全製品に脆弱性「IDEsaster」- 最新防御策とマルチAIエージェント対策",
+  "link": "https://zenn.dev/tenormusica/articles/ai-coding-tools-idesaster-vulnerabilities-2025",
+  "description": "参照元\nResearchers Uncover 30+ Flaws in AI Coding Tools Enabling Data Theft and RCE Attacks - The Hacker News\nhttps://thehackernews.com/2025/12/researchers-uncover-30-flaws-in-ai.html\nIDEsaster: A Novel ...",
   "updated": true
 }
