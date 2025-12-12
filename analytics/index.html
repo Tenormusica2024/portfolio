@@ -959,7 +959,7 @@
                 const row = document.createElement('tr');
                 const pageName = getPageName(page.path);
                 const displayText = pageName 
-                    ? `<strong>${pageName}</strong><br><span style="font-size: 0.85em; color: var(--color-text-muted);">${page.path}</span>`
+                    ? `<div style="font-weight: 600; margin-bottom: 4px;">${pageName}</div><div style="font-size: 0.75em; color: var(--color-text-muted); font-weight: 300;">${page.path}</div>`
                     : page.path;
                 
                 row.innerHTML = `
@@ -1089,7 +1089,7 @@
                 const row = document.createElement('tr');
                 const pageName = getPageName(page.page_path);
                 const displayText = pageName 
-                    ? `<strong>${pageName}</strong><br><span style="font-size: 0.85em; color: var(--color-text-muted);">${escapeHtml(page.page_path)}</span>`
+                    ? `<div style="font-weight: 600; margin-bottom: 4px;">${pageName}</div><div style="font-size: 0.75em; color: var(--color-text-muted); font-weight: 300;">${escapeHtml(page.page_path)}</div>`
                     : escapeHtml(page.page_path);
                 
                 row.innerHTML = `
