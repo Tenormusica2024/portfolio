@@ -1,6 +1,6 @@
 {
-  "title": "AIコーディングツール全製品に脆弱性「IDEsaster」- 最新防御策とマルチAIエージェント対策",
-  "link": "https://zenn.dev/tenormusica/articles/ai-coding-tools-idesaster-vulnerabilities-2025",
-  "description": "参照元\nResearchers Uncover 30+ Flaws in AI Coding Tools Enabling Data Theft and RCE Attacks - The Hacker News\nhttps://thehackernews.com/2025/12/researchers-uncover-30-flaws-in-ai.html\nIDEsaster: A Novel ...",
+  "title": "ChatGPTの記憶システムはRAGを使っていなかった - 4層アーキテクチャの衝撃",
+  "link": "https://zenn.dev/tenormusica/articles/chatgpt-memory-no-rag-2025",
+  "description": "参照元\nI Reverse Engineered ChatGPT's Memory System, and Here's What I Found! - Manthan Gupta\nhttps://manthanguptaa.in/posts/chatgpt_memory/\nChatGPT Memory Architecture: Four-Layer Context System Priorit...",
   "updated": true
 }
