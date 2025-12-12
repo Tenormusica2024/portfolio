@@ -1,6 +1,6 @@
 {
-  "title": "AIエージェントのための画面キャプチャツールを作った話",
-  "link": "https://zenn.dev/tenormusica/articles/ai-screen-capture-tools-2025",
-  "description": "「今この画面を見てほしい」が伝わらない問題\nターミナル上でClaude CodeやCursorのようなAIエージェントと開発していると、「今この画面を見てほしい」という瞬間が意外と多く訪れます。\n\nUIを軽く直したあと「レイアウトちゃんと合ってる？」\nDevToolsのコンソールに出ているエラーを「これ、どういう意味？」\nダイアログや設定画面の「このボタンの下ってどうなってる？」\n\nこういう「ちょ...",
+  "title": "AIコーディングツール全製品に脆弱性「IDEsaster」- 最新防御策とマルチAIエージェント対策",
+  "link": "https://zenn.dev/tenormusica/articles/ai-coding-tools-idesaster-vulnerabilities-2025",
+  "description": "参照元\nResearchers Uncover 30+ Flaws in AI Coding Tools Enabling Data Theft and RCE Attacks - The Hacker News\nhttps://thehackernews.com/2025/12/researchers-uncover-30-flaws-in-ai.html\nIDEsaster: A Novel ...",
   "updated": true
 }
