@@ -28,7 +28,7 @@ jobs:
         env:
           GA4_CREDENTIALS: ${{ secrets.GA4_CREDENTIALS_JSON }}
         run: |
-          echo "$GA4_CREDENTIALS" > ga4-credentials.json
+          echo '${{ secrets.GA4_CREDENTIALS_JSON }}' > ga4-credentials.json
       
       - name: Create config file
         env:
