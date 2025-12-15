@@ -1,0 +1,62 @@
+name: Update Analytics Data
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 毎日 09:00 JST (00:00 UTC)
+  workflow_dispatch:  # 手動実行も可能
+
+jobs:
+  collect-ga4-data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install google-analytics-data configparser
+      
+      - name: Create GA4 credentials file
+        env:
+          GA4_CREDENTIALS: ${{ secrets.GA4_CREDENTIALS_JSON }}
+        run: |
+          echo "$GA4_CREDENTIALS" > ga4-credentials.json
+      
+      - name: Create config file
+        env:
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+        run: |
+          cat > config.ini << EOF
+          [DEFAULT]
+          GOOGLE_APPLICATION_CREDENTIALS = ga4-credentials.json
+          PROPERTY_ID = $GA4_PROPERTY_ID
+          OUTPUT_DIR = analytics/data
+          LOG_DIR = analytics/logs
+          EOF
+      
+      - name: Collect GA4 data
+        run: |
+          python get_ga4_data.py --config config.ini --days 30
+      
+      - name: Configure Git
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+      
+      - name: Commit and push if changed
+        run: |
+          git add analytics/data/latest.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update analytics data [skip ci]" && git push)
+      
+      - name: Clean up credentials
+        if: always()
+        run: |
+          rm -f ga4-credentials.json config.ini
