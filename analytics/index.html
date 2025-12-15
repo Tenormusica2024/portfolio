@@ -782,6 +782,7 @@
                     if (url.includes('reddit.com')) return 'Reddit';
                     if (url.includes('qiita.com')) return 'Qiita';
                     if (url.includes('android-app://com.google')) return 'Googleアプリ';
+                    if (url.includes('teams.cdn.office.net') || url.includes('teams.microsoft.com')) return 'Teams';
                     
                     try {
                         const hostname = new URL(referrerUrl).hostname.replace('www.', '');
