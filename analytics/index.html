@@ -730,6 +730,7 @@
         let currentSortOrder = 'desc';
         let pagesData = [];
         let currentFilter = 'all';
+        let pageTitles = {};
         
         let currentReferrerSortKey = 'sessions';
         let currentReferrerSortOrder = 'desc';
@@ -759,7 +760,7 @@
                 document.getElementById('avgPageViews').textContent = data.summary.avg_page_views_per_session;
                 
                 const pageStats = {};
-                const pageTitles = {};
+                pageTitles = {};
                 const referrerStats = {};
                 const portfolioDomain = 'tenormusica2024.github.io';
                 
