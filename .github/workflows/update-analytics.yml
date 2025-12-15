@@ -25,10 +25,8 @@ jobs:
           pip install google-analytics-data configparser
       
       - name: Create GA4 credentials file
-        env:
-          GA4_CREDENTIALS: ${{ secrets.GA4_CREDENTIALS_JSON }}
         run: |
-          echo '${{ secrets.GA4_CREDENTIALS_JSON }}' > ga4-credentials.json
+          echo "${{ secrets.GA4_CREDENTIALS_BASE64 }}" | base64 -d > ga4-credentials.json
       
       - name: Create config file
         env:
