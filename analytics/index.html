@@ -808,7 +808,15 @@
                     
                     const referrer = row.page_referrer || '';
                     
-                    if (referrer && !referrer.includes(portfolioDomain)) {
+                    // 内部遷移を除外: portfolioDomain, ai-news.dev, CloudflareのIP
+                    const isInternalNavigation = 
+                        referrer.includes(portfolioDomain) ||
+                        referrer.includes('ai-news.dev') ||
+                        referrer.includes('172.67.72.220') ||
+                        referrer.includes('104.26.15.203') ||
+                        referrer.includes('104.26.14.203');
+                    
+                    if (referrer && !isInternalNavigation) {
                         const sourceName = getSourceName(referrer);
                         if (!referrerStats[sourceName]) {
                             referrerStats[sourceName] = {
