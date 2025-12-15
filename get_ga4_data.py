@@ -55,6 +55,7 @@ class GA4DataCollector:
             dimensions=[
                 Dimension(name="date"),
                 Dimension(name="pagePath"),
+                Dimension(name="pageTitle"),
                 Dimension(name="country"),
                 Dimension(name="sessionSource"),
                 Dimension(name="pageReferrer"),
@@ -110,12 +111,13 @@ class GA4DataCollector:
             entry = {
                 'date': row.dimension_values[0].value,
                 'page_path': row.dimension_values[1].value,
-                'country': row.dimension_values[2].value,
-                'session_source': row.dimension_values[3].value,
-                'page_referrer': row.dimension_values[4].value,
-                'landing_page': row.dimension_values[5].value,
-                'device_category': row.dimension_values[6].value,
-                'browser': row.dimension_values[7].value,
+                'page_title': row.dimension_values[2].value,
+                'country': row.dimension_values[3].value,
+                'session_source': row.dimension_values[4].value,
+                'page_referrer': row.dimension_values[5].value,
+                'landing_page': row.dimension_values[6].value,
+                'device_category': row.dimension_values[7].value,
+                'browser': row.dimension_values[8].value,
                 'active_users': int(row.metric_values[0].value),
                 'sessions': int(row.metric_values[1].value),
                 'page_views': int(row.metric_values[2].value),
@@ -170,6 +172,7 @@ class GA4DataCollector:
             page_path = row['page_path']
             if page_path not in page_performance:
                 page_performance[page_path] = {
+                    'page_title': row.get('page_title', ''),
                     'users': 0,
                     'sessions': 0,
                     'page_views': 0,
@@ -190,6 +193,7 @@ class GA4DataCollector:
             avg_time = stats['total_duration'] / stats['session_count'] if stats['session_count'] > 0 else 0
             performance_list.append({
                 'page_path': path,
+                'page_title': stats['page_title'],
                 'users': stats['users'],
                 'sessions': stats['sessions'],
                 'page_views': stats['page_views'],
