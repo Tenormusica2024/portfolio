@@ -1,6 +1,6 @@
 {
-  "title": "ChatGPTの記憶システムはRAGを使っていなかった - 4層アーキテクチャの衝撃",
-  "link": "https://zenn.dev/tenormusica/articles/chatgpt-memory-no-rag-2025",
-  "description": "参照元\nI Reverse Engineered ChatGPT's Memory System, and Here's What I Found! - Manthan Gupta\nhttps://manthanguptaa.in/posts/chatgpt_memory/\nChatGPT Memory Architecture: Four-Layer Context System Priorit...",
+  "title": "コンテキストエンジニアリング実践ガイド：Claude Skills・MCP・RAGの選択と組み合わせ（2025年12月版）",
+  "link": "https://zenn.dev/tenormusica/articles/ai-context-engineering-organization-2025",
+  "description": "はじめに\nLLMを活用した開発において、コンテキスト管理は出力品質を決定する最重要要素です。Qodoの2025年調査によれば、開発者の65%が「AIが必要な情報を見逃す」と報告しており[1]、これはコンテキストウィンドウの設計・検索戦略の最適化が不十分であることを示しています。\n2025年11月、Anthropicは Claude Opus 4.5 をリリースし、200Kトークンのコンテキストウィ...",
   "updated": true
 }
