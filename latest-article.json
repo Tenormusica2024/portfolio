@@ -1,6 +1,6 @@
 {
-  "title": "コンテキストエンジニアリング実践ガイド：Claude Skills・MCP・RAGの選択と組み合わせ（2025年12月版）",
-  "link": "https://zenn.dev/tenormusica/articles/ai-context-engineering-organization-2025",
-  "description": "はじめに\nLLMを活用した開発において、コンテキスト管理は出力品質を決定する最重要要素です。Qodoの2025年調査によれば、開発者の65%が「AIが必要な情報を見逃す」と報告しており[1]、これはコンテキストウィンドウの設計・検索戦略の最適化が不十分であることを示しています。\n2025年11月、Anthropicは Claude Opus 4.5 をリリースし、200Kトークンのコンテキストウィ...",
+  "title": "Playwrightの永続的課題を解決するdev-browser - スクリプト実行ごとのブラウザ状態リセット問題",
+  "link": "https://zenn.dev/tenormusica/articles/dev-browser-claude-skill-persistent-state-2025",
+  "description": "参照元\ndev-browser - GitHub Repository - Sawyer Hood\nhttps://github.com/SawyerHood/dev-browser\n\n ブラウザ自動化でよくある問題\nPlaywrightでブラウザ自動化をしていると、「スクリプト実行のたびにログイン画面に戻される」という問題に遭遇することがあります。スクリプトを実行するたびにブラウザ状態が完全にリ...",
   "updated": true
 }
