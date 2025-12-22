@@ -480,6 +480,8 @@
             min-height: 44px;
             display: inline-flex;
             align-items: center;
+            -webkit-user-select: none;
+            user-select: none;
         }
 
         .nav-links a:hover {
@@ -1211,12 +1213,12 @@
                 padding: 0.5rem 0;
             }
 
-            /* リンクのダブルタップズーム無効化 */
+            /* リンクの即座クリック有効化 */
             .nav-links a,
             .nav-item a {
-                touch-action: manipulation;
                 -webkit-tap-highlight-color: transparent;
                 user-select: none;
+                cursor: pointer;
             }
 
             /* 項目の圧縮防止 */
