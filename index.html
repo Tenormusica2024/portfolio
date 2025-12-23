@@ -1184,9 +1184,23 @@
         }
 
         @media (max-width: 768px) {
-            /* ドロップダウン無効化 */
+            /* ドロップダウン完全無効化 */
             .dropdown {
-                display: none;
+                display: none !important;
+            }
+            
+            /* モバイル版でホバー無効化 */
+            .nav-item:hover .dropdown {
+                display: none !important;
+            }
+            
+            /* モバイル版でタップ時のドロップダウン開閉を無効化 */
+            .nav-item {
+                pointer-events: auto;
+            }
+            
+            .nav-item > a {
+                pointer-events: auto;
             }
 
             /* ヘッダー全体の縦スクロール禁止 */
