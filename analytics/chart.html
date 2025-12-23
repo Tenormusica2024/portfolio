@@ -101,20 +101,20 @@
         
         <div class="stats">
             <div class="stat-card">
-                <div class="stat-value" id="totalPortfolio">-</div>
-                <div class="stat-label">ポートフォリオ総PV</div>
+                <div class="stat-value" id="selectedDate">-</div>
+                <div class="stat-label">選択日</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" id="totalZenn">-</div>
-                <div class="stat-label">Zenn記事総PV</div>
+                <div class="stat-value" id="selectedZenn">-</div>
+                <div class="stat-label">Zenn記事PV</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" id="peakDate">-</div>
-                <div class="stat-label">Zennピーク日</div>
+                <div class="stat-value" id="selectedPortfolio">-</div>
+                <div class="stat-label">ポートフォリオPV</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" id="peakPortfolio">-</div>
-                <div class="stat-label">同日ポートフォリオPV</div>
+                <div class="stat-value" id="conversionRate">-</div>
+                <div class="stat-label">流入率</div>
             </div>
         </div>
     </div>
@@ -131,15 +131,25 @@
                 const peakDate = data.dates[peakZennIndex];
                 const peakPortfolio = data.portfolio[peakZennIndex];
                 
-                // 統計表示
-                document.getElementById('totalPortfolio').textContent = totalPortfolio.toLocaleString();
-                document.getElementById('totalZenn').textContent = totalZenn.toLocaleString();
-                document.getElementById('peakDate').textContent = peakDate;
-                document.getElementById('peakPortfolio').textContent = peakPortfolio.toLocaleString();
+                // 初期値: ピーク日を表示
+                function updateStats(index) {
+                    const date = data.dates[index];
+                    const zennPV = data.zenn[index];
+                    const portfolioPV = data.portfolio[index];
+                    const rate = zennPV > 0 ? ((portfolioPV / zennPV) * 100).toFixed(2) : '0.00';
+                    
+                    document.getElementById('selectedDate').textContent = date;
+                    document.getElementById('selectedZenn').textContent = zennPV.toLocaleString();
+                    document.getElementById('selectedPortfolio').textContent = portfolioPV.toLocaleString();
+                    document.getElementById('conversionRate').textContent = rate + '%';
+                }
+                
+                // 初期表示: ピーク日
+                updateStats(peakZennIndex);
                 
                 // グラフ作成
                 const ctx = document.getElementById('chart').getContext('2d');
-                new Chart(ctx, {
+                const chartInstance = new Chart(ctx, {
                     type: 'line',
                     data: {
                         labels: data.dates,
@@ -206,6 +216,12 @@
                                         return label;
                                     }
                                 }
+                            }
+                        },
+                        onClick: (event, activeElements) => {
+                            if (activeElements.length > 0) {
+                                const index = activeElements[0].index;
+                                updateStats(index);
                             }
                         },
                         scales: {
