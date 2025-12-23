@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポートフォリオ×Zenn アクセス推移</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --color-bg: #f5f1ea;
+            --color-surface: #ffffff;
+            --color-accent-primary: #c9a875;
+            --color-accent-secondary: #8b7355;
+            --color-text-primary: #2c2416;
+            --color-text-secondary: #6b5d4f;
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Archivo', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            background: var(--color-bg);
+            color: var(--color-text-primary);
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--color-surface);
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--color-text-primary);
+            margin-bottom: 10px;
+        }
+        
+        p {
+            color: var(--color-text-secondary);
+            margin-bottom: 30px;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 500px;
+            margin-bottom: 40px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .stat-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-accent-primary);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-accent-primary);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav style="margin-bottom: 30px;">
+            <a href="index.html" style="display: inline-block; padding: 10px 20px; background: var(--color-accent-secondary); color: var(--color-surface); text-decoration: none; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; transition: all 0.3s ease;">← Dashboard に戻る</a>
+        </nav>
+        <h1>ポートフォリオ×Zenn アクセス推移</h1>
+        <p>Zenn記事のバズがポートフォリオ来訪に与えた影響を時系列で可視化</p>
+        
+        <div class="chart-container">
+            <canvas id="chart"></canvas>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="totalPortfolio">-</div>
+                <div class="stat-label">ポートフォリオ総PV</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="totalZenn">-</div>
+                <div class="stat-label">Zenn記事総PV</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="peakDate">-</div>
+                <div class="stat-label">Zennピーク日</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="peakPortfolio">-</div>
+                <div class="stat-label">同日ポートフォリオPV</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // データを直接埋め込み（CORSエラー回避）
+        const data = {"dates":["2025-11-22","2025-11-23","2025-11-24","2025-11-25","2025-11-26","2025-11-27","2025-11-28","2025-11-29","2025-11-30","2025-12-01","2025-12-02","2025-12-03","2025-12-04","2025-12-05","2025-12-06","2025-12-07","2025-12-08","2025-12-09","2025-12-10","2025-12-11","2025-12-12","2025-12-13","2025-12-14","2025-12-15","2025-12-16","2025-12-17","2025-12-18","2025-12-19","2025-12-20","2025-12-21","2025-12-22"],"portfolio":[23,4,9,1,53,47,3,25,62,42,61,33,20,3,10,10,2,5,5,0,1,0,0,45,24,3,11,8,0,9,1],"zenn":[34,24,34,47,222,135,69,24,14,69,86,38,51,73,21,20,138,839,411,279,352,86,684,7086,2641,839,395,297,128,191,60]};
+        
+        (function() {
+                // 統計計算
+                const totalPortfolio = data.portfolio.reduce((a, b) => a + b, 0);
+                const totalZenn = data.zenn.reduce((a, b) => a + b, 0);
+                const peakZennIndex = data.zenn.indexOf(Math.max(...data.zenn));
+                const peakDate = data.dates[peakZennIndex];
+                const peakPortfolio = data.portfolio[peakZennIndex];
+                
+                // 統計表示
+                document.getElementById('totalPortfolio').textContent = totalPortfolio.toLocaleString();
+                document.getElementById('totalZenn').textContent = totalZenn.toLocaleString();
+                document.getElementById('peakDate').textContent = peakDate;
+                document.getElementById('peakPortfolio').textContent = peakPortfolio.toLocaleString();
+                
+                // グラフ作成
+                const ctx = document.getElementById('chart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data.dates,
+                        datasets: [
+                            {
+                                label: 'Zenn記事 PV',
+                                data: data.zenn,
+                                borderColor: '#c9a875',
+                                backgroundColor: 'rgba(201, 168, 117, 0.1)',
+                                borderWidth: 3,
+                                pointRadius: 4,
+                                pointHoverRadius: 6,
+                                fill: true,
+                                tension: 0.4
+                            },
+                            {
+                                label: 'ポートフォリオ PV',
+                                data: data.portfolio,
+                                borderColor: '#8b7355',
+                                backgroundColor: 'rgba(139, 115, 85, 0.1)',
+                                borderWidth: 3,
+                                pointRadius: 4,
+                                pointHoverRadius: 6,
+                                fill: true,
+                                tension: 0.4
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        interaction: {
+                            mode: 'index',
+                            intersect: false
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                                labels: {
+                                    font: {
+                                        family: "'Archivo', sans-serif",
+                                        size: 14
+                                    },
+                                    color: '#2c2416',
+                                    padding: 20
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: '#ffffff',
+                                titleColor: '#2c2416',
+                                bodyColor: '#6b5d4f',
+                                borderColor: '#c9a875',
+                                borderWidth: 1,
+                                padding: 12,
+                                displayColors: true,
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        label += context.parsed.y.toLocaleString() + ' PV';
+                                        return label;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value.toLocaleString();
+                                    },
+                                    font: {
+                                        family: "'Archivo', sans-serif"
+                                    },
+                                    color: '#6b5d4f'
+                                },
+                                grid: {
+                                    color: '#e5dfd5'
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    maxRotation: 45,
+                                    minRotation: 45,
+                                    font: {
+                                        family: "'Archivo', sans-serif",
+                                        size: 11
+                                    },
+                                    color: '#6b5d4f'
+                                },
+                                grid: {
+                                    color: '#e5dfd5'
+                                }
+                            }
+                        }
+                    }
+                });
+        })();
+    </script>
+</body>
+</html>
