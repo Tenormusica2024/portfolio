@@ -120,10 +120,61 @@
     </div>
     
     <script>
-        // データを直接埋め込み（CORSエラー回避）
-        const data = {"dates":["2025-11-22","2025-11-23","2025-11-24","2025-11-25","2025-11-26","2025-11-27","2025-11-28","2025-11-29","2025-11-30","2025-12-01","2025-12-02","2025-12-03","2025-12-04","2025-12-05","2025-12-06","2025-12-07","2025-12-08","2025-12-09","2025-12-10","2025-12-11","2025-12-12","2025-12-13","2025-12-14","2025-12-15","2025-12-16","2025-12-17","2025-12-18","2025-12-19","2025-12-20","2025-12-21","2025-12-22"],"portfolio":[23,4,9,1,53,47,3,25,62,42,61,33,20,3,10,10,2,5,5,0,1,0,0,45,24,3,11,8,0,9,1],"zenn":[34,24,34,47,222,135,69,24,14,69,86,38,51,73,21,20,138,839,411,279,352,86,684,7086,2641,839,395,297,128,191,60]};
+        async function loadData() {
+            try {
+                // latest.jsonから動的にデータを生成
+                const response = await fetch('data/latest.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load analytics data');
+                }
+                
+                const analyticsData = await response.json();
+                
+                // 日付別にデータを集計
+                const portfolioByDate = {};
+                const zennByDate = {};
+                
+                analyticsData.details.forEach(entry => {
+                    const date = entry.date;
+                    const pagePath = entry.page_path;
+                    const pageViews = entry.page_views;
+                    
+                    // 日付をYYYY-MM-DD形式に変換
+                    const dateStr = `${date.slice(0, 4)}-${date.slice(4, 6)}-${date.slice(6, 8)}`;
+                    
+                    // ポートフォリオサイトかZenn記事か判定
+                    if (pagePath.startsWith('/portfolio/')) {
+                        portfolioByDate[dateStr] = (portfolioByDate[dateStr] || 0) + pageViews;
+                    } else if (pagePath.startsWith('/tenormusica/')) {
+                        zennByDate[dateStr] = (zennByDate[dateStr] || 0) + pageViews;
+                    }
+                });
+                
+                // 日付でソート
+                const allDates = new Set([...Object.keys(portfolioByDate), ...Object.keys(zennByDate)]);
+                const sortedDates = Array.from(allDates).sort();
+                
+                const data = {
+                    dates: sortedDates,
+                    portfolio: sortedDates.map(date => portfolioByDate[date] || 0),
+                    zenn: sortedDates.map(date => zennByDate[date] || 0)
+                };
+                
+                return data;
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.querySelector('.container').innerHTML = `
+                    <div style="padding: 60px 20px; text-align: center; color: #c53030;">
+                        <h2 style="margin-bottom: 20px;">データ読み込みエラー</h2>
+                        <p>Analytics データの読み込みに失敗しました: ${error.message}</p>
+                    </div>
+                `;
+                throw error;
+            }
+        }
         
-        (function() {
+        (async function() {
+                const data = await loadData();
                 // 統計計算
                 const totalPortfolio = data.portfolio.reduce((a, b) => a + b, 0);
                 const totalZenn = data.zenn.reduce((a, b) => a + b, 0);
@@ -258,6 +309,18 @@
                     }
                 });
         })();
+        
+        // 60秒ごとに自動更新
+        setInterval(async () => {
+            try {
+                const data = await loadData();
+                // グラフを再描画せずデータのみ更新する場合は、グラフインスタンスを保持して update() を呼ぶ
+                // 今回はシンプルにページをリロード
+                location.reload();
+            } catch (error) {
+                console.error('Auto-refresh failed:', error);
+            }
+        }, 60000);
     </script>
 </body>
 </html>
