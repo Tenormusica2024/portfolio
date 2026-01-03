@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ1WP1J2NQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YJ1WP1J2NQ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="過去の制作物アーカイブ - Urayaha Days Portfolio">
+    <title>Archive - Urayaha Days</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: #e5e5e5;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: rgba(10, 10, 10, 0.9);
+            border-bottom: 1px solid #222;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .nav-links a:hover {
+            background: #222;
+            color: #ffffff;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 2rem;
+            background: transparent;
+            z-index: 999;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: calc(100% + 1rem);
+            left: 0;
+            background: transparent;
+            min-width: 300px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: #888;
+            text-decoration: none;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            font-weight: 500;
+            font-size: 0.95rem;
+            background: transparent;
+        }
+
+        .dropdown a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #333;
+            border-radius: 8px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .dropdown a:hover {
+            color: #ffffff;
+            padding-left: 2rem;
+        }
+
+        .dropdown a:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .lang-switch {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .lang-switch:hover {
+            background: #444;
+            transform: translateY(-2px);
+        }
+
+        .page-header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            color: #e5e5e5;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #888;
+            font-weight: 600;
+            scroll-margin-top: 100px;
+            border-left: 3px solid #444;
+            padding-left: 1rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .project-card {
+            background: #111;
+            border-radius: 0;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #222;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border-color: #333;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            color: #e5e5e5;
+            font-weight: 600;
+        }
+
+        .archive-badge {
+            background: #333;
+            color: #888;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .project-description {
+            color: #888;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 1px solid #444;
+            border-radius: 20px;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-link:hover {
+            background: #333;
+            color: white;
+            border-color: #555;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 1rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #e5e5e5;
+        }
+
+        .back-link::before {
+            content: '\2190';
+        }
+
+        .project-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #222;
+        }
+
+        @media (max-width: 768px) {
+            .dropdown {
+                display: none !important;
+            }
+            
+            .nav-item:hover .dropdown {
+                display: none !important;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                padding: 0.5rem 0;
+            }
+
+            .nav-item,
+            .nav-links > a {
+                flex-shrink: 0;
+                white-space: nowrap;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="nav-links">
+                <a href="index.html" onclick="sessionStorage.setItem('skipLoadingScreen', 'true');">Home</a>
+                <div class="nav-item">
+                    <a href="projects.html">Projects</a>
+                    <div class="dropdown">
+                        <a href="projects.html#section-ai-dev">AI駆動開発プロジェクト</a>
+                        <a href="projects.html#section-data-viz">データ可視化・分析プロジェクト</a>
+                        <a href="projects.html#section-automation">業務自動化・Webスクレイピング</a>
+                        <a href="projects.html#section-ai-creation">AI創作プロジェクト</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="projects.html#section-ai-creation">Creation</a>
+                    <div class="dropdown">
+                        <a href="editorial-gallery/gallery_editorial.html">Web Design Gallery</a>
+                        <a href="cyberpunk_anime/index.html">SF Anime LP</a>
+                        <a href="projects.html#work-mv-project">作業用MV制作</a>
+                    </div>
+                </div>
+                <a href="profile.html">Profile</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <button class="lang-switch" onclick="switchLanguage()">EN</button>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <a href="projects.html" class="back-link">Projectsに戻る</a>
+        <h1>ARCHIVE</h1>
+        <p>Past Works Collection</p>
+    </div>
+
+    <div class="container">
+        <h2 id="section-ai-dev" class="section-title">AI駆動開発 - 過去の作品</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Esports Tournament Landing</h3>
+                    <span class="archive-badge">ARCHIVE</span>
+                </div>
+                <div style="margin: 1rem 0;">
+                    <img src="https://tenormusica2024.github.io/portfolio/esports-tournament.png" 
+                         alt="Esports Tournament Landing" 
+                         class="project-image">
+                </div>
+                <p class="project-description">
+                    GPT-5の単一プロンプトで生成されたeスポーツ大会のランディングページ。
+                    ネオン効果、HTML5 Canvas動画、インタラクティブトーナメント表を統合。
+                    Google Cloud Runでの本格運用により、高トラフィック対応とスケーラビリティを実現。
+                    ICSカレンダーエクスポート機能でイベント管理も完全対応。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">GPT-5 Generated</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">HTML5 Canvas</span>
+                    <span class="tech-tag">Cloud Run</span>
+                    <span class="tech-tag">Docker</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://esports-tournament-ycqe3vmjva-uc.a.run.app/?utm_source=portfolio&utm_medium=archive&utm_campaign=esports_live" 
+                       class="project-link" 
+                       target="_blank">Live Demo</a>
+                    <a href="https://github.com/openai/gpt-5-coding-examples/tree/main/apps/esports-tournament-landing-page?utm_source=portfolio&utm_medium=archive&utm_campaign=esports_github" 
+                       class="project-link" 
+                       target="_blank">Source</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">EV: Pocket Skirmish</h3>
+                    <span class="archive-badge">ARCHIVE</span>
+                </div>
+                <div style="margin: 1rem 0;">
+                    <img src="https://tenormusica2024.github.io/portfolio/asteroid-game.png" 
+                         alt="EV: Pocket Skirmish" 
+                         class="project-image">
+                </div>
+                <p class="project-description">
+                    GPT-5プロンプトから生成された本格的な2Dスペースシューティングゲーム。
+                    リアルタイム物理エンジン、知的AI敵船、パーティクルエフェクトを統合。
+                    HTML5 Canvasによる60FPS描画で滑らかなゲームプレイを実現。
+                    Cloud Runでのスケーラブル配信により、グローバルマルチプレイヤー対応可能。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">HTML5 Canvas</span>
+                    <span class="tech-tag">Game Physics</span>
+                    <span class="tech-tag">AI Enemies</span>
+                    <span class="tech-tag">Real-time Rendering</span>
+                    <span class="tech-tag">Cloud Run</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://asteroid-game-ycqe3vmjva-uc.a.run.app/?utm_source=portfolio&utm_medium=archive&utm_campaign=asteroid_game_live" 
+                       class="project-link" 
+                       target="_blank">Play Game</a>
+                    <a href="https://github.com/openai/gpt-5-coding-examples/tree/main/apps/asteroid-game?utm_source=portfolio&utm_medium=archive&utm_campaign=asteroid_game_github" 
+                       class="project-link" 
+                       target="_blank">Source</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = localStorage.getItem('language') || 'ja';
+
+        function switchLanguage() {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            localStorage.setItem('language', currentLang);
+            document.querySelector('.lang-switch').textContent = currentLang === 'ja' ? 'EN' : '日本語';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.lang-switch').textContent = currentLang === 'ja' ? 'EN' : '日本語';
+        });
+    </script>
+</body>
+</html>
