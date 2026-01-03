@@ -1022,8 +1022,8 @@
                 project_data_platform_desc: "SageMaker MLモデル + Snowflake DWHによるエンドツーエンド分析基盤。顧客セグメンテーション精度85%達成、売上予測誤差を従来比30%削減。Python + SQL + Dockerによるデータパイプライン自動化を実現。",
                 project_ai_buzz_title: "AI Buzz Extractor",
                 project_ai_buzz_desc: "X.comからAI関連のバズツイートを自動収集・分析するリアルタイムダッシュボード。5つのドメイン（AI開発ツール・AI創作物・AIモデル・AIニュース・AIナレッジ）にツイートを自動分類し、エンゲージメント推移・トップキーワード・インフルエンサーランキングを可視化。GitHub Actions自動収集（6時間ごと）+ Chart.js動的可視化により、AI業界のトレンドをリアルタイムで把握できます。",
-                project_code_reviewer_title: "Code Reviewer Subagent System",
-                project_code_reviewer_desc: "Claude Codeに統合された自動コードレビューサブエージェントシステム。ユーザーの「レビュー」指示やコード変更後に実行されるTask toolベースのエージェント。コード品質・セキュリティ・ベストプラクティス・パフォーマンス・エラーハンドリングを検証し、実装の妥当性を評価。CLAUDE.md統合により、セッション開始時から自動起動プロトコルが有効化。",
+                project_code_reviewer_title: "7-Agent Parallel Code Review",
+                project_code_reviewer_desc: "複数の専門AIエージェントが並列実行し、多角的にコードを分析するレビューツール。3つのモード（Standard 7エージェント/Full 12エージェント/Release 17エージェント）でセキュリティ・コード品質・パフォーマンス・UX・アクセシビリティ・ストアガイドライン準拠まで包括的に検証。Critical/Important/Suggestionsの優先度付き指摘と数値スコアリングで具体的なファイル・行番号を含む実用的なフィードバックを提供。",
                 project_voicevox_title: "VOICEVOX MCP Notification System",
                 project_voicevox_desc: "Claude Codeのタスク実行時に、ずんだもんボイスで進捗・完了を音声通知するMCPサーバー。VOICEVOX APIとNode.jsを活用し、タスク状態（開始・進行中・完了・エラー）を100文字以内の簡潔なメッセージで音声化。クロスプラットフォーム対応で、Windows/Mac/Linuxで動作。音声速度・話者選択も設定可能。開発作業中のハンズフリー進捗確認が可能。",
                 project_claude_hook_title: "Claude Code Hook 自動化システム",
@@ -1091,8 +1091,8 @@
                 project_data_platform_desc: "End-to-end analytical infrastructure with SageMaker ML models + Snowflake DWH. Achieved 85% customer segmentation accuracy, reduced sales forecast error by 30% from baseline. Automated data pipeline with Python + SQL + Docker.",
                 project_ai_buzz_title: "AI Buzz Extractor",
                 project_ai_buzz_desc: "Real-time dashboard that automatically collects and analyzes AI-related trending tweets from X.com. Automatically classifies tweets into 5 domains (AI Dev Tools, AI Creations, AI Models, AI News, AI Knowledge) and visualizes engagement trends, top keywords, and influencer rankings. GitHub Actions automated collection (every 6 hours) + Chart.js dynamic visualization enables real-time AI industry trend monitoring.",
-                project_code_reviewer_title: "Code Reviewer Subagent System",
-                project_code_reviewer_desc: "Automated code review subagent system integrated with Claude Code. Task tool-based agent that executes on user's 'review' command or after code changes. Verifies code quality, security, best practices, performance, and error handling to evaluate implementation validity. CLAUDE.md integration enables auto-trigger protocol from session start.",
+                project_code_reviewer_title: "7-Agent Parallel Code Review",
+                project_code_reviewer_desc: "Comprehensive code review tool with multiple specialized AI agents running in parallel for multi-perspective analysis. Three modes (Standard 7 agents/Full 12 agents/Release 17 agents) covering security, code quality, performance, UX, accessibility, and app store guideline compliance. Provides prioritized issues (Critical/Important/Suggestions) with numerical scoring and actionable feedback including specific file and line references.",
                 project_voicevox_title: "VOICEVOX MCP Notification System",
                 project_voicevox_desc: "MCP server that provides voice notifications using Zundamon voice for Claude Code task execution progress and completion. Leverages VOICEVOX API and Node.js to vocalize task states (start, progress, complete, error) in concise messages within 100 characters. Cross-platform support for Windows/Mac/Linux with configurable speech speed and voice actor selection. Enables hands-free progress monitoring during development work.",
                 project_claude_hook_title: "Claude Code Hook Automation System",
@@ -1296,35 +1296,29 @@
 
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title" data-i18n="project_code_reviewer_title">Code Reviewer<br>Subagent System</h3>
+                    <h3 class="project-title" data-i18n="project_code_reviewer_title">7-Agent Parallel<br>Code Review</h3>
                     <span class="new-badge">NEW</span>
                 </div>
                 <p class="project-description" data-i18n="project_code_reviewer_desc">
-                    Claude Codeに統合された自動コードレビューサブエージェントシステム。
-                    ユーザーの「レビュー」指示やコード変更後にプロアクティブに実行される
-                    Task toolベースの独立エージェント。コード品質・セキュリティ・ベストプラクティス・
-                    パフォーマンス・エラーハンドリングを多角的に検証し、実装の妥当性を自動評価。
-                    CLAUDE.md統合により、セッション開始時から自動起動プロトコルが有効化され、
-                    継続的なコード品質維持を実現。
+                    複数の専門AIエージェントが並列実行し、多角的にコードを分析するレビューツール。
+                    3つのモード（Standard 7エージェント/Full 12エージェント/Release 17エージェント）で
+                    セキュリティ・コード品質・パフォーマンス・UX・アクセシビリティ・ストアガイドライン準拠まで
+                    包括的に検証。Critical/Important/Suggestionsの優先度付き指摘と数値スコアリングで
+                    具体的なファイル・行番号を含む実用的なフィードバックを提供。
                 </p>
                 <div class="tech-stack">
-                    <span class="tech-tag">Claude Code</span>
-                    <span class="tech-tag">Task Tool</span>
-                    <span class="tech-tag">Subagent</span>
-                    <span class="tech-tag">Auto-trigger</span>
-                    <span class="tech-tag">Code Quality</span>
+                    <span class="tech-tag">Claude Code CLI</span>
+                    <span class="tech-tag">Parallel Execution</span>
+                    <span class="tech-tag">17 Agents Max</span>
                     <span class="tech-tag">Security</span>
+                    <span class="tech-tag">Performance</span>
+                    <span class="tech-tag">App Store Compliance</span>
                 </div>
                 <div class="project-links">
-                    <a href="code-reviewer-system.html" class="project-link">詳細を見る</a>
-                    <a href="https://github.com/Tenormusica2024/Private/blob/master/Documents/github-projects/code-reviewer-subagent.md?utm_source=portfolio&utm_medium=project_card&utm_campaign=code_reviewer_docs" 
+                    <a href="https://github.com/Tenormusica2024/7-agent-parallel-code-review?utm_source=portfolio&utm_medium=project_card&utm_campaign=7agent_review_github" 
                        class="project-link" 
                        target="_blank"
-                       onclick="gtag('event', 'cta_click', {'event_category': 'project_docs', 'event_label': 'Code_Reviewer', 'value': 1});">Documentation</a>
-                    <a href="https://github.com/Tenormusica2024/Private?utm_source=portfolio&utm_medium=project_card&utm_campaign=code_reviewer_github" 
-                       class="project-link" 
-                       target="_blank"
-                       onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'Code_Reviewer', 'value': 1});">Repository</a>
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': '7Agent_Review', 'value': 1});">Repository</a>
                 </div>
             </div>
 
