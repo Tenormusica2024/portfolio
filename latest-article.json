@@ -1,6 +1,6 @@
 {
-  "title": "Claude CodeでSkillsを定期実行で自動化する方法",
-  "link": "https://zenn.dev/tenormusica/articles/claude-code-headless-subscription-discovery-2025",
-  "description": "元記事\nClaude Code CLI Reference - Anthropic公式ドキュメント\nhttps://docs.anthropic.com/en/docs/claude-code/cli-reference\nGitHub Issue #1454: Machine to Machine Authentication for Max Subscriptions\nhttps://githu...",
+  "title": "Codex vs Claude Code：コードレビューでCodexが選ばれる4つの理由",
+  "link": "https://zenn.dev/tenormusica/articles/codex-vs-claude-code-review-advantages-2026",
+  "description": "注目度の数値的証拠\n\nHacker News: Codex vs Claude Code議論スレッドが500ポイント超を獲得\nSWE-bench Verified: Claude Opus 4.5が 80.9% 、GPT-5.2 Codexが 80.0%\n\nSWE-bench Pro: GPT-5 Codexが 56.4% （SOTA）\nトークン効率: GPT-5はClaude Opusの約 1/...",
   "updated": true
 }
