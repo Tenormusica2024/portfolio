@@ -1,6 +1,6 @@
 {
-  "title": "Codex vs Claude Code：コードレビューでCodexが選ばれる4つの理由",
-  "link": "https://zenn.dev/tenormusica/articles/codex-vs-claude-code-review-advantages-2026",
-  "description": "注目度の数値的証拠\n\nHacker News: Codex vs Claude Code議論スレッドが500ポイント超を獲得\nSWE-bench Verified: Claude Opus 4.5が 80.9% 、GPT-5.2 Codexが 80.0%\n\nSWE-bench Pro: GPT-5 Codexが 56.4% （SOTA）\nトークン効率: GPT-5はClaude Opusの約 1/...",
+  "title": "GPT-5.2 vs Claude Opus 4.5、なぜ「伝わる」感覚が違うのか【設計思想から比較】",
+  "link": "https://zenn.dev/tenormusica/articles/gpt52-claude-audience-awareness-2026",
+  "description": "前回の記事でCodex vs Claude Codeの比較を書きました。内容をもう少し深掘りしたくなったので、普段業務で両方を使用している私が、今回は「設計思想の違い」という観点から掘り下げてみます。\n\n Claudeが選ばれる本当の理由\n前回、エコシステムの成熟度でClaudeが優位という話をしました。MCPサポートの充実、10,000以上のプラグイン対応など。\nただ、MCP、サブエージェント、...",
   "updated": true
 }
