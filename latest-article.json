@@ -1,6 +1,6 @@
 {
-  "title": "Anthropic社内調査が明かすAI時代のエンジニアリング：生産性革命の裏側にある技能喪失・雇用不安・評価法の進化",
-  "link": "https://zenn.dev/tenormusica/articles/anthropic-ai-engineering-deep-dive-2026",
-  "description": "はじめに：AI時代のエンジニアリング現場で何が起きているのか\n2025年12月、Anthropicは社内のエンジニア132人への詳細な調査、53人への深層インタビュー、そしてClaude Codeの内部使用データの包括的分析に基づく画期的なレポート「How AI Is Transforming Work at Anthropic」を公開しました。このレポートは、AI開発の最先端で働くエンジニアたち...",
+  "title": "GPT-5.2 vs Claude Opus 4.5、なぜ「伝わる」感覚が違うのか【設計思想から比較】",
+  "link": "https://zenn.dev/tenormusica/articles/gpt52-claude-audience-awareness-2026",
+  "description": "前回の記事でCodex vs Claude Codeの比較を書きました。内容をもう少し深掘りしたくなったので、普段業務で両方を使用している私が、今回は「設計思想の違い」という観点から掘り下げてみます。\n\n Claudeが選ばれる本当の理由\n前回、エコシステムの成熟度でClaudeが優位という話をしました。MCPサポートの充実、10,000以上のプラグイン対応など。\nただ、MCP、サブエージェント、...",
   "updated": true
 }
