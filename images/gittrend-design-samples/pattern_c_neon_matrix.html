@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=390, height=844">
+    <title>Pattern C: Neon Matrix</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            background: #000000;
+            color: #F0FDF4;
+            width: 390px;
+            height: 844px;
+            overflow: hidden;
+        }
+        .status-bar {
+            height: 44px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #22C55E;
+        }
+        .header {
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #22C55E33;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #00FF00;
+            text-shadow: 0 0 10px #00FF0066, 0 0 20px #00FF0033;
+            letter-spacing: 2px;
+        }
+        .logo::before {
+            content: '> ';
+            color: #22C55E;
+        }
+        .header-icons {
+            display: flex;
+            gap: 16px;
+        }
+        .header-icon {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #22C55E;
+            border-radius: 4px;
+        }
+        .tabs {
+            display: flex;
+            padding: 0 20px;
+            gap: 24px;
+            border-bottom: 1px solid #22C55E33;
+        }
+        .tab {
+            padding: 12px 0;
+            font-size: 13px;
+            color: #4ADE80;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .tab.active {
+            color: #00FF00;
+            border-bottom: 2px solid #00FF00;
+            text-shadow: 0 0 8px #00FF0066;
+        }
+        .content {
+            padding: 16px 20px;
+            overflow-y: auto;
+            height: calc(844px - 44px - 60px - 48px - 80px);
+        }
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #22C55E;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title::before {
+            content: '//';
+            color: #00FF00;
+        }
+        .card {
+            background: #0A0A0A;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 1px solid #22C55E44;
+            position: relative;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #22C55E, #10B981, transparent);
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .repo-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #00FF00;
+            font-family: 'SF Mono', monospace;
+        }
+        .stars {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 14px;
+            color: #FBBF24;
+            font-family: monospace;
+        }
+        .description {
+            font-size: 12px;
+            color: #4ADE80;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            font-family: -apple-system, sans-serif;
+        }
+        .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .tag {
+            background: transparent;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            color: #4ADE80;
+            border: 1px solid #22C55E44;
+            font-family: monospace;
+        }
+        .tag.lang {
+            background: #22C55E22;
+            color: #00FF00;
+            border-color: #22C55E;
+        }
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: #0A0A0A;
+            border-top: 1px solid #22C55E44;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding-bottom: 20px;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-size: 10px;
+            color: #4ADE80;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav-item.active {
+            color: #00FF00;
+            text-shadow: 0 0 8px #00FF0066;
+        }
+        .nav-icon {
+            width: 22px;
+            height: 22px;
+            border: 2px solid currentColor;
+            border-radius: 4px;
+        }
+        .badge {
+            background: #00FF00;
+            color: #000000;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .cursor-blink {
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>09:41</span>
+        <span>[5G]</span>
+    </div>
+    
+    <div class="header">
+        <div class="logo">GitTrend<span class="cursor-blink">_</span></div>
+        <div class="header-icons">
+            <div class="header-icon"></div>
+            <div class="header-icon"></div>
+        </div>
+    </div>
+    
+    <div class="tabs">
+        <div class="tab active">Today</div>
+        <div class="tab">Weekly</div>
+        <div class="tab">JP_Only</div>
+    </div>
+    
+    <div class="content">
+        <div class="section-title">Trending_Now<span class="badge">LIVE</span></div>
+        
+        <div class="card">
+            <div class="card-header">
+                <div class="repo-name">openai/whisper-jp</div>
+                <div class="stars">[★] 2,847</div>
+            </div>
+            <div class="description">Japanese-optimized speech recognition model with improved accuracy for business conversations</div>
+            <div class="tags">
+                <span class="tag lang">Python</span>
+                <span class="tag">#AI</span>
+                <span class="tag">#Speech</span>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <div class="repo-name">vercel/next-intl</div>
+                <div class="stars">[★] 1,523</div>
+            </div>
+            <div class="description">Internationalization for Next.js with full Japanese support and RTL layouts</div>
+            <div class="tags">
+                <span class="tag lang">TypeScript</span>
+                <span class="tag">#i18n</span>
+                <span class="tag">#Next.js</span>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <div class="repo-name">line/armeria</div>
+                <div class="stars">[★] 4,201</div>
+            </div>
+            <div class="description">Your go-to microservice framework for any situation</div>
+            <div class="tags">
+                <span class="tag lang">Java</span>
+                <span class="tag">#Microservices</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-nav">
+        <div class="nav-item active">
+            <div class="nav-icon"></div>
+            <span>Home</span>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Find</span>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Saved</span>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Conf</span>
+        </div>
+    </div>
+</body>
+</html>

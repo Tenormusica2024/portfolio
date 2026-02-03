@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=390, height=844">
+    <title>Pattern B: Ocean Breeze</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #F8FAFC;
+            color: #1E293B;
+            width: 390px;
+            height: 844px;
+            overflow: hidden;
+        }
+        .status-bar {
+            height: 44px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1E293B;
+        }
+        .header {
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0EA5E9, #14B8A6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header-icons {
+            display: flex;
+            gap: 16px;
+        }
+        .header-icon {
+            width: 24px;
+            height: 24px;
+            background: #64748B;
+            border-radius: 50%;
+        }
+        .tabs {
+            display: flex;
+            padding: 0 20px;
+            gap: 24px;
+            background: white;
+            border-bottom: 1px solid #E2E8F0;
+        }
+        .tab {
+            padding: 12px 0;
+            font-size: 14px;
+            color: #64748B;
+        }
+        .tab.active {
+            color: #0EA5E9;
+            border-bottom: 2px solid #0EA5E9;
+            font-weight: 600;
+        }
+        .content {
+            padding: 16px 20px;
+            overflow-y: auto;
+            height: calc(844px - 44px - 60px - 48px - 80px);
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1E293B;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(180deg, #0EA5E9, #14B8A6);
+            border-radius: 2px;
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid #E2E8F0;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .repo-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0EA5E9;
+        }
+        .stars {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 14px;
+            color: #F59E0B;
+            font-weight: 500;
+        }
+        .description {
+            font-size: 13px;
+            color: #64748B;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .tag {
+            background: #F1F5F9;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #64748B;
+        }
+        .tag.lang {
+            background: linear-gradient(135deg, rgba(14,165,233,0.15), rgba(20,184,166,0.15));
+            color: #0EA5E9;
+            font-weight: 500;
+        }
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: white;
+            border-top: 1px solid #E2E8F0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding-bottom: 20px;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-size: 10px;
+            color: #64748B;
+        }
+        .nav-item.active {
+            color: #0EA5E9;
+        }
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            background: currentColor;
+            border-radius: 6px;
+            opacity: 0.5;
+        }
+        .nav-item.active .nav-icon {
+            opacity: 1;
+        }
+        .badge {
+            background: linear-gradient(135deg, #0EA5E9, #14B8A6);
+            color: white;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 8px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>9:41</span>
+        <span>5G</span>
+    </div>
+    
+    <div class="header">
+        <div class="logo">GitTrend JP</div>
+        <div class="header-icons">
+            <div class="header-icon"></div>
+            <div class="header-icon"></div>
+        </div>
+    </div>
+    
+    <div class="tabs">
+        <div class="tab active">Today</div>
+        <div class="tab">Weekly</div>
+        <div class="tab">Japanese</div>
+    </div>
+    
+    <div class="content">
+        <div class="section-title">Today's Trending<span class="badge">NEW</span></div>
+        
+        <div class="card">
+            <div class="card-header">
+                <div class="repo-name">openai/whisper-jp</div>
+                <div class="stars">★ 2,847</div>
+            </div>
+            <div class="description">Japanese-optimized speech recognition model with improved accuracy for business conversations</div>
+            <div class="tags">
+                <span class="tag lang">Python</span>
+                <span class="tag">AI</span>
+                <span class="tag">Speech</span>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <div class="repo-name">vercel/next-intl</div>
+                <div class="stars">★ 1,523</div>
+            </div>
+            <div class="description">Internationalization for Next.js with full Japanese support and RTL layouts</div>
+            <div class="tags">
+                <span class="tag lang">TypeScript</span>
+                <span class="tag">i18n</span>
+                <span class="tag">Next.js</span>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <div class="repo-name">line/armeria</div>
+                <div class="stars">★ 4,201</div>
+            </div>
+            <div class="description">Your go-to microservice framework for any situation</div>
+            <div class="tags">
+                <span class="tag lang">Java</span>
+                <span class="tag">Microservices</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-nav">
+        <div class="nav-item active">
+            <div class="nav-icon"></div>
+            <span>Home</span>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Search</span>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Saved</span>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Settings</span>
+        </div>
+    </div>
+</body>
+</html>
