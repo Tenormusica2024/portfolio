@@ -1097,6 +1097,48 @@
             color: white;
         }
 
+        /* ポートフォリオ紹介動画セクション */
+        .video-section {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            padding: 2.5rem;
+            background: #000;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .video-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            letter-spacing: 0.05em;
+        }
+
+        .video-section .video-wrapper {
+            position: relative;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-section video {
+            width: 100%;
+            display: block;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .video-section {
+                margin: 0 1rem 2rem;
+                padding: 1.5rem;
+            }
+
+            .video-section h2 {
+                font-size: 1.4rem;
+            }
+        }
+
         .footer {
             max-width: 1200px;
             margin: 0 auto;
@@ -2025,6 +2067,15 @@ Veo 3 vs. Sora by OpenAI: Side-by-Side Comparison for 2025https://www.powtoon.co
             <div class="cta-section">
                 <a href="projects.html" class="btn btn-primary" data-i18n="btn_projects"><span>プロジェクトを見る</span></a>
                 <a href="profile.html" class="btn btn-secondary" data-i18n="btn_profile"><span>Profile</span></a>
+            </div>
+        </section>
+
+        <section class="video-section">
+            <h2>Introduction</h2>
+            <div class="video-wrapper">
+                <video controls playsinline preload="metadata" poster="">
+                    <source src="PortfolioPromo.mp4" type="video/mp4">
+                </video>
             </div>
         </section>
 
