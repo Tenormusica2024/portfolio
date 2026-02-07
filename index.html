@@ -1120,12 +1120,67 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
         }
 
         .video-section video {
             width: 100%;
             display: block;
             border-radius: 12px;
+        }
+
+        /* 再生ボタンオーバーレイ */
+        .video-play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            background: rgba(0, 0, 0, 0.4);
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .video-play-overlay.hidden {
+            opacity: 0;
+        }
+
+        .video-play-overlay .play-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .video-wrapper:hover .video-play-overlay .play-icon {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .video-play-overlay .play-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+            margin-left: 4px;
+        }
+
+        .video-play-overlay .play-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.1em;
         }
 
         @media (max-width: 768px) {
@@ -1136,6 +1191,20 @@
 
             .video-section h2 {
                 font-size: 1.4rem;
+            }
+
+            .video-play-overlay .play-icon {
+                width: 56px;
+                height: 56px;
+            }
+
+            .video-play-overlay .play-icon svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            .video-play-overlay .play-label {
+                font-size: 12px;
             }
         }
 
@@ -2072,11 +2141,38 @@ Veo 3 vs. Sora by OpenAI: Side-by-Side Comparison for 2025https://www.powtoon.co
 
         <section class="video-section">
             <h2>Introduction</h2>
-            <div class="video-wrapper">
-                <video controls playsinline preload="auto">
+            <div class="video-wrapper" id="videoWrapper">
+                <video id="promoVideo" controls playsinline preload="auto">
                     <source src="PortfolioPromo.mp4" type="video/mp4">
                 </video>
+                <div class="video-play-overlay" id="videoOverlay">
+                    <div class="play-icon">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                    </div>
+                    <span class="play-label">CLICK TO PLAY</span>
+                </div>
             </div>
+            <script>
+            (function() {
+                var wrapper = document.getElementById('videoWrapper');
+                var video = document.getElementById('promoVideo');
+                var overlay = document.getElementById('videoOverlay');
+                wrapper.addEventListener('click', function(e) {
+                    if (e.target.closest('.video-play-overlay') || (!video.controls || video.paused)) {
+                        if (video.paused) {
+                            video.play();
+                            overlay.classList.add('hidden');
+                        }
+                    }
+                });
+                video.addEventListener('pause', function() {
+                    overlay.classList.remove('hidden');
+                });
+                video.addEventListener('ended', function() {
+                    overlay.classList.remove('hidden');
+                });
+            })();
+            </script>
         </section>
 
         <section id="contact" class="contact-section">
