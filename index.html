@@ -1143,12 +1143,13 @@
             gap: 16px;
             background: rgba(0, 0, 0, 0.4);
             transition: opacity 0.4s ease;
-            pointer-events: none;
+            cursor: pointer;
             z-index: 2;
         }
 
         .video-play-overlay.hidden {
             opacity: 0;
+            pointer-events: none;
         }
 
         .video-play-overlay .play-icon {
@@ -2154,19 +2155,18 @@ Veo 3 vs. Sora by OpenAI: Side-by-Side Comparison for 2025https://www.powtoon.co
             </div>
             <script>
             (function() {
-                var wrapper = document.getElementById('videoWrapper');
                 var video = document.getElementById('promoVideo');
                 var overlay = document.getElementById('videoOverlay');
-                wrapper.addEventListener('click', function(e) {
-                    if (e.target.closest('.video-play-overlay') || (!video.controls || video.paused)) {
-                        if (video.paused) {
-                            video.play();
-                            overlay.classList.add('hidden');
-                        }
-                    }
+                overlay.addEventListener('click', function() {
+                    video.play();
+                });
+                video.addEventListener('play', function() {
+                    overlay.classList.add('hidden');
                 });
                 video.addEventListener('pause', function() {
-                    overlay.classList.remove('hidden');
+                    if (!video.seeking) {
+                        overlay.classList.remove('hidden');
+                    }
                 });
                 video.addEventListener('ended', function() {
                     overlay.classList.remove('hidden');
