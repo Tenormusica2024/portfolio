@@ -2322,128 +2322,63 @@ Reveal.initialize({
 });
 
 /* ============================================ */
-/* ナレーション機能（Web Speech API）            */
+/* ナレーション機能（事前生成MP3再生）            */
+/* Style-Bert-VITS2 jvnv-M2-jp Neutral          */
 /* ============================================ */
 (function() {
-  const synth = window.speechSynthesis;
-  if (!synth) { document.getElementById('narrationControls').style.display = 'none'; return; }
+  var playBtn = document.getElementById('narrationPlayBtn');
+  var stopBtn = document.getElementById('narrationStopBtn');
+  var speedBtn = document.getElementById('narrationSpeed');
+  var statusEl = document.getElementById('narrationStatus');
+  var progressBar = document.getElementById('narrationProgress');
+  var playIcon = document.getElementById('playIcon');
+  var pauseIcon = document.getElementById('pauseIcon');
 
-  const playBtn = document.getElementById('narrationPlayBtn');
-  const stopBtn = document.getElementById('narrationStopBtn');
-  const speedBtn = document.getElementById('narrationSpeed');
-  const statusEl = document.getElementById('narrationStatus');
-  const progressBar = document.getElementById('narrationProgress');
-  const playIcon = document.getElementById('playIcon');
-  const pauseIcon = document.getElementById('pauseIcon');
+  var audio = new Audio();
+  var isPlaying = false;
+  var rate = 1.0;
+  var speeds = [0.8, 1.0, 1.2, 1.5];
+  var speedIndex = 1;
+  var TOTAL_SLIDES = 37;
 
-  let isPlaying = false;
-  let isPaused = false;
-  let currentUtterance = null;
-  let rate = 1.0;
-  const speeds = [0.8, 1.0, 1.2, 1.5];
-  let speedIndex = 1;
-  let jaVoice = null;
-
-  /* 日本語音声の選択（高品質ニューラル音声を優先） */
-  function selectVoice() {
-    const voices = synth.getVoices();
-    /* 優先順: Microsoft Nanami > Google 日本語 > その他日本語 */
-    const priority = [
-      v => /nanami/i.test(v.name),
-      v => /haruka/i.test(v.name),
-      v => /ayumi/i.test(v.name),
-      v => /google.*japanese/i.test(v.name) || /google.*日本語/i.test(v.name),
-      v => v.lang === 'ja-JP' || v.lang === 'ja',
-      v => v.lang.startsWith('ja')
-    ];
-    for (const test of priority) {
-      const found = voices.find(test);
-      if (found) { jaVoice = found; return; }
-    }
-  }
-  synth.onvoiceschanged = selectVoice;
-  selectVoice();
-
-  /* 現在のスライドのノートテキストを取得 */
-  function getCurrentNotes() {
-    const currentSlide = Reveal.getCurrentSlide();
-    if (!currentSlide) return '';
-    const aside = currentSlide.querySelector('aside.notes');
-    return aside ? aside.textContent.trim() : '';
+  /* 現在のスライド番号を取得（1-indexed） */
+  function getSlideNumber() {
+    var indices = Reveal.getIndices();
+    return indices.h + 1;
   }
 
-  /* ナレーション再生 */
+  /* スライド番号に対応するMP3パスを返す */
+  function getAudioPath(num) {
+    var padded = num < 10 ? '0' + num : '' + num;
+    return 'audio_samples/narration/slide_' + padded + '.mp3';
+  }
+
+  /* 再生 */
   function play() {
-    if (isPaused && synth.paused) {
-      synth.resume();
-      isPaused = false;
-      setPlayingUI(true);
+    var num = getSlideNumber();
+    if (num < 1 || num > TOTAL_SLIDES) { statusEl.textContent = '音声なし'; return; }
+
+    /* 一時停止からの再開 */
+    if (audio.paused && audio.src && audio.currentTime > 0) {
+      audio.play();
       return;
     }
-    synth.cancel();
-    const text = getCurrentNotes();
-    if (!text) { statusEl.textContent = 'ノートなし'; return; }
 
-    currentUtterance = new SpeechSynthesisUtterance(text);
-    currentUtterance.lang = 'ja-JP';
-    currentUtterance.rate = rate;
-    currentUtterance.pitch = 1.0;
-    if (jaVoice) currentUtterance.voice = jaVoice;
-
-    /* 進捗更新（Chrome workaround: 定期的にresume） */
-    let progressTimer = null;
-    const totalChars = text.length;
-    let charIndex = 0;
-
-    currentUtterance.onboundary = function(e) {
-      if (e.name === 'word' || e.name === 'sentence') {
-        charIndex = e.charIndex;
-        progressBar.style.width = Math.min(100, (charIndex / totalChars) * 100) + '%';
-      }
-    };
-
-    currentUtterance.onstart = function() {
-      setPlayingUI(true);
-      statusEl.textContent = '再生中...';
-      /* Chrome bug対策: 長文で音声が止まる問題を回避 */
-      progressTimer = setInterval(function() {
-        if (synth.speaking && !synth.paused) { synth.pause(); synth.resume(); }
-      }, 10000);
-    };
-
-    currentUtterance.onend = function() {
-      clearInterval(progressTimer);
-      setPlayingUI(false);
-      statusEl.textContent = '完了';
-      progressBar.style.width = '100%';
-      setTimeout(function() { progressBar.style.width = '0%'; statusEl.textContent = '待機中'; }, 2000);
-    };
-
-    currentUtterance.onerror = function(e) {
-      clearInterval(progressTimer);
-      if (e.error !== 'canceled') {
-        setPlayingUI(false);
-        statusEl.textContent = 'エラー';
-      }
-    };
-
-    synth.speak(currentUtterance);
+    audio.src = getAudioPath(num);
+    audio.playbackRate = rate;
+    audio.play().catch(function() { statusEl.textContent = '読込エラー'; });
   }
 
   /* 一時停止 */
   function pause() {
-    if (synth.speaking && !synth.paused) {
-      synth.pause();
-      isPaused = true;
-      setPlayingUI(false);
-      statusEl.textContent = '一時停止';
-    }
+    audio.pause();
   }
 
   /* 停止 */
   function stop() {
-    synth.cancel();
-    isPaused = false;
+    audio.pause();
+    audio.currentTime = 0;
+    audio.src = '';
     setPlayingUI(false);
     progressBar.style.width = '0%';
     statusEl.textContent = '待機中';
@@ -2457,9 +2392,40 @@ Reveal.initialize({
     playBtn.classList.toggle('active', playing);
   }
 
-  /* イベントリスナー */
+  /* Audio イベント */
+  audio.addEventListener('play', function() {
+    setPlayingUI(true);
+    statusEl.textContent = '再生中...';
+  });
+
+  audio.addEventListener('pause', function() {
+    if (audio.currentTime > 0 && audio.currentTime < audio.duration) {
+      setPlayingUI(false);
+      statusEl.textContent = '一時停止';
+    }
+  });
+
+  audio.addEventListener('ended', function() {
+    setPlayingUI(false);
+    progressBar.style.width = '100%';
+    statusEl.textContent = '完了';
+    setTimeout(function() { progressBar.style.width = '0%'; statusEl.textContent = '待機中'; }, 2000);
+  });
+
+  audio.addEventListener('timeupdate', function() {
+    if (audio.duration) {
+      progressBar.style.width = (audio.currentTime / audio.duration * 100) + '%';
+    }
+  });
+
+  audio.addEventListener('error', function() {
+    setPlayingUI(false);
+    statusEl.textContent = '音声なし';
+  });
+
+  /* ボタン */
   playBtn.addEventListener('click', function() {
-    if (isPlaying && !isPaused) { pause(); } else { play(); }
+    if (isPlaying) { pause(); } else { play(); }
   });
 
   stopBtn.addEventListener('click', stop);
@@ -2468,21 +2434,18 @@ Reveal.initialize({
     speedIndex = (speedIndex + 1) % speeds.length;
     rate = speeds[speedIndex];
     speedBtn.textContent = rate + 'x';
-    /* 再生中なら速度を反映して再再生 */
-    if (isPlaying) { stop(); play(); }
+    audio.playbackRate = rate;
   });
 
   /* スライド切替時に自動停止 */
-  Reveal.on('slidechanged', function() {
-    stop();
-  });
+  Reveal.on('slidechanged', function() { stop(); });
 
-  /* キーボードショートカット: Nキーでナレーション再生/停止 */
+  /* Nキーでナレーション再生/停止 */
   document.addEventListener('keydown', function(e) {
     if (e.key === 'n' || e.key === 'N') {
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
       e.preventDefault();
-      if (isPlaying && !isPaused) { stop(); } else { play(); }
+      if (isPlaying) { stop(); } else { play(); }
     }
   });
 })();
