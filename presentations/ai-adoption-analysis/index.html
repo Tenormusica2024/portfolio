@@ -1,0 +1,2306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI導入分析: 成功 vs 失敗 - 戦略的インサイトレポート</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --navy: #0B1F3D;
+  --navy-light: #1A3A5C;
+  --gold: #C9A03F;
+  --gold-light: #E8D08F;
+  --white: #FFFFFF;
+  --off-white: #F7F8FA;
+  --text-dark: #2D3748;
+  --text-mid: #4A5568;
+  --text-light: #6B7280;
+  --border: #E2E8F0;
+  --success: #10B981;
+  --success-light: #D1FAE5;
+  --failure: #EF4444;
+  --failure-light: #FEE2E2;
+  --blue-accent: #3B82F6;
+}
+
+.reveal {
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  color: var(--text-dark);
+  font-size: 22px;
+}
+
+.reveal .slides { text-align: left; }
+.reveal .slides section { padding: 40px 60px; box-sizing: border-box; }
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  color: var(--navy);
+  text-transform: none;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin-bottom: 0.6em;
+}
+
+.reveal h1 { font-size: 2.4em; }
+.reveal h2 { font-size: 1.6em; }
+.reveal h3 { font-size: 1.2em; }
+
+/* ヘッドラインステートメント */
+.headline {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--navy);
+  border-left: 4px solid var(--gold);
+  padding-left: 20px;
+  margin-bottom: 32px;
+  line-height: 1.4;
+}
+
+/* サブヘッドライン */
+.subheadline {
+  font-size: 0.95em;
+  color: var(--text-mid);
+  font-weight: 400;
+  margin-top: -20px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* 数値ハイライト */
+.stat-grid { display: grid; gap: 24px; margin: 24px 0; }
+.stat-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+.stat-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.stat-grid.cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+.stat-card {
+  background: var(--off-white);
+  border-radius: 8px;
+  padding: 28px 24px;
+  text-align: center;
+  border-top: 3px solid var(--gold);
+  transition: transform 0.2s;
+}
+.stat-card:hover { transform: translateY(-2px); }
+
+.stat-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.8em;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+.stat-number.gold { color: var(--gold); }
+.stat-number.success { color: var(--success); }
+.stat-number.failure { color: var(--failure); }
+
+.stat-label {
+  font-size: 0.8em;
+  color: var(--text-light);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.stat-sub {
+  font-size: 0.65em;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+/* 2カラムレイアウト */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.two-col.gap-sm { gap: 24px; }
+.two-col.ratio-6-4 { grid-template-columns: 6fr 4fr; }
+.two-col.ratio-4-6 { grid-template-columns: 4fr 6fr; }
+
+/* テーブル */
+.reveal table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85em;
+  margin: 16px 0;
+}
+.reveal table th {
+  background: var(--navy);
+  color: white;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+.reveal table td {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.reveal table tr:nth-child(even) { background: var(--off-white); }
+.reveal table tr:hover { background: #EDF2F7; }
+
+/* カード */
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.card.navy { background: var(--navy); color: white; }
+.card.navy h3, .card.navy h4 { color: white; }
+.card.success-border { border-left: 4px solid var(--success); }
+.card.failure-border { border-left: 4px solid var(--failure); }
+.card.gold-border { border-left: 4px solid var(--gold); }
+
+/* バッジ */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.7em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.badge.success { background: var(--success-light); color: #065F46; }
+.badge.failure { background: var(--failure-light); color: #991B1B; }
+.badge.gold { background: #FEF3C7; color: #92400E; }
+.badge.navy { background: #DBEAFE; color: var(--navy); }
+
+/* リスト */
+.reveal ul { list-style: none; padding: 0; margin: 12px 0; }
+.reveal ul li {
+  padding: 6px 0 6px 20px;
+  position: relative;
+  line-height: 1.6;
+  font-size: 0.9em;
+}
+.reveal ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+/* ソース */
+.source {
+  font-size: 0.6em;
+  color: var(--text-light);
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+/* チャートコンテナ */
+.chart-container {
+  position: relative;
+  width: 100%;
+  max-height: 380px;
+}
+.chart-container canvas { max-height: 380px; }
+
+/* 表紙 */
+.cover-slide {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100%;
+  padding: 60px 80px !important;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+}
+.cover-slide h1 {
+  color: white;
+  font-size: 2.6em;
+  font-weight: 900;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+.cover-subtitle {
+  color: var(--gold-light);
+  font-size: 1.15em;
+  font-weight: 400;
+  margin-bottom: 48px;
+  line-height: 1.6;
+  max-width: 70%;
+}
+.cover-meta {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.8em;
+  line-height: 1.8;
+}
+.cover-line {
+  width: 80px;
+  height: 3px;
+  background: var(--gold);
+  margin: 24px 0;
+}
+
+/* セクション区切り */
+.section-divider {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100%;
+  padding: 60px 80px !important;
+  background: var(--navy);
+}
+.section-divider .section-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 4em;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.section-divider h2 {
+  color: white;
+  font-size: 2.2em;
+  margin-bottom: 12px;
+}
+.section-divider p {
+  color: rgba(255,255,255,0.6);
+  font-size: 1em;
+  max-width: 60%;
+}
+
+/* ケーススタディカード */
+.case-card {
+  background: white;
+  border-radius: 8px;
+  padding: 28px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.case-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.case-company {
+  font-size: 1.15em;
+  font-weight: 700;
+  color: var(--navy);
+}
+.case-metric {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 12px 0;
+}
+.case-metric-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 2em;
+  font-weight: 800;
+}
+.case-metric-label { font-size: 0.85em; color: var(--text-mid); }
+
+/* 比較レイアウト */
+.vs-layout { display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: start; }
+.vs-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.4em;
+  font-weight: 800;
+  color: var(--text-light);
+  padding-top: 40px;
+}
+
+/* タイムライン */
+.timeline {
+  display: flex;
+  gap: 0;
+  margin: 24px 0;
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--border);
+}
+.timeline-item {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  padding-top: 48px;
+}
+.timeline-dot {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid white;
+  box-shadow: 0 0 0 2px var(--gold);
+  z-index: 1;
+}
+.timeline-label {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 0.95em;
+  margin-bottom: 8px;
+}
+.timeline-desc {
+  font-size: 0.75em;
+  color: var(--text-mid);
+  line-height: 1.5;
+  padding: 0 8px;
+}
+
+/* パターンカード */
+.pattern-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+.pattern-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--off-white);
+  border-radius: 6px;
+  font-size: 0.82em;
+  line-height: 1.5;
+}
+.pattern-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: var(--failure);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.85em;
+}
+.pattern-num.success-bg { background: var(--success); }
+.pattern-num.gold-bg { background: var(--gold); }
+.pattern-num.navy-bg { background: var(--navy); }
+
+/* プログレスバー */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #E5E7EB;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+/* セクションヘッダーバー */
+.slide-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--navy);
+}
+.slide-header h2 { margin: 0; font-size: 1.3em; }
+.slide-header .page-indicator {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7em;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+/* フッター */
+.slide-footer {
+  position: absolute;
+  bottom: 20px;
+  left: 60px;
+  right: 60px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.55em;
+  color: var(--text-light);
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+}
+
+/* プリント最適化 */
+@media print {
+  .reveal .slides section { page-break-after: always; }
+}
+
+/* フェードインアニメーション */
+.reveal .slides section .fragment.custom-fade {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.reveal .slides section .fragment.custom-fade.visible { opacity: 1; }
+
+/* アジェンダ */
+.agenda-list { list-style: none; padding: 0; counter-reset: agenda; }
+.agenda-list li {
+  counter-increment: agenda;
+  padding: 14px 0 14px 56px;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95em;
+}
+.agenda-list li::before {
+  content: counter(agenda, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.3em;
+  font-weight: 800;
+  color: var(--gold);
+  width: 40px;
+  background: none;
+  border-radius: 0;
+}
+.agenda-list li::after { display: none; }
+.agenda-list li span {
+  display: block;
+  font-size: 0.75em;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+/* キーインサイト */
+.insight-box {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  color: white;
+  padding: 20px 24px;
+  border-radius: 8px;
+  margin: 16px 0;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+.insight-box strong { color: var(--gold-light); }
+
+/* プログレスインジケータ（ページ番号） */
+.reveal .slide-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--text-light);
+  background: transparent;
+  right: 20px;
+  bottom: 14px;
+}
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ============================================ -->
+<!-- SLIDE 1: COVER -->
+<!-- ============================================ -->
+<section class="cover-slide" data-background-color="#0B1F3D">
+  <h1>AI導入分析</h1>
+  <div class="cover-subtitle">
+    日本企業のAI導入:<br>
+    成功 vs 失敗ケーススタディと戦略的示唆
+  </div>
+  <div class="cover-line"></div>
+  <div class="cover-meta">
+    戦略的インサイトレポート | 2026年2月<br>
+    経済産業省・日本銀行・McKinsey・BCG・Gartner調査データに基づく
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 2: EXECUTIVE SUMMARY -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>エグゼクティブサマリー</h2>
+    <span class="page-indicator">02 / 33</span>
+  </div>
+  <p class="headline">世界的にAI投資が急増する一方、大多数の企業は有意義なリターンを獲得できていない</p>
+
+  <div class="stat-grid cols-3">
+    <div class="stat-card">
+      <div class="stat-number gold">$2.5T</div>
+      <div class="stat-label">世界AI支出額（2026年）</div>
+      <div class="stat-sub">Gartner予測</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number failure">95%</div>
+      <div class="stat-label">リターンゼロの企業</div>
+      <div class="stat-sub">MIT調査（2025年）</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number success">2.1x</div>
+      <div class="stat-label">AI先進企業のROI</div>
+      <div class="stat-sub">BCG分析</div>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <strong>主要ファインディング:</strong> 88%の企業が何らかの形でAIを導入済みだが、EBIT影響が5%を超えるのはわずか6%。AI先進企業と後発企業の格差は拡大しており、構造化された導入戦略が主要な差別化要因となっている。
+  </div>
+
+  <div class="source">出典: Gartner (2026), MIT Sloan (2025), BCG "From Potential to Profit" (2025), McKinsey "State of AI" (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 3: AGENDA -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>アジェンダ</h2>
+    <span class="page-indicator">03 / 33</span>
+  </div>
+
+  <div class="two-col ratio-6-4">
+    <ol class="agenda-list">
+      <li>AI導入の現状<span>グローバル投資動向と日本市場のダイナミクス</span></li>
+      <li>成功ケーススタディ<span>エビデンスに基づく成功事例の分析</span></li>
+      <li>失敗ケーススタディ<span>AI失敗プロジェクトの根本原因分析</span></li>
+      <li>比較分析<span>成功 vs 失敗要因の定量比較</span></li>
+      <li>成功フレームワーク<span>実行可能なロードマップとROI最適化モデル</span></li>
+      <li>日本市場への提言<span>日本企業向けの戦略的推奨事項</span></li>
+    </ol>
+    <div>
+      <div class="card navy" style="margin-top: 24px;">
+        <h4 style="font-size:0.9em; margin-bottom:12px;">調査手法</h4>
+        <ul style="font-size:0.78em; color:rgba(255,255,255,0.8);">
+          <li style="color:rgba(255,255,255,0.8);">政府データ（経産省・日銀・IPA・総務省）</li>
+          <li style="color:rgba(255,255,255,0.8);">グローバルコンサルティング調査（McKinsey・BCG・Gartner）</li>
+          <li style="color:rgba(255,255,255,0.8);">実名企業ケーススタディ</li>
+          <li style="color:rgba(255,255,255,0.8);">定量的ROI・パフォーマンス指標</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 4: SECTION DIVIDER - AI LANDSCAPE -->
+<!-- ============================================ -->
+<section class="section-divider" data-background-color="#0B1F3D">
+  <div class="section-number">01</div>
+  <h2>AI導入の現状</h2>
+  <p>グローバル投資動向と日本市場のダイナミクス</p>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 5: GLOBAL AI INVESTMENT -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>グローバルAI投資の急拡大</h2>
+    <span class="page-indicator">05 / 33</span>
+  </div>
+  <p class="headline">2026年の世界AI支出額は2.5兆ドルに到達、Big Techの設備投資が牽引</p>
+
+  <div class="two-col">
+    <div class="chart-container">
+      <canvas id="chart-bigtech"></canvas>
+    </div>
+    <div>
+      <div class="stat-card" style="margin-bottom:16px;">
+        <div class="stat-number gold">$2.5T</div>
+        <div class="stat-label">2026年 世界AI支出額</div>
+      </div>
+      <div class="stat-card" style="margin-bottom:16px;">
+        <div class="stat-number" style="font-size:2em;">$320B+</div>
+        <div class="stat-label">Big Tech 4社合計（2025年推定）</div>
+      </div>
+      <div class="insight-box" style="font-size:0.8em;">
+        <strong>注目:</strong> 上位4社だけで世界AI支出の約13%を占める。投資の集中は機会とリスクの両面を示している。
+      </div>
+    </div>
+  </div>
+
+  <div class="source">出典: Gartner (2026年1月), Reinforz AI Research (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 6: JAPAN AI ADOPTION RATE -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>日本企業のAI導入状況</h2>
+    <span class="page-indicator">06 / 33</span>
+  </div>
+  <p class="headline">大企業（25%）と中小企業（5%）のAI導入率に依然として大きな格差が存在</p>
+
+  <div class="two-col">
+    <div class="chart-container">
+      <canvas id="chart-japan-adoption"></canvas>
+    </div>
+    <div>
+      <table>
+        <thead><tr><th>セグメント</th><th>導入率</th><th>状況</th></tr></thead>
+        <tbody>
+          <tr><td>大企業</td><td style="font-weight:700;">~25%</td><td><span class="badge gold">拡大中</span></td></tr>
+          <tr><td>中小企業</td><td style="font-weight:700;">~5%</td><td><span class="badge failure">後発</span></td></tr>
+          <tr><td>金融セクター</td><td style="font-weight:700;">~50%</td><td><span class="badge success">先行</span></td></tr>
+          <tr><td>製造業</td><td style="font-weight:700;">~20%</td><td><span class="badge gold">拡大中</span></td></tr>
+          <tr><td>小売・サービス業</td><td style="font-weight:700;">~10%</td><td><span class="badge failure">初期</span></td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.75em; color:var(--text-light); margin-top:12px;">
+        46.2%の企業がAI導入を現在検討中（経産省 2025年）
+      </p>
+    </div>
+  </div>
+
+  <div class="source">出典: 経済産業省 (2025), 総務省 令和7年版情報通信白書 (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 7: JAPAN MARKET CHARACTERISTICS -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>日本市場: 機会と制約</h2>
+    <span class="page-indicator">07 / 33</span>
+  </div>
+  <p class="headline">日本はグローバルで最もAI投資意欲が高い一方、深刻な人材不足に直面</p>
+
+  <div class="stat-grid cols-3">
+    <div class="stat-card">
+      <div class="stat-number gold" style="font-size:2em;">148.7</div>
+      <div class="stat-label">兆円<br>生成AIによる期待生産額</div>
+      <div class="stat-sub">経済産業省予測</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number failure" style="font-size:2em;">85.1%</div>
+      <div class="stat-label">DX人材不足を<br>報告する企業</div>
+      <div class="stat-sub">IPA DX動向調査 2025</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="font-size:2em;">~50%</div>
+      <div class="stat-label">2,500万ドル以上の<br>AI投資を計画する日本企業</div>
+      <div class="stat-sub">BCG調査（世界最高水準）</div>
+    </div>
+  </div>
+
+  <div class="two-col" style="margin-top:16px;">
+    <div class="card success-border">
+      <h4 style="font-size:0.9em; color:var(--success); margin-bottom:8px;">強み</h4>
+      <ul style="font-size:0.8em;">
+        <li>世界最高水準のAI投資意欲</li>
+        <li>製造業の強固なデータ基盤</li>
+        <li>政府のDX推進政策支援</li>
+      </ul>
+    </div>
+    <div class="card failure-border">
+      <h4 style="font-size:0.9em; color:var(--failure); margin-bottom:8px;">課題</h4>
+      <ul style="font-size:0.8em;">
+        <li>深刻な人材不足（85.1%の企業が影響）</li>
+        <li>大企業 vs 中小企業の導入格差（25% vs 5%）</li>
+        <li>リスク回避型の組織文化</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="source">出典: 経済産業省 (2025), IPA DXレポート (2025), BCG Global AI Survey (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 8: INDUSTRY ADOPTION HEATMAP -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>業界別AI導入動向</h2>
+    <span class="page-indicator">08 / 33</span>
+  </div>
+  <p class="headline">金融セクターが70%超で導入を牽引、小売・サービス業は初期段階にとどまる</p>
+
+  <div class="two-col">
+    <div>
+      <table>
+        <thead><tr><th>業界</th><th>導入水準</th><th>主要ユースケース</th></tr></thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600;">金融サービス</td>
+            <td>
+              <div class="progress-bar"><div class="progress-fill" style="width:70%; background:var(--success);"></div></div>
+              <span style="font-size:0.8em;">~70%</span>
+            </td>
+            <td style="font-size:0.8em;">不正検知、信用スコアリング、文書処理</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;">情報通信・IT</td>
+            <td>
+              <div class="progress-bar"><div class="progress-fill" style="width:55%; background:var(--success);"></div></div>
+              <span style="font-size:0.8em;">~55%</span>
+            </td>
+            <td style="font-size:0.8em;">コード生成、カスタマーサポート、データ分析</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;">製造業</td>
+            <td>
+              <div class="progress-bar"><div class="progress-fill" style="width:35%; background:var(--gold);"></div></div>
+              <span style="font-size:0.8em;">~35%</span>
+            </td>
+            <td style="font-size:0.8em;">品質検査、予知保全、需要予測</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;">医療・ヘルスケア</td>
+            <td>
+              <div class="progress-bar"><div class="progress-fill" style="width:25%; background:var(--gold);"></div></div>
+              <span style="font-size:0.8em;">~25%</span>
+            </td>
+            <td style="font-size:0.8em;">画像診断、創薬、カルテ管理</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;">小売・サービス業</td>
+            <td>
+              <div class="progress-bar"><div class="progress-fill" style="width:15%; background:var(--failure);"></div></div>
+              <span style="font-size:0.8em;">~15%</span>
+            </td>
+            <td style="font-size:0.8em;">需要予測、チャットボット、パーソナライズ</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:12px;">
+        <h4 style="font-size:0.85em; margin-bottom:8px;">日銀 金融セクター詳細分析</h4>
+        <div class="stat-grid cols-2" style="gap:12px;">
+          <div class="stat-card" style="padding:14px;">
+            <div class="stat-number" style="font-size:1.8em;">50%</div>
+            <div class="stat-label" style="font-size:0.7em;">生成AI利用中</div>
+          </div>
+          <div class="stat-card" style="padding:14px;">
+            <div class="stat-number" style="font-size:1.8em;">90%+</div>
+            <div class="stat-label" style="font-size:0.7em;">導入検討中</div>
+          </div>
+        </div>
+      </div>
+      <div class="insight-box" style="font-size:0.78em;">
+        <strong>キーインサイト:</strong> 金融セクターの先行は規制対応の自動化ニーズとデータ成熟度の高さに起因。小売業はデータ基盤の分断が主因で後発。
+      </div>
+    </div>
+  </div>
+
+  <div class="source">出典: 日本銀行 金融システムレポート (2025年9月), 総務省白書 (2025), 経産省 DX調査 (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 9: INVESTMENT vs RETURN GAP -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>投資 vs リターンのパラドックス</h2>
+    <span class="page-indicator">09 / 33</span>
+  </div>
+  <p class="headline">88%の企業がAIを導入済み、しかしEBITへの有意な影響を達成しているのはわずか6%</p>
+
+  <div class="two-col">
+    <div class="chart-container">
+      <canvas id="chart-gap"></canvas>
+    </div>
+    <div>
+      <div class="stat-grid cols-2" style="gap:12px; margin-bottom:16px;">
+        <div class="stat-card" style="padding:16px;">
+          <div class="stat-number success" style="font-size:2em;">88%</div>
+          <div class="stat-label" style="font-size:0.7em;">AI導入済み</div>
+        </div>
+        <div class="stat-card" style="padding:16px;">
+          <div class="stat-number failure" style="font-size:2em;">6%</div>
+          <div class="stat-label" style="font-size:0.7em;">EBIT影響 5%超</div>
+        </div>
+        <div class="stat-card" style="padding:16px;">
+          <div class="stat-number" style="font-size:2em;">39%</div>
+          <div class="stat-label" style="font-size:0.7em;">何らかのEBIT貢献を報告</div>
+        </div>
+        <div class="stat-card" style="padding:16px;">
+          <div class="stat-number failure" style="font-size:2em;">51%</div>
+          <div class="stat-label" style="font-size:0.7em;">マイナス影響を経験</div>
+        </div>
+      </div>
+
+      <div class="insight-box" style="font-size:0.78em;">
+        <strong>示唆:</strong> 「導入率」という指標は誤解を招く。真のAI成熟度とは、実験段階から測定可能なビジネスインパクトへの移行を意味する。パイロットを超えてAIのスケールに成功した企業は全体の1/3にすぎない。
+      </div>
+    </div>
+  </div>
+
+  <div class="source">出典: McKinsey "The State of AI in 2025" グローバル調査</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 10: SECTION DIVIDER - SUCCESS -->
+<!-- ============================================ -->
+<section class="section-divider" data-background-color="#0B1F3D">
+  <div class="section-number">02</div>
+  <h2>成功ケーススタディ</h2>
+  <p>日本企業における成功事例のエビデンスに基づく分析</p>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 11: SUCCESS OVERVIEW -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>成功パターン概要</h2>
+    <span class="page-indicator">11 / 33</span>
+  </div>
+  <p class="headline">成功するAI導入には、業界を問わず一貫して観察される5つの共通特性がある</p>
+
+  <div class="pattern-grid">
+    <div class="pattern-item">
+      <div class="pattern-num success-bg">1</div>
+      <div><strong>ユースケースの集中</strong><br>優先ユースケース平均3.5件 vs 後発企業6.1件（BCG）</div>
+    </div>
+    <div class="pattern-item">
+      <div class="pattern-num success-bg">2</div>
+      <div><strong>基幹機能への投資</strong><br>予算の80%以上を基幹業務機能の再設計に配分</div>
+    </div>
+    <div class="pattern-item">
+      <div class="pattern-num success-bg">3</div>
+      <div><strong>定量的KPIの追跡</strong><br>財務指標を定義し、定期的な測定サイクルを確立</div>
+    </div>
+    <div class="pattern-item">
+      <div class="pattern-num success-bg">4</div>
+      <div><strong>人材育成</strong><br>クロスファンクショナルな専門性を持つ専任AIチーム</div>
+    </div>
+    <div class="pattern-item">
+      <div class="pattern-num success-bg">5</div>
+      <div><strong>長期的コミットメント</strong><br>3年以上の継続運用（成熟企業45% vs 20%）</div>
+    </div>
+    <div class="pattern-item" style="background: linear-gradient(135deg, var(--navy), var(--navy-light)); color: white;">
+      <div class="pattern-num gold-bg" style="color:var(--navy);">+</div>
+      <div><strong style="color:var(--gold-light);">複合効果</strong><br>AI先進企業はROI 2.1倍、売上成長率1.7倍を達成</div>
+    </div>
+  </div>
+
+  <div class="source">出典: BCG "From Potential to Profit" (2025), McKinsey State of AI (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 12: MUFG CASE -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>事例: 三菱UFJ銀行</h2>
+    <span class="page-indicator">12 / 33</span>
+  </div>
+
+  <div class="case-card">
+    <div class="case-header">
+      <div class="case-company">三菱UFJフィナンシャル・グループ</div>
+      <span class="badge success">成功</span>
+    </div>
+    <div class="two-col" style="gap:32px;">
+      <div>
+        <h4 style="font-size:0.9em; margin-bottom:8px;">施策概要</h4>
+        <p style="font-size:0.85em; line-height:1.7;">銀行業務・ウェルスマネジメント・法人アドバイザリー機能にまたがる4万人以上の従業員を対象とした全社ChatGPT導入。</p>
+
+        <h4 style="font-size:0.9em; margin-top:16px; margin-bottom:8px;">導入戦略</h4>
+        <ul style="font-size:0.8em;">
+          <li>段階的展開: パイロットグループ（2024年11月）→全社展開</li>
+          <li>金融データ保護のためのカスタムセキュリティレイヤー</li>
+          <li>対象ユースケース: 提案書作成、顧客分析、コンプライアンスレビュー</li>
+        </ul>
+      </div>
+      <div>
+        <div class="stat-card" style="margin-bottom:12px; border-top-color: var(--success);">
+          <div class="stat-number success" style="font-size:2.4em;">22万</div>
+          <div class="stat-label">月間削減時間</div>
+        </div>
+        <div class="stat-card" style="margin-bottom:12px; border-top-color: var(--success);">
+          <div class="stat-number success" style="font-size:2.4em;">4万人+</div>
+          <div class="stat-label">利用開始従業員数</div>
+        </div>
+        <div class="card gold-border" style="font-size:0.8em; padding:14px;">
+          <strong>成功の鍵:</strong> 明確なスコープ定義（提案書作成＋顧客リサーチ）と初日からの測定可能な生産性KPI。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="source">出典: MUFG企業開示資料 (2024), 日経ビジネス (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 13: PANASONIC CASE -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>事例: パナソニック コネクト</h2>
+    <span class="page-indicator">13 / 33</span>
+  </div>
+
+  <div class="case-card">
+    <div class="case-header">
+      <div class="case-company">パナソニック コネクト株式会社</div>
+      <span class="badge success">成功</span>
+    </div>
+    <div class="two-col" style="gap:32px;">
+      <div>
+        <h4 style="font-size:0.9em; margin-bottom:8px;">施策: ConnectAI</h4>
+        <p style="font-size:0.85em; line-height:1.7;">OpenAI基盤上に構築した独自AIアシスタント「ConnectAI」を国内全従業員に全社展開。</p>
+
+        <h4 style="font-size:0.9em; margin-top:16px; margin-bottom:8px;">導入アプローチ</h4>
+        <ul style="font-size:0.8em;">
+          <li>OpenAI APIをベースに自社データ統合で独自構築</li>
+          <li>限定パイロットではなく、開始時点から全社展開</li>
+          <li>ドメイン特化クエリのための社内ナレッジベース拡張</li>
+          <li>継続的な利用状況モニタリングとプロンプト最適化</li>
+        </ul>
+      </div>
+      <div>
+        <div class="stat-card" style="margin-bottom:12px; border-top-color: var(--success);">
+          <div class="stat-number success" style="font-size:2.4em;">22.3万</div>
+          <div class="stat-label">年間削減時間</div>
+        </div>
+        <div class="stat-card" style="margin-bottom:12px; border-top-color: var(--success);">
+          <div class="stat-number success" style="font-size:2.4em;">18.6万</div>
+          <div class="stat-label">初年度削減時間</div>
+        </div>
+        <div class="card gold-border" style="font-size:0.8em; padding:14px;">
+          <strong>成功の鍵:</strong> 既製品ではなく独自AIツールを構築し、既存ワークフローとデータへの深い統合を実現。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="source">出典: パナソニック コネクト プレスリリース (2024), 日経xTech (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 14: GLICO CASE -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>事例: 江崎グリコ</h2>
+    <span class="page-indicator">14 / 33</span>
+  </div>
+
+  <div class="case-card">
+    <div class="case-header">
+      <div class="case-company">江崎グリコ株式会社</div>
+      <span class="badge success">成功</span>
+    </div>
+    <div class="two-col" style="gap:32px;">
+      <div>
+        <h4 style="font-size:0.9em; margin-bottom:8px;">施策概要</h4>
+        <p style="font-size:0.85em; line-height:1.7;">社内従業員サポートと社外顧客問い合わせの両方に対応するAIチャットボットを2023年3月に導入。</p>
+
+        <h4 style="font-size:0.9em; margin-top:16px; margin-bottom:8px;">アプローチ</h4>
+        <ul style="font-size:0.8em;">
+          <li>二重目的: 社内ヘルプデスク＋社外カスタマーサポート</li>
+          <li>社内FAQデータベースと製品ナレッジベースで学習</li>
+          <li>成功指標を事前に明確定義: 問い合わせ件数削減</li>
+          <li>複雑な問い合わせに対する人的エスカレーションパスを維持</li>
+        </ul>
+      </div>
+      <div>
+        <div class="stat-card" style="margin-bottom:12px; border-top-color: var(--success);">
+          <div class="stat-number success" style="font-size:2.4em;">31%</div>
+          <div class="stat-label">問い合わせ件数削減</div>
+        </div>
+        <div class="stat-card" style="margin-bottom:12px;">
+          <div class="stat-number" style="font-size:1.6em;">二重<br>活用</div>
+          <div class="stat-label">社内＋社外サポート</div>
+        </div>
+        <div class="card gold-border" style="font-size:0.8em; padding:14px;">
+          <strong>成功の鍵:</strong> 明確で狭いスコープ（FAQ自動化）と測定可能なKPI（問い合わせ件数）、人的対応のフォールバック維持。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="source">出典: 経産省 AI導入事例集 (2025), グリコ コーポレートレポート (2023)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 15: FINANCIAL SECTOR -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>金融セクター: 業界全体の成功</h2>
+    <span class="page-indicator">15 / 33</span>
+  </div>
+  <p class="headline">金融機関は50%超の導入率でAI活用を牽引、コンプライアンスと効率化ニーズが推進力</p>
+
+  <div class="two-col">
+    <div class="chart-container">
+      <canvas id="chart-financial"></canvas>
+    </div>
+    <div>
+      <h4 style="font-size:0.9em; margin-bottom:12px;">主要ユースケース（日銀調査）</h4>
+      <table>
+        <thead><tr><th>ユースケース</th><th>導入状況</th></tr></thead>
+        <tbody>
+          <tr><td>文書要約・校正</td><td style="font-weight:700;">高い</td></tr>
+          <tr><td>翻訳サービス</td><td style="font-weight:700;">高い</td></tr>
+          <tr><td>融資審査処理</td><td style="font-weight:700;">拡大中</td></tr>
+          <tr><td>コールセンター支援</td><td style="font-weight:700;">拡大中</td></tr>
+          <tr><td>リスク評価</td><td style="font-weight:700;">萌芽期</td></tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box" style="font-size:0.78em; margin-top:12px;">
+        <strong>金融が先行する理由:</strong> 高いデータ成熟度＋規制対応自動化ニーズ＋明確なROI指標（処理時間、エラー率）。
+      </div>
+    </div>
+  </div>
+
+  <div class="source">出典: 日本銀行「金融システムレポート」(2025年9月)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 16: SUCCESS FACTORS QUANTIFIED -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>成功要因の定量分析</h2>
+    <span class="page-indicator">16 / 33</span>
+  </div>
+  <p class="headline">BCGの調査がAI先進企業とその他を分ける精緻な指標を明らかにした</p>
+
+  <div class="two-col">
+    <div class="chart-container">
+      <canvas id="chart-success-factors"></canvas>
+    </div>
+    <div>
+      <div class="card success-border" style="margin-bottom:12px;">
+        <h4 style="font-size:0.85em; color:var(--success); margin-bottom:8px;">AI先進企業</h4>
+        <ul style="font-size:0.78em;">
+          <li>AI予算の<strong>80%以上</strong>を基幹機能再設計に配分</li>
+          <li>優先ユースケース<strong>3.5</strong>件（集中投資）</li>
+          <li>同業他社比<strong>2.1倍</strong>のROI</li>
+          <li><strong>1.7倍</strong>の売上成長率</li>
+        </ul>
+      </div>
+      <div class="card failure-border">
+        <h4 style="font-size:0.85em; color:var(--failure); margin-bottom:8px;">その他の企業</h4>
+        <ul style="font-size:0.78em;">
+          <li>基幹機能への予算は<strong>56%</strong>（分散投資）</li>
+          <li>ユースケース<strong>6.1</strong>件（リソース分散）</li>
+          <li><strong>60%</strong>が財務KPIを未定義</li>
+          <li>CIOの<strong>72%</strong>が収支均衡または赤字</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="source">出典: BCG "From Potential to Profit" (2025), Gartner CIO調査 (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 17: SECTION DIVIDER - FAILURE -->
+<!-- ============================================ -->
+<section class="section-divider" data-background-color="#0B1F3D">
+  <div class="section-number">03</div>
+  <h2>失敗ケーススタディ</h2>
+  <p>AI失敗プロジェクトの根本原因分析と体系的な失敗パターン</p>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 18: FAILURE OVERVIEW -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>AI失敗の規模</h2>
+    <span class="page-indicator">18 / 33</span>
+  </div>
+  <p class="headline">AIの期待と現実のギャップ: 大半の企業が巨額投資にもかかわらずリターンを生み出せていない</p>
+
+  <div class="stat-grid cols-4">
+    <div class="stat-card">
+      <div class="stat-number failure">95%</div>
+      <div class="stat-label">生成AI投資リターンゼロ</div>
+      <div class="stat-sub">MIT調査</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number failure">30%+</div>
+      <div class="stat-label">PoCプロジェクト放棄</div>
+      <div class="stat-sub">Gartner（2025年末）</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number failure">40%+</div>
+      <div class="stat-label">エージェントAI中止</div>
+      <div class="stat-sub">Gartner（2027年まで）</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number failure">72%</div>
+      <div class="stat-label">CIO: 収支均衡または赤字</div>
+      <div class="stat-sub">Gartner CIO調査</div>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <strong>重要な文脈:</strong> 3,000〜4,000億ドルのグローバル生成AI投資のうち95%がリターンゼロという事実は、個別プロジェクトの失敗ではなく構造的な問題を示唆している。多くの組織がAI成功に必要な基盤能力を構築する前に投資を先行させている。
+  </div>
+
+  <div class="source">出典: MIT Sloan Management Review (2025), Gartner Research (2025-2026)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 19: FAILURE CASE 1 -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>失敗事例: 食品メーカー</h2>
+    <span class="page-indicator">19 / 33</span>
+  </div>
+
+  <div class="case-card" style="border-left: 4px solid var(--failure);">
+    <div class="case-header">
+      <div class="case-company">食品メーカー - 品質予測AI</div>
+      <span class="badge failure">失敗</span>
+    </div>
+    <div class="two-col" style="gap:32px;">
+      <div>
+        <h4 style="font-size:0.9em; margin-bottom:8px;">プロジェクト目的</h4>
+        <p style="font-size:0.85em; line-height:1.7;">製造工程における製品品質不良をAIモデルで予測し、廃棄削減と品質管理効率の向上を目指す。</p>
+
+        <h4 style="font-size:0.9em; margin-top:16px; margin-bottom:8px;">何が問題だったか</h4>
+        <ul style="font-size:0.8em;">
+          <li><strong style="color:var(--failure);">データ不足:</strong> 学習サンプルはわずか約100件</li>
+          <li>限られたデータセットで製造工程のばらつきを捕捉できず</li>
+          <li>データ拡張や転移学習の戦略なし</li>
+          <li>狭い条件にモデルが過学習</li>
+        </ul>
+      </div>
+      <div>
+        <div class="stat-card" style="border-top-color: var(--failure); margin-bottom:12px;">
+          <div class="stat-number failure" style="font-size:2.2em;">~50%</div>
+          <div class="stat-label">予測精度<br>（ランダム同等）</div>
+        </div>
+        <div class="stat-card" style="border-top-color: var(--failure); margin-bottom:12px;">
+          <div class="stat-number failure" style="font-size:2.2em;">100</div>
+          <div class="stat-label">学習サンプル数<br>（致命的に不足）</div>
+        </div>
+        <div class="card" style="background:var(--failure-light); font-size:0.8em; padding:14px;">
+          <strong>根本原因:</strong> データ準備状況を評価せずにAIプロジェクトを開始。品質予測に必要な最低限のデータセットは通常10,000件以上のラベル付きサンプルを要する。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="source">出典: AIマネジメント研究所 失敗分析 (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 20: FAILURE CASE 2 -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>失敗事例: 化学メーカー</h2>
+    <span class="page-indicator">20 / 33</span>
+  </div>
+
+  <div class="case-card" style="border-left: 4px solid var(--failure);">
+    <div class="case-header">
+      <div class="case-company">化学メーカー - 生産工程最適化AI</div>
+      <span class="badge failure">失敗</span>
+    </div>
+    <div class="two-col" style="gap:32px;">
+      <div>
+        <h4 style="font-size:0.9em; margin-bottom:8px;">プロジェクト目的</h4>
+        <p style="font-size:0.85em; line-height:1.7;">生産工程の最適化AIシステムを導入。当初は在庫コスト削減をターゲットとした。</p>
+
+        <h4 style="font-size:0.9em; margin-top:16px; margin-bottom:8px;">スコープクリープの経緯</h4>
+        <div style="font-size:0.82em;">
+          <div style="display:flex; gap:12px; margin:8px 0; align-items:center;">
+            <span class="badge navy">v1</span>
+            <span>在庫コスト削減</span>
+          </div>
+          <div style="display:flex; gap:12px; margin:8px 0; align-items:center;">
+            <span class="badge gold">v2</span>
+            <span>＋品質改善（プロジェクト途中で追加）</span>
+          </div>
+          <div style="display:flex; gap:12px; margin:8px 0; align-items:center;">
+            <span class="badge failure">v3</span>
+            <span>＋需要予測（遅延発生後に追加）</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="stat-card" style="border-top-color: var(--failure); margin-bottom:12px;">
+          <div class="stat-number failure" style="font-size:2.2em;">3回</div>
+          <div class="stat-label">開発中の<br>スコープ変更</div>
+        </div>
+        <div class="stat-card" style="border-top-color: var(--failure); margin-bottom:12px;">
+          <div class="stat-number failure" style="font-size:1.6em;">中止</div>
+          <div class="stat-label">プロジェクト結果</div>
+        </div>
+        <div class="card" style="background:var(--failure-light); font-size:0.8em; padding:14px;">
+          <strong>根本原因:</strong> プロジェクトガバナンスの欠如。スコープ拡大のたびにデータ要件、モデルアーキテクチャ、タイムラインがリセットされたが、リソースは調整されなかった。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="source">出典: AIマネジメント研究所 失敗分析 (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 21: 7 FAILURE PATTERNS -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>7つの体系的失敗パターン</h2>
+    <span class="page-indicator">21 / 33</span>
+  </div>
+  <p class="headline">根本原因分析により、AIプロジェクト失敗の大多数を占める7つの反復パターンが判明</p>
+
+  <div class="pattern-grid">
+    <div class="pattern-item">
+      <div class="pattern-num">1</div>
+      <div><strong>技術への過度な期待</strong><br>メディアの誇大報道と現実的なAI能力のギャップが非現実的な目標設定を招く</div>
+    </div>
+    <div class="pattern-item">
+      <div class="pattern-num">2</div>
+      <div><strong>人材育成の軽視</strong><br>AIシステムの運用・保守・改善を担う人材への投資なくツールだけを導入</div>
+    </div>
+    <div class="pattern-item">
+      <div class="pattern-num">3</div>
+      <div><strong>曖昧な目的設定</strong><br>具体的なビジネス課題の解決ではなく「AI導入」自体が目的化</div>
+    </div>
+    <div class="pattern-item">
+      <div class="pattern-num">4</div>
+      <div><strong>KPI・効果測定の欠如</strong><br>60%の企業がAI施策の財務KPIを未定義（BCGデータ）</div>
+    </div>
+    <div class="pattern-item">
+      <div class="pattern-num">5</div>
+      <div><strong>データ品質の不足</strong><br>データ量不足、ラベリング品質の低さ、分断されたデータ基盤がモデル性能を毀損</div>
+    </div>
+    <div class="pattern-item">
+      <div class="pattern-num">6</div>
+      <div><strong>経営層と現場の断絶</strong><br>現場の賛同なきトップダウン指令が抵抗と導入摩擦を生む</div>
+    </div>
+    <div class="pattern-item" style="grid-column: 1 / -1;">
+      <div class="pattern-num">7</div>
+      <div><strong>コストの過小評価</strong><br>ランニングコスト（計算資源・保守・再学習）が当初計画の2〜3倍に膨れ、予測ROIを侵食</div>
+    </div>
+  </div>
+
+  <div class="source">出典: AIマネジメント研究所 (2025), Gartner Research (2025), BCG "From Potential to Profit" (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 22: FAILURE COST -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>失敗のコスト</h2>
+    <span class="page-indicator">22 / 33</span>
+  </div>
+  <p class="headline">CIOの72%がAI投資の収支均衡またはマイナスリターンを報告</p>
+
+  <div class="two-col">
+    <div class="chart-container">
+      <canvas id="chart-failure-cost"></canvas>
+    </div>
+    <div>
+      <table>
+        <thead><tr><th>指標</th><th>数値</th></tr></thead>
+        <tbody>
+          <tr><td>企業あたり平均生成AI投資額（2024年）</td><td style="font-weight:700;">$1.9M</td></tr>
+          <tr><td>金融セクターAI中央値ROI</td><td style="font-weight:700;">10%</td></tr>
+          <tr><td>一般的なROI実現期間</td><td style="font-weight:700;">8〜12ヶ月</td></tr>
+          <tr><td>投資回収目標期間</td><td style="font-weight:700;">24ヶ月以内</td></tr>
+          <tr><td>収支均衡または赤字のCIO</td><td style="font-weight:700; color:var(--failure);">72%</td></tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box" style="font-size:0.78em; margin-top:12px;">
+        <strong>隠れたコスト:</strong> 直接投資に加え、失敗したAIプロジェクトはチームの6〜18ヶ月の工数を消費し、組織のAIへの信頼を毀損し、将来の施策を阻害する「AI疲れ」を生む。
+      </div>
+    </div>
+  </div>
+
+  <div class="source">出典: Gartner CIO調査 (2025), HackAI ROI分析 (2025), BCG投資調査 (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 23: SECTION DIVIDER - COMPARISON -->
+<!-- ============================================ -->
+<section class="section-divider" data-background-color="#0B1F3D">
+  <div class="section-number">04</div>
+  <h2>比較分析</h2>
+  <p>成功 vs 失敗要因の定量比較</p>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 24: SUCCESS vs FAILURE TABLE -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>成功 vs 失敗: 対照比較</h2>
+    <span class="page-indicator">24 / 33</span>
+  </div>
+  <p class="headline">体系的比較により、AI成果を決定するのは技術選定ではなく戦略実行であることが判明</p>
+
+  <div class="vs-layout">
+    <div class="card success-border">
+      <h3 style="color:var(--success); font-size:1em; margin-bottom:16px;">AI先進企業</h3>
+      <ul style="font-size:0.82em;">
+        <li>集中した<strong>3.5</strong>件のユースケース</li>
+        <li>予算の<strong>80%以上</strong>を基幹機能に配分</li>
+        <li>初日から財務KPIを定義</li>
+        <li>クロスファンクショナルな専任AIチーム</li>
+        <li><strong>3年以上</strong>の運用コミットメント</li>
+        <li>プロジェクト開始前にデータ品質を評価</li>
+        <li>経営層＋現場の方向性が一致</li>
+      </ul>
+    </div>
+    <div class="vs-divider">VS</div>
+    <div class="card failure-border">
+      <h3 style="color:var(--failure); font-size:1em; margin-bottom:16px;">後発企業</h3>
+      <ul style="font-size:0.82em;">
+        <li>分散した<strong>6.1</strong>件のユースケース</li>
+        <li>予算の<strong>56%</strong>が施策横断で分散</li>
+        <li>60%が財務KPIを完全に未定義</li>
+        <li>IT部門のみ、またはベンダー依存の実行体制</li>
+        <li><strong>2年未満</strong>でプロジェクト放棄</li>
+        <li>データ準備状況を検証せず前提として進行</li>
+        <li>現場の賛同なきトップダウン指令</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight-box" style="margin-top:16px;">
+    <strong>キーテイクアウェイ:</strong> 先進企業はより多く投資するのではなく、<strong>異なる投資の仕方</strong>をしている。少数の戦略的に整合したユースケースへの集中投資と堅牢な効果測定が、広範で焦点の定まらないAIプログラムを一貫して上回る。
+  </div>
+
+  <div class="source">出典: BCG (2025), McKinsey (2025), Gartner (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 25: INVESTMENT ALLOCATION -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>投資配分の差異</h2>
+    <span class="page-indicator">25 / 33</span>
+  </div>
+  <p class="headline">AI先進企業は80%以上を基幹業務の再設計に配分、後発企業は56%を優先順位なく分散</p>
+
+  <div class="two-col">
+    <div class="chart-container">
+      <canvas id="chart-allocation"></canvas>
+    </div>
+    <div>
+      <div class="chart-container">
+        <canvas id="chart-usecase"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight-box" style="margin-top:12px;">
+    <strong>示唆:</strong> 「集中 vs 分散」のダイナミクスがAI ROIの最も強力な予測因子である。先進企業はAIを<strong>戦略的能力への投資</strong>として扱い、技術実験としては扱わない。
+  </div>
+
+  <div class="source">出典: BCG "From Potential to Profit" (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 26: ROI COMPARISON -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>ROIと売上への影響</h2>
+    <span class="page-indicator">26 / 33</span>
+  </div>
+  <p class="headline">AI先進企業は同業他社と比較してROI 2.1倍、売上成長率1.7倍を達成</p>
+
+  <div class="two-col">
+    <div class="chart-container">
+      <canvas id="chart-roi"></canvas>
+    </div>
+    <div>
+      <div class="stat-grid cols-2" style="gap:12px;">
+        <div class="stat-card" style="padding:18px;">
+          <div class="stat-number success" style="font-size:2.2em;">2.1x</div>
+          <div class="stat-label">ROIプレミアム<br>（先進企業 vs その他）</div>
+        </div>
+        <div class="stat-card" style="padding:18px;">
+          <div class="stat-number success" style="font-size:2.2em;">1.7x</div>
+          <div class="stat-label">売上成長率<br>（先進企業 vs その他）</div>
+        </div>
+      </div>
+
+      <table style="margin-top:16px;">
+        <thead><tr><th>成功指標</th><th>先進企業</th><th>その他</th></tr></thead>
+        <tbody>
+          <tr><td>ROI倍率</td><td style="color:var(--success); font-weight:700;">2.1x</td><td>1.0x（基準）</td></tr>
+          <tr><td>売上成長率</td><td style="color:var(--success); font-weight:700;">1.7x</td><td>1.0x</td></tr>
+          <tr><td>3年以上運用</td><td style="color:var(--success); font-weight:700;">45%</td><td style="color:var(--failure);">20%</td></tr>
+          <tr><td>EBIT影響 5%超</td><td style="color:var(--success); font-weight:700;">高い</td><td style="color:var(--failure);">6%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="source">出典: BCG (2025), McKinsey (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 27: MATURITY vs OPERATIONS -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>成熟度と運用継続性の相関</h2>
+    <span class="page-indicator">27 / 33</span>
+  </div>
+  <p class="headline">高成熟企業はAI運用を2.25倍長く維持し、時間とともに複利的リターンを創出</p>
+
+  <div class="two-col">
+    <div class="chart-container">
+      <canvas id="chart-maturity"></canvas>
+    </div>
+    <div>
+      <div class="card gold-border" style="margin-bottom:16px;">
+        <h4 style="font-size:0.85em; margin-bottom:8px;">複利効果</h4>
+        <p style="font-size:0.82em; line-height:1.6;">AIシステムは蓄積された学習データ、洗練されたモデル、最適化されたワークフローを通じて運用期間とともに改善される。3年以上運用を維持する企業は、短期導入と比較して指数関数的に多くの価値を獲得する。</p>
+      </div>
+
+      <div class="stat-grid cols-2" style="gap:12px;">
+        <div class="stat-card" style="padding:14px; border-top-color:var(--success);">
+          <div class="stat-number" style="font-size:1.8em;">45%</div>
+          <div class="stat-label" style="font-size:0.65em;">高成熟企業:<br>3年以上運用</div>
+        </div>
+        <div class="stat-card" style="padding:14px; border-top-color:var(--failure);">
+          <div class="stat-number" style="font-size:1.8em;">20%</div>
+          <div class="stat-label" style="font-size:0.65em;">低成熟企業:<br>3年以上運用</div>
+        </div>
+      </div>
+
+      <div class="insight-box" style="font-size:0.78em; margin-top:12px;">
+        <strong>示唆:</strong> 短期パイロット文化はAIの価値を積極的に破壊する。継続運用へのコミットメント自体が競争優位となる。
+      </div>
+    </div>
+  </div>
+
+  <div class="source">出典: Gartner AI成熟度モデル調査 (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 28: SECTION DIVIDER - FRAMEWORK -->
+<!-- ============================================ -->
+<section class="section-divider" data-background-color="#0B1F3D">
+  <div class="section-number">05</div>
+  <h2>成功フレームワーク</h2>
+  <p>AI導入とROI最適化のための実行可能なロードマップ</p>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 29: 5 CONDITIONS -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>AI成功の5条件</h2>
+    <span class="page-indicator">29 / 33</span>
+  </div>
+  <p class="headline">業界横断の成功事例分析から導出されたエビデンスベースのフレームワーク</p>
+
+  <div class="pattern-grid">
+    <div class="pattern-item" style="background: var(--success-light);">
+      <div class="pattern-num success-bg">1</div>
+      <div>
+        <strong>戦略的ユースケース選定</strong><br>
+        基幹業務価値に整合した3〜5件のユースケースを特定。6件以上の同時推進の誘惑に抗する。
+      </div>
+    </div>
+    <div class="pattern-item" style="background: var(--success-light);">
+      <div class="pattern-num success-bg">2</div>
+      <div>
+        <strong>データ準備状況の評価</strong><br>
+        プロジェクト開始前にデータ量・品質・アクセス可能性を検証。最低限必要なデータセットはユースケースにより異なる。
+      </div>
+    </div>
+    <div class="pattern-item" style="background: var(--success-light);">
+      <div class="pattern-num success-bg">3</div>
+      <div>
+        <strong>財務KPIの定義</strong><br>
+        測定可能な財務指標（削減時間、エラー率低減、売上影響）を明確なベースライン測定値とともに定義。
+      </div>
+    </div>
+    <div class="pattern-item" style="background: var(--success-light);">
+      <div class="pattern-num success-bg">4</div>
+      <div>
+        <strong>クロスファンクショナルチームの構築</strong><br>
+        ドメイン専門家＋データサイエンティスト＋ビジネスステークホルダーを組み合わせる。IT部門のみ・ベンダー依存の実行を避ける。
+      </div>
+    </div>
+    <div class="pattern-item" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--navy), var(--navy-light)); color: white;">
+      <div class="pattern-num gold-bg" style="color:var(--navy);">5</div>
+      <div>
+        <strong style="color:var(--gold-light);">長期的運用コミットメント</strong><br>
+        開始時点から3年以上の運用を計画する。AIの価値はデータ蓄積、モデル精緻化、ワークフロー最適化を通じて時間とともに複利的に増大する。12ヶ月後に放棄される短期パイロットは投資を回収できることが稀である。
+      </div>
+    </div>
+  </div>
+
+  <div class="source">出典: BCG (2025), McKinsey (2025), Gartner (2025), 日銀 (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 30: ROADMAP -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>導入ロードマップ</h2>
+    <span class="page-indicator">30 / 33</span>
+  </div>
+  <p class="headline">価値創出の速度と持続可能なスケーリングのバランスをとる3フェーズアプローチ</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-label">Phase 1: 基盤構築</div>
+      <div class="timeline-desc">
+        <strong>1〜3ヶ月目</strong><br>
+        データ準備状況の監査<br>
+        ユースケースの優先順位付け<br>
+        チーム編成<br>
+        KPIベースラインの測定
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-label">Phase 2: 実装</div>
+      <div class="timeline-desc">
+        <strong>4〜9ヶ月目</strong><br>
+        集中パイロット（1〜2ユースケース）<br>
+        反復的モデル開発<br>
+        ユーザートレーニングプログラム<br>
+        月次KPIトラッキング
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-label">Phase 3: スケール</div>
+      <div class="timeline-desc">
+        <strong>10〜24ヶ月目</strong><br>
+        本番環境デプロイ<br>
+        隣接ユースケースへの拡大<br>
+        ROI最適化<br>
+        ナレッジトランスファー
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col" style="margin-top:20px; gap:16px;">
+    <div class="card gold-border" style="padding:16px;">
+      <h4 style="font-size:0.85em; margin-bottom:8px;">期待ROIタイムライン</h4>
+      <p style="font-size:0.8em; line-height:1.5;">初回測定可能リターン: <strong>6〜8ヶ月</strong><br>
+      損益分岐点: <strong>8〜12ヶ月</strong><br>
+      ROI完全実現: <strong>18〜24ヶ月</strong></p>
+    </div>
+    <div class="card gold-border" style="padding:16px;">
+      <h4 style="font-size:0.85em; margin-bottom:8px;">重要ゲートチェック</h4>
+      <p style="font-size:0.8em; line-height:1.5;">Phase 1終了: データ品質確認完了<br>
+      Phase 2終了: パイロットKPI達成（目標の80%超）<br>
+      Phase 3開始: 3年運用への経営コミットメント</p>
+    </div>
+  </div>
+
+  <div class="source">出典: BCG Implementation Framework (2025), HackAI ROI分析 (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 31: ROI MODEL -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>ROI最適化モデル</h2>
+    <span class="page-indicator">31 / 33</span>
+  </div>
+  <p class="headline">成功事例のベンチマークROIデータが、ユースケースタイプ別の達成可能なリターンを示す</p>
+
+  <div class="two-col">
+    <div class="chart-container">
+      <canvas id="chart-roi-model"></canvas>
+    </div>
+    <div>
+      <table>
+        <thead><tr><th>ユースケース</th><th>初年度ROI</th><th>投資規模</th></tr></thead>
+        <tbody>
+          <tr><td>需要予測（小売）</td><td style="font-weight:700; color:var(--success);">2,400%</td><td>中規模</td></tr>
+          <tr><td>チャットボット（CS）</td><td style="font-weight:700; color:var(--success);">750%</td><td>約600万円</td></tr>
+          <tr><td>文書処理（金融）</td><td style="font-weight:700; color:var(--success);">200-400%</td><td>規模による</td></tr>
+          <tr><td>生成AI生産性（全社）</td><td style="font-weight:700;">50-150%</td><td>約200万円/年</td></tr>
+          <tr><td>金融セクター中央値</td><td style="font-weight:700;">10%</td><td>大規模</td></tr>
+        </tbody>
+      </table>
+
+      <div class="card" style="margin-top:16px; background:var(--off-white); padding:14px;">
+        <h4 style="font-size:0.8em; margin-bottom:6px;">コスト構造の留意点</h4>
+        <p style="font-size:0.75em; line-height:1.5; color:var(--text-mid);">
+          初期導入コスト: 600〜2,000万円（スコープにより変動）<br>
+          年間ランニングコスト: 300〜1,000万円（計算資源・保守・再学習）<br>
+          ランニングコストは計画段階で2〜3倍過小評価されることが多い
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="source">出典: HackAI ROI分析 (2025), BCG金融セクター調査 (2025), 経産省事例集 (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 32: ORG DESIGN -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>AI組織設計</h2>
+    <span class="page-indicator">32 / 33</span>
+  </div>
+  <p class="headline">成功するAI組織は、中央集権的な戦略と分散型の実行チームを組み合わせる</p>
+
+  <div class="two-col ratio-6-4">
+    <div>
+      <h4 style="font-size:0.9em; margin-bottom:12px;">必要な人材ロール</h4>
+      <table>
+        <thead><tr><th>ロール</th><th>機能</th><th>充足状況</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600;">AI戦略リード</td><td style="font-size:0.8em;">ビジネス-AI整合、ユースケース選定</td><td><span class="badge failure">深刻</span></td></tr>
+          <tr><td style="font-weight:600;">データエンジニア</td><td style="font-size:0.8em;">データパイプライン、品質保証</td><td><span class="badge failure">不足</span></td></tr>
+          <tr><td style="font-weight:600;">MLエンジニア</td><td style="font-size:0.8em;">モデル開発、デプロイ</td><td><span class="badge gold">中程度</span></td></tr>
+          <tr><td style="font-weight:600;">ドメイン専門家</td><td style="font-size:0.8em;">ビジネス文脈、検証</td><td><span class="badge success">充足</span></td></tr>
+          <tr><td style="font-weight:600;">チェンジマネージャー</td><td style="font-size:0.8em;">導入推進、研修、組織変革</td><td><span class="badge failure">深刻</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="card navy" style="padding:20px;">
+        <h4 style="font-size:0.85em; color:var(--gold-light); margin-bottom:12px;">ハブ&スポークモデル</h4>
+        <div style="text-align:center; padding:16px 0;">
+          <div style="display:inline-block; width:80px; height:80px; border-radius:50%; background:var(--gold); color:var(--navy); font-weight:800; font-size:0.7em; line-height:80px; margin-bottom:12px;">AI CoE</div>
+          <div style="display:flex; justify-content:center; gap:8px; flex-wrap:wrap;">
+            <div style="padding:6px 10px; background:rgba(255,255,255,0.15); border-radius:4px; font-size:0.65em;">財務</div>
+            <div style="padding:6px 10px; background:rgba(255,255,255,0.15); border-radius:4px; font-size:0.65em;">オペレーション</div>
+            <div style="padding:6px 10px; background:rgba(255,255,255,0.15); border-radius:4px; font-size:0.65em;">マーケティング</div>
+            <div style="padding:6px 10px; background:rgba(255,255,255,0.15); border-radius:4px; font-size:0.65em;">人事</div>
+          </div>
+        </div>
+        <p style="font-size:0.7em; color:rgba(255,255,255,0.7); line-height:1.5;">中央のAI Center of Excellenceが戦略・ガバナンス・基準を策定。各事業部門がAI能力を組み込んで実行。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="source">出典: IPA DXレポート (2025), BCG AI組織設計 (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 33: SECTION DIVIDER - JAPAN -->
+<!-- ============================================ -->
+<section class="section-divider" data-background-color="#0B1F3D">
+  <div class="section-number">06</div>
+  <h2>日本市場への提言</h2>
+  <p>AI導入を推進する日本企業への戦略的推奨事項</p>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 34: JAPAN CHALLENGES -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>日本固有の課題</h2>
+    <span class="page-indicator">34 / 33</span>
+  </div>
+  <p class="headline">日本のAI課題の本質は技術の問題ではなく、人材と組織文化の問題である</p>
+
+  <div class="two-col">
+    <div>
+      <div class="chart-container">
+        <canvas id="chart-japan-challenges"></canvas>
+      </div>
+    </div>
+    <div>
+      <div class="card failure-border" style="margin-bottom:12px;">
+        <h4 style="font-size:0.85em; color:var(--failure); margin-bottom:8px;">構造的格差: 企業規模</h4>
+        <div style="display:flex; gap:20px; align-items:center;">
+          <div style="text-align:center;">
+            <div style="font-family:'Inter'; font-size:2em; font-weight:800; color:var(--navy);">25%</div>
+            <div style="font-size:0.7em; color:var(--text-light);">大企業</div>
+          </div>
+          <div style="font-size:1.5em; color:var(--text-light);">vs</div>
+          <div style="text-align:center;">
+            <div style="font-family:'Inter'; font-size:2em; font-weight:800; color:var(--failure);">5%</div>
+            <div style="font-size:0.7em; color:var(--text-light);">中小企業</div>
+          </div>
+        </div>
+        <p style="font-size:0.75em; color:var(--text-mid); margin-top:8px;">大企業と中小企業の5倍の導入格差は、日本経済の競争力にとって重大なリスクである。</p>
+      </div>
+
+      <div class="card gold-border">
+        <h4 style="font-size:0.85em; margin-bottom:8px;">文化的障壁</h4>
+        <ul style="font-size:0.78em;">
+          <li>リスク回避型の意思決定プロセス</li>
+          <li>合意形成重視が導入タイムラインを遅延</li>
+          <li>終身雇用が人材流動性を制限</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="source">出典: IPA DXレポート (2025), 経済産業省 (2025), 総務省白書 (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 35: RECOMMENDATIONS -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>戦略的推奨事項</h2>
+    <span class="page-indicator">35 / 33</span>
+  </div>
+  <p class="headline">日本企業がAIバリューギャップを解消するための3つの実行可能な優先事項</p>
+
+  <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:20px;">
+    <div class="card" style="border-top:4px solid var(--gold); text-align:center; padding:28px 20px;">
+      <div style="font-family:'Inter'; font-size:3em; font-weight:900; color:var(--gold); margin-bottom:8px;">01</div>
+      <h4 style="font-size:0.95em; margin-bottom:12px;">AI技術の前に<br>AI人材に投資せよ</h4>
+      <p style="font-size:0.78em; line-height:1.6; color:var(--text-mid);">
+        社内リスキリングプログラム、大学連携、競争力のある採用を通じて85.1%の人材ギャップに対処する。技術展開をスケールする前に人的基盤を構築する。
+      </p>
+    </div>
+    <div class="card" style="border-top:4px solid var(--gold); text-align:center; padding:28px 20px;">
+      <div style="font-family:'Inter'; font-size:3em; font-weight:900; color:var(--gold); margin-bottom:8px;">02</div>
+      <h4 style="font-size:0.95em; margin-bottom:12px;">広さより深さ:<br>3.5ルール</h4>
+      <p style="font-size:0.78em; line-height:1.6; color:var(--text-mid);">
+        ビジネス価値に直結する最大3〜5件のユースケースを選定。AI予算の80%以上を基幹機能の再設計に配分。すべてを財務KPIで測定する。
+      </p>
+    </div>
+    <div class="card" style="border-top:4px solid var(--gold); text-align:center; padding:28px 20px;">
+      <div style="font-family:'Inter'; font-size:3em; font-weight:900; color:var(--gold); margin-bottom:8px;">03</div>
+      <h4 style="font-size:0.95em; margin-bottom:12px;">中小企業支援:<br>5倍格差の解消</h4>
+      <p style="font-size:0.78em; line-height:1.6; color:var(--text-mid);">
+        政府のDX補助金、構築済みAIツール（ノーコード/ローコード）、業界コンソーシアムのナレッジ共有を活用し、中小企業の導入をスケールで実現する。
+      </p>
+    </div>
+  </div>
+
+  <div class="insight-box" style="margin-top:16px;">
+    <strong>結論:</strong> 日本はAI投資意欲（BCGによると世界最高水準）を持つが、実行基盤が不足している。グローバル競合が進む中、機会の窓は狭まりつつある。
+  </div>
+
+  <div class="source">出典: BCG (2025), IPA (2025), 経産省 DX政策 (2025)</div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 36: KEY TAKEAWAYS -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>キーテイクアウェイ</h2>
+    <span class="page-indicator">36 / 33</span>
+  </div>
+
+  <div style="max-width:85%; margin:0 auto;">
+    <div style="display:flex; gap:16px; align-items:flex-start; margin-bottom:20px; padding:20px; background:var(--off-white); border-radius:8px; border-left:4px solid var(--gold);">
+      <div style="font-family:'Inter'; font-size:1.8em; font-weight:900; color:var(--gold); flex-shrink:0; width:36px;">1</div>
+      <div>
+        <h4 style="font-size:0.95em; margin-bottom:4px;">AIパラドックスは現実である</h4>
+        <p style="font-size:0.85em; color:var(--text-mid); line-height:1.5;">88%が導入済み、95%がリターンゼロ。問題は技術へのアクセスではなく戦略的実行にある。</p>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:16px; align-items:flex-start; margin-bottom:20px; padding:20px; background:var(--off-white); border-radius:8px; border-left:4px solid var(--gold);">
+      <div style="font-family:'Inter'; font-size:1.8em; font-weight:900; color:var(--gold); flex-shrink:0; width:36px;">2</div>
+      <div>
+        <h4 style="font-size:0.95em; margin-bottom:4px;">深さは広さに勝る</h4>
+        <p style="font-size:0.85em; color:var(--text-mid); line-height:1.5;">3.5件の集中ユースケースと80%の基幹投資が、6.1件の分散施策を凌駕する。先進企業はROI 2.1倍を達成。</p>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:16px; align-items:flex-start; margin-bottom:20px; padding:20px; background:var(--off-white); border-radius:8px; border-left:4px solid var(--gold);">
+      <div style="font-family:'Inter'; font-size:1.8em; font-weight:900; color:var(--gold); flex-shrink:0; width:36px;">3</div>
+      <div>
+        <h4 style="font-size:0.95em; margin-bottom:4px;">日本の課題は技術ではなく人材である</h4>
+        <p style="font-size:0.85em; color:var(--text-mid); line-height:1.5;">85.1%の人材不足＋5倍の中小企業導入格差 = 世界最高の投資意欲にもかかわらず実行基盤が不足。</p>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:16px; align-items:flex-start; margin-bottom:20px; padding:20px; background:var(--off-white); border-radius:8px; border-left:4px solid var(--gold);">
+      <div style="font-family:'Inter'; font-size:1.8em; font-weight:900; color:var(--gold); flex-shrink:0; width:36px;">4</div>
+      <div>
+        <h4 style="font-size:0.95em; margin-bottom:4px;">コミットメントが複利リターンを生む</h4>
+        <p style="font-size:0.85em; color:var(--text-mid); line-height:1.5;">高成熟企業はAI運用を2.25倍長く維持（45% vs 20%）、時間とともに指数関数的に多くの価値を獲得。</p>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:16px; align-items:flex-start; padding:20px; background:linear-gradient(135deg, var(--navy), var(--navy-light)); border-radius:8px; color:white;">
+      <div style="font-family:'Inter'; font-size:1.8em; font-weight:900; color:var(--gold); flex-shrink:0; width:36px;">5</div>
+      <div>
+        <h4 style="font-size:0.95em; margin-bottom:4px; color:white;">機会の窓は閉じつつある</h4>
+        <p style="font-size:0.85em; color:rgba(255,255,255,0.8); line-height:1.5;">2026年の世界AI支出2.5兆ドル。AI先進企業と後発企業の競争格差は加速するばかりである。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 37: SOURCES -->
+<!-- ============================================ -->
+<section>
+  <div class="slide-header">
+    <h2>参考文献・データソース</h2>
+    <span class="page-indicator">37 / 33</span>
+  </div>
+
+  <div class="two-col gap-sm" style="font-size:0.75em;">
+    <div>
+      <h4 style="font-size:1em; margin-bottom:10px; color:var(--navy);">政府機関・公的機関</h4>
+      <ul style="font-size:0.9em;">
+        <li><strong>経済産業省</strong> - AI導入実態調査・生成AI経済影響予測 (2025)</li>
+        <li><strong>総務省</strong> - 令和7年版 情報通信白書 (2025)</li>
+        <li><strong>IPA</strong> - DX動向2025: AI時代のデジタル人材 (2025)</li>
+        <li><strong>日本銀行</strong> - 金融システムレポート: 金融機関のAI活用 (2025年9月)</li>
+      </ul>
+
+      <h4 style="font-size:1em; margin-top:16px; margin-bottom:10px; color:var(--navy);">海外調査機関</h4>
+      <ul style="font-size:0.9em;">
+        <li><strong>McKinsey</strong> - "The State of AI in 2025" グローバル調査</li>
+        <li><strong>BCG</strong> - "From Potential to Profit: Closing the AI Impact Gap" (2025)</li>
+        <li><strong>Gartner</strong> - 世界AI支出予測 (2026年1月)</li>
+        <li><strong>Gartner</strong> - エージェントAIプロジェクト中止予測 (2025)</li>
+        <li><strong>MIT Sloan</strong> - 生成AI投資リターン分析 (2025)</li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="font-size:1em; margin-bottom:10px; color:var(--navy);">企業ケーススタディ</h4>
+      <ul style="font-size:0.9em;">
+        <li><strong>三菱UFJ銀行</strong> - 全社ChatGPT導入（4万人、月22万時間削減）</li>
+        <li><strong>パナソニック コネクト</strong> - ConnectAI開発（年22.3万時間削減）</li>
+        <li><strong>江崎グリコ</strong> - AIチャットボット導入（問い合わせ31%削減）</li>
+      </ul>
+
+      <h4 style="font-size:1em; margin-top:16px; margin-bottom:10px; color:var(--navy);">業界分析</h4>
+      <ul style="font-size:0.9em;">
+        <li><strong>AIマネジメント研究所</strong> - 失敗パターン分析 (2025)</li>
+        <li><strong>HackAI</strong> - AI ROI算出方法論 (2025)</li>
+        <li><strong>PwC Japan</strong> - 生成AI調査 2025年春</li>
+        <li><strong>Reinforz AI</strong> - Big Tech AI投資トラッカー (2025)</li>
+      </ul>
+
+      <div class="card" style="margin-top:16px; padding:14px; background:var(--off-white); font-size:0.9em;">
+        <strong>免責事項:</strong> 引用データはすべて公開レポート・開示資料に基づく。分析およびフレームワークはオリジナルである。
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /reveal -->
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  slideNumber: 'c/t',
+  width: 1280,
+  height: 720,
+  margin: 0,
+  center: false,
+  transition: 'fade',
+  transitionSpeed: 'fast',
+  backgroundTransition: 'fade',
+  controlsTutorial: false,
+  controls: true,
+  progress: true
+});
+
+/* チャートのデフォルトフォント設定 */
+Chart.defaults.font.family = "'Inter', 'Noto Sans JP', sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#4A5568';
+
+/* チャート: Big Tech AI投資額 */
+const ctxBigtech = document.getElementById('chart-bigtech');
+if (ctxBigtech) {
+  new Chart(ctxBigtech, {
+    type: 'bar',
+    data: {
+      labels: ['Amazon', 'Microsoft', 'Google', 'Meta'],
+      datasets: [{
+        label: '2024年 AI投資額（10億ドル）',
+        data: [100, 80, 75, 46],
+        backgroundColor: ['#0B1F3D', '#1A3A5C', '#2E5B8A', '#4A7DB8'],
+        borderRadius: 4,
+        barThickness: 48
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        title: { display: true, text: 'Big Tech AI設備投資額（2024年）', font: { size: 13, weight: 600 }, color: '#0B1F3D', padding: { bottom: 12 } }
+      },
+      scales: {
+        y: { beginAtZero: true, title: { display: true, text: '10億ドル', font: { size: 11 } }, grid: { color: '#E2E8F0' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+}
+
+/* チャート: 日本企業AI導入率 */
+const ctxJapanAdoption = document.getElementById('chart-japan-adoption');
+if (ctxJapanAdoption) {
+  new Chart(ctxJapanAdoption, {
+    type: 'bar',
+    data: {
+      labels: ['金融\nサービス', 'IT /\n情報通信', '製造業', '医療', '小売 /\nサービス', '中小企業\n（全体）'],
+      datasets: [{
+        label: 'AI導入率',
+        data: [50, 40, 20, 15, 10, 5],
+        backgroundColor: ['#10B981', '#10B981', '#C9A03F', '#C9A03F', '#EF4444', '#EF4444'],
+        borderRadius: 4,
+        barThickness: 36
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        title: { display: true, text: '業界別AI導入率（日本、2025年）', font: { size: 13, weight: 600 }, color: '#0B1F3D', padding: { bottom: 12 } }
+      },
+      scales: {
+        x: { beginAtZero: true, max: 60, title: { display: true, text: '導入率（%）', font: { size: 11 } }, grid: { color: '#E2E8F0' } },
+        y: { grid: { display: false } }
+      }
+    }
+  });
+}
+
+/* チャート: 投資vsリターン */
+const ctxGap = document.getElementById('chart-gap');
+if (ctxGap) {
+  new Chart(ctxGap, {
+    type: 'doughnut',
+    data: {
+      labels: ['EBIT 5%超', 'EBIT影響あり', '収支均衡/赤字', 'マイナス影響'],
+      datasets: [{
+        data: [6, 33, 10, 51],
+        backgroundColor: ['#10B981', '#C9A03F', '#6B7280', '#EF4444'],
+        borderWidth: 2,
+        borderColor: '#FFFFFF'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '55%',
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 12, usePointStyle: true, font: { size: 11 } } },
+        title: { display: true, text: 'AI影響の分布（企業割合 %）', font: { size: 13, weight: 600 }, color: '#0B1F3D', padding: { bottom: 8 } }
+      }
+    }
+  });
+}
+
+/* チャート: 金融セクター */
+const ctxFinancial = document.getElementById('chart-financial');
+if (ctxFinancial) {
+  new Chart(ctxFinancial, {
+    type: 'bar',
+    data: {
+      labels: ['利用中', '試行中', '検討中', '未着手'],
+      datasets: [{
+        label: '金融機関',
+        data: [50, 20, 20, 10],
+        backgroundColor: ['#10B981', '#C9A03F', '#3B82F6', '#E2E8F0'],
+        borderRadius: 4,
+        barThickness: 48
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        title: { display: true, text: '金融機関の生成AI導入状況（日銀）', font: { size: 13, weight: 600 }, color: '#0B1F3D', padding: { bottom: 12 } }
+      },
+      scales: {
+        y: { beginAtZero: true, max: 60, title: { display: true, text: '%', font: { size: 11 } }, grid: { color: '#E2E8F0' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+}
+
+/* チャート: 成功要因比較 */
+const ctxSuccessFactors = document.getElementById('chart-success-factors');
+if (ctxSuccessFactors) {
+  new Chart(ctxSuccessFactors, {
+    type: 'radar',
+    data: {
+      labels: ['ユースケース\n集中度', '基幹予算\n配分', 'KPI\n定義', '人材\n育成', '長期\nコミットメント'],
+      datasets: [{
+        label: 'AI先進企業',
+        data: [90, 85, 95, 80, 90],
+        backgroundColor: 'rgba(16, 185, 129, 0.15)',
+        borderColor: '#10B981',
+        borderWidth: 2,
+        pointBackgroundColor: '#10B981'
+      }, {
+        label: 'その他の企業',
+        data: [40, 55, 30, 35, 40],
+        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+        borderColor: '#EF4444',
+        borderWidth: 2,
+        pointBackgroundColor: '#EF4444'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 12, usePointStyle: true, font: { size: 11 } } },
+        title: { display: true, text: 'AI能力成熟度の比較', font: { size: 13, weight: 600 }, color: '#0B1F3D' }
+      },
+      scales: {
+        r: { beginAtZero: true, max: 100, ticks: { stepSize: 20, display: false }, grid: { color: '#E2E8F0' }, pointLabels: { font: { size: 10 } } }
+      }
+    }
+  });
+}
+
+/* チャート: CIO調査結果 */
+const ctxFailureCost = document.getElementById('chart-failure-cost');
+if (ctxFailureCost) {
+  new Chart(ctxFailureCost, {
+    type: 'doughnut',
+    data: {
+      labels: ['黒字 (28%)', '収支均衡 (44%)', '赤字 (28%)'],
+      datasets: [{
+        data: [28, 44, 28],
+        backgroundColor: ['#10B981', '#C9A03F', '#EF4444'],
+        borderWidth: 2,
+        borderColor: '#FFFFFF'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '55%',
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 12, usePointStyle: true, font: { size: 11 } } },
+        title: { display: true, text: 'CIO AI投資の成果', font: { size: 13, weight: 600 }, color: '#0B1F3D', padding: { bottom: 8 } }
+      }
+    }
+  });
+}
+
+/* チャート: 投資配分比較 */
+const ctxAllocation = document.getElementById('chart-allocation');
+if (ctxAllocation) {
+  new Chart(ctxAllocation, {
+    type: 'bar',
+    data: {
+      labels: ['基幹機能予算', 'その他配分'],
+      datasets: [{
+        label: 'AI先進企業',
+        data: [80, 20],
+        backgroundColor: '#10B981',
+        borderRadius: 4,
+        barThickness: 36
+      }, {
+        label: 'その他の企業',
+        data: [56, 44],
+        backgroundColor: '#EF4444',
+        borderRadius: 4,
+        barThickness: 36
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 10, usePointStyle: true, font: { size: 11 } } },
+        title: { display: true, text: 'AI予算配分（%）', font: { size: 13, weight: 600 }, color: '#0B1F3D' }
+      },
+      scales: {
+        y: { beginAtZero: true, max: 100, grid: { color: '#E2E8F0' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+}
+
+/* チャート: ユースケース数 */
+const ctxUsecase = document.getElementById('chart-usecase');
+if (ctxUsecase) {
+  new Chart(ctxUsecase, {
+    type: 'bar',
+    data: {
+      labels: ['AI先進企業', 'その他の企業'],
+      datasets: [{
+        label: '優先ユースケース数',
+        data: [3.5, 6.1],
+        backgroundColor: ['#10B981', '#EF4444'],
+        borderRadius: 4,
+        barThickness: 56
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        title: { display: true, text: '優先ユースケース数', font: { size: 13, weight: 600 }, color: '#0B1F3D' }
+      },
+      scales: {
+        y: { beginAtZero: true, max: 8, title: { display: true, text: 'ユースケース数', font: { size: 11 } }, grid: { color: '#E2E8F0' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+}
+
+/* チャート: ROI比較 */
+const ctxROI = document.getElementById('chart-roi');
+if (ctxROI) {
+  new Chart(ctxROI, {
+    type: 'bar',
+    data: {
+      labels: ['ROI倍率', '売上成長率'],
+      datasets: [{
+        label: 'AI先進企業',
+        data: [2.1, 1.7],
+        backgroundColor: '#10B981',
+        borderRadius: 4,
+        barThickness: 48
+      }, {
+        label: 'その他（基準値）',
+        data: [1.0, 1.0],
+        backgroundColor: '#E2E8F0',
+        borderRadius: 4,
+        barThickness: 48
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 12, usePointStyle: true, font: { size: 11 } } },
+        title: { display: true, text: 'AI先進企業 vs その他（倍率）', font: { size: 13, weight: 600 }, color: '#0B1F3D' }
+      },
+      scales: {
+        y: { beginAtZero: true, max: 3, grid: { color: '#E2E8F0' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+}
+
+/* チャート: 成熟度 */
+const ctxMaturity = document.getElementById('chart-maturity');
+if (ctxMaturity) {
+  new Chart(ctxMaturity, {
+    type: 'bar',
+    data: {
+      labels: ['高成熟企業', '低成熟企業'],
+      datasets: [{
+        label: '3年以上運用',
+        data: [45, 20],
+        backgroundColor: ['#10B981', '#EF4444'],
+        borderRadius: 4,
+        barThickness: 64
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        title: { display: true, text: '3年以上AI運用を維持した企業（%）', font: { size: 13, weight: 600 }, color: '#0B1F3D' }
+      },
+      scales: {
+        y: { beginAtZero: true, max: 60, title: { display: true, text: '%', font: { size: 11 } }, grid: { color: '#E2E8F0' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+}
+
+/* チャート: ROIモデル */
+const ctxROIModel = document.getElementById('chart-roi-model');
+if (ctxROIModel) {
+  new Chart(ctxROIModel, {
+    type: 'bar',
+    data: {
+      labels: ['需要\n予測', 'チャット\nボット', '文書\n処理', '生成AI\n生産性', '金融\n中央値'],
+      datasets: [{
+        label: '初年度ROI（%）',
+        data: [2400, 750, 300, 100, 10],
+        backgroundColor: ['#10B981', '#10B981', '#C9A03F', '#C9A03F', '#6B7280'],
+        borderRadius: 4,
+        barThickness: 36
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        title: { display: true, text: 'ユースケース別 初年度ROI（%）', font: { size: 13, weight: 600 }, color: '#0B1F3D' }
+      },
+      scales: {
+        x: { beginAtZero: true, type: 'logarithmic', title: { display: true, text: 'ROI %（対数スケール）', font: { size: 11 } }, grid: { color: '#E2E8F0' } },
+        y: { grid: { display: false } }
+      }
+    }
+  });
+}
+
+/* チャート: 日本の課題 */
+const ctxJapanChallenges = document.getElementById('chart-japan-challenges');
+if (ctxJapanChallenges) {
+  new Chart(ctxJapanChallenges, {
+    type: 'bar',
+    data: {
+      labels: ['DX人材\n不足', 'AI戦略\n未策定', 'セキュリティ\n懸念', 'ROI\n不明確', 'データ\n品質'],
+      datasets: [{
+        label: '企業の割合（%）',
+        data: [85, 66, 58, 52, 45],
+        backgroundColor: ['#EF4444', '#EF4444', '#C9A03F', '#C9A03F', '#C9A03F'],
+        borderRadius: 4,
+        barThickness: 36
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        title: { display: true, text: 'AI導入の主要障壁（日本）', font: { size: 13, weight: 600 }, color: '#0B1F3D' }
+      },
+      scales: {
+        y: { beginAtZero: true, max: 100, title: { display: true, text: '企業の割合（%）', font: { size: 11 } }, grid: { color: '#E2E8F0' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>
