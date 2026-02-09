@@ -522,7 +522,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .feature-card:nth-child(even) { direction: ltr; }
+            .feature-card:nth-child(even),
+            .feature-card:nth-child(even) > * { direction: ltr; }
 
             .card-visual { min-height: 220px; }
             .card-content { padding: 1.75rem; }
@@ -612,7 +613,7 @@
             <div class="card-visual"
                  onmouseenter="var v=this.querySelector('video');var i=this.querySelector('img');if(v){v.style.opacity='1';i.style.opacity='0';v.currentTime=0;v.play();}"
                  onmouseleave="var v=this.querySelector('video');var i=this.querySelector('img');if(v){v.pause();v.style.opacity='0';i.style.opacity='1';}">
-                <img src="ai-adoption-analysis-thumbnail.png" alt="AI Adoption Analysis">
+                <img src="ai-adoption-analysis-thumbnail.png" alt="AI導入分析レポート - 日本企業のAI導入ケーススタディ">
                 <video src="ai-adoption-analysis-preview.mp4" muted loop playsinline preload="auto"></video>
                 <span class="slide-badge">37 slides</span>
             </div>
@@ -646,7 +647,7 @@
 
         <div class="feature-card">
             <div class="card-visual">
-                <img src="legacy-finance-thumbnail.png" alt="Legacy Finance AI Roadmap"
+                <img src="legacy-finance-thumbnail.png" alt="レガシー金融システムのAI近代化ロードマップ"
                      style="background: #0a1628;">
                 <span class="slide-badge">35 slides</span>
             </div>
@@ -757,8 +758,16 @@
             });
         }
 
-        switchLanguage();
-        switchLanguage();
+        (function initLang() {
+            const t = tr['ja'];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) {
+                    if (el.tagName === 'H1') el.innerHTML = t[key];
+                    else el.textContent = t[key];
+                }
+            });
+        })();
     </script>
 </body>
 </html>
