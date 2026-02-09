@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>レガシー金融システムのAI近代化ロードマップ - 地銀・保険の現実解</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --navy: #0B1F3D;
+  --navy-light: #1A3A5C;
+  --gold: #C9A03F;
+  --gold-light: #E8D08F;
+  --white: #FFFFFF;
+  --off-white: #F7F8FA;
+  --text-dark: #2D3748;
+  --text-mid: #4A5568;
+  --text-light: #6B7280;
+  --border: #E2E8F0;
+  --success: #10B981;
+  --success-light: #D1FAE5;
+  --failure: #EF4444;
+  --failure-light: #FEE2E2;
+  --blue-accent: #3B82F6;
+}
+
+.reveal {
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  color: var(--text-dark);
+  font-size: 22px;
+}
+
+.reveal .slides { text-align: left; }
+.reveal .slides section { padding: 40px 60px; box-sizing: border-box; }
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  color: var(--navy);
+  text-transform: none;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin-bottom: 0.6em;
+}
+
+.reveal h1 { font-size: 2.4em; }
+.reveal h2 { font-size: 1.6em; }
+.reveal h3 { font-size: 1.2em; }
+
+.headline {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--navy);
+  border-left: 4px solid var(--gold);
+  padding-left: 20px;
+  margin-bottom: 32px;
+  line-height: 1.4;
+}
+
+.subheadline {
+  font-size: 0.95em;
+  color: var(--text-mid);
+  font-weight: 400;
+  margin-top: -20px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.stat-grid { display: grid; gap: 24px; margin: 24px 0; }
+.stat-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+.stat-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.stat-grid.cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+.stat-card {
+  background: var(--off-white);
+  border-radius: 8px;
+  padding: 28px 24px;
+  text-align: center;
+  border-top: 3px solid var(--gold);
+  transition: transform 0.2s;
+}
+.stat-card:hover { transform: translateY(-2px); }
+
+.stat-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.8em;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+.stat-number.gold { color: var(--gold); }
+.stat-number.success { color: var(--success); }
+.stat-number.failure { color: var(--failure); }
+
+.stat-label {
+  font-size: 0.8em;
+  color: var(--text-light);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.stat-sub {
+  font-size: 0.65em;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.two-col.gap-sm { gap: 24px; }
+.two-col.ratio-6-4 { grid-template-columns: 6fr 4fr; }
+.two-col.ratio-4-6 { grid-template-columns: 4fr 6fr; }
+
+.reveal table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85em;
+  margin: 16px 0;
+}
+.reveal table th {
+  background: var(--navy);
+  color: white;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+.reveal table td {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.reveal table tr:nth-child(even) { background: var(--off-white); }
+.reveal table tr:hover { background: #EDF2F7; }
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.card.navy { background: var(--navy); color: white; }
+.card.navy h3, .card.navy h4 { color: white; }
+.card.success-border { border-left: 4px solid var(--success); }
+.card.failure-border { border-left: 4px solid var(--failure); }
+.card.gold-border { border-left: 4px solid var(--gold); }
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.7em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.badge.success { background: var(--success-light); color: #065F46; }
+.badge.failure { background: var(--failure-light); color: #991B1B; }
+.badge.gold { background: #FEF3C7; color: #92400E; }
+.badge.navy { background: #DBEAFE; color: var(--navy); }
+
+.reveal ul { list-style: none; padding: 0; margin: 12px 0; }
+.reveal ul li {
+  padding: 6px 0 6px 20px;
+  position: relative;
+  line-height: 1.6;
+  font-size: 0.9em;
+}
+.reveal ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+.source {
+  font-size: 0.6em;
+  color: var(--text-light);
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  max-height: 380px;
+}
+.chart-container canvas { max-height: 380px; }
+
+.cover-slide {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100%;
+  padding: 60px 80px !important;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+}
+.cover-slide h1 {
+  color: white;
+  font-size: 2.6em;
+  font-weight: 900;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+.cover-subtitle {
+  color: var(--gold-light);
+  font-size: 1.15em;
+  font-weight: 400;
+  margin-bottom: 48px;
+  line-height: 1.6;
+  max-width: 70%;
+}
+.cover-meta {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.8em;
+  line-height: 1.8;
+}
+.cover-line {
+  width: 80px;
+  height: 3px;
+  background: var(--gold);
+  margin: 24px 0;
+}
+
+.section-divider {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100%;
+  padding: 60px 80px !important;
+  background: var(--navy);
+}
+.section-divider .section-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 4em;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.section-divider h2 {
+  color: white;
+  font-size: 2.2em;
+  margin-bottom: 12px;
+}
+.section-divider p {
+  color: rgba(255,255,255,0.6);
+  font-size: 1em;
+  max-width: 60%;
+}
+
+.case-card {
+  background: white;
+  border-radius: 8px;
+  padding: 28px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.case-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.case-company {
+  font-size: 1.15em;
+  font-weight: 700;
+  color: var(--navy);
+}
+.case-metric {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 12px 0;
+}
+.case-metric-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 2em;
+  font-weight: 800;
+}
+.case-metric-label { font-size: 0.85em; color: var(--text-mid); }
+
+.vs-layout { display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: start; }
+.vs-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.4em;
+  font-weight: 800;
+  color: var(--text-light);
+  padding-top: 40px;
+}
+
+.timeline {
+  display: flex;
+  gap: 0;
+  margin: 24px 0;
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--border);
+}
+.timeline-item {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  padding-top: 48px;
+}
+.timeline-dot {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid white;
+  box-shadow: 0 0 0 2px var(--gold);
+  z-index: 1;
+}
+.timeline-label {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 0.95em;
+  margin-bottom: 8px;
+}
+.timeline-desc {
+  font-size: 0.75em;
+  color: var(--text-mid);
+  line-height: 1.5;
+  padding: 0 8px;
+}
+
+.pattern-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+.pattern-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--off-white);
+  border-radius: 6px;
+  font-size: 0.82em;
+  line-height: 1.5;
+}
+.pattern-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: var(--failure);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.85em;
+}
+.pattern-num.success-bg { background: var(--success); }
+.pattern-num.gold-bg { background: var(--gold); }
+.pattern-num.navy-bg { background: var(--navy); }
+
+.flow-step {
+  padding: 12px 16px;
+  background: var(--off-white);
+  border-left: 3px solid var(--failure);
+  margin-bottom: 8px;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.85em;
+}
+.flow-arrow {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 1.2em;
+  margin: 4px 0;
+}
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ===== ACT 1: 現状認識 ===== -->
+
+<section class="cover-slide">
+    <h1>レガシー金融システムの<br>AI近代化ロードマップ</h1>
+    <p class="cover-subtitle">地方銀行・保険会社の実例に基づく<br>段階的AI導入戦略ガイド</p>
+    <div class="cover-line"></div>
+    <div class="cover-meta">
+        Based on BCG / McKinsey / 日本銀行 / 経済産業省の公的データ | 2026年2月
+    </div>
+</section>
+
+<section>
+    <h2 class="headline">エグゼクティブサマリー</h2>
+    <div class="stat-grid cols-4">
+        <div class="stat-card">
+            <div class="stat-number failure">51%</div>
+            <div class="stat-label">日本のAI業務活用率</div>
+            <div class="stat-sub">BCG調査 11カ国中最下位</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number failure">12兆円</div>
+            <div class="stat-label">レガシー放置の年間損失リスク</div>
+            <div class="stat-sub">経済産業省 DXレポート</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number success">90%</div>
+            <div class="stat-label">AI査定による時間削減</div>
+            <div class="stat-sub">損保ジャパン 保険金査定</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number gold">19,500h</div>
+            <div class="stat-label">年間業務削減効果</div>
+            <div class="stat-sub">横浜銀行 融資稟議書AI</div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="headline">日本のAI活用率は世界最下位水準</h2>
+    <p class="subheadline">BCG「AI at Work 2025」- 11カ国10,600人調査</p>
+    <div class="chart-container">
+        <canvas id="aiUsageChart"></canvas>
+    </div>
+    <div class="two-col" style="margin-top:20px;">
+        <div class="card gold-border">
+            <h3>トレーニング充足率</h3>
+            <p><strong style="font-size:1.8em;color:var(--failure);">12%</strong> <span style="color:var(--text-mid);">日本</span> vs <strong style="font-size:1.8em;color:var(--navy);">36%</strong> <span style="color:var(--text-mid);">世界平均</span></p>
+        </div>
+        <div class="card gold-border">
+            <h3>シャドーAIリスク</h3>
+            <p>企業がツール未提供 → 従業員が無断使用 → 情報漏洩リスク</p>
+        </div>
+    </div>
+    <div class="source">BCG "AI at Work 2025" (2025年6月)</div>
+</section>
+
+<section>
+    <h2 class="headline">「2025年の壁」- レガシーシステム依存の実態</h2>
+    <div class="stat-grid cols-3">
+        <div class="stat-card">
+            <div class="stat-number gold">56.6%</div>
+            <div class="stat-label">レガシーシステム使用中の企業</div>
+            <div class="stat-sub">IPA 2024年度調査</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number failure">12兆円/年</div>
+            <div class="stat-label">放置した場合の経済損失</div>
+            <div class="stat-sub">経産省 DXレポート</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number gold">5,118億円</div>
+            <div class="stat-label">モダナイゼーション市場規模(2025)</div>
+            <div class="stat-sub">デロイト CAGR 10%成長</div>
+        </div>
+    </div>
+    <div class="two-col">
+        <div class="card failure-border">
+            <h3>COBOL依存の3大リスク</h3>
+            <ul>
+                <li>技術者高齢化（50-60代中心）でブラックボックス化が加速</li>
+                <li>保守コスト増大（メインフレームライセンス+人件費）</li>
+                <li>移行失敗リスク（AI変換は100%正確ではない）</li>
+            </ul>
+        </div>
+        <div class="card success-border">
+            <h3>変化の兆し</h3>
+            <ul>
+                <li>全銀システム脱COBOL（2027年予定）</li>
+                <li>生成AIによるCOBOL解析・移行支援の台頭</li>
+                <li>COBOL PARK設立（SCSK+FPT 2025年3月）</li>
+            </ul>
+        </div>
+    </div>
+    <div class="source">IPA「2024年度ソフトウェア動向調査」, 経済産業省「DXレポート」</div>
+</section>
+
+<section>
+    <h2 class="headline">金融機関が直面するレガシーの壁</h2>
+    <div class="pattern-grid">
+        <div class="pattern-item">
+            <div class="pattern-num navy-bg">1</div>
+            <div><strong>人材枯渇</strong><br>COBOL技術者の多くは50-60代。若手はモダン言語に集中し、技術継承が断絶</div>
+        </div>
+        <div class="pattern-item">
+            <div class="pattern-num navy-bg">2</div>
+            <div><strong>ブラックボックス化</strong><br>設計書・仕様書が散逸。コードが唯一の設計情報で解読に膨大な時間</div>
+        </div>
+        <div class="pattern-item">
+            <div class="pattern-num">3</div>
+            <div><strong>心理的障壁</strong><br>「動いているシステムに触るな」- 移行によるシステム停止リスクへの恐怖</div>
+        </div>
+        <div class="pattern-item">
+            <div class="pattern-num">4</div>
+            <div><strong>コスト圧迫</strong><br>保守費用が増大し成長投資を圧迫。DXに回せる予算がない</div>
+        </div>
+    </div>
+    <div class="card navy">
+        <p>明治安田生命はCOBOLシステム改修に生成AIを活用し、工数を約25%削減（2025年6月）</p>
+    </div>
+    <div class="source">IPA, @IT (2025年12月)</div>
+</section>
+
+<section>
+    <h2 class="headline">AI先進企業 vs 後進企業 - 拡大する格差</h2>
+    <p class="subheadline">BCG調査（2025年9月）- AI導入レベルと経営指標の相関</p>
+    <div class="stat-grid cols-3">
+        <div class="stat-card">
+            <div class="stat-number success">1.7x</div>
+            <div class="stat-label">売上高成長率</div>
+            <div class="stat-sub">先進企業 vs 後進企業</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number success">3.6x</div>
+            <div class="stat-label">3年間TSR</div>
+            <div class="stat-sub">株主総利回り</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number success">1.6x</div>
+            <div class="stat-label">EBITマージン</div>
+            <div class="stat-sub">営業利益率</div>
+        </div>
+    </div>
+    <div class="card">
+        <h3>示唆</h3>
+        <p>AI導入は「コスト削減」から「競争優位の源泉」へ。導入を先延ばしにするほど、キャッチアップコストは指数関数的に増大する</p>
+    </div>
+    <div class="source">BCG "AI at Scale 2025" (2025年9月)</div>
+</section>
+
+<section>
+    <h2 class="headline">マッキンゼー警告: AI活用の遅れは存続リスク</h2>
+    <div style="margin:24px 0;">
+        <div class="stat-card">
+            <div class="stat-number failure">1,700億ドル</div>
+            <div class="stat-label">銀行が失うリスクのある利益</div>
+            <div class="stat-sub">≒ 約26兆円（2025年10月 McKinsey）</div>
+        </div>
+    </div>
+    <div class="two-col">
+        <div class="card failure-border">
+            <h3>リスクシナリオ</h3>
+            <p>顧客がAIエージェントを活用 → 最適な金融商品を自動選択 → 銀行の低金利口座からの利ざやが消失</p>
+        </div>
+        <div class="card success-border">
+            <h3>対応の方向性</h3>
+            <p>自社サービスにAIを統合 → 顧客体験の差別化 → AIエージェント時代の競争力確保</p>
+        </div>
+    </div>
+    <div class="source">McKinsey (2025年10月), Bloomberg</div>
+</section>
+
+<section class="section-divider">
+    <div class="section-number">01</div>
+    <h2>成功事例分析</h2>
+    <p>地方銀行・保険会社のAI導入で実際に成果を上げた7社の取り組みを詳細に分析</p>
+</section>
+
+<!-- ===== ACT 2: 成功事例分析 ===== -->
+
+<section>
+    <h2 class="headline">成功事例マップ - 7社の取り組み一覧</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>企業名</th>
+                <th>業種</th>
+                <th>AI活用領域</th>
+                <th>主要効果</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="font-weight:600;">横浜銀行</td>
+                <td>地方銀行</td>
+                <td>融資稟議書AI・ボイスボット・不正検知</td>
+                <td style="color:var(--success);font-weight:600;">年19,500h削減</td>
+            </tr>
+            <tr>
+                <td style="font-weight:600;">宮崎銀行</td>
+                <td>地方銀行</td>
+                <td>融資稟議書AI</td>
+                <td style="color:var(--success);font-weight:600;">40分→2-3分</td>
+            </tr>
+            <tr>
+                <td style="font-weight:600;">京都銀行</td>
+                <td>地方銀行</td>
+                <td>生成AI文書検索</td>
+                <td style="color:var(--success);font-weight:600;">年8,000h削減</td>
+            </tr>
+            <tr>
+                <td style="font-weight:600;">七十七銀行</td>
+                <td>地方銀行</td>
+                <td>55業務プロセスAI化</td>
+                <td style="color:var(--success);font-weight:600;">年32,000h削減</td>
+            </tr>
+            <tr>
+                <td style="font-weight:600;">損保ジャパン/SOMPO</td>
+                <td>損害保険</td>
+                <td>AI査定・AIエージェント</td>
+                <td style="color:var(--success);font-weight:600;">査定時間90%減</td>
+            </tr>
+            <tr>
+                <td style="font-weight:600;">住友生命</td>
+                <td>生命保険</td>
+                <td>AIロープレ・Vitality</td>
+                <td style="color:var(--success);font-weight:600;">好感触87%</td>
+            </tr>
+            <tr>
+                <td style="font-weight:600;">第一生命</td>
+                <td>生命保険</td>
+                <td>AIチャット・AI-OCR</td>
+                <td style="color:var(--success);font-weight:600;">330h/日効率化</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section>
+    <h2 class="headline">横浜銀行 - 融資稟議書AI</h2>
+    <p class="subheadline">日本IBMと連携、生成AIによる融資審査業務の革新</p>
+    <div class="two-col">
+        <div class="case-card">
+            <div class="case-header">
+                <div class="case-company">横浜銀行（コンコルディアFG）</div>
+                <span class="badge navy">地銀最大手</span>
+            </div>
+            <div class="case-metric">
+                <div class="case-metric-value" style="color:var(--success);">19,500h/年</div>
+                <div class="case-metric-label">業務削減効果</div>
+            </div>
+            <div class="case-metric">
+                <div class="case-metric-value" style="color:var(--gold);">8h/月</div>
+                <div class="case-metric-label">行員1人あたり削減</div>
+            </div>
+            <p style="font-size:0.85em;margin-top:12px;">生成AIが融資先の財務データを分析し、稟議書のドラフトを自動生成。与信判断に必要な審査項目のヒアリング不足を明確化し、審査スキル向上にも貢献</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-label">2024年11月</div>
+                <div class="timeline-desc">日本IBMと実証実験開始</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-label">2025年1月</div>
+                <div class="timeline-desc">チャットボット形式で各支店に導入</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-label">2025年内</div>
+                <div class="timeline-desc">基幹システム統合判断</div>
+            </div>
+        </div>
+    </div>
+    <div class="source">日本経済新聞 (2024年11月), IBM (2024年11月)</div>
+</section>
+
+<section>
+    <h2 class="headline">横浜銀行 - マルチAI活用戦略</h2>
+    <div class="two-col">
+        <div class="card success-border">
+            <h3>AIエージェント型ボイスボット</h3>
+            <span class="badge success">地銀初</span>
+            <p style="margin-top:12px;">5種類の証明書発行を電話で自動受付。応対時間5割削減。繁忙期月1,600件の電話受付を自動化</p>
+        </div>
+        <div class="card gold-border">
+            <h3>AI不正・リスク検知</h3>
+            <span class="badge navy">NEC協業</span>
+            <p style="margin-top:12px;">マネロン・特殊詐欺のモニタリング業務にAI活用。調査対象口座を30-40%削減</p>
+        </div>
+    </div>
+    <div class="source">モビルス (2025年), NEC</div>
+</section>
+
+<section>
+    <h2 class="headline">宮崎銀行 - 融資稟議書の劇的短縮</h2>
+    <p class="subheadline">IBMと共同開発、生成AIで審査業務を変革</p>
+    <div class="case-card">
+        <div class="case-header">
+            <div class="case-company">宮崎銀行</div>
+            <span class="badge gold">IBM協業</span>
+        </div>
+        <div class="vs-layout">
+            <div style="text-align:center;">
+                <h4>Before</h4>
+                <div class="stat-number failure">40分</div>
+                <div class="stat-label">稟議書作成時間（手作業）</div>
+            </div>
+            <div class="vs-divider">→</div>
+            <div style="text-align:center;">
+                <h4>After</h4>
+                <div class="stat-number success">2-3分</div>
+                <div class="stat-label">AI活用後の作成時間</div>
+            </div>
+        </div>
+        <p style="margin-top:16px;">融資審査の人手依存による遅延が常態化していた課題に対し、2024年4月から実装を進め、93-95%の時間短縮を実現</p>
+    </div>
+    <div class="source">日本経済新聞, IBM</div>
+</section>
+
+<section>
+    <h2 class="headline">京都銀行 - 全従業員向け生成AI文書検索</h2>
+    <div class="stat-grid cols-3">
+        <div class="stat-card">
+            <div class="stat-number success">8,000h</div>
+            <div class="stat-label">年間削減効果</div>
+            <div class="stat-sub">見込み</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number gold">4,300人</div>
+            <div class="stat-label">全従業員展開</div>
+            <div class="stat-sub">2025年2月運用開始</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" style="color:var(--navy);">AI</div>
+            <div class="stat-label">文書検索+回答</div>
+            <div class="stat-sub">行内チャットボット</div>
+        </div>
+    </div>
+    <div class="card">
+        <p>行内向けAIチャットボットに生成AIを活用した文書検索・回答機能を追加。内部規定・マニュアル・過去事例を即座に検索可能にし、窓口対応や事務処理のスピードを大幅に向上</p>
+    </div>
+    <div class="source">日経 (2025年2月)</div>
+</section>
+
+<section>
+    <h2 class="headline">七十七銀行 - 東北最大の地銀によるDX戦略</h2>
+    <p class="subheadline">Vision 2030の柱として生成AIを位置づけ</p>
+    <div class="stat-grid cols-3">
+        <div class="stat-card">
+            <div class="stat-number success">32,000h</div>
+            <div class="stat-label">年間工数削減</div>
+            <div class="stat-sub">見込み</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number gold">55</div>
+            <div class="stat-label">AI化された業務プロセス</div>
+            <div class="stat-sub">従来の手作業をAI移行</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" style="color:var(--navy);">NTT</div>
+            <div class="stat-label">NTT東日本と協業</div>
+            <div class="stat-sub">セキュア環境構築</div>
+        </div>
+    </div>
+    <div class="card success-border">
+        <p>「Vision 2030」DX戦略の柱として生成AIを位置づけ。NTT東日本と共同でセキュアなAI実行環境を構築し、段階的に55の業務プロセスに生成AIを導入</p>
+    </div>
+    <div class="source">七十七銀行</div>
+</section>
+
+<section>
+    <h2 class="headline">損保ジャパン - AI査定と3万人AIエージェント</h2>
+    <p class="subheadline">国内最大規模のAIエージェント導入</p>
+    <div class="stat-grid cols-4">
+        <div class="stat-card">
+            <div class="stat-number success">90%</div>
+            <div class="stat-label">査定時間削減</div>
+            <div class="stat-sub">画像解析AI</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number success">95%</div>
+            <div class="stat-label">火災保険自動化精度</div>
+            <div class="stat-sub">AIエージェント Heylix</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number gold">30,000人</div>
+            <div class="stat-label">AIエージェント導入</div>
+            <div class="stat-sub">国内企業グループ最大規模</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number gold">24/7</div>
+            <div class="stat-label">保険金支払い対応</div>
+            <div class="stat-sub">休日・深夜も自動処理</div>
+        </div>
+    </div>
+    <div class="source">日本経済新聞, SOMPOホールディングス (2025-2026)</div>
+</section>
+
+<section>
+    <h2 class="headline">損保ジャパン - AI活用の全体像</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">2020年</div>
+            <div class="timeline-desc">AI査定開始 - 車両損傷画像から修理費AI算出</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">2024年</div>
+            <div class="timeline-desc">保険規定AI解析 - 生成AIで補償範囲を瞬時判定</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">2025年</div>
+            <div class="timeline-desc">照会回答支援 - 全国営業店で生成AI利用開始</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">2026年</div>
+            <div class="timeline-desc">3万人AIエージェント全社展開、代理店評価AI（Palantir AIP）</div>
+        </div>
+    </div>
+    <div class="card navy">
+        <p>「SOMPO AIエージェント」は2025年12月時点で、単一企業グループにおける国内社員への導入数として最大規模</p>
+    </div>
+    <div class="source">損保ジャパン, SOMPOホールディングス</div>
+</section>
+
+<section>
+    <h2 class="headline">住友生命 - AIロールプレイングシステム</h2>
+    <p class="subheadline">エクサウィザーズと共同開発、営業職員の育成を変革</p>
+    <div class="two-col">
+        <div class="case-card">
+            <div class="case-header">
+                <div class="case-company">住友生命</div>
+                <span class="badge success">エクサウィザーズ協業</span>
+            </div>
+            <p style="font-size:0.85em;">AIアバターがお客さま役を担い、営業職員とロールプレイング。伝えるべき情報を適切な順序で話せているかをAIが評価</p>
+            <div class="timeline" style="margin-top:16px;">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-label">2025年4月</div>
+                    <div class="timeline-desc">新人層対象に運用開始</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-label">2025年12月</div>
+                    <div class="timeline-desc">生成AI活用でレベルアップ（台本なし自由対話）</div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h3>導入効果</h3>
+            <ul>
+                <li><strong>スキルの標準化:</strong> 指導者のスキル格差を解消</li>
+                <li><strong>24時間トレーニング:</strong> いつでもロープレ可能</li>
+                <li><strong>臨機応変な対応力:</strong> 台本なし自由対話で実践力向上</li>
+                <li><strong>一連フロー訓練:</strong> ニーズ深掘り→アポイント取得まで</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="headline">住友生命 - Vitality × AIアバター</h2>
+    <div class="stat-grid cols-2">
+        <div class="stat-card">
+            <div class="stat-number success">87%</div>
+            <div class="stat-label">サービス提案に好感触</div>
+            <div class="stat-sub">NTTドコモビジネスと共同実証</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number gold">40%</div>
+            <div class="stat-label">魅力度が向上したと回答</div>
+            <div class="stat-sub">Vitalityスマート試用者</div>
+        </div>
+    </div>
+    <div class="card">
+        <p>GPT-4oとAIアバターを組み合わせ、パーソナライズドメッセージで運動・健康への関心度向上を検証。保険×ヘルスケア×AIの融合事例</p>
+    </div>
+    <div class="source">住友生命, NTTドコモビジネス (2025年7月)</div>
+</section>
+
+<section>
+    <h2 class="headline">第一生命 - AIチャットと事務自動化</h2>
+    <div class="stat-grid cols-3">
+        <div class="stat-card">
+            <div class="stat-number success">330h/日</div>
+            <div class="stat-label">業務効率化</div>
+            <div class="stat-sub">1営業日あたり</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number gold">73%</div>
+            <div class="stat-label">顧客満足度</div>
+            <div class="stat-sub">ICHI-to-Chat利用者</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number success">40%</div>
+            <div class="stat-label">事務効率化</div>
+            <div class="stat-sub">AI-OCR導入効果</div>
+        </div>
+    </div>
+    <div class="two-col">
+        <div class="card success-border">
+            <h3>ICHI-to-Chat</h3>
+            <p>生成AI活用チャットサービス。LINE公式アカウントで24時間365日の顧客対応を実現。1,000万件以上の契約データからAIが最適な保険プランを提案</p>
+        </div>
+        <div class="card gold-border">
+            <h3>マルチAI-OCR</h3>
+            <p>PFU「ABBYY FlexiCapture」活用。紙の書類業務を自動化。「今まで2人必要だった作業が1人で済む」レベルの効率化</p>
+        </div>
+    </div>
+    <div class="source">第一生命, PFU</div>
+</section>
+
+<section>
+    <h2 class="headline">成功企業に共通する5つのパターン</h2>
+    <div class="pattern-grid">
+        <div class="pattern-item">
+            <div class="pattern-num success-bg">1</div>
+            <div><strong>小さく始めて大きく育てる</strong><br>全社導入ではなく特定業務から。宮崎銀行は融資稟議書1業務から、京都銀行はチャットボットから段階拡大</div>
+        </div>
+        <div class="pattern-item">
+            <div class="pattern-num success-bg">2</div>
+            <div><strong>外部パートナーとの協業</strong><br>IBM、NEC、エクサウィザーズ、Palantir等。自社リソースだけで完結しない</div>
+        </div>
+        <div class="pattern-item">
+            <div class="pattern-num success-bg">3</div>
+            <div><strong>経営トップのコミットメント</strong><br>七十七銀行「Vision 2030」、SOMPOグループ全社AI戦略など、トップダウンの意思決定</div>
+        </div>
+        <div class="pattern-item">
+            <div class="pattern-num success-bg">4</div>
+            <div><strong>既存業務の効率化から着手</strong><br>いきなり新サービスではなく、稟議書作成・文書検索・電話対応など既存業務の改善から</div>
+        </div>
+    </div>
+    <div class="pattern-grid" style="grid-template-columns:1fr;">
+        <div class="pattern-item">
+            <div class="pattern-num success-bg">5</div>
+            <div><strong>定量的な効果測定</strong><br>全社で「時間削減」「コスト削減」「精度向上」を数値化し、次のフェーズへの投資判断材料に</div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="headline">導入効果の定量比較</h2>
+    <div class="chart-container">
+        <canvas id="roiChart"></canvas>
+    </div>
+    <div class="card" style="margin-top:16px;">
+        <p style="font-size:0.85em;">注: 第一生命の数値はAIチャットボットの1営業日あたり330時間 × 年間250営業日で試算。各社の集計対象範囲・算出方法は異なる点に留意</p>
+    </div>
+</section>
+
+<section class="section-divider">
+    <div class="section-number">02</div>
+    <h2>失敗パターンと課題</h2>
+    <p>AI導入で成果が出ない企業に共通するアンチパターンと、金融機関特有の構造的課題</p>
+</section>
+
+<!-- ===== ACT 3: 失敗パターン ===== -->
+
+<section>
+    <h2 class="headline">AI導入失敗の5大アンチパターン</h2>
+    <div class="pattern-grid">
+        <div class="pattern-item">
+            <div class="pattern-num">1</div>
+            <div><strong>ビッグバン刷新症候群</strong><br>全システムを一度に置き換えようとして失敗。段階的移行なしのリスク集中</div>
+        </div>
+        <div class="pattern-item">
+            <div class="pattern-num">2</div>
+            <div><strong>PoC止まり</strong><br>実証実験は成功するが本番環境への展開で頓挫。組織の変革が伴わない</div>
+        </div>
+        <div class="pattern-item">
+            <div class="pattern-num">3</div>
+            <div><strong>ベンダー丸投げ</strong><br>自社に知見が蓄積されず、ベンダーロックイン。運用コストが膨張</div>
+        </div>
+        <div class="pattern-item">
+            <div class="pattern-num">4</div>
+            <div><strong>現場不在の導入</strong><br>経営層の号令だけで現場の業務フローを無視。利用率が上がらない</div>
+        </div>
+    </div>
+    <div class="pattern-grid" style="grid-template-columns:1fr;">
+        <div class="pattern-item">
+            <div class="pattern-num">5</div>
+            <div><strong>効果測定なき投資</strong><br>KPI未設定のまま導入。「なんとなくAI」で終わり、次の投資判断ができない</div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="headline">COBOL移行失敗 - なぜ「AI変換」だけでは不十分か</h2>
+    <div class="two-col">
+        <div class="card failure-border">
+            <h3>AI変換の限界</h3>
+            <ul>
+                <li>業務ロジック・ビジネス意図・歴史的仕様背景の理解は不可能</li>
+                <li>金融・公共の複雑な例外処理は誤変換リスクが高い</li>
+                <li>AI変換は100%正確ではない</li>
+                <li>最終品質担保には人間による「新旧対向テスト」が必須</li>
+            </ul>
+        </div>
+        <div class="card success-border">
+            <h3>成功する移行アプローチ</h3>
+            <ul>
+                <li>生成AIでCOBOLコードの解析・ドキュメント化を先行</li>
+                <li>段階的な機能単位での移行（ビッグバン禁止）</li>
+                <li>新旧システム並行稼働で結果を比較検証</li>
+                <li>「レガシーコードラボ」方式で次世代人材を育成（トヨタシステムズ事例）</li>
+            </ul>
+        </div>
+    </div>
+    <div class="source">IPA, @IT (2025年12月), トヨタシステムズ/IBM (2025年10月)</div>
+</section>
+
+<section>
+    <h2 class="headline">シャドーAIリスク - 企業が見落とす新たな脅威</h2>
+    <div class="stat-grid cols-2">
+        <div class="stat-card">
+            <div class="stat-number failure">12%</div>
+            <div class="stat-label">十分なAIトレーニングを受けた日本の労働者</div>
+            <div class="stat-sub">世界平均 36%</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number failure">?</div>
+            <div class="stat-label">シャドーAI利用率</div>
+            <div class="stat-sub">企業把握外のAI利用（BCG警告）</div>
+        </div>
+    </div>
+    <div class="two-col">
+        <div>
+            <div class="flow-step">企業がAIツールを提供しない</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">従業員が個人のChatGPT等を業務使用</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">機密情報がAIに入力される</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step" style="border-left-color:var(--failure);background:var(--failure-light);">情報漏洩リスク</div>
+        </div>
+        <div class="card success-border">
+            <h3>対策: 3つの必須施策（BCG提言）</h3>
+            <ul>
+                <li><strong>1.</strong> 十分なトレーニングの提供</li>
+                <li><strong>2.</strong> 適切なAIツールの企業提供</li>
+                <li><strong>3.</strong> 経営リーダーの明確な支援と方針表明</li>
+            </ul>
+        </div>
+    </div>
+    <div class="source">BCG "AI at Work 2025"</div>
+</section>
+
+<section>
+    <h2 class="headline">「動いているシステムに触るな」- 心理的障壁の克服</h2>
+    <div class="vs-layout">
+        <div class="card failure-border">
+            <h3>変えない理由</h3>
+            <ul>
+                <li>移行中のシステム停止リスク</li>
+                <li>「今は安定している」という安心感</li>
+                <li>移行失敗時の責任問題</li>
+                <li>短期的コスト増への抵抗</li>
+            </ul>
+        </div>
+        <div class="vs-divider">VS</div>
+        <div class="card success-border">
+            <h3>変えるべき理由</h3>
+            <ul>
+                <li>保守コストの年々増大</li>
+                <li>技術者退職による維持不能化</li>
+                <li>競合他社のAI活用による差別化</li>
+                <li>顧客体験の劣化（24/7対応不可等）</li>
+            </ul>
+        </div>
+    </div>
+    <div class="card navy" style="margin-top:20px;">
+        <p>「何もしない」は最もリスクの高い選択肢。レガシー放置のコストは年々増大し、最終的には「移行するか、事業を閉じるか」の二択になる</p>
+    </div>
+</section>
+
+<section class="section-divider">
+    <div class="section-number">03</div>
+    <h2>AI近代化ロードマップ</h2>
+    <p>地方銀行・保険会社が実践できる段階的AI導入の具体的フレームワーク</p>
+</section>
+
+<!-- ===== ACT 4: ロードマップ ===== -->
+
+<section>
+    <h2 class="headline">Crawl - Walk - Run フレームワーク</h2>
+    <p class="subheadline">BCG推奨の段階的AI導入アプローチ</p>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Crawl（6-12ヶ月）</div>
+            <div class="timeline-desc">業務効率化AI<br>チャットボット、文書検索、OCR等の低リスク領域から</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Walk（12-24ヶ月）</div>
+            <div class="timeline-desc">コア業務AI<br>融資審査支援、保険査定AI、リスク検知等の判断支援</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Run（24ヶ月〜）</div>
+            <div class="timeline-desc">全社AI活用<br>AIエージェント全社展開、自律的業務遂行、新サービス創出</div>
+        </div>
+    </div>
+    <div class="stat-grid cols-3" style="margin-top:24px;">
+        <div class="card gold-border" style="text-align:center;">
+            <p style="font-size:0.8em;color:var(--text-mid);margin-bottom:4px;">Crawl</p>
+            <p style="font-size:0.85em;"><strong>京都銀行</strong>（文書検索）<br><strong>第一生命</strong>（チャット）</p>
+        </div>
+        <div class="card gold-border" style="text-align:center;">
+            <p style="font-size:0.8em;color:var(--text-mid);margin-bottom:4px;">Walk</p>
+            <p style="font-size:0.85em;"><strong>横浜銀行</strong>（融資AI）<br><strong>損保ジャパン</strong>（査定AI）</p>
+        </div>
+        <div class="card gold-border" style="text-align:center;">
+            <p style="font-size:0.8em;color:var(--text-mid);margin-bottom:4px;">Run</p>
+            <p style="font-size:0.85em;"><strong>SOMPO</strong>（3万人AIエージェント）</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="headline">Phase 1: Crawl - 「まず動く」</h2>
+    <p class="subheadline">低リスク・高効果の業務効率化から着手（6-12ヶ月）</p>
+    <div class="stat-grid cols-3">
+        <div class="stat-card">
+            <div class="stat-number success">低</div>
+            <div class="stat-label">導入リスク</div>
+            <div class="stat-sub">既存業務の補助</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number success">高</div>
+            <div class="stat-label">即効性</div>
+            <div class="stat-sub">数週間で効果実感</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number gold">小</div>
+            <div class="stat-label">初期投資</div>
+            <div class="stat-sub">SaaS活用で低コスト</div>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr><th>施策</th><th>対象業務</th><th>期待効果</th><th>参考事例</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>社内チャットボット</td><td>規定・マニュアル検索</td><td style="color:var(--success);font-weight:600;">問合せ対応50%削減</td><td>京都銀行</td></tr>
+            <tr><td>AI-OCR</td><td>帳票・書類の読取</td><td style="color:var(--success);font-weight:600;">事務作業40%効率化</td><td>第一生命</td></tr>
+            <tr><td>AIボイスボット</td><td>電話受付の自動化</td><td style="color:var(--success);font-weight:600;">応対時間50%削減</td><td>横浜銀行</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<section>
+    <h2 class="headline">Phase 2: Walk - 「コア業務へ拡張」</h2>
+    <p class="subheadline">判断支援・専門業務へのAI適用（12-24ヶ月）</p>
+    <div class="stat-grid cols-3">
+        <div class="stat-card">
+            <div class="stat-number gold">中</div>
+            <div class="stat-label">導入リスク</div>
+            <div class="stat-sub">業務ロジック理解が必要</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number success">高</div>
+            <div class="stat-label">ROI</div>
+            <div class="stat-sub">大幅な工数削減</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number gold">中</div>
+            <div class="stat-label">投資規模</div>
+            <div class="stat-sub">カスタム開発含む</div>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr><th>施策</th><th>対象業務</th><th>期待効果</th><th>参考事例</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>融資稟議書AI</td><td>融資審査の書類作成</td><td style="color:var(--success);font-weight:600;">作成時間93%削減</td><td>宮崎銀行</td></tr>
+            <tr><td>AI保険査定</td><td>損害査定・保険金算出</td><td style="color:var(--success);font-weight:600;">査定時間90%削減</td><td>損保ジャパン</td></tr>
+            <tr><td>AI不正検知</td><td>マネロン・詐欺検知</td><td style="color:var(--success);font-weight:600;">調査対象30-40%削減</td><td>横浜銀行</td></tr>
+            <tr><td>AIロープレ</td><td>営業職員育成</td><td style="color:var(--success);font-weight:600;">スキル標準化</td><td>住友生命</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<section>
+    <h2 class="headline">Phase 3: Run - 「AI-First組織へ」</h2>
+    <p class="subheadline">全社的AI活用と新サービス創出（24ヶ月〜）</p>
+    <div class="stat-grid cols-3">
+        <div class="stat-card">
+            <div class="stat-number gold">高</div>
+            <div class="stat-label">変革レベル</div>
+            <div class="stat-sub">組織文化の転換</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number success">最大</div>
+            <div class="stat-label">競争優位性</div>
+            <div class="stat-sub">業界リーダーへ</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number gold">大</div>
+            <div class="stat-label">投資規模</div>
+            <div class="stat-sub">全社インフラ整備</div>
+        </div>
+    </div>
+    <div class="two-col">
+        <div class="card success-border">
+            <h3>目指す姿</h3>
+            <ul>
+                <li>全社員がAIを日常ツールとして活用（SOMPO 3万人モデル）</li>
+                <li>AIエージェントによる自律的業務遂行</li>
+                <li>AI × 人間のハイブリッド意思決定</li>
+                <li>顧客体験の根本的変革（24/7自動対応）</li>
+            </ul>
+        </div>
+        <div class="card gold-border">
+            <h3>成功の鍵</h3>
+            <ul>
+                <li>経営トップの強いコミットメント</li>
+                <li>全社的なAIリテラシー教育（日本は12%→目標50%+）</li>
+                <li>セキュアなAI実行環境の整備</li>
+                <li>段階的な成功体験の積み上げ（Phase 1-2の実績が基盤）</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="headline">COBOL近代化のAI活用アプローチ</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Step 1: AI解析</div>
+            <div class="timeline-desc">生成AIでCOBOLコードの設計書・仕様書を自動生成<br>明治安田: 工数25%削減</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Step 2: 段階移行</div>
+            <div class="timeline-desc">機能単位で新システムへ移行<br>ビッグバン禁止</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Step 3: 並行稼働</div>
+            <div class="timeline-desc">新旧システムを同時運用<br>結果を比較検証</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Step 4: 完全移行</div>
+            <div class="timeline-desc">全機能の移行完了<br>旧システム廃止</div>
+        </div>
+    </div>
+    <div class="two-col" style="margin-top:20px;">
+        <div class="card">
+            <h3>市場規模</h3>
+            <p>レガシーモダナイゼーション市場: <strong>2025年5,118億円</strong>（CAGR 10%成長）。需要は今後も拡大</p>
+        </div>
+        <div class="card">
+            <h3>支援サービス</h3>
+            <p>COBOL PARK（SCSK+FPT）、re:Modern（CTC）、レガシーコードラボ（トヨタシステムズ+IBM）等の専門サービスが続々登場</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="headline">投資対効果の試算モデル</h2>
+    <table>
+        <thead>
+            <tr><th>フェーズ</th><th>初期投資</th><th>年間効果</th><th>回収期間</th><th>リスク</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="font-weight:600;">Phase 1 (Crawl)</td>
+                <td>500-2,000万円</td>
+                <td style="color:var(--success);font-weight:600;">1,000-5,000万円</td>
+                <td>3-6ヶ月</td>
+                <td><span class="badge success">低</span></td>
+            </tr>
+            <tr>
+                <td style="font-weight:600;">Phase 2 (Walk)</td>
+                <td>2,000万-1億円</td>
+                <td style="color:var(--success);font-weight:600;">5,000万-3億円</td>
+                <td>6-18ヶ月</td>
+                <td><span class="badge gold">中</span></td>
+            </tr>
+            <tr>
+                <td style="font-weight:600;">Phase 3 (Run)</td>
+                <td>1-10億円</td>
+                <td style="color:var(--success);font-weight:600;">3-20億円</td>
+                <td>12-36ヶ月</td>
+                <td><span class="badge failure">高</span></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="card navy" style="margin-top:20px;">
+        <p>注: 上記は地方銀行（従業員1,000-5,000人規模）を想定した概算値。実際の投資対効果は組織規模・既存システム構成・AI活用領域により大きく異なる</p>
+    </div>
+</section>
+
+<section>
+    <h2 class="headline">経営者向け実践チェックリスト</h2>
+    <div class="two-col">
+        <div class="card success-border">
+            <h3>すぐ始めるべきこと</h3>
+            <div class="pattern-grid" style="grid-template-columns:1fr;">
+                <div class="pattern-item"><div class="pattern-num success-bg">1</div><div>自社のAI活用現状を棚卸し</div></div>
+                <div class="pattern-item"><div class="pattern-num success-bg">2</div><div>小規模PoCを1つ開始（チャットボット推奨）</div></div>
+                <div class="pattern-item"><div class="pattern-num success-bg">3</div><div>AIリテラシー研修を全社展開</div></div>
+                <div class="pattern-item"><div class="pattern-num success-bg">4</div><div>外部パートナー選定・契約</div></div>
+                <div class="pattern-item"><div class="pattern-num success-bg">5</div><div>効果測定KPIの設定</div></div>
+            </div>
+        </div>
+        <div class="card failure-border">
+            <h3>避けるべきこと</h3>
+            <div class="pattern-grid" style="grid-template-columns:1fr;">
+                <div class="pattern-item"><div class="pattern-num">1</div><div>ビッグバン型の全面刷新</div></div>
+                <div class="pattern-item"><div class="pattern-num">2</div><div>ベンダー丸投げ（自社知見なし）</div></div>
+                <div class="pattern-item"><div class="pattern-num">3</div><div>現場不在のトップダウン導入</div></div>
+                <div class="pattern-item"><div class="pattern-num">4</div><div>効果測定なき「なんとなくAI」</div></div>
+                <div class="pattern-item"><div class="pattern-num">5</div><div>「動いてるから触るな」思考</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="headline">まとめ - レガシーからの脱却は「今」始める</h2>
+    <div class="stat-grid cols-3">
+        <div class="stat-card">
+            <div class="stat-number gold">Crawl</div>
+            <div class="stat-label">まず動く</div>
+            <div class="stat-sub">低リスクな業務効率化から</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number gold">Walk</div>
+            <div class="stat-label">コアへ拡張</div>
+            <div class="stat-sub">融資・査定など判断支援へ</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number gold">Run</div>
+            <div class="stat-label">AI-First組織</div>
+            <div class="stat-sub">全社AIで競争優位確立</div>
+        </div>
+    </div>
+    <div class="card navy" style="margin-top:24px;">
+        <p>「何もしない」が最大のリスク。BCG調査が示すように、AI先進企業と後進企業の格差は売上1.7倍、TSR 3.6倍と急速に拡大している。地方銀行・保険会社こそ、段階的アプローチで着実にAI近代化を進めるべきタイミングは今である。</p>
+    </div>
+    <div class="source">本レポートのデータソース: BCG "AI at Work 2025", McKinsey (2025), 日本銀行 金融システムレポート, 経済産業省 DXレポート, IPA, 各社プレスリリース・IR資料</div>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    width: 1280,
+    height: 720,
+    margin: 0,
+    minScale: 0.2,
+    maxScale: 2.0,
+    transition: 'fade',
+    transitionSpeed: 'default'
+});
+
+Reveal.on('ready', function() {
+    var ctx1 = document.getElementById('aiUsageChart');
+    if (ctx1) {
+        new Chart(ctx1.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['India', 'China', 'Brazil', 'UAE', 'USA', 'UK', 'France', 'Germany', 'Australia', 'Singapore', 'Japan'],
+                datasets: [{
+                    data: [85, 82, 78, 75, 68, 65, 62, 58, 55, 53, 51],
+                    backgroundColor: function(context) {
+                        return context.dataIndex === 10 ? '#EF4444' : '#0B1F3D';
+                    }
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { beginAtZero: true, max: 100, ticks: { callback: function(v) { return v + '%'; } } }
+                }
+            }
+        });
+    }
+
+    var ctx2 = document.getElementById('roiChart');
+    if (ctx2) {
+        new Chart(ctx2.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['第一生命', '七十七銀行', '横浜銀行', '京都銀行'],
+                datasets: [{
+                    label: '年間時間削減効果 (h)',
+                    data: [82500, 32000, 19500, 8000],
+                    backgroundColor: ['#C9A03F', '#0B1F3D', '#0B1F3D', '#0B1F3D']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: '時間 (h)' },
+                        ticks: { callback: function(v) { return v.toLocaleString(); } }
+                    }
+                }
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>
