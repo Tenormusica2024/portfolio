@@ -315,7 +315,7 @@
         .card-visual img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
             transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s;
         }
@@ -328,7 +328,8 @@
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            background: #0a1628;
             opacity: 0;
             transition: opacity 0.4s;
         }
