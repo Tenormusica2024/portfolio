@@ -1272,13 +1272,13 @@
                     <span class="new-badge">NEW</span>
                 </div>
                 <div style="margin: 1rem 0; position: relative; overflow: hidden; border-radius: 8px; border: 1px solid #e5e5e5;"
-                     onmouseenter="var v=this.querySelector('video');var i=this.querySelector('img');if(v){v.style.opacity='1';i.style.opacity='0';v.currentTime=0;v.play();}"
+                     onmouseenter="var v=this.querySelector('video');var i=this.querySelector('img');if(v){v.style.opacity='1';i.style.opacity='0';v.currentTime=1.5;v.play();}"
                      onmouseleave="var v=this.querySelector('video');var i=this.querySelector('img');if(v){v.pause();v.style.opacity='0';i.style.opacity='1';}">
                     <img src="ai-adoption-analysis-thumbnail.png"
                          alt="AI導入分析 - 日本企業のAI導入 成功vs失敗ケーススタディ"
                          style="width: 100%; display: block; transition: opacity 0.3s;">
                     <video src="ai-adoption-analysis-preview.mp4"
-                           muted loop playsinline preload="metadata"
+                           muted loop playsinline preload="auto"
                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s;">
                     </video>
                 </div>
