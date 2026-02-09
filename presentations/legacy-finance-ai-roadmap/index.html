@@ -1370,6 +1370,11 @@ Reveal.initialize({
     transitionSpeed: 'default'
 });
 
+document.querySelector('.reveal').addEventListener('click', function(e) {
+  if (e.target.closest('a, button, .controls, .navigate-left, .navigate-right, .navigate-up, .navigate-down, input, select, textarea, [data-prevent-swipe]')) return;
+  Reveal.next();
+});
+
 Reveal.on('ready', function() {
     var ctx1 = document.getElementById('aiUsageChart');
     if (ctx1) {
