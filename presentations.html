@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ1WP1J2NQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YJ1WP1J2NQ', {
+        'linker': { 'domains': ['tenormusica2024.github.io'] }
+      });
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="BCG/McKinseyレベルのコンサルティングデザインで制作したAI戦略分析プレゼンテーション資料集。reveal.js + Chart.jsによるインタラクティブスライド。">
+    <meta name="keywords" content="プレゼンテーション,AI戦略,コンサルティング,reveal.js,Chart.js,データ可視化,レガシーシステム,AI導入">
+    <meta name="author" content="Urayaha Days">
+    <link rel="canonical" href="https://tenormusica2024.github.io/portfolio/presentations.html">
+    <title>Presentations - Urayaha Days</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Presentations - Urayaha Days",
+      "description": "AI戦略分析プレゼンテーション資料集。BCG/McKinseyレベルのコンサルティングデザインで制作。",
+      "url": "https://tenormusica2024.github.io/portfolio/presentations.html",
+      "inLanguage": "ja-JP",
+      "author": { "@type": "Person", "name": "Urayaha Days" }
+    }
+    </script>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tenormusica2024.github.io/portfolio/presentations.html">
+    <meta property="og:title" content="Presentations - Urayaha Days">
+    <meta property="og:description" content="AI戦略分析プレゼンテーション資料集。BCG/McKinseyレベルのコンサルティングデザイン。">
+    <meta property="og:site_name" content="Urayaha Days Portfolio">
+    <meta property="og:locale" content="ja_JP">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@SundererD27468">
+    <meta name="twitter:title" content="Presentations - Urayaha Days">
+    <meta name="twitter:description" content="AI戦略分析プレゼンテーション資料集。コンサルティングデザインのインタラクティブスライド。">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon-180x180.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f8f9fb;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        /* --- Navigation (shared with portfolio) --- */
+        .header {
+            border-bottom: 1px solid #e5e5e5;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            position: relative;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .nav-links a:hover { background: #333; color: #ffffff; }
+
+        .nav-item { position: relative; }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 2rem;
+            background: transparent;
+            z-index: 999;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: calc(100% + 1rem);
+            left: 0;
+            background: transparent;
+            min-width: 300px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: #666;
+            text-decoration: none;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            font-weight: 500;
+            font-size: 0.95rem;
+            background: transparent;
+        }
+
+        .dropdown a::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #222;
+            border-radius: 8px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .dropdown a:hover { color: #ffffff; padding-left: 2rem; }
+        .dropdown a:hover::before { transform: scaleX(1); transform-origin: left; }
+
+        .lang-switch {
+            background: #222;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .lang-switch:hover { background: #333; transform: translateY(-2px); }
+
+        /* --- Hero Section (Dark Navy Gradient) --- */
+        .hero {
+            background: linear-gradient(135deg, #0a1628 0%, #142744 40%, #1a3560 70%, #0f2240 100%);
+            padding: 5rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -30%;
+            width: 80%; height: 200%;
+            background: radial-gradient(ellipse, rgba(196, 163, 90, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(196, 163, 90, 0.4), transparent);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-label {
+            display: inline-block;
+            color: #c4a35a;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeIn 1s 0.2s ease forwards;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: slideUp 1s 0.4s cubic-bezier(0.05, 0.7, 0.3, 0.99) forwards;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 680px;
+            line-height: 1.8;
+            opacity: 0;
+            animation: slideUp 1s 0.6s cubic-bezier(0.05, 0.7, 0.3, 0.99) forwards;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2.5rem;
+            opacity: 0;
+            animation: slideUp 1s 0.8s cubic-bezier(0.05, 0.7, 0.3, 0.99) forwards;
+        }
+
+        .hero-stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #c4a35a;
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 0.3rem;
+            letter-spacing: 0.05em;
+        }
+
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Cards Section --- */
+        .cards-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem 5rem;
+        }
+
+        .feature-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e8e8e8;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .feature-card.animate-in {
+            animation: cardReveal 1s cubic-bezier(0.05, 0.7, 0.3, 0.99) forwards;
+        }
+
+        .feature-card:nth-child(1).animate-in { animation-delay: 0s; }
+        .feature-card:nth-child(2).animate-in { animation-delay: 0.2s; }
+
+        @keyframes cardReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(10, 22, 40, 0.12), 0 0 0 1px rgba(196, 163, 90, 0.15);
+        }
+
+        /* 2番目のカードはサムネとテキストの左右を逆に */
+        .feature-card:nth-child(even) { direction: rtl; }
+        .feature-card:nth-child(even) > * { direction: ltr; }
+
+        .card-visual {
+            position: relative;
+            overflow: hidden;
+            background: #0a1628;
+            min-height: 340px;
+        }
+
+        .card-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s;
+        }
+
+        .feature-card:hover .card-visual img {
+            transform: scale(1.04);
+        }
+
+        .card-visual video {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .slide-badge {
+            position: absolute;
+            bottom: 16px; right: 16px;
+            background: rgba(10, 22, 40, 0.85);
+            color: #c4a35a;
+            padding: 0.35rem 0.9rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(196, 163, 90, 0.2);
+            letter-spacing: 0.03em;
+        }
+
+        .card-content {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-number {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #c4a35a;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: #0a1628;
+            font-weight: 700;
+            line-height: 1.35;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-subtitle {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-desc {
+            color: #555;
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-tag {
+            background: #f4f4f6;
+            border: 1px solid #e5e5e5;
+            border-radius: 6px;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.78rem;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .card-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .card-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            color: #777;
+        }
+
+        .stat-icon {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #c4a35a;
+        }
+
+        .card-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            background: #0a1628;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: fit-content;
+        }
+
+        .card-cta:hover {
+            background: #142744;
+            transform: translateX(4px);
+            box-shadow: 0 4px 16px rgba(10, 22, 40, 0.25);
+        }
+
+        .card-cta-arrow {
+            transition: transform 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .card-cta:hover .card-cta-arrow {
+            transform: translateX(4px);
+        }
+
+        /* --- Footer --- */
+        .page-footer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: #999;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover { color: #222; }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .dropdown { display: none !important; }
+            .nav-item:hover .dropdown { display: none !important; }
+            .nav-item { pointer-events: auto; }
+            .nav-item > a { pointer-events: auto; }
+            header { overflow-y: hidden; overflow-x: visible; }
+            .nav-container { overflow-y: hidden; overflow-x: visible; }
+
+            .nav-links {
+                gap: 1.5rem;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                overflow-y: hidden;
+                touch-action: pan-x;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+                padding: 0.5rem 0;
+            }
+
+            .nav-links a, .nav-item a {
+                -webkit-tap-highlight-color: transparent;
+                user-select: none;
+                cursor: pointer;
+                touch-action: auto;
+            }
+
+            .nav-item, .nav-links > a { flex-shrink: 0; white-space: nowrap; }
+
+            .nav-links::-webkit-scrollbar { height: 4px; }
+            .nav-links::-webkit-scrollbar-track { background: transparent; }
+            .nav-links::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 2px; }
+
+            .hero { padding: 3.5rem 1.5rem 3rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero-desc { font-size: 1rem; }
+            .hero-stats { gap: 2rem; flex-wrap: wrap; }
+            .hero-stat-value { font-size: 1.5rem; }
+
+            .feature-card {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card:nth-child(even) { direction: ltr; }
+
+            .card-visual { min-height: 220px; }
+            .card-content { padding: 1.75rem; }
+            .card-title { font-size: 1.25rem; }
+            .cards-section { padding: 2.5rem 1.5rem 3rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="nav-links">
+                <a href="index.html" onclick="sessionStorage.setItem('skipLoadingScreen', 'true');">Home</a>
+                <div class="nav-item">
+                    <a href="projects.html">Projects</a>
+                    <div class="dropdown">
+                        <a href="projects.html#section-data-viz">Data Visualization</a>
+                        <a href="projects.html#section-ai-dev">AI-Driven Development</a>
+                        <a href="projects.html#section-automation">Automation</a>
+                        <a href="projects.html#section-ai-creation">AI Creation</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="presentations.html" style="color: #222;">Presentations</a>
+                </div>
+                <div class="nav-item">
+                    <a href="projects.html#section-ai-creation">Creation</a>
+                    <div class="dropdown">
+                        <a href="editorial-gallery/gallery_editorial.html">Web Design Gallery</a>
+                        <a href="cyberpunk_anime/index.html">SF Anime LP</a>
+                        <a href="projects.html#work-mv-project">Work MV</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="profile.html">Profile</a>
+                    <div class="dropdown">
+                        <a href="profile.html#section-about">About Me</a>
+                        <a href="profile.html#section-skills">Technical Skills</a>
+                        <a href="profile.html#section-experience">Professional Experience</a>
+                        <a href="profile.html#section-achievements">Key Achievements</a>
+                        <a href="profile.html#section-philosophy">Development Philosophy</a>
+                        <a href="profile.html#section-vision">AI Philosophy & Vision</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="contact.html">Contact</a>
+                    <div class="dropdown">
+                        <a href="contact.html">Contact Form</a>
+                        <a href="https://x.com/SundererD27468" target="_blank">X (Twitter)</a>
+                        <a href="https://github.com/Tenormusica2024" target="_blank">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <button class="lang-switch" onclick="switchLanguage()">EN</button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-label" data-i18n="hero_label">Consulting-Grade Presentations</span>
+            <h1 data-i18n="hero_title">AI Strategy<br>Analysis Decks</h1>
+            <p class="hero-desc" data-i18n="hero_desc">
+                BCG / McKinsey / Deloitteレベルのコンサルティングデザインで制作した、
+                日本企業のAI戦略に関するインタラクティブプレゼンテーション資料。
+                reveal.js + Chart.js によるデータドリブンなスライド体験。
+            </p>
+            <div class="hero-stats">
+                <div>
+                    <div class="hero-stat-value" data-i18n="stat_slides">72</div>
+                    <div class="hero-stat-label" data-i18n="stat_slides_label">Total Slides</div>
+                </div>
+                <div>
+                    <div class="hero-stat-value" data-i18n="stat_companies">19</div>
+                    <div class="hero-stat-label" data-i18n="stat_companies_label">Company Cases</div>
+                </div>
+                <div>
+                    <div class="hero-stat-value" data-i18n="stat_sources">6+</div>
+                    <div class="hero-stat-label" data-i18n="stat_sources_label">Data Sources</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cards-section">
+
+        <div class="feature-card">
+            <div class="card-visual"
+                 onmouseenter="var v=this.querySelector('video');var i=this.querySelector('img');if(v){v.style.opacity='1';i.style.opacity='0';v.currentTime=0;v.play();}"
+                 onmouseleave="var v=this.querySelector('video');var i=this.querySelector('img');if(v){v.pause();v.style.opacity='0';i.style.opacity='1';}">
+                <img src="ai-adoption-analysis-thumbnail.png" alt="AI Adoption Analysis">
+                <video src="ai-adoption-analysis-preview.mp4" muted loop playsinline preload="auto"></video>
+                <span class="slide-badge">37 slides</span>
+            </div>
+            <div class="card-content">
+                <span class="card-number" data-i18n="c1_num">Deck 01</span>
+                <h3 class="card-title" data-i18n="c1_title">AI導入分析レポート</h3>
+                <p class="card-subtitle" data-i18n="c1_sub">Japanese Enterprise AI Adoption: Success vs Failure</p>
+                <p class="card-desc" data-i18n="c1_desc">
+                    経産省・日銀・McKinsey・BCG等の公的データに基づく、日本企業のAI導入成功vs失敗ケーススタディ分析。
+                    三菱UFJ・パナソニック等の実在企業事例と、投資配分・ROI比較を37枚のインタラクティブスライドで可視化。
+                </p>
+                <div class="card-stats">
+                    <span class="card-stat"><span class="stat-icon"></span><span data-i18n="c1_s1">12 Real Company Cases</span></span>
+                    <span class="card-stat"><span class="stat-icon"></span><span data-i18n="c1_s2">Interactive Charts</span></span>
+                    <span class="card-stat"><span class="stat-icon"></span><span data-i18n="c1_s3">ROI Analysis</span></span>
+                </div>
+                <div class="card-tags">
+                    <span class="card-tag">reveal.js</span>
+                    <span class="card-tag">Chart.js</span>
+                    <span class="card-tag">Data Visualization</span>
+                    <span class="card-tag">Consulting Design</span>
+                </div>
+                <a href="presentations/ai-adoption-analysis/index.html"
+                   class="card-cta" target="_blank"
+                   onclick="gtag('event', 'cta_click', {'event_category': 'presentation_live', 'event_label': 'AI_Adoption_Analysis', 'value': 1});">
+                    <span data-i18n="btn_view">View Presentation</span>
+                    <span class="card-cta-arrow">&rarr;</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="card-visual">
+                <img src="legacy-finance-thumbnail.png" alt="Legacy Finance AI Roadmap"
+                     style="background: #0a1628;">
+                <span class="slide-badge">35 slides</span>
+            </div>
+            <div class="card-content">
+                <span class="card-number" data-i18n="c2_num">Deck 02</span>
+                <h3 class="card-title" data-i18n="c2_title">レガシー金融AI近代化ロードマップ</h3>
+                <p class="card-subtitle" data-i18n="c2_sub">Regional Banks & Insurance: Practical AI Modernization</p>
+                <p class="card-desc" data-i18n="c2_desc">
+                    地方銀行・保険会社のAI近代化ロードマップ。横浜銀行・損保ジャパン・住友生命など7社の実在事例を分析。
+                    AI導入失敗の5大アンチパターンと、BCG推奨のCrawl-Walk-Runフレームワークによる段階的導入戦略。
+                </p>
+                <div class="card-stats">
+                    <span class="card-stat"><span class="stat-icon"></span><span data-i18n="c2_s1">7 Company Cases</span></span>
+                    <span class="card-stat"><span class="stat-icon"></span><span data-i18n="c2_s2">Crawl-Walk-Run Framework</span></span>
+                    <span class="card-stat"><span class="stat-icon"></span><span data-i18n="c2_s3">BCG AI at Work 2025</span></span>
+                </div>
+                <div class="card-tags">
+                    <span class="card-tag">reveal.js</span>
+                    <span class="card-tag">Chart.js</span>
+                    <span class="card-tag">Data Visualization</span>
+                    <span class="card-tag">Consulting Design</span>
+                </div>
+                <a href="presentations/legacy-finance-ai-roadmap/index.html"
+                   class="card-cta" target="_blank"
+                   onclick="gtag('event', 'cta_click', {'event_category': 'presentation_live', 'event_label': 'Legacy_Finance_Roadmap', 'value': 1});">
+                    <span data-i18n="btn_view">View Presentation</span>
+                    <span class="card-cta-arrow">&rarr;</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="page-footer">
+        <div class="footer-links">
+            <a href="mailto:dragonrondo@gmail.com">Email</a>
+            <a href="https://github.com/Tenormusica2024" target="_blank">GitHub</a>
+        </div>
+        <p>&copy; 2025 Urayaha Days. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('animate-in');
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+            document.querySelectorAll('.feature-card').forEach(card => observer.observe(card));
+        });
+
+        let currentLang = 'ja';
+        const tr = {
+            ja: {
+                hero_label: "Consulting-Grade Presentations",
+                hero_title: "AI Strategy<br>Analysis Decks",
+                hero_desc: "BCG / McKinsey / Deloitteレベルのコンサルティングデザインで制作した、日本企業のAI戦略に関するインタラクティブプレゼンテーション資料。reveal.js + Chart.js によるデータドリブンなスライド体験。",
+                stat_slides: "72", stat_slides_label: "Total Slides",
+                stat_companies: "19", stat_companies_label: "Company Cases",
+                stat_sources: "6+", stat_sources_label: "Data Sources",
+                c1_num: "Deck 01",
+                c1_title: "AI導入分析レポート",
+                c1_sub: "日本企業のAI導入 成功 vs 失敗",
+                c1_desc: "経産省・日銀・McKinsey・BCG等の公的データに基づく、日本企業のAI導入成功vs失敗ケーススタディ分析。三菱UFJ・パナソニック等の実在企業事例と、投資配分・ROI比較を37枚のインタラクティブスライドで可視化。",
+                c1_s1: "12社の実在事例", c1_s2: "インタラクティブチャート", c1_s3: "ROI分析",
+                c2_num: "Deck 02",
+                c2_title: "レガシー金融AI近代化ロードマップ",
+                c2_sub: "地銀・保険の現実解",
+                c2_desc: "地方銀行・保険会社のAI近代化ロードマップ。横浜銀行・損保ジャパン・住友生命など7社の実在事例を分析。AI導入失敗の5大アンチパターンと、BCG推奨のCrawl-Walk-Runフレームワークによる段階的導入戦略。",
+                c2_s1: "7社の事例分析", c2_s2: "Crawl-Walk-Run戦略", c2_s3: "BCG AI at Work 2025",
+                btn_view: "View Presentation"
+            },
+            en: {
+                hero_label: "Consulting-Grade Presentations",
+                hero_title: "AI Strategy<br>Analysis Decks",
+                hero_desc: "Interactive presentation materials on Japanese corporate AI strategy, crafted with BCG / McKinsey / Deloitte-level consulting design. Data-driven slide experience powered by reveal.js + Chart.js.",
+                stat_slides: "72", stat_slides_label: "Total Slides",
+                stat_companies: "19", stat_companies_label: "Company Cases",
+                stat_sources: "6+", stat_sources_label: "Data Sources",
+                c1_num: "Deck 01",
+                c1_title: "AI Adoption Analysis Report",
+                c1_sub: "Japanese Enterprise AI Adoption: Success vs Failure",
+                c1_desc: "Based on METI, BOJ, McKinsey, and BCG public data. Covers MUFG, Panasonic, and other real company cases with investment allocation and ROI comparison across 37 interactive slides.",
+                c1_s1: "12 Real Company Cases", c1_s2: "Interactive Charts", c1_s3: "ROI Analysis",
+                c2_num: "Deck 02",
+                c2_title: "Legacy Finance AI Modernization Roadmap",
+                c2_sub: "Regional Banks & Insurance: Practical Solutions",
+                c2_desc: "Practical AI modernization roadmap for regional banks and insurance companies. Analyzes 7 real cases including Yokohama Bank, Sompo Japan, and Sumitomo Life. 5 anti-patterns + Crawl-Walk-Run framework.",
+                c2_s1: "7 Company Cases", c2_s2: "Crawl-Walk-Run Framework", c2_s3: "BCG AI at Work 2025",
+                btn_view: "View Presentation"
+            }
+        };
+
+        function switchLanguage() {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            const t = tr[currentLang];
+            document.querySelector('.lang-switch').textContent = currentLang === 'ja' ? 'EN' : 'JA';
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) {
+                    if (el.tagName === 'H1' || key.includes('title') && el.tagName === 'H1') {
+                        el.innerHTML = t[key];
+                    } else {
+                        el.textContent = t[key];
+                    }
+                }
+            });
+        }
+
+        switchLanguage();
+        switchLanguage();
+    </script>
+</body>
+</html>
