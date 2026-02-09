@@ -2323,7 +2323,8 @@ Reveal.initialize({
 
 document.querySelector('.reveal').addEventListener('click', function(e) {
   if (e.target.closest('a, button, .controls, .navigate-left, .navigate-right, .navigate-up, .navigate-down, input, select, textarea, [data-prevent-swipe]')) return;
-  Reveal.next();
+  if (e.clientX < window.innerWidth / 2) Reveal.prev();
+  else Reveal.next();
 });
 
 /* ============================================ */
