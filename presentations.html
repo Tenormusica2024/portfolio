@@ -291,6 +291,7 @@
 
         .feature-card:nth-child(1).animate-in { animation-delay: 0s; }
         .feature-card:nth-child(2).animate-in { animation-delay: 0.2s; }
+        .feature-card:nth-child(3).animate-in { animation-delay: 0.4s; }
 
         @keyframes cardReveal {
             to { opacity: 1; transform: translateY(0); }
@@ -592,15 +593,15 @@
             </p>
             <div class="hero-stats">
                 <div>
-                    <div class="hero-stat-value" data-i18n="stat_slides">72</div>
+                    <div class="hero-stat-value" data-i18n="stat_slides">97</div>
                     <div class="hero-stat-label" data-i18n="stat_slides_label">Total Slides</div>
                 </div>
                 <div>
-                    <div class="hero-stat-value" data-i18n="stat_companies">19</div>
+                    <div class="hero-stat-value" data-i18n="stat_companies">20</div>
                     <div class="hero-stat-label" data-i18n="stat_companies_label">Company Cases</div>
                 </div>
                 <div>
-                    <div class="hero-stat-value" data-i18n="stat_sources">6+</div>
+                    <div class="hero-stat-value" data-i18n="stat_sources">9+</div>
                     <div class="hero-stat-label" data-i18n="stat_sources_label">Data Sources</div>
                 </div>
             </div>
@@ -679,6 +680,40 @@
             </div>
         </div>
 
+        <div class="feature-card">
+            <div class="card-visual">
+                <img src="panasonic-connectai-thumbnail.png" alt="パナソニック コネクト ConnectAI - 12,400人全社展開の組織設計"
+                     style="background: #1A1A2E;">
+                <span class="slide-badge">25 slides</span>
+            </div>
+            <div class="card-content">
+                <span class="card-number" data-i18n="c3_num">Deck 03</span>
+                <h3 class="card-title" data-i18n="c3_title">ConnectAI: 全社展開の組織設計</h3>
+                <p class="card-subtitle" data-i18n="c3_sub">Panasonic Connect: Zero Data Leakage with 12,400 Users</p>
+                <p class="card-desc" data-i18n="c3_desc">
+                    パナソニック コネクトが12,400人全社展開で情報漏洩ゼロを実現した「ConnectAI」の組織設計を深掘り分析。
+                    シャドーAI問題の解決、3層セキュリティガバナンス、RAG活用による業務変革までを25枚のスライドで解説。
+                </p>
+                <div class="card-stats">
+                    <span class="card-stat"><span class="stat-icon"></span><span data-i18n="c3_s1">12,400 Users</span></span>
+                    <span class="card-stat"><span class="stat-icon"></span><span data-i18n="c3_s2">Zero Leakage</span></span>
+                    <span class="card-stat"><span class="stat-icon"></span><span data-i18n="c3_s3">RAG Deep Dive</span></span>
+                </div>
+                <div class="card-tags">
+                    <span class="card-tag">reveal.js</span>
+                    <span class="card-tag">Chart.js</span>
+                    <span class="card-tag">Security Governance</span>
+                    <span class="card-tag">Consulting Design</span>
+                </div>
+                <a href="presentations/panasonic-connectai/index.html"
+                   class="card-cta" target="_blank"
+                   onclick="gtag('event', 'cta_click', {'event_category': 'presentation_live', 'event_label': 'Panasonic_ConnectAI', 'value': 1});">
+                    <span data-i18n="btn_view">View Presentation</span>
+                    <span class="card-cta-arrow">&rarr;</span>
+                </a>
+            </div>
+        </div>
+
     </div>
 
     <footer class="page-footer">
@@ -706,9 +741,9 @@
                 hero_label: "Consulting-Grade Presentations",
                 hero_title: "AI Strategy<br>Analysis Decks",
                 hero_desc: "BCG / McKinsey / Deloitteレベルのコンサルティングデザインで制作した、日本企業のAI戦略に関するインタラクティブプレゼンテーション資料。reveal.js + Chart.js によるデータドリブンなスライド体験。",
-                stat_slides: "72", stat_slides_label: "Total Slides",
-                stat_companies: "19", stat_companies_label: "Company Cases",
-                stat_sources: "6+", stat_sources_label: "Data Sources",
+                stat_slides: "97", stat_slides_label: "Total Slides",
+                stat_companies: "20", stat_companies_label: "Company Cases",
+                stat_sources: "9+", stat_sources_label: "Data Sources",
                 c1_num: "Deck 01",
                 c1_title: "AI導入分析レポート",
                 c1_sub: "日本企業のAI導入 成功 vs 失敗",
@@ -719,15 +754,20 @@
                 c2_sub: "地銀・保険の現実解",
                 c2_desc: "地方銀行・保険会社のAI近代化ロードマップ。横浜銀行・損保ジャパン・住友生命など7社の実在事例を分析。AI導入失敗の5大アンチパターンと、BCG推奨のCrawl-Walk-Runフレームワークによる段階的導入戦略。",
                 c2_s1: "7社の事例分析", c2_s2: "Crawl-Walk-Run戦略", c2_s3: "BCG AI at Work 2025",
+                c3_num: "Deck 03",
+                c3_title: "ConnectAI: 全社展開の組織設計",
+                c3_sub: "パナソニック コネクト 12,400人展開の深掘り",
+                c3_desc: "パナソニック コネクトが12,400人全社展開で情報漏洩ゼロを実現したConnectAIの組織設計を深掘り分析。シャドーAI問題の解決、3層セキュリティガバナンス、RAG活用による業務変革までを25枚のスライドで解説。",
+                c3_s1: "12,400人全社展開", c3_s2: "情報漏洩ゼロ", c3_s3: "RAG深掘り分析",
                 btn_view: "View Presentation"
             },
             en: {
                 hero_label: "Consulting-Grade Presentations",
                 hero_title: "AI Strategy<br>Analysis Decks",
                 hero_desc: "Interactive presentation materials on Japanese corporate AI strategy, crafted with BCG / McKinsey / Deloitte-level consulting design. Data-driven slide experience powered by reveal.js + Chart.js.",
-                stat_slides: "72", stat_slides_label: "Total Slides",
-                stat_companies: "19", stat_companies_label: "Company Cases",
-                stat_sources: "6+", stat_sources_label: "Data Sources",
+                stat_slides: "97", stat_slides_label: "Total Slides",
+                stat_companies: "20", stat_companies_label: "Company Cases",
+                stat_sources: "9+", stat_sources_label: "Data Sources",
                 c1_num: "Deck 01",
                 c1_title: "AI Adoption Analysis Report",
                 c1_sub: "Japanese Enterprise AI Adoption: Success vs Failure",
@@ -738,6 +778,11 @@
                 c2_sub: "Regional Banks & Insurance: Practical Solutions",
                 c2_desc: "Practical AI modernization roadmap for regional banks and insurance companies. Analyzes 7 real cases including Yokohama Bank, Sompo Japan, and Sumitomo Life. 5 anti-patterns + Crawl-Walk-Run framework.",
                 c2_s1: "7 Company Cases", c2_s2: "Crawl-Walk-Run Framework", c2_s3: "BCG AI at Work 2025",
+                c3_num: "Deck 03",
+                c3_title: "ConnectAI: Enterprise-Wide Deployment Design",
+                c3_sub: "Panasonic Connect: Zero Data Leakage with 12,400 Users",
+                c3_desc: "Deep-dive analysis of Panasonic Connect's ConnectAI organizational design achieving zero data leakage across 12,400 users. Covers Shadow AI resolution, 3-layer security governance, and RAG-driven business transformation in 25 slides.",
+                c3_s1: "12,400 Users Deployed", c3_s2: "Zero Data Leakage", c3_s3: "RAG Deep Dive",
                 btn_view: "View Presentation"
             }
         };

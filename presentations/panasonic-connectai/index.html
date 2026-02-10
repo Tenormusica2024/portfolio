@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ConnectAI: 12,400人全社展開で情報漏洩ゼロを実現した組織設計 - パナソニック コネクト</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --charcoal: #1A1A2E;
+  --charcoal-light: #2D2D44;
+  --emerald: #10B981;
+  --emerald-dark: #059669;
+  --emerald-light: #D1FAE5;
+  --teal: #14B8A6;
+  --teal-light: #CCFBF1;
+  --white: #FFFFFF;
+  --off-white: #F0FDF4;
+  --text-dark: #1A1A2E;
+  --text-mid: #4A5568;
+  --text-light: #6B7280;
+  --border: #D1D5DB;
+  --accent-warm: #F59E0B;
+  --accent-red: #EF4444;
+  --accent-blue: #3B82F6;
+}
+
+.reveal {
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  color: var(--text-dark);
+  font-size: 22px;
+}
+
+.reveal .slides { text-align: left; }
+.reveal .slides section { padding: 40px 60px; box-sizing: border-box; }
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  color: var(--charcoal);
+  text-transform: none;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin-bottom: 0.6em;
+}
+
+.reveal h1 { font-size: 2.4em; }
+.reveal h2 { font-size: 1.6em; }
+.reveal h3 { font-size: 1.2em; }
+
+.headline {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--charcoal);
+  border-left: 4px solid var(--emerald);
+  padding-left: 20px;
+  margin-bottom: 32px;
+  line-height: 1.4;
+}
+
+.subheadline {
+  font-size: 0.95em;
+  color: var(--text-mid);
+  font-weight: 400;
+  margin-top: -20px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.stat-grid { display: grid; gap: 24px; margin: 24px 0; }
+.stat-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+.stat-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.stat-grid.cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+.stat-grid.cols-5 { grid-template-columns: 1fr 1fr 1fr 1fr 1fr; }
+
+.stat-card {
+  background: var(--off-white);
+  border-radius: 8px;
+  padding: 28px 24px;
+  border: 1px solid #E5E7EB;
+  text-align: center;
+}
+
+.stat-card .stat-number {
+  font-size: 2.2em;
+  font-weight: 800;
+  color: var(--emerald);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-card .stat-label {
+  font-size: 0.75em;
+  color: var(--text-mid);
+  line-height: 1.4;
+}
+
+.stat-card.dark {
+  background: var(--charcoal);
+  border-color: var(--charcoal-light);
+}
+.stat-card.dark .stat-number { color: var(--emerald); }
+.stat-card.dark .stat-label { color: rgba(255,255,255,0.6); }
+
+.stat-card.emerald-bg {
+  background: var(--emerald);
+  border-color: var(--emerald-dark);
+}
+.stat-card.emerald-bg .stat-number { color: var(--white); }
+.stat-card.emerald-bg .stat-label { color: rgba(255,255,255,0.8); }
+
+.insight-box {
+  background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-light) 100%);
+  color: var(--white);
+  padding: 24px 28px;
+  border-radius: 8px;
+  margin: 20px 0;
+  border-left: 4px solid var(--emerald);
+}
+
+.insight-box .insight-label {
+  font-size: 0.7em;
+  font-weight: 700;
+  color: var(--emerald);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.insight-box p {
+  font-size: 0.95em;
+  line-height: 1.7;
+  margin: 0;
+  color: rgba(255,255,255,0.9);
+}
+
+.content-card {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 24px;
+  border: 1px solid #E5E7EB;
+  margin-bottom: 16px;
+}
+
+.content-card h4 {
+  font-size: 1em;
+  color: var(--charcoal);
+  margin-bottom: 12px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.7em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.badge-emerald { background: var(--emerald-light); color: var(--emerald-dark); }
+.badge-teal { background: var(--teal-light); color: #0F766E; }
+.badge-charcoal { background: var(--charcoal); color: var(--white); }
+.badge-warm { background: #FEF3C7; color: #92400E; }
+.badge-red { background: #FEE2E2; color: #991B1B; }
+
+.timeline {
+  position: relative;
+  padding-left: 40px;
+  margin: 16px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--emerald), var(--teal));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 20px;
+  padding-left: 8px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -34px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--emerald);
+  border: 2px solid var(--white);
+  box-shadow: 0 0 0 3px var(--emerald);
+}
+
+.timeline-item .tl-date {
+  font-size: 0.78em;
+  font-weight: 700;
+  color: var(--emerald);
+  margin-bottom: 2px;
+}
+
+.timeline-item .tl-title {
+  font-size: 0.92em;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-bottom: 2px;
+}
+
+.timeline-item .tl-desc {
+  font-size: 0.8em;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82em;
+  margin: 16px 0;
+}
+
+.comparison-table th {
+  background: var(--charcoal);
+  color: var(--white);
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.comparison-table td {
+  padding: 10px 16px;
+  border-bottom: 1px solid #E5E7EB;
+  vertical-align: top;
+}
+
+.comparison-table tr:nth-child(even) td {
+  background: #F9FAFB;
+}
+
+.comparison-table .highlight-row td {
+  background: var(--emerald-light);
+  font-weight: 600;
+}
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  max-height: 380px;
+  margin: 16px 0;
+}
+
+.source-note {
+  font-size: 0.65em;
+  color: var(--text-light);
+  margin-top: 16px;
+  font-style: italic;
+}
+
+.slide-number-custom {
+  position: absolute;
+  bottom: 16px;
+  right: 24px;
+  font-size: 0.65em;
+  color: var(--text-light);
+}
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.two-col-60-40 { display: grid; grid-template-columns: 3fr 2fr; gap: 32px; }
+
+.flow-diagram {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.flow-step {
+  background: var(--off-white);
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  flex: 1;
+}
+
+.flow-step.active {
+  background: var(--emerald);
+  border-color: var(--emerald-dark);
+  color: var(--white);
+}
+
+.flow-step .step-title {
+  font-size: 0.85em;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.flow-step .step-desc {
+  font-size: 0.7em;
+  opacity: 0.8;
+}
+
+.flow-arrow {
+  font-size: 1.2em;
+  color: var(--emerald);
+  flex-shrink: 0;
+}
+
+.icon-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+}
+
+.icon-list li {
+  padding: 8px 0 8px 28px;
+  position: relative;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+.icon-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 16px;
+  height: 16px;
+  background: var(--emerald);
+  border-radius: 50%;
+  opacity: 0.2;
+}
+
+.icon-list li::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 19px;
+  width: 6px;
+  height: 6px;
+  background: var(--emerald);
+  border-radius: 50%;
+}
+
+/* Title slide dark background */
+.slide-title-bg {
+  background: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0F3460 100%);
+  color: var(--white);
+}
+
+.slide-title-bg h1,
+.slide-title-bg h2,
+.slide-title-bg h3 {
+  color: var(--white);
+}
+
+.slide-dark {
+  background: var(--charcoal);
+  color: var(--white);
+}
+.slide-dark h2, .slide-dark h3, .slide-dark .headline {
+  color: var(--white);
+}
+.slide-dark .headline { border-left-color: var(--emerald); }
+
+.slide-section-break {
+  background: linear-gradient(135deg, var(--emerald-dark) 0%, var(--teal) 100%);
+  color: var(--white);
+  text-align: center;
+}
+.slide-section-break h2 { color: var(--white); }
+
+.risk-card {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 16px 20px;
+  border: 1px solid #E5E7EB;
+  border-left: 4px solid var(--accent-red);
+}
+
+.risk-card.solved { border-left-color: var(--emerald); }
+
+.risk-card .risk-title {
+  font-size: 0.88em;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 4px;
+}
+
+.risk-card .risk-desc {
+  font-size: 0.78em;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.architecture-box {
+  background: #F8FAFC;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.architecture-box .arch-title {
+  font-size: 0.85em;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 8px;
+  padding: 8px;
+  background: var(--charcoal);
+  color: var(--white);
+  border-radius: 6px;
+}
+
+.architecture-box .arch-layer {
+  padding: 10px;
+  margin: 6px 0;
+  border-radius: 6px;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.reveal .controls { color: var(--emerald); }
+.reveal .progress span { background: var(--emerald); }
+
+.pillar-card {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid #E5E7EB;
+  text-align: center;
+}
+
+.pillar-card .pillar-num {
+  font-size: 2em;
+  font-weight: 800;
+  color: var(--emerald);
+  opacity: 0.3;
+  line-height: 1;
+}
+
+.pillar-card .pillar-title {
+  font-size: 0.95em;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin: 8px 0 4px;
+}
+
+.pillar-card .pillar-desc {
+  font-size: 0.78em;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.takeaway-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.takeaway-num {
+  background: var(--emerald);
+  color: var(--white);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85em;
+  flex-shrink: 0;
+}
+
+.takeaway-text {
+  flex: 1;
+}
+
+.takeaway-text .tk-title {
+  font-weight: 700;
+  color: var(--charcoal);
+  font-size: 0.95em;
+  margin-bottom: 2px;
+}
+
+.takeaway-text .tk-desc {
+  font-size: 0.82em;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- Slide 1: Title -->
+<section class="slide-title-bg" data-background-color="#1A1A2E">
+  <div style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <span class="badge badge-emerald" style="margin-bottom:24px;width:fit-content;">Case Study Deep Dive</span>
+    <h1 style="font-size:2em;margin-bottom:16px;">ConnectAI:<br>12,400人全社展開で<br>情報漏洩ゼロを実現した<br>組織設計</h1>
+    <p style="font-size:0.95em;color:rgba(255,255,255,0.5);margin-bottom:40px;">
+      パナソニック コネクト株式会社 | 生成AI全社導入の実践知
+    </p>
+    <div style="display:flex;gap:24px;align-items:center;">
+      <div style="width:60px;height:2px;background:var(--emerald);"></div>
+      <span style="font-size:0.75em;color:rgba(255,255,255,0.4);">
+        戦略的インサイトレポート | Based on Panasonic Connect Public Data | 2026年2月
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 2: Executive Summary -->
+<section>
+  <div class="headline">Executive Summary</div>
+  <p class="subheadline">ConnectAI導入3年間の定量成果</p>
+  <div class="stat-grid cols-3">
+    <div class="stat-card dark">
+      <div class="stat-number">44.8万h</div>
+      <div class="stat-label">年間業務時間削減<br>(2024年度実績)</div>
+    </div>
+    <div class="stat-card emerald-bg">
+      <div class="stat-number">240万回</div>
+      <div class="stat-label">年間利用回数<br>(前年比1.7倍)</div>
+    </div>
+    <div class="stat-card dark">
+      <div class="stat-number">ZERO</div>
+      <div class="stat-label">情報漏洩・著作権侵害<br>(運用開始以来)</div>
+    </div>
+  </div>
+  <div class="insight-box">
+    <div class="insight-label">Key Insight</div>
+    <p>パナソニック コネクトは「禁止」ではなく「安全な代替手段の提供」でシャドーAIリスクを解消。セキュリティとイノベーションの二律背反を、組織設計で克服した日本製造業の最先端事例。</p>
+  </div>
+  <div class="source-note">Source: Panasonic Connect Press Release (2024.06, 2025.07)</div>
+</section>
+
+<!-- Slide 3: Table of Contents -->
+<section>
+  <div class="headline">Agenda</div>
+  <div class="stat-grid cols-2" style="gap:16px;">
+    <div class="content-card">
+      <h4 style="color:var(--emerald);">01 | Why</h4>
+      <p style="font-size:0.85em;color:var(--text-mid);">なぜ全社AI導入が必要だったか<br>- シャドーAI問題と3つの導入目標</p>
+    </div>
+    <div class="content-card">
+      <h4 style="color:var(--emerald);">02 | How</h4>
+      <p style="font-size:0.85em;color:var(--text-mid);">どう実現したか<br>- 技術基盤・セキュリティ・ガバナンス</p>
+    </div>
+    <div class="content-card">
+      <h4 style="color:var(--emerald);">03 | What</h4>
+      <p style="font-size:0.85em;color:var(--text-mid);">何を達成したか<br>- 定量成果・進化のタイムライン</p>
+    </div>
+    <div class="content-card">
+      <h4 style="color:var(--emerald);">04 | Lessons</h4>
+      <p style="font-size:0.85em;color:var(--text-mid);">何を学べるか<br>- 成功要因・他社比較・教訓</p>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 4: Section Break - Why -->
+<section class="slide-section-break" data-background-color="#059669">
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+    <span style="font-size:4em;font-weight:800;opacity:0.3;">01</span>
+    <h2 style="font-size:2em;margin:0;">Why</h2>
+    <p style="font-size:1.1em;opacity:0.8;margin-top:8px;">なぜ全社AI導入が必要だったか</p>
+  </div>
+</section>
+
+<!-- Slide 5: Shadow AI Problem -->
+<section>
+  <div class="headline">シャドーAI問題: 見えないリスクの拡大</div>
+  <div class="two-col">
+    <div>
+      <div class="risk-card" style="margin-bottom:12px;">
+        <div class="risk-title">無秩序な外部AI利用</div>
+        <div class="risk-desc">社員が個人アカウントでChatGPT等を業務利用。入力された機密情報がAIの学習データに取り込まれるリスク</div>
+      </div>
+      <div class="risk-card" style="margin-bottom:12px;">
+        <div class="risk-title">IT部門の把握不能</div>
+        <div class="risk-desc">誰が・いつ・何を入力したか追跡不可能。情報漏洩が起きても検知できない状態</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-title">「禁止」の限界</div>
+        <div class="risk-desc">利用を禁止しても、利便性を知った社員は隠れて使い続ける。禁止はリスクを地下に潜らせるだけ</div>
+      </div>
+    </div>
+    <div>
+      <div class="insight-box" style="margin-top:0;">
+        <div class="insight-label">Panasonic Connect's Answer</div>
+        <p style="font-size:1.05em;font-weight:600;margin-bottom:8px;">「禁止」ではなく「安全な代替手段の提供」</p>
+        <p>シャドーAIを撲滅する最も効果的な方法は、公式ツールの利便性で外部AIを上回ること。</p>
+      </div>
+      <div style="margin-top:16px;padding:16px;background:var(--off-white);border-radius:8px;border:1px solid #E5E7EB;">
+        <p style="font-size:0.85em;font-weight:600;color:var(--charcoal);margin-bottom:8px;">プロジェクト発足の先見性</p>
+        <p style="font-size:0.8em;color:var(--text-light);line-height:1.6;">2022年10月にプロジェクトキックオフ。ChatGPTが世に出て話題になる約1ヶ月前に開始という先手を打った判断。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 6: Three Goals -->
+<section>
+  <div class="headline">ConnectAI導入の3つの戦略目標</div>
+  <div class="stat-grid cols-3">
+    <div class="pillar-card">
+      <div class="pillar-num">01</div>
+      <div class="pillar-title">業務生産性向上</div>
+      <div class="pillar-desc">全社員がAIを活用し、繰り返し作業・調査・文書作成にかかる時間を大幅に削減</div>
+      <div style="margin-top:12px;">
+        <span class="badge badge-emerald">KPI: 年間削減時間</span>
+      </div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">02</div>
+      <div class="pillar-title">社員のAIスキル向上</div>
+      <div class="pillar-desc">プロンプト設計・AI出力の検証能力・マルチモーダル活用スキルの全社的な底上げ</div>
+      <div style="margin-top:12px;">
+        <span class="badge badge-teal">KPI: 月間アクティブ率</span>
+      </div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">03</div>
+      <div class="pillar-title">シャドーAIリスク軽減</div>
+      <div class="pillar-desc">外部生成AIの無秩序利用を公式ツールへ集約。情報漏洩・著作権侵害をゼロに</div>
+      <div style="margin-top:12px;">
+        <span class="badge badge-charcoal">KPI: インシデント件数</span>
+      </div>
+    </div>
+  </div>
+  <div class="insight-box">
+    <div class="insight-label">Strategic Design</div>
+    <p>3目標を明確に定義したことで、新たなAIソリューション登場時も「導入すべきか」の判断基準が明確に。結果として無駄のない推進が可能になった。</p>
+  </div>
+</section>
+
+<!-- Slide 7: Section Break - How -->
+<section class="slide-section-break" data-background-color="#059669">
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+    <span style="font-size:4em;font-weight:800;opacity:0.3;">02</span>
+    <h2 style="font-size:2em;margin:0;">How</h2>
+    <p style="font-size:1.1em;opacity:0.8;margin-top:8px;">どう実現したか</p>
+  </div>
+</section>
+
+<!-- Slide 8: Timeline -->
+<section>
+  <div class="headline">ConnectAI 進化のタイムライン</div>
+  <div class="two-col">
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tl-date">2022年10月</div>
+        <div class="tl-title">プロジェクトキックオフ</div>
+        <div class="tl-desc">ChatGPT公開の1ヶ月前に先行開始</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2023年2月</div>
+        <div class="tl-title">全社展開 (12,400人)</div>
+        <div class="tl-desc">Azure OpenAI Service基盤で「ConnectGPT」運用開始</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2023年6月</div>
+        <div class="tl-title">自社特化AIプロジェクト始動</div>
+        <div class="tl-desc">公式情報連携・RAG技術の検証開始</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2023年9月</div>
+        <div class="tl-title">RAG試験運用</div>
+        <div class="tl-desc">約7,400ページの公開情報を対象に全社テスト</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2024年4月</div>
+        <div class="tl-title">社外秘RAG運用開始</div>
+        <div class="tl-desc">品質管理630件/11,743ページの社内文書を対象に展開</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tl-date">2024年6月</div>
+        <div class="tl-title">プロンプト添削機能</div>
+        <div class="tl-desc">社員のAIスキル向上を支援するUI拡張</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2024年度通期</div>
+        <div class="tl-title">44.8万時間削減達成</div>
+        <div class="tl-desc">利用240万回、前年比2.4倍の効果</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2025年</div>
+        <div class="tl-title">AIエージェント試験導入</div>
+        <div class="tl-desc">経理・法務・マーケティング3領域で展開</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2025年7月</div>
+        <div class="tl-title">ガイドブック一般公開</div>
+        <div class="tl-desc">社内運用ノウハウを社外にも共有</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">Next</div>
+        <div class="tl-title">業務AI (Autonomous)</div>
+        <div class="tl-desc">判断と実行を担う自律型AIへの移行</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 9: Architecture -->
+<section>
+  <div class="headline">技術基盤: Azure OpenAI Service 閉域構成</div>
+  <div class="two-col">
+    <div>
+      <div class="architecture-box">
+        <div class="arch-title">ConnectAI Architecture</div>
+        <div class="arch-layer" style="background:var(--emerald-light);color:var(--emerald-dark);">
+          社員 (12,400人) - Microsoft Teams / Web UI
+        </div>
+        <div style="text-align:center;color:var(--text-light);font-size:0.7em;">|</div>
+        <div class="arch-layer" style="background:#DBEAFE;color:#1E40AF;">
+          Azure OpenAI Service (閉域環境)
+        </div>
+        <div style="text-align:center;color:var(--text-light);font-size:0.7em;">|</div>
+        <div class="arch-layer" style="background:#F3E8FF;color:#6B21A8;">
+          LLM: OpenAI / Google / Anthropic (3社マルチ)
+        </div>
+        <div style="text-align:center;color:var(--text-light);font-size:0.7em;">|</div>
+        <div class="arch-layer" style="background:#FEF3C7;color:#92400E;">
+          RAG: 社内文書 11,743+ ページ
+        </div>
+      </div>
+    </div>
+    <div>
+      <ul class="icon-list">
+        <li><strong>閉域クラウド:</strong> 入力情報が外部AIの学習データに使われない構造</li>
+        <li><strong>マルチLLM:</strong> OpenAI・Google・Anthropicの3社モデルを業務に応じて使い分け</li>
+        <li><strong>コンテンツフィルタリング:</strong> Azure Responsible AIによる不適切出力の自動ブロック</li>
+        <li><strong>引用元表示:</strong> RAG回答には参照URLを併記し、正確性を利用者が検証可能</li>
+        <li><strong>既存IT基盤との統合:</strong> Microsoft 365エコシステム上に構築、追加認証不要</li>
+      </ul>
+    </div>
+  </div>
+  <div class="source-note">Source: Panasonic Connect / Microsoft News Center Japan</div>
+</section>
+
+<!-- Slide 10: 6 Risks & Countermeasures -->
+<section>
+  <div class="headline">6つのリスクと対策: ガイドブック準拠</div>
+  <div class="stat-grid cols-3" style="gap:12px;">
+    <div class="risk-card solved">
+      <div class="risk-title">1. 情報漏洩</div>
+      <div class="risk-desc">Azure閉域環境で入力データの外部流出を構造的に遮断。ログ監査体制も整備</div>
+    </div>
+    <div class="risk-card solved">
+      <div class="risk-title">2. 著作権侵害</div>
+      <div class="risk-desc">出力結果の利用ルールを明文化。生成コンテンツの商用利用基準を策定</div>
+    </div>
+    <div class="risk-card solved">
+      <div class="risk-title">3. ハルシネーション</div>
+      <div class="risk-desc">RAG回答に引用元URL表示。利用者自身による正確性判断をルール化</div>
+    </div>
+    <div class="risk-card solved">
+      <div class="risk-title">4. プロンプトインジェクション</div>
+      <div class="risk-desc">Azure Responsible AIのフィルタリング機能と社内入力規約で防御</div>
+    </div>
+    <div class="risk-card solved">
+      <div class="risk-title">5. バイアス・倫理リスク</div>
+      <div class="risk-desc">データ利活用支援チームが倫理レビューを実施。AI出力の最終判断は人間が担保</div>
+    </div>
+    <div class="risk-card solved">
+      <div class="risk-title">6. 過度な依存</div>
+      <div class="risk-desc">AIは「補助ツール」であることを教育で徹底。最終判断は人間という原則を堅持</div>
+    </div>
+  </div>
+  <div class="insight-box">
+    <div class="insight-label">Governance Principle</div>
+    <p>「守り」のIT基盤を先に確立したからこそ、「攻め」のAI活用にアクセルを踏めた。セキュリティとイノベーションは二律背反ではなく、正しい順序の問題。</p>
+  </div>
+</section>
+
+<!-- Slide 11: Governance Structure -->
+<section>
+  <div class="headline">ガバナンス体制: 三位一体の推進組織</div>
+  <div class="two-col">
+    <div>
+      <div class="stat-grid cols-1" style="gap:12px;">
+        <div class="content-card" style="border-left:4px solid var(--emerald);">
+          <h4>データ利活用支援チーム</h4>
+          <p style="font-size:0.82em;color:var(--text-light);line-height:1.6;">AI技術・情報セキュリティ・業務設計の専門家で構成。ConnectAIの運用方針策定からユースケース支援まで一貫して担当</p>
+        </div>
+        <div class="content-card" style="border-left:4px solid var(--teal);">
+          <h4>法務・知財部門</h4>
+          <p style="font-size:0.82em;color:var(--text-light);line-height:1.6;">AI利活用ガイドラインの策定・改訂。著作権・個人情報保護法との整合性を確保</p>
+        </div>
+        <div class="content-card" style="border-left:4px solid var(--accent-blue);">
+          <h4>情報セキュリティ部門</h4>
+          <p style="font-size:0.82em;color:var(--text-light);line-height:1.6;">年間60部門以上の内部監査。監査結果はCISOへ報告し、改善サイクルを回す</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="background:var(--charcoal);border-radius:12px;padding:24px;color:var(--white);">
+        <p style="font-size:0.85em;font-weight:700;color:var(--emerald);margin-bottom:12px;">ガイドブック公開の戦略的意味</p>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="padding:8px 0;font-size:0.85em;border-bottom:1px solid rgba(255,255,255,0.1);">
+            <span style="color:var(--emerald);font-weight:700;">対内:</span> 社員への啓蒙・行動基準の明確化
+          </li>
+          <li style="padding:8px 0;font-size:0.85em;border-bottom:1px solid rgba(255,255,255,0.1);">
+            <span style="color:var(--emerald);font-weight:700;">対外:</span> 顧客からの問い合わせに対する説明コスト削減
+          </li>
+          <li style="padding:8px 0;font-size:0.85em;border-bottom:1px solid rgba(255,255,255,0.1);">
+            <span style="color:var(--emerald);font-weight:700;">業界:</span> 日本企業のAIガバナンスの先行事例として影響
+          </li>
+          <li style="padding:8px 0;font-size:0.85em;">
+            <span style="color:var(--emerald);font-weight:700;">信頼:</span> 「リスクを理解し管理している」企業姿勢の証明
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 12: Three-Layer Reform -->
+<section>
+  <div class="headline">3階建て改革構造: カルチャーが土台</div>
+  <div style="display:flex;flex-direction:column;gap:0;margin:16px 0;">
+    <div style="background:var(--emerald);color:var(--white);padding:24px 32px;border-radius:12px 12px 0 0;text-align:center;">
+      <div style="font-size:0.7em;font-weight:600;opacity:0.7;">3F</div>
+      <div style="font-size:1.2em;font-weight:700;">事業立地改革</div>
+      <div style="font-size:0.82em;opacity:0.8;margin-top:4px;">新規ビジネスモデルの創出・AI特化ソリューション</div>
+    </div>
+    <div style="background:var(--teal);color:var(--white);padding:24px 32px;text-align:center;">
+      <div style="font-size:0.7em;font-weight:600;opacity:0.7;">2F</div>
+      <div style="font-size:1.2em;font-weight:700;">オペレーション改革</div>
+      <div style="font-size:0.82em;opacity:0.8;margin-top:4px;">ConnectAIによる業務プロセス変革・44.8万時間削減</div>
+    </div>
+    <div style="background:var(--charcoal);color:var(--white);padding:24px 32px;border-radius:0 0 12px 12px;text-align:center;">
+      <div style="font-size:0.7em;font-weight:600;opacity:0.7;">1F (Foundation)</div>
+      <div style="font-size:1.2em;font-weight:700;">カルチャー改革</div>
+      <div style="font-size:0.82em;opacity:0.8;margin-top:4px;">経営トップから現場まで「挑戦する人を応援する文化」の浸透</div>
+    </div>
+  </div>
+  <div class="insight-box">
+    <div class="insight-label">Critical Success Factor</div>
+    <p>技術基盤（2F）やビジネスモデル（3F）の改革は、カルチャー改革（1F）という土台なしには成立しない。パナソニック コネクトはこの順序を徹底した。</p>
+  </div>
+</section>
+
+<!-- Slide 13: Section Break - What -->
+<section class="slide-section-break" data-background-color="#059669">
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+    <span style="font-size:4em;font-weight:800;opacity:0.3;">03</span>
+    <h2 style="font-size:2em;margin:0;">What</h2>
+    <p style="font-size:1.1em;opacity:0.8;margin-top:8px;">何を達成したか</p>
+  </div>
+</section>
+
+<!-- Slide 14: Year-over-Year Chart -->
+<section>
+  <div class="headline">年次成長: 2.4倍の生産性向上</div>
+  <div class="two-col">
+    <div>
+      <div class="chart-container" style="max-height:340px;">
+        <canvas id="yearlyChart"></canvas>
+      </div>
+    </div>
+    <div>
+      <div class="stat-grid cols-2" style="gap:12px;">
+        <div class="stat-card">
+          <div class="stat-number" style="font-size:1.6em;">2.4x</div>
+          <div class="stat-label">削減時間の成長率</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" style="font-size:1.6em;">1.7x</div>
+          <div class="stat-label">利用回数の成長率</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" style="font-size:1.6em;">1.4x</div>
+          <div class="stat-label">1回あたり削減時間</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" style="font-size:1.6em;">+14.3pt</div>
+          <div class="stat-label">月間UU率の増加</div>
+        </div>
+      </div>
+      <div style="margin-top:12px;padding:12px 16px;background:var(--off-white);border-radius:8px;border:1px solid #E5E7EB;">
+        <p style="font-size:0.82em;color:var(--text-mid);line-height:1.6;margin:0;">
+          <strong>1回あたり28分の削減</strong>は、AIへの「聞く」から「頼む」への活用高度化を反映
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="source-note">Source: Panasonic Connect Press Release (2025.07)</div>
+</section>
+
+<!-- Slide 15: Department Usage -->
+<section>
+  <div class="headline">部門別アクティブユーザー率</div>
+  <div class="two-col-60-40">
+    <div>
+      <div class="chart-container" style="max-height:360px;">
+        <canvas id="deptChart"></canvas>
+      </div>
+    </div>
+    <div>
+      <div class="insight-box" style="margin-top:0;">
+        <div class="insight-label">Highlight</div>
+        <p><strong>マーケティング部門71%</strong>という数値は、生成AIが一部の先進ユーザーだけでなく「日常業務の一部」として完全定着していることの証左。</p>
+      </div>
+      <div style="margin-top:16px;">
+        <p style="font-size:0.85em;font-weight:600;color:var(--charcoal);margin-bottom:8px;">特化AI展開状況</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="badge badge-emerald">品質管理</span>
+          <span class="badge badge-teal">ITサポート</span>
+          <span class="badge badge-emerald">人事研修</span>
+          <span class="badge badge-warm">+7件公開</span>
+          <span class="badge badge-charcoal">+16件検証中</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="source-note">Source: Panasonic Connect Press Release (2025.07)</div>
+</section>
+
+<!-- Slide 16: Ask to Delegate -->
+<section>
+  <div class="headline">「聞く」から「頼む」へ: AI活用の進化</div>
+  <div class="flow-diagram">
+    <div class="flow-step">
+      <div class="step-title">Phase 1</div>
+      <div class="step-desc">聞く (Ask)</div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">
+      <div class="step-title">Phase 2</div>
+      <div class="step-desc">調べる (Research)</div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step active">
+      <div class="step-title">Phase 3</div>
+      <div class="step-desc">頼む (Delegate)</div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step" style="border:2px dashed var(--emerald);">
+      <div class="step-title">Phase 4</div>
+      <div class="step-desc">任せる (Autonomous)</div>
+    </div>
+  </div>
+  <div class="stat-grid cols-2" style="margin-top:24px;">
+    <div class="content-card">
+      <h4>Phase 1-2: 初期活用 (2023)</h4>
+      <ul class="icon-list">
+        <li>専門用語の検索・翻訳</li>
+        <li>メールの下書き作成</li>
+        <li>文章の要約</li>
+      </ul>
+      <div style="text-align:center;margin-top:8px;">
+        <span class="badge badge-warm">1回あたり約20分削減</span>
+      </div>
+    </div>
+    <div class="content-card">
+      <h4>Phase 3: 高度活用 (2024-2025)</h4>
+      <ul class="icon-list">
+        <li>コード全体の生成・リファクタリング</li>
+        <li>作業手順書の作成</li>
+        <li>資料レビュー・アンケート分析</li>
+        <li>画像を含むマルチモーダル活用</li>
+      </ul>
+      <div style="text-align:center;margin-top:8px;">
+        <span class="badge badge-emerald">1回あたり28分削減 (画像利用時36分)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 17: RAG Deep Dive -->
+<section>
+  <div class="headline">RAG導入: 汎用AIから自社特化AIへ</div>
+  <div class="two-col">
+    <div>
+      <p style="font-size:0.9em;color:var(--text-mid);line-height:1.7;margin-bottom:16px;">
+        汎用LLMだけでは自社固有の情報に回答できないという課題に対し、検索拡張生成（RAG）技術で社内文書を統合。
+      </p>
+      <div class="stat-grid cols-2" style="gap:12px;">
+        <div class="stat-card">
+          <div class="stat-number" style="font-size:1.4em;">7,400+</div>
+          <div class="stat-label">公開情報ページ</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" style="font-size:1.4em;">11,743</div>
+          <div class="stat-label">社外秘文書ページ</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" style="font-size:1.4em;">630件</div>
+          <div class="stat-label">品質管理文書</div>
+        </div>
+        <div class="stat-card emerald-bg">
+          <div class="stat-number" style="font-size:1.4em;">7+16</div>
+          <div class="stat-label">特化AI (公開+検証中)</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="background:var(--charcoal);border-radius:12px;padding:24px;color:var(--white);">
+        <p style="font-size:0.85em;font-weight:700;color:var(--emerald);margin-bottom:16px;">RAG対象領域の段階的拡大</p>
+        <div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.1);">
+          <span class="badge" style="background:rgba(16,185,129,0.2);color:var(--emerald);">Phase 1</span>
+          <p style="font-size:0.85em;margin-top:6px;">Web公開情報 (3,700ページ + NR 495ページ + HP 3,200ページ)</p>
+        </div>
+        <div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.1);">
+          <span class="badge" style="background:rgba(20,184,166,0.2);color:var(--teal);">Phase 2</span>
+          <p style="font-size:0.85em;margin-top:6px;">品質管理 (社外秘: 630件 / 11,743ページ)</p>
+        </div>
+        <div>
+          <span class="badge" style="background:rgba(245,158,11,0.2);color:var(--accent-warm);">Phase 3</span>
+          <p style="font-size:0.85em;margin-top:6px;">ITサポート・人事研修・カスタマーサポート等の全社展開</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 18: AI Agent Strategy -->
+<section>
+  <div class="headline">2025年戦略: AIエージェントへの進化</div>
+  <div class="stat-grid cols-3" style="margin-bottom:20px;">
+    <div class="content-card" style="border-top:4px solid var(--emerald);">
+      <h4 style="text-align:center;">ナビゲーター型</h4>
+      <p style="font-size:0.82em;color:var(--text-light);text-align:center;line-height:1.6;">ユーザーの意図を理解し、最適なツール・情報源へ誘導</p>
+    </div>
+    <div class="content-card" style="border-top:4px solid var(--teal);">
+      <h4 style="text-align:center;">ワークフロー型</h4>
+      <p style="font-size:0.82em;color:var(--text-light);text-align:center;line-height:1.6;">定型業務の複数ステップを自動で連続実行</p>
+    </div>
+    <div class="content-card" style="border-top:4px solid var(--accent-blue);">
+      <h4 style="text-align:center;">汎用型</h4>
+      <p style="font-size:0.82em;color:var(--text-light);text-align:center;line-height:1.6;">非定型タスクにも柔軟に対応する自律型AI</p>
+    </div>
+  </div>
+  <div class="two-col">
+    <div>
+      <p style="font-size:0.88em;font-weight:600;color:var(--charcoal);margin-bottom:8px;">先行試験3領域</p>
+      <table class="comparison-table">
+        <tr><th>領域</th><th>用途</th></tr>
+        <tr><td>経理</td><td>決裁作成支援</td></tr>
+        <tr><td>法務</td><td>下請法チェック</td></tr>
+        <tr><td>マーケティング</td><td>メール添削・分析</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="insight-box" style="margin-top:0;">
+        <div class="insight-label">Evolution Path</div>
+        <p>汎用チャットAI → RAG特化AI → AIエージェント → 業務AI (Autonomous) という段階的進化が、リスクを管理しながらAI活用の深度を高めている。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 19: Group-Wide Impact -->
+<section>
+  <div class="headline">グループ全体への波及: PX-AI 9万人展開</div>
+  <div class="two-col">
+    <div>
+      <div class="stat-grid cols-1" style="gap:16px;">
+        <div class="stat-card dark" style="text-align:left;display:flex;align-items:center;gap:24px;">
+          <div>
+            <div class="stat-number" style="font-size:1.8em;">9万人</div>
+            <div class="stat-label">パナソニックグループ全体<br>PX-AI展開規模</div>
+          </div>
+        </div>
+        <div class="stat-card emerald-bg" style="text-align:left;display:flex;align-items:center;gap:24px;">
+          <div>
+            <div class="stat-number" style="font-size:1.8em;">5.3h/月</div>
+            <div class="stat-label">1人あたり月間削減時間<br>(グループ全体平均)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="content-card">
+        <h4>ConnectAI → PX-AI 横展開の構造</h4>
+        <ul class="icon-list">
+          <li>パナソニック コネクトが先行導入で知見を蓄積</li>
+          <li>ガイドブック・セキュリティ基準をグループ標準化</li>
+          <li>各事業会社が独自のカスタマイズを追加</li>
+          <li>グループ全体で9万人が利用する規模に拡大</li>
+        </ul>
+      </div>
+      <div class="insight-box" style="margin-top:16px;">
+        <div class="insight-label">Scale Impact</div>
+        <p>ConnectAI単体の12,400人から、グループ全体9万人へ。1社の成功モデルがグループ標準になるという、大企業ならではの横展開力。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 20: Section Break - Lessons -->
+<section class="slide-section-break" data-background-color="#059669">
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+    <span style="font-size:4em;font-weight:800;opacity:0.3;">04</span>
+    <h2 style="font-size:2em;margin:0;">Lessons</h2>
+    <p style="font-size:1.1em;opacity:0.8;margin-top:8px;">何を学べるか</p>
+  </div>
+</section>
+
+<!-- Slide 21: Success Factors -->
+<section>
+  <div class="headline">成功要因分析: 5つの鍵</div>
+  <div class="takeaway-item">
+    <div class="takeaway-num">1</div>
+    <div class="takeaway-text">
+      <div class="tk-title">先手のリスク対応 (禁止ではなく代替)</div>
+      <div class="tk-desc">シャドーAIを禁止で抑え込まず、公式ツールの利便性で自然に集約。ChatGPT登場前にプロジェクトを開始した先見性。</div>
+    </div>
+  </div>
+  <div class="takeaway-item">
+    <div class="takeaway-num">2</div>
+    <div class="takeaway-text">
+      <div class="tk-title">守りの基盤を先に確立</div>
+      <div class="tk-desc">閉域環境・ガイドライン・監査体制を整備してからアクセルを踏んだ。セキュリティは後付けではなく設計段階から組み込み。</div>
+    </div>
+  </div>
+  <div class="takeaway-item">
+    <div class="takeaway-num">3</div>
+    <div class="takeaway-text">
+      <div class="tk-title">カルチャー改革を土台に</div>
+      <div class="tk-desc">経営トップ主導で「挑戦する人を応援する文化」を浸透。全社説明会に2,000人が参加する組織の熱量。</div>
+    </div>
+  </div>
+  <div class="takeaway-item">
+    <div class="takeaway-num">4</div>
+    <div class="takeaway-text">
+      <div class="tk-title">段階的な進化設計</div>
+      <div class="tk-desc">汎用チャット → RAG特化 → エージェント → 自律型。一度に全部ではなく、段階的に深度を高めるアプローチ。</div>
+    </div>
+  </div>
+  <div class="takeaway-item">
+    <div class="takeaway-num">5</div>
+    <div class="takeaway-text">
+      <div class="tk-title">定量的な目標設定と計測</div>
+      <div class="tk-desc">3つの明確な目標設定 + 削減時間・利用回数・UU率の継続的な計測。データドリブンな推進が成果を可視化。</div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 22: Company Comparison -->
+<section>
+  <div class="headline">他社比較: 日本企業の生成AI全社導入</div>
+  <table class="comparison-table">
+    <tr>
+      <th>企業</th>
+      <th>ツール名</th>
+      <th>展開規模</th>
+      <th>主要成果</th>
+      <th>特徴的アプローチ</th>
+    </tr>
+    <tr class="highlight-row">
+      <td>パナソニック コネクト</td>
+      <td>ConnectAI</td>
+      <td>12,400人</td>
+      <td>44.8万h/年削減</td>
+      <td>シャドーAI対策 + 3階建て改革</td>
+    </tr>
+    <tr>
+      <td>SMBC</td>
+      <td>SMBC-GAI</td>
+      <td>グループ全体</td>
+      <td>130万件RAG</td>
+      <td>4ヶ月構築 (開発数日 + ルール3.5ヶ月)</td>
+    </tr>
+    <tr>
+      <td>鹿島建設</td>
+      <td>Kajima ChatAI</td>
+      <td>2万人</td>
+      <td>海外14法人統合</td>
+      <td>禁止→代替構築の逆転劇 (3名開発)</td>
+    </tr>
+    <tr>
+      <td>三菱UFJ</td>
+      <td>AI上司</td>
+      <td>4万人</td>
+      <td>22万h/月削減試算</td>
+      <td>500億円投資 (3年計画)</td>
+    </tr>
+    <tr>
+      <td>日清食品</td>
+      <td>NISSIN AI-chat</td>
+      <td>全社</td>
+      <td>30業務で活用</td>
+      <td>全国8拠点からPJメンバー招集</td>
+    </tr>
+  </table>
+  <div class="insight-box">
+    <div class="insight-label">Differentiation</div>
+    <p>パナソニック コネクトの特徴は「カルチャー改革を土台にした組織設計」。技術基盤やルール整備は他社も実施しているが、全社員の行動変容まで設計している点で一歩先を行く。</p>
+  </div>
+</section>
+
+<!-- Slide 23: Lessons for Japanese Companies -->
+<section>
+  <div class="headline">日本企業が学ぶべき5つの教訓</div>
+  <div class="stat-grid cols-5" style="gap:12px;">
+    <div class="pillar-card" style="padding:16px;">
+      <div class="pillar-num" style="font-size:1.6em;">01</div>
+      <div class="pillar-title" style="font-size:0.82em;">禁止より代替</div>
+      <div class="pillar-desc" style="font-size:0.7em;">AI利用を禁止してもシャドーAIは止まらない。安全な代替手段の提供が最善策</div>
+    </div>
+    <div class="pillar-card" style="padding:16px;">
+      <div class="pillar-num" style="font-size:1.6em;">02</div>
+      <div class="pillar-title" style="font-size:0.82em;">守りが先、攻めは後</div>
+      <div class="pillar-desc" style="font-size:0.7em;">セキュリティ基盤の確立なくして全社展開なし。順序を間違えると信頼を失う</div>
+    </div>
+    <div class="pillar-card" style="padding:16px;">
+      <div class="pillar-num" style="font-size:1.6em;">03</div>
+      <div class="pillar-title" style="font-size:0.82em;">目標を3つに絞る</div>
+      <div class="pillar-desc" style="font-size:0.7em;">明確なKPI設定が判断基準になる。「何でもAI」は推進力を分散させる</div>
+    </div>
+    <div class="pillar-card" style="padding:16px;">
+      <div class="pillar-num" style="font-size:1.6em;">04</div>
+      <div class="pillar-title" style="font-size:0.82em;">段階的に深化</div>
+      <div class="pillar-desc" style="font-size:0.7em;">チャット → RAG → エージェント。一度に全てではなく、成功を積み重ねる</div>
+    </div>
+    <div class="pillar-card" style="padding:16px;">
+      <div class="pillar-num" style="font-size:1.6em;">05</div>
+      <div class="pillar-title" style="font-size:0.82em;">文化改革が根幹</div>
+      <div class="pillar-desc" style="font-size:0.7em;">ツール導入だけでは定着しない。経営層のコミットと挑戦を奨励する文化が不可欠</div>
+    </div>
+  </div>
+  <div class="insight-box">
+    <div class="insight-label">Final Insight</div>
+    <p>生成AI導入は「IT投資」ではなく「組織変革」。パナソニック コネクトの事例が証明するのは、テクノロジーではなく「人と組織のデザイン」が成否を分けるということ。</p>
+  </div>
+</section>
+
+<!-- Slide 24: Key Takeaways -->
+<section class="slide-dark" data-background-color="#1A1A2E">
+  <div class="headline">Key Takeaways</div>
+  <div class="stat-grid cols-3" style="margin-bottom:24px;">
+    <div class="stat-card emerald-bg">
+      <div class="stat-number" style="font-size:1.4em;">44.8万h</div>
+      <div class="stat-label">年間削減 (2.4x成長)</div>
+    </div>
+    <div class="stat-card" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);">
+      <div class="stat-number" style="font-size:1.4em;color:var(--white);">12,400人</div>
+      <div class="stat-label" style="color:rgba(255,255,255,0.5);">全社展開 → 9万人へ</div>
+    </div>
+    <div class="stat-card" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);">
+      <div class="stat-number" style="font-size:1.4em;color:var(--white);">ZERO</div>
+      <div class="stat-label" style="color:rgba(255,255,255,0.5);">情報漏洩インシデント</div>
+    </div>
+  </div>
+  <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:12px;padding:24px;">
+    <p style="font-size:1em;color:var(--white);line-height:1.8;margin:0;">
+      パナソニック コネクトのConnectAIは、<strong style="color:var(--emerald);">「セキュリティとイノベーションの両立」</strong>が可能であることを実証した。その鍵は技術ではなく<strong style="color:var(--emerald);">「組織設計」</strong>にある。カルチャー改革を土台に、段階的な技術深化と定量的な目標管理を組み合わせることで、12,400人規模の全社展開を情報漏洩ゼロで実現した。
+    </p>
+  </div>
+</section>
+
+<!-- Slide 25: Sources -->
+<section>
+  <div class="headline">出典・参考文献</div>
+  <div class="content-card" style="margin-bottom:12px;">
+    <p style="font-size:0.82em;color:var(--text-mid);line-height:2;">
+      [1] Panasonic Connect Press Release (2024.06) 「生成AI導入1年の実績と今後の活用構想」<br>
+      [2] Panasonic Connect Press Release (2025.07) 「聞くから頼むへシフトしたAI活用で年間44.8万時間の削減を達成」<br>
+      [3] Panasonic Connect (2023.06) 「ConnectAIを自社特化AIへと深化」<br>
+      [4] Microsoft News Center Japan (2023.05) 「パナソニック コネクトがAIに全力投球する理由」<br>
+      [5] Panasonic Connect 「生成AI利活用ガイドブック Ver.1.0」(一般公開版)<br>
+      [6] Panasonic Connect (2023.02) 「Azure OpenAI Serviceを活用したAIアシスタントサービスを導入」<br>
+      [7] Business Insider Japan (2024) 「パナソニック Cの生成AI導入から1年」<br>
+      [8] Cloud Watch (2024) 「汎用から業務AIへ進化するパナソニック コネクトの生成AI活用」<br>
+      [9] Agenda Note 「パナソニック コネクトが全社員1.3万人のAI導入に成功した3つの秘訣」
+    </p>
+  </div>
+  <div style="text-align:center;margin-top:24px;">
+    <div style="width:60px;height:2px;background:var(--emerald);margin:0 auto 12px;"></div>
+    <p style="font-size:0.75em;color:var(--text-light);">
+      Strategic Insight Report | Based on Public Data | 2026年2月
+    </p>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    width: 1280,
+    height: 720,
+    margin: 0,
+    center: false,
+    transition: 'fade',
+    transitionSpeed: 'fast',
+    backgroundTransition: 'fade',
+    controlsTutorial: false,
+    controls: true,
+    progress: true
+});
+
+document.querySelector('.reveal').addEventListener('click', function(e) {
+  if (e.target.closest('a, button, .controls, .navigate-left, .navigate-right, .navigate-up, .navigate-down, input, select, textarea, [data-prevent-swipe]')) return;
+  if (e.clientX < window.innerWidth / 2) Reveal.prev();
+  else Reveal.next();
+});
+
+Reveal.on('ready', function() {
+    // Yearly Comparison Chart
+    var ctx1 = document.getElementById('yearlyChart');
+    if (ctx1) {
+        new Chart(ctx1.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['2023年度', '2024年度'],
+                datasets: [
+                    {
+                        label: '業務時間削減 (万時間)',
+                        data: [18.6, 44.8],
+                        backgroundColor: '#10B981',
+                        borderRadius: 6
+                    },
+                    {
+                        label: '利用回数 (万回)',
+                        data: [140, 240],
+                        backgroundColor: '#14B8A6',
+                        borderRadius: 6
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { font: { family: 'Noto Sans JP', size: 12 }, usePointStyle: true, padding: 16 }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#E5E7EB' },
+                        ticks: { font: { family: 'Noto Sans JP', size: 11 } }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { font: { family: 'Noto Sans JP', size: 12, weight: 600 } }
+                    }
+                }
+            }
+        });
+    }
+
+    // Department Usage Chart
+    var ctx2 = document.getElementById('deptChart');
+    if (ctx2) {
+        new Chart(ctx2.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Marketing', 'Engineering', 'Corporate', 'Sales', 'All Average'],
+                datasets: [{
+                    label: 'Monthly Active User Rate (%)',
+                    data: [71, 58, 52, 45, 49.1],
+                    backgroundColor: function(context) {
+                        return context.dataIndex === 0 ? '#10B981' :
+                               context.dataIndex === 4 ? '#1A1A2E' : '#14B8A6';
+                    },
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: { color: '#E5E7EB' },
+                        ticks: {
+                            font: { family: 'Noto Sans JP', size: 11 },
+                            callback: function(v) { return v + '%'; }
+                        }
+                    },
+                    y: {
+                        grid: { display: false },
+                        ticks: { font: { family: 'Noto Sans JP', size: 12, weight: 500 } }
+                    }
+                }
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>
