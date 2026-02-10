@@ -498,6 +498,75 @@
   color: var(--text-light);
   line-height: 1.5;
 }
+.narration-controls {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(26, 26, 46, 0.95);
+  padding: 8px 14px;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: opacity 0.3s ease;
+}
+.narration-controls:hover { opacity: 1 !important; }
+.narration-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, background 0.2s ease;
+  background: var(--emerald);
+  color: var(--white);
+}
+.narration-btn:hover { transform: scale(1.1); }
+.narration-btn:active { transform: scale(0.95); }
+.narration-btn svg { width: 18px; height: 18px; fill: currentColor; }
+.narration-btn.active { background: var(--teal); color: white; }
+.narration-btn.stop-btn { background: rgba(255,255,255,0.15); color: white; }
+.narration-btn.stop-btn:hover { background: var(--accent-red); }
+.narration-status {
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Noto Sans JP', sans-serif;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.narration-progress {
+  width: 60px;
+  height: 3px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.narration-progress-bar {
+  height: 100%;
+  background: var(--emerald);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+.narration-speed {
+  font-size: 11px;
+  color: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 2px 8px;
+  cursor: pointer;
+  font-family: 'Inter', monospace;
+  transition: background 0.2s;
+}
+.narration-speed:hover { background: rgba(255,255,255,0.2); }
 </style>
 </head>
 <body>
@@ -1292,6 +1361,21 @@
 </div>
 </div>
 
+<div class="narration-controls" id="narrationControls" style="opacity:0.6;">
+  <button class="narration-btn" id="narrationPlayBtn" title="ナレーション再生">
+    <svg viewBox="0 0 24 24" id="playIcon"><polygon points="6,4 20,12 6,20"/></svg>
+    <svg viewBox="0 0 24 24" id="pauseIcon" style="display:none;"><rect x="5" y="4" width="4" height="16"/><rect x="15" y="4" width="4" height="16"/></svg>
+  </button>
+  <button class="narration-btn stop-btn" id="narrationStopBtn" title="停止">
+    <svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1"/></svg>
+  </button>
+  <div class="narration-progress">
+    <div class="narration-progress-bar" id="narrationProgress"></div>
+  </div>
+  <button class="narration-speed" id="narrationSpeed" title="速度切替">1.0x</button>
+  <span class="narration-status" id="narrationStatus">待機中</span>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
 <script>
 Reveal.initialize({
@@ -1405,6 +1489,95 @@ Reveal.on('ready', function() {
         });
     }
 });
+(function() {
+  var playBtn = document.getElementById('narrationPlayBtn');
+  var stopBtn = document.getElementById('narrationStopBtn');
+  var speedBtn = document.getElementById('narrationSpeed');
+  var statusEl = document.getElementById('narrationStatus');
+  var progressBar = document.getElementById('narrationProgress');
+  var playIcon = document.getElementById('playIcon');
+  var pauseIcon = document.getElementById('pauseIcon');
+
+  var audio = new Audio();
+  var isPlaying = false;
+  var rate = 1.0;
+  var speeds = [0.8, 1.0, 1.2, 1.5];
+  var speedIndex = 1;
+  var TOTAL_SLIDES = 25;
+
+  function getSlideNumber() {
+    var indices = Reveal.getIndices();
+    return indices.h + 1;
+  }
+
+  function getAudioPath(num) {
+    var padded = num < 10 ? '0' + num : '' + num;
+    return 'audio/slide_' + padded + '.mp3';
+  }
+
+  function play() {
+    var num = getSlideNumber();
+    if (num < 1 || num > TOTAL_SLIDES) { statusEl.textContent = '音声なし'; return; }
+    if (audio.paused && audio.src && audio.currentTime > 0) {
+      audio.play();
+      return;
+    }
+    audio.src = getAudioPath(num);
+    audio.playbackRate = rate;
+    audio.play().catch(function() { statusEl.textContent = '音声なし'; });
+  }
+
+  function pause() { audio.pause(); }
+
+  function stop() {
+    audio.pause();
+    audio.currentTime = 0;
+    audio.src = '';
+    setPlayingUI(false);
+    progressBar.style.width = '0%';
+    statusEl.textContent = '待機中';
+  }
+
+  function setPlayingUI(playing) {
+    isPlaying = playing;
+    playIcon.style.display = playing ? 'none' : 'block';
+    pauseIcon.style.display = playing ? 'block' : 'none';
+    playBtn.classList.toggle('active', playing);
+  }
+
+  audio.addEventListener('play', function() { setPlayingUI(true); statusEl.textContent = '再生中...'; });
+  audio.addEventListener('pause', function() {
+    if (audio.currentTime > 0 && audio.currentTime < audio.duration) {
+      setPlayingUI(false); statusEl.textContent = '一時停止';
+    }
+  });
+  audio.addEventListener('ended', function() {
+    setPlayingUI(false); progressBar.style.width = '100%'; statusEl.textContent = '完了';
+    setTimeout(function() { progressBar.style.width = '0%'; statusEl.textContent = '待機中'; }, 2000);
+  });
+  audio.addEventListener('timeupdate', function() {
+    if (audio.duration) { progressBar.style.width = (audio.currentTime / audio.duration * 100) + '%'; }
+  });
+  audio.addEventListener('error', function() { setPlayingUI(false); statusEl.textContent = '音声なし'; });
+
+  playBtn.addEventListener('click', function() { if (isPlaying) { pause(); } else { play(); } });
+  stopBtn.addEventListener('click', stop);
+  speedBtn.addEventListener('click', function() {
+    speedIndex = (speedIndex + 1) % speeds.length;
+    rate = speeds[speedIndex];
+    speedBtn.textContent = rate + 'x';
+    audio.playbackRate = rate;
+  });
+
+  Reveal.on('slidechanged', function() { stop(); });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'n' || e.key === 'N') {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      e.preventDefault();
+      if (isPlaying) { stop(); } else { play(); }
+    }
+  });
+})();
 </script>
 </body>
 </html>
