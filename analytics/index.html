@@ -884,6 +884,10 @@
                 '/portfolio/code-reviewer-system.html': 'Code Reviewer詳細',
                 '/portfolio/analytics/': 'Analytics Dashboard',
                 '/portfolio/analytics/index.html': 'Analytics Dashboard',
+                '/portfolio/presentations.html': 'プレゼンテーション一覧',
+                '/portfolio/presentations/ai-adoption-analysis/index.html': 'AI導入分析プレゼン',
+                '/portfolio/presentations/legacy-finance-ai-roadmap/index.html': 'レガシー金融AI戦略プレゼン',
+                '/portfolio/presentations/panasonic-connectai/index.html': 'Panasonic ConnectAIプレゼン',
                 '/ai-trend-daily/home.html': 'AI Trend Dashboard（ホーム）',
                 '/ai-trend-daily/index.html': 'AI Trend Dashboard（ランキング）',
                 '/ai-trend-daily/image-ai-ranking.html': '画像生成AIランキング',
@@ -909,6 +913,10 @@
             if (path.includes('cyberpunk')) return 'Cyberpunk Anime';
             if (path.includes('esports-tournament')) return 'Esports Tournament';
             if (path.includes('asteroid-game')) return 'Asteroid Game';
+            if (path.includes('presentations/ai-adoption')) return 'AI導入分析プレゼン';
+            if (path.includes('presentations/legacy-finance')) return 'レガシー金融AI戦略プレゼン';
+            if (path.includes('presentations/panasonic')) return 'Panasonic ConnectAIプレゼン';
+            if (path.includes('presentations')) return 'プレゼンテーション一覧';
             
             return null;
         }

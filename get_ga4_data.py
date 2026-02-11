@@ -326,8 +326,8 @@ class GA4DataCollector:
                 link_url = row.dimension_values[1].value
                 clicks = int(row.metric_values[0].value)
                 
-                # /portfolio/projects.html からの外部リンククリックのみ集計
-                if '/portfolio/projects' in page_path and ('http' in link_url or 'github' in link_url):
+                # /portfolio/projects.html または /portfolio/presentations からの外部リンククリックを集計
+                if ('/portfolio/projects' in page_path or '/portfolio/presentations' in page_path) and ('http' in link_url or 'github' in link_url):
                     if link_url not in project_clicks_raw:
                         project_clicks_raw[link_url] = 0
                     project_clicks_raw[link_url] += clicks
@@ -340,6 +340,12 @@ class GA4DataCollector:
                     project_name = "Sound Platform"
                 elif 'ai-trend' in url:
                     project_name = "AI Trend Dashboard"
+                elif 'ai-adoption-analysis' in url:
+                    project_name = "AI導入分析プレゼン"
+                elif 'legacy-finance-ai-roadmap' in url:
+                    project_name = "レガシー金融AI戦略プレゼン"
+                elif 'panasonic-connectai' in url:
+                    project_name = "Panasonic ConnectAIプレゼン"
                 elif 'github.com' in url:
                     project_name = "GitHub Repository"
                 
@@ -351,13 +357,13 @@ class GA4DataCollector:
             
             self.log_message(f"プロジェクトクリック取得: {len(project_clicks)} 項目")
             
-            # プロジェクトページビューを集計
+            # プロジェクト・プレゼンテーションページビューを集計
             self.log_message("プロジェクトページビュー集計中...")
             project_page_views = {}
             for row in data:
                 page_path = row['page_path']
-                # /portfolio/projects配下のページを集計
-                if '/portfolio/projects' in page_path or 'sound-platform' in page_path.lower() or 'ai-trend' in page_path.lower():
+                # /portfolio/projects配下・presentations配下のページを集計
+                if '/portfolio/projects' in page_path or '/portfolio/presentations' in page_path or 'sound-platform' in page_path.lower() or 'ai-trend' in page_path.lower():
                     if page_path not in project_page_views:
                         project_page_views[page_path] = {
                             'users': 0,
