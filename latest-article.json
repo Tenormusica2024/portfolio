@@ -1,6 +1,6 @@
 {
-  "title": "AIフロントエンドツール5選徹底比較 Lovable/v0/Stitch/Figma MCP/Pencil.dev【2026】",
-  "link": "https://zenn.dev/tenormusica/articles/ai-app-builder-comparison-2026",
-  "description": "はじめに\n!\nこの記事は以下の方向けです:\n\nAI駆動フロントエンド開発ツールの 選択に迷っている 方\n現在使っているツールから 乗り換えを検討している 方\nLovable、v0、Google Stitch、Figma MCP、Pencil.devなど どれから始めるべきか 知りたい方\n\nAIエージェント連携・Skills親和性 を重視してツール選びをしたい方\n\n\n\n本記事の評価は私の主観です。ツ...",
+  "title": "ソロ開発者がAIで週1アプリをリリースする5フェーズコーディングループ",
+  "link": "https://zenn.dev/tenormusica/articles/ai-coding-5phase-solo-developer-2026",
+  "description": "AIツール使用者の69%が週1以上活用──それでも週1リリースが遠い理由\nPRI TIMESの調査によると、AIコーディングツール使用者の69%が週1回以上活用していますが、「週1でアプリをリリースする」という話になると途端にハードルが上がります。\n問題は、AIツールの使い方ではなく、フローの設計です。ツールを散発的に使うのと、明確なフェーズに沿って使うのとでは、成果が変わります。\n2026年初頭...",
   "updated": true
 }
