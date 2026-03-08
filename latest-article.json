@@ -1,6 +1,6 @@
 {
-  "title": "ソロ開発者がAIで週1アプリをリリースする5フェーズコーディングループ",
-  "link": "https://zenn.dev/tenormusica/articles/ai-coding-5phase-solo-developer-2026",
-  "description": "AIツール使用者の69%が週1以上活用──それでも週1リリースが遠い理由\nPRI TIMESの調査によると、AIコーディングツール使用者の69%が週1回以上活用していますが、「週1でアプリをリリースする」という話になると途端にハードルが上がります。\n問題は、AIツールの使い方ではなく、フローの設計です。ツールを散発的に使うのと、明確なフェーズに沿って使うのとでは、成果が変わります。\n2026年初頭...",
+  "title": "スキルクリエイターにeval自動生成が追加 — Agent Skillsのベンチマークとモデル更新対応が変わる",
+  "link": "https://zenn.dev/tenormusica/articles/claude-skill-creator-evals-2026",
+  "description": "スキル品質管理の盲点を突いたアップデート\nClaude Codeの「スキル」とは、SKILL.mdファイルで定義するカスタムワークフロー指示のこと。よく使う作業手順やツール操作をClaude Codeに覚えさせて、スラッシュコマンドなどで呼び出せる仕組みです。\nそのスキルエコシステムが2025年半ばの約50スキルから2026年3月時点で334件超に急成長している。find-skills が452,...",
   "updated": true
 }
