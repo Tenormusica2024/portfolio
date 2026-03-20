@@ -1,6 +1,6 @@
 {
-  "title": "スキルクリエイターにeval自動生成が追加 — Agent Skillsのベンチマークとモデル更新対応が変わる",
-  "link": "https://zenn.dev/tenormusica/articles/claude-skill-creator-evals-2026",
-  "description": "スキル品質管理の盲点を突いたアップデート\nClaude Codeの「スキル」とは、SKILL.mdファイルで定義するカスタムワークフロー指示のこと。よく使う作業手順やツール操作をClaude Codeに覚えさせて、スラッシュコマンドなどで呼び出せる仕組みです。\nそのスキルエコシステムが2025年半ばの約50スキルから2026年3月時点で334件超に急成長している。find-skills が452,...",
+  "title": "SEOで1位でもAIに無視される時代が来た。今すぐできるAEO対応の書き方",
+  "link": "https://zenn.dev/tenormusica/articles/aeo-inverted-pyramid-ai-search-2026",
+  "description": "Googleで1位を取っていても、ChatGPTやPerplexityの回答に一切登場しないサイトが増えています。検索流入の構造が変わりつつある今、コンテンツの書き方を変えないと、努力が丸ごと空振りになるかもしれません。\n\n AIに無視されているサイトが増えている理由\nBrandlightの調査によると、Googleトップ10とAI引用ソースの重複率は70%から20%以下に低下しています。つまり、...",
   "updated": true
 }
