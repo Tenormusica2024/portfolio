@@ -10,9 +10,13 @@
   <meta property="og:title" content="幸田 晃典 / UrayahaDays | フリーランスエンジニア・システム開発">
   <meta property="og:description" content="中小企業・個人事業主向けのWebサイト制作・業務自動化・AI組み込み開発。ITエンジニア歴5年、AI開発エンジニア歴1年。最短2週間・費用対効果の高い開発で現場の課題を解決します。">
   <meta property="og:locale" content="ja_JP">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://urayahadays-b2b.vercel.app/og-image.png">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="541">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="幸田 晃典 / UrayahaDays | フリーランスエンジニア・システム開発">
   <meta name="twitter:description" content="中小企業・個人事業主向けのWebサイト制作・業務自動化・AI組み込み開発。ITエンジニア歴5年、AI開発エンジニア歴1年。最短2週間・費用対効果の高い開発で現場の課題を解決します。">
+  <meta name="twitter:image" content="https://urayahadays-b2b.vercel.app/og-image.png">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231B2A4A' rx='4'/><text x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23B8976C' text-anchor='middle'>K</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -975,14 +979,17 @@
     result.style.display = 'none';
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
         body: JSON.stringify({ name, email, message }),
       });
       const data = await res.json();
 
-      if (res.ok && data.success) {
+      if (res.ok) {
         // 送信成功
         result.style.display = 'block';
         result.style.background = '#f0faf0';
@@ -991,7 +998,7 @@
         result.textContent = '送信しました。2〜3営業日以内にご連絡いたします。';
         this.reset();
       } else {
-        throw new Error(data.error || '送信に失敗しました。');
+        throw new Error((data.errors && data.errors[0] && data.errors[0].message) || '送信に失敗しました。');
       }
     } catch (err) {
       // 送信失敗
