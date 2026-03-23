@@ -1,6 +1,6 @@
 {
-  "title": "SEOで1位でもAIに無視される時代が来た。今すぐできるAEO対応の書き方",
-  "link": "https://zenn.dev/tenormusica/articles/aeo-inverted-pyramid-ai-search-2026",
-  "description": "Googleで1位を取っていても、ChatGPTやPerplexityの回答に一切登場しないサイトが増えています。検索流入の構造が変わりつつある今、コンテンツの書き方を変えないと、努力が丸ごと空振りになるかもしれません。\n\n AIに無視されているサイトが増えている理由\nBrandlightの調査によると、Googleトップ10とAI引用ソースの重複率は70%から20%以下に低下しています。つまり、...",
+  "title": "AnthropicがAI SREの限界を公式認定。「相関関係を因果関係と誤認し続ける」",
+  "link": "https://zenn.dev/tenormusica/articles/anthropic-ai-sre-limits-qcon-2026",
+  "description": "Anthropicは2026年3月19日のQCon Londonで、ClaudeをSRE（サイト信頼性エンジニア）として活用する試みの限界を公式に報告しました。「相関関係を因果関係と誤認し続ける」という根本的な問題が残存しており、SREの完全代替には至らないと自社が認めた形です。AIにエラーログやアラートを読ませて原因を特定しようとしたことがある方には、直接関係する話です。\n\n 何を試みて、何が分...",
   "updated": true
 }
