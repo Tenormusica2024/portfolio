@@ -33,8 +33,9 @@ module.exports = async function handler(req, res) {
   try {
     await transporter.sendMail({
       from: `"UrayahaDays お問い合わせ" <${process.env.GMAIL_ADDRESS}>`,
-      to: process.env.GMAIL_ADDRESS,
+      to: 'dragonrondo@gmail.com',
       subject: `【B2Bポートフォリオ】${name} 様よりお問い合わせ`,
+      encoding: 'utf-8',
       text: [
         `お名前: ${name}`,
         `メールアドレス: ${email}`,
