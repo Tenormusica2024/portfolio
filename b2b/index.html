@@ -458,6 +458,22 @@
       letter-spacing: 0.03em;
     }
 
+    /* ===== WORKS → CTA橋渡し ===== */
+    .works-cta {
+      background: var(--navy);
+      padding: 3rem 5%; text-align: center;
+    }
+    .works-cta p {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.95rem; margin-bottom: 1.4rem;
+      line-height: 1.8;
+    }
+    /* 紺背景の上ではゴールドボタンに */
+    .works-cta .btn-primary {
+      background: var(--gold); color: var(--white);
+    }
+    .works-cta .btn-primary:hover { background: #a07b55; }
+
     /* ===== FOOTER ===== */
     footer {
       background: var(--navy);
@@ -497,7 +513,7 @@
       .nav-links { display: none; }
       section { padding: 4rem 4%; }
       #hero::before { display: none; }
-      .hero-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+      .hero-stats { display: grid; grid-template-columns: 1fr 1fr; }
       .stat-item { padding: 0.8rem 1rem; }
       .work-item { grid-template-columns: 1fr; padding: 1.4rem; gap: 0.4rem; }
       .work-meta { text-align: left; }
@@ -533,7 +549,7 @@
     </h1>
     <p class="hero-desc">
       中小企業・個人事業主向けに、Webサイト制作・業務自動化・AI組み込み開発を提供しています。
-      大手受託会社より格安かつスピーディーに、現場の課題を解決します。
+      大手受託会社に比べて費用対効果が高く、スピーディーに現場の課題を解決します。
     </p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">無料相談はこちら</a>
@@ -720,6 +736,12 @@
     </div>
   </div>
 </section>
+
+<!-- WORKS → CTA橋渡し -->
+<div class="works-cta">
+  <p class="reveal">「うちにも使えるかも」と思ったら、まずは無料相談からどうぞ。<br>お見積りまで費用は一切かかりません。</p>
+  <a href="#contact" class="btn-primary reveal">無料相談はこちら</a>
+</div>
 
 <!-- FLOW -->
 <section id="flow">
