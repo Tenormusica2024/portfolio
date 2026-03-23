@@ -416,6 +416,48 @@
     }
     .form-submit:hover { background: var(--navy-light); }
 
+    /* ===== 受付状況バッジ ===== */
+    .hero-status {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      background: #f0faf0; border: 1px solid #b8ddb8;
+      color: #2d7a2d; font-size: 0.72rem; font-weight: 500;
+      padding: 0.28rem 0.8rem; border-radius: 2px;
+      letter-spacing: 0.08em; margin-bottom: 1rem;
+    }
+    .hero-status-dot {
+      width: 6px; height: 6px;
+      background: #2d7a2d; border-radius: 50%;
+      animation: status-blink 1.8s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes status-blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.25; }
+    }
+
+    /* ===== 技術スタック ===== */
+    .tech-stack {
+      margin-top: 3rem;
+      padding: 1.6rem 2rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--gold);
+    }
+    .tech-stack-label {
+      font-size: 0.66rem; letter-spacing: 0.22em;
+      color: var(--muted); text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+    .tech-tags {
+      display: flex; flex-wrap: wrap; gap: 0.45rem;
+    }
+    .tech-tag {
+      font-size: 0.76rem; color: var(--navy);
+      background: var(--bg-section); border: 1px solid var(--border);
+      padding: 0.2rem 0.65rem; border-radius: 2px;
+      letter-spacing: 0.03em;
+    }
+
     /* ===== FOOTER ===== */
     footer {
       background: var(--navy);
@@ -425,6 +467,15 @@
       align-items: center; font-size: 0.72rem;
       letter-spacing: 0.08em;
     }
+    .footer-links {
+      display: flex; gap: 1.5rem;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none; font-size: 0.68rem;
+      letter-spacing: 0.06em; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.65); }
 
     /* ===== REVEAL ANIMATION ===== */
     .reveal {
@@ -451,7 +502,8 @@
       .work-item { grid-template-columns: 1fr; padding: 1.4rem; gap: 0.4rem; }
       .work-meta { text-align: left; }
       .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      footer { flex-direction: column; gap: 0.4rem; text-align: center; }
+      footer { flex-direction: column; gap: 0.6rem; text-align: center; }
+      .footer-links { justify-content: center; gap: 1rem; }
     }
   </style>
 </head>
@@ -473,6 +525,7 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-content">
+    <div class="hero-status"><span class="hero-status-dot"></span>現在 受注受付中</div>
     <p class="hero-eyebrow">ITエンジニア歴5年・AI開発エンジニア歴1年 | フリーランス受託開発</p>
     <h1 class="hero-title">
       AIの速度で実装し、<br>
@@ -588,6 +641,25 @@
       <span class="service-price">3〜10万円〜</span>
     </div>
   </div>
+  <div class="tech-stack reveal">
+    <p class="tech-stack-label">使用技術・対応スタック</p>
+    <div class="tech-tags">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">JavaScript / TypeScript</span>
+      <span class="tech-tag">Google Apps Script</span>
+      <span class="tech-tag">VBA / Excel</span>
+      <span class="tech-tag">HTML / CSS</span>
+      <span class="tech-tag">LINE Messaging API</span>
+      <span class="tech-tag">OpenAI API</span>
+      <span class="tech-tag">LangChain</span>
+      <span class="tech-tag">SQLite / MySQL</span>
+      <span class="tech-tag">Flask / FastAPI</span>
+      <span class="tech-tag">Google Cloud Run</span>
+      <span class="tech-tag">GitHub Actions</span>
+      <span class="tech-tag">Vercel</span>
+      <span class="tech-tag">Googleスプレッドシート連携</span>
+    </div>
+  </div>
 </section>
 
 <!-- WORKS -->
@@ -602,7 +674,7 @@
       <span class="work-tag">工務店</span>
       <div>
         <h3 class="work-title">受発注管理システム構築</h3>
-        <p class="work-desc">FAX・手書きで処理していた受発注業務をWebシステムに移行。注文履歴の検索・集計が可能になり、月間の事務処理時間を大幅に削減。スマホから確認できる設計で現場スタッフにも定着。</p>
+        <p class="work-desc">FAX・手書きで処理していた受発注業務をWebシステムに移行。注文履歴の検索・集計が可能になり、月35時間超の事務処理工数を削減（週8〜10時間分の入力作業がほぼゼロに）。スマホから確認できる設計で現場スタッフにも定着。</p>
       </div>
       <div class="work-meta">
         <span class="work-period">納期 3週間</span>
@@ -626,7 +698,7 @@
       <span class="work-tag">個人事業主</span>
       <div>
         <h3 class="work-title">コーポレートサイト制作</h3>
-        <p class="work-desc">集客・信頼性向上を目的としたコーポレートサイトを制作。サービス紹介・実績・お問い合わせフォームを含む構成でモバイル対応済み。</p>
+        <p class="work-desc">集客・信頼性向上を目的としたコーポレートサイトを制作。サービス紹介・実績・お問い合わせフォームを含む構成でモバイル対応済み。公開後3ヶ月でウェブ経由のお問い合わせが月5件以上発生し、紹介・口コミのみだった集客チャネルを多様化。</p>
       </div>
       <div class="work-meta">
         <span class="work-period">納期 2週間</span>
@@ -638,7 +710,7 @@
       <span class="work-tag">受託開発</span>
       <div>
         <h3 class="work-title">営業メール自動送信システム</h3>
-        <p class="work-desc">不動産管理会社からの依頼で開発。業種・地域の組み合わせからGoogleマップ経由で企業を自動収集し、各社WebサイトをスクレイピングしてメールアドレスをAIで取得。提案タイプ別（Webサイト制作・業務自動化・AI組み込み）の営業メールをAIが自動生成し、担当者の承認後にGmailで送信するフルスタックの自動化パイプライン。SQLiteによる重複防止・スコアリングによるリード選別・1日上限制御を含む。</p>
+        <p class="work-desc">不動産管理会社からの依頼で開発。業種・地域の組み合わせからGoogleマップ経由で企業を自動収集し、各社WebサイトをスクレイピングしてメールアドレスをAIで取得。提案タイプ別（Webサイト制作・業務自動化・AI組み込み）の営業メールをAIが自動生成し、担当者の承認後にGmailで送信するフルスタックの自動化パイプライン。SQLiteによる重複防止・スコアリングによるリード選別・1日上限制御を含む。1件あたり30分以上かかっていたリード調査・メール作成工程を95%以上自動化。</p>
       </div>
       <div class="work-meta">
         <span class="work-period">納期 1ヶ月</span>
@@ -746,7 +818,7 @@
     </div>
     <div class="faq-item reveal">
       <button class="faq-q">納品後の保守・運用サポートはありますか？</button>
-      <p class="faq-a">納品後1ヶ月は軽微な修正を無償対応します。継続的な保守・運用サポートは月額制でご対応可能です。詳細はご相談ください。</p>
+      <p class="faq-a">納品後1ヶ月は軽微な修正を無償対応します。継続的な保守・運用サポートは月額5,000〜30,000円が目安です（対応内容・月あたりの作業量によって変動します）。詳細はご相談ください。</p>
     </div>
     <div class="faq-item reveal">
       <button class="faq-q">まず相談だけでも大丈夫ですか？</button>
@@ -824,7 +896,10 @@
 <!-- FOOTER -->
 <footer>
   <span>&#169; 2026 幸田 晃典 / UrayahaDays</span>
-  <span>フリーランスエンジニア・システム開発</span>
+  <div class="footer-links">
+    <a href="tokusho.html">特定商取引法に基づく表記</a>
+    <a href="privacy.html">プライバシーポリシー</a>
+  </div>
 </footer>
 
 <script>
