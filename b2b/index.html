@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>幸田 晃典 / UrayahaDays | フリーランスエンジニア・システム開発</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231B2A4A' rx='4'/><text x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23B8976C' text-anchor='middle'>K</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -147,9 +148,9 @@
     .btn-secondary::after { content: '→'; }
 
     .hero-stats {
-      display: flex; gap: 0; margin-top: 3rem;
-      border: 1px solid var(--border);
       display: inline-flex;
+      border: 1px solid var(--border);
+      margin-top: 3rem;
     }
     .stat-item {
       padding: 1rem 1.6rem;
@@ -186,8 +187,18 @@
     }
     .service-card:hover { background: var(--bg); }
     .service-icon {
-      font-size: 1.4rem; margin-bottom: 0.9rem;
+      width: 26px; height: 26px;
+      margin-bottom: 0.9rem;
       display: block;
+      color: var(--navy);
+    }
+    .service-icon svg {
+      width: 100%; height: 100%;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
     .service-name {
       font-family: 'Shippori Mincho', serif;
@@ -372,7 +383,14 @@
       border: 1px solid var(--border);
       border-radius: 2px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.9rem; flex-shrink: 0;
+      flex-shrink: 0;
+      color: var(--navy);
+    }
+    .contact-link-icon svg {
+      width: 15px; height: 15px;
+      stroke: currentColor; fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round; stroke-linejoin: round;
     }
 
     .contact-form { display: flex; flex-direction: column; gap: 1rem; }
@@ -457,8 +475,8 @@
   <div class="hero-content">
     <p class="hero-eyebrow">フリーランスエンジニア &amp; AI開発</p>
     <h1 class="hero-title">
-      AIで、仕事を速く。<br>
-      <em>コストを下げる。</em>
+      [キャッチフレーズ]<br>
+      <em>[サブコピー]</em>
     </h1>
     <p class="hero-desc">
       中小企業・個人事業主向けに、Webサイト制作・業務自動化・AI組み込み開発を提供しています。
@@ -494,49 +512,73 @@
   </p>
   <div class="services-grid">
     <div class="service-card reveal">
-      <span class="service-icon">🌐</span>
+      <span class="service-icon">
+        <!-- Globe -->
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </span>
       <h3 class="service-name">ホームページ制作</h3>
       <p class="service-desc">集客・ブランディングを目的としたコーポレートサイトを制作。モバイル対応・お問い合わせフォーム付き。</p>
       <span class="service-price">8〜15万円〜</span>
     </div>
     <div class="service-card reveal">
-      <span class="service-icon">📅</span>
+      <span class="service-icon">
+        <!-- Calendar -->
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      </span>
       <h3 class="service-name">予約システム付きサイト</h3>
       <p class="service-desc">美容院・整骨院・飲食店向けに、Web予約と集客を一体化したサイトを構築。電話予約の手間を削減。</p>
       <span class="service-price">10〜20万円〜</span>
     </div>
     <div class="service-card reveal">
-      <span class="service-icon">⚙️</span>
+      <span class="service-icon">
+        <!-- Settings -->
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </span>
       <h3 class="service-name">業務自動化</h3>
       <p class="service-desc">Excel・スプレッドシートの手作業、日報・見積書・発注書の自動生成をGAS・Python・VBAで実現。</p>
       <span class="service-price">3〜15万円〜</span>
     </div>
     <div class="service-card reveal">
-      <span class="service-icon">🤖</span>
+      <span class="service-icon">
+        <!-- CPU chip -->
+        <svg viewBox="0 0 24 24"><rect x="9" y="9" width="6" height="6" rx="1"/><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg>
+      </span>
       <h3 class="service-name">AI組み込み開発</h3>
       <p class="service-desc">ChatGPT・LangChain等のAIを既存業務やツールへ組み込み。社内FAQ Bot・文書要約・自動返信など。</p>
       <span class="service-price">10〜25万円〜</span>
     </div>
     <div class="service-card reveal">
-      <span class="service-icon">💬</span>
+      <span class="service-icon">
+        <!-- Message square -->
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </span>
       <h3 class="service-name">LINE Bot・LINE連携</h3>
       <p class="service-desc">LINE公式アカウントを活用した予約受付・リマインド・問い合わせ自動応答システムを構築。</p>
       <span class="service-price">5〜12万円〜</span>
     </div>
     <div class="service-card reveal">
-      <span class="service-icon">📦</span>
+      <span class="service-icon">
+        <!-- Package -->
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </span>
       <h3 class="service-name">受発注・在庫管理システム</h3>
       <p class="service-desc">FAX・電話・紙で管理していた受発注をデジタル化。工務店・小売業向けのWeb管理システムを構築。</p>
       <span class="service-price">10〜20万円〜</span>
     </div>
     <div class="service-card reveal">
-      <span class="service-icon">📊</span>
+      <span class="service-icon">
+        <!-- Bar chart -->
+        <svg viewBox="0 0 24 24"><rect x="18" y="3" width="4" height="18"/><rect x="10" y="8" width="4" height="13"/><rect x="2" y="13" width="4" height="8"/></svg>
+      </span>
       <h3 class="service-name">データ集計・自動レポート</h3>
       <p class="service-desc">売上・KPI・在庫データをGoogleスプレッドシートやダッシュボードに自動集計・可視化。</p>
       <span class="service-price">3〜10万円〜</span>
     </div>
     <div class="service-card reveal">
-      <span class="service-icon">🔧</span>
+      <span class="service-icon">
+        <!-- Tool -->
+        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      </span>
       <h3 class="service-name">既存システム改修・保守</h3>
       <p class="service-desc">使いにくいシステムの機能追加・UI改善・バグ修正。他社が構築したシステムの引き継ぎにも対応。</p>
       <span class="service-price">3〜10万円〜</span>
@@ -586,6 +628,18 @@
         <span class="work-period">納期 2週間</span>
         <span class="work-price">10〜15万円</span>
         <span class="nda-note">※詳細はNDA</span>
+      </div>
+    </div>
+    <div class="work-item reveal">
+      <span class="work-tag">自社開発</span>
+      <div>
+        <h3 class="work-title">営業メール自動送信システム</h3>
+        <p class="work-desc">Google Maps Places APIで業種・地域の組み合わせから企業を自動収集し、各社Webサイトをスクレイピングしてメールアドレスを取得。AIが提案タイプ別（Webサイト制作・業務自動化・AI組み込み）の営業メールを自動生成し、スマートフォンからの承認後にGmail SMTPで送信するフルスタックの自動化パイプライン。SQLiteによる重複防止・スコアリングによるリード選別・1日上限制御を含む。</p>
+      </div>
+      <div class="work-meta">
+        <span class="work-period">開発中</span>
+        <span class="work-price">自社開発</span>
+        <span class="nda-note">本システムで自社営業中</span>
       </div>
     </div>
   </div>
@@ -707,16 +761,25 @@
       <p class="contact-name">幸田 晃典</p>
       <p class="contact-role">フリーランスエンジニア / UrayahaDays</p>
       <div class="contact-links">
-        <a href="mailto:tenormusica7@gmail.com" class="contact-link">
-          <span class="contact-link-icon">✉</span>
-          tenormusica7@gmail.com
+        <a href="mailto:dragonrondo@gmaill.com" class="contact-link">
+          <span class="contact-link-icon">
+            <!-- Mail -->
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </span>
+          dragonrondo@gmaill.com
         </a>
         <a href="https://zenn.dev/tenormusica" target="_blank" rel="noopener" class="contact-link">
-          <span class="contact-link-icon">Z</span>
+          <span class="contact-link-icon">
+            <!-- ExternalLink -->
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </span>
           Zenn（技術発信）
         </a>
         <a href="https://tenormusica2024.github.io/portfolio/" target="_blank" rel="noopener" class="contact-link">
-          <span class="contact-link-icon">↗</span>
+          <span class="contact-link-icon">
+            <!-- User -->
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
           ポートフォリオ（詳細版）
         </a>
       </div>
@@ -741,7 +804,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <span>© 2026 幸田 晃典 / UrayahaDays</span>
+  <span>&#169; 2026 幸田 晃典 / UrayahaDays</span>
   <span>フリーランスエンジニア・システム開発</span>
 </footer>
 
