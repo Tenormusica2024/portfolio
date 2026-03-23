@@ -1,0 +1,9 @@
+{
+  "name": "urayahadays-b2b",
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "framework": null,
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" }
+  ]
+}

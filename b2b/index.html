@@ -473,7 +473,7 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-content">
-    <p class="hero-eyebrow">フリーランスエンジニア &amp; AI開発</p>
+    <p class="hero-eyebrow">ITエンジニア歴5年・AI開発エンジニア歴1年 | フリーランス受託開発</p>
     <h1 class="hero-title">
       AIで、仕事を速く。<br>
       <em>コストを下げる。</em>
@@ -488,12 +488,16 @@
     </div>
     <div class="hero-stats">
       <div class="stat-item">
-        <span class="stat-num">2週間〜</span>
-        <span class="stat-label">最短納期</span>
+        <span class="stat-num">5年+</span>
+        <span class="stat-label">ITエンジニア歴</span>
       </div>
       <div class="stat-item">
-        <span class="stat-num">全国対応</span>
-        <span class="stat-label">フルリモート</span>
+        <span class="stat-num">1年+</span>
+        <span class="stat-label">AI開発エンジニア歴</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">2週間〜</span>
+        <span class="stat-label">最短納期</span>
       </div>
       <div class="stat-item">
         <span class="stat-num">NDA対応</span>
@@ -738,7 +742,7 @@
     </div>
     <div class="faq-item reveal">
       <button class="faq-q">個人のフリーランスへの発注で品質面が心配です。</button>
-      <p class="faq-a">納品前に確認・修正フェーズを設け、ご満足いただけるまで対応します。また秘密保持契約（NDA）の締結にも対応していますので、業務内容が外部に漏れる心配はありません。</p>
+      <p class="faq-a">本業でITエンジニア歴5年・AI開発エンジニア歴1年の実務経験があります。開発したコードはGitHubで公開しており、技術力を事前にご確認いただけます。また、趣味・個人開発も含めた詳細なポートフォリオサイトもご覧ください。<br><br>・GitHub: <a href="https://github.com/Tenormusica2024" target="_blank" rel="noopener" style="color:var(--gold)">github.com/Tenormusica2024</a><br>・ポートフォリオ: <a href="https://tenormusica2024.github.io/portfolio/" target="_blank" rel="noopener" style="color:var(--gold)">tenormusica2024.github.io/portfolio/</a><br><br>納品前に確認・修正フェーズを設け、ご満足いただけるまで対応します。秘密保持契約（NDA）の締結にも対応していますので、業務内容が外部に漏れる心配はありません。</p>
     </div>
     <div class="faq-item reveal">
       <button class="faq-q">納品後の保守・運用サポートはありますか？</button>
@@ -789,22 +793,30 @@
           </span>
           ポートフォリオ（詳細版）
         </a>
+        <a href="https://github.com/Tenormusica2024" target="_blank" rel="noopener" class="contact-link">
+          <span class="contact-link-icon">
+            <!-- GitHub -->
+            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </span>
+          GitHub（コードを見る）
+        </a>
       </div>
     </div>
-    <form class="contact-form reveal" onsubmit="return false;">
+    <form id="contact-form" class="contact-form reveal">
       <div class="form-group">
         <label class="form-label">お名前・会社名</label>
-        <input type="text" class="form-input" placeholder="例：山田 太郎 / 山田工務店">
+        <input id="cf-name" type="text" class="form-input" placeholder="例：山田 太郎 / 山田工務店" required>
       </div>
       <div class="form-group">
         <label class="form-label">メールアドレス</label>
-        <input type="email" class="form-input" placeholder="例：info@example.co.jp">
+        <input id="cf-email" type="email" class="form-input" placeholder="例：info@example.co.jp" required>
       </div>
       <div class="form-group">
         <label class="form-label">ご相談内容</label>
-        <textarea class="form-textarea" placeholder="例：発注書の作成を自動化したい、費用感を知りたい　など"></textarea>
+        <textarea id="cf-message" class="form-textarea" placeholder="例：発注書の作成を自動化したい、費用感を知りたい　など" required></textarea>
       </div>
-      <button type="submit" class="form-submit">送信する</button>
+      <button type="submit" id="cf-submit" class="form-submit">送信する</button>
+      <div id="cf-result" style="display:none; margin-top:0.75rem; padding:0.75rem 1rem; border-radius:4px; font-size:0.88rem;"></div>
     </form>
   </div>
 </section>
@@ -831,6 +843,52 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // お問い合わせフォーム送信
+  document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('cf-submit');
+    const result = document.getElementById('cf-result');
+    const name = document.getElementById('cf-name').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const message = document.getElementById('cf-message').value.trim();
+
+    // 送信中の状態
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+    result.style.display = 'none';
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      });
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        // 送信成功
+        result.style.display = 'block';
+        result.style.background = '#f0faf0';
+        result.style.color = '#2d7a2d';
+        result.style.border = '1px solid #b8ddb8';
+        result.textContent = '送信しました。2〜3営業日以内にご連絡いたします。';
+        this.reset();
+      } else {
+        throw new Error(data.error || '送信に失敗しました。');
+      }
+    } catch (err) {
+      // 送信失敗
+      result.style.display = 'block';
+      result.style.background = '#fff5f5';
+      result.style.color = '#c0392b';
+      result.style.border = '1px solid #f5c6cb';
+      result.textContent = err.message || 'エラーが発生しました。直接メールにてご連絡ください。';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = '送信する';
+    }
+  });
 </script>
 </body>
 </html>
