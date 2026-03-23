@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>幸田 晃典 / UrayahaDays | フリーランスエンジニア・システム開発</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:       #1B2A4A;
+      --navy-light: #2d4270;
+      --gold:       #B8976C;
+      --bg:         #FAFAFA;
+      --bg-section: #F4F3F0;
+      --text:       #2C2C2C;
+      --muted:      #6B6B6B;
+      --border:     #E0DDD8;
+      --white:      #FFFFFF;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250,250,250,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 0.95rem; font-weight: 600;
+      color: var(--navy); text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.78rem; color: var(--muted);
+      text-decoration: none; letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-cta {
+      background: var(--navy);
+      color: var(--white) !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 2px;
+    }
+    .nav-cta:hover { background: var(--navy-light) !important; }
+
+    /* ===== SECTION COMMONS ===== */
+    section { padding: 6rem 5%; }
+
+    .section-label {
+      font-size: 0.68rem; letter-spacing: 0.22em;
+      color: var(--gold); text-transform: uppercase;
+      margin-bottom: 0.7rem;
+    }
+    .section-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 600; color: var(--navy);
+      line-height: 1.4; margin-bottom: 0.9rem;
+    }
+    .section-subtitle {
+      font-size: 0.9rem; color: var(--muted);
+      max-width: 540px; line-height: 1.9;
+      margin-bottom: 3rem;
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding-top: 64px;
+      background: var(--white);
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 42%; height: 100%;
+      background: linear-gradient(145deg, #F0EDE6 0%, #E4DFD5 100%);
+      clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 620px; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.73rem; letter-spacing: 0.16em;
+      color: var(--muted); margin-bottom: 1.4rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: inline-block;
+      width: 28px; height: 1px; background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      font-weight: 700; color: var(--navy);
+      line-height: 1.35; margin-bottom: 1.4rem;
+    }
+    .hero-title em { font-style: normal; color: var(--gold); }
+
+    .hero-desc {
+      font-size: 0.95rem; color: var(--muted);
+      line-height: 1.95; margin-bottom: 2.4rem;
+      max-width: 480px;
+    }
+
+    .hero-actions {
+      display: flex; gap: 1.2rem;
+      align-items: center; flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--navy); color: var(--white);
+      padding: 0.85rem 1.9rem;
+      font-size: 0.875rem; letter-spacing: 0.05em;
+      text-decoration: none; border-radius: 2px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--navy-light); transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.875rem; color: var(--muted);
+      text-decoration: none; letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .btn-secondary:hover { color: var(--navy); }
+    .btn-secondary::after { content: '→'; }
+
+    .hero-stats {
+      display: flex; gap: 0; margin-top: 3rem;
+      border: 1px solid var(--border);
+      display: inline-flex;
+    }
+    .stat-item {
+      padding: 1rem 1.6rem;
+      border-right: 1px solid var(--border);
+      text-align: center;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      display: block;
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--navy); line-height: 1.2;
+    }
+    .stat-label {
+      display: block; font-size: 0.68rem;
+      color: var(--muted); letter-spacing: 0.08em;
+      margin-top: 0.25rem;
+    }
+
+    /* ===== SERVICES ===== */
+    #services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+      gap: 1.5px;
+      background: var(--border);
+      border: 1.5px solid var(--border);
+    }
+    .service-card {
+      background: var(--white);
+      padding: 2rem 1.8rem;
+      transition: background 0.2s;
+    }
+    .service-card:hover { background: var(--bg); }
+    .service-icon {
+      font-size: 1.4rem; margin-bottom: 0.9rem;
+      display: block;
+    }
+    .service-name {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.02rem; font-weight: 600;
+      color: var(--navy); margin-bottom: 0.55rem;
+    }
+    .service-desc {
+      font-size: 0.83rem; color: var(--muted);
+      line-height: 1.85;
+    }
+    .service-price {
+      display: inline-block; margin-top: 0.9rem;
+      font-size: 0.72rem; color: var(--gold);
+      letter-spacing: 0.06em;
+    }
+
+    /* ===== WORKS ===== */
+    #works { background: var(--bg-section); }
+
+    .works-list {
+      display: flex; flex-direction: column;
+      gap: 1.5px;
+      background: var(--border);
+      border: 1.5px solid var(--border);
+    }
+    .work-item {
+      background: var(--white);
+      padding: 2rem 2.4rem;
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 2rem; align-items: start;
+      transition: background 0.2s;
+    }
+    .work-item:hover { background: var(--bg); }
+    .work-tag {
+      font-size: 0.68rem; letter-spacing: 0.12em;
+      color: var(--gold); white-space: nowrap;
+      padding-top: 0.2rem;
+    }
+    .work-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.02rem; font-weight: 600;
+      color: var(--navy); margin-bottom: 0.45rem;
+    }
+    .work-desc {
+      font-size: 0.83rem; color: var(--muted);
+      line-height: 1.85;
+    }
+    .work-meta { text-align: right; white-space: nowrap; }
+    .work-period { display: block; font-size: 0.72rem; color: var(--muted); }
+    .work-price {
+      display: block;
+      font-family: 'Shippori Mincho', serif;
+      font-size: 0.95rem; color: var(--navy);
+      font-weight: 600; margin-top: 0.2rem;
+    }
+    .nda-note {
+      display: block; font-size: 0.68rem;
+      color: var(--muted); margin-top: 0.25rem;
+    }
+
+    /* ===== FLOW ===== */
+    #flow { background: var(--navy); }
+    #flow .section-title { color: var(--white); }
+    #flow .section-subtitle { color: rgba(255,255,255,0.5); }
+
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      position: relative;
+    }
+    .flow-step { padding-right: 1.5rem; position: relative; }
+    .flow-step::after {
+      content: '';
+      position: absolute; top: 1.1rem; right: 0;
+      width: 1rem; height: 1px;
+      background: rgba(255,255,255,0.15);
+    }
+    .flow-step:last-child::after { display: none; }
+    .step-num {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 2rem; font-weight: 700;
+      color: var(--gold); opacity: 0.5;
+      line-height: 1; margin-bottom: 0.7rem;
+    }
+    .step-title {
+      font-size: 0.88rem; font-weight: 500;
+      color: var(--white); margin-bottom: 0.4rem;
+    }
+    .step-desc {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.75;
+    }
+
+    /* ===== PRICE ===== */
+    #price { background: var(--white); }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
+      gap: 1.5px;
+      background: var(--border);
+      border: 1.5px solid var(--border);
+    }
+    .price-card { background: var(--bg); padding: 2rem 1.8rem; }
+    .price-card.featured { background: var(--navy); }
+    .price-name {
+      font-size: 0.68rem; letter-spacing: 0.18em;
+      color: var(--muted); margin-bottom: 0.9rem;
+    }
+    .price-card.featured .price-name { color: rgba(255,255,255,0.45); }
+    .price-amount {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.55rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 0.25rem;
+    }
+    .price-card.featured .price-amount { color: var(--white); }
+    .price-note {
+      font-size: 0.72rem; color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+    .price-card.featured .price-note { color: rgba(255,255,255,0.4); }
+    .price-items { list-style: none; font-size: 0.8rem; line-height: 2.1; }
+    .price-items li { color: var(--muted); }
+    .price-card.featured .price-items li { color: rgba(255,255,255,0.65); }
+    .price-items li::before { content: '— '; color: var(--gold); }
+
+    /* ===== FAQ ===== */
+    #faq { background: var(--bg-section); }
+    .faq-list { max-width: 700px; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none;
+      text-align: left; padding: 1.4rem 0;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.88rem; font-weight: 500;
+      color: var(--navy); cursor: pointer;
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 1rem;
+    }
+    .faq-q::after {
+      content: '+'; font-size: 1.2rem;
+      color: var(--gold); flex-shrink: 0;
+      transition: transform 0.25s;
+    }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+    .faq-a {
+      font-size: 0.83rem; color: var(--muted);
+      line-height: 1.9; padding-bottom: 1.4rem;
+      display: none;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ===== CONTACT ===== */
+    #contact { background: var(--white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem; align-items: start;
+    }
+    .contact-name {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.4rem; font-weight: 600;
+      color: var(--navy); margin-bottom: 0.25rem;
+    }
+    .contact-role {
+      font-size: 0.75rem; color: var(--muted);
+      letter-spacing: 0.1em; margin-bottom: 2rem;
+    }
+    .contact-links { display: flex; flex-direction: column; gap: 0.9rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.85rem; color: var(--muted);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .contact-link:hover { color: var(--navy); }
+    .contact-link-icon {
+      width: 34px; height: 34px;
+      background: var(--bg-section);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; flex-shrink: 0;
+    }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-label { font-size: 0.72rem; letter-spacing: 0.1em; color: var(--muted); }
+    .form-input, .form-textarea {
+      width: 100%; padding: 0.75rem 0.9rem;
+      border: 1px solid var(--border); border-radius: 2px;
+      background: var(--bg);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.875rem; color: var(--text);
+      outline: none; transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--navy); }
+    .form-textarea { min-height: 110px; resize: vertical; }
+    .form-submit {
+      background: var(--navy); color: var(--white);
+      border: none; padding: 0.85rem 2rem;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.875rem; letter-spacing: 0.05em;
+      cursor: pointer; border-radius: 2px;
+      transition: background 0.2s; align-self: flex-start;
+    }
+    .form-submit:hover { background: var(--navy-light); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.35);
+      padding: 1.8rem 5%;
+      display: flex; justify-content: space-between;
+      align-items: center; font-size: 0.72rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* ===== REVEAL ANIMATION ===== */
+    .reveal {
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .flow-steps {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      .flow-step::after { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      section { padding: 4rem 4%; }
+      #hero::before { display: none; }
+      .hero-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+      .stat-item { padding: 0.8rem 1rem; }
+      .work-item { grid-template-columns: 1fr; padding: 1.4rem; gap: 0.4rem; }
+      .work-meta { text-align: left; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      footer { flex-direction: column; gap: 0.4rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">幸田 晃典 / UrayahaDays</a>
+  <ul class="nav-links">
+    <li><a href="#services">サービス</a></li>
+    <li><a href="#works">実績</a></li>
+    <li><a href="#flow">ご依頼の流れ</a></li>
+    <li><a href="#price">料金目安</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact" class="nav-cta">無料相談</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">フリーランスエンジニア &amp; AI開発</p>
+    <h1 class="hero-title">
+      AIで、仕事を速く。<br>
+      <em>コストを下げる。</em>
+    </h1>
+    <p class="hero-desc">
+      中小企業・個人事業主向けに、Webサイト制作・業務自動化・AI組み込み開発を提供しています。
+      大手受託会社より格安かつスピーディーに、現場の課題を解決します。
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">無料相談はこちら</a>
+      <a href="#works" class="btn-secondary">実績を見る</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">2週間〜</span>
+        <span class="stat-label">最短納期</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">全国対応</span>
+        <span class="stat-label">フルリモート</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">NDA対応</span>
+        <span class="stat-label">秘密保持契約</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-label reveal">Services</p>
+  <h2 class="section-title reveal">提供サービス</h2>
+  <p class="section-subtitle reveal">
+    業種・規模を問わず対応します。「こんなことできる？」という段階からご相談ください。
+  </p>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon">🌐</span>
+      <h3 class="service-name">ホームページ制作</h3>
+      <p class="service-desc">集客・ブランディングを目的としたコーポレートサイトを制作。モバイル対応・お問い合わせフォーム付き。</p>
+      <span class="service-price">8〜15万円〜</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">📅</span>
+      <h3 class="service-name">予約システム付きサイト</h3>
+      <p class="service-desc">美容院・整骨院・飲食店向けに、Web予約と集客を一体化したサイトを構築。電話予約の手間を削減。</p>
+      <span class="service-price">10〜20万円〜</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">⚙️</span>
+      <h3 class="service-name">業務自動化</h3>
+      <p class="service-desc">Excel・スプレッドシートの手作業、日報・見積書・発注書の自動生成をGAS・Python・VBAで実現。</p>
+      <span class="service-price">3〜15万円〜</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🤖</span>
+      <h3 class="service-name">AI組み込み開発</h3>
+      <p class="service-desc">ChatGPT・LangChain等のAIを既存業務やツールへ組み込み。社内FAQ Bot・文書要約・自動返信など。</p>
+      <span class="service-price">10〜25万円〜</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">💬</span>
+      <h3 class="service-name">LINE Bot・LINE連携</h3>
+      <p class="service-desc">LINE公式アカウントを活用した予約受付・リマインド・問い合わせ自動応答システムを構築。</p>
+      <span class="service-price">5〜12万円〜</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">📦</span>
+      <h3 class="service-name">受発注・在庫管理システム</h3>
+      <p class="service-desc">FAX・電話・紙で管理していた受発注をデジタル化。工務店・小売業向けのWeb管理システムを構築。</p>
+      <span class="service-price">10〜20万円〜</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">📊</span>
+      <h3 class="service-name">データ集計・自動レポート</h3>
+      <p class="service-desc">売上・KPI・在庫データをGoogleスプレッドシートやダッシュボードに自動集計・可視化。</p>
+      <span class="service-price">3〜10万円〜</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🔧</span>
+      <h3 class="service-name">既存システム改修・保守</h3>
+      <p class="service-desc">使いにくいシステムの機能追加・UI改善・バグ修正。他社が構築したシステムの引き継ぎにも対応。</p>
+      <span class="service-price">3〜10万円〜</span>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works">
+  <p class="section-label reveal">Works</p>
+  <h2 class="section-title reveal">開発実績</h2>
+  <p class="section-subtitle reveal">
+    守秘義務の範囲内でご紹介します。業種・開発内容・納期・費用の目安を掲載しています。
+  </p>
+  <div class="works-list">
+    <div class="work-item reveal">
+      <span class="work-tag">工務店</span>
+      <div>
+        <h3 class="work-title">受発注管理システム構築</h3>
+        <p class="work-desc">FAX・手書きで処理していた受発注業務をWebシステムに移行。注文履歴の検索・集計が可能になり、月間の事務処理時間を大幅に削減。スマホから確認できる設計で現場スタッフにも定着。</p>
+      </div>
+      <div class="work-meta">
+        <span class="work-period">納期 3週間</span>
+        <span class="work-price">8〜12万円</span>
+        <span class="nda-note">※詳細はNDA</span>
+      </div>
+    </div>
+    <div class="work-item reveal">
+      <span class="work-tag">工務店</span>
+      <div>
+        <h3 class="work-title">日報・発注書の自動作成</h3>
+        <p class="work-desc">毎日手入力していた日報と発注書をGASで自動化。入力項目を最小化し、月20時間以上の作業工数を削減。Googleスプレッドシートベースで既存環境を変えずに導入可能。</p>
+      </div>
+      <div class="work-meta">
+        <span class="work-period">納期 2週間</span>
+        <span class="work-price">5〜8万円</span>
+        <span class="nda-note">※詳細はNDA</span>
+      </div>
+    </div>
+    <div class="work-item reveal">
+      <span class="work-tag">個人事業主</span>
+      <div>
+        <h3 class="work-title">コーポレートサイト制作</h3>
+        <p class="work-desc">集客・信頼性向上を目的としたコーポレートサイトを制作。サービス紹介・実績・お問い合わせフォームを含む構成でモバイル対応済み。</p>
+      </div>
+      <div class="work-meta">
+        <span class="work-period">納期 2週間</span>
+        <span class="work-price">10〜15万円</span>
+        <span class="nda-note">※詳細はNDA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section id="flow">
+  <p class="section-label reveal" style="color:var(--gold)">Flow</p>
+  <h2 class="section-title reveal">ご依頼の流れ</h2>
+  <p class="section-subtitle reveal">お問い合わせから納品まで、最短2週間で対応可能です。</p>
+  <div class="flow-steps">
+    <div class="flow-step reveal">
+      <div class="step-num">01</div>
+      <h3 class="step-title">お問い合わせ</h3>
+      <p class="step-desc">LINE・メール・フォームからお気軽にご連絡ください。</p>
+    </div>
+    <div class="flow-step reveal">
+      <div class="step-num">02</div>
+      <h3 class="step-title">ヒアリング</h3>
+      <p class="step-desc">オンライン30分のMTGで課題・要件を整理します。</p>
+    </div>
+    <div class="flow-step reveal">
+      <div class="step-num">03</div>
+      <h3 class="step-title">お見積り</h3>
+      <p class="step-desc">3営業日以内に費用・納期のお見積りをご提示します。</p>
+    </div>
+    <div class="flow-step reveal">
+      <div class="step-num">04</div>
+      <h3 class="step-title">開発・制作</h3>
+      <p class="step-desc">定期的に進捗を共有しながら開発を進めます。</p>
+    </div>
+    <div class="flow-step reveal">
+      <div class="step-num">05</div>
+      <h3 class="step-title">納品・サポート</h3>
+      <p class="step-desc">納品後1ヶ月は軽微な修正を無償対応します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section id="price">
+  <p class="section-label reveal">Price</p>
+  <h2 class="section-title reveal">料金目安</h2>
+  <p class="section-subtitle reveal">
+    開発内容・規模によって変動します。詳細はお見積りにてご提示します。
+  </p>
+  <div class="price-grid">
+    <div class="price-card reveal">
+      <p class="price-name">LIGHT</p>
+      <p class="price-amount">3〜8万円</p>
+      <p class="price-note">小規模な自動化・改修</p>
+      <ul class="price-items">
+        <li>Excel・GAS の自動化</li>
+        <li>データ集計・レポート自動化</li>
+        <li>既存システムの軽微な改修</li>
+        <li>LINE Bot（シンプル応答）</li>
+      </ul>
+    </div>
+    <div class="price-card featured reveal">
+      <p class="price-name">STANDARD</p>
+      <p class="price-amount">8〜15万円</p>
+      <p class="price-note">中規模の開発・サイト制作</p>
+      <ul class="price-items">
+        <li>コーポレートサイト制作</li>
+        <li>受発注・在庫管理システム</li>
+        <li>業務自動化（中規模）</li>
+        <li>AI Bot・社内ツール開発</li>
+      </ul>
+    </div>
+    <div class="price-card reveal">
+      <p class="price-name">ADVANCED</p>
+      <p class="price-amount">15〜25万円</p>
+      <p class="price-note">システム連携・大規模開発</p>
+      <ul class="price-items">
+        <li>予約システム付きサイト</li>
+        <li>AI 組み込みシステム</li>
+        <li>複数システムの連携・統合</li>
+        <li>データ基盤・分析ダッシュボード</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <p class="section-label reveal">FAQ</p>
+  <h2 class="section-title reveal">よくあるご質問</h2>
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <button class="faq-q">途中で要件が変わった場合はどうなりますか？</button>
+      <p class="faq-a">軽微な変更・修正は無償で対応します。開発途中での大きな仕様変更については、追加見積りのうえ対応いたします。まずはお気軽にご相談ください。</p>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">遠方でも依頼できますか？</button>
+      <p class="faq-a">はい、フルリモートで対応しておりますので全国どこからでもご依頼いただけます。打ち合わせはオンライン（Zoom・Google Meet等）で実施します。</p>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">個人のフリーランスへの発注で品質面が心配です。</button>
+      <p class="faq-a">納品前に確認・修正フェーズを設け、ご満足いただけるまで対応します。また秘密保持契約（NDA）の締結にも対応していますので、業務内容が外部に漏れる心配はありません。</p>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">納品後の保守・運用サポートはありますか？</button>
+      <p class="faq-a">納品後1ヶ月は軽微な修正を無償対応します。継続的な保守・運用サポートは月額制でご対応可能です。詳細はご相談ください。</p>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">まず相談だけでも大丈夫ですか？</button>
+      <p class="faq-a">もちろんです。「こんなことできる？」「いくらかかる？」という段階からご相談歓迎します。お見積りまでは無料ですのでお気軽にどうぞ。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label reveal">Contact</p>
+  <h2 class="section-title reveal">お問い合わせ</h2>
+  <p class="section-subtitle reveal">お見積りまで無料です。まずはお気軽にご連絡ください。</p>
+  <div class="contact-grid">
+    <div class="reveal">
+      <p class="contact-name">幸田 晃典</p>
+      <p class="contact-role">フリーランスエンジニア / UrayahaDays</p>
+      <div class="contact-links">
+        <a href="mailto:tenormusica7@gmail.com" class="contact-link">
+          <span class="contact-link-icon">✉</span>
+          tenormusica7@gmail.com
+        </a>
+        <a href="https://zenn.dev/tenormusica" target="_blank" rel="noopener" class="contact-link">
+          <span class="contact-link-icon">Z</span>
+          Zenn（技術発信）
+        </a>
+        <a href="https://tenormusica2024.github.io/portfolio/" target="_blank" rel="noopener" class="contact-link">
+          <span class="contact-link-icon">↗</span>
+          ポートフォリオ（詳細版）
+        </a>
+      </div>
+    </div>
+    <form class="contact-form reveal" onsubmit="return false;">
+      <div class="form-group">
+        <label class="form-label">お名前・会社名</label>
+        <input type="text" class="form-input" placeholder="例：山田 太郎 / 山田工務店">
+      </div>
+      <div class="form-group">
+        <label class="form-label">メールアドレス</label>
+        <input type="email" class="form-input" placeholder="例：info@example.co.jp">
+      </div>
+      <div class="form-group">
+        <label class="form-label">ご相談内容</label>
+        <textarea class="form-textarea" placeholder="例：発注書の作成を自動化したい、費用感を知りたい　など"></textarea>
+      </div>
+      <button type="submit" class="form-submit">送信する</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 幸田 晃典 / UrayahaDays</span>
+  <span>フリーランスエンジニア・システム開発</span>
+</footer>
+
+<script>
+  // FAQ アコーディオン
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // スクロールアニメーション
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
