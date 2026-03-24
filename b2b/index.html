@@ -266,6 +266,16 @@
       display: block; font-size: 0.68rem;
       color: var(--muted); margin-top: 0.25rem;
     }
+    .work-demo-link {
+      display: inline-block; font-size: 0.72rem;
+      color: var(--gold); border: 1px solid var(--gold);
+      padding: 0.3rem 0.9rem; margin-top: 0.4rem;
+      text-decoration: none; letter-spacing: 0.06em;
+      transition: background 0.25s, color 0.25s;
+    }
+    .work-demo-link:hover {
+      background: var(--gold); color: var(--white);
+    }
 
     /* ===== FLOW ===== */
     #flow { background: var(--navy); }
@@ -730,7 +740,7 @@
       <div class="work-meta">
         <span class="work-period">納期 3週間</span>
         <span class="work-price">12〜18万円</span>
-        <span class="nda-note">※詳細はNDA</span>
+        <a href="https://beauty-salon-lumiere.vercel.app/" target="_blank" rel="noopener" class="work-demo-link">サンプルサイトを見る →</a>
       </div>
     </div>
     <div class="work-item reveal">
