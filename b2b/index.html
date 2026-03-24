@@ -18,6 +18,33 @@
   <meta name="twitter:description" content="中小企業・個人事業主向けのWebサイト制作・業務自動化・AI組み込み開発。ITエンジニア歴5年、AI開発エンジニア歴2年。最短2週間・費用対効果の高い開発で現場の課題を解決します。">
   <meta name="twitter:image" content="https://urayahadays-b2b.vercel.app/og-image.png">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231B2A4A' rx='4'/><text x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23B8976C' text-anchor='middle'>K</text></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "UrayahaDays - 幸田 晃典",
+    "description": "中小企業・個人事業主向けのWebサイト制作・業務自動化・AI組み込み開発。最短2週間・費用対効果の高い開発で現場の課題を解決します。",
+    "url": "https://urayahadays-b2b.vercel.app/",
+    "telephone": "080-2144-0777",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "柏市",
+      "addressRegion": "千葉県",
+      "addressCountry": "JP"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "JP"
+    },
+    "priceRange": "1万円〜25万円",
+    "knowsAbout": ["Webサイト制作", "業務自動化", "AI組み込み開発", "LINE Bot開発", "受発注管理システム"],
+    "sameAs": [
+      "https://github.com/Tenormusica2024",
+      "https://zenn.dev/tenormusica",
+      "https://tenormusica2024.github.io/portfolio/"
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -598,7 +625,7 @@
     <span></span><span></span><span></span>
   </button>
 </nav>
-<ul class="mobile-nav" id="mobileNav">
+<ul class="mobile-nav" id="mobileNav" role="navigation" aria-label="モバイルメニュー">
   <li><a href="#services" onclick="closeNav()">サービス</a></li>
   <li><a href="#works" onclick="closeNav()">実績</a></li>
   <li><a href="#flow" onclick="closeNav()">ご依頼の流れ</a></li>
@@ -606,6 +633,8 @@
   <li><a href="#faq" onclick="closeNav()">FAQ</a></li>
   <li><a href="#contact" class="nav-cta" onclick="closeNav()">無料相談</a></li>
 </ul>
+
+<main id="main-content">
 
 <!-- HERO -->
 <section id="hero">
@@ -1004,6 +1033,8 @@
     </form>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
