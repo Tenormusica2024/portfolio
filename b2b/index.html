@@ -77,6 +77,43 @@
     }
     .nav-cta:hover { background: var(--navy-light) !important; }
 
+    /* ===== HAMBURGER ===== */
+    .hamburger {
+      display: none; background: none; border: none;
+      cursor: pointer; padding: 0.5rem;
+      flex-direction: column; gap: 5px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--navy); transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none; position: fixed;
+      top: 64px; left: 0; right: 0; bottom: 0;
+      background: rgba(250,250,250,0.98);
+      backdrop-filter: blur(12px);
+      z-index: 99;
+      flex-direction: column; align-items: center;
+      justify-content: center; gap: 2rem;
+      list-style: none;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+    .mobile-nav.active { opacity: 1; visibility: visible; }
+    .mobile-nav a {
+      font-size: 1rem; color: var(--navy);
+      text-decoration: none; letter-spacing: 0.12em;
+      font-weight: 500;
+    }
+    .mobile-nav .nav-cta {
+      margin-top: 0.5rem; padding: 0.65rem 1.6rem;
+      font-size: 0.9rem;
+    }
+
     /* ===== SECTION COMMONS ===== */
     section { padding: 6rem 5%; }
 
@@ -528,6 +565,8 @@
 
     @media (max-width: 768px) {
       .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-nav { display: flex; }
       section { padding: 4rem 4%; }
       #hero::before { display: none; }
       .hero-stats { display: grid; grid-template-columns: 1fr 1fr; }
@@ -535,6 +574,8 @@
       .work-item { grid-template-columns: 1fr; padding: 1.4rem; gap: 0.4rem; }
       .work-meta { text-align: left; }
       .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .flow-steps { grid-template-columns: 1fr; }
+      .flow-step { padding-right: 0; }
       footer { flex-direction: column; gap: 0.6rem; text-align: center; }
       .footer-links { justify-content: center; gap: 1rem; }
     }
@@ -553,7 +594,18 @@
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact" class="nav-cta">無料相談</a></li>
   </ul>
+  <button class="hamburger" onclick="toggleNav()" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<ul class="mobile-nav" id="mobileNav">
+  <li><a href="#services" onclick="closeNav()">サービス</a></li>
+  <li><a href="#works" onclick="closeNav()">実績</a></li>
+  <li><a href="#flow" onclick="closeNav()">ご依頼の流れ</a></li>
+  <li><a href="#price" onclick="closeNav()">料金目安</a></li>
+  <li><a href="#faq" onclick="closeNav()">FAQ</a></li>
+  <li><a href="#contact" class="nav-cta" onclick="closeNav()">無料相談</a></li>
+</ul>
 
 <!-- HERO -->
 <section id="hero">
@@ -924,18 +976,18 @@
         </a>
       </div>
     </div>
-    <form id="contact-form" class="contact-form reveal">
+    <form id="contact-form" class="contact-form reveal" aria-label="お問い合わせフォーム">
       <div class="form-group">
-        <label class="form-label">お名前・会社名</label>
-        <input id="cf-name" type="text" class="form-input" placeholder="例：山田 太郎 / 山田工務店" required>
+        <label class="form-label" for="cf-name">お名前・会社名</label>
+        <input id="cf-name" type="text" class="form-input" placeholder="例：山田 太郎 / 山田工務店" required aria-required="true">
       </div>
       <div class="form-group">
-        <label class="form-label">メールアドレス</label>
-        <input id="cf-email" type="email" class="form-input" placeholder="例：info@example.co.jp" required>
+        <label class="form-label" for="cf-email">メールアドレス</label>
+        <input id="cf-email" type="email" class="form-input" placeholder="例：info@example.co.jp" required aria-required="true">
       </div>
       <div class="form-group">
-        <label class="form-label">ご相談内容</label>
-        <textarea id="cf-message" class="form-textarea" placeholder="例：発注書の作成を自動化したい、費用感を知りたい　など" required></textarea>
+        <label class="form-label" for="cf-message">ご相談内容</label>
+        <textarea id="cf-message" class="form-textarea" placeholder="例：発注書の作成を自動化したい、費用感を知りたい　など" required aria-required="true"></textarea>
       </div>
       <p style="font-size:0.72rem; color:var(--muted); line-height:1.7;">
         送信をもって<a href="privacy.html" style="color:var(--gold)">プライバシーポリシー</a>に同意したものとみなします。
@@ -956,6 +1008,21 @@
 </footer>
 
 <script>
+  /* ===== モバイルナビ ===== */
+  function toggleNav() {
+    document.querySelector('.hamburger').classList.toggle('active');
+    document.getElementById('mobileNav').classList.toggle('active');
+    document.body.style.overflow = document.getElementById('mobileNav').classList.contains('active') ? 'hidden' : '';
+  }
+  function closeNav() {
+    document.querySelector('.hamburger').classList.remove('active');
+    document.getElementById('mobileNav').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) closeNav();
+  });
+
   // FAQ アコーディオン
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
