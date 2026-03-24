@@ -119,7 +119,3 @@ emailjs.send(
 3. ✅ index.html のナビゲーションに「Contact」リンク追加
 4. ✅ GitHub Pages にデプロイ
 
----
-
-⏰ 作成日: 2025-12-01  
-💻 作成者: Claude Code

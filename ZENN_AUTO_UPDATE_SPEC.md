@@ -279,14 +279,6 @@ Unregister-ScheduledTask -TaskName "ZennArticleAutoUpdate" -Confirm:$false
 
 ---
 
-## 📝 変更履歴
-
-### 2025-10-19
-- 初回実装
-- 更新間隔を30分から6時間に変更
-
----
-
 ## 🔐 セキュリティ注意事項
 
 - **Git認証情報**: Windows Credential Managerに保存
@@ -312,8 +304,3 @@ Unregister-ScheduledTask -TaskName "ZennArticleAutoUpdate" -Confirm:$false
 4. **エラー通知**: 更新失敗時にメール通知
 5. **統計情報表示**: 記事数・閲覧数等を自動取得
 
----
-
-**作成日**: 2025-10-19  
-**作成者**: Claude Code  
-**バージョン**: 1.0

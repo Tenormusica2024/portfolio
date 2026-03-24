@@ -1,68 +1,64 @@
-# 採用担当者向け情報
+# Recruiter Information
 
-> AI駆動開発の実践者として、最新技術を活用した高速・高品質な開発を提供します。
-
----
-
-## 実績サマリー
-
-| 項目 | 数値 |
-|------|------|
-| AI駆動開発プロジェクト | **20〜30件**（個人開発） |
-| 業務プロジェクト参画 | 20件以上 |
-| データ分析案件 | 5件 |
-| Claude Code開発時間 | **1000時間以上** |
-| 業務自動化達成率 | 80% |
+> AI-driven development practitioner delivering fast, high-quality solutions with cutting-edge technology.
 
 ---
 
-## 強み
+## Track Record
 
-### AIエージェント先行者
-- 2024年からAIエージェント開発を本格実践
-- **全体の上位5%**に入るレベルの習熟度（自己評価）
-- Gemini 3、Claude Opus 4.5等の最新モデルを即座に活用可能
-- フロントエンド〜バックエンドまでAI駆動で爆速開発
-
-### 高速アウトプット
-- 要望→成果物のスピードが早い
-- AI駆動開発により従来の数倍の開発速度を実現
-- プロトタイプ作成から本番デプロイまで一貫対応
-
-### 実践重視
-- 理論より実践、話すより見せるスタイル
-- 動くものを作って価値を証明する
+| Category | Detail |
+|----------|--------|
+| AI-driven development projects | **20-30+** (personal) |
+| Business project participation | 20+ |
+| Data analysis projects | 5 |
+| Claude Code development hours | **1000+** |
+| Business automation achievement rate | 80% |
 
 ---
 
-## 技術スキル
+## Strengths
 
-| スキル | 経験 |
-|--------|------|
-| Python | 実務3年 |
-| Claude Code | 1000時間以上 |
-| SQL | 実務2年 |
-| Git/GitHub | 実務3年・リポジトリ35+ |
-| JavaScript | 実務2年 |
+### AI Agent Early Adopter
+- Full-scale AI agent development practice since 2024
+- Top 5% proficiency level in AI-driven development (self-assessment)
+- Immediate adoption of latest models (Claude Opus 4.6, Sonnet 4.6, etc.)
+- Full-stack AI-driven rapid development (frontend to backend)
 
----
+### High-Speed Output
+- Fast turnaround from requirements to deliverables
+- AI-driven development achieves several times conventional development speed
+- End-to-end support from prototyping to production deployment
 
-## 稼働条件
-
-- **リモートワーク可**（フルリモート対応）
-- **現在**：副業対応（勤務時間外・成果物ベース）
-- **フルタイム**：来年度以降相談可
-- **契約形態**：業務委託（成果物納品型が理想）
-- **得意領域**：AI駆動開発・業務自動化・データ分析
+### Practice-Oriented
+- Action over theory, showing over telling
+- Proving value by building working products
 
 ---
 
-## 連絡先
+## Technical Skills
+
+| Skill | Experience |
+|--------|-----------|
+| Python | 3 years (production) |
+| Claude Code | 1000+ hours |
+| SQL | 2 years (production) |
+| Git/GitHub | 3 years, 35+ repositories |
+| JavaScript | 2 years (production) |
+
+---
+
+## Working Conditions
+
+- **Remote work**: Full remote available
+- **Current**: Side work (outside business hours, deliverable-based)
+- **Full-time**: Open to discussion
+- **Contract type**: Outsourcing (deliverable-based preferred)
+- **Specialties**: AI-driven development, business automation, data analysis
+
+---
+
+## Contact
 
 - **Email**: dragonrondo@gmail.com
 - **GitHub**: https://github.com/Tenormusica2024
-- **ポートフォリオ**: https://tenormusica2024.github.io/portfolio/
-
----
-
-*最終更新: 2025年11月26日*
+- **Portfolio**: https://tenormusica2024.github.io/portfolio/
