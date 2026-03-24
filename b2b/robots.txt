@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://urayahadays-b2b.vercel.app/sitemap.xml
