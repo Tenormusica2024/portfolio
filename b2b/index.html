@@ -946,12 +946,13 @@
           </span>
           LINE（友達追加）
         </a>
-        <a href="mailto:dragonrondo@gmail.com" class="contact-link">
+        <!-- TODO: 独自ドメインメール取得後に差し替え（例: contact@urayahadays.com） -->
+        <a href="mailto:contact@urayahadays.com" class="contact-link">
           <span class="contact-link-icon">
             <!-- Mail -->
             <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </span>
-          dragonrondo@gmail.com
+          contact@urayahadays.com
         </a>
         <a href="https://zenn.dev/tenormusica" target="_blank" rel="noopener" class="contact-link">
           <span class="contact-link-icon">
@@ -993,7 +994,7 @@
         送信をもって<a href="privacy.html" style="color:var(--gold)">プライバシーポリシー</a>に同意したものとみなします。
       </p>
       <button type="submit" id="cf-submit" class="form-submit">送信する</button>
-      <div id="cf-result" style="display:none; margin-top:0.75rem; padding:0.75rem 1rem; border-radius:4px; font-size:0.88rem;"></div>
+      <div id="cf-result" role="status" aria-live="polite" style="display:none; margin-top:0.75rem; padding:0.75rem 1rem; border-radius:4px; font-size:0.88rem;"></div>
     </form>
   </div>
 </section>
