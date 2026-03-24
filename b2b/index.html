@@ -894,29 +894,35 @@
   </div>
 </section>
 
+<!-- PRICE → CTA橋渡し -->
+<div class="works-cta">
+  <p class="reveal">料金はあくまで目安です。ご要望に合わせて最適なプランをお見積りいたします。</p>
+  <a href="#contact" class="btn-primary reveal">無料見積りを依頼する</a>
+</div>
+
 <!-- FAQ -->
 <section id="faq">
   <p class="section-label reveal">FAQ</p>
   <h2 class="section-title reveal">よくあるご質問</h2>
   <div class="faq-list">
     <div class="faq-item reveal">
-      <button class="faq-q">途中で要件が変わった場合はどうなりますか？</button>
+      <button class="faq-q" aria-expanded="false">途中で要件が変わった場合はどうなりますか？</button>
       <p class="faq-a">軽微な変更・修正は無償で対応します。開発途中での大きな仕様変更については、追加見積りのうえ対応いたします。まずはお気軽にご相談ください。</p>
     </div>
     <div class="faq-item reveal">
-      <button class="faq-q">遠方でも依頼できますか？</button>
+      <button class="faq-q" aria-expanded="false">遠方でも依頼できますか？</button>
       <p class="faq-a">はい、フルリモートで対応しておりますので全国どこからでもご依頼いただけます。打ち合わせはオンライン（Zoom・Google Meet等）で実施します。</p>
     </div>
     <div class="faq-item reveal">
-      <button class="faq-q">個人のフリーランスへの発注で品質面が心配です。</button>
+      <button class="faq-q" aria-expanded="false">個人のフリーランスへの発注で品質面が心配です。</button>
       <p class="faq-a">ITエンジニア歴5年・AI開発エンジニア歴2年の実務経験があり、開発コードはすべてGitHubで公開しています。依頼前に技術力をご自身で確認いただけます。<br><br>・コードを確認 → <a href="https://github.com/Tenormusica2024" target="_blank" rel="noopener" style="color:var(--gold)">github.com/Tenormusica2024</a><br>・実績を確認 → <a href="https://tenormusica2024.github.io/portfolio/" target="_blank" rel="noopener" style="color:var(--gold)">tenormusica2024.github.io/portfolio/</a><br><br>納品前の確認・修正フェーズあり。NDA締結にも対応しています。</p>
     </div>
     <div class="faq-item reveal">
-      <button class="faq-q">納品後の保守・運用サポートはありますか？</button>
-      <p class="faq-a">納品後1ヶ月は軽微な修正を無償対応します。継続的な保守・運用サポートは月額5,000〜30,000円が目安です（対応内容・月あたりの作業量によって変動します）。詳細はご相談ください。</p>
+      <button class="faq-q" aria-expanded="false">納品後の保守・運用サポートはありますか？</button>
+      <p class="faq-a">納品後1ヶ月は軽微な修正を無償対応します。継続的な保守・運用サポートは初期費用の10〜20%/月が目安です（対応内容・月あたりの作業量によって変動します）。詳細はご相談ください。</p>
     </div>
     <div class="faq-item reveal">
-      <button class="faq-q">まず相談だけでも大丈夫ですか？</button>
+      <button class="faq-q" aria-expanded="false">まず相談だけでも大丈夫ですか？</button>
       <p class="faq-a">もちろんです。「こんなことできる？」「いくらかかる？」という段階からご相談歓迎します。お見積りまでは無料ですのでお気軽にどうぞ。</p>
     </div>
   </div>
@@ -1029,8 +1035,14 @@
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
       const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     });
   });
 
