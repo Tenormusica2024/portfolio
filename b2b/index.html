@@ -983,12 +983,12 @@
           LINE（友達追加）
         </a>
         <!-- TODO: 独自ドメインメール取得後に差し替え（例: contact@urayahadays.com） -->
-        <a href="mailto:contact@urayahadays.com" class="contact-link">
+        <a href="mailto:dragonrondo@gmail.com" class="contact-link">
           <span class="contact-link-icon">
             <!-- Mail -->
             <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </span>
-          contact@urayahadays.com
+          dragonrondo@gmail.com
         </a>
         <a href="https://zenn.dev/tenormusica" target="_blank" rel="noopener" class="contact-link">
           <span class="contact-link-icon">
@@ -1026,6 +1026,8 @@
         <label class="form-label" for="cf-message">ご相談内容</label>
         <textarea id="cf-message" class="form-textarea" placeholder="例：発注書の作成を自動化したい、費用感を知りたい　など" required aria-required="true"></textarea>
       </div>
+      <!-- Formspree honeypot: botはこの隠しフィールドに値を入れるためスパム判定される -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
       <p style="font-size:0.72rem; color:var(--muted); line-height:1.7;">
         送信をもって<a href="privacy.html" style="color:var(--gold)">プライバシーポリシー</a>に同意したものとみなします。
       </p>
