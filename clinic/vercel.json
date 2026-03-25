@@ -1,0 +1,7 @@
+{
+  "name": "aozora-clinic-demo",
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "framework": null,
+  "rewrites": [{ "source": "/", "destination": "/index.html" }]
+}

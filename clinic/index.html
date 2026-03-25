@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>あおぞら内科クリニック | 柏駅西口徒歩3分の内科</title>
+  <meta name="description" content="柏駅西口徒歩3分。一般内科・生活習慣病・予防接種・健康診断・アレルギー科。丁寧な診療で地域の健康をサポートするあおぞら内科クリニック。">
+  <!-- OGP -->
+  <meta property="og:title" content="あおぞら内科クリニック | 柏駅西口徒歩3分の内科">
+  <meta property="og:description" content="一般内科・生活習慣病・予防接種・健康診断。丁寧な診療で地域の皆さまの健康をサポートします。Web予約対応。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aozora-clinic-demo.vercel.app/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&q=80">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="あおぞら内科クリニック | 柏駅西口徒歩3分の内科">
+  <meta name="twitter:description" content="一般内科・生活習慣病・予防接種・健康診断。Web予約対応。">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&q=80">
+  <!-- 構造化データ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    "name": "あおぞら内科クリニック",
+    "description": "柏駅西口徒歩3分。丁寧な診療で地域の皆さまの健康をサポート。",
+    "url": "https://aozora-clinic-demo.vercel.app/",
+    "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&q=80",
+    "telephone": "04-7100-XXXX",
+    "medicalSpecialty": "Internal Medicine",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "柏2丁目4-5 あおぞらメディカルビル 3F",
+      "addressLocality": "柏市",
+      "addressRegion": "千葉県",
+      "postalCode": "277-0005",
+      "addressCountry": "JP"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 35.8575,
+      "longitude": 139.9710
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Wednesday"],
+        "opens": "09:00",
+        "closes": "12:30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday"],
+        "opens": "09:00",
+        "closes": "13:00"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.6",
+      "bestRating": "5",
+      "ratingCount": "62"
+    }
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%231B3A5C'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='18' font-weight='400' fill='%23FFFFFF'>A</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --light-bg: #F5F7FA;
+      --white: #FFFFFF;
+      --navy: #1B3A5C;
+      --teal: #4A9B8E;
+      --teal-light: #7BC4B8;
+      --teal-pale: #D4EDEA;
+      --blue-soft: #A3B8D0;
+      --blue-soft-light: #D0DCE8;
+      --text: #2C3E50;
+      --text-muted: #7A8B99;
+      --border: #E0E6EC;
+      --error: #D4645C;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--light-bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.9;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(245, 247, 250, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+
+    .header-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 2rem;
+      height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--navy);
+    }
+
+    .logo span {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.6rem;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      color: var(--text-muted);
+      margin-top: -2px;
+    }
+
+    nav a {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      margin-left: 2.5rem;
+      transition: color 0.2s;
+      text-transform: uppercase;
+    }
+
+    nav a:hover { color: var(--teal); }
+
+    .nav-cta {
+      background: var(--navy);
+      color: var(--white) !important;
+      padding: 0.55rem 1.6rem;
+      border-radius: 2px;
+      font-size: 0.7rem !important;
+      letter-spacing: 0.12em;
+      transition: background 0.3s;
+    }
+
+    .nav-cta:hover { background: var(--teal); }
+
+    /* ===== MOBILE NAV ===== */
+    .hamburger {
+      display: none;
+      background: none; border: none; cursor: pointer;
+      width: 28px; height: 20px;
+      position: relative;
+    }
+
+    .hamburger span {
+      display: block; width: 100%; height: 1.5px;
+      background: var(--navy);
+      position: absolute; left: 0;
+      transition: all 0.3s;
+    }
+
+    .hamburger span:nth-child(1) { top: 0; }
+    .hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+    .hamburger span:nth-child(3) { bottom: 0; }
+
+    .hamburger.active span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none;
+      position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
+      background: rgba(245, 247, 250, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    .mobile-nav.active { display: flex; }
+
+    .mobile-nav a {
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      color: var(--navy);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 72px 2rem 0;
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-text { padding: 2rem 0; }
+
+    .hero-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      font-weight: 300;
+      line-height: 1.3;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--teal);
+    }
+
+    .hero-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 2;
+      margin-bottom: 2.5rem;
+      max-width: 440px;
+    }
+
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 1rem;
+      background: var(--navy);
+      color: var(--white);
+      padding: 1rem 2.8rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      border: none; cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .hero-cta:hover {
+      background: var(--teal);
+      transform: translateY(-1px);
+    }
+
+    .hero-cta svg {
+      width: 16px; height: 16px;
+      transition: transform 0.3s;
+    }
+
+    .hero-cta:hover svg { transform: translateX(4px); }
+
+    .hero-image {
+      position: relative;
+      height: 75vh;
+      min-height: 500px;
+    }
+
+    .hero-image-placeholder {
+      width: 100%; height: 100%;
+      overflow: hidden;
+    }
+    .hero-image-placeholder img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 2rem; left: -2rem;
+      background: var(--white);
+      padding: 1.2rem 1.8rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    }
+
+    .hero-badge-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--teal);
+      line-height: 1;
+    }
+
+    .hero-badge-text {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== SECTIONS COMMON ===== */
+    section { padding: 7rem 2rem; scroll-margin-top: 80px; }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 300;
+      color: var(--navy);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .section-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      line-height: 2;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header .section-desc {
+      margin: 0 auto;
+    }
+
+    /* ===== ABOUT ===== */
+    #about { background: var(--light-bg); }
+
+    .about-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-image-placeholder {
+      aspect-ratio: 4/5;
+      overflow: hidden;
+    }
+    .about-image-placeholder img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .about-text .section-title { margin-bottom: 2rem; }
+
+    .about-body {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 2.2;
+      margin-bottom: 2rem;
+    }
+
+    .about-sig {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--teal);
+    }
+
+    /* ===== DEPARTMENTS ===== */
+    #departments { background: var(--white); }
+
+    .dept-grid {
+      max-width: 1000px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .dept-card {
+      background: var(--white);
+      padding: 2rem 1.5rem;
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .dept-card:hover {
+      border-color: var(--teal);
+      box-shadow: 0 4px 16px rgba(74, 155, 142, 0.08);
+    }
+
+    .dept-icon {
+      width: 48px; height: 48px;
+      margin: 0 auto 1rem;
+      color: var(--teal);
+    }
+
+    .dept-name {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .dept-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* ===== DOCTORS ===== */
+    #doctors { background: var(--light-bg); }
+
+    .doctors-grid {
+      max-width: 1000px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+
+    .doctor-card { text-align: center; }
+
+    .doctor-photo {
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      overflow: hidden;
+    }
+
+    .doctor-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .doctor-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+    }
+
+    .doctor-role {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .doctor-bio {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+    }
+
+    /* ===== FACILITY ===== */
+    #facility { background: var(--white); padding-bottom: 5rem; }
+
+    .facility-grid {
+      max-width: 1000px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .facility-item {
+      position: relative;
+      aspect-ratio: 3/2;
+      overflow: hidden;
+      transition: opacity 0.3s;
+    }
+
+    .facility-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .facility-item:hover { opacity: 0.85; }
+
+    .facility-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(27,58,92,0.7));
+      padding: 1.5rem 1rem 0.8rem;
+      color: var(--white);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* ===== VOICE ===== */
+    #voice { background: var(--light-bg); }
+
+    .voice-list {
+      max-width: 800px; margin: 0 auto;
+      display: flex; flex-direction: column;
+      gap: 2rem;
+    }
+
+    .voice-card {
+      background: var(--white);
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .voice-card::before {
+      content: '\201C';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      color: var(--teal-pale);
+      position: absolute;
+      top: 0.5rem; left: 1.5rem;
+      line-height: 1;
+    }
+
+    .voice-text {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 2.1;
+      margin-bottom: 1.2rem;
+      padding-left: 0.5rem;
+    }
+
+    .voice-attr {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    /* ===== ACCESS ===== */
+    #access { background: var(--white); }
+
+    .access-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .access-map {
+      aspect-ratio: 4/3;
+      background: var(--border);
+    }
+
+    .access-map iframe {
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
+    .access-info-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .access-info-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      min-width: 80px;
+      flex-shrink: 0;
+    }
+
+    .access-info-value {
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    /* 診療時間テーブル */
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-top: 1.5rem;
+    }
+
+    .hours-table th,
+    .hours-table td {
+      padding: 0.55rem 0.4rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hours-table th {
+      font-weight: 400;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+    }
+
+    .hours-table td { color: var(--text); }
+
+    .hours-table .day-label {
+      text-align: left;
+      font-weight: 400;
+      padding-left: 0;
+    }
+
+    .hours-table .open { color: var(--teal); font-weight: 500; }
+    .hours-table .closed { color: var(--border); }
+
+    .hours-note {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.8rem;
+      line-height: 1.7;
+    }
+
+    /* ===== CTA SECTION ===== */
+    .cta-section {
+      background: var(--navy);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .cta-section .section-title {
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .cta-section .section-desc {
+      color: rgba(255, 255, 255, 0.55);
+      margin: 0 auto 2.5rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 0.8rem;
+      padding: 1.1rem 3rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      border: none; cursor: pointer;
+      transition: all 0.3s;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    .cta-btn-primary {
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    .cta-btn-primary:hover {
+      background: var(--teal-light);
+      transform: translateY(-1px);
+    }
+
+    .cta-btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .cta-btn-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-1px);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #111D2C;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 1rem;
+    }
+
+    .footer-address {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.3);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-copy {
+      font-size: 0.65rem;
+      color: rgba(255, 255, 255, 0.2);
+      letter-spacing: 0.1em;
+    }
+
+    /* ===== BOOKING MODAL ===== */
+    .booking-overlay {
+      position: fixed; inset: 0;
+      background: rgba(27,58,92,0.5);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.35s, visibility 0.35s;
+    }
+    .booking-overlay.active { opacity: 1; visibility: visible; }
+
+    .booking-modal {
+      background: var(--white);
+      width: min(520px, 92vw);
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 2.5rem 2rem;
+      position: relative;
+    }
+
+    .booking-close {
+      position: absolute; top: 1.2rem; right: 1.2rem;
+      background: none; border: none; cursor: pointer;
+      color: var(--text-muted); font-size: 1.4rem; line-height: 1;
+      transition: color 0.2s;
+    }
+    .booking-close:hover { color: var(--navy); }
+
+    .booking-progress {
+      display: flex; gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .booking-progress-step {
+      flex: 1; height: 3px;
+      background: var(--border);
+      transition: background 0.3s;
+    }
+    .booking-progress-step.active { background: var(--teal); }
+    .booking-progress-step.done { background: var(--blue-soft); }
+
+    .booking-step-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .booking-step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+
+    .booking-step { display: none; }
+    .booking-step.active { display: block; animation: fadeUp 0.35s ease; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Step 1: 診察科目選択（単一選択） */
+    .dept-select-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .dept-select-item {
+      display: flex; align-items: center; gap: 0.8rem;
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .dept-select-item:hover { border-color: var(--teal-light); }
+    .dept-select-item.selected {
+      border-color: var(--teal);
+      background: rgba(74,155,142,0.04);
+    }
+    .dept-select-radio {
+      width: 20px; height: 20px;
+      border: 1.5px solid var(--border);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: border-color 0.2s;
+    }
+    .dept-select-radio::after {
+      content: '';
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--teal);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .dept-select-item.selected .dept-select-radio {
+      border-color: var(--teal);
+    }
+    .dept-select-item.selected .dept-select-radio::after { opacity: 1; }
+    .dept-select-name { flex: 1; font-size: 0.88rem; color: var(--text); }
+
+    /* Step 2: 医師選択 */
+    .doctor-select-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem;
+    }
+    .doctor-select-card {
+      padding: 1.2rem 0.8rem;
+      border: 1px solid var(--border);
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .doctor-select-card:hover { border-color: var(--teal-light); }
+    .doctor-select-card.selected {
+      border-color: var(--teal);
+      background: rgba(74,155,142,0.04);
+    }
+    .doctor-select-photo {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      margin: 0 auto 0.6rem;
+      overflow: hidden;
+      background-color: var(--teal-pale);
+    }
+    .doctor-select-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .doctor-select-name {
+      font-size: 0.85rem;
+      color: var(--navy);
+      margin-bottom: 0.15rem;
+    }
+    .doctor-select-role {
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* Step 3: カレンダー */
+    .calendar-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .calendar-header h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-weight: 400;
+      color: var(--navy);
+    }
+    .calendar-nav {
+      background: none; border: 1px solid var(--border);
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      color: var(--text);
+    }
+    .calendar-nav:hover { border-color: var(--teal); }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+      margin-bottom: 1.5rem;
+    }
+    .calendar-dow {
+      text-align: center;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      padding: 0.4rem 0;
+      text-transform: uppercase;
+    }
+    .calendar-day {
+      text-align: center;
+      padding: 0.55rem 0;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      color: var(--text);
+    }
+    .calendar-day:hover { background: var(--teal-pale); }
+    .calendar-day.today {
+      font-weight: 500;
+      color: var(--teal);
+    }
+    .calendar-day.selected {
+      background: var(--teal);
+      color: #fff;
+    }
+    .calendar-day.disabled {
+      color: var(--border);
+      cursor: default;
+      pointer-events: none;
+    }
+    .calendar-day.holiday {
+      color: var(--border);
+      cursor: default;
+      pointer-events: none;
+      text-decoration: line-through;
+    }
+    .calendar-day.empty { pointer-events: none; }
+    .calendar-day.sun { color: var(--error); }
+    .calendar-day.sun.disabled, .calendar-day.sun.holiday { color: var(--border); }
+    .calendar-day.sat { color: var(--blue-soft); }
+    .calendar-day.sat.disabled { color: var(--border); }
+
+    .time-slots-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+    .time-slots {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+    }
+    .time-slot {
+      padding: 0.55rem 0;
+      text-align: center;
+      font-size: 0.82rem;
+      border: 1px solid var(--border);
+      background: none;
+      cursor: pointer;
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .time-slot:hover { border-color: var(--teal-light); }
+    .time-slot.selected {
+      border-color: var(--teal);
+      background: var(--teal);
+      color: #fff;
+    }
+    .time-slot.unavailable {
+      color: var(--border);
+      cursor: default;
+      pointer-events: none;
+      text-decoration: line-through;
+    }
+
+    /* Step 4: 入力フォーム */
+    .booking-form-group {
+      margin-bottom: 1.2rem;
+    }
+    .booking-form-group label {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+      letter-spacing: 0.05em;
+    }
+    .booking-form-group input,
+    .booking-form-group textarea {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.88rem;
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+    .booking-form-group textarea {
+      min-height: 80px;
+      resize: vertical;
+      line-height: 1.7;
+    }
+    .booking-form-group input:focus,
+    .booking-form-group textarea:focus {
+      outline: none;
+      border-color: var(--teal);
+    }
+    .booking-form-group input::placeholder,
+    .booking-form-group textarea::placeholder { color: var(--border); }
+
+    .form-error {
+      font-size: 0.7rem;
+      color: var(--error);
+      margin-top: 0.25rem;
+      display: block;
+      min-height: 1em;
+    }
+
+    /* 初診/再診トグル */
+    .visit-type-toggle {
+      display: flex; gap: 0;
+      margin-bottom: 1.2rem;
+    }
+    .visit-type-toggle label {
+      margin-bottom: 0.35rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      display: block;
+      width: 100%;
+    }
+    .visit-type-buttons { display: flex; gap: 0; }
+    .visit-type-btn {
+      flex: 1; padding: 0.7rem;
+      border: 1px solid var(--border);
+      text-align: center; cursor: pointer;
+      font-size: 0.85rem; background: var(--white);
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text-muted);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .visit-type-btn:first-child { border-right: none; }
+    .visit-type-btn.active {
+      background: var(--navy);
+      color: #fff;
+      border-color: var(--navy);
+    }
+
+    .booking-summary-box {
+      background: var(--light-bg);
+      padding: 1.2rem;
+      margin-top: 1rem;
+    }
+    .booking-summary-row {
+      display: flex; justify-content: space-between;
+      padding: 0.4rem 0;
+      font-size: 0.82rem;
+      color: var(--text);
+    }
+    .booking-summary-row span:first-child { color: var(--text-muted); }
+
+    /* 完了画面 */
+    .booking-done {
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+    .booking-done-icon {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--teal-pale);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.2rem;
+      color: var(--teal);
+    }
+    .booking-done-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+    .booking-done-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .booking-demo-badge {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.4rem 1rem;
+      font-size: 0.7rem;
+      color: var(--teal);
+      border: 1px solid var(--teal-pale);
+      letter-spacing: 0.05em;
+    }
+
+    /* ナビゲーションボタン */
+    .booking-nav {
+      display: flex; gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+    .booking-btn {
+      flex: 1;
+      padding: 0.8rem;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.85rem;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      text-align: center;
+    }
+    .booking-btn:hover { opacity: 0.85; }
+    .booking-btn-back {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .booking-btn-next {
+      background: var(--teal);
+      color: #fff;
+    }
+    .booking-btn-next:disabled {
+      background: var(--teal-pale);
+      cursor: default;
+      opacity: 1;
+    }
+    .booking-btn-submit {
+      background: var(--navy);
+      color: #fff;
+      width: 100%;
+      padding: 0.9rem;
+    }
+    .booking-btn-close {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 100%;
+      padding: 0.8rem;
+      margin-top: 1rem;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .booking-modal { padding: 2rem 1.2rem; width: 100%; max-height: 100vh; height: 100%; }
+      .doctor-select-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+      .time-slots { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* ===== REVEAL ANIMATION ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .header-inner { padding: 0 1.2rem; }
+      nav.desktop-nav { display: none; }
+      .hamburger { display: block; }
+
+      section { padding: 4.5rem 1.2rem; }
+
+      .hero { min-height: auto; padding: 72px 1.2rem 0; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem 0;
+      }
+      .hero-image { height: 50vh; min-height: 300px; }
+      .hero-badge { bottom: 1rem; left: 0; }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .dept-grid { grid-template-columns: 1fr; }
+
+      .doctors-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .facility-grid { grid-template-columns: 1fr; }
+
+      .access-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .access-map { aspect-ratio: 16/9; }
+
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .cta-btn { width: 100%; max-width: 320px; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      あおぞら内科
+      <span>Internal Medicine Clinic</span>
+    </a>
+    <nav class="desktop-nav">
+      <a href="#about">About</a>
+      <a href="#departments">Departments</a>
+      <a href="#doctors">Doctors</a>
+      <a href="#facility">Facility</a>
+      <a href="#voice">Voice</a>
+      <a href="#access">Access</a>
+      <a href="javascript:void(0)" class="nav-cta" onclick="openBooking()">Web予約</a>
+    </nav>
+    <button class="hamburger" onclick="toggleNav()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" onclick="closeNav()">About</a>
+  <a href="#departments" onclick="closeNav()">Departments</a>
+  <a href="#doctors" onclick="closeNav()">Doctors</a>
+  <a href="#facility" onclick="closeNav()">Facility</a>
+  <a href="#voice" onclick="closeNav()">Voice</a>
+  <a href="#access" onclick="closeNav()">Access</a>
+  <a href="javascript:void(0)" onclick="closeNav();openBooking()" class="nav-cta" style="margin:0">Web予約</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-label reveal">Internal Medicine in Kashiwa</p>
+      <h1 class="hero-title reveal">
+        地域の皆さまの、<br>
+        健康を<em> 支える</em>かかりつけ医
+      </h1>
+      <p class="hero-desc reveal">
+        丁寧な診察と分かりやすい説明をモットーに、
+        風邪や体調不良から生活習慣病の管理、予防接種まで、
+        幅広く対応いたします。お気軽にご相談ください。
+      </p>
+      <a href="javascript:void(0)" class="hero-cta reveal" onclick="openBooking()">
+        Web予約する
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+    <div class="hero-image reveal">
+      <div class="hero-image-placeholder"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80" alt="あおぞら内科クリニック 受付の様子"></div>
+      <div class="hero-badge">
+        <div class="hero-badge-number">4.6</div>
+        <div class="hero-badge-text">Google 口コミ評価</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-image-placeholder reveal"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80" alt="院長の診察風景" loading="lazy"></div>
+    <div class="about-text">
+      <p class="section-label reveal">About</p>
+      <h2 class="section-title reveal">患者さまの声に、<br>耳を傾ける診療を</h2>
+      <p class="about-body reveal">
+        「何となく体調が悪い」「この症状は何科に行けばいいの？」
+        そんな日常の不安に、まず最初に相談できる場所でありたい。
+        あおぞら内科クリニックは、そんな想いから開院しました。<br><br>
+        検査データだけでなく、患者さま一人ひとりの生活背景や
+        お気持ちに寄り添った診療を心がけています。
+        「来てよかった」と思っていただける、そんなクリニックを目指しています。
+      </p>
+      <p class="about-sig reveal">-- 院長 佐々木 健一</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DEPARTMENTS ===== -->
+<section id="departments">
+  <div class="section-header">
+    <p class="section-label reveal">Departments</p>
+    <h2 class="section-title reveal">診療科目</h2>
+    <p class="section-desc reveal">一般的な風邪症状から生活習慣病の管理まで、内科全般に対応しています。</p>
+  </div>
+
+  <div class="dept-grid reveal">
+    <div class="dept-card">
+      <div class="dept-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M24 4v40M4 24h40"/><circle cx="24" cy="24" r="18"/></svg>
+      </div>
+      <h3 class="dept-name">一般内科</h3>
+      <p class="dept-desc">風邪、発熱、頭痛、腹痛、倦怠感など、日常的な体調不良に幅広く対応します。</p>
+    </div>
+    <div class="dept-card">
+      <div class="dept-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 38c0-8 6-14 16-14s16 6 16 14"/><circle cx="24" cy="14" r="8"/></svg>
+      </div>
+      <h3 class="dept-name">生活習慣病</h3>
+      <p class="dept-desc">高血圧、糖尿病、脂質異常症など、継続的な管理と生活指導を行います。</p>
+    </div>
+    <div class="dept-card">
+      <div class="dept-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20v-4a12 12 0 0124 0v4"/><rect x="8" y="20" width="32" height="20" rx="2"/><path d="M24 28v6M21 34h6"/></svg>
+      </div>
+      <h3 class="dept-name">予防接種</h3>
+      <p class="dept-desc">インフルエンザ、コロナワクチン、肺炎球菌など各種予防接種に対応しています。</p>
+    </div>
+    <div class="dept-card">
+      <div class="dept-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="10" width="36" height="28" rx="2"/><path d="M6 18h36M18 10v28"/><path d="M26 26h8M26 32h8"/></svg>
+      </div>
+      <h3 class="dept-name">健康診断</h3>
+      <p class="dept-desc">定期健診、特定健診、雇入時健診など。結果に基づく生活改善のアドバイスも。</p>
+    </div>
+    <div class="dept-card">
+      <div class="dept-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M24 6c-6 8-16 12-16 22a16 16 0 0032 0c0-10-10-14-16-22z"/></svg>
+      </div>
+      <h3 class="dept-name">アレルギー科</h3>
+      <p class="dept-desc">花粉症、食物アレルギー、蕁麻疹など、アレルギー疾患の検査と治療を行います。</p>
+    </div>
+    <div class="dept-card">
+      <div class="dept-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="24" r="18"/><path d="M24 14v10l7 7"/></svg>
+      </div>
+      <h3 class="dept-name">その他の相談</h3>
+      <p class="dept-desc">「何科に行けばいいか分からない」方もお気軽にご来院ください。必要に応じて専門医をご紹介します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOCTORS ===== -->
+<section id="doctors">
+  <div class="section-header">
+    <p class="section-label reveal">Doctors</p>
+    <h2 class="section-title reveal">医師紹介</h2>
+    <p class="section-desc reveal">経験豊富な医師が、丁寧な診察でお悩みに向き合います。</p>
+  </div>
+
+  <div class="doctors-grid">
+    <div class="doctor-card reveal">
+      <div class="doctor-photo"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=300&q=80" alt="佐々木 健一" loading="lazy"></div>
+      <h3 class="doctor-name">佐々木 健一</h3>
+      <p class="doctor-role">Director</p>
+      <p class="doctor-bio">東京大学医学部卒。都内総合病院で15年の臨床経験を経て開院。内科全般、特に生活習慣病の予防と管理に注力。</p>
+    </div>
+    <div class="doctor-card reveal">
+      <div class="doctor-photo"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&q=80" alt="山本 理恵" loading="lazy"></div>
+      <h3 class="doctor-name">山本 理恵</h3>
+      <p class="doctor-role">Vice Director</p>
+      <p class="doctor-bio">アレルギー専門医。小児から高齢者まで幅広い年齢層のアレルギー疾患を診療。丁寧な問診に定評あり。</p>
+    </div>
+    <div class="doctor-card reveal">
+      <div class="doctor-photo"><img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300&q=80" alt="鈴木 大輔" loading="lazy"></div>
+      <h3 class="doctor-name">鈴木 大輔</h3>
+      <p class="doctor-role">Part-time Doctor</p>
+      <p class="doctor-bio">循環器内科専門。月曜・木曜の午後に外来を担当。心臓や血管の疾患について専門的な診療を提供。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FACILITY ===== -->
+<section id="facility">
+  <div class="section-header">
+    <p class="section-label reveal">Facility</p>
+    <h2 class="section-title reveal">院内のご案内</h2>
+  </div>
+  <div class="facility-grid reveal">
+    <div class="facility-item">
+      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80" alt="受付・待合室" loading="lazy">
+      <div class="facility-label">受付・待合室</div>
+    </div>
+    <div class="facility-item">
+      <img src="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80" alt="診察室" loading="lazy">
+      <div class="facility-label">診察室</div>
+    </div>
+    <div class="facility-item">
+      <img src="https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?w=600&q=80" alt="処置室" loading="lazy">
+      <div class="facility-label">処置室</div>
+    </div>
+    <div class="facility-item">
+      <img src="https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=600&q=80" alt="検査室" loading="lazy">
+      <div class="facility-label">検査室</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VOICE ===== -->
+<section id="voice">
+  <div class="section-header">
+    <p class="section-label reveal">Voice</p>
+    <h2 class="section-title reveal">患者さまの声</h2>
+  </div>
+
+  <div class="voice-list">
+    <div class="voice-card reveal">
+      <p class="voice-text">いつも丁寧に話を聞いてくださるので安心して通えています。検査結果もグラフで見せてもらえるので、自分の体の変化がよく分かります。</p>
+      <p class="voice-attr">50代男性 / 生活習慣病管理</p>
+    </div>
+    <div class="voice-card reveal">
+      <p class="voice-text">Web予約ができるので、仕事の合間にサッと予約できて助かっています。待ち時間も少なく、スムーズに受診できます。</p>
+      <p class="voice-attr">30代女性 / 一般内科</p>
+    </div>
+    <div class="voice-card reveal">
+      <p class="voice-text">花粉症で長年悩んでいましたが、体質に合った治療法を提案していただき、今年の春はとても楽に過ごせました。</p>
+      <p class="voice-attr">40代女性 / アレルギー科</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ACCESS ===== -->
+<section id="access">
+  <div class="section-header">
+    <p class="section-label reveal">Access</p>
+    <h2 class="section-title reveal">アクセス</h2>
+  </div>
+
+  <div class="access-inner">
+    <div class="access-map reveal">
+      <iframe src="https://maps.google.com/maps?q=%E6%9F%8F%E9%A7%85%E8%A5%BF%E5%8F%A3&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="access-details reveal">
+      <div class="access-info-item">
+        <span class="access-info-label">住所</span>
+        <span class="access-info-value">千葉県柏市柏2丁目4-5<br>あおぞらメディカルビル 3F</span>
+      </div>
+      <div class="access-info-item">
+        <span class="access-info-label">最寄り駅</span>
+        <span class="access-info-value">JR常磐線・東武野田線 柏駅<br>西口より徒歩3分</span>
+      </div>
+      <div class="access-info-item">
+        <span class="access-info-label">電話</span>
+        <span class="access-info-value">04-7100-XXXX</span>
+      </div>
+      <div class="access-info-item">
+        <span class="access-info-label">駐車場</span>
+        <span class="access-info-value">提携駐車場あり（1時間無料）</span>
+      </div>
+
+      <table class="hours-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>午前 9:00-12:30</th>
+            <th>午後 15:00-18:30</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="day-label">月</td><td class="open">○</td><td class="open">○</td></tr>
+          <tr><td class="day-label">火</td><td class="open">○</td><td class="open">○</td></tr>
+          <tr><td class="day-label">水</td><td class="open">○</td><td class="closed">--</td></tr>
+          <tr><td class="day-label">木</td><td class="open">○</td><td class="open">○</td></tr>
+          <tr><td class="day-label">金</td><td class="open">○</td><td class="open">○</td></tr>
+          <tr><td class="day-label">土</td><td class="open">○</td><td class="closed">--</td></tr>
+          <tr><td class="day-label">日・祝</td><td class="closed">--</td><td class="closed">--</td></tr>
+        </tbody>
+      </table>
+      <p class="hours-note">※ 受付は診療終了の30分前までです。<br>※ 臨時休診はお知らせにてご案内いたします。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section" id="reserve">
+  <h2 class="section-title reveal">ご予約・お問い合わせ</h2>
+  <p class="section-desc reveal">
+    Webからのご予約は24時間受付中です。<br>
+    初診の方もお気軽にご予約ください。
+  </p>
+  <div class="cta-buttons reveal">
+    <a href="javascript:void(0)" class="cta-btn cta-btn-primary" onclick="openBooking()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      Web予約
+    </a>
+    <a href="tel:047100XXXX" class="cta-btn cta-btn-secondary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      電話で予約
+    </a>
+  </div>
+</section>
+
+<!-- ===== BOOKING MODAL ===== -->
+<div class="booking-overlay" id="bookingOverlay" role="dialog" aria-modal="true" aria-label="Web予約" onclick="if(event.target===this)closeBooking()">
+  <div class="booking-modal">
+    <button class="booking-close" onclick="closeBooking()">&times;</button>
+
+    <div class="booking-progress" id="bookingProgress">
+      <div class="booking-progress-step active"></div>
+      <div class="booking-progress-step"></div>
+      <div class="booking-progress-step"></div>
+      <div class="booking-progress-step"></div>
+    </div>
+
+    <!-- Step 1: 診察内容選択 -->
+    <div class="booking-step active" id="bkStep1">
+      <p class="booking-step-label">Step 1 / 4</p>
+      <h3 class="booking-step-title">診察内容を選択</h3>
+      <div class="dept-select-list" id="deptSelectList"></div>
+      <div class="booking-nav">
+        <button class="booking-btn booking-btn-next" id="btnStep1Next" disabled onclick="goToStep(2)">医師選択へ</button>
+      </div>
+    </div>
+
+    <!-- Step 2: 医師選択 -->
+    <div class="booking-step" id="bkStep2">
+      <p class="booking-step-label">Step 2 / 4</p>
+      <h3 class="booking-step-title">医師を選択</h3>
+      <div class="doctor-select-grid" id="doctorSelectGrid"></div>
+      <div class="booking-nav">
+        <button class="booking-btn booking-btn-back" onclick="goToStep(1)">戻る</button>
+        <button class="booking-btn booking-btn-next" id="btnStep2Next" disabled onclick="goToStep(3)">日時選択へ</button>
+      </div>
+    </div>
+
+    <!-- Step 3: 日時選択 -->
+    <div class="booking-step" id="bkStep3">
+      <p class="booking-step-label">Step 3 / 4</p>
+      <h3 class="booking-step-title">日時を選択</h3>
+      <div class="calendar-header">
+        <button class="calendar-nav" onclick="changeMonth(-1)">&#8249;</button>
+        <h3 id="calendarTitle"></h3>
+        <button class="calendar-nav" onclick="changeMonth(1)">&#8250;</button>
+      </div>
+      <div class="calendar-grid" id="calendarGrid"></div>
+      <div id="timeSlotsArea" style="display:none"></div>
+      <div class="booking-nav">
+        <button class="booking-btn booking-btn-back" onclick="goToStep(2)">戻る</button>
+        <button class="booking-btn booking-btn-next" id="btnStep3Next" disabled onclick="goToStep(4)">患者情報入力へ</button>
+      </div>
+    </div>
+
+    <!-- Step 4: 患者情報 + 確認 -->
+    <div class="booking-step" id="bkStep4">
+      <p class="booking-step-label">Step 4 / 4</p>
+      <h3 class="booking-step-title">ご予約内容の確認</h3>
+      <div class="booking-summary-box" id="bookingSummary"></div>
+      <div style="margin-top:1.5rem">
+        <div class="visit-type-toggle">
+          <label>受診区分</label>
+          <div class="visit-type-buttons">
+            <div class="visit-type-btn active" onclick="setVisitType('first',this)">初診</div>
+            <div class="visit-type-btn" onclick="setVisitType('return',this)">再診</div>
+          </div>
+        </div>
+        <div class="booking-form-group">
+          <label>お名前</label>
+          <input type="text" id="bkName" placeholder="佐藤 太郎" oninput="checkForm()">
+        </div>
+        <div class="booking-form-group">
+          <label>お電話番号</label>
+          <input type="tel" id="bkPhone" placeholder="090-1234-5678" oninput="checkForm()" aria-describedby="phoneError">
+          <span class="form-error" id="phoneError" role="alert"></span>
+        </div>
+        <div class="booking-form-group">
+          <label>メールアドレス</label>
+          <input type="email" id="bkEmail" placeholder="taro@example.com" oninput="checkForm()" aria-describedby="emailError">
+          <span class="form-error" id="emailError" role="alert"></span>
+        </div>
+        <div class="booking-form-group">
+          <label>症状・ご相談内容（任意）</label>
+          <textarea id="bkSymptoms" placeholder="気になる症状やご相談内容がありましたらご記入ください"></textarea>
+        </div>
+      </div>
+      <div class="booking-nav" style="flex-direction:column;gap:0.5rem">
+        <button class="booking-btn booking-btn-submit" id="btnSubmit" disabled onclick="submitBooking()">予約を確定する</button>
+        <button class="booking-btn booking-btn-back" onclick="goToStep(3)" style="flex:none">戻る</button>
+      </div>
+    </div>
+
+    <!-- 完了画面 -->
+    <div class="booking-step" id="bkStepDone">
+      <div class="booking-done">
+        <div class="booking-done-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h3 class="booking-done-title">ご予約ありがとうございます</h3>
+        <div class="booking-summary-box" id="doneSummary"></div>
+        <p class="booking-demo-badge">DEMO - 実際の送信は行われません</p>
+      </div>
+      <button class="booking-btn-close" onclick="closeBooking()">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-logo">あおぞら内科クリニック</div>
+  <p class="footer-address">
+    千葉県柏市柏2丁目4-5 あおぞらメディカルビル 3F<br>
+    JR柏駅西口 徒歩3分
+  </p>
+  <p class="footer-copy">&copy; 2026 あおぞら内科クリニック. All rights reserved.</p>
+</footer>
+
+<script>
+  /* ===== Reveal on scroll ===== */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* ===== Mobile nav ===== */
+  function toggleNav() {
+    document.querySelector('.hamburger').classList.toggle('active');
+    document.getElementById('mobileNav').classList.toggle('active');
+    document.body.style.overflow = document.getElementById('mobileNav').classList.contains('active') ? 'hidden' : '';
+  }
+
+  function closeNav() {
+    document.querySelector('.hamburger').classList.remove('active');
+    document.getElementById('mobileNav').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) closeNav();
+  });
+
+  /* ===== Smooth scroll ===== */
+  document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  /* ===== BOOKING SYSTEM ===== */
+
+  /* -- データ定義 -- */
+  const DEPARTMENTS = [
+    { id: 'general', name: '一般内科（風邪・体調不良）' },
+    { id: 'lifestyle', name: '生活習慣病（高血圧・糖尿病・脂質異常症）' },
+    { id: 'vaccine', name: '予防接種（インフルエンザ・コロナワクチン等）' },
+    { id: 'checkup', name: '健康診断（定期健診・特定健診）' },
+    { id: 'allergy', name: 'アレルギー科（花粉症・食物アレルギー等）' },
+    { id: 'other', name: 'その他の相談' },
+  ];
+
+  const DOCTORS = [
+    { id: 'sasaki', name: '佐々木 健一', role: '院長', photo: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=150&q=80' },
+    { id: 'yamamoto', name: '山本 理恵', role: '副院長', photo: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=150&q=80' },
+    { id: 'suzuki', name: '鈴木 大輔', role: '非常勤医', photo: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=150&q=80' },
+    { id: 'none', name: '指定なし', role: 'おまかせ', photo: '' },
+  ];
+
+  /* 午前 9:00-12:00（最終受付 12:00） */
+  const HOURS_AM = ['9:00','9:30','10:00','10:30','11:00','11:30','12:00'];
+  /* 午後 15:00-18:00（最終受付 18:00） */
+  const HOURS_PM = ['15:00','15:30','16:00','16:30','17:00','17:30','18:00'];
+  /* 土曜午前 9:00-12:30 */
+  const HOURS_SAT = ['9:00','9:30','10:00','10:30','11:00','11:30','12:00','12:30'];
+
+  /* -- 状態管理 -- */
+  let booking = { department: null, doctor: null, date: null, time: null, visitType: 'first', symptoms: '' };
+  let calYear, calMonth;
+
+  /* -- Step 1: 診察科目選択（単一選択） -- */
+  function renderDeptList() {
+    const list = document.getElementById('deptSelectList');
+    list.innerHTML = DEPARTMENTS.map(d => `
+      <div class="dept-select-item" data-id="${d.id}" onclick="selectDept('${d.id}')">
+        <div class="dept-select-radio"></div>
+        <span class="dept-select-name">${d.name}</span>
+      </div>
+    `).join('');
+  }
+
+  function selectDept(id) {
+    booking.department = id;
+    document.querySelectorAll('.dept-select-item').forEach(el => {
+      el.classList.toggle('selected', el.dataset.id === id);
+    });
+    document.getElementById('btnStep1Next').disabled = false;
+  }
+
+  /* -- Step 2: 医師選択 -- */
+  function renderDoctorGrid() {
+    const grid = document.getElementById('doctorSelectGrid');
+    grid.innerHTML = DOCTORS.map(d => `
+      <div class="doctor-select-card" data-id="${d.id}" onclick="selectDoctor('${d.id}')">
+        <div class="doctor-select-photo">${d.photo ? `<img src="${d.photo}" alt="${d.name}">` : ''}</div>
+        <p class="doctor-select-name">${d.name}</p>
+        <p class="doctor-select-role">${d.role}</p>
+      </div>
+    `).join('');
+  }
+
+  function selectDoctor(id) {
+    booking.doctor = id;
+    document.querySelectorAll('.doctor-select-card').forEach(el => {
+      el.classList.toggle('selected', el.dataset.id === id);
+    });
+    document.getElementById('btnStep2Next').disabled = false;
+  }
+
+  /* -- Step 3: カレンダー -- */
+  function initCalendar() {
+    const now = new Date();
+    calYear = now.getFullYear();
+    calMonth = now.getMonth();
+    renderCalendar();
+  }
+
+  function changeMonth(dir) {
+    const now = new Date();
+    if (dir < 0 && calYear === now.getFullYear() && calMonth === now.getMonth()) return;
+    calMonth += dir;
+    if (calMonth > 11) { calMonth = 0; calYear++; }
+    if (calMonth < 0) { calMonth = 11; calYear--; }
+    renderCalendar();
+  }
+
+  function renderCalendar() {
+    const title = document.getElementById('calendarTitle');
+    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    title.textContent = `${months[calMonth]} ${calYear}`;
+
+    const grid = document.getElementById('calendarGrid');
+    const dows = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    let html = dows.map(d => `<div class="calendar-dow">${d}</div>`).join('');
+
+    const firstDay = new Date(calYear, calMonth, 1).getDay();
+    const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+    const today = new Date();
+    today.setHours(0,0,0,0);
+
+    for (let i = 0; i < firstDay; i++) html += '<div class="calendar-day empty"></div>';
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      const date = new Date(calYear, calMonth, d);
+      const dow = date.getDay();
+      const isPast = date < today;
+      /* 日曜・祝日は休診 */
+      const isSunday = dow === 0;
+      const isHoliday = isSunday;
+      const isSaturday = dow === 6;
+      const isSelected = booking.date && booking.date.getTime() === date.getTime();
+      const isToday = date.getTime() === today.getTime();
+
+      let cls = 'calendar-day';
+      if (isPast) cls += ' disabled';
+      else if (isHoliday) cls += ' holiday';
+      else {
+        if (isSunday) cls += ' sun';
+        if (isSaturday) cls += ' sat';
+        if (isToday) cls += ' today';
+        if (isSelected) cls += ' selected';
+      }
+
+      const clickable = !isPast && !isHoliday;
+      html += `<div class="${cls}" ${clickable ? `onclick="selectDate(${calYear},${calMonth},${d})"` : ''}>${d}</div>`;
+    }
+    grid.innerHTML = html;
+  }
+
+  function selectDate(y, m, d) {
+    booking.date = new Date(y, m, d);
+    booking.time = null;
+    renderCalendar();
+    showTimeSlots();
+    document.getElementById('btnStep3Next').disabled = true;
+  }
+
+  function showTimeSlots() {
+    const area = document.getElementById('timeSlotsArea');
+    area.style.display = 'block';
+
+    const d = booking.date;
+    const dow = d.getDay();
+    const monthNum = d.getMonth() + 1;
+    const dayNum = d.getDate();
+    const dowNames = ['日','月','火','水','木','金','土'];
+
+    const isSaturday = dow === 6;
+    const isWednesday = dow === 3;
+
+    /* デモ用: シード値ベースでランダムに予約済みスロットを生成 */
+    const seed = d.getFullYear() * 10000 + d.getMonth() * 100 + d.getDate();
+
+    function renderSlots(slots, offset) {
+      return slots.map((h, i) => {
+        const hash = (seed * 31 + (i + offset) * 7) % 10;
+        const unavailable = hash < 3;
+        const cls = unavailable ? 'time-slot unavailable' : 'time-slot';
+        return `<div class="${cls}" ${unavailable ? '' : `onclick="selectTime('${h}',this)"`}>${h}</div>`;
+      }).join('');
+    }
+
+    let html = '';
+
+    /* 午前枠 */
+    const amSlots = isSaturday ? HOURS_SAT : HOURS_AM;
+    html += `<p class="time-slots-label">${monthNum}月${dayNum}日（${dowNames[dow]}）午前の空き状況</p>`;
+    html += `<div class="time-slots">${renderSlots(amSlots, 0)}</div>`;
+
+    /* 午後枠（水曜・土曜は午後休診） */
+    if (!isWednesday && !isSaturday) {
+      html += `<p class="time-slots-label" style="margin-top:1.2rem">午後の空き状況</p>`;
+      html += `<div class="time-slots">${renderSlots(HOURS_PM, 100)}</div>`;
+    }
+
+    area.innerHTML = html;
+  }
+
+  function selectTime(time, el) {
+    booking.time = time;
+    document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+    el.classList.add('selected');
+    document.getElementById('btnStep3Next').disabled = false;
+  }
+
+  /* -- Step 4: 確認 + フォーム -- */
+  function setVisitType(type, el) {
+    booking.visitType = type;
+    document.querySelectorAll('.visit-type-btn').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  function renderSummary(targetId) {
+    const target = document.getElementById(targetId);
+    const dept = DEPARTMENTS.find(d => d.id === booking.department);
+    const doctor = DOCTORS.find(d => d.id === booking.doctor);
+    const d = booking.date;
+    const dowNames = ['日','月','火','水','木','金','土'];
+    const dateStr = `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日（${dowNames[d.getDay()]}）`;
+
+    target.innerHTML = `
+      <div class="booking-summary-row"><span>診察内容</span><span>${dept.name}</span></div>
+      <div class="booking-summary-row"><span>担当医</span><span>${doctor.name}</span></div>
+      <div class="booking-summary-row"><span>日時</span><span>${dateStr} ${booking.time}</span></div>
+      <div class="booking-summary-row"><span>受診区分</span><span>${booking.visitType === 'first' ? '初診' : '再診'}</span></div>
+    `;
+  }
+
+  function checkForm() {
+    const name = document.getElementById('bkName').value.trim();
+    const phone = document.getElementById('bkPhone').value.trim();
+    const email = document.getElementById('bkEmail').value.trim();
+
+    const phoneValid = /^[+]?[0-9\-\s]{10,15}$/.test(phone);
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    document.getElementById('bkPhone').style.borderColor = phone && !phoneValid ? 'var(--error)' : '';
+    document.getElementById('phoneError').textContent = phone && !phoneValid ? '半角数字とハイフンで入力してください' : '';
+    document.getElementById('bkEmail').style.borderColor = email && !emailValid ? 'var(--error)' : '';
+    document.getElementById('emailError').textContent = email && !emailValid ? '正しいメールアドレスを入力してください' : '';
+
+    document.getElementById('btnSubmit').disabled = !(name && phoneValid && emailValid);
+  }
+
+  function escapeHtml(str) {
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  function submitBooking() {
+    booking.symptoms = document.getElementById('bkSymptoms').value.trim();
+    renderSummary('doneSummary');
+    const name = escapeHtml(document.getElementById('bkName').value.trim());
+    const nameRow = `<div class="booking-summary-row"><span>お名前</span><span>${name}</span></div>`;
+    let extraRows = '';
+    if (booking.symptoms) {
+      extraRows = `<div class="booking-summary-row" style="flex-direction:column;gap:0.3rem"><span>症状・ご相談</span><span style="color:var(--text)">${escapeHtml(booking.symptoms)}</span></div>`;
+    }
+    document.getElementById('doneSummary').innerHTML = nameRow + document.getElementById('doneSummary').innerHTML + extraRows;
+    goToStep('done');
+  }
+
+  /* -- ステップ遷移 -- */
+  function goToStep(n) {
+    document.querySelectorAll('.booking-step').forEach(s => s.classList.remove('active'));
+
+    if (n === 'done') {
+      document.getElementById('bkStepDone').classList.add('active');
+      document.querySelectorAll('.booking-progress-step').forEach(s => { s.classList.remove('active'); s.classList.add('done'); });
+      return;
+    }
+
+    document.getElementById(`bkStep${n}`).classList.add('active');
+
+    document.querySelectorAll('.booking-progress-step').forEach((s, i) => {
+      s.classList.remove('active', 'done');
+      if (i < n - 1) s.classList.add('done');
+      else if (i === n - 1) s.classList.add('active');
+    });
+
+    if (n === 3) initCalendar();
+    if (n === 4) renderSummary('bookingSummary');
+
+    document.querySelector('.booking-modal').scrollTop = 0;
+  }
+
+  /* -- モーダル開閉 -- */
+  function openBooking() {
+    booking = { department: null, doctor: null, date: null, time: null, visitType: 'first', symptoms: '' };
+    renderDeptList();
+    renderDoctorGrid();
+
+    ['bkName','bkPhone','bkEmail'].forEach(id => { document.getElementById(id).value = ''; });
+    document.getElementById('bkSymptoms').value = '';
+    document.getElementById('btnSubmit').disabled = true;
+    document.getElementById('timeSlotsArea').style.display = 'none';
+
+    /* 初診/再診トグルをリセット */
+    document.querySelectorAll('.visit-type-btn').forEach((b, i) => {
+      b.classList.toggle('active', i === 0);
+    });
+
+    goToStep(1);
+    document.getElementById('bookingOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', bookingKeyHandler);
+    document.querySelector('.booking-close').focus();
+  }
+
+  function closeBooking() {
+    document.getElementById('bookingOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', bookingKeyHandler);
+  }
+
+  function bookingKeyHandler(e) {
+    if (e.key === 'Escape') { closeBooking(); return; }
+    if (e.key === 'Tab') {
+      const modal = document.querySelector('.booking-modal');
+      const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    }
+  }
+
+  /* 初期描画 */
+  renderDeptList();
+  renderDoctorGrid();
+</script>
+
+</body>
+</html>
