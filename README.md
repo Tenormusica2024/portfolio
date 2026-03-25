@@ -2,6 +2,10 @@
 
 Personal portfolio website showcasing AI/ML projects and skills.
 
+## Notes
+
+- B2B site review / fix request note: `B2B_FIX_REQUEST.md`
+
 ## Site Structure
 
 | Site | URL | Hosting |
