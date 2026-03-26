@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | BridgeTech Inc.</title>
+  <meta name="description" content="BridgeTech Inc.へのお問い合わせ。DXコンサルティング、システム開発、クラウド移行など、お気軽にご相談ください。">
+  <meta name="keywords" content="お問い合わせ,相談,見積もり,DXコンサルティング,システム開発,BridgeTech">
+
+  <!-- OG Tags -->
+  <meta property="og:title" content="Contact | BridgeTech Inc.">
+  <meta property="og:description" content="BridgeTech Inc.へのお問い合わせ。DXコンサルティング、システム開発、クラウド移行など、お気軽にご相談ください。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bridgetech.example.com/contact.html">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop">
+  <meta property="og:site_name" content="BridgeTech Inc.">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact | BridgeTech Inc.">
+  <meta name="twitter:description" content="BridgeTech Inc.へのお問い合わせ。お気軽にご相談ください。">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- GA4 with Cross-Domain Linker -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ1WP1J2NQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YJ1WP1J2NQ', {
+      linker: {
+        domains: [
+          'tenormusica2024.github.io',
+          'urayahadays-b2b.vercel.app',
+          'beauty-salon-lumiere.vercel.app',
+          'clinic-peach-seven.vercel.app',
+          'sound-platform-v5-ycqe3vmjva-an.a.run.app',
+          'esports-tournament-ycqe3vmjva-uc.a.run.app',
+          'asteroid-game-ycqe3vmjva-uc.a.run.app'
+        ]
+      }
+    });
+  </script>
+</head>
+<body>
+
+  <!-- ========== Header ========== -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo">
+        <span class="header__logo-mark">BT</span>
+        <span class="header__logo-text">BridgeTech</span>
+      </a>
+
+      <nav class="header__nav" id="headerNav">
+        <ul class="header__nav-list">
+          <li class="header__nav-item">
+            <a href="index.html" class="header__nav-link">Home</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="about.html" class="header__nav-link">About</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="services.html" class="header__nav-link">Services</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="works.html" class="header__nav-link">Works</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="recruit.html" class="header__nav-link">Recruit</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="contact.html" class="header__nav-link header__nav-link--active">Contact</a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="header__menu-trigger" id="menuTrigger" aria-label="メニューを開く" aria-expanded="false">
+        <span class="header__menu-bar"></span>
+        <span class="header__menu-bar"></span>
+        <span class="header__menu-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========== Breadcrumb ========== -->
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <div class="container">
+        <ol class="breadcrumb__list">
+          <li class="breadcrumb__item">
+            <a href="index.html" class="breadcrumb__link">Home</a>
+            <span class="breadcrumb__separator">/</span>
+          </li>
+          <li class="breadcrumb__item">
+            <span class="breadcrumb__current">Contact</span>
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ========== Page Hero ========== -->
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="page-hero__title reveal">Contact</h1>
+        <p class="page-hero__text reveal">DXコンサルティング、システム開発、クラウド移行など、ITに関するご相談はお気軽にお問い合わせください。専門のコンサルタントが貴社の課題に合わせた最適なご提案をいたします。</p>
+      </div>
+    </section>
+
+    <!-- ========== Contact Form & Info ========== -->
+    <section class="section">
+      <div class="container">
+        <div class="grid grid--7-5">
+
+          <!-- Left: Contact Form -->
+          <div class="reveal">
+            <form action="https://formspree.io/f/placeholder" method="POST">
+
+              <div class="form-group">
+                <label for="company">Company Name <span class="required">*</span></label>
+                <input type="text" id="company" name="company" required placeholder="株式会社サンプル">
+              </div>
+
+              <div class="form-group">
+                <label for="department">Department</label>
+                <input type="text" id="department" name="department" placeholder="DX推進部">
+              </div>
+
+              <div class="form-group">
+                <label for="name">Name <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required placeholder="山田 太郎">
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="example@company.co.jp">
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="03-1234-5678">
+              </div>
+
+              <div class="form-group">
+                <label for="inquiry-type">Inquiry Type</label>
+                <select id="inquiry-type" name="inquiry-type">
+                  <option value="" selected disabled>Choose...</option>
+                  <option value="dx-consulting">DX Consulting</option>
+                  <option value="system-development">System Development</option>
+                  <option value="cloud-migration">Cloud Migration</option>
+                  <option value="data-analytics">Data Analytics</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message <span class="required">*</span></label>
+                <textarea id="message" name="message" required placeholder="ご相談内容をご記入ください"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--large">Send Message <span class="btn__arrow">&rarr;</span></button>
+
+            </form>
+          </div>
+
+          <!-- Right: Contact Info Sidebar -->
+          <div class="reveal">
+            <div class="contact-info">
+
+              <div class="contact-info__item">
+                <p class="contact-info__label">Phone</p>
+                <p class="contact-info__value"><a href="tel:03-1234-5678">03-1234-5678</a></p>
+              </div>
+
+              <div class="contact-info__item">
+                <p class="contact-info__label">Email</p>
+                <p class="contact-info__value"><a href="mailto:info@bridgetech.co.jp">info@bridgetech.co.jp</a></p>
+              </div>
+
+              <div class="contact-info__item">
+                <p class="contact-info__label">Address</p>
+                <p class="contact-info__value">
+                  〒107-0052<br>
+                  東京都港区赤坂2-14-27<br>
+                  BridgeTech Building 8F
+                </p>
+              </div>
+
+              <div class="contact-info__item">
+                <p class="contact-info__label">Business Hours</p>
+                <p class="contact-info__value">Mon - Fri 9:00 - 18:00</p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Map ========== -->
+    <section class="section section--sage">
+      <div class="container">
+        <div class="section-title section-title--center reveal">
+          <span class="section-title__label">Access</span>
+          <h2 class="section-title__text">Location</h2>
+        </div>
+        <div class="map-wrapper reveal">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.169082814908!2d139.7344!3d35.6722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b9b1d6b3f7b%3A0x5e1d3f9b8f2e5b0a!2sAkasaka%2C+Minato+City%2C+Tokyo!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="BridgeTech Inc. Office Location"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="cta" id="cta">
+      <div class="cta__inner reveal">
+        <h2 class="cta__heading">Let's Transform Together</h2>
+        <p class="cta__description">デジタル変革の第一歩を、私たちと一緒に踏み出しませんか。まずはお気軽にご相談ください。貴社の課題に合わせた最適なソリューションをご提案いたします。</p>
+        <a href="contact.html" class="cta__btn">Contact Us</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== Footer ========== -->
+  <footer class="footer" id="footer">
+    <div class="footer__inner">
+      <div class="footer__grid">
+
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <span class="footer__logo-mark">BT</span>
+            <span class="footer__logo-text">BridgeTech</span>
+          </a>
+          <p class="footer__address">
+            〒100-0001<br>
+            東京都千代田区千代田1-1-1<br>
+            BridgeTech Building 8F
+          </p>
+        </div>
+
+        <div class="footer__nav">
+          <h3 class="footer__nav-title">Navigation</h3>
+          <ul class="footer__nav-list">
+            <li><a href="index.html" class="footer__nav-link">Home</a></li>
+            <li><a href="about.html" class="footer__nav-link">About</a></li>
+            <li><a href="services.html" class="footer__nav-link">Services</a></li>
+            <li><a href="works.html" class="footer__nav-link">Works</a></li>
+            <li><a href="recruit.html" class="footer__nav-link">Recruit</a></li>
+            <li><a href="contact.html" class="footer__nav-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__contact">
+          <h3 class="footer__contact-title">Contact</h3>
+          <p class="footer__contact-item">
+            <span class="footer__contact-label">TEL</span>
+            <a href="tel:03-1234-5678" class="footer__contact-link">03-1234-5678</a>
+          </p>
+          <p class="footer__contact-item">
+            <span class="footer__contact-label">EMAIL</span>
+            <a href="mailto:info@bridgetech.co.jp" class="footer__contact-link">info@bridgetech.co.jp</a>
+          </p>
+          <p class="footer__contact-hours">
+            営業時間: 平日 9:00 - 18:00
+          </p>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2024 BridgeTech Inc. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

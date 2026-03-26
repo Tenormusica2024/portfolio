@@ -11,6 +11,7 @@ Web制作スキルを示すポートフォリオサイト群。AI/MLプロジェ
 | Beauty Salon Demo | https://beauty-salon-lumiere.vercel.app/ | Vercel |
 | Clinic Demo | https://clinic-peach-seven.vercel.app/ | Vercel |
 | Designer Portfolio | https://designer-portfolio-plum.vercel.app/ | Vercel |
+| Corporate Demo | https://corporate-red-sigma.vercel.app/ | Vercel |
 
 ## Pages
 
@@ -29,6 +30,7 @@ Web制作スキルを示すポートフォリオサイト群。AI/MLプロジェ
 - `beauty-salon/` - Beauty salon booking demo (single-file HTML with inline CSS/JS)
 - `clinic/` - Medical clinic demo (single-file HTML with inline CSS/JS)
 - `b2b/` - B2B business site (index.html, tokusho.html, privacy.html)
+- `corporate/` - Corporate site demo (6 pages: index, about, services, works, recruit, contact + style.css, script.js)
 
 ## Analytics
 
@@ -40,7 +42,7 @@ Web制作スキルを示すポートフォリオサイト群。AI/MLプロジェ
 
 - Static HTML/CSS/JS (no build step)
 - GitHub Pages / Vercel hosting
-- EmailJS (contact form) / Formspree (B2B form)
+- EmailJS (contact form) / Formspree (B2B, Corporate forms)
 - GA4 with cross-domain linker
 - JSON-LD structured data (Schema.org)
 - Multi-language support (ja/en)
@@ -55,6 +57,7 @@ cd beauty-salon && npx vercel --prod --yes
 cd clinic && npx vercel --prod --yes
 cd designer-portfolio && npx vercel --prod --yes
 cd b2b && npx vercel --prod --yes
+cd corporate && npx vercel --prod --yes
 ```
 
 ## Docs

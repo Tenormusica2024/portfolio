@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Works | BridgeTech Inc.</title>
+  <meta name="description" content="BridgeTech Inc.のプロジェクト実績。DX推進、システム開発、クラウド移行、データ分析など、多様な業界での支援事例をご紹介します。">
+  <meta name="keywords" content="プロジェクト実績,DX事例,システム開発事例,クラウド移行,データ分析,BridgeTech">
+
+  <!-- OG Tags -->
+  <meta property="og:title" content="Works | BridgeTech Inc.">
+  <meta property="og:description" content="BridgeTech Inc.のプロジェクト実績。DX推進、システム開発、クラウド移行、データ分析など、多様な業界での支援事例をご紹介します。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bridgetech.example.com/works.html">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop">
+  <meta property="og:site_name" content="BridgeTech Inc.">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Works | BridgeTech Inc.">
+  <meta name="twitter:description" content="BridgeTech Inc.のプロジェクト実績。多様な業界での支援事例をご紹介します。">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- GA4 with Cross-Domain Linker -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ1WP1J2NQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YJ1WP1J2NQ', {
+      linker: {
+        domains: [
+          'tenormusica2024.github.io',
+          'urayahadays-b2b.vercel.app',
+          'beauty-salon-lumiere.vercel.app',
+          'clinic-peach-seven.vercel.app',
+          'sound-platform-v5-ycqe3vmjva-an.a.run.app',
+          'esports-tournament-ycqe3vmjva-uc.a.run.app',
+          'asteroid-game-ycqe3vmjva-uc.a.run.app'
+        ]
+      }
+    });
+  </script>
+</head>
+<body>
+
+  <!-- ========== Header ========== -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo">
+        <span class="header__logo-mark">BT</span>
+        <span class="header__logo-text">BridgeTech</span>
+      </a>
+
+      <nav class="header__nav" id="headerNav">
+        <ul class="header__nav-list">
+          <li class="header__nav-item">
+            <a href="index.html" class="header__nav-link">Home</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="about.html" class="header__nav-link">About</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="services.html" class="header__nav-link">Services</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="works.html" class="header__nav-link header__nav-link--active">Works</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="recruit.html" class="header__nav-link">Recruit</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="contact.html" class="header__nav-link">Contact</a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="header__menu-trigger" id="menuTrigger" aria-label="メニューを開く" aria-expanded="false">
+        <span class="header__menu-bar"></span>
+        <span class="header__menu-bar"></span>
+        <span class="header__menu-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========== Breadcrumb ========== -->
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <div class="container">
+        <ol class="breadcrumb__list">
+          <li class="breadcrumb__item">
+            <a href="index.html" class="breadcrumb__link">Home</a>
+            <span class="breadcrumb__separator">/</span>
+          </li>
+          <li class="breadcrumb__item">
+            <span class="breadcrumb__current">Works</span>
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ========== Page Hero ========== -->
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="page-hero__title reveal">Works</h1>
+        <p class="page-hero__text reveal">200を超えるプロジェクト実績から、代表的な事例をご紹介します。DX推進、システム開発、クラウド移行、データ分析など、多様な業界・領域での支援を通じて、クライアント企業の成長に貢献しています。</p>
+      </div>
+    </section>
+
+    <!-- ========== Works Filter & Grid ========== -->
+    <section class="section">
+      <div class="container">
+
+        <!-- Filter Buttons -->
+        <div class="filter reveal">
+          <button class="filter__btn filter__btn--active" data-filter="all">All</button>
+          <button class="filter__btn" data-filter="dx">DX</button>
+          <button class="filter__btn" data-filter="development">Development</button>
+          <button class="filter__btn" data-filter="cloud">Cloud</button>
+          <button class="filter__btn" data-filter="data">Data</button>
+        </div>
+
+        <!-- Case Study Grid -->
+        <div class="grid grid--2 stagger">
+
+          <!-- 1. Retail Chain DX -->
+          <article class="card reveal" data-category="dx">
+            <div class="card__image">
+              <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2070&auto=format&fit=crop" alt="小売店舗のPOSシステム画面" loading="lazy">
+            </div>
+            <div class="card__body">
+              <span class="card__tag">DX</span>
+              <h3 class="card__title">Retail Chain DX</h3>
+              <p class="card__text">大手小売チェーン200店舗のPOSシステムモダナイゼーション。レガシーシステムからクラウドベースのPOSへ全面移行し、リアルタイム売上分析と在庫最適化を実現。店舗運営効率を35%改善しました。</p>
+              <a href="#" class="card__link">View Details <span>&rarr;</span></a>
+            </div>
+          </article>
+
+          <!-- 2. Financial System Rebuild -->
+          <article class="card reveal" data-category="development">
+            <div class="card__image">
+              <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2072&auto=format&fit=crop" alt="金融システムのデータ画面" loading="lazy">
+            </div>
+            <div class="card__body">
+              <span class="card__tag">Development</span>
+              <h3 class="card__title">Financial System Rebuild</h3>
+              <p class="card__text">コアバンキングシステムのマイグレーション。20年稼働した基幹システムをマイクロサービスアーキテクチャで再構築。ダウンタイムゼロでの移行を達成し、処理速度を10倍に向上させました。</p>
+              <a href="#" class="card__link">View Details <span>&rarr;</span></a>
+            </div>
+          </article>
+
+          <!-- 3. Manufacturing Cloud Migration -->
+          <article class="card reveal" data-category="cloud">
+            <div class="card__image">
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop" alt="クラウドサーバーのイメージ" loading="lazy">
+            </div>
+            <div class="card__body">
+              <span class="card__tag">Cloud</span>
+              <h3 class="card__title">Manufacturing Cloud Migration</h3>
+              <p class="card__text">製造業大手のオンプレミス環境からAWSへの全面移行。生産管理、品質管理、サプライチェーン管理システムをクラウドネイティブに再設計。インフラコスト40%削減と可用性99.99%を達成。</p>
+              <a href="#" class="card__link">View Details <span>&rarr;</span></a>
+            </div>
+          </article>
+
+          <!-- 4. Healthcare Data Platform -->
+          <article class="card reveal" data-category="data">
+            <div class="card__image">
+              <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop" alt="医療データ分析のダッシュボード" loading="lazy">
+            </div>
+            <div class="card__body">
+              <span class="card__tag">Data</span>
+              <h3 class="card__title">Healthcare Data Platform</h3>
+              <p class="card__text">大規模医療機関の患者データ分析基盤を構築。匿名化処理を施した診療データを統合分析し、治療効果の可視化と予防医療の推進に貢献。年間医療費の15%削減に寄与しました。</p>
+              <a href="#" class="card__link">View Details <span>&rarr;</span></a>
+            </div>
+          </article>
+
+          <!-- 5. Government Digital Transformation -->
+          <article class="card reveal" data-category="dx">
+            <div class="card__image">
+              <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=2071&auto=format&fit=crop" alt="行政サービスのデジタル化イメージ" loading="lazy">
+            </div>
+            <div class="card__body">
+              <span class="card__tag">DX</span>
+              <h3 class="card__title">Government Digital Transformation</h3>
+              <p class="card__text">自治体の行政サービスデジタル化プロジェクト。住民向けオンライン申請システムの構築と、職員向け業務効率化ツールの導入により、窓口対応時間を60%短縮。住民満足度も大幅に向上しました。</p>
+              <a href="#" class="card__link">View Details <span>&rarr;</span></a>
+            </div>
+          </article>
+
+          <!-- 6. Logistics Optimization System -->
+          <article class="card reveal" data-category="development">
+            <div class="card__image">
+              <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop" alt="物流管理システムの画面" loading="lazy">
+            </div>
+            <div class="card__body">
+              <span class="card__tag">Development</span>
+              <h3 class="card__title">Logistics Optimization System</h3>
+              <p class="card__text">リアルタイム配送追跡システムの開発。GPSトラッキングとAIによる配送ルート最適化を組み合わせ、配送効率を25%向上。顧客への到着時刻予測精度も95%以上を実現しました。</p>
+              <a href="#" class="card__link">View Details <span>&rarr;</span></a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="cta" id="cta">
+      <div class="cta__inner reveal">
+        <h2 class="cta__heading">Let's Transform Together</h2>
+        <p class="cta__description">デジタル変革の第一歩を、私たちと一緒に踏み出しませんか。まずはお気軽にご相談ください。貴社の課題に合わせた最適なソリューションをご提案いたします。</p>
+        <a href="contact.html" class="cta__btn">Contact Us</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== Footer ========== -->
+  <footer class="footer" id="footer">
+    <div class="footer__inner">
+      <div class="footer__grid">
+
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <span class="footer__logo-mark">BT</span>
+            <span class="footer__logo-text">BridgeTech</span>
+          </a>
+          <p class="footer__address">
+            〒100-0001<br>
+            東京都千代田区千代田1-1-1<br>
+            BridgeTech Building 8F
+          </p>
+        </div>
+
+        <div class="footer__nav">
+          <h3 class="footer__nav-title">Navigation</h3>
+          <ul class="footer__nav-list">
+            <li><a href="index.html" class="footer__nav-link">Home</a></li>
+            <li><a href="about.html" class="footer__nav-link">About</a></li>
+            <li><a href="services.html" class="footer__nav-link">Services</a></li>
+            <li><a href="works.html" class="footer__nav-link">Works</a></li>
+            <li><a href="recruit.html" class="footer__nav-link">Recruit</a></li>
+            <li><a href="contact.html" class="footer__nav-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__contact">
+          <h3 class="footer__contact-title">Contact</h3>
+          <p class="footer__contact-item">
+            <span class="footer__contact-label">TEL</span>
+            <a href="tel:03-1234-5678" class="footer__contact-link">03-1234-5678</a>
+          </p>
+          <p class="footer__contact-item">
+            <span class="footer__contact-label">EMAIL</span>
+            <a href="mailto:info@bridgetech.co.jp" class="footer__contact-link">info@bridgetech.co.jp</a>
+          </p>
+          <p class="footer__contact-hours">
+            営業時間: 平日 9:00 - 18:00
+          </p>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2024 BridgeTech Inc. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
