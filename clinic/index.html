@@ -1971,7 +1971,7 @@
     const phone = document.getElementById('bkPhone').value.trim();
     const email = document.getElementById('bkEmail').value.trim();
 
-    const phoneValid = /^[+]?[0-9\-\s]{10,15}$/.test(phone);
+    const phoneValid = /^[+]?(?=.*\d{7,})[0-9\-\s]{10,15}$/.test(phone);
     const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
     document.getElementById('bkPhone').style.borderColor = phone && !phoneValid ? 'var(--error)' : '';

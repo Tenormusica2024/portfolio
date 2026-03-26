@@ -1394,7 +1394,7 @@
 
   <div class="access-inner">
     <div class="access-map reveal">
-      <iframe src="https://maps.google.com/maps?q=%E6%9F%8F%E9%A7%85&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+      <iframe src="https://maps.google.com/maps?q=%E6%9F%8F%E9%A7%85&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" title="hair salon Lumière 柏駅周辺の地図"></iframe>
     </div>
     <div class="access-details reveal">
       <div class="access-info-item">
@@ -1808,7 +1808,7 @@
     const phone = document.getElementById('bkPhone').value.trim();
     const email = document.getElementById('bkEmail').value.trim();
 
-    const phoneValid = /^[+]?[0-9\-\s]{10,15}$/.test(phone);
+    const phoneValid = /^[+]?(?=.*\d{7,})[0-9\-\s]{10,15}$/.test(phone);
     const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
     /* 入力フィールドの視覚フィードバック + エラーメッセージ */
