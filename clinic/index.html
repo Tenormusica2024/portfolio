@@ -1654,21 +1654,21 @@
         <button class="visit-type-btn" onclick="setVisitType('return', this)">再診</button>
       </div>
       <div class="booking-form-group">
-        <label>お名前</label>
+        <label for="bkName">お名前</label>
         <input type="text" id="bkName" placeholder="佐藤 太郎" oninput="checkForm()">
       </div>
       <div class="booking-form-group">
-        <label>お電話番号</label>
+        <label for="bkPhone">お電話番号</label>
         <input type="tel" id="bkPhone" placeholder="090-1234-5678" oninput="checkForm()" aria-describedby="phoneError">
         <span class="form-error" id="phoneError" role="alert"></span>
       </div>
       <div class="booking-form-group">
-        <label>メールアドレス</label>
+        <label for="bkEmail">メールアドレス</label>
         <input type="email" id="bkEmail" placeholder="taro@example.com" oninput="checkForm()" aria-describedby="emailError">
         <span class="form-error" id="emailError" role="alert"></span>
       </div>
       <div class="booking-form-group">
-        <label>症状・ご相談内容（任意）</label>
+        <label for="bkSymptoms">症状・ご相談内容（任意）</label>
         <textarea id="bkSymptoms" placeholder="気になる症状やご相談内容がありましたらご記入ください"></textarea>
       </div>
       <div class="booking-nav" style="flex-direction:column;gap:0.5rem">
@@ -1850,11 +1850,11 @@
 
   function renderCalendar() {
     const title = document.getElementById('calendarTitle');
-    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const months = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
     title.textContent = `${months[calMonth]} ${calYear}`;
 
     const grid = document.getElementById('calendarGrid');
-    const dows = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const dows = ['日','月','火','水','木','金','土'];
     let html = dows.map(d => `<div class="calendar-dow">${d}</div>`).join('');
 
     const firstDay = new Date(calYear, calMonth, 1).getDay();
