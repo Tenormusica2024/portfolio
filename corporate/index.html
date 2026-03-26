@@ -54,41 +54,25 @@
 <body>
 
   <!-- ========== Header ========== -->
-  <header class="header" id="header">
-    <div class="header__inner">
+  <header class="header">
+    <div class="container">
       <a href="index.html" class="header__logo">
         <span class="header__logo-mark">BT</span>
-        <span class="header__logo-text">BridgeTech</span>
+        BridgeTech
       </a>
-
-      <nav class="header__nav" id="headerNav">
-        <ul class="header__nav-list">
-          <li class="header__nav-item">
-            <a href="index.html" class="header__nav-link header__nav-link--active">Home</a>
-          </li>
-          <li class="header__nav-item">
-            <a href="about.html" class="header__nav-link">About</a>
-          </li>
-          <li class="header__nav-item">
-            <a href="services.html" class="header__nav-link">Services</a>
-          </li>
-          <li class="header__nav-item">
-            <a href="works.html" class="header__nav-link">Works</a>
-          </li>
-          <li class="header__nav-item">
-            <a href="recruit.html" class="header__nav-link">Recruit</a>
-          </li>
-          <li class="header__nav-item">
-            <a href="contact.html" class="header__nav-link">Contact</a>
-          </li>
-        </ul>
+      <nav class="header__nav">
+        <a href="index.html" class="header__nav-link header__nav-link--active">Home</a>
+        <a href="about.html" class="header__nav-link">About</a>
+        <a href="services.html" class="header__nav-link">Services</a>
+        <a href="works.html" class="header__nav-link">Works</a>
+        <a href="recruit.html" class="header__nav-link">Recruit</a>
+        <a href="contact.html" class="header__nav-link">Contact</a>
       </nav>
-
-      <button class="header__menu-trigger" id="menuTrigger" aria-label="メニューを開く" aria-expanded="false">
-        <span class="header__menu-bar"></span>
-        <span class="header__menu-bar"></span>
-        <span class="header__menu-bar"></span>
-      </button>
+      <div class="header__menu-trigger" aria-label="メニューを開く" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </header>
 
@@ -98,14 +82,14 @@
     <section class="hero" id="hero">
       <div class="hero__bg" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop');"></div>
       <div class="hero__overlay"></div>
-      <div class="hero__inner">
-        <div class="hero__content reveal">
+      <div class="container">
+        <div class="hero__content">
           <p class="hero__subtitle">IT Consulting &amp; DX</p>
           <h1 class="hero__title">Technology as a Bridge<br>to the Future</h1>
           <p class="hero__description">私たちBridgeTechは、最新のテクノロジーと確かなコンサルティング力で、企業のデジタルトランスフォーメーションを支援します。戦略立案からシステム構築、運用まで、一貫したサポートで貴社のビジネスを次のステージへ導きます。</p>
           <div class="hero__actions">
-            <a href="contact.html" class="hero__btn hero__btn--primary">Contact</a>
-            <a href="services.html" class="hero__btn hero__btn--outline">Our Services</a>
+            <a href="contact.html" class="btn btn--primary">Contact</a>
+            <a href="services.html" class="btn btn--outline">Our Services</a>
           </div>
         </div>
       </div>
@@ -113,7 +97,7 @@
 
     <!-- ========== Stats ========== -->
     <section class="stats" id="stats">
-      <div class="stats__inner">
+      <div class="container">
         <div class="stats__grid stagger">
           <div class="stats__item reveal">
             <span class="stats__number" data-count="2018">0</span>
@@ -136,30 +120,32 @@
     </section>
 
     <!-- ========== About Summary ========== -->
-    <section class="about" id="about">
-      <div class="about__inner">
-        <div class="about__grid grid--7-5">
-          <div class="about__text reveal">
-            <p class="about__label">About Us</p>
-            <h2 class="about__heading">テクノロジーで、<br>ビジネスの架け橋を。</h2>
-            <p class="about__description">BridgeTechは「テクノロジーと人をつなぐ」をミッションに掲げ、2018年に東京で創業しました。ITコンサルティングとDX支援を通じて、クライアント企業の業務効率化、新規事業創出、競争力強化を実現しています。私たちは単なるシステム開発会社ではなく、ビジネス課題を深く理解し、最適なテクノロジーソリューションを提案するパートナーです。</p>
-            <a href="about.html" class="about__link">Learn More <span class="about__link-arrow">&rarr;</span></a>
+    <section class="section section--sage" id="about">
+      <div class="container">
+        <div class="grid grid--7-5">
+          <div class="reveal">
+            <div class="section-title">
+              <span class="section-title__label">About Us</span>
+              <h2 class="section-title__text">テクノロジーで、ビジネスの架け橋を。</h2>
+            </div>
+            <p>BridgeTechは「テクノロジーと人をつなぐ」をミッションに掲げ、2018年に東京で創業しました。ITコンサルティングとDX支援を通じて、クライアント企業の業務効率化、新規事業創出、競争力強化を実現しています。私たちは単なるシステム開発会社ではなく、ビジネス課題を深く理解し、最適なテクノロジーソリューションを提案するパートナーです。</p>
+            <a href="about.html" class="btn btn--outline-dark" style="margin-top:24px;">Learn More <span>&rarr;</span></a>
           </div>
-          <div class="about__image reveal">
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" alt="BridgeTechのチームメンバーがオフィスで協力して作業している様子" loading="lazy">
+          <div class="reveal">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" alt="BridgeTechのチームメンバーがオフィスで協力して作業している様子" loading="lazy" style="border-radius:2px;">
           </div>
         </div>
       </div>
     </section>
 
     <!-- ========== Services Overview ========== -->
-    <section class="services" id="services">
-      <div class="services__inner">
-        <div class="services__header reveal">
-          <p class="services__label">Services</p>
-          <h2 class="services__heading">事業を支える3つのサービス</h2>
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-title section-title--center reveal">
+          <span class="section-title__label">Services</span>
+          <h2 class="section-title__text">事業を支える3つのサービス</h2>
         </div>
-        <div class="services__grid stagger">
+        <div class="grid grid--3 stagger">
 
           <!-- DX Strategy -->
           <article class="service-card reveal">
@@ -222,13 +208,13 @@
     </section>
 
     <!-- ========== Works Highlight ========== -->
-    <section class="works" id="works">
-      <div class="works__inner">
-        <div class="works__header reveal">
-          <p class="works__label">Works</p>
-          <h2 class="works__heading">プロジェクト実績</h2>
+    <section class="section section--sage" id="works">
+      <div class="container">
+        <div class="section-title section-title--center reveal">
+          <span class="section-title__label">Works</span>
+          <h2 class="section-title__text">プロジェクト実績</h2>
         </div>
-        <div class="works__grid grid--3 stagger">
+        <div class="grid grid--3 stagger">
 
           <article class="card reveal">
             <div class="card__image">
@@ -272,63 +258,45 @@
 
     <!-- ========== CTA ========== -->
     <section class="cta" id="cta">
-      <div class="cta__inner reveal">
-        <h2 class="cta__heading">Let's Transform Together</h2>
-        <p class="cta__description">デジタル変革の第一歩を、私たちと一緒に踏み出しませんか。まずはお気軽にご相談ください。貴社の課題に合わせた最適なソリューションをご提案いたします。</p>
-        <a href="contact.html" class="cta__btn">Contact Us</a>
+      <div class="container reveal">
+        <h2>Let's Transform Together</h2>
+        <p>デジタル変革の第一歩を、私たちと一緒に踏み出しませんか。まずはお気軽にご相談ください。貴社の課題に合わせた最適なソリューションをご提案いたします。</p>
+        <a href="contact.html" class="btn btn--primary">Contact Us</a>
       </div>
     </section>
 
   </main>
 
   <!-- ========== Footer ========== -->
-  <footer class="footer" id="footer">
-    <div class="footer__inner">
+  <footer class="footer">
+    <div class="container">
       <div class="footer__grid">
-
-        <div class="footer__brand">
-          <a href="index.html" class="footer__logo">
-            <span class="footer__logo-mark">BT</span>
-            <span class="footer__logo-text">BridgeTech</span>
-          </a>
-          <p class="footer__address">
-            〒100-0001<br>
-            東京都千代田区千代田1-1-1<br>
-            BridgeTech Building 8F
-          </p>
+        <div>
+          <p class="footer__brand-name">BridgeTech Inc.</p>
+          <p class="footer__brand-text">〒107-0052<br>東京都港区赤坂1-2-3<br>BridgeTech Building 8F</p>
         </div>
-
-        <div class="footer__nav">
-          <h3 class="footer__nav-title">Navigation</h3>
-          <ul class="footer__nav-list">
-            <li><a href="index.html" class="footer__nav-link">Home</a></li>
-            <li><a href="about.html" class="footer__nav-link">About</a></li>
-            <li><a href="services.html" class="footer__nav-link">Services</a></li>
-            <li><a href="works.html" class="footer__nav-link">Works</a></li>
-            <li><a href="recruit.html" class="footer__nav-link">Recruit</a></li>
-            <li><a href="contact.html" class="footer__nav-link">Contact</a></li>
-          </ul>
+        <div>
+          <p class="footer__heading">Navigation</p>
+          <div class="footer__links">
+            <a href="index.html" class="footer__link">Home</a>
+            <a href="about.html" class="footer__link">About</a>
+            <a href="services.html" class="footer__link">Services</a>
+            <a href="works.html" class="footer__link">Works</a>
+            <a href="recruit.html" class="footer__link">Recruit</a>
+            <a href="contact.html" class="footer__link">Contact</a>
+          </div>
         </div>
-
-        <div class="footer__contact">
-          <h3 class="footer__contact-title">Contact</h3>
-          <p class="footer__contact-item">
-            <span class="footer__contact-label">TEL</span>
-            <a href="tel:03-1234-5678" class="footer__contact-link">03-1234-5678</a>
-          </p>
-          <p class="footer__contact-item">
-            <span class="footer__contact-label">EMAIL</span>
-            <a href="mailto:info@bridgetech.co.jp" class="footer__contact-link">info@bridgetech.co.jp</a>
-          </p>
-          <p class="footer__contact-hours">
-            営業時間: 平日 9:00 - 18:00
-          </p>
+        <div>
+          <p class="footer__heading">Contact</p>
+          <div class="footer__links">
+            <a href="tel:03-1234-5678" class="footer__link">TEL: 03-1234-5678</a>
+            <a href="mailto:info@bridgetech.co.jp" class="footer__link">info@bridgetech.co.jp</a>
+            <span class="footer__link">Mon-Fri 9:00-18:00</span>
+          </div>
         </div>
-
       </div>
-
       <div class="footer__bottom">
-        <p class="footer__copyright">&copy; 2024 BridgeTech Inc. All Rights Reserved.</p>
+        <p>&copy; 2024 BridgeTech Inc. All Rights Reserved.</p>
       </div>
     </div>
   </footer>
