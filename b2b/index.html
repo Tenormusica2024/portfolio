@@ -849,7 +849,7 @@
       <div class="work-meta">
         <span class="work-period">納期 2週間</span>
         <span class="work-price">8〜12万円</span>
-        <a href="https://clinic-aks-projects-642a9731.vercel.app/" target="_blank" rel="noopener" class="work-demo-link">架空店舗のデモサイトを見る →</a>
+        <a href="https://clinic-peach-seven.vercel.app/" target="_blank" rel="noopener" class="work-demo-link">架空店舗のデモサイトを見る →</a>
       </div>
     </div>
     <div class="work-item reveal">
@@ -1139,6 +1139,13 @@
       const data = await res.json();
 
       if (res.ok) {
+        // GA4コンバージョンイベント送信
+        if (typeof gtag === 'function') {
+          gtag('event', 'generate_lead', {
+            event_category: 'contact',
+            event_label: 'b2b_form'
+          });
+        }
         // 送信成功
         result.style.display = 'block';
         result.style.background = '#f0faf0';
