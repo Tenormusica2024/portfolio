@@ -12,7 +12,8 @@ Personal portfolio website showcasing AI/ML projects and skills.
 |------|-----|---------|
 | Main Portfolio (C2C) | https://tenormusica2024.github.io/portfolio/ | GitHub Pages |
 | B2B Business Site | https://urayahadays-b2b.vercel.app/ | Vercel |
-| Beauty Salon Demo | (Vercel) | Vercel |
+| Beauty Salon Demo | https://beauty-salon-lumiere.vercel.app/ | Vercel |
+| Clinic Demo | https://clinic-peach-seven.vercel.app/ | Vercel |
 
 ## Pages (Main Portfolio)
 
