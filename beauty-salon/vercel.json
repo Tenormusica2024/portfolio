@@ -1,0 +1,9 @@
+{
+  "name": "beauty-salon-lumiere",
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "framework": null,
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" }
+  ]
+}
