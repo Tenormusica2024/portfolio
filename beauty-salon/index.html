@@ -1509,16 +1509,16 @@
       <div style="margin-top:1.5rem">
         <div class="booking-form-group">
           <label for="bkName">お名前</label>
-          <input type="text" id="bkName" placeholder="山田 花子" oninput="checkForm()">
+          <input type="text" id="bkName" placeholder="山田 花子" required oninput="checkForm()">
         </div>
         <div class="booking-form-group">
           <label for="bkPhone">お電話番号</label>
-          <input type="tel" id="bkPhone" placeholder="090-1234-5678" oninput="checkForm()" aria-describedby="phoneError">
+          <input type="tel" id="bkPhone" placeholder="090-1234-5678" required oninput="checkForm()" aria-describedby="phoneError">
           <span class="form-error" id="phoneError" role="alert"></span>
         </div>
         <div class="booking-form-group">
           <label for="bkEmail">メールアドレス</label>
-          <input type="email" id="bkEmail" placeholder="hanako@example.com" oninput="checkForm()" aria-describedby="emailError">
+          <input type="email" id="bkEmail" placeholder="hanako@example.com" required oninput="checkForm()" aria-describedby="emailError">
           <span class="form-error" id="emailError" role="alert"></span>
         </div>
       </div>
