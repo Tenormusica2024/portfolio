@@ -72,7 +72,7 @@
         <a href="recruit.html" class="header__nav-link">Recruit</a>
         <a href="contact.html" class="header__nav-link header__nav-link--active">Contact</a>
       </nav>
-      <div class="header__menu-trigger" aria-label="メニューを開く" role="button" tabindex="0">
+      <div class="header__menu-trigger" aria-label="メニューを開く" aria-expanded="false" role="button" tabindex="0">
         <span></span>
         <span></span>
         <span></span>
@@ -112,7 +112,7 @@
 
           <!-- Left: Contact Form -->
           <div class="reveal">
-            <form action="https://formspree.io/f/placeholder" method="POST">
+            <form id="contact-form" onsubmit="return false;">
 
               <div class="form-group">
                 <label for="company">Company Name <span class="required">*</span></label>

@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAccordion();
   initFilterButtons();
   initSmoothScroll();
+  initContactForm();
 });
 
 /* --- Reveal Animation (IntersectionObserver) --- */
@@ -79,6 +80,8 @@ function initMobileMenu() {
 
   trigger.addEventListener('click', () => {
     header.classList.toggle('header--nav-open');
+    const isOpen = header.classList.contains('header--nav-open');
+    trigger.setAttribute('aria-expanded', isOpen);
   });
 
   /* ナビリンクをクリックしたらメニューを閉じる */
@@ -161,6 +164,33 @@ function initSmoothScroll() {
       }
     });
   });
+}
+
+/* --- Contact Form (demo) --- */
+function initContactForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  form.addEventListener('submit', () => {
+    const btn = form.querySelector('button[type="submit"]');
+    if (btn) {
+      btn.textContent = 'Sent!';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+    }
+  });
+
+  const submitBtn = form.querySelector('button[type="submit"]');
+  if (submitBtn) {
+    submitBtn.addEventListener('click', () => {
+      if (!form.checkValidity()) return;
+      const btn = submitBtn;
+      btn.textContent = 'Sent!';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+      form.reset();
+    });
+  }
 }
 
 /* --- Hero Animation on Load --- */
