@@ -2,3 +2,19 @@
 **/.playwright-cli/
 
 .vercel
+
+# Letta AI memory
+**/.letta/
+.letta/
+
+# Screenshots (UI verification artifacts)
+**/ss_*.png
+**/ui_verify_*.png
+**/screenshot_*.png
+**/desktop_*.png
+**/mobile_*.png
+**/screenshots/
+ss_*.png
+
+# Doctor candidate images (clinic)
+**/doctor_candidates/
