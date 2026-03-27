@@ -78,10 +78,18 @@ function initMobileMenu() {
   const header = document.querySelector('.header');
   if (!trigger || !header) return;
 
-  trigger.addEventListener('click', () => {
+  function toggleMenu() {
     header.classList.toggle('header--nav-open');
     const isOpen = header.classList.contains('header--nav-open');
     trigger.setAttribute('aria-expanded', isOpen);
+  }
+
+  trigger.addEventListener('click', toggleMenu);
+  trigger.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleMenu();
+    }
   });
 
   /* ナビリンクをクリックしたらメニューを閉じる */
@@ -109,12 +117,14 @@ function initAccordion() {
       document.querySelectorAll('.accordion__item--open').forEach(openItem => {
         openItem.classList.remove('accordion__item--open');
         openItem.querySelector('.accordion__content').style.maxHeight = '0';
+        openItem.querySelector('.accordion__trigger').setAttribute('aria-expanded', 'false');
       });
 
       /* クリックされたアイテムをトグル */
       if (!isOpen) {
         item.classList.add('accordion__item--open');
         content.style.maxHeight = content.scrollHeight + 'px';
+        trigger.setAttribute('aria-expanded', 'true');
       }
     });
   });
