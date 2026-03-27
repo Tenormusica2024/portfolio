@@ -654,6 +654,16 @@
             font-size: 0.9rem;
         }
 
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0 0;
+        }
+
+        .hero-cta .btn {
+            gap: 0.5rem;
+        }
+
         .cta-section {
             display: flex;
             gap: 1.5rem;
@@ -1161,6 +1171,7 @@
                 article_badge: "NEW",
                 article_title: "Sora 2とGrok Imagine、どっちが使えるのか - 6秒動画と60秒動画の現実",
                 article_link: "記事を読む →",
+                btn_hero_projects: "実績を見る",
                 btn_projects: "プロジェクトを見る",
                 btn_profile: "Profile",
                 contact_title: "Contact",
@@ -1220,6 +1231,7 @@
                 article_badge: "NEW",
                 article_title: "Sora 2 vs Grok Imagine: Which One Works? - The Reality of 6-Second vs 60-Second Videos",
                 article_link: "Read Article →",
+                btn_hero_projects: "View Projects",
                 btn_projects: "View Projects",
                 btn_profile: "Profile",
                 contact_title: "Contact",
@@ -1452,7 +1464,7 @@
                     <a href="presentations.html">Presentations</a>
                 </div>
                 <div class="nav-item">
-                    <a href="projects.html#section-ai-creation" data-i18n="nav_creation">Creation</a>
+                    <a href="creation.html" data-i18n="nav_creation">Creation</a>
                     <div class="dropdown">
                         <a href="editorial-gallery/gallery_editorial.html" data-i18n="creation_web_design">Web Design Gallery</a>
                         <a href="cyberpunk_anime/index.html" data-i18n="creation_neon_blue">SF Anime LP</a>
@@ -1501,6 +1513,15 @@
                 <br><br>
                 <span data-i18n="description_3">AI画像生成・AI音楽制作など創作領域にも手を広げています。技術の進化を楽しみながら、一緒に未来を作る仲間を探しています。</span>
             </p>
+
+            <div class="hero-cta">
+                <a href="projects.html" class="btn btn-primary" data-i18n="btn_hero_projects">
+                    <span>実績を見る</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
 
             <div class="achievements">
                 <div class="achievement-card">
