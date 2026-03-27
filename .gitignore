@@ -1,2 +1,4 @@
 # Playwright CLI cache
 **/.playwright-cli/
+
+.vercel

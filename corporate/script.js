@@ -89,6 +89,7 @@ function initMobileMenu() {
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       header.classList.remove('header--nav-open');
+      trigger.setAttribute('aria-expanded', 'false');
     });
   });
 }
@@ -171,26 +172,17 @@ function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
 
-  form.addEventListener('submit', () => {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) return;
     const btn = form.querySelector('button[type="submit"]');
     if (btn) {
       btn.textContent = 'Sent!';
       btn.disabled = true;
       btn.style.opacity = '0.7';
     }
+    form.reset();
   });
-
-  const submitBtn = form.querySelector('button[type="submit"]');
-  if (submitBtn) {
-    submitBtn.addEventListener('click', () => {
-      if (!form.checkValidity()) return;
-      const btn = submitBtn;
-      btn.textContent = 'Sent!';
-      btn.disabled = true;
-      btn.style.opacity = '0.7';
-      form.reset();
-    });
-  }
 }
 
 /* --- Hero Animation on Load --- */
