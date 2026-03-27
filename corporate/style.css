@@ -1095,6 +1095,55 @@ p:last-child { margin-bottom: 0; }
   border: none;
 }
 
+/* --- About Page: CEO & Philosophy --- */
+.ceo-quote {
+  border-left: 3px solid var(--emerald);
+  padding-left: 24px;
+  margin-bottom: 32px;
+  font-size: 1.25rem;
+  color: var(--forest);
+  font-style: italic;
+  line-height: 1.8;
+}
+
+.ceo-signature {
+  margin-top: 32px;
+  font-weight: 500;
+  color: var(--forest);
+}
+
+.ceo-signature__role {
+  font-size: 0.875rem;
+  color: var(--warm-gray);
+}
+
+.ceo-photo {
+  border-radius: 4px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.philosophy-card {
+  text-align: center;
+  padding: 48px 32px;
+}
+
+.philosophy-card h3 {
+  margin-bottom: 8px;
+}
+
+.philosophy-card__subtitle {
+  color: var(--emerald);
+  margin-bottom: 16px;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.about-btn {
+  margin-top: 24px;
+}
+
 /* --- Reveal Animation --- */
 .reveal {
   opacity: 0;

@@ -174,7 +174,6 @@ function initContactForm() {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (!form.checkValidity()) return;
     const btn = form.querySelector('button[type="submit"]');
     if (btn) {
       btn.textContent = 'Sent!';
