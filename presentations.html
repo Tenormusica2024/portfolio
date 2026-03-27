@@ -497,6 +497,88 @@
 
         .footer-links a:hover { color: #222; }
 
+        /* --- CTA Section --- */
+        .cta-section {
+            background: linear-gradient(135deg, #0a1628 0%, #142744 50%, #0f2240 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(196, 163, 90, 0.4), transparent);
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(196, 163, 90, 0.2), transparent);
+        }
+
+        .cta-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .cta-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: #c4a35a;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+
+        .cta-heading {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .cta-sub {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.65);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #c4a35a;
+            color: #0a1628;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.03em;
+        }
+
+        .cta-btn:hover {
+            background: #d4b36a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(196, 163, 90, 0.3);
+        }
+
+        .cta-btn-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .cta-btn:hover .cta-btn-arrow { transform: translateX(4px); }
+
         /* --- Responsive --- */
         @media (max-width: 768px) {
             .dropdown { display: none !important; }
@@ -735,6 +817,23 @@
     </div>
     </main>
 
+    <section class="cta-section">
+        <div class="cta-inner">
+            <p class="cta-label" data-i18n="cta_label">NEXT STEP</p>
+            <h2 class="cta-heading" data-i18n="cta_heading">一緒に何か作りませんか</h2>
+            <p class="cta-sub" data-i18n="cta_sub">お仕事のご相談・コラボのご提案など、お気軽にどうぞ。</p>
+            <a href="contact.html" class="cta-btn"
+               onclick="gtag('event', 'cta_click', {'event_category': 'navigation', 'event_label': 'presentations_to_contact', 'value': 1});">
+                <span data-i18n="cta_btn">お問い合わせ</span>
+                <span class="cta-btn-arrow">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </a>
+        </div>
+    </section>
+
     <footer class="page-footer">
         <div class="footer-links">
             <a href="mailto:dragonrondo@gmail.com">Email</a>
@@ -778,7 +877,11 @@
                 c3_sub: "パナソニック コネクト 12,400人展開の深掘り",
                 c3_desc: "パナソニック コネクトが12,400人全社展開で情報漏洩ゼロを実現したConnectAIの組織設計を深掘り分析。シャドーAI問題の解決、3層セキュリティガバナンス、RAG活用による業務変革までを25枚のスライドで解説。",
                 c3_s1: "12,400人全社展開", c3_s2: "情報漏洩ゼロ", c3_s3: "RAG深掘り分析",
-                btn_view: "View Presentation"
+                btn_view: "View Presentation",
+                cta_label: "NEXT STEP",
+                cta_heading: "一緒に何か作りませんか",
+                cta_sub: "お仕事のご相談・コラボのご提案など、お気軽にどうぞ。",
+                cta_btn: "お問い合わせ"
             },
             en: {
                 hero_label: "Consulting-Grade Presentations",
@@ -802,7 +905,11 @@
                 c3_sub: "Panasonic Connect: Zero Data Leakage with 12,400 Users",
                 c3_desc: "Deep-dive analysis of Panasonic Connect's ConnectAI organizational design achieving zero data leakage across 12,400 users. Covers Shadow AI resolution, 3-layer security governance, and RAG-driven business transformation in 25 slides.",
                 c3_s1: "12,400 Users Deployed", c3_s2: "Zero Data Leakage", c3_s3: "RAG Deep Dive",
-                btn_view: "View Presentation"
+                btn_view: "View Presentation",
+                cta_label: "NEXT STEP",
+                cta_heading: "Let's Build Something Together",
+                cta_sub: "Open to project collaborations, consulting, and business inquiries.",
+                cta_btn: "Get in Touch"
             }
         };
 

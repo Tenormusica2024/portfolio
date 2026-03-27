@@ -12,15 +12,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Urayaha Days</title>
-    
+
     <!-- SEO Meta Tags -->
     <meta name="description" content="AI駆動開発、データ分析、業務自動化のご相談はこちらから。お気軽にお問い合わせください。">
     <meta name="keywords" content="お問い合わせ,AIエンジニア,プロジェクト相談,業務依頼">
     <link rel="canonical" href="https://tenormusica2024.github.io/portfolio/contact.html">
-    
+
     <!-- EmailJS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    
+
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         * {
@@ -36,12 +36,12 @@
             line-height: 1.6;
         }
 
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
+        /* ── Navigation ── */
+        header {
             background: rgba(245, 241, 232, 0.95);
             backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
             z-index: 1000;
             border-bottom: 1px solid #d4c9b0;
         }
@@ -49,10 +49,11 @@
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1.5rem 2rem;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 70px;
         }
 
         .nav-logo {
@@ -60,29 +61,134 @@
             font-weight: 700;
             color: #5a4a3a;
             text-decoration: none;
+            flex-shrink: 0;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
-            list-style: none;
+            gap: 0.25rem;
+            align-items: center;
         }
 
-        .nav-links a {
+        .nav-links > a,
+        .nav-item > a {
             color: #7a6a5a;
             text-decoration: none;
-            transition: color 0.3s;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            position: relative;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
         }
 
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #5a4a3a;
+        .nav-links > a:hover,
+        .nav-item > a:hover,
+        .nav-links > a.active,
+        .nav-item > a.active {
+            background: #5a4a3a;
+            color: #f5f1e8;
         }
 
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 2rem;
+            z-index: 999;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: calc(100% + 1rem);
+            left: 0;
+            background: transparent;
+            min-width: 260px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.9rem 1.5rem;
+            color: #7a6a5a;
+            text-decoration: none;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            font-weight: 500;
+            font-size: 0.9rem;
+            background: transparent;
+        }
+
+        .dropdown a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #5a4a3a;
+            border-radius: 8px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .dropdown a:hover {
+            color: #f5f1e8;
+            padding-left: 2rem;
+        }
+
+        .dropdown a:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .lang-switch {
+            background: #5a4a3a;
+            color: #f5f1e8;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+            flex-shrink: 0;
+        }
+
+        .lang-switch:hover {
+            background: #3a2a1a;
+            transform: translateY(-2px);
+        }
+
+        /* ── Layout ── */
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 8rem 2rem 4rem;
+            padding: 4rem 2rem 4rem;
         }
 
         .page-header {
@@ -101,6 +207,7 @@
             color: #666;
         }
 
+        /* ── Contact Card ── */
         .contact-card {
             background: #faf8f3;
             border: 1px solid #d4c9b0;
@@ -229,6 +336,7 @@
             color: #5a4a3a;
         }
 
+        /* ── Form ── */
         .form-group {
             margin-bottom: 1.5rem;
         }
@@ -292,6 +400,7 @@
             transform: none;
         }
 
+        /* ── Contact Info ── */
         .contact-info {
             margin-top: 2.5rem;
             padding-top: 2.5rem;
@@ -308,6 +417,7 @@
             color: #5a4a3a;
         }
 
+        /* ── Alert ── */
         .alert {
             padding: 1rem;
             border-radius: 8px;
@@ -331,6 +441,7 @@
             border: 1px solid #f5c6cb;
         }
 
+        /* ── Footer ── */
         footer {
             text-align: center;
             padding: 3rem 2rem;
@@ -343,17 +454,26 @@
             color: #7a6a5a;
         }
 
+        /* ── Responsive ── */
         @media (max-width: 768px) {
             .nav-container {
-                padding: 1rem;
+                padding: 0 1rem;
             }
 
             .nav-links {
-                gap: 1rem;
+                gap: 0;
+            }
+
+            .dropdown {
+                display: none !important;
+            }
+
+            .nav-item::before {
+                display: none;
             }
 
             .container {
-                padding: 6rem 1rem 2rem;
+                padding: 3rem 1rem 2rem;
             }
 
             .contact-card {
@@ -367,42 +487,78 @@
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
+    <header>
+        <nav class="nav-container">
             <a href="index.html" class="nav-logo">Urayaha Days</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="presentations.html">Presentations</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+            <div class="nav-links">
+                <a href="index.html" data-i18n="nav_home">Home</a>
+                <div class="nav-item">
+                    <a href="projects.html" data-i18n="nav_projects">Projects</a>
+                    <div class="dropdown">
+                        <a href="projects.html#section-data-viz" data-i18n="section_data_viz">データ可視化・分析プロジェクト</a>
+                        <a href="projects.html#section-ai-dev" data-i18n="section_ai_dev">AI駆動開発プロジェクト</a>
+                        <a href="projects.html#section-automation" data-i18n="section_automation">業務自動化・Webスクレイピング</a>
+                        <a href="projects.html#section-ai-creation" data-i18n="section_ai_creation">AI創作プロジェクト</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="presentations.html" data-i18n="nav_presentations">Presentations</a>
+                </div>
+                <div class="nav-item">
+                    <a href="creation.html" data-i18n="nav_creation">Creation</a>
+                    <div class="dropdown">
+                        <a href="editorial-gallery/gallery_editorial.html" data-i18n="creation_web_design">Web Design Gallery</a>
+                        <a href="cyberpunk_anime/index.html" data-i18n="creation_neon_blue">SF Anime LP</a>
+                        <a href="creation.html#work-mv-project" data-i18n="creation_work_mv">作業用MV制作</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="profile.html" data-i18n="nav_profile">Profile</a>
+                    <div class="dropdown">
+                        <a href="profile.html#section-about" data-i18n="profile_about">About Me</a>
+                        <a href="profile.html#section-skills" data-i18n="profile_skills">Technical Skills</a>
+                        <a href="profile.html#section-experience" data-i18n="profile_experience">Professional Experience</a>
+                        <a href="profile.html#section-achievements" data-i18n="profile_achievements">Key Achievements</a>
+                        <a href="profile.html#section-philosophy" data-i18n="profile_philosophy">Development Philosophy</a>
+                        <a href="profile.html#section-vision" data-i18n="profile_vision">AI Philosophy &amp; Vision</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="contact.html" class="active" data-i18n="nav_contact">Contact</a>
+                    <div class="dropdown">
+                        <a href="contact.html" data-i18n="contact_form">Contact Form</a>
+                        <a href="https://x.com/SundererD27468" target="_blank" data-i18n="contact_x">X (Twitter)</a>
+                        <a href="https://github.com/Tenormusica2024" target="_blank" data-i18n="contact_github">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <button class="lang-switch" onclick="switchLanguage()">EN</button>
+        </nav>
+    </header>
 
     <div class="container">
         <div class="page-header">
-            <h1 class="page-title">Let's Work Together</h1>
-            <p class="page-subtitle">お気軽にご連絡ください</p>
+            <h1 class="page-title" data-i18n="page_title">Let's Work Together</h1>
+            <p class="page-subtitle" data-i18n="page_subtitle">お気軽にご連絡ください</p>
         </div>
 
         <div class="contact-card">
             <div class="contact-intro">
-                <h2>お問い合わせ</h2>
-                <p>AI駆動開発、データ分析、業務自動化に関するご相談を承ります。<br>
+                <h2 data-i18n="contact_heading">お問い合わせ</h2>
+                <p data-i18n="contact_intro_text">AI駆動開発、データ分析、業務自動化に関するご相談を承ります。<br>
                 プロジェクトのご依頼や技術的なご質問など、お気軽にお問い合わせください。</p>
             </div>
 
             <div class="availability-notice">
-                <h3>現在募集中のお仕事</h3>
+                <h3 data-i18n="availability_title">現在募集中のお仕事</h3>
                 <div class="availability-content">
                     <div class="availability-option">
-                        <h4>業務委託（即時対応可能）</h4>
+                        <h4 data-i18n="freelance_title">業務委託（即時対応可能）</h4>
                         <p>現在本業と並行して、<strong>成果物ベース・納期重視の柔軟なプロジェクト</strong>を募集しています。</p>
                         <ul>
                             <li><strong>稼働時間:</strong> 週20時間まで（平日夜間・週末中心）</li>
                             <li><strong>契約形態:</strong> 成果物ベース（フルリモート希望）</li>
-                            <li><strong>希望単価:</strong> 
+                            <li><strong>希望単価:</strong>
                                 <ul>
                                     <li>プロジェクト制: 小規模PoC 20-30万円 / 中規模MVP 50-80万円</li>
                                     <li>月額制: 週20時間稼働で40-50万円</li>
@@ -431,12 +587,12 @@
                         </ul>
                     </div>
                     <div class="availability-option">
-                        <h4>フルタイム（2026年中期以降）</h4>
+                        <h4 data-i18n="fulltime_title">フルタイム（2026年中期以降）</h4>
                         <p><strong>2026年中期以降のフルタイム勤務</strong>をご検討いただける企業様・案件を募集しています。</p>
                         <ul>
                             <li><strong>開始時期:</strong> 2026年中期以降</li>
                             <li><strong>契約形態:</strong> 正社員・業務委託（フリーランス）いずれも可</li>
-                            <li><strong>希望職種:</strong> 
+                            <li><strong>希望職種:</strong>
                                 <ul>
                                     <li>AI/MLエンジニア</li>
                                     <li>データサイエンティスト</li>
@@ -446,7 +602,7 @@
                             </li>
                             <li><strong>希望年収:</strong> 800万円以上</li>
                             <li><strong>勤務形態:</strong> フルリモート・ハイブリッド歓迎</li>
-                            <li><strong>重視する点:</strong> 
+                            <li><strong>重視する点:</strong>
                                 <ul>
                                     <li>時間拘束の少ない成果ベース評価</li>
                                     <li>モダンな開発環境・ツール導入</li>
@@ -455,7 +611,7 @@
                         </ul>
                     </div>
                     <div class="availability-strengths">
-                        <h4>強み・実績</h4>
+                        <h4 data-i18n="strengths_title">強み・実績</h4>
                         <ul>
                             <li><strong>AI駆動開発（1000時間以上）:</strong> 仕様駆動開発・テスト駆動開発により速度と精度を兼ね備えた開発スタイル</li>
                             <li><strong>要件定義〜運用・保守まで一貫対応:</strong> 設計・実装・デプロイ・運用保守までワンストップで対応可能</li>
@@ -473,32 +629,32 @@
 
             <form id="contact-form">
                 <div class="form-group">
-                    <label for="name">お名前 *</label>
+                    <label for="name" data-i18n="label_name">お名前 *</label>
                     <input type="text" id="name" name="name" required placeholder="Your Name">
                 </div>
 
                 <div class="form-group">
-                    <label for="email">メールアドレス *</label>
+                    <label for="email" data-i18n="label_email">メールアドレス *</label>
                     <input type="email" id="email" name="email" required placeholder="example@email.com">
                 </div>
 
                 <div class="form-group">
-                    <label for="subject">件名 *</label>
+                    <label for="subject" data-i18n="label_subject">件名 *</label>
                     <select id="subject" name="subject" required>
-                        <option value="">選択してください</option>
-                        <option value="プロジェクト相談">プロジェクト相談</option>
-                        <option value="採用・求人">採用・求人</option>
-                        <option value="技術的な質問">技術的な質問</option>
-                        <option value="その他">その他</option>
+                        <option value="" data-i18n-opt="placeholder_select">選択してください</option>
+                        <option value="project" data-i18n-opt="subject_project">プロジェクト相談</option>
+                        <option value="hiring" data-i18n-opt="subject_hiring">採用・求人</option>
+                        <option value="tech" data-i18n-opt="subject_tech">技術的な質問</option>
+                        <option value="other" data-i18n-opt="subject_other">その他</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="message">メッセージ *</label>
+                    <label for="message" data-i18n="label_message">メッセージ *</label>
                     <textarea id="message" name="message" required placeholder="ご用件をお書きください"></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn" id="submit-btn">
+                <button type="submit" class="submit-btn" id="submit-btn" data-i18n="btn_send">
                     Send Message →
                 </button>
             </form>
@@ -520,42 +676,146 @@
     </footer>
 
     <script>
-        // TODO: EmailJS設定（EMAILJS_SETUP.mdを参照して設定してください）
-        // ========================================
-        // ⚠️ 以下の3つの値を自分の値に書き換えてください
-        // ========================================
-        
+        /* ── i18n ── */
+        const translations = {
+            ja: {
+                nav_home: 'Home',
+                nav_projects: 'Projects',
+                section_data_viz: 'データ可視化・分析プロジェクト',
+                section_ai_dev: 'AI駆動開発プロジェクト',
+                section_automation: '業務自動化・Webスクレイピング',
+                section_ai_creation: 'AI創作プロジェクト',
+                nav_presentations: 'Presentations',
+                nav_creation: 'Creation',
+                creation_web_design: 'Web Design Gallery',
+                creation_neon_blue: 'SF Anime LP',
+                creation_work_mv: '作業用MV制作',
+                nav_profile: 'Profile',
+                profile_about: 'About Me',
+                profile_skills: 'Technical Skills',
+                profile_experience: 'Professional Experience',
+                profile_achievements: 'Key Achievements',
+                profile_philosophy: 'Development Philosophy',
+                profile_vision: 'AI Philosophy & Vision',
+                nav_contact: 'Contact',
+                contact_form: 'Contact Form',
+                contact_x: 'X (Twitter)',
+                contact_github: 'GitHub',
+                lang_button: 'EN',
+                page_title: "Let's Work Together",
+                page_subtitle: 'お気軽にご連絡ください',
+                contact_heading: 'お問い合わせ',
+                contact_intro_text: 'AI駆動開発、データ分析、業務自動化に関するご相談を承ります。プロジェクトのご依頼や技術的なご質問など、お気軽にお問い合わせください。',
+                availability_title: '現在募集中のお仕事',
+                freelance_title: '業務委託（即時対応可能）',
+                fulltime_title: 'フルタイム（2026年中期以降）',
+                strengths_title: '強み・実績',
+                label_name: 'お名前 *',
+                label_email: 'メールアドレス *',
+                label_subject: '件名 *',
+                label_message: 'メッセージ *',
+                placeholder_select: '選択してください',
+                subject_project: 'プロジェクト相談',
+                subject_hiring: '採用・求人',
+                subject_tech: '技術的な質問',
+                subject_other: 'その他',
+                btn_send: 'Send Message →',
+            },
+            en: {
+                nav_home: 'Home',
+                nav_projects: 'Projects',
+                section_data_viz: 'Data Visualization & Analytics',
+                section_ai_dev: 'AI-Driven Development',
+                section_automation: 'Automation & Web Scraping',
+                section_ai_creation: 'AI Creative Projects',
+                nav_presentations: 'Presentations',
+                nav_creation: 'Creation',
+                creation_web_design: 'Web Design Gallery',
+                creation_neon_blue: 'SF Anime LP',
+                creation_work_mv: 'Work MV Production',
+                nav_profile: 'Profile',
+                profile_about: 'About Me',
+                profile_skills: 'Technical Skills',
+                profile_experience: 'Professional Experience',
+                profile_achievements: 'Key Achievements',
+                profile_philosophy: 'Development Philosophy',
+                profile_vision: 'AI Philosophy & Vision',
+                nav_contact: 'Contact',
+                contact_form: 'Contact Form',
+                contact_x: 'X (Twitter)',
+                contact_github: 'GitHub',
+                lang_button: 'JA',
+                page_title: "Let's Work Together",
+                page_subtitle: 'Feel free to reach out',
+                contact_heading: 'Get in Touch',
+                contact_intro_text: 'Available for AI-driven development, data analysis, and automation projects. Whether you have a project in mind or a technical question, feel free to reach out.',
+                availability_title: 'Currently Available For',
+                freelance_title: 'Freelance (Available Now)',
+                fulltime_title: 'Full-time (Mid-2026 or later)',
+                strengths_title: 'Strengths & Track Record',
+                label_name: 'Name *',
+                label_email: 'Email *',
+                label_subject: 'Subject *',
+                label_message: 'Message *',
+                placeholder_select: 'Select a topic',
+                subject_project: 'Project Inquiry',
+                subject_hiring: 'Hiring / Recruitment',
+                subject_tech: 'Technical Question',
+                subject_other: 'Other',
+                btn_send: 'Send Message →',
+            }
+        };
+
+        let currentLang = localStorage.getItem('language') || 'ja';
+
+        function switchLanguage() {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            localStorage.setItem('language', currentLang);
+            updateContent();
+        }
+
+        function updateContent() {
+            const t = translations[currentLang];
+            document.querySelector('.lang-switch').textContent = t.lang_button;
+            document.documentElement.lang = currentLang;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key] !== undefined && el.id !== 'submit-btn') el.textContent = t[key];
+                if (el.id === 'submit-btn' && !el.disabled) el.textContent = t[key];
+            });
+            document.querySelectorAll('[data-i18n-opt]').forEach(el => {
+                const key = el.getAttribute('data-i18n-opt');
+                if (t[key] !== undefined) el.textContent = t[key];
+            });
+        }
+
+        (function init() {
+            updateContent();
+        })();
+
+        /* ── EmailJS ── */
         const EMAILJS_PUBLIC_KEY = 'oqWkJmla4GHVOiXGI';
         const EMAILJS_SERVICE_ID = 'service_a03vmce';
         const EMAILJS_TEMPLATE_ID = 'template_gib6m2l';
-        
-        // EmailJS初期化
+
         (function() {
-            if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
-                console.warn('⚠️ EmailJSの設定が未完了です。EMAILJS_SETUP.mdを参照して設定してください。');
-            }
             emailjs.init(EMAILJS_PUBLIC_KEY);
         })();
 
         const form = document.getElementById('contact-form');
         const submitBtn = document.getElementById('submit-btn');
-        const alert = document.getElementById('alert');
+        const alertEl = document.getElementById('alert');
 
         function showAlert(message, type) {
-            alert.textContent = message;
-            alert.className = `alert alert-${type} show`;
+            alertEl.textContent = message;
+            alertEl.className = `alert alert-${type} show`;
             setTimeout(() => {
-                alert.className = 'alert';
+                alertEl.className = 'alert';
             }, 5000);
         }
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-
-            if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
-                showAlert('❌ EmailJSの設定が完了していません。EMAILJS_SETUP.mdを参照してください。', 'error');
-                return;
-            }
 
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
@@ -573,22 +833,26 @@
             };
 
             emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-                .then(function(response) {
-                    showAlert('✅ メッセージを送信しました！24時間以内に返信いたします。', 'success');
+                .then(function() {
+                    const msg = currentLang === 'ja'
+                        ? 'メッセージを送信しました！24時間以内に返信いたします。'
+                        : 'Message sent! I will reply within 24 hours.';
+                    showAlert(msg, 'success');
                     form.reset();
                     submitBtn.disabled = false;
-                    submitBtn.textContent = 'Send Message →';
-                    
-                    // GA4 フォーム送信イベント
+                    submitBtn.textContent = translations[currentLang].btn_send;
                     gtag('event', 'form_submit', {
                         'event_category': 'engagement',
                         'event_label': 'contact_form',
                         'value': 1
                     });
                 }, function(error) {
-                    showAlert('❌ 送信に失敗しました。お手数ですが、直接メールでご連絡ください。', 'error');
+                    const msg = currentLang === 'ja'
+                        ? '送信に失敗しました。お手数ですが、直接メールでご連絡ください。'
+                        : 'Failed to send. Please contact me directly via email.';
+                    showAlert(msg, 'error');
                     submitBtn.disabled = false;
-                    submitBtn.textContent = 'Send Message →';
+                    submitBtn.textContent = translations[currentLang].btn_send;
                     console.error('EmailJS Error:', error);
                 });
         });
