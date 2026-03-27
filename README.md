@@ -32,6 +32,13 @@ Web制作スキルを示すポートフォリオサイト群。AI/MLプロジェ
 - `b2b/` - B2B business site (index.html, tokusho.html, privacy.html)
 - `corporate/` - Corporate site demo (6 pages: index, about, services, works, recruit, contact + style.css, script.js)
 
+## 関連システム
+
+| システム | 概要 | リポジトリ |
+|---------|------|----------|
+| 営業メール自動化 | Ezlize B2B サイトへの見込み客誘導パイプライン（lead-finder → Claude メール生成 → Discord 承認 → Gmail 送信） | `C:\Users\Tenormusica\openclaw-claude-bridge\` |
+| Coconala 受注管理 | 問い合わせ対応・見積もり・スケジュール管理 | `C:\Users\Tenormusica\coconala-freelance-hub\` |
+
 ## Analytics
 
 - **Google Analytics**: G-YJ1WP1J2NQ
