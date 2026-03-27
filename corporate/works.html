@@ -11,7 +11,7 @@
   <meta property="og:title" content="Works | BridgeTech Inc.">
   <meta property="og:description" content="BridgeTech Inc.のプロジェクト実績。DX推進、システム開発、クラウド移行、データ分析など、多様な業界での支援事例をご紹介します。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://bridgetech.example.com/works.html">
+  <meta property="og:url" content="https://corporate-red-sigma.vercel.app/works.html">
   <meta property="og:image" content="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop">
   <meta property="og:site_name" content="BridgeTech Inc.">
   <meta property="og:locale" content="ja_JP">
@@ -45,7 +45,8 @@
           'clinic-peach-seven.vercel.app',
           'sound-platform-v5-ycqe3vmjva-an.a.run.app',
           'esports-tournament-ycqe3vmjva-uc.a.run.app',
-          'asteroid-game-ycqe3vmjva-uc.a.run.app'
+          'asteroid-game-ycqe3vmjva-uc.a.run.app',
+          'corporate-red-sigma.vercel.app'
         ]
       }
     });
@@ -54,41 +55,25 @@
 <body>
 
   <!-- ========== Header ========== -->
-  <header class="header" id="header">
-    <div class="header__inner">
+  <header class="header">
+    <div class="container">
       <a href="index.html" class="header__logo">
         <span class="header__logo-mark">BT</span>
-        <span class="header__logo-text">BridgeTech</span>
+        BridgeTech
       </a>
-
-      <nav class="header__nav" id="headerNav">
-        <ul class="header__nav-list">
-          <li class="header__nav-item">
-            <a href="index.html" class="header__nav-link">Home</a>
-          </li>
-          <li class="header__nav-item">
-            <a href="about.html" class="header__nav-link">About</a>
-          </li>
-          <li class="header__nav-item">
-            <a href="services.html" class="header__nav-link">Services</a>
-          </li>
-          <li class="header__nav-item">
-            <a href="works.html" class="header__nav-link header__nav-link--active">Works</a>
-          </li>
-          <li class="header__nav-item">
-            <a href="recruit.html" class="header__nav-link">Recruit</a>
-          </li>
-          <li class="header__nav-item">
-            <a href="contact.html" class="header__nav-link">Contact</a>
-          </li>
-        </ul>
+      <nav class="header__nav">
+        <a href="index.html" class="header__nav-link">Home</a>
+        <a href="about.html" class="header__nav-link">About</a>
+        <a href="services.html" class="header__nav-link">Services</a>
+        <a href="works.html" class="header__nav-link header__nav-link--active">Works</a>
+        <a href="recruit.html" class="header__nav-link">Recruit</a>
+        <a href="contact.html" class="header__nav-link">Contact</a>
       </nav>
-
-      <button class="header__menu-trigger" id="menuTrigger" aria-label="メニューを開く" aria-expanded="false">
-        <span class="header__menu-bar"></span>
-        <span class="header__menu-bar"></span>
-        <span class="header__menu-bar"></span>
-      </button>
+      <div class="header__menu-trigger" aria-label="メニューを開く" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </header>
 
@@ -216,64 +201,46 @@
     </section>
 
     <!-- ========== CTA ========== -->
-    <section class="cta" id="cta">
-      <div class="cta__inner reveal">
-        <h2 class="cta__heading">Let's Transform Together</h2>
-        <p class="cta__description">デジタル変革の第一歩を、私たちと一緒に踏み出しませんか。まずはお気軽にご相談ください。貴社の課題に合わせた最適なソリューションをご提案いたします。</p>
-        <a href="contact.html" class="cta__btn">Contact Us</a>
+    <section class="cta">
+      <div class="container reveal">
+        <h2>Let's Transform Together</h2>
+        <p>デジタル変革の第一歩を、私たちと一緒に踏み出しませんか。まずはお気軽にご相談ください。貴社の課題に合わせた最適なソリューションをご提案いたします。</p>
+        <a href="contact.html" class="btn btn--primary">Contact Us</a>
       </div>
     </section>
 
   </main>
 
   <!-- ========== Footer ========== -->
-  <footer class="footer" id="footer">
-    <div class="footer__inner">
+  <footer class="footer">
+    <div class="container">
       <div class="footer__grid">
-
-        <div class="footer__brand">
-          <a href="index.html" class="footer__logo">
-            <span class="footer__logo-mark">BT</span>
-            <span class="footer__logo-text">BridgeTech</span>
-          </a>
-          <p class="footer__address">
-            〒100-0001<br>
-            東京都千代田区千代田1-1-1<br>
-            BridgeTech Building 8F
-          </p>
+        <div>
+          <p class="footer__brand-name">BridgeTech Inc.</p>
+          <p class="footer__brand-text">〒107-0052<br>東京都港区赤坂1-2-3<br>BridgeTechビル 8F</p>
         </div>
-
-        <div class="footer__nav">
-          <h3 class="footer__nav-title">Navigation</h3>
-          <ul class="footer__nav-list">
-            <li><a href="index.html" class="footer__nav-link">Home</a></li>
-            <li><a href="about.html" class="footer__nav-link">About</a></li>
-            <li><a href="services.html" class="footer__nav-link">Services</a></li>
-            <li><a href="works.html" class="footer__nav-link">Works</a></li>
-            <li><a href="recruit.html" class="footer__nav-link">Recruit</a></li>
-            <li><a href="contact.html" class="footer__nav-link">Contact</a></li>
-          </ul>
+        <div>
+          <p class="footer__heading">Navigation</p>
+          <div class="footer__links">
+            <a href="index.html" class="footer__link">Home</a>
+            <a href="about.html" class="footer__link">About</a>
+            <a href="services.html" class="footer__link">Services</a>
+            <a href="works.html" class="footer__link">Works</a>
+            <a href="recruit.html" class="footer__link">Recruit</a>
+            <a href="contact.html" class="footer__link">Contact</a>
+          </div>
         </div>
-
-        <div class="footer__contact">
-          <h3 class="footer__contact-title">Contact</h3>
-          <p class="footer__contact-item">
-            <span class="footer__contact-label">TEL</span>
-            <a href="tel:03-1234-5678" class="footer__contact-link">03-1234-5678</a>
-          </p>
-          <p class="footer__contact-item">
-            <span class="footer__contact-label">EMAIL</span>
-            <a href="mailto:info@bridgetech.co.jp" class="footer__contact-link">info@bridgetech.co.jp</a>
-          </p>
-          <p class="footer__contact-hours">
-            営業時間: 平日 9:00 - 18:00
-          </p>
+        <div>
+          <p class="footer__heading">Contact</p>
+          <div class="footer__links">
+            <a href="tel:03-1234-5678" class="footer__link">TEL: 03-1234-5678</a>
+            <a href="mailto:info@bridgetech.co.jp" class="footer__link">info@bridgetech.co.jp</a>
+            <span class="footer__link">Mon-Fri 9:00-18:00</span>
+          </div>
         </div>
-
       </div>
-
       <div class="footer__bottom">
-        <p class="footer__copyright">&copy; 2024 BridgeTech Inc. All Rights Reserved.</p>
+        <p>&copy; 2024 BridgeTech Inc. All Rights Reserved.</p>
       </div>
     </div>
   </footer>
