@@ -36,14 +36,14 @@ Web制作スキルを示すポートフォリオサイト群。AI/MLプロジェ
 
 | システム | 概要 | リポジトリ |
 |---------|------|----------|
-| 営業メール自動化 | Ezlize B2B サイトへの見込み客誘導パイプライン（lead-finder → Claude メール生成 → Discord 承認 → Gmail 送信） | `C:\Users\Tenormusica\openclaw-claude-bridge\` |
-| Coconala 受注管理 | 問い合わせ対応・見積もり・スケジュール管理 | `C:\Users\Tenormusica\coconala-freelance-hub\` |
+| 営業メール自動化 | Google Maps でリード発見 → AI がパーソナライズメール生成 → Discord 承認 → Gmail 送信（メール内に Ezlize へのリンクを含む） | [openclaw-claude-bridge](https://github.com/Tenormusica2024/openclaw-claude-bridge) |
+| Coconala 受注管理 | 問い合わせ対応・見積もり・スケジュール管理 | coconala-freelance-hub（非公開） |
 
 ## Analytics
 
-- **Google Analytics**: G-YJ1WP1J2NQ
+- **Google Analytics**: G-XXXXXXXXXX（測定IDはコード内参照）
 - **Cross-domain tracking**: 8 domains (tenormusica2024.github.io, ezlize.com, beauty-salon-lumiere, clinic-peach-seven, sound-platform-v5, esports-tournament, asteroid-game, corporate-red-sigma)
-- **Analytics Dashboard**: https://tenormusica2024.github.io/portfolio/analytics/
+- **Analytics Dashboard**: https://tenormusica2024.github.io/portfolio/analytics/ （パスワード保護済み）
 
 ## Tech Stack
 
@@ -57,7 +57,7 @@ Web制作スキルを示すポートフォリオサイト群。AI/MLプロジェ
 
 ## Deployment
 
-Vercelサブプロジェクトはリポジトリ連携なし。手動デプロイ:
+Vercelサブプロジェクトはリポジトリ連携なし。手動デプロイ:（リポジトリルートで実行）
 
 ```bash
 cd beauty-salon && npx vercel --prod --yes
@@ -69,7 +69,6 @@ cd corporate && npx vercel --prod --yes
 
 ## Docs
 
-- `B2B_FIX_REQUEST.md` - B2B site review/fix request
 - `EMAILJS_SETUP.md` - EmailJS integration guide
 - `UTM_PARAMETER_GUIDE.md` - UTM parameter usage
 - `GOOGLE_SEARCH_CONSOLE_GUIDE.md` - Search Console setup
