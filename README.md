@@ -60,11 +60,11 @@ Web制作スキルを示すポートフォリオサイト群。AI/MLプロジェ
 Vercelサブプロジェクトはリポジトリ連携なし。手動デプロイ:（リポジトリルートで実行）
 
 ```bash
-cd beauty-salon && npx vercel --prod --yes
-cd clinic && npx vercel --prod --yes
-cd designer-portfolio && npx vercel --prod --yes
-cd b2b && npx vercel --prod --yes
-cd corporate && npx vercel --prod --yes
+(cd beauty-salon && npx vercel --prod --yes)
+(cd clinic && npx vercel --prod --yes)
+(cd designer-portfolio && npx vercel --prod --yes)
+(cd b2b && npx vercel --prod --yes)
+(cd corporate && npx vercel --prod --yes)
 ```
 
 ## Docs
