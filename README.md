@@ -7,7 +7,7 @@ Web制作スキルを示すポートフォリオサイト群。AI/MLプロジェ
 | Site | URL | Hosting |
 |------|-----|---------|
 | Main Portfolio (C2C) | https://tenormusica2024.github.io/portfolio/ | GitHub Pages |
-| B2B Business Site | https://urayahadays-b2b.vercel.app/ | Vercel |
+| B2B Business Site (Ezlize) | https://ezlize.com/ | Vercel |
 | Beauty Salon Demo | https://beauty-salon-lumiere.vercel.app/ | Vercel |
 | Clinic Demo | https://clinic-peach-seven.vercel.app/ | Vercel |
 | Designer Portfolio | https://designer-portfolio-plum.vercel.app/ | Vercel |
@@ -35,7 +35,7 @@ Web制作スキルを示すポートフォリオサイト群。AI/MLプロジェ
 ## Analytics
 
 - **Google Analytics**: G-YJ1WP1J2NQ
-- **Cross-domain tracking**: 8 domains (tenormusica2024.github.io, urayahadays-b2b, beauty-salon-lumiere, clinic-peach-seven, sound-platform-v5, esports-tournament, asteroid-game, corporate-red-sigma)
+- **Cross-domain tracking**: 8 domains (tenormusica2024.github.io, ezlize.com, beauty-salon-lumiere, clinic-peach-seven, sound-platform-v5, esports-tournament, asteroid-game, corporate-red-sigma)
 - **Analytics Dashboard**: https://tenormusica2024.github.io/portfolio/analytics/
 
 ## Tech Stack
