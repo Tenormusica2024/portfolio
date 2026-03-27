@@ -82,6 +82,7 @@ function initMobileMenu() {
     header.classList.toggle('header--nav-open');
     const isOpen = header.classList.contains('header--nav-open');
     trigger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   }
 
   trigger.addEventListener('click', toggleMenu);
@@ -98,6 +99,7 @@ function initMobileMenu() {
     link.addEventListener('click', () => {
       header.classList.remove('header--nav-open');
       trigger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
     });
   });
 }
@@ -147,6 +149,7 @@ function initFilterButtons() {
       /* カードのフィルタリング */
       cards.forEach(card => {
         if (category === 'all' || card.dataset.category === category) {
+          card.classList.add('reveal--visible');
           card.style.display = '';
           card.style.opacity = '0';
           requestAnimationFrame(() => {
@@ -164,7 +167,7 @@ function initFilterButtons() {
 
 /* --- Smooth Scroll for anchor links --- */
 function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
+  document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(link => {
     link.addEventListener('click', (e) => {
       const target = document.querySelector(link.getAttribute('href'));
       if (target) {
