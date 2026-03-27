@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://urayahadays-b2b.vercel.app/sitemap.xml
+Sitemap: https://ezlize.com/sitemap.xml
