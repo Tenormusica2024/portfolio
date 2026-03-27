@@ -35,7 +35,7 @@ Web制作スキルを示すポートフォリオサイト群。AI/MLプロジェ
 ## Analytics
 
 - **Google Analytics**: G-YJ1WP1J2NQ
-- **Cross-domain tracking**: 7 domains (tenormusica2024.github.io, urayahadays-b2b, beauty-salon-lumiere, clinic-peach-seven, sound-platform-v5, esports-tournament, asteroid-game)
+- **Cross-domain tracking**: 8 domains (tenormusica2024.github.io, urayahadays-b2b, beauty-salon-lumiere, clinic-peach-seven, sound-platform-v5, esports-tournament, asteroid-game, corporate-red-sigma)
 - **Analytics Dashboard**: https://tenormusica2024.github.io/portfolio/analytics/
 
 ## Tech Stack
