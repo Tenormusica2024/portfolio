@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ1WP1J2NQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YJ1WP1J2NQ', {
+      'linker': {
+        'domains': [
+          'tenormusica2024.github.io',
+          'ezlize.com',
+          'beauty-salon-lumiere.vercel.app',
+          'clinic-peach-seven.vercel.app',
+          'sound-platform-v5-ycqe3vmjva-an.a.run.app',
+          'esports-tournament-ycqe3vmjva-uc.a.run.app',
+          'asteroid-game-ycqe3vmjva-uc.a.run.app'
+        ]
+      }
+    });
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>技術ブログ | 幸田 晃典 / Ezlize</title>
+  <meta name="description" content="AI・システム開発に関する技術記事。ChatGPTアーキテクチャ解析、Claude Code活用術、GPT-5 vs Claude比較など、現場目線の技術知見を発信しています。Zenn累計390+いいね。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ezlize.com/blog.html">
+  <meta property="og:title" content="技術ブログ | 幸田 晃典 / Ezlize">
+  <meta property="og:description" content="AI・システム開発に関する技術記事。現場目線の技術知見を発信。Zenn累計390+いいね。">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="技術ブログ | 幸田 晃典 / Ezlize">
+  <meta name="twitter:description" content="AI・システム開発に関する技術記事。現場目線の技術知見を発信。Zenn累計390+いいね。">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231B2A4A' rx='4'/><text x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23B8976C' text-anchor='middle'>K</text></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "技術ブログ - 幸田 晃典 / Ezlize",
+    "description": "AI・システム開発に関する技術記事。現場目線の技術知見を発信。",
+    "url": "https://ezlize.com/blog.html",
+    "author": {
+      "@type": "Person",
+      "name": "幸田 晃典",
+      "url": "https://ezlize.com/"
+    },
+    "blogPost": [
+      {
+        "@type": "BlogPosting",
+        "headline": "ChatGPTの記憶システムはRAGを使っていなかった - 4層アーキテクチャの衝撃",
+        "url": "https://zenn.dev/tenormusica/articles/chatgpt-memory-no-rag-2025",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": "https://schema.org/LikeAction",
+          "userInteractionCount": 102
+        }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "AnthropicがAI SREの限界を公式認定。「相関関係を因果関係と誤認し続ける」",
+        "url": "https://zenn.dev/tenormusica/articles/anthropic-ai-sre-limits-qcon-2026",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": "https://schema.org/LikeAction",
+          "userInteractionCount": 101
+        }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Claude Codeの50回制限を20倍に拡張するclaude-mem",
+        "url": "https://zenn.dev/tenormusica/articles/claude-mem-endless-mode-context-limit-2025",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": "https://schema.org/LikeAction",
+          "userInteractionCount": 83
+        }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "GPT-5.2 vs Claude Opus 4.5、なぜ「伝わる」感覚が違うのか",
+        "url": "https://zenn.dev/tenormusica/articles/gpt52-claude-audience-awareness-2026",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": "https://schema.org/LikeAction",
+          "userInteractionCount": 62
+        }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Claude CodeでSkillsを定期実行で自動化する方法",
+        "url": "https://zenn.dev/tenormusica/articles/claude-code-headless-subscription-discovery-2025",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": "https://schema.org/LikeAction",
+          "userInteractionCount": 42
+        }
+      }
+    ]
+  }
+  </script>
+  <link rel="canonical" href="https://ezlize.com/blog.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:       #1B2A4A;
+      --navy-light: #2d4270;
+      --gold:       #B8976C;
+      --bg:         #FAFAFA;
+      --bg-section: #F4F3F0;
+      --text:       #2C2C2C;
+      --muted:      #6B6B6B;
+      --border:     #E0DDD8;
+      --white:      #FFFFFF;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250,250,250,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 0.95rem; font-weight: 600;
+      color: var(--navy); text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.78rem; color: var(--muted);
+      text-decoration: none; letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--navy); }
+    /* 現在のページのナビリンクを強調 */
+    .nav-links a.nav-active {
+      color: var(--navy);
+      font-weight: 500;
+    }
+    .nav-cta {
+      background: var(--navy);
+      color: var(--white) !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 2px;
+    }
+    .nav-cta:hover { background: var(--navy-light) !important; }
+
+    /* ===== HAMBURGER ===== */
+    .hamburger {
+      display: none; background: none; border: none;
+      cursor: pointer; padding: 0.5rem;
+      flex-direction: column; gap: 5px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--navy); transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none; position: fixed;
+      top: 64px; left: 0; right: 0; bottom: 0;
+      background: rgba(250,250,250,0.98);
+      backdrop-filter: blur(12px);
+      z-index: 99;
+      flex-direction: column; align-items: center;
+      justify-content: center; gap: 2rem;
+      list-style: none;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+    .mobile-nav.active { opacity: 1; visibility: visible; }
+    .mobile-nav a {
+      font-size: 1rem; color: var(--navy);
+      text-decoration: none; letter-spacing: 0.12em;
+      font-weight: 500;
+    }
+    .mobile-nav a.nav-active {
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .mobile-nav .nav-cta {
+      margin-top: 0.5rem; padding: 0.65rem 1.6rem;
+      font-size: 0.9rem;
+    }
+
+    /* ===== BREADCRUMB ===== */
+    .breadcrumb {
+      padding: 5.5rem 5% 0;
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+    .breadcrumb a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .breadcrumb a:hover { color: var(--navy); }
+    .breadcrumb-separator {
+      margin: 0 0.5rem;
+      color: var(--border);
+    }
+    .breadcrumb-current {
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    /* ===== BLOG HERO ===== */
+    .blog-hero {
+      padding: 2.5rem 5% 3rem;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+    .blog-hero-label {
+      font-size: 0.68rem; letter-spacing: 0.22em;
+      color: var(--gold); text-transform: uppercase;
+      margin-bottom: 0.7rem;
+    }
+    .blog-hero-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 600; color: var(--navy);
+      line-height: 1.4; margin-bottom: 0.8rem;
+    }
+    .blog-hero-desc {
+      font-size: 0.9rem; color: var(--muted);
+      max-width: 600px; line-height: 1.9;
+    }
+
+    /* ===== BLOG LAYOUT ===== */
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 3rem;
+      padding: 3rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ===== ARTICLE LIST ===== */
+    .article-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* ===== ARTICLE CARD ===== */
+    .article-card {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+    .article-card:hover {
+      box-shadow: 0 6px 20px rgba(27,42,74,0.08);
+      transform: translateY(-2px);
+    }
+
+    /* カード左側: 日付とメトリクスエリア */
+    .article-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.8rem;
+      padding-top: 0.2rem;
+    }
+
+    .article-metric {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+    }
+    .article-metric-icon {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1;
+    }
+    .article-metric-count {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .article-metric-label {
+      font-size: 0.62rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* カード右側: コンテンツエリア */
+    .article-right {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .article-header {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    /* プラットフォームバッジ */
+    .platform-badge {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+      color: var(--white);
+      line-height: 1.4;
+    }
+    .platform-badge--zenn {
+      background: #3EA8FF;
+    }
+    .platform-badge--hatena {
+      background: #00A4DE;
+    }
+
+    .article-date {
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .article-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.5;
+      transition: color 0.2s;
+    }
+    .article-card:hover .article-title {
+      color: var(--gold);
+    }
+
+    .article-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.7;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .article-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .article-tag {
+      font-size: 0.62rem;
+      color: var(--muted);
+      background: var(--bg-section);
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .sidebar-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+    }
+    .sidebar-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: 0.06em;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Highlights統計 */
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .highlight-item {
+      text-align: center;
+    }
+    .highlight-num {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+    .highlight-label {
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-top: 0.2rem;
+    }
+
+    /* プラットフォーム一覧 */
+    .platform-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 1.2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .platform-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--text);
+    }
+    .platform-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .platform-dot--zenn { background: #3EA8FF; }
+    .platform-dot--hatena { background: #00A4DE; }
+
+    /* Zennプロフィールリンク */
+    .sidebar-link {
+      display: block;
+      text-align: center;
+      background: var(--navy);
+      color: var(--white);
+      padding: 0.7rem 1rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .sidebar-link:hover {
+      background: var(--navy-light);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.35);
+      padding: 1.8rem 5%;
+      display: flex; justify-content: space-between;
+      align-items: center; font-size: 0.72rem;
+      letter-spacing: 0.08em;
+    }
+    .footer-links {
+      display: flex; gap: 1.5rem;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none; font-size: 0.68rem;
+      letter-spacing: 0.06em; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.65); }
+
+    /* ===== REVEAL ANIMATION ===== */
+    .reveal {
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .blog-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .sidebar {
+        order: -1;
+      }
+      .highlights-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .platform-list {
+        flex-direction: row;
+        gap: 1.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-nav { display: flex; }
+      .blog-hero { padding: 2rem 4% 2.5rem; }
+      .blog-layout { padding: 2rem 4%; }
+      .article-card {
+        grid-template-columns: 72px 1fr;
+        gap: 1rem;
+        padding: 1.2rem;
+      }
+      .article-metric-count {
+        font-size: 1.15rem;
+      }
+      .article-title {
+        font-size: 0.92rem;
+      }
+      .highlights-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .platform-list {
+        flex-direction: column;
+      }
+      footer { flex-direction: column; gap: 0.6rem; text-align: center; }
+      .footer-links { justify-content: center; gap: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .article-card {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+      .article-left {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 1rem;
+      }
+      .article-metric {
+        flex-direction: row;
+        gap: 0.4rem;
+        align-items: baseline;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">幸田 晃典 / Ezlize</a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">サービス</a></li>
+    <li><a href="index.html#works">実績</a></li>
+    <li><a href="index.html#flow">ご依頼の流れ</a></li>
+    <li><a href="index.html#price">料金目安</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="blog.html" class="nav-active">技術ブログ</a></li>
+    <li><a href="index.html#contact" class="nav-cta">無料相談</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleNav()" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<ul class="mobile-nav" id="mobileNav" role="navigation" aria-label="モバイルメニュー">
+  <li><a href="index.html#services" onclick="closeNav()">サービス</a></li>
+  <li><a href="index.html#works" onclick="closeNav()">実績</a></li>
+  <li><a href="index.html#flow" onclick="closeNav()">ご依頼の流れ</a></li>
+  <li><a href="index.html#price" onclick="closeNav()">料金目安</a></li>
+  <li><a href="index.html#faq" onclick="closeNav()">FAQ</a></li>
+  <li><a href="blog.html" class="nav-active" onclick="closeNav()">技術ブログ</a></li>
+  <li><a href="index.html#contact" class="nav-cta" onclick="closeNav()">無料相談</a></li>
+</ul>
+
+<main>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">HOME</a>
+  <span class="breadcrumb-separator">&gt;</span>
+  <span class="breadcrumb-current">技術ブログ</span>
+</div>
+
+<!-- BLOG HERO -->
+<section class="blog-hero">
+  <p class="blog-hero-label">Tech Blog</p>
+  <h1 class="blog-hero-title">技術ブログ</h1>
+  <p class="blog-hero-desc">
+    AI・システム開発の現場で得た技術知見を、Zenn・はてなブログで発信しています。
+    アーキテクチャ解析、開発ツール活用術、AI比較分析など、実務に直結する内容を中心に執筆。
+  </p>
+</section>
+
+<!-- BLOG LAYOUT -->
+<div class="blog-layout">
+
+  <!-- ARTICLE LIST -->
+  <div class="article-list">
+
+    <!-- Article 1: 102 likes -->
+    <a href="https://zenn.dev/tenormusica/articles/chatgpt-memory-no-rag-2025" target="_blank" rel="noopener noreferrer" class="article-card reveal">
+      <div class="article-left">
+        <div class="article-metric">
+          <svg class="article-metric-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="article-metric-count">102</span>
+          <span class="article-metric-label">likes</span>
+        </div>
+      </div>
+      <div class="article-right">
+        <div class="article-header">
+          <span class="platform-badge platform-badge--zenn">Zenn</span>
+        </div>
+        <h2 class="article-title">ChatGPTの記憶システムはRAGを使っていなかった - 4層アーキテクチャの衝撃</h2>
+        <p class="article-desc">ChatGPTのメモリ機能がRAGではなく4層構造のアーキテクチャで実装されていたことを解析した記事。</p>
+        <div class="article-tags">
+          <span class="article-tag">ChatGPT</span>
+          <span class="article-tag">AI Architecture</span>
+          <span class="article-tag">Memory System</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Article 2: 101 likes -->
+    <a href="https://zenn.dev/tenormusica/articles/anthropic-ai-sre-limits-qcon-2026" target="_blank" rel="noopener noreferrer" class="article-card reveal">
+      <div class="article-left">
+        <div class="article-metric">
+          <svg class="article-metric-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="article-metric-count">101</span>
+          <span class="article-metric-label">likes</span>
+        </div>
+      </div>
+      <div class="article-right">
+        <div class="article-header">
+          <span class="platform-badge platform-badge--zenn">Zenn</span>
+        </div>
+        <h2 class="article-title">AnthropicがAI SREの限界を公式認定。「相関関係を因果関係と誤認し続ける」</h2>
+        <p class="article-desc">QCon 2026でAnthropicが発表したAI SREの構造的限界と、その技術的背景を分析。</p>
+        <div class="article-tags">
+          <span class="article-tag">Anthropic</span>
+          <span class="article-tag">AI SRE</span>
+          <span class="article-tag">Claude</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Article 3: 83 likes -->
+    <a href="https://zenn.dev/tenormusica/articles/claude-mem-endless-mode-context-limit-2025" target="_blank" rel="noopener noreferrer" class="article-card reveal">
+      <div class="article-left">
+        <div class="article-metric">
+          <svg class="article-metric-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="article-metric-count">83</span>
+          <span class="article-metric-label">likes</span>
+        </div>
+      </div>
+      <div class="article-right">
+        <div class="article-header">
+          <span class="platform-badge platform-badge--zenn">Zenn</span>
+        </div>
+        <h2 class="article-title">Claude Codeの50回制限を20倍に拡張するclaude-mem - コンテキスト枯渇問題の解決策</h2>
+        <p class="article-desc">Claude Codeのコンテキスト制限を解消するOSSツールclaude-memの導入と活用方法。</p>
+        <div class="article-tags">
+          <span class="article-tag">Claude Code</span>
+          <span class="article-tag">Developer Tools</span>
+          <span class="article-tag">OSS</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Article 4: 62 likes -->
+    <a href="https://zenn.dev/tenormusica/articles/gpt52-claude-audience-awareness-2026" target="_blank" rel="noopener noreferrer" class="article-card reveal">
+      <div class="article-left">
+        <div class="article-metric">
+          <svg class="article-metric-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="article-metric-count">62</span>
+          <span class="article-metric-label">likes</span>
+        </div>
+      </div>
+      <div class="article-right">
+        <div class="article-header">
+          <span class="platform-badge platform-badge--zenn">Zenn</span>
+        </div>
+        <h2 class="article-title">GPT-5.2 vs Claude Opus 4.5、なぜ「伝わる」感覚が違うのか【設計思想から比較】</h2>
+        <p class="article-desc">GPT-5.2とClaude Opus 4.5の出力品質の差を、設計思想の違いから比較分析。</p>
+        <div class="article-tags">
+          <span class="article-tag">GPT-5</span>
+          <span class="article-tag">Claude</span>
+          <span class="article-tag">AI Comparison</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Article 5: 42 likes -->
+    <a href="https://zenn.dev/tenormusica/articles/claude-code-headless-subscription-discovery-2025" target="_blank" rel="noopener noreferrer" class="article-card reveal">
+      <div class="article-left">
+        <div class="article-metric">
+          <svg class="article-metric-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="article-metric-count">42</span>
+          <span class="article-metric-label">likes</span>
+        </div>
+      </div>
+      <div class="article-right">
+        <div class="article-header">
+          <span class="platform-badge platform-badge--zenn">Zenn</span>
+        </div>
+        <h2 class="article-title">Claude CodeでSkillsを定期実行で自動化する方法</h2>
+        <p class="article-desc">Claude Codeのサブスクリプション型でもヘッドレス実行が可能であることの発見と自動化手法。</p>
+        <div class="article-tags">
+          <span class="article-tag">Claude Code</span>
+          <span class="article-tag">Automation</span>
+          <span class="article-tag">Skills</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Article 6: Hatena Blog placeholder -->
+    <a href="#" class="article-card reveal">
+      <div class="article-left">
+        <div class="article-metric">
+          <svg class="article-metric-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          <span class="article-metric-count">345</span>
+          <span class="article-metric-label">bookmarks</span>
+        </div>
+      </div>
+      <div class="article-right">
+        <div class="article-header">
+          <span class="platform-badge platform-badge--hatena">Hatena</span>
+        </div>
+        <h2 class="article-title">はてなブログ記事（345ブックマーク達成）</h2>
+        <p class="article-desc"><!-- 記事の説明をここに追加 --></p>
+        <div class="article-tags">
+          <!-- タグをここに追加 -->
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- Highlights -->
+    <div class="sidebar-box">
+      <h3 class="sidebar-title">Highlights</h3>
+      <div class="highlights-grid">
+        <div class="highlight-item">
+          <div class="highlight-num">390+</div>
+          <div class="highlight-label">Zenn累計いいね</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-num">6</div>
+          <div class="highlight-label">掲載記事数</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-num">102</div>
+          <div class="highlight-label">最高いいね数</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-num">345</div>
+          <div class="highlight-label">最高ブックマーク</div>
+        </div>
+      </div>
+      <div class="platform-list">
+        <div class="platform-item">
+          <span class="platform-dot platform-dot--zenn"></span>
+          Zenn（5記事）
+        </div>
+        <div class="platform-item">
+          <span class="platform-dot platform-dot--hatena"></span>
+          はてなブログ（1記事）
+        </div>
+      </div>
+    </div>
+
+    <!-- Zenn Profile -->
+    <div class="sidebar-box">
+      <h3 class="sidebar-title">Zenn Profile</h3>
+      <p style="font-size: 0.78rem; color: var(--muted); margin-bottom: 1rem; line-height: 1.7;">
+        AI・システム開発の技術知見をZennで発信中。
+      </p>
+      <a href="https://zenn.dev/tenormusica" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+        Zennプロフィールを見る →
+      </a>
+    </div>
+
+  </aside>
+
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <span>&#169; 2026 幸田 晃典 / Ezlize</span>
+  <div class="footer-links">
+    <a href="tokusho.html">特定商取引法に基づく表記</a>
+    <a href="privacy.html">プライバシーポリシー</a>
+  </div>
+</footer>
+
+<script>
+  /* ===== モバイルナビ ===== */
+  function toggleNav() {
+    document.querySelector('.hamburger').classList.toggle('active');
+    document.getElementById('mobileNav').classList.toggle('active');
+    document.body.style.overflow = document.getElementById('mobileNav').classList.contains('active') ? 'hidden' : '';
+  }
+  function closeNav() {
+    document.querySelector('.hamburger').classList.remove('active');
+    document.getElementById('mobileNav').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) closeNav();
+  });
+
+  /* ===== スクロールアニメーション ===== */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

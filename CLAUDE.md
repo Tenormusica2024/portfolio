@@ -3,7 +3,8 @@
 ## サイト概要
 - **ブランド**: Urayaha Days（C2C・個人向けポートフォリオ）
 - **URL**: https://tenormusica2024.github.io/portfolio/
-- **B2Bサイト**: Ezlize（別サイト。このリポジトリとは別管理）
+- **B2Bサイト**: Ezlize（`b2b/` ディレクトリ。Vercelプロジェクト `urayahadays-b2b` でデプロイ）
+- **B2B URL**: https://ezlize.com/
 
 ## C2C方針（必須）
 - **採用向け情報を載せない**: 希望年収・正社員希望・フルタイム募集はB2Bサイト（Ezlize）側の情報
@@ -29,5 +30,29 @@
 - AIモデルのバージョン・リリース状況など、知識カットオフ以降の情報は **必ずWebSearchで確認してから提案する**
 - grok-3-miniはweb非対応のため、最新技術情報はWebSearch toolを使用
 
+## Vercel デプロイ構成と ezlize.com 3層防御
+
+**リポジトリ構成:**
+- ルート `/` → C2C ポートフォリオ（GitHub Pages: tenormusica2024.github.io/portfolio/）
+- `b2b/` → B2B ポートフォリオ（Vercel: ezlize.com）
+- `corporate/` → コーポレートサイト（デプロイ先別途）
+- その他 `beauty-salon/`, `clinic/`, `designer-portfolio/` → 各デモサイト
+
+**Vercelプロジェクト `urayahadays-b2b`:**
+- Root Directory: `b2b`（ダッシュボード Build & Deployment で設定）
+- GitHub連携: `Tenormusica2024/portfolio` リポジトリの `main` ブランチ
+- 自動デプロイ: push ごとに発火（`update-analytics.yml` が毎日 09:00 JST に push）
+
+**ezlize.com に c2c が表示される問題の再発防止（3層防御）:**
+1. **Vercel Root Directory = `b2b`** - ダッシュボードで設定。正常時はこれだけで b2b がデプロイされる
+2. **フェイルセーフリダイレクト** - ルート `index.html` の `<head>` 直後に `window.location.hostname === 'ezlize.com'` 検出スクリプトを設置。Root Directory が `./` に戻っても ezlize.com アクセス時は `/b2b/index.html` にリダイレクト
+3. **ルート `.vercel/project.json` 削除済み** - CLI からルートで `vercel deploy` した際の誤デプロイを防止（`.gitignore` で `.vercel` は除外済み）
+
+**再発原因の分析:**
+- Vercel CLI をリポジトリルートで実行すると Root Directory 設定が上書きされる可能性がある
+- Root Directory が `./` に戻ると、毎日の analytics push で c2c コンテンツが再デプロイされる
+- **対策**: CLI デプロイは必ず `b2b/` ディレクトリから実行すること
+
 ## 学んだ教訓
 - 2026-03-28 Gemini 3の存在確認: Gemini 3は2025年11月18日リリース済み（3.1 Proも登場）。古い知識ベースで「未リリース」と提案してしまった → 技術情報は事前にWebSearchで確認
+- 2026-03-30 ezlize.com c2c/b2b フリップ再発: Root Directory `./` リセット + 毎日の analytics push で c2c が再デプロイされた → 3層防御（Root Directory設定 + フェイルセーフリダイレクト + CLI誤デプロイ防止）で根本対策実施
