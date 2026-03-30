@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <!-- Failsafe: ezlize.com should always serve b2b content -->
+    <script>
+      if (window.location.hostname === 'ezlize.com' || window.location.hostname === 'www.ezlize.com') {
+        window.location.replace('/b2b/index.html');
+      }
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ1WP1J2NQ"></script>
     <!-- Google AdSense -->
