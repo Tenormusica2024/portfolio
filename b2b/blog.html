@@ -61,11 +61,18 @@
         "@type": "BlogPosting",
         "headline": "AnthropicがAI SREの限界を公式認定。「相関関係を因果関係と誤認し続ける」",
         "url": "https://zenn.dev/tenormusica/articles/anthropic-ai-sre-limits-qcon-2026",
-        "interactionStatistic": {
-          "@type": "InteractionCounter",
-          "interactionType": "https://schema.org/LikeAction",
-          "userInteractionCount": 101
-        }
+        "interactionStatistic": [
+          {
+            "@type": "InteractionCounter",
+            "interactionType": "https://schema.org/LikeAction",
+            "userInteractionCount": 101
+          },
+          {
+            "@type": "InteractionCounter",
+            "interactionType": "https://schema.org/BookmarkAction",
+            "userInteractionCount": 345
+          }
+        ]
       },
       {
         "@type": "BlogPosting",
@@ -646,7 +653,7 @@
       </div>
     </a>
 
-    <!-- Article 2: 101 likes -->
+    <!-- Article 2: Zenn 101 likes + Hatena 345 bookmarks (same article, cross-posted) -->
     <a href="https://zenn.dev/tenormusica/articles/anthropic-ai-sre-limits-qcon-2026" target="_blank" rel="noopener noreferrer" class="article-card reveal">
       <div class="article-left">
         <div class="article-metric">
@@ -654,13 +661,19 @@
           <span class="article-metric-count">101</span>
           <span class="article-metric-label">likes</span>
         </div>
+        <div class="article-metric">
+          <svg class="article-metric-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          <span class="article-metric-count">345</span>
+          <span class="article-metric-label">bookmarks</span>
+        </div>
       </div>
       <div class="article-right">
         <div class="article-header">
           <span class="platform-badge platform-badge--zenn">Zenn</span>
+          <span class="platform-badge platform-badge--hatena">Hatena</span>
         </div>
         <h2 class="article-title">AnthropicがAI SREの限界を公式認定。「相関関係を因果関係と誤認し続ける」</h2>
-        <p class="article-desc">QCon 2026でAnthropicが発表したAI SREの構造的限界と、その技術的背景を分析。</p>
+        <p class="article-desc">QCon 2026でAnthropicが発表したAI SREの構造的限界と、その技術的背景を分析。Zenn・はてなブログの両方でバズ。</p>
         <div class="article-tags">
           <span class="article-tag">Anthropic</span>
           <span class="article-tag">AI SRE</span>
@@ -738,27 +751,6 @@
       </div>
     </a>
 
-    <!-- Article 6: Hatena Blog placeholder -->
-    <a href="#" class="article-card reveal">
-      <div class="article-left">
-        <div class="article-metric">
-          <svg class="article-metric-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
-          <span class="article-metric-count">345</span>
-          <span class="article-metric-label">bookmarks</span>
-        </div>
-      </div>
-      <div class="article-right">
-        <div class="article-header">
-          <span class="platform-badge platform-badge--hatena">Hatena</span>
-        </div>
-        <h2 class="article-title">はてなブログ記事（345ブックマーク達成）</h2>
-        <p class="article-desc"><!-- 記事の説明をここに追加 --></p>
-        <div class="article-tags">
-          <!-- タグをここに追加 -->
-        </div>
-      </div>
-    </a>
-
   </div>
 
   <!-- SIDEBAR -->
@@ -773,7 +765,7 @@
           <div class="highlight-label">Zenn累計いいね</div>
         </div>
         <div class="highlight-item">
-          <div class="highlight-num">6</div>
+          <div class="highlight-num">5</div>
           <div class="highlight-label">掲載記事数</div>
         </div>
         <div class="highlight-item">
@@ -792,7 +784,7 @@
         </div>
         <div class="platform-item">
           <span class="platform-dot platform-dot--hatena"></span>
-          はてなブログ（1記事）
+          はてなブログ（クロスポスト1件）
         </div>
       </div>
     </div>
