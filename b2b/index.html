@@ -622,6 +622,7 @@
   </style>
 </head>
 <body>
+<a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" onfocus="this.style.cssText='position:absolute;left:0;top:0;width:auto;height:auto;padding:0.5rem 1rem;background:#1B2A4A;color:#fff;z-index:9999;';" onblur="this.style.cssText='position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;';">本文へスキップ</a>
 
 <!-- NAV -->
 <nav>
@@ -1038,18 +1039,22 @@
         </a>
       </div>
     </div>
-    <form id="contact-form" class="contact-form reveal" aria-label="お問い合わせフォーム">
+    <form id="contact-form" class="contact-form reveal" action="https://formspree.io/f/xgonjqqj" method="POST" aria-label="お問い合わせフォーム">
       <div class="form-group">
         <label class="form-label" for="cf-name">お名前・会社名</label>
-        <input id="cf-name" type="text" class="form-input" placeholder="例：山田 太郎 / 山田工務店" required aria-required="true">
+        <input id="cf-name" name="name" type="text" class="form-input" placeholder="例：山田 太郎 / 山田工務店" required aria-required="true">
       </div>
       <div class="form-group">
         <label class="form-label" for="cf-email">メールアドレス</label>
-        <input id="cf-email" type="email" class="form-input" placeholder="例：info@example.co.jp" required aria-required="true">
+        <input id="cf-email" name="email" type="email" class="form-input" placeholder="例：info@example.co.jp" required aria-required="true">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="cf-tel">電話番号（任意）</label>
+        <input id="cf-tel" name="tel" type="tel" class="form-input" placeholder="例：080-1234-5678">
       </div>
       <div class="form-group">
         <label class="form-label" for="cf-message">ご相談内容</label>
-        <textarea id="cf-message" class="form-textarea" placeholder="例：発注書の作成を自動化したい、費用感を知りたい　など" required aria-required="true"></textarea>
+        <textarea id="cf-message" name="message" class="form-textarea" placeholder="例：発注書の作成を自動化したい、費用感を知りたい　など" required aria-required="true"></textarea>
       </div>
       <!-- Formspree honeypot: botはこの隠しフィールドに値を入れるためスパム判定される -->
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
@@ -1121,6 +1126,7 @@
     const result = document.getElementById('cf-result');
     const name = document.getElementById('cf-name').value.trim();
     const email = document.getElementById('cf-email').value.trim();
+    const tel = document.getElementById('cf-tel').value.trim();
     const message = document.getElementById('cf-message').value.trim();
 
     // 送信中の状態
@@ -1135,7 +1141,7 @@
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
-        body: JSON.stringify({ name, email, message, _gotcha: document.querySelector('input[name="_gotcha"]').value }),
+        body: JSON.stringify({ name, email, tel, message, _gotcha: document.querySelector('input[name="_gotcha"]').value }),
       });
       const data = await res.json();
 
@@ -1153,6 +1159,8 @@
         result.style.color = '#2d7a2d';
         result.style.border = '1px solid #b8ddb8';
         result.textContent = '送信しました。2〜3営業日以内にご連絡いたします。';
+        result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        result.focus();
         this.reset();
       } else {
         throw new Error((data.errors && data.errors[0] && data.errors[0].message) || '送信に失敗しました。');
