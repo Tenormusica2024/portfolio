@@ -863,7 +863,7 @@
       <span class="work-tag">受託開発</span>
       <div>
         <h3 class="work-title">営業メール自動送信システム</h3>
-        <p class="work-desc">不動産管理会社からの依頼で開発。業種・地域の組み合わせからGoogleマップ経由で企業を自動収集し、各社WebサイトをスクレイピングしてメールアドレスをAIで取得。提案タイプ別（Webサイト制作・業務自動化・AI組み込み）の営業メールをAIが自動生成し、担当者の承認後にGmailで送信するフルスタックの自動化パイプライン。SQLiteによる重複防止・スコアリングによるリード選別・1日上限制御を含む。1件あたり30分以上かかっていたリード調査・メール作成工程を95%以上自動化。</p>
+        <p class="work-desc">不動産管理会社からの依頼で開発。業種・地域の組み合わせからGoogleマップ経由で企業情報を自動収集し、公開済みの連絡先をAIで構造化。提案タイプ別（Webサイト制作・業務自動化・AI組み込み）の営業メールをAIが下書き生成し、担当者が内容を確認・承認後にGmailで送信するフルスタックの自動化パイプライン。特定電子メール法に準拠したオプトイン管理・SQLiteによる重複防止・スコアリングによるリード選別・1日上限制御を含む。1件あたり30分以上かかっていたリード調査・メール作成工程を95%以上自動化。</p>
       </div>
       <div class="work-meta">
         <span class="work-period">納期 1ヶ月</span>
@@ -1120,8 +1120,11 @@
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   // お問い合わせフォーム送信
+  let formSubmitted = false;
   document.getElementById('contact-form').addEventListener('submit', async function(e) {
     e.preventDefault();
+    if (formSubmitted) return;
+    formSubmitted = true;
     const btn = document.getElementById('cf-submit');
     const result = document.getElementById('cf-result');
     const name = document.getElementById('cf-name').value.trim();
@@ -1163,7 +1166,8 @@
         throw new Error((data.errors && data.errors[0] && data.errors[0].message) || '送信に失敗しました。');
       }
     } catch (err) {
-      // 送信失敗
+      // 送信失敗時はフラグをリセットして再送信可能にする
+      formSubmitted = false;
       result.style.display = 'block';
       result.style.background = '#fff5f5';
       result.style.color = '#c0392b';
