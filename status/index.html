@@ -309,15 +309,35 @@
 
             const tbody = document.getElementById('taskTableBody');
             tbody.innerHTML = '';
+            // innerHTML によるデータ挿入は XSS リスクがあるため textContent で構築する
             (data.paused_tasks || []).forEach(t => {
                 const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td><span class="task-name">${t.name}</span></td>
-                    <td>${t.purpose}</td>
-                    <td><span class="status-badge">PAUSED</span></td>
-                    <td>${t.paused_date}</td>
-                    <td><span class="resume-text">${t.resume_plan}</span></td>
-                `;
+
+                const tdName = document.createElement('td');
+                const spanName = document.createElement('span');
+                spanName.className = 'task-name';
+                spanName.textContent = t.name;
+                tdName.appendChild(spanName);
+
+                const tdPurpose = document.createElement('td');
+                tdPurpose.textContent = t.purpose;
+
+                const tdStatus = document.createElement('td');
+                const spanStatus = document.createElement('span');
+                spanStatus.className = 'status-badge';
+                spanStatus.textContent = 'PAUSED';
+                tdStatus.appendChild(spanStatus);
+
+                const tdDate = document.createElement('td');
+                tdDate.textContent = t.paused_date;
+
+                const tdResume = document.createElement('td');
+                const spanResume = document.createElement('span');
+                spanResume.className = 'resume-text';
+                spanResume.textContent = t.resume_plan;
+                tdResume.appendChild(spanResume);
+
+                tr.append(tdName, tdPurpose, tdStatus, tdDate, tdResume);
                 tbody.appendChild(tr);
             });
         } catch (e) {
