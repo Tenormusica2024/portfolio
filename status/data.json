@@ -1,0 +1,23 @@
+{
+  "last_updated": "2026-04-01",
+  "cost_note": "Claudeレートリミット対策・コスト管理のため一時停止中。再開時はこのファイルを更新する。",
+  "paused_tasks": [
+    { "name": "AI_Frontier_Intelligence_Daily",  "purpose": "AI最新ニュース収集 → VaultD",           "paused_date": "2026-04-01", "resume_plan": "未定" },
+    { "name": "AI_Frontier_Test2",               "purpose": "同上（テスト版）",                        "paused_date": "2026-04-01", "resume_plan": "未定" },
+    { "name": "AI_Frontier_Test3",               "purpose": "同上（テスト版）",                        "paused_date": "2026-04-01", "resume_plan": "未定" },
+    { "name": "AI_Knowledge_Daily",              "purpose": "AI活用Tips収集 → VaultD",               "paused_date": "2026-04-01", "resume_plan": "未定" },
+    { "name": "AI-Monetization-Daily",           "purpose": "AIマネタイズ情報収集 → VaultD",          "paused_date": "2026-04-01", "resume_plan": "未定" },
+    { "name": "AI Monetization Radar Test",      "purpose": "同上（テスト版）",                        "paused_date": "2026-04-01", "resume_plan": "未定" },
+    { "name": "Marketing_Intelligence_Daily",    "purpose": "マーケティング情報収集 → VaultD",        "paused_date": "2026-04-01", "resume_plan": "未定" },
+    { "name": "Reddit-HN-AI-Buzz-Daily",         "purpose": "Reddit/HN AIバズ収集 → VaultD",         "paused_date": "2026-04-01", "resume_plan": "未定" },
+    { "name": "Personal-Interest-Curator-Daily", "purpose": "個人興味情報収集 → VaultD",              "paused_date": "2026-04-01", "resume_plan": "未定" },
+    { "name": "Knowledge-Grok-Daily",            "purpose": "Grokナレッジ壁打ち → VaultD",            "paused_date": "2026-04-01", "resume_plan": "未定" },
+    { "name": "Monetization-Grok-Daily",         "purpose": "Grokマネタイズ壁打ち → VaultD",          "paused_date": "2026-04-01", "resume_plan": "未定" },
+    { "name": "Strategy_Review_Morning",         "purpose": "朝の戦略レビュー → VaultD",              "paused_date": "2026-04-01", "resume_plan": "未定" },
+    { "name": "Strategy_Review_Evening",         "purpose": "夜の戦略レビュー → VaultD",              "paused_date": "2026-04-01", "resume_plan": "未定" },
+    { "name": "Daily_Digest_Morning",            "purpose": "朝ダイジェスト生成 → VaultD",            "paused_date": "2026-04-01", "resume_plan": "未定" },
+    { "name": "Cognee_VaultD_Daily_Ingest",      "purpose": "VaultDファイルのcognee取込",              "paused_date": "2026-04-01", "resume_plan": "未定" },
+    { "name": "DashboardTrendDaily",             "purpose": "ダッシュボードトレンド",                  "paused_date": "2026-04-01", "resume_plan": "未定" },
+    { "name": "DashboardWeeklyReview",           "purpose": "ダッシュボード週次レビュー",              "paused_date": "2026-04-01", "resume_plan": "未定" }
+  ]
+}
