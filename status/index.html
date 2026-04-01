@@ -203,6 +203,17 @@
             border: 1px solid var(--color-paused);
         }
 
+        .task-link {
+            color: var(--color-accent-dark);
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .task-link:hover {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+        }
+
         .resume-text {
             color: var(--color-text-muted);
             font-size: 0.8rem;
@@ -314,10 +325,20 @@
                 const tr = document.createElement('tr');
 
                 const tdName = document.createElement('td');
-                const spanName = document.createElement('span');
-                spanName.className = 'task-name';
-                spanName.textContent = t.name;
-                tdName.appendChild(spanName);
+                if (t.github_md_url) {
+                    const a = document.createElement('a');
+                    a.href = t.github_md_url;
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                    a.className = 'task-name task-link';
+                    a.textContent = t.name;
+                    tdName.appendChild(a);
+                } else {
+                    const spanName = document.createElement('span');
+                    spanName.className = 'task-name';
+                    spanName.textContent = t.name;
+                    tdName.appendChild(spanName);
+                }
 
                 const tdPurpose = document.createElement('td');
                 tdPurpose.textContent = t.purpose;
