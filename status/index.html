@@ -278,6 +278,23 @@
         <tbody id="taskTableBody"></tbody>
     </table>
 
+    <div class="section-title" style="margin-top: 8px;">
+        X-Auto / High-Frequency <span class="badge-count" id="pausedCountXAuto">0</span>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Task Name</th>
+                <th>Purpose</th>
+                <th>Model</th>
+                <th>Frequency</th>
+                <th>Paused</th>
+            </tr>
+        </thead>
+        <tbody id="taskTableBodyXAuto"></tbody>
+    </table>
+
     <footer>
         Data source: <code>portfolio/status/data.json</code> — OpenClaw reads the same file for paused-task detection.
     </footer>
@@ -363,6 +380,50 @@
 
                 tr.append(tdName, tdPurpose, tdStatus, tdDate, tdResume);
                 tbody.appendChild(tr);
+            });
+
+            // X-Auto / High-Frequency セクション
+            const xAutoTasks = data.paused_tasks_x_auto || [];
+            document.getElementById('pausedCountXAuto').textContent = xAutoTasks.length;
+
+            const tbodyXAuto = document.getElementById('taskTableBodyXAuto');
+            tbodyXAuto.innerHTML = '';
+            xAutoTasks.forEach(t => {
+                const tr = document.createElement('tr');
+
+                const tdName = document.createElement('td');
+                if (t.github_md_url) {
+                    const a = document.createElement('a');
+                    a.href = t.github_md_url;
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                    a.className = 'task-name task-link';
+                    a.textContent = t.name;
+                    tdName.appendChild(a);
+                } else {
+                    const span = document.createElement('span');
+                    span.className = 'task-name';
+                    span.textContent = t.name;
+                    tdName.appendChild(span);
+                }
+
+                const tdPurpose = document.createElement('td');
+                tdPurpose.textContent = t.purpose;
+
+                const tdModel = document.createElement('td');
+                tdModel.textContent = t.model || '—';
+                tdModel.style.fontSize = '0.78rem';
+                tdModel.style.color = 'var(--color-text-muted)';
+
+                const tdFreq = document.createElement('td');
+                tdFreq.textContent = t.frequency || '—';
+                tdFreq.style.fontSize = '0.78rem';
+
+                const tdDate = document.createElement('td');
+                tdDate.textContent = t.paused_date;
+
+                tr.append(tdName, tdPurpose, tdModel, tdFreq, tdDate);
+                tbodyXAuto.appendChild(tr);
             });
         } catch (e) {
             document.getElementById('costNote').textContent = 'データ読み込みエラー: ' + e.message;

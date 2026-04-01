@@ -19,5 +19,10 @@
     { "name": "Cognee_VaultD_Daily_Ingest",      "purpose": "VaultDファイルのcognee取込",              "paused_date": "2026-04-01", "resume_plan": "未定", "github_md_url": null },
     { "name": "DashboardTrendDaily",             "purpose": "ダッシュボードトレンド",                  "paused_date": "2026-04-01", "resume_plan": "未定", "github_md_url": "https://github.com/Tenormusica2024/dashboard/blob/main/scripts/daily-trend.ps1" },
     { "name": "DashboardWeeklyReview",           "purpose": "ダッシュボード週次レビュー",              "paused_date": "2026-04-01", "resume_plan": "未定", "github_md_url": null }
+  ],
+  "paused_tasks_x_auto": [
+    { "name": "GitHub_Repo_Scanner_30min", "purpose": "全GitHubリポジトリスキャン → Discord報告", "paused_date": "2026-04-01", "resume_plan": "未定", "model": "Sonnet（デフォルト）", "frequency": "30分毎（48回/日）", "github_md_url": "https://github.com/Tenormusica2024/portfolio/blob/main/github-repo-scanner.bat" },
+    { "name": "en_insight_to_tweet_0900",  "purpose": "英語AIニュース → ツイート3案生成 → Discord", "paused_date": "2026-04-01", "resume_plan": "未定", "model": "Sonnet → Opus → GLM（フォールバック）", "frequency": "1回/日（09:00）", "github_md_url": null },
+    { "name": "en_insight_to_tweet_1700",  "purpose": "英語AIニュース → ツイート3案生成 → Discord", "paused_date": "2026-04-01", "resume_plan": "未定", "model": "Sonnet → Opus → GLM（フォールバック）", "frequency": "1回/日（17:00）", "github_md_url": null }
   ]
 }
