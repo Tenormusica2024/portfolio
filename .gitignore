@@ -18,3 +18,9 @@ ss_*.png
 
 # Doctor candidate images (clinic)
 **/doctor_candidates/
+zenn_update.log
+
+# 作業用HTMLファイル
+index-improved.html
+profile-improved.html
+projects-improved.html
