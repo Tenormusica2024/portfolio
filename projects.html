@@ -1024,6 +1024,10 @@
                 project_web_remote_desc: "スマートフォンからPCのリアルタイム画面表示とテキスト入力ができるリモートデスクトップシステム。Cloud RunにデプロイしたFlaskバックエンド + WebSocketで低遅延ストリーミングを実現。スマホのブラウザから任意のテキストをPCにペーストできるClipboard Proxy機能搭載。外出先からPCを操作するユースケースに対応。",
                 project_llm_ide_title: "LLM統合開発環境",
                 project_llm_ide_desc: "Cursor IDE + Claude Code + GitHub Copilotを統合したAI駆動開発フロー構築。コード生成速度を従来比3倍に向上、デバッグ時間50%削減。MCP Serverによるツール拡張、Hookシステムによる自動化ワークフローに対応。",
+                project_claude_hooks_title: "Claude Code Hooks System",
+                project_claude_hooks_desc: "Claude Codeのイベント駆動型Hook機能を活用した自動化フレームワーク。SessionStart/Stop/PreCompact等のライフサイクルフックで音声通知・スクリーンショット・セッション管理を自動実行。Python/Node.js連携によりユーザー操作なしで開発ワークフローを継続的に記録・管理。",
+                project_review_pipeline_title: "Review Fix Pipeline",
+                project_review_pipeline_desc: "意図先読み型コードレビュー + 自動修正ループ。独立したサブエージェントコンテキストで自己レビューバイアスを構造的に排除し、レビュー→修正→再レビューを最大5ループ自動実行。CriticalからSuggestionまで優先度別に整理されたフィードバックと数値スコアで品質を定量化。",
                 project_faq_system_title: "FAQデータベース検索システム",
                 project_faq_system_desc: "RAG技術によるFAQ検索システム。1000件超のFAQをOpenAI Embeddingsでベクトル化、平均回答時間を5分→30秒に短縮。FAISS + LangChainによる高速検索、利用者満足度90%。開発ナレッジをドキュメント化し現場展開。",
                 project_daily_automation_title: "デイリータスク自動化スイート",
@@ -1093,6 +1097,10 @@
                 project_web_remote_desc: "Real-time smartphone remote desktop system enabling live PC screen streaming and text input via mobile browser. Flask backend deployed on Cloud Run with WebSocket for low-latency streaming. Features Clipboard Proxy for pasting text from smartphone to PC. Designed for controlling your PC from anywhere.",
                 project_llm_ide_title: "LLM Integrated Development Environment",
                 project_llm_ide_desc: "Built AI-driven development flow integrating Cursor IDE + Claude Code + GitHub Copilot. Achieved 3x faster code generation and 50% reduced debugging time from baseline. Implemented automated workflow via MCP Server tool extensions and Hook system.",
+                project_claude_hooks_title: "Claude Code Hooks System",
+                project_claude_hooks_desc: "Automation framework leveraging Claude Code's event-driven Hook functionality. Lifecycle hooks (SessionStart/Stop/PreCompact, etc.) automatically trigger voice notifications, screenshots, and session management without user intervention. Python/Node.js integration continuously records and manages development workflows.",
+                project_review_pipeline_title: "Review Fix Pipeline",
+                project_review_pipeline_desc: "Intent-first code review with automated fix loop. Structurally eliminates self-review bias by running independent sub-agent contexts, executing review→fix→re-review up to 5 loops automatically. Prioritized feedback (Critical to Suggestion) with numerical quality scores for quantifiable code improvement.",
                 project_faq_system_title: "Internal FAQ Database Search System",
                 project_faq_system_desc: "FAQ search system via RAG technology. Vectorized 1000+ FAQs with OpenAI Embeddings, reduced average response time from 5 minutes to 30 seconds. High-speed search with FAISS + LangChain, achieved 90% user satisfaction and promoted knowledge sharing.",
                 project_daily_automation_title: "Daily Task Automation Suite",
@@ -1546,7 +1554,7 @@
                     <span class="tech-tag">App Store Compliance</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/Tenormusica2024/claude-review-loop?utm_source=portfolio&utm_medium=project_card&utm_campaign=7agent_review_github"
+                    <a href="https://github.com/Tenormusica2024/7-agent-parallel-code-review?utm_source=portfolio&utm_medium=project_card&utm_campaign=7agent_review_github"
                        class="project-link"
                        target="_blank" rel="noopener noreferrer"
                        onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': '7Agent_Review', 'value': 1});">Repository</a>
@@ -1575,6 +1583,10 @@
                     <span class="tech-tag">Cross-platform</span>
                 </div>
                 <div class="project-links">
+                    <a href="https://github.com/Tenormusica2024/voicevox-mcp-notification?utm_source=portfolio&utm_medium=project_card&utm_campaign=voicevox_mcp_github"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'VOICEVOX_MCP', 'value': 1});">Repository</a>
                 </div>
             </div>
 
@@ -1717,7 +1729,53 @@
                     <span class="tech-tag">WSL2</span>
                 </div>
             </div>
-            
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-i18n="project_claude_hooks_title">Claude Code Hooks System</h3>
+                    <span class="project-year">2026</span>
+                </div>
+                <p class="project-description" data-i18n="project_claude_hooks_desc">
+                    Claude Codeのイベント駆動型Hook機能を活用した自動化フレームワーク。SessionStart/Stop/PreCompact等のライフサイクルフックで音声通知・スクリーンショット・セッション管理を自動実行。Python/Node.js連携によりユーザー操作なしで開発ワークフローを継続的に記録・管理。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">Event-Driven</span>
+                    <span class="tech-tag">Automation</span>
+                    <span class="tech-tag">Claude Code</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Tenormusica2024/claude-code-hooks?utm_source=portfolio&utm_medium=project_card&utm_campaign=claude_hooks_github"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'Claude_Hooks', 'value': 1});">Repository</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-i18n="project_review_pipeline_title">Review Fix Pipeline</h3>
+                    <span class="project-year">2026</span>
+                </div>
+                <p class="project-description" data-i18n="project_review_pipeline_desc">
+                    意図先読み型コードレビュー + 自動修正ループ。独立したサブエージェントコンテキストで自己レビューバイアスを構造的に排除し、レビュー→修正→再レビューを最大5ループ自動実行。CriticalからSuggestionまで優先度別に整理されたフィードバックと数値スコアで品質を定量化。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Sub-agents</span>
+                    <span class="tech-tag">CI/CD</span>
+                    <span class="tech-tag">Code Quality</span>
+                    <span class="tech-tag">Claude Code</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Tenormusica2024/review-fix-pipeline?utm_source=portfolio&utm_medium=project_card&utm_campaign=review_pipeline_github"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'Review_Pipeline', 'value': 1});">Repository</a>
+                </div>
+            </div>
+
             <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e5e5e5;">
                 <a href="archive.html#section-ai-dev" 
                    style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: #1a1a1a; color: #888; border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.3s;"
