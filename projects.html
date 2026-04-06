@@ -1196,15 +1196,6 @@
             document.getElementById('contactDropdown').style.display = 'none';
         }
 
-        function copyEmail() {
-            navigator.clipboard.writeText('dragonrondo@gmail.com').then(() => {
-                alert('メールアドレスがコピーされました\ndragonrondo@gmail.com');
-            }).catch(() => {
-                prompt('メールアドレス:', 'dragonrondo@gmail.com');
-            });
-            closeDropdown();
-        }
-
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeDropdown();
@@ -1448,7 +1439,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_bi_dashboard_title">インタラクティブ分析ダッシュボード</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <div style="margin: 1rem 0;">
@@ -1531,7 +1521,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_ai_buzz_title">AI Buzz Extractor</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <div style="margin: 1rem 0;">
@@ -1560,7 +1549,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="featured_sound_title">AI Integrated Sound Platform</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <img src="images/sound_platform_screenshot.png" alt="Sound Platform Main Menu" class="project-screenshot">
@@ -1585,7 +1573,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_code_reviewer_title">7-Agent Parallel<br>Code Review</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <p class="project-description" data-i18n="project_code_reviewer_desc">
@@ -1614,7 +1601,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_voicevox_title">VOICEVOX MCP<br>Notification System</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <p class="project-description" data-i18n="project_voicevox_desc">
@@ -1643,7 +1629,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_claude_hook_title">Claude Code Hook<br>自動化システム</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <div style="margin: 1rem 0;">
@@ -1699,7 +1684,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_zenn_audio_title">Zenn Article Audio Reader</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <div style="margin: 1rem 0;">
@@ -1824,6 +1808,42 @@
                 </div>
             </div>
 
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-i18n="project_zerocost_router_title">zerocost-router</h3>
+                    <span class="new-badge">NEW</span>
+                    <span class="project-year">2026</span>
+                </div>
+                <div style="margin: 1rem 0;">
+                    <img src="zerocost-router-thumbnail.png"
+                         alt="zerocost-router - 無料LLMルーター ランディングページ"
+                         style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
+                </div>
+                <p class="project-description" data-i18n="project_zerocost_router_desc">
+                    複数の無料LLM APIキーを1本の統一キーで管理するOpenAI互換ルーター。
+                    Groq・Cerebras・OpenRouter・Gemini・HuggingFaceの5プロバイダーに対応。
+                    429/5xx検知で自動フェイルオーバー。AES-256-GCM暗号化BYOK方式でCloudflare D1に保存。
+                    code1行変えるだけで既存アプリがゼロコストLLMに移行できる。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Cloudflare Workers</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">D1 / KV</span>
+                    <span class="tech-tag">AES-256-GCM</span>
+                    <span class="tech-tag">OpenAI Compatible</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://zerocost-lp.vercel.app/?utm_source=portfolio&utm_medium=project_card&utm_campaign=zerocost_router_live"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_live', 'event_label': 'zerocost_router', 'value': 1});">Live Demo</a>
+                    <a href="https://github.com/Tenormusica2024/zerocost-router?utm_source=portfolio&utm_medium=project_card&utm_campaign=zerocost_router_github"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'zerocost_router', 'value': 1});">GitHub</a>
+                </div>
+            </div>
+
             <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e5e5e5;">
                 <a href="archive.html#section-ai-dev" 
                    style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: #1a1a1a; color: #888; border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.3s;"
@@ -1912,7 +1932,6 @@
             <div class="project-card" id="work-mv-project-ai-creation">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="music_project_title">作業用MV制作</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 1rem; border-radius: 8px;">
@@ -1947,7 +1966,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_media_portfolio_title">Media Portfolio - AI Video Gallery</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <div style="width: 100%; height: 250px; background: #000; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; position: relative;">
@@ -1982,7 +2000,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_editorial_gallery_title">エディトリアルギャラリー</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <div style="width: 100%; height: 250px; margin: 1rem 0; overflow: hidden; border-radius: 8px;">
@@ -2019,7 +2036,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_neon_blue_title">ネオンブルー</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <div style="margin: 1rem 0; height: 250px; overflow: hidden;">
@@ -2053,41 +2069,6 @@
                 </div>
             </div>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title" data-i18n="project_zerocost_router_title">zerocost-router</h3>
-                    <span class="new-badge">NEW</span>
-                    <span class="project-year">2026</span>
-                </div>
-                <div style="margin: 1rem 0;">
-                    <img src="zerocost-router-thumbnail.png"
-                         alt="zerocost-router - 無料LLMルーター ランディングページ"
-                         style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
-                </div>
-                <p class="project-description" data-i18n="project_zerocost_router_desc">
-                    複数の無料LLM APIキーを1本の統一キーで管理するOpenAI互換ルーター。
-                    Groq・Cerebras・OpenRouter・Gemini・HuggingFaceの5プロバイダーに対応。
-                    429/5xx検知で自動フェイルオーバー。AES-256-GCM暗号化BYOK方式でCloudflare D1に保存。
-                    code1行変えるだけで既存アプリがゼロコストLLMに移行できる。
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Cloudflare Workers</span>
-                    <span class="tech-tag">TypeScript</span>
-                    <span class="tech-tag">D1 / KV</span>
-                    <span class="tech-tag">AES-256-GCM</span>
-                    <span class="tech-tag">OpenAI Compatible</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://zerocost-lp.vercel.app/?utm_source=portfolio&utm_medium=project_card&utm_campaign=zerocost_router_live"
-                       class="project-link"
-                       target="_blank" rel="noopener noreferrer"
-                       onclick="gtag('event', 'cta_click', {'event_category': 'project_live', 'event_label': 'zerocost_router', 'value': 1});">Live Demo</a>
-                    <a href="https://github.com/Tenormusica2024/zerocost-router?utm_source=portfolio&utm_medium=project_card&utm_campaign=zerocost_router_github"
-                       class="project-link"
-                       target="_blank" rel="noopener noreferrer"
-                       onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'zerocost_router', 'value': 1});">GitHub</a>
-                </div>
-            </div>
         </div>
     </div>
 
