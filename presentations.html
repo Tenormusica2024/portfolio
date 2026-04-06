@@ -59,6 +59,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon-180x180.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -111,6 +114,7 @@
         }
 
         .nav-links a:hover { background: #333; color: #ffffff; }
+        .nav-links a.nav-active { color: #222; }
 
         .nav-item { position: relative; }
 
@@ -649,7 +653,7 @@
                     </div>
                 </div>
                 <div class="nav-item">
-                    <a href="presentations.html" data-i18n="nav_presentations" style="color: #222;">Presentations</a>
+                    <a href="presentations.html" data-i18n="nav_presentations" class="nav-active">Presentations</a>
                 </div>
                 <div class="nav-item">
                     <a href="creation.html" data-i18n="nav_creation">Creation</a>

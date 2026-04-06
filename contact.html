@@ -67,6 +67,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -76,19 +79,19 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #f5f1e8;
-            color: #3a3a3a;
+            background: #ffffff;
+            color: #222;
             line-height: 1.6;
         }
 
         /* ── Navigation ── */
         header {
-            background: rgba(245, 241, 232, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid #d4c9b0;
+            border-bottom: 1px solid #e5e5e5;
         }
 
         .nav-container {
@@ -102,9 +105,9 @@
         }
 
         .nav-logo {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: #5a4a3a;
+            color: #222;
             text-decoration: none;
             flex-shrink: 0;
         }
@@ -117,11 +120,11 @@
 
         .nav-links > a,
         .nav-item > a {
-            color: #7a6a5a;
+            color: #666;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.2s ease;
-            padding: 0.6rem 1rem;
+            padding: 0.75rem 1.25rem;
             border-radius: 8px;
             position: relative;
             min-height: 44px;
@@ -134,8 +137,8 @@
         .nav-item > a:hover,
         .nav-links > a.active,
         .nav-item > a.active {
-            background: #5a4a3a;
-            color: #f5f1e8;
+            background: #333;
+            color: #ffffff;
         }
 
         .nav-item {
@@ -175,13 +178,13 @@
 
         .dropdown a {
             display: block;
-            padding: 0.9rem 1.5rem;
-            color: #7a6a5a;
+            padding: 1rem 1.5rem;
+            color: #666;
             text-decoration: none;
             transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             background: transparent;
         }
 
@@ -192,7 +195,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: #5a4a3a;
+            background: #222;
             border-radius: 8px;
             transform: scaleX(0);
             transform-origin: right;
@@ -201,7 +204,7 @@
         }
 
         .dropdown a:hover {
-            color: #f5f1e8;
+            color: #ffffff;
             padding-left: 2rem;
         }
 
@@ -211,21 +214,21 @@
         }
 
         .lang-switch {
-            background: #5a4a3a;
-            color: #f5f1e8;
+            background: #222;
+            color: #ffffff;
             border: none;
             padding: 0.5rem 1rem;
             border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.875rem;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
             margin-left: 1rem;
             flex-shrink: 0;
         }
 
         .lang-switch:hover {
-            background: #3a2a1a;
+            background: #333;
             transform: translateY(-2px);
         }
 
@@ -254,11 +257,11 @@
 
         /* ── Contact Card ── */
         .contact-card {
-            background: #faf8f3;
-            border: 1px solid #d4c9b0;
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
             border-radius: 12px;
             padding: 3rem;
-            box-shadow: 0 4px 6px rgba(90, 74, 58, 0.08);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.06);
         }
 
         .contact-intro {
@@ -268,17 +271,17 @@
         .contact-intro h2 {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
-            color: #5a4a3a;
+            color: #222;
         }
 
         .contact-intro p {
-            color: #7a6a5a;
+            color: #666;
             line-height: 1.8;
         }
 
         .availability-notice {
-            background: linear-gradient(135deg, #f0ede3 0%, #e8e1d3 100%);
-            border-left: 4px solid #8b7355;
+            background: linear-gradient(135deg, #f5f5f5 0%, #eeeeee 100%);
+            border-left: 4px solid #444;
             border-radius: 12px;
             padding: 2rem;
             margin-bottom: 2.5rem;
@@ -287,32 +290,32 @@
         .availability-notice h3 {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
-            color: #5a4a3a;
+            color: #222;
         }
 
         .availability-content {
-            color: #5a4a3a;
+            color: #333;
         }
 
         .availability-option {
-            background: #faf8f3;
+            background: #ffffff;
             border-radius: 8px;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 2px 4px rgba(90, 74, 58, 0.08);
-            border: 1px solid #e8e1d3;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e5e5e5;
         }
 
         .availability-option h4 {
             font-size: 1.2rem;
             margin-bottom: 0.75rem;
-            color: #5a4a3a;
+            color: #222;
         }
 
         .availability-option p {
             margin-bottom: 1rem;
             line-height: 1.7;
-            color: #6a5a4a;
+            color: #444;
         }
 
         .availability-option ul {
@@ -332,25 +335,25 @@
         .availability-note {
             text-align: center;
             font-style: italic;
-            color: #555;
+            color: #666;
             margin-top: 1rem;
             padding-top: 1rem;
             border-top: 1px dashed #ccc;
         }
 
         .availability-note a {
-            color: #8b7355;
+            color: #333;
             text-decoration: underline;
             font-weight: 500;
         }
 
         .availability-note a:hover {
-            color: #5a4a3a;
+            color: #000;
         }
 
         .availability-strengths {
-            background: #f5efd9;
-            border-left: 4px solid #b8985f;
+            background: #f5f5f5;
+            border-left: 4px solid #555;
             border-radius: 8px;
             padding: 1.5rem;
             margin-bottom: 1rem;
@@ -359,7 +362,7 @@
         .availability-strengths h4 {
             font-size: 1.2rem;
             margin-bottom: 0.75rem;
-            color: #5a4a3a;
+            color: #222;
         }
 
         .availability-strengths ul {
@@ -372,13 +375,13 @@
         }
 
         .availability-strengths a {
-            color: #8b7355;
+            color: #333;
             text-decoration: underline;
             font-weight: 500;
         }
 
         .availability-strengths a:hover {
-            color: #5a4a3a;
+            color: #000;
         }
 
         /* ── Form ── */
@@ -390,7 +393,7 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
-            color: #5a4a3a;
+            color: #222;
         }
 
         .form-group input,
@@ -398,21 +401,21 @@
         .form-group textarea {
             width: 100%;
             padding: 0.75rem 1rem;
-            border: 1px solid #d4c9b0;
+            border: 1px solid #ddd;
             border-radius: 8px;
             font-family: inherit;
             font-size: 1rem;
             transition: all 0.3s;
-            background: #faf8f3;
-            color: #3a3a3a;
+            background: #ffffff;
+            color: #222;
         }
 
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #8b7355;
-            box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1);
+            border-color: #333;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
         }
 
         .form-group textarea {
@@ -423,7 +426,7 @@
         .submit-btn {
             width: 100%;
             padding: 1rem 2rem;
-            background: #8b7355;
+            background: #222;
             color: #ffffff;
             border: none;
             border-radius: 8px;
@@ -434,9 +437,9 @@
         }
 
         .submit-btn:hover {
-            background: #6a5a4a;
+            background: #333;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(90, 74, 58, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .submit-btn:disabled {
@@ -455,11 +458,11 @@
 
         .contact-info-item {
             margin-bottom: 0.5rem;
-            color: #7a6a5a;
+            color: #666;
         }
 
         .contact-info-item strong {
-            color: #5a4a3a;
+            color: #222;
         }
 
         /* ── Alert ── */
@@ -490,13 +493,12 @@
         footer {
             text-align: center;
             padding: 3rem 2rem;
-            background: #e8e1d3;
-            border-top: 1px solid #d4c9b0;
+            border-top: 1px solid #e5e5e5;
             margin-top: 4rem;
         }
 
         footer p {
-            color: #7a6a5a;
+            color: #999;
         }
 
         /* ── Responsive ── */
@@ -621,11 +623,11 @@
                             <li><strong>要件定義〜運用・保守まで一貫対応:</strong> 設計・実装・デプロイ・運用保守までワンストップで対応可能</li>
                             <li><strong>MLOps実装経験:</strong> 実務でクラスタリング・Transformerモデル改修・チューニング実績</li>
                             <li><strong>インフラ・ツール実績:</strong> n8n（ワークフロー自動化）、Vercel/Cloudflare（デプロイ）、PostgreSQL（クラウドDB設計・運用）</li>
-                            <li><strong>個人開発:</strong> 詳細なプロジェクト実績は<a href="projects.html" style="color: #8b7355; text-decoration: underline;">Projectsページ</a>をご覧ください</li>
+                            <li><strong>個人開発:</strong> 詳細なプロジェクト実績は<a href="projects.html" style="color: #333; text-decoration: underline;">Projectsページ</a>をご覧ください</li>
                             <li><strong>非同期コミュニケーション:</strong> Slack/GitHub中心の効率的な進捗報告</li>
                         </ul>
                     </div>
-                    <p class="availability-note">どんな内容でもお気軽にご相談ください。詳細な技術スタックは<a href="profile.html" style="color: #8b7355; text-decoration: underline;">Profileページ</a>をご覧ください。</p>
+                    <p class="availability-note">どんな内容でもお気軽にご相談ください。詳細な技術スタックは<a href="profile.html" style="color: #333; text-decoration: underline;">Profileページ</a>をご覧ください。</p>
                 </div>
             </div>
 
