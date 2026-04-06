@@ -30,6 +30,7 @@
   <meta name="twitter:description" content="中小企業・個人事業主向けのWebサイト制作・業務自動化・AI組み込み開発。ITエンジニア歴5年、AI開発エンジニア歴2年。最短2週間・費用対効果の高い開発で現場の課題を解決します。">
   <meta name="twitter:image" content="https://ezlize.com/og-image.png">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231B2A4A' rx='4'/><text x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23B8976C' text-anchor='middle'>K</text></svg>">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -53,6 +54,71 @@
     "sameAs": [
       "https://github.com/Tenormusica2024",
       "https://zenn.dev/tenormusica"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "途中で要件が変わった場合はどうなりますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "軽微な変更・修正は無償で対応します。開発途中での大きな仕様変更については、追加見積りのうえ対応いたします。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "遠方でも依頼できますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい、フルリモートで対応しておりますので全国どこからでもご依頼いただけます。打ち合わせはオンライン（Zoom・Google Meet等）で実施します。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "個人のフリーランスへの発注で品質面が心配です。",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ITエンジニア歴5年・AI開発エンジニア歴2年の実務経験があり、公開可能なコードや制作物はGitHubでご確認いただけます。納品前の確認・修正フェーズあり。NDA締結にも対応しています。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "納品後の保守・運用サポートはありますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "納品後1ヶ月は軽微な修正を無償対応します。継続的な保守・運用サポートは初期費用の10〜20%/月が目安です。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "まず相談だけでも大丈夫ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "もちろんです。「こんなことできる？」「いくらかかる？」という段階からご相談歓迎します。お見積りまでは無料です。"
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "提供サービス",
+    "itemListElement": [
+      { "@type": "Service", "name": "ホームページ制作", "description": "集客・ブランディングを目的としたコーポレートサイトを制作。モバイル対応・お問い合わせフォーム付き。", "provider": { "@type": "ProfessionalService", "name": "Ezlize" } },
+      { "@type": "Service", "name": "予約システム付きサイト", "description": "美容院・整骨院・飲食店向けに、Web予約と集客を一体化したサイトを構築。", "provider": { "@type": "ProfessionalService", "name": "Ezlize" } },
+      { "@type": "Service", "name": "業務自動化", "description": "Excel・スプレッドシートの手作業、日報・見積書・発注書の自動生成をGAS・Python・VBAで実現。", "provider": { "@type": "ProfessionalService", "name": "Ezlize" } },
+      { "@type": "Service", "name": "AI組み込み開発", "description": "ChatGPT・LangChain等のAIを既存業務やツールへ組み込み。社内FAQ Bot・文書要約・自動返信など。", "provider": { "@type": "ProfessionalService", "name": "Ezlize" } },
+      { "@type": "Service", "name": "LINE Bot・LINE連携", "description": "LINE公式アカウントを活用した予約受付・リマインド・問い合わせ自動応答システムを構築。", "provider": { "@type": "ProfessionalService", "name": "Ezlize" } },
+      { "@type": "Service", "name": "受発注・在庫管理システム", "description": "FAX・電話・紙で管理していた受発注をデジタル化。工務店・小売業向けのWeb管理システムを構築。", "provider": { "@type": "ProfessionalService", "name": "Ezlize" } },
+      { "@type": "Service", "name": "データ集計・自動レポート", "description": "売上・KPI・在庫データをGoogleスプレッドシートやダッシュボードに自動集計・可視化。", "provider": { "@type": "ProfessionalService", "name": "Ezlize" } },
+      { "@type": "Service", "name": "既存システム改修・保守", "description": "使いにくいシステムの機能追加・UI改善・バグ修正。他社が構築したシステムの引き継ぎにも対応。", "provider": { "@type": "ProfessionalService", "name": "Ezlize" } }
     ]
   }
   </script>
@@ -618,6 +684,15 @@
       footer { flex-direction: column; gap: 0.6rem; text-align: center; }
       .footer-links { justify-content: center; gap: 1rem; }
     }
+    /* 印刷用スタイル: 社内稟議・比較検討用に印刷可能にする */
+    @media print {
+      nav, .hamburger, #mobileNav, footer, .btn-primary, .works-cta, .hero-status, .form-submit { display: none !important; }
+      body { color: #000; background: #fff; font-size: 11pt; }
+      section, .reveal { opacity: 1 !important; transform: none !important; }
+      a { color: #1B2A4A; text-decoration: underline; }
+      .service-grid, .work-list, .price-grid { break-inside: avoid; }
+      #contact { page-break-before: always; }
+    }
   </style>
 </head>
 <body>
@@ -1166,10 +1241,41 @@
       result.style.color = '#c0392b';
       result.style.border = '1px solid #f5c6cb';
       result.textContent = err.message || 'エラーが発生しました。直接メールにてご連絡ください。';
+      result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      result.focus();
     } finally {
       btn.disabled = false;
       btn.textContent = '送信する';
     }
+  });
+
+  // GA4 カスタムイベントトラッキング
+  // デモサイトリンクのクリック計測
+  document.querySelectorAll('.work-demo-link').forEach(link => {
+    link.addEventListener('click', () => {
+      if (typeof gtag === 'function') {
+        gtag('event', 'click_demo', { event_label: link.textContent.trim(), link_url: link.href });
+      }
+    });
+  });
+  // サービスカードのクリック計測（カード内リンクなし→impression計測として可視化時に発火）
+  const serviceObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && typeof gtag === 'function') {
+        gtag('event', 'view_service', { event_label: e.target.querySelector('.service-name')?.textContent });
+        serviceObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.service-card').forEach(card => serviceObserver.observe(card));
+  // 電話番号・LINEリンクのクリック計測
+  document.querySelectorAll('.contact-link').forEach(link => {
+    link.addEventListener('click', () => {
+      if (typeof gtag === 'function') {
+        const label = link.textContent.trim().replace(/\s+/g, ' ');
+        gtag('event', 'click_contact', { event_label: label, link_url: link.href });
+      }
+    });
   });
 </script>
 </body>
