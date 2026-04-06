@@ -635,43 +635,45 @@
 <body>
     <header class="header">
         <nav class="nav-container">
+            <a href="index.html" class="logo" onclick="sessionStorage.setItem('skipLoadingScreen', 'true');">Urayaha Days</a>
             <div class="nav-links">
-                <a href="index.html" onclick="sessionStorage.setItem('skipLoadingScreen', 'true');">Home</a>
+                <a href="index.html" data-i18n="nav_home" onclick="sessionStorage.setItem('skipLoadingScreen', 'true');">Home</a>
                 <div class="nav-item">
-                    <a href="projects.html">Projects</a>
+                    <a href="projects.html" data-i18n="nav_projects">Projects</a>
                     <div class="dropdown">
-                        <a href="projects.html#section-data-viz">Data Visualization</a>
-                        <a href="projects.html#section-ai-dev">AI-Driven Development</a>
-                        <a href="projects.html#section-automation">Automation</a>
-                        <a href="creation.html">AI Creation</a>
+                        <a href="projects.html#section-data-viz" data-i18n="section_data_viz">Data Visualization</a>
+                        <a href="projects.html#section-ai-dev" data-i18n="section_ai_dev">AI-Driven Development</a>
+                        <a href="projects.html#section-automation" data-i18n="section_automation">Automation</a>
+                        <a href="projects.html#section-ai-creation" data-i18n="section_ai_creation">AI Creation</a>
+                        <a href="projects.html#section-web-design" data-i18n="section_web_design">Web Design</a>
                     </div>
                 </div>
                 <div class="nav-item">
-                    <a href="presentations.html" style="color: #222;">Presentations</a>
+                    <a href="presentations.html" data-i18n="nav_presentations" style="color: #222;">Presentations</a>
                 </div>
                 <div class="nav-item">
-                    <a href="creation.html">Creation</a>
+                    <a href="creation.html" data-i18n="nav_creation">Creation</a>
                     <div class="dropdown">
-                        <a href="editorial-gallery/gallery_editorial.html">Web Design Gallery</a>
-                        <a href="cyberpunk_anime/index.html">SF Anime LP</a>
-                        <a href="creation.html#work-mv-project">Work MV</a>
+                        <a href="editorial-gallery/gallery_editorial.html" data-i18n="creation_web_design">Web Design Gallery</a>
+                        <a href="cyberpunk_anime/index.html" data-i18n="creation_neon_blue">SF Anime LP</a>
+                        <a href="creation.html#work-mv-project" data-i18n="creation_work_mv">Work MV</a>
                     </div>
                 </div>
                 <div class="nav-item">
-                    <a href="profile.html">Profile</a>
+                    <a href="profile.html" data-i18n="nav_profile">Profile</a>
                     <div class="dropdown">
-                        <a href="profile.html#section-about">About Me</a>
-                        <a href="profile.html#section-skills">Technical Skills</a>
-                        <a href="profile.html#section-experience">Professional Experience</a>
-                        <a href="profile.html#section-achievements">Key Achievements</a>
-                        <a href="profile.html#section-philosophy">Development Philosophy</a>
-                        <a href="profile.html#section-vision">AI Philosophy & Vision</a>
+                        <a href="profile.html#section-about" data-i18n="profile_about">About Me</a>
+                        <a href="profile.html#section-skills" data-i18n="profile_skills">Technical Skills</a>
+                        <a href="profile.html#section-experience" data-i18n="profile_experience">Professional Experience</a>
+                        <a href="profile.html#section-achievements" data-i18n="profile_achievements">Key Achievements</a>
+                        <a href="profile.html#section-philosophy" data-i18n="profile_philosophy">Development Philosophy</a>
+                        <a href="profile.html#section-vision" data-i18n="profile_vision">AI Philosophy & Vision</a>
                     </div>
                 </div>
                 <div class="nav-item">
-                    <a href="contact.html">Contact</a>
+                    <a href="contact.html" data-i18n="nav_contact">Contact</a>
                     <div class="dropdown">
-                        <a href="contact.html">Contact Form</a>
+                        <a href="contact.html" data-i18n="contact_form">Contact Form</a>
                         <a href="https://x.com/SundererD27468" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
                         <a href="https://github.com/Tenormusica2024" target="_blank" rel="noopener noreferrer">GitHub</a>
                     </div>
@@ -853,9 +855,31 @@
             document.querySelectorAll('.feature-card').forEach(card => observer.observe(card));
         });
 
-        let currentLang = 'ja';
-        const tr = {
+        let currentLang = localStorage.getItem('language') || 'ja';
+        const translations = {
             ja: {
+                nav_home: "Home",
+                nav_projects: "Projects",
+                nav_presentations: "Presentations",
+                nav_creation: "Creation",
+                nav_profile: "Profile",
+                nav_contact: "Contact",
+                section_data_viz: "データ可視化・分析プロジェクト",
+                section_ai_dev: "AI駆動開発プロジェクト",
+                section_automation: "業務自動化・Webスクレイピング",
+                section_ai_creation: "AI創作プロジェクト",
+                section_web_design: "Webデザインプロジェクト",
+                creation_web_design: "Web Design Gallery",
+                creation_neon_blue: "SF Anime LP",
+                creation_work_mv: "作業用MV制作",
+                profile_about: "About Me",
+                profile_skills: "Technical Skills",
+                profile_experience: "Professional Experience",
+                profile_achievements: "Key Achievements",
+                profile_philosophy: "Development Philosophy",
+                profile_vision: "AI Philosophy & Vision",
+                contact_form: "お問い合わせフォーム",
+                lang_button: "EN",
                 hero_label: "Consulting-Grade Presentations",
                 hero_title: "AI Strategy<br>Analysis Decks",
                 hero_desc: "BCG / McKinsey / Deloitteレベルのコンサルティングデザインで制作した、日本企業のAI戦略に関するインタラクティブプレゼンテーション資料。reveal.js + Chart.js によるデータドリブンなスライド体験。",
@@ -885,6 +909,28 @@
                 footer_rights: "© 2026 Urayaha Days. All rights reserved."
             },
             en: {
+                nav_home: "Home",
+                nav_projects: "Projects",
+                nav_presentations: "Presentations",
+                nav_creation: "Creation",
+                nav_profile: "Profile",
+                nav_contact: "Contact",
+                section_data_viz: "Data Visualization & Analysis",
+                section_ai_dev: "AI-Driven Development",
+                section_automation: "Automation & Web Scraping",
+                section_ai_creation: "AI Creative Projects",
+                section_web_design: "Web Design Projects",
+                creation_web_design: "Web Design Gallery",
+                creation_neon_blue: "SF Anime LP",
+                creation_work_mv: "Work MV Production",
+                profile_about: "About Me",
+                profile_skills: "Technical Skills",
+                profile_experience: "Professional Experience",
+                profile_achievements: "Key Achievements",
+                profile_philosophy: "Development Philosophy",
+                profile_vision: "AI Philosophy & Vision",
+                contact_form: "Contact Form",
+                lang_button: "JA",
                 hero_label: "Consulting-Grade Presentations",
                 hero_title: "AI Strategy<br>Analysis Decks",
                 hero_desc: "Interactive presentation materials on Japanese corporate AI strategy, crafted with BCG / McKinsey / Deloitte-level consulting design. Data-driven slide experience powered by reveal.js + Chart.js.",
@@ -917,27 +963,24 @@
 
         function switchLanguage() {
             currentLang = currentLang === 'ja' ? 'en' : 'ja';
-            const t = tr[currentLang];
+            localStorage.setItem('language', currentLang);
+            const t = translations[currentLang];
             document.querySelector('.lang-switch').textContent = currentLang === 'ja' ? 'EN' : 'JA';
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (t[key]) {
-                    if (el.tagName === 'H1' || key.includes('title') && el.tagName === 'H1') {
-                        el.innerHTML = t[key];
-                    } else {
-                        el.textContent = t[key];
-                    }
+                    el.innerHTML = t[key];
                 }
             });
         }
 
         (function initLang() {
-            const t = tr['ja'];
+            const t = translations[currentLang];
+            document.querySelector('.lang-switch').textContent = currentLang === 'ja' ? 'EN' : 'JA';
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (t[key]) {
-                    if (el.tagName === 'H1') el.innerHTML = t[key];
-                    else el.textContent = t[key];
+                    el.innerHTML = t[key];
                 }
             });
         })();
