@@ -265,8 +265,64 @@ class GA4DataCollector:
             'devices': device_list,
             'browsers': browser_list,
         }
+
+    def get_site_comparison_daily(self, data):
+        """C2C / B2B の日別推移を派生集計する。"""
+        buckets = {}
+
+        def ensure_bucket(date_key: str):
+            if date_key not in buckets:
+                buckets[date_key] = {
+                    'date': date_key,
+                    'c2c_page_views': 0,
+                    'c2c_sessions': 0,
+                    'c2c_users': 0,
+                    'b2b_page_views': 0,
+                    'b2b_sessions': 0,
+                    'b2b_users': 0,
+                }
+            return buckets[date_key]
+
+        for row in data:
+            raw_date = row.get('date', '')
+            if len(raw_date) != 8:
+                continue
+            date_key = f"{raw_date[:4]}-{raw_date[4:6]}-{raw_date[6:8]}"
+            bucket = ensure_bucket(date_key)
+            page_path = row.get('page_path', '') or ''
+            page_title = row.get('page_title', '') or ''
+
+            is_c2c = page_path.startswith('/portfolio/')
+            is_b2b = 'Ezlize' in page_title
+
+            if is_c2c:
+                bucket['c2c_page_views'] += row['page_views']
+                bucket['c2c_sessions'] += row['sessions']
+                bucket['c2c_users'] += row['active_users']
+
+            if is_b2b:
+                bucket['b2b_page_views'] += row['page_views']
+                bucket['b2b_sessions'] += row['sessions']
+                bucket['b2b_users'] += row['active_users']
+
+        daily = [buckets[k] for k in sorted(buckets.keys(), reverse=True)]
+        summary = {
+            'c2c_total_page_views': sum(row['c2c_page_views'] for row in daily),
+            'b2b_total_page_views': sum(row['b2b_page_views'] for row in daily),
+            'c2c_total_sessions': sum(row['c2c_sessions'] for row in daily),
+            'b2b_total_sessions': sum(row['b2b_sessions'] for row in daily),
+            'c2c_total_users': sum(row['c2c_users'] for row in daily),
+            'b2b_total_users': sum(row['b2b_users'] for row in daily),
+            'days_with_c2c_traffic': sum(1 for row in daily if row['c2c_page_views'] > 0),
+            'days_with_b2b_traffic': sum(1 for row in daily if row['b2b_page_views'] > 0),
+        }
+
+        return {
+            'summary': summary,
+            'daily': daily,
+        }
     
-    def save_data(self, data, summary, project_clicks, project_page_views, page_performance, device_browser, start_date, end_date):
+    def save_data(self, data, summary, project_clicks, project_page_views, page_performance, device_browser, site_comparison_daily, start_date, end_date):
         """データを保存"""
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         
@@ -282,6 +338,7 @@ class GA4DataCollector:
             'project_page_views': project_page_views,
             'page_performance': page_performance,
             'device_browser': device_browser,
+            'site_comparison_daily': site_comparison_daily,
         }
         
         json_file = self.output_dir / f"ga4_data_{timestamp}.json"
@@ -395,8 +452,16 @@ class GA4DataCollector:
             self.log_message("Device & Browser分析中...")
             device_browser = self.get_device_browser_stats(data)
             self.log_message(f"Device種類: {len(device_browser['devices'])}, Browser種類: {len(device_browser['browsers'])}")
+
+            # C2C/B2B 日別比較を集計
+            self.log_message("C2C/B2B日別比較を集計中...")
+            site_comparison_daily = self.get_site_comparison_daily(data)
+            self.log_message(
+                f"比較集計: C2C PV={site_comparison_daily['summary']['c2c_total_page_views']}, "
+                f"B2B PV={site_comparison_daily['summary']['b2b_total_page_views']}"
+            )
             
-            output_file = self.save_data(data, summary, project_clicks, project_page_views_list, page_performance, device_browser, start_str, end_str)
+            output_file = self.save_data(data, summary, project_clicks, project_page_views_list, page_performance, device_browser, site_comparison_daily, start_str, end_str)
             
             self.log_message("データ収集完了")
             
