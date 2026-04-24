@@ -47822,5 +47822,298 @@
         "percentage": 0.1
       }
     ]
+  },
+  "site_comparison_daily": {
+    "summary": {
+      "c2c_total_page_views": 93,
+      "b2b_total_page_views": 66,
+      "c2c_total_sessions": 87,
+      "b2b_total_sessions": 64,
+      "c2c_total_users": 81,
+      "b2b_total_users": 56,
+      "days_with_c2c_traffic": 19,
+      "days_with_b2b_traffic": 9
+    },
+    "daily": [
+      {
+        "date": "2026-04-05",
+        "c2c_page_views": 0,
+        "c2c_sessions": 0,
+        "c2c_users": 0,
+        "b2b_page_views": 1,
+        "b2b_sessions": 1,
+        "b2b_users": 1
+      },
+      {
+        "date": "2026-04-04",
+        "c2c_page_views": 0,
+        "c2c_sessions": 0,
+        "c2c_users": 0,
+        "b2b_page_views": 3,
+        "b2b_sessions": 3,
+        "b2b_users": 3
+      },
+      {
+        "date": "2026-04-03",
+        "c2c_page_views": 3,
+        "c2c_sessions": 2,
+        "c2c_users": 2,
+        "b2b_page_views": 4,
+        "b2b_sessions": 4,
+        "b2b_users": 4
+      },
+      {
+        "date": "2026-04-02",
+        "c2c_page_views": 8,
+        "c2c_sessions": 8,
+        "c2c_users": 8,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-04-01",
+        "c2c_page_views": 3,
+        "c2c_sessions": 3,
+        "c2c_users": 3,
+        "b2b_page_views": 18,
+        "b2b_sessions": 19,
+        "b2b_users": 17
+      },
+      {
+        "date": "2026-03-31",
+        "c2c_page_views": 0,
+        "c2c_sessions": 0,
+        "c2c_users": 0,
+        "b2b_page_views": 13,
+        "b2b_sessions": 14,
+        "b2b_users": 13
+      },
+      {
+        "date": "2026-03-30",
+        "c2c_page_views": 6,
+        "c2c_sessions": 7,
+        "c2c_users": 7,
+        "b2b_page_views": 4,
+        "b2b_sessions": 2,
+        "b2b_users": 2
+      },
+      {
+        "date": "2026-03-29",
+        "c2c_page_views": 0,
+        "c2c_sessions": 0,
+        "c2c_users": 0,
+        "b2b_page_views": 3,
+        "b2b_sessions": 4,
+        "b2b_users": 3
+      },
+      {
+        "date": "2026-03-28",
+        "c2c_page_views": 1,
+        "c2c_sessions": 1,
+        "c2c_users": 1,
+        "b2b_page_views": 14,
+        "b2b_sessions": 12,
+        "b2b_users": 10
+      },
+      {
+        "date": "2026-03-27",
+        "c2c_page_views": 23,
+        "c2c_sessions": 22,
+        "c2c_users": 21,
+        "b2b_page_views": 6,
+        "b2b_sessions": 5,
+        "b2b_users": 3
+      },
+      {
+        "date": "2026-03-26",
+        "c2c_page_views": 1,
+        "c2c_sessions": 1,
+        "c2c_users": 1,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-25",
+        "c2c_page_views": 0,
+        "c2c_sessions": 0,
+        "c2c_users": 0,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-24",
+        "c2c_page_views": 10,
+        "c2c_sessions": 7,
+        "c2c_users": 5,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-23",
+        "c2c_page_views": 3,
+        "c2c_sessions": 3,
+        "c2c_users": 2,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-22",
+        "c2c_page_views": 2,
+        "c2c_sessions": 2,
+        "c2c_users": 0,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-21",
+        "c2c_page_views": 0,
+        "c2c_sessions": 0,
+        "c2c_users": 0,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-20",
+        "c2c_page_views": 2,
+        "c2c_sessions": 2,
+        "c2c_users": 2,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-19",
+        "c2c_page_views": 0,
+        "c2c_sessions": 0,
+        "c2c_users": 0,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-18",
+        "c2c_page_views": 1,
+        "c2c_sessions": 1,
+        "c2c_users": 1,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-17",
+        "c2c_page_views": 8,
+        "c2c_sessions": 7,
+        "c2c_users": 7,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-16",
+        "c2c_page_views": 1,
+        "c2c_sessions": 1,
+        "c2c_users": 1,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-15",
+        "c2c_page_views": 0,
+        "c2c_sessions": 0,
+        "c2c_users": 0,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-14",
+        "c2c_page_views": 0,
+        "c2c_sessions": 0,
+        "c2c_users": 0,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-13",
+        "c2c_page_views": 1,
+        "c2c_sessions": 1,
+        "c2c_users": 1,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-12",
+        "c2c_page_views": 2,
+        "c2c_sessions": 2,
+        "c2c_users": 2,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-11",
+        "c2c_page_views": 0,
+        "c2c_sessions": 0,
+        "c2c_users": 0,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-10",
+        "c2c_page_views": 0,
+        "c2c_sessions": 0,
+        "c2c_users": 0,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-09",
+        "c2c_page_views": 0,
+        "c2c_sessions": 0,
+        "c2c_users": 0,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-08",
+        "c2c_page_views": 1,
+        "c2c_sessions": 1,
+        "c2c_users": 1,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-07",
+        "c2c_page_views": 5,
+        "c2c_sessions": 5,
+        "c2c_users": 5,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      },
+      {
+        "date": "2026-03-06",
+        "c2c_page_views": 12,
+        "c2c_sessions": 11,
+        "c2c_users": 11,
+        "b2b_page_views": 0,
+        "b2b_sessions": 0,
+        "b2b_users": 0
+      }
+    ]
   }
 }
