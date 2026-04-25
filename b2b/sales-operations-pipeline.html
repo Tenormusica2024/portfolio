@@ -714,8 +714,10 @@
     .sales-page .hero-title { max-width: 720px; font-size: clamp(1.82rem, 3.1vw, 2.65rem); line-height: 1.42; }
     .sales-page .hero-eyebrow { max-width: 100%; overflow-wrap: anywhere; }
     .sales-page .hero-visual { margin: 0; }
-    .sales-page .hero-visual img { display: block; width: 100%; height: auto; border-radius: 20px; box-shadow: 0 24px 54px rgba(27,42,74,0.14); }
+    .sales-page .hero-visual img { display: block; width: 100%; height: auto; border-radius: 22px; box-shadow: 0 28px 62px rgba(27,42,74,0.16); }
     .sales-page .hero-visual figcaption { margin-top: 0.75rem; color: var(--muted); font-size: 0.72rem; letter-spacing: 0.08em; text-align: center; }
+    .sales-page .safety-strip { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 0.75rem; margin-top: 1.35rem; }
+    .sales-page .safety-chip { background: rgba(255,255,255,0.78); border:1px solid var(--border); padding:0.75rem 0.8rem; color:var(--navy); font-size:0.78rem; font-weight:700; letter-spacing:0.04em; text-align:center; }
     .sales-page .detail-card,
     .sales-page .case-card { min-height: auto; }
     .sales-page .case-card h3 { color: var(--navy); margin: 0.35rem 0 0.45rem; font-size: 1rem; }
@@ -743,6 +745,8 @@
       .sales-page .hero-visual { order: -1; margin-top: 0.25rem; }
       .sales-page .hero-visual img { border-radius: 14px; box-shadow: 0 18px 38px rgba(27,42,74,0.12); }
       .sales-page .hero-visual figcaption { font-size: 0.68rem; }
+      .sales-page .safety-strip { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.55rem; }
+      .sales-page .safety-chip { font-size:0.72rem; padding:0.65rem 0.55rem; }
       .sales-page .hero-actions { flex-direction: column; align-items: stretch; gap: 0.85rem; }
       .sales-page .hero-actions .btn-primary,
       .sales-page .hero-actions .btn-secondary { width: 100%; justify-content: center; text-align: center; }
@@ -789,8 +793,14 @@
         <a class="back-link" href="/">トップへ戻る</a>
       </div>
       <figure class="hero-visual" aria-label="営業運用パイプラインの図解">
-        <img src="assets/sales-ops-pipeline-visual.svg" alt="リード調査、送信前承認、安全送信、返信分類、再実行、監査ログをつなぐ営業運用パイプラインの図解" width="1200" height="820" loading="eager" decoding="async">
+        <img src="assets/sales-ops-pipeline-hero.png" alt="承認、分類、ログ、再実行を前提にしたAI営業運用ワークフローの抽象ビジュアル" width="1600" height="1000" loading="eager" decoding="async">
         <figcaption>承認・分類・ログ・再実行を前提にした営業運用の全体像</figcaption>
+        <div class="safety-strip" aria-label="安全運用の主要要素">
+          <span class="safety-chip">送信前承認</span>
+          <span class="safety-chip">重複防止</span>
+          <span class="safety-chip">返信分類</span>
+          <span class="safety-chip">監査ログ</span>
+        </div>
       </figure>
     </div>
   </div>
