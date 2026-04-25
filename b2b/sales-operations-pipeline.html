@@ -725,6 +725,16 @@
     .sales-page .case-num { display: inline-block; color: var(--gold); font-size: 0.72rem; letter-spacing: 0.16em; margin-bottom: 0.25rem; }
     .sales-page .section-label { color: var(--gold); }
     .sales-page .reveal { opacity: 1; transform: none; }
+
+    .sales-page .workflow-map-section { background: linear-gradient(180deg, var(--bg-section) 0%, var(--bg) 100%); }
+    .sales-page .workflow-map-section .detail-wrap { max-width: 1180px; }
+    .sales-page .workflow-map-shell { border: 1px solid var(--border); background: rgba(255,255,255,0.82); padding: 1.2rem; box-shadow: 0 24px 55px rgba(27,42,74,0.08); }
+    .sales-page .workflow-map-scroll { overflow-x: auto; padding-bottom: 0.3rem; }
+    .sales-page .workflow-map-scroll::-webkit-scrollbar { height: 8px; }
+    .sales-page .workflow-map-scroll::-webkit-scrollbar-thumb { background: rgba(184,151,108,0.45); border-radius: 999px; }
+    .sales-page .workflow-map { margin: 0; }
+    .sales-page .workflow-map img { display: block; width: 100%; height: auto; border-radius: 18px; box-shadow: 0 18px 42px rgba(27,42,74,0.12); }
+    .sales-page .workflow-map figcaption { margin-top: 0.85rem; color: var(--muted); font-size: 0.78rem; line-height: 1.8; text-align: center; }
     .sales-page .fit-list { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; margin-top: 1.6rem; }
     .sales-page .fit-item { border: 1px solid var(--border); background: var(--white); padding: 1.25rem; }
     .sales-page .fit-item strong { display: block; color: var(--navy); font-size: 0.95rem; margin-bottom: 0.45rem; }
@@ -756,6 +766,11 @@
       .sales-page .fit-list,
       .sales-page .process-grid,
       .sales-page .two-column-note { grid-template-columns: 1fr; }
+
+      .sales-page .workflow-map-shell { padding: 0.8rem; margin-left: -0.2rem; margin-right: -0.2rem; }
+      .sales-page .workflow-map-scroll { margin-left: -0.1rem; margin-right: -0.1rem; }
+      .sales-page .workflow-map img { min-width: 980px; border-radius: 12px; }
+      .sales-page .workflow-map figcaption { text-align: left; font-size: 0.7rem; }
       .sales-page .footer-links { flex-wrap: wrap; }
     }
   </style>
@@ -836,6 +851,21 @@
         <li>ICP固定・対象外条件・送信上限制御</li>
         <li>状態遷移管理と運用ダッシュボード</li>
       </ul>
+    </div>
+  </div>
+</section>
+<section class="workflow-map-section">
+  <div class="detail-wrap">
+    <p class="section-label reveal">ワークフロー図</p>
+    <h2 class="section-title reveal">営業AIを、承認・分岐・ログまで含む運用図に落とします</h2>
+    <p class="section-subtitle reveal">参照画像のように「何が、どこへ流れ、どこで人が確認し、失敗時にどこへ戻るか」が一目で分かる図として整理します。</p>
+    <div class="workflow-map-shell reveal">
+      <div class="workflow-map-scroll" aria-label="営業運用パイプラインの詳細ワークフロー図。横にスクロールできます。">
+        <figure class="workflow-map">
+          <img src="assets/sales-ops-workflow-map.jpg" alt="対象リスト固定、AI下書き生成、送信前承認、安全チェック、バッチ送信、返信分類、監査ログ、再実行、状態管理をつないだ営業運用パイプライン図" width="1800" height="1125" loading="eager" decoding="async">
+          <figcaption>文字で追える業務フロー図。スマートフォンでは横スクロールで詳細を確認できます。</figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 </section>
@@ -923,3 +953,5 @@
 </script>
 </body>
 </html>
+
+
