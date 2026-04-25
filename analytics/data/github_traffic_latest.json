@@ -1,0 +1,646 @@
+{
+  "collected_at": "2026-04-25T16:31:53.7767333Z",
+  "owner": "Tenormusica2024",
+  "window": "GitHub Traffic API rolling 14 days",
+  "visibility": "public",
+  "includes_private": false,
+  "includes_archived": false,
+  "summary": {
+    "repo_count": 23,
+    "total_views": 40,
+    "total_unique_visitors": 24,
+    "total_clones": 2954,
+    "total_unique_cloners": 1191,
+    "repos_with_views": 11,
+    "repos_with_clones": 23
+  },
+  "repositories": [
+    {
+      "name": "huggingface-daily-insights-api",
+      "name_with_owner": "Tenormusica2024/huggingface-daily-insights-api",
+      "url": "https://github.com/Tenormusica2024/huggingface-daily-insights-api",
+      "description": "Daily insights API for HuggingFace models, arXiv papers & LMArena rankings - with historical time-series data",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 0,
+      "forks": 0,
+      "updated_at": "2026-04-22T14:46:13Z",
+      "pushed_at": "2026-04-25T01:26:48Z",
+      "views": 11,
+      "unique_visitors": 8,
+      "clones": 181,
+      "unique_cloners": 92,
+      "top_referrers": [
+        {
+          "referrer": "github.com",
+          "count": 4,
+          "uniques": 3
+        }
+      ],
+      "top_paths": [
+        {
+          "path": "/Tenormusica2024/huggingface-daily-insights-api",
+          "title": "Overview",
+          "count": 9,
+          "uniques": 8
+        },
+        {
+          "path": "/Tenormusica2024/huggingface-daily-insights-api/commit/e45bf9f3f101e4347f0d72c151983b70cfca7695",
+          "title": "/commit/e45bf9f3f101e4347f0d72c151983b70cfca7695",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/Tenormusica2024/huggingface-daily-insights-api/commits/master",
+          "title": "/commits/master",
+          "count": 1,
+          "uniques": 1
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "7-agent-parallel-code-review",
+      "name_with_owner": "Tenormusica2024/7-agent-parallel-code-review",
+      "url": "https://github.com/Tenormusica2024/7-agent-parallel-code-review",
+      "description": "Parallel Code Review for Claude Code - 7/12/17 agents for Security, Quality, Performance, UX, Accessibility, App Store compliance",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 1,
+      "forks": 0,
+      "updated_at": "2026-01-24T15:21:27Z",
+      "pushed_at": "2026-01-24T15:21:23Z",
+      "views": 7,
+      "unique_visitors": 1,
+      "clones": 11,
+      "unique_cloners": 11,
+      "top_referrers": [
+        {
+          "referrer": "github.com",
+          "count": 7,
+          "uniques": 1
+        }
+      ],
+      "top_paths": [
+        {
+          "path": "/Tenormusica2024/7-agent-parallel-code-review",
+          "title": "Overview",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/Tenormusica2024/7-agent-parallel-code-review/blob/master/commands/pr-review.md",
+          "title": "/blob/master/commands/pr-review.md",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/Tenormusica2024/7-agent-parallel-code-review/tree/master/commands",
+          "title": "/tree/master/commands",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/Tenormusica2024/7-agent-parallel-code-review/tree/master/.github/workflows",
+          "title": "/tree/master/.github/workflows",
+          "count": 1,
+          "uniques": 1
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "Tenormusica2024",
+      "name_with_owner": "Tenormusica2024/Tenormusica2024",
+      "url": "https://github.com/Tenormusica2024/Tenormusica2024",
+      "description": "GitHub profile README",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 0,
+      "forks": 0,
+      "updated_at": "2026-04-18T07:16:54Z",
+      "pushed_at": "2026-04-18T07:16:50Z",
+      "views": 4,
+      "unique_visitors": 2,
+      "clones": 92,
+      "unique_cloners": 53,
+      "top_referrers": [
+        {
+          "referrer": "github.com",
+          "count": 2,
+          "uniques": 1
+        }
+      ],
+      "top_paths": [
+        {
+          "path": "/Tenormusica2024/Tenormusica2024",
+          "title": "Overview",
+          "count": 4,
+          "uniques": 2
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "claude-review-pdca",
+      "name_with_owner": "Tenormusica2024/claude-review-pdca",
+      "url": "https://github.com/Tenormusica2024/claude-review-pdca",
+      "description": "Closed-loop PDCA system for Claude Code: automatically surfaces past review findings during implementation, learns false-positive patterns, and writes them back to project instructions.",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 0,
+      "forks": 0,
+      "updated_at": "2026-04-06T11:37:11Z",
+      "pushed_at": "2026-04-11T02:28:36Z",
+      "views": 4,
+      "unique_visitors": 3,
+      "clones": 38,
+      "unique_cloners": 20,
+      "top_referrers": [
+        {
+          "referrer": "github.com",
+          "count": 3,
+          "uniques": 2
+        }
+      ],
+      "top_paths": [
+        {
+          "path": "/Tenormusica2024/claude-review-pdca",
+          "title": "Overview",
+          "count": 3,
+          "uniques": 2
+        },
+        {
+          "path": "/Tenormusica2024/claude-review-pdca/pulls",
+          "title": "/pulls",
+          "count": 1,
+          "uniques": 1
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "portfolio",
+      "name_with_owner": "Tenormusica2024/portfolio",
+      "url": "https://github.com/Tenormusica2024/portfolio",
+      "description": "Personal portfolio website showcasing AI/ML projects and skills",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 1,
+      "forks": 0,
+      "updated_at": "2026-04-25T02:51:32Z",
+      "pushed_at": "2026-04-25T02:51:29Z",
+      "views": 3,
+      "unique_visitors": 3,
+      "clones": 948,
+      "unique_cloners": 337,
+      "top_referrers": [
+        {
+          "referrer": "github.com",
+          "count": 2,
+          "uniques": 2
+        }
+      ],
+      "top_paths": [
+        {
+          "path": "/Tenormusica2024/portfolio",
+          "title": "Overview",
+          "count": 2,
+          "uniques": 2
+        },
+        {
+          "path": "/Tenormusica2024/portfolio/actions/runs/24869163472",
+          "title": "/actions/runs/24869163472",
+          "count": 1,
+          "uniques": 1
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "claude-code-hooks",
+      "name_with_owner": "Tenormusica2024/claude-code-hooks",
+      "url": "https://github.com/Tenormusica2024/claude-code-hooks",
+      "description": "Stop hooks for Claude Code — quality guardrails against user-delegation and false-completion",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 0,
+      "forks": 0,
+      "updated_at": "2026-04-18T14:16:46Z",
+      "pushed_at": "2026-04-18T15:11:15Z",
+      "views": 3,
+      "unique_visitors": 1,
+      "clones": 105,
+      "unique_cloners": 50,
+      "top_referrers": [
+        {
+          "referrer": "github.com",
+          "count": 3,
+          "uniques": 1
+        }
+      ],
+      "top_paths": [
+        {
+          "path": "/Tenormusica2024/claude-code-hooks",
+          "title": "Overview",
+          "count": 3,
+          "uniques": 1
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "review-fix-pipeline",
+      "name_with_owner": "Tenormusica2024/review-fix-pipeline",
+      "url": "https://github.com/Tenormusica2024/review-fix-pipeline",
+      "description": "Intent-first code review + automated fix loop. Eliminates self-review bias via independent sub-agent contexts.",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 0,
+      "forks": 0,
+      "updated_at": "2026-04-18T17:26:49Z",
+      "pushed_at": "2026-04-18T17:26:45Z",
+      "views": 2,
+      "unique_visitors": 1,
+      "clones": 231,
+      "unique_cloners": 95,
+      "top_referrers": [
+        {
+          "referrer": "github.com",
+          "count": 2,
+          "uniques": 1
+        }
+      ],
+      "top_paths": [
+        {
+          "path": "/Tenormusica2024/review-fix-pipeline",
+          "title": "Overview",
+          "count": 2,
+          "uniques": 1
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "voicevox-mcp-notification",
+      "name_with_owner": "Tenormusica2024/voicevox-mcp-notification",
+      "url": "https://github.com/Tenormusica2024/voicevox-mcp-notification",
+      "description": "VOICEVOX MCP Server for Claude Code voice notifications",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 1,
+      "forks": 0,
+      "updated_at": "2026-01-24T15:23:41Z",
+      "pushed_at": "2026-01-24T15:23:37Z",
+      "views": 2,
+      "unique_visitors": 1,
+      "clones": 27,
+      "unique_cloners": 22,
+      "top_referrers": [
+        {
+          "referrer": "github.com",
+          "count": 2,
+          "uniques": 1
+        }
+      ],
+      "top_paths": [
+        {
+          "path": "/Tenormusica2024/voicevox-mcp-notification",
+          "title": "Overview",
+          "count": 2,
+          "uniques": 1
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "mermaid-hover-viewer",
+      "name_with_owner": "Tenormusica2024/mermaid-hover-viewer",
+      "url": "https://github.com/Tenormusica2024/mermaid-hover-viewer",
+      "description": "Mermaid.js flowchart viewer with hover detail panel",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 0,
+      "forks": 0,
+      "updated_at": "2026-03-26T09:33:09Z",
+      "pushed_at": "2026-02-03T02:28:34Z",
+      "views": 2,
+      "unique_visitors": 2,
+      "clones": 17,
+      "unique_cloners": 15,
+      "top_referrers": [
+        {
+          "referrer": "github.com",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "referrer": "yandex.ru",
+          "count": 1,
+          "uniques": 1
+        }
+      ],
+      "top_paths": [
+        {
+          "path": "/Tenormusica2024/mermaid-hover-viewer",
+          "title": "Overview",
+          "count": 2,
+          "uniques": 2
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "neon-charts",
+      "name_with_owner": "Tenormusica2024/neon-charts",
+      "url": "https://github.com/Tenormusica2024/neon-charts",
+      "description": "",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 1,
+      "forks": 0,
+      "updated_at": "2026-04-19T23:26:56Z",
+      "pushed_at": "2026-04-25T15:10:15Z",
+      "views": 1,
+      "unique_visitors": 1,
+      "clones": 777,
+      "unique_cloners": 186,
+      "top_referrers": [
+        {
+          "referrer": "github.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ],
+      "top_paths": [
+        {
+          "path": "/Tenormusica2024/neon-charts",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "Claude-Skills",
+      "name_with_owner": "Tenormusica2024/Claude-Skills",
+      "url": "https://github.com/Tenormusica2024/Claude-Skills",
+      "description": "Complete guide to Claude Skills - Anthropic official extension system",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 0,
+      "forks": 0,
+      "updated_at": "2026-01-24T15:23:46Z",
+      "pushed_at": "2026-01-24T15:23:42Z",
+      "views": 1,
+      "unique_visitors": 1,
+      "clones": 7,
+      "unique_cloners": 7,
+      "top_referrers": [
+        {
+          "referrer": "github.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ],
+      "top_paths": [
+        {
+          "path": "/Tenormusica2024/Claude-Skills",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ],
+      "error": null
+    },
+    {
+      "name": "photo-gallery",
+      "name_with_owner": "Tenormusica2024/photo-gallery",
+      "url": "https://github.com/Tenormusica2024/photo-gallery",
+      "description": "Invite-based private photo gallery — Next.js + Supabase + Cloudinary + Vercel",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 0,
+      "forks": 0,
+      "updated_at": "2026-04-13T17:09:17Z",
+      "pushed_at": "2026-04-15T06:15:58Z",
+      "views": 0,
+      "unique_visitors": 0,
+      "clones": 225,
+      "unique_cloners": 85,
+      "top_referrers": [],
+      "top_paths": [],
+      "error": null
+    },
+    {
+      "name": "x-bookmark-knowledge-pack",
+      "name_with_owner": "Tenormusica2024/x-bookmark-knowledge-pack",
+      "url": "https://github.com/Tenormusica2024/x-bookmark-knowledge-pack",
+      "description": "Portable local X bookmark knowledge pack for humans and AI agents.",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 0,
+      "forks": 0,
+      "updated_at": "2026-04-24T09:13:53Z",
+      "pushed_at": "2026-04-24T09:13:49Z",
+      "views": 0,
+      "unique_visitors": 0,
+      "clones": 119,
+      "unique_cloners": 62,
+      "top_referrers": [],
+      "top_paths": [],
+      "error": null
+    },
+    {
+      "name": "gittrend-jp",
+      "name_with_owner": "Tenormusica2024/gittrend-jp",
+      "url": "https://github.com/Tenormusica2024/gittrend-jp",
+      "description": "GitHub Trending app for Japanese developers - Flutter",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 0,
+      "forks": 0,
+      "updated_at": "2026-04-18T17:55:02Z",
+      "pushed_at": "2026-04-18T17:54:57Z",
+      "views": 0,
+      "unique_visitors": 0,
+      "clones": 36,
+      "unique_cloners": 30,
+      "top_referrers": [],
+      "top_paths": [],
+      "error": null
+    },
+    {
+      "name": "zerocost-lp",
+      "name_with_owner": "Tenormusica2024/zerocost-lp",
+      "url": "https://github.com/Tenormusica2024/zerocost-lp",
+      "description": "Landing page for zerocost-router — free OpenAI-compatible LLM router",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 0,
+      "forks": 0,
+      "updated_at": "2026-03-26T09:32:50Z",
+      "pushed_at": "2026-03-01T16:34:47Z",
+      "views": 0,
+      "unique_visitors": 0,
+      "clones": 31,
+      "unique_cloners": 28,
+      "top_referrers": [],
+      "top_paths": [],
+      "error": null
+    },
+    {
+      "name": "doc-freshness-analyzer",
+      "name_with_owner": "Tenormusica2024/doc-freshness-analyzer",
+      "url": "https://github.com/Tenormusica2024/doc-freshness-analyzer",
+      "description": "Claude Code skill for deep documentation freshness analysis - compares docs against code reality",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 0,
+      "forks": 0,
+      "updated_at": "2026-04-18T17:31:57Z",
+      "pushed_at": "2026-04-18T17:31:53Z",
+      "views": 0,
+      "unique_visitors": 0,
+      "clones": 23,
+      "unique_cloners": 18,
+      "top_referrers": [],
+      "top_paths": [],
+      "error": null
+    },
+    {
+      "name": "claude-session-manager",
+      "name_with_owner": "Tenormusica2024/claude-session-manager",
+      "url": "https://github.com/Tenormusica2024/claude-session-manager",
+      "description": "Interactive session manager for Claude Code CLI",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 0,
+      "forks": 0,
+      "updated_at": "2026-01-24T15:08:47Z",
+      "pushed_at": "2026-01-24T15:08:44Z",
+      "views": 0,
+      "unique_visitors": 0,
+      "clones": 20,
+      "unique_cloners": 18,
+      "top_referrers": [],
+      "top_paths": [],
+      "error": null
+    },
+    {
+      "name": "mcphub-api",
+      "name_with_owner": "Tenormusica2024/mcphub-api",
+      "url": "https://github.com/Tenormusica2024/mcphub-api",
+      "description": "MCP Server Directory & Health Check API - Find, monitor, and integrate MCP servers",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 0,
+      "forks": 0,
+      "updated_at": "2026-03-26T09:32:49Z",
+      "pushed_at": "2026-03-07T14:59:28Z",
+      "views": 0,
+      "unique_visitors": 0,
+      "clones": 17,
+      "unique_cloners": 17,
+      "top_referrers": [],
+      "top_paths": [],
+      "error": null
+    },
+    {
+      "name": "snip-hotkey",
+      "name_with_owner": "Tenormusica2024/snip-hotkey",
+      "url": "https://github.com/Tenormusica2024/snip-hotkey",
+      "description": "F8 hotkey to instantly save clipboard images and auto-paste file paths into PowerShell - streamline your screenshot workflow",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 0,
+      "forks": 0,
+      "updated_at": "2026-04-06T11:58:56Z",
+      "pushed_at": "2026-04-06T11:58:49Z",
+      "views": 0,
+      "unique_visitors": 0,
+      "clones": 16,
+      "unique_cloners": 13,
+      "top_referrers": [],
+      "top_paths": [],
+      "error": null
+    },
+    {
+      "name": "beauty-salon-sample",
+      "name_with_owner": "Tenormusica2024/beauty-salon-sample",
+      "url": "https://github.com/Tenormusica2024/beauty-salon-sample",
+      "description": "",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 0,
+      "forks": 0,
+      "updated_at": "2026-03-26T09:32:33Z",
+      "pushed_at": "2026-03-24T05:51:51Z",
+      "views": 0,
+      "unique_visitors": 0,
+      "clones": 10,
+      "unique_cloners": 10,
+      "top_referrers": [],
+      "top_paths": [],
+      "error": null
+    },
+    {
+      "name": "claude-worktree-parallel-dev",
+      "name_with_owner": "Tenormusica2024/claude-worktree-parallel-dev",
+      "url": "https://github.com/Tenormusica2024/claude-worktree-parallel-dev",
+      "description": "Claude Code + Git Worktree 並列開発システム: メイン開発・コードレビュー・UI検証を完全並列実行",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 1,
+      "forks": 0,
+      "updated_at": "2026-01-24T15:22:32Z",
+      "pushed_at": "2026-01-24T15:22:29Z",
+      "views": 0,
+      "unique_visitors": 0,
+      "clones": 9,
+      "unique_cloners": 8,
+      "top_referrers": [],
+      "top_paths": [],
+      "error": null
+    },
+    {
+      "name": "ai-screen-capture-tools",
+      "name_with_owner": "Tenormusica2024/ai-screen-capture-tools",
+      "url": "https://github.com/Tenormusica2024/ai-screen-capture-tools",
+      "description": "",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 0,
+      "forks": 0,
+      "updated_at": "2026-01-24T15:22:24Z",
+      "pushed_at": "2026-01-24T15:22:21Z",
+      "views": 0,
+      "unique_visitors": 0,
+      "clones": 7,
+      "unique_cloners": 7,
+      "top_referrers": [],
+      "top_paths": [],
+      "error": null
+    },
+    {
+      "name": "universal-ci-pipeline",
+      "name_with_owner": "Tenormusica2024/universal-ci-pipeline",
+      "url": "https://github.com/Tenormusica2024/universal-ci-pipeline",
+      "description": "Universal CI/CD pipeline for GitHub Actions - Auto language detection, security scan, PR-only trigger",
+      "is_private": false,
+      "is_archived": false,
+      "stars": 0,
+      "forks": 0,
+      "updated_at": "2026-03-26T09:33:25Z",
+      "pushed_at": "2026-01-24T16:10:03Z",
+      "views": 0,
+      "unique_visitors": 0,
+      "clones": 7,
+      "unique_cloners": 7,
+      "top_referrers": [],
+      "top_paths": [],
+      "error": null
+    }
+  ]
+}

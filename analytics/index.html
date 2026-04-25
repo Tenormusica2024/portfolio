@@ -617,6 +617,54 @@
                     </div>
                 </div>
 
+
+                <div class="section-header">
+                    <h2 class="section-title">GitHub Repository Traffic</h2>
+                    <p class="section-subtitle">Public repositories only / GitHub Traffic API rolling 14-day window</p>
+                </div>
+
+                <div class="comparison-summary-grid" id="githubTrafficSummary">
+                    <div class="comparison-card">
+                        <div class="label">Repo Views</div>
+                        <div class="value" id="githubTotalViews">—</div>
+                        <div class="meta" id="githubViewsMeta">Unique visitors —</div>
+                    </div>
+                    <div class="comparison-card">
+                        <div class="label">Repo Clones</div>
+                        <div class="value" id="githubTotalClones">—</div>
+                        <div class="meta" id="githubClonesMeta">Unique cloners —</div>
+                    </div>
+                    <div class="comparison-card">
+                        <div class="label">Tracked Repos</div>
+                        <div class="value" id="githubRepoCount">—</div>
+                        <div class="meta" id="githubReposMeta">Public / non-archived</div>
+                    </div>
+                    <div class="comparison-card">
+                        <div class="label">Collected</div>
+                        <div class="value" id="githubCollectedShort" style="font-size: 1.35rem;">—</div>
+                        <div class="meta">GitHub only keeps 14 days</div>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Repository</th>
+                                <th class="sortable sorted-desc" data-sort-github="views" style="text-align: right;">Views</th>
+                                <th class="sortable" data-sort-github="unique_visitors" style="text-align: right;">Visitors</th>
+                                <th class="sortable" data-sort-github="clones" style="text-align: right;">Clones</th>
+                                <th class="sortable" data-sort-github="unique_cloners" style="text-align: right;">Cloners</th>
+                                <th class="sortable" data-sort-github="stars" style="text-align: right;">Stars</th>
+                            </tr>
+                        </thead>
+                        <tbody id="githubTrafficBody">
+                            <tr><td colspan="7" style="text-align: center; color: var(--color-text-muted); padding: 40px;">GitHub traffic data not loaded yet</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <div class="section-header">
                     <h2 class="section-title">C2C × B2B Daily Comparison</h2>
                     <p class="section-subtitle">Main portfolio (/portfolio/) と Ezlize の日別アクセス推移を同じ30日窓で比較</p>
@@ -794,6 +842,7 @@
                 sessionStorage.setItem('authenticated', 'true');
                 setupSortHandlers();
                 setupReferrerSortHandlers();
+                setupGitHubSortHandlers();
                 loadData();
             } else {
                 error.style.display = 'block';
@@ -815,6 +864,7 @@
             document.getElementById('dashboardContent').style.display = 'block';
             setupSortHandlers();
             setupReferrerSortHandlers();
+            setupGitHubSortHandlers();
             loadData();
         }
         
@@ -829,6 +879,9 @@
         let currentReferrerSortOrder = 'desc';
         let referrersData = [];
         let siteComparisonData = [];
+        let githubTrafficData = [];
+        let currentGitHubSortKey = 'views';
+        let currentGitHubSortOrder = 'desc';
         
         // Dashboard Data Loading
         async function loadData() {
@@ -939,6 +992,8 @@
                 setupSortHandlers();
                 setupReferrerSortHandlers();
                 setupPerformanceSortHandlers();
+                setupGitHubSortHandlers();
+                await loadGitHubTrafficData();
                 
                 const collectedAt = new Date(data.collected_at);
                 document.getElementById('updatedAt').textContent = collectedAt.toLocaleString('ja-JP');
@@ -1094,6 +1149,102 @@
                 `;
                 tbody.appendChild(tr);
             });
+        }
+
+
+        async function loadGitHubTrafficData() {
+            try {
+                const response = await fetch('data/github_traffic_latest.json', { cache: 'no-store' });
+                if (!response.ok) {
+                    throw new Error('GitHub traffic data not found');
+                }
+                const data = await response.json();
+                githubTrafficData = Array.isArray(data.repositories) ? data.repositories : [];
+                renderGitHubTrafficSummary(data);
+                renderGitHubTrafficTable();
+            } catch (error) {
+                const tbody = document.getElementById('githubTrafficBody');
+                if (tbody) {
+                    tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--color-text-muted); padding: 40px;">${escapeHtml(error.message)}. Run analytics/collect_github_traffic.ps1 to generate data.</td></tr>`;
+                }
+                console.warn('GitHub traffic data loading skipped:', error);
+            }
+        }
+
+        function renderGitHubTrafficSummary(data) {
+            const summary = data.summary || {};
+            document.getElementById('githubTotalViews').textContent = (summary.total_views || 0).toLocaleString();
+            document.getElementById('githubViewsMeta').textContent = `Unique visitors ${(summary.total_unique_visitors || 0).toLocaleString()}`;
+            document.getElementById('githubTotalClones').textContent = (summary.total_clones || 0).toLocaleString();
+            document.getElementById('githubClonesMeta').textContent = `Unique cloners ${(summary.total_unique_cloners || 0).toLocaleString()}`;
+            document.getElementById('githubRepoCount').textContent = (summary.repo_count || 0).toLocaleString();
+            document.getElementById('githubReposMeta').textContent = `${(summary.repos_with_views || 0).toLocaleString()} repos with views / ${(summary.repos_with_clones || 0).toLocaleString()} with clones`;
+
+            if (data.collected_at) {
+                const collected = new Date(data.collected_at);
+                document.getElementById('githubCollectedShort').textContent = collected.toLocaleDateString('ja-JP', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+            }
+        }
+
+        function renderGitHubTrafficTable() {
+            const tbody = document.getElementById('githubTrafficBody');
+            if (!tbody) return;
+
+            if (!githubTrafficData || githubTrafficData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--color-text-muted); padding: 40px;">No GitHub traffic data available</td></tr>';
+                return;
+            }
+
+            const sorted = [...githubTrafficData].sort((a, b) => {
+                const aVal = Number(a[currentGitHubSortKey] || 0);
+                const bVal = Number(b[currentGitHubSortKey] || 0);
+                return currentGitHubSortOrder === 'desc' ? bVal - aVal : aVal - bVal;
+            });
+
+            tbody.innerHTML = '';
+            sorted.forEach((repo, index) => {
+                const row = document.createElement('tr');
+                const description = repo.description ? `<div style="font-size: 0.75em; color: var(--color-text-muted); font-weight: 300; margin-top: 4px;">${escapeHtml(repo.description)}</div>` : '';
+                row.innerHTML = `
+                    <td class="rank-cell">${(index + 1).toString().padStart(2, '0')}</td>
+                    <td class="path-cell">
+                        <a href="${escapeHtml(repo.url || '#')}" target="_blank" rel="noopener" style="color: var(--color-text-primary); font-weight: 700; text-decoration: none;">${escapeHtml(repo.name || '')}</a>
+                        ${description}
+                    </td>
+                    <td class="metric-cell">${Number(repo.views || 0).toLocaleString()}</td>
+                    <td class="metric-cell">${Number(repo.unique_visitors || 0).toLocaleString()}</td>
+                    <td class="metric-cell">${Number(repo.clones || 0).toLocaleString()}</td>
+                    <td class="metric-cell">${Number(repo.unique_cloners || 0).toLocaleString()}</td>
+                    <td class="metric-cell">${Number(repo.stars || 0).toLocaleString()}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function setupGitHubSortHandlers() {
+            document.querySelectorAll('th.sortable[data-sort-github]').forEach(th => {
+                th.removeEventListener('click', handleGitHubSort);
+                th.addEventListener('click', handleGitHubSort);
+            });
+        }
+
+        function handleGitHubSort(event) {
+            const th = event.currentTarget;
+            const sortKey = th.getAttribute('data-sort-github');
+
+            if (currentGitHubSortKey === sortKey) {
+                currentGitHubSortOrder = currentGitHubSortOrder === 'desc' ? 'asc' : 'desc';
+            } else {
+                currentGitHubSortKey = sortKey;
+                currentGitHubSortOrder = 'desc';
+            }
+
+            document.querySelectorAll('th.sortable[data-sort-github]').forEach(header => {
+                header.classList.remove('sorted-asc', 'sorted-desc');
+            });
+
+            th.classList.add(currentGitHubSortOrder === 'desc' ? 'sorted-desc' : 'sorted-asc');
+            renderGitHubTrafficTable();
         }
 
         function renderReferrersTable() {
@@ -1309,6 +1460,7 @@
             setupSortHandlers();
             setupReferrerSortHandlers();
             setupPerformanceSortHandlers();
+            setupGitHubSortHandlers();
         }
         
         // Auto-refresh every 60 seconds (only if authenticated)
