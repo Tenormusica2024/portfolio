@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ1WP1J2NQ"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-YJ1WP1J2NQ',{'linker':{'domains':['ezlize.com']}});</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude CodeでSkillsを定期実行で自動化する方法 | 技術ブログ | Ezlize</title>
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="description" content="Claude Codeのサブスクリプション環境でも定期実行・自動化に使えることを検証した記事。AIエージェントを日次運用や情報収集に組み込む方法を扱います。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://ezlize.com/blog/claude-code-headless-subscription-discovery-2025.html">
+  <meta property="og:title" content="Claude CodeでSkillsを定期実行で自動化する方法 | Ezlize 技術ブログ">
+  <meta property="og:description" content="Claude Codeのサブスクリプション環境でも定期実行・自動化に使えることを検証した記事。AIエージェントを日次運用や情報収集に組み込む方法を扱います。">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="Ezlize">
+  <meta property="og:image" content="https://ezlize.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Claude CodeでSkillsを定期実行で自動化する方法 | Ezlize 技術ブログ">
+  <meta name="twitter:description" content="Claude Codeのサブスクリプション環境でも定期実行・自動化に使えることを検証した記事。AIエージェントを日次運用や情報収集に組み込む方法を扱います。">
+  <meta name="twitter:image" content="https://ezlize.com/og-image.png">
+  <link rel="canonical" href="https://ezlize.com/blog/claude-code-headless-subscription-discovery-2025.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://ezlize.com/blog/claude-code-headless-subscription-discovery-2025.html">
+  <link rel="alternate" hreflang="x-default" href="https://ezlize.com/blog/claude-code-headless-subscription-discovery-2025.html">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231B2A4A' rx='4'/><text x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23B8976C' text-anchor='middle'>K</text></svg>">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Ezlize",
+          "item": "https://ezlize.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "技術ブログ",
+          "item": "https://ezlize.com/blog.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Claude CodeでSkillsを定期実行で自動化する方法",
+          "item": "https://ezlize.com/blog/claude-code-headless-subscription-discovery-2025.html"
+        }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Claude CodeでSkillsを定期実行で自動化する方法",
+      "description": "Claude Codeのサブスクリプション環境でも定期実行・自動化に使えることを検証した記事。AIエージェントを日次運用や情報収集に組み込む方法を扱います。",
+      "url": "https://ezlize.com/blog/claude-code-headless-subscription-discovery-2025.html",
+      "mainEntityOfPage": "https://ezlize.com/blog/claude-code-headless-subscription-discovery-2025.html",
+      "inLanguage": "ja-JP",
+      "author": {
+        "@type": "Person",
+        "name": "幸田 晃典",
+        "url": "https://ezlize.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ezlize",
+        "url": "https://ezlize.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ezlize.com/og-image.png"
+        }
+      },
+      "keywords": "Claude Code, Automation, Skills, 定期実行",
+      "isBasedOn": "https://zenn.dev/tenormusica/articles/claude-code-headless-subscription-discovery-2025"
+    }
+  ]
+}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --navy:#1B2A4A; --navy-light:#2d4270; --gold:#B8976C; --bg:#FAFAFA; --bg-section:#F4F3F0; --text:#2C2C2C; --muted:#6B6B6B; --border:#E0DDD8; --white:#FFFFFF; }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box} html{scroll-behavior:smooth} body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.9} nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,250,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:64px}.nav-logo{font-family:'Shippori Mincho',serif;font-size:.95rem;font-weight:600;color:var(--navy);text-decoration:none;letter-spacing:.04em}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{font-size:.78rem;color:var(--muted);text-decoration:none;letter-spacing:.1em;transition:color .2s}.nav-links a:hover,.nav-links a.nav-active{color:var(--navy);font-weight:500}.nav-cta{background:var(--navy);color:var(--white)!important;padding:.45rem 1.1rem;border-radius:2px}.hamburger{display:none;background:none;border:none;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px}.hamburger span{display:block;width:22px;height:1.5px;background:var(--navy);transition:transform .3s,opacity .3s}.hamburger.active span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}.hamburger.active span:nth-child(2){opacity:0}.hamburger.active span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}.mobile-nav{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:rgba(250,250,250,.98);backdrop-filter:blur(12px);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem;list-style:none;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}.mobile-nav.active{opacity:1;visibility:visible}.mobile-nav a{font-size:1rem;color:var(--navy);text-decoration:none;letter-spacing:.12em;font-weight:500}.breadcrumb{padding:5.5rem 5% 0;font-size:.75rem;color:var(--muted);letter-spacing:.06em}.breadcrumb a{color:var(--muted);text-decoration:none}.breadcrumb a:hover{color:var(--navy)}.article-hero{padding:3rem 5% 2.2rem;max-width:920px;margin:0 auto}.article-label{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:.9rem}.article-title{font-family:'Shippori Mincho',serif;font-size:clamp(2rem,5vw,3.2rem);line-height:1.35;color:var(--navy);font-weight:700;letter-spacing:.02em;margin-bottom:1.2rem}.article-lead{font-size:1rem;color:var(--muted);max-width:760px}.article-meta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.4rem}.meta-pill{border:1px solid var(--border);background:var(--white);color:var(--muted);padding:.35rem .7rem;font-size:.75rem;letter-spacing:.06em}.article-body{max-width:920px;margin:0 auto;padding:2rem 5% 5rem;display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:3rem}.article-main{background:var(--white);border:1px solid var(--border);padding:2.2rem}.article-main h2{font-family:'Shippori Mincho',serif;color:var(--navy);font-size:1.25rem;margin:2rem 0 .7rem}.article-main h2:first-child{margin-top:0}.article-main p{font-size:.94rem;color:var(--text);margin-bottom:1rem}.tag-list{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}.tag{font-size:.72rem;color:var(--navy);background:var(--bg-section);padding:.25rem .6rem;border-radius:2px}.sidebar-box{background:var(--bg-section);border:1px solid var(--border);padding:1.5rem;position:sticky;top:88px}.sidebar-title{font-family:'Shippori Mincho',serif;font-size:1rem;color:var(--navy);margin-bottom:.8rem}.zenn-button{display:block;text-align:center;background:var(--navy);color:var(--white);text-decoration:none;padding:.85rem 1rem;font-size:.82rem;letter-spacing:.08em;margin-top:1rem}.back-link{display:inline-block;margin-top:1.5rem;color:var(--navy);font-size:.82rem;text-decoration:none}footer{background:var(--navy);color:rgba(255,255,255,.4);padding:1.5rem 5%;display:flex;justify-content:space-between;align-items:center;font-size:.75rem;letter-spacing:.08em}.footer-links{display:flex;gap:1.4rem}.footer-links a{color:rgba(255,255,255,.55);text-decoration:none}@media(max-width:900px){.article-body{grid-template-columns:1fr}.sidebar-box{position:static}}@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.mobile-nav{display:flex}.article-hero{padding:2rem 4%}.article-body{padding:1rem 4% 4rem}.article-main{padding:1.4rem}footer{flex-direction:column;gap:.6rem;text-align:center}.footer-links{justify-content:center;gap:1rem}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-logo">幸田 晃典 / Ezlize</a>
+  <ul class="nav-links"><li><a href="../index.html#services">サービス</a></li><li><a href="../index.html#works">実績</a></li><li><a href="../index.html#flow">ご依頼の流れ</a></li><li><a href="../index.html#price">料金目安</a></li><li><a href="../index.html#faq">FAQ</a></li><li><a href="../blog.html" class="nav-active">技術ブログ</a></li><li><a href="../index.html#contact" class="nav-cta">無料相談</a></li></ul>
+  <button class="hamburger" onclick="toggleNav()" aria-label="メニュー"><span></span><span></span><span></span></button>
+</nav>
+<ul class="mobile-nav" id="mobileNav" role="navigation" aria-label="モバイルメニュー"><li><a href="../index.html#services" onclick="closeNav()">サービス</a></li><li><a href="../index.html#works" onclick="closeNav()">実績</a></li><li><a href="../index.html#contact" class="nav-cta" onclick="closeNav()">無料相談</a></li></ul>
+<div class="breadcrumb"><a href="../index.html">HOME</a> &gt; <a href="../blog.html">技術ブログ</a> &gt; <span>Claude CodeでSkillsを定期実行で自動化する方法</span></div>
+<header class="article-hero"><p class="article-label">Tech Blog Detail</p><h1 class="article-title">Claude CodeでSkillsを定期実行で自動化する方法</h1><p class="article-lead">Claude Codeのサブスクリプション環境でも定期実行・自動化に使えることを検証した記事。AIエージェントを日次運用や情報収集に組み込む方法を扱います。</p><div class="article-meta"><span class="meta-pill">Zenn 42 likes</span></div></header>
+<main class="article-body"><article class="article-main"><h2>記事の要点</h2>
+<p>AIエージェントは対話だけでなく、定期実行やバックグラウンド処理にも使えます。情報収集、レポート生成、チェック処理を日次運用に組み込む実践例です。</p>
+<h2>Ezlizeでの実務への接続</h2>
+<p>AI秘書、問い合わせ一次整理、日報作成、リサーチ自動化など、毎日繰り返す業務を小さく自動化する設計に直結します。</p>
+<h2>こんな方に向いています</h2>
+<p>AIを一度きりのチャットではなく、継続的な業務フローに組み込みたい方向けです。</p><div class="tag-list"><span class="tag">Claude Code</span><span class="tag">Automation</span><span class="tag">Skills</span><span class="tag">定期実行</span></div><a href="../blog.html" class="back-link">← 技術ブログ一覧へ戻る</a></article><aside><div class="sidebar-box"><h2 class="sidebar-title">原文を読む</h2><p style="font-size:.86rem;color:var(--muted);">この記事は外部技術記事の要点と、Ezlizeでの実務接続を整理した紹介ページです。</p><a href="https://zenn.dev/tenormusica/articles/claude-code-headless-subscription-discovery-2025" target="_blank" rel="noopener noreferrer" class="zenn-button">Zennで全文を読む →</a></div></aside></main>
+<footer><span>&#169; 2026 幸田 晃典 / Ezlize</span><div class="footer-links"><a href="../tokusho.html">特定商取引法に基づく表記</a><a href="../privacy.html">プライバシーポリシー</a></div></footer>
+<script>function toggleNav(){document.querySelector('.hamburger').classList.toggle('active');document.getElementById('mobileNav').classList.toggle('active');document.body.style.overflow=document.getElementById('mobileNav').classList.contains('active')?'hidden':'';}function closeNav(){document.querySelector('.hamburger').classList.remove('active');document.getElementById('mobileNav').classList.remove('active');document.body.style.overflow='';}window.addEventListener('resize',function(){if(window.innerWidth>768)closeNav();});</script>
+</body>
+</html>
