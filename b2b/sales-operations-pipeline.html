@@ -687,9 +687,37 @@
     .case-label { font-size: 0.72rem; letter-spacing: 0.14em; color: var(--gold); margin-bottom: 0.7rem; }
     .case-text { color: var(--muted); line-height: 1.9; font-size: 0.88rem; }
     @media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; } .case-grid { grid-template-columns: 1fr; } .detail-hero { padding-top: 7rem; } }
+
+
+    /* ===== SALES PIPELINE PAGE FIXES ===== */
+    .sales-page .detail-hero { padding: 8rem 5% 3.5rem; }
+    .sales-page #hero::before { display: none; }
+    .sales-page .detail-hero .detail-wrap { position: relative; z-index: 1; max-width: 820px; margin-left: 14%; margin-right: auto; }
+    .sales-page .hero-title { max-width: 820px; font-size: clamp(1.82rem, 3.45vw, 2.75rem); line-height: 1.42; }
+    .sales-page .hero-eyebrow { max-width: 100%; overflow-wrap: anywhere; }
+    .sales-page .detail-card,
+    .sales-page .case-card { min-height: auto; }
+    .sales-page .case-card h3 { color: var(--navy); margin: 0.35rem 0 0.45rem; font-size: 1rem; }
+    .sales-page .case-card p { color: var(--muted); line-height: 1.9; font-size: 0.86rem; }
+    .sales-page .case-num { display: inline-block; color: var(--gold); font-size: 0.72rem; letter-spacing: 0.16em; margin-bottom: 0.25rem; }
+    .sales-page .section-label { color: var(--gold); }
+    .sales-page .reveal { opacity: 1; transform: none; }
+    @media (max-width: 768px) {
+      .sales-page .detail-hero { padding: 6.5rem 5% 3rem; }
+      .sales-page .hero-title { font-size: clamp(1.58rem, 7.2vw, 1.92rem); line-height: 1.5; letter-spacing: 0.02em; }
+      .sales-page .detail-hero .detail-wrap { max-width: 100%; margin-left: auto; margin-right: auto; }
+      .sales-page .detail-lead { font-size: 0.9rem; line-height: 1.9; }
+      .sales-page .hero-actions { flex-direction: column; align-items: stretch; gap: 0.85rem; }
+      .sales-page .hero-actions .btn-primary,
+      .sales-page .hero-actions .btn-secondary { width: 100%; justify-content: center; text-align: center; }
+      .sales-page .detail-card,
+      .sales-page .case-card { padding: 1.35rem; }
+      .sales-page .section-title { font-size: 1.35rem; line-height: 1.55; }
+      .sales-page .footer-links { flex-wrap: wrap; }
+    }
   </style>
 </head>
-<body>
+<body class="sales-page">
 <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" onfocus="this.style.cssText='position:absolute;left:0;top:0;width:auto;height:auto;padding:0.5rem 1rem;background:#1B2A4A;color:#fff;z-index:9999;';" onblur="this.style.cssText='position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;';">本文へスキップ</a>
 <nav>
   <a href="/" class="nav-logo">Ezlize / 幸田 晃典</a>
@@ -710,11 +738,11 @@
 <main id="main-content">
 <section id="hero" class="detail-hero">
   <div class="detail-wrap">
-    <p class="hero-eyebrow">サービス別ページ / 営業運用パイプライン</p>
-    <h1 class="hero-title">壊れにくい営業運用パイプラインを設計します。</h1>
-    <p class="detail-lead">AIで営業文を作るだけでは、誤送信、重複送信、返信後の放置、失敗時の手戻りが残ります。Ezlizeでは、送信前承認・返信分類・監査ログ・バッチ再実行まで含め、実運用で破綻しにくい営業/問い合わせ対応ワークフローとして整えます。</p>
+    <p class="hero-eyebrow">AI営業・問い合わせ対応の安全運用設計</p>
+    <h1 class="hero-title">営業運用を、承認・ログ・再実行まで整えます。</h1>
+    <p class="detail-lead">AIで営業文を作るだけでは、誤送信、重複送信、返信後の放置、失敗時の手戻りが残ります。Ezlizeでは、送信前承認・返信分類・監査ログ・再実行手順まで含め、実運用で破綻しにくい営業/問い合わせ対応の流れとして整えます。</p>
     <div class="hero-actions" style="margin-top:1.6rem;">
-      <a href="/#contact" class="btn-primary">営業運用の困りごとを送る</a>
+      <a href="/#contact" class="btn-primary">営業運用を相談する</a>
       <a href="/#works" class="btn-secondary">実績を見る</a>
     </div>
     <a class="back-link" href="/">トップへ戻る</a>
@@ -723,12 +751,12 @@
 <section>
   <div class="detail-wrap detail-grid">
     <div class="detail-card reveal">
-      <p class="section-label">Why</p>
+      <p class="section-label">価値</p>
       <h2 class="section-title">営業AIで本当に価値が出る部分</h2>
       <p class="section-subtitle" style="margin-bottom:0;">アウトバウンド文面の生成そのものより、配信前の品質ゲート、返信後の分岐、失敗時に安全にやり直せる設計が価値になります。人が確認すべきところを残し、AIには下調べ・分類・下書き・記録を任せます。</p>
     </div>
     <div class="detail-card reveal">
-      <p class="section-label">Scope</p>
+      <p class="section-label">設計範囲</p>
       <h2 class="section-title">設計に含めるもの</h2>
       <ul class="detail-list">
         <li>送信前承認と最終確認ステータス</li>
@@ -744,7 +772,7 @@
 </section>
 <section>
   <div class="detail-wrap">
-    <p class="section-label reveal">Case</p>
+    <p class="section-label reveal">運用例</p>
     <h2 class="section-title reveal">改善イメージ</h2>
     <div class="case-grid">
       <div class="case-card reveal"><span class="case-num">01</span><h3>リード調査と下書きを分離</h3><p>企業情報の収集、対象条件の確認、提案タイプ別のメール下書き生成を自動化。送信判断は人が確認できる形で残します。</p></div>
@@ -755,7 +783,7 @@
 </section>
 <section>
   <div class="detail-wrap detail-card">
-    <p class="section-label reveal">Deliverables</p>
+    <p class="section-label reveal">納品物</p>
     <h2 class="section-title reveal">納品物の例</h2>
     <ul class="detail-list reveal">
       <li>営業運用フロー図・状態遷移表</li>
@@ -768,8 +796,8 @@
 </section>
 <section id="faq">
   <div class="detail-wrap">
-    <p class="section-label reveal">FAQ</p>
-    <h2 class="section-title reveal">営業運用パイプライン設計のよくあるご質問</h2>
+    <p class="section-label reveal">よくある質問</p>
+    <h2 class="section-title reveal">営業AI・問い合わせ対応の安全運用に関するご質問</h2>
     <div class="faq-list">
       <div class="faq-item reveal">
         <button class="faq-q" aria-expanded="false">営業メールを完全自動送信する仕組みですか？</button>
@@ -784,7 +812,7 @@
 </section>
 <section id="contact">
   <div class="detail-wrap detail-card">
-    <p class="section-label reveal">Contact</p>
+    <p class="section-label reveal">相談</p>
     <h2 class="section-title reveal">まずは小さな営業工程から整えます</h2>
     <p class="section-subtitle reveal">「営業メールの下書きが散らばる」「返信後の管理が曖昧」「AI化したいが誤送信が怖い」など、今の運用で壊れやすい箇所を1つだけ送ってください。</p>
     <a href="/#contact" class="btn-primary reveal">営業運用の困りごとを相談する</a>
