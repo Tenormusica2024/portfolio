@@ -690,11 +690,16 @@
 
 
     /* ===== SALES PIPELINE PAGE FIXES ===== */
-    .sales-page .detail-hero { padding: 8rem 5% 3.5rem; }
+    .sales-page .detail-hero { padding: 7.2rem 5% 4.6rem; background: linear-gradient(180deg, #FFFFFF 0%, #FAFAFA 100%); }
     .sales-page #hero::before { display: none; }
-    .sales-page .detail-hero .detail-wrap { position: relative; z-index: 1; max-width: 820px; margin-left: 14%; margin-right: auto; }
-    .sales-page .hero-title { max-width: 820px; font-size: clamp(1.82rem, 3.45vw, 2.75rem); line-height: 1.42; }
+    .sales-page .detail-hero .detail-wrap { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; }
+    .sales-page .hero-layout { display: grid; grid-template-columns: minmax(0, 0.88fr) minmax(420px, 1fr); gap: 3rem; align-items: center; }
+    .sales-page .hero-copy { min-width: 0; }
+    .sales-page .hero-title { max-width: 720px; font-size: clamp(1.82rem, 3.1vw, 2.65rem); line-height: 1.42; }
     .sales-page .hero-eyebrow { max-width: 100%; overflow-wrap: anywhere; }
+    .sales-page .hero-visual { margin: 0; }
+    .sales-page .hero-visual img { display: block; width: 100%; height: auto; border-radius: 20px; box-shadow: 0 24px 54px rgba(27,42,74,0.14); }
+    .sales-page .hero-visual figcaption { margin-top: 0.75rem; color: var(--muted); font-size: 0.72rem; letter-spacing: 0.08em; text-align: center; }
     .sales-page .detail-card,
     .sales-page .case-card { min-height: auto; }
     .sales-page .case-card h3 { color: var(--navy); margin: 0.35rem 0 0.45rem; font-size: 1rem; }
@@ -704,9 +709,13 @@
     .sales-page .reveal { opacity: 1; transform: none; }
     @media (max-width: 768px) {
       .sales-page .detail-hero { padding: 6.5rem 5% 3rem; }
+      .sales-page .hero-layout { grid-template-columns: 1fr; gap: 2rem; }
       .sales-page .hero-title { font-size: clamp(1.58rem, 7.2vw, 1.92rem); line-height: 1.5; letter-spacing: 0.02em; }
       .sales-page .detail-hero .detail-wrap { max-width: 100%; margin-left: auto; margin-right: auto; }
       .sales-page .detail-lead { font-size: 0.9rem; line-height: 1.9; }
+      .sales-page .hero-visual { order: -1; margin-top: 0.25rem; }
+      .sales-page .hero-visual img { border-radius: 14px; box-shadow: 0 18px 38px rgba(27,42,74,0.12); }
+      .sales-page .hero-visual figcaption { font-size: 0.68rem; }
       .sales-page .hero-actions { flex-direction: column; align-items: stretch; gap: 0.85rem; }
       .sales-page .hero-actions .btn-primary,
       .sales-page .hero-actions .btn-secondary { width: 100%; justify-content: center; text-align: center; }
@@ -738,14 +747,22 @@
 <main id="main-content">
 <section id="hero" class="detail-hero">
   <div class="detail-wrap">
-    <p class="hero-eyebrow">AI営業・問い合わせ対応の安全運用設計</p>
-    <h1 class="hero-title">営業運用を、承認・ログ・再実行まで整えます。</h1>
-    <p class="detail-lead">AIで営業文を作るだけでは、誤送信、重複送信、返信後の放置、失敗時の手戻りが残ります。Ezlizeでは、送信前承認・返信分類・監査ログ・再実行手順まで含め、実運用で破綻しにくい営業/問い合わせ対応の流れとして整えます。</p>
-    <div class="hero-actions" style="margin-top:1.6rem;">
-      <a href="/#contact" class="btn-primary">営業運用を相談する</a>
-      <a href="/#works" class="btn-secondary">実績を見る</a>
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">AI営業・問い合わせ対応の安全運用設計</p>
+        <h1 class="hero-title">営業運用を、承認・ログ・再実行まで整えます。</h1>
+        <p class="detail-lead">AIで営業文を作るだけでは、誤送信、重複送信、返信後の放置、失敗時の手戻りが残ります。Ezlizeでは、送信前承認・返信分類・監査ログ・再実行手順まで含め、実運用で破綻しにくい営業/問い合わせ対応の流れとして整えます。</p>
+        <div class="hero-actions" style="margin-top:1.6rem;">
+          <a href="/#contact" class="btn-primary">営業運用を相談する</a>
+          <a href="/#works" class="btn-secondary">実績を見る</a>
+        </div>
+        <a class="back-link" href="/">トップへ戻る</a>
+      </div>
+      <figure class="hero-visual" aria-label="営業運用パイプラインの図解">
+        <img src="assets/sales-ops-pipeline-visual.svg" alt="リード調査、送信前承認、安全送信、返信分類、再実行、監査ログをつなぐ営業運用パイプラインの図解" width="1200" height="820" loading="eager" decoding="async">
+        <figcaption>承認・分類・ログ・再実行を前提にした営業運用の全体像</figcaption>
+      </figure>
     </div>
-    <a class="back-link" href="/">トップへ戻る</a>
   </div>
 </section>
 <section>

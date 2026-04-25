@@ -1,0 +1,99 @@
+<svg width="1200" height="820" viewBox="0 0 1200 820" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">営業運用パイプラインの安全設計イメージ</title>
+  <desc id="desc">リード調査、承認、送信、返信分類、再実行、監査ログをつなぐ営業運用ワークフローの抽象イラスト。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FCFBF8"/>
+      <stop offset="1" stop-color="#EEE8DE"/>
+    </linearGradient>
+    <linearGradient id="navy" x1="220" y1="115" x2="980" y2="705" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#24375F"/>
+      <stop offset="1" stop-color="#101D38"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#D1B184"/>
+      <stop offset="1" stop-color="#9F7C53"/>
+    </linearGradient>
+    <filter id="shadow" x="-30" y="-30" width="1260" height="880" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="28" stdDeviation="32" flood-color="#1B2A4A" flood-opacity="0.14"/>
+    </filter>
+    <filter id="soft" x="-20" y="-20" width="1240" height="860" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="820" rx="36" fill="url(#bg)"/>
+  <circle cx="980" cy="126" r="180" fill="#F7F3EC"/>
+  <circle cx="152" cy="690" r="220" fill="#F6F1E8"/>
+  <path d="M935 0H1200V820H795L935 0Z" fill="#E8E2D8" opacity="0.55"/>
+
+  <g filter="url(#shadow)">
+    <rect x="130" y="96" width="940" height="600" rx="28" fill="white" stroke="#DDD6CB"/>
+  </g>
+
+  <rect x="184" y="150" width="832" height="82" rx="18" fill="url(#navy)"/>
+  <text x="226" y="198" fill="#FFFFFF" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="28" font-weight="700">営業運用セーフティ・パイプライン</text>
+  <text x="226" y="222" fill="#CAD3E8" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="15">Human approval / Reply routing / Audit log / Retry control</text>
+
+  <g stroke="#B8976C" stroke-width="4" stroke-linecap="round" stroke-dasharray="10 12" opacity="0.86">
+    <path d="M260 356H404"/>
+    <path d="M508 356H652"/>
+    <path d="M756 356H900"/>
+    <path d="M900 458H756"/>
+    <path d="M652 458H508"/>
+    <path d="M404 458H260"/>
+  </g>
+
+  <g font-family="Noto Sans JP, Yu Gothic, sans-serif">
+    <g>
+      <rect x="174" y="286" width="154" height="140" rx="20" fill="#FAF8F4" stroke="#D9D1C5"/>
+      <circle cx="251" cy="326" r="22" fill="url(#gold)"/>
+      <path d="M240 326H262M251 315V337" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <text x="251" y="374" text-anchor="middle" fill="#1B2A4A" font-size="20" font-weight="700">リード調査</text>
+      <text x="251" y="399" text-anchor="middle" fill="#6B6B6B" font-size="13">対象条件を固定</text>
+    </g>
+    <g>
+      <rect x="422" y="286" width="154" height="140" rx="20" fill="#FAF8F4" stroke="#D9D1C5"/>
+      <circle cx="499" cy="326" r="22" fill="#1B2A4A"/>
+      <path d="M488 326L496 334L512 317" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="499" y="374" text-anchor="middle" fill="#1B2A4A" font-size="20" font-weight="700">送信前承認</text>
+      <text x="499" y="399" text-anchor="middle" fill="#6B6B6B" font-size="13">人が最終確認</text>
+    </g>
+    <g>
+      <rect x="670" y="286" width="154" height="140" rx="20" fill="#FAF8F4" stroke="#D9D1C5"/>
+      <circle cx="747" cy="326" r="22" fill="url(#gold)"/>
+      <path d="M735 326H759M759 326L750 317M759 326L750 335" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="747" y="374" text-anchor="middle" fill="#1B2A4A" font-size="20" font-weight="700">安全送信</text>
+      <text x="747" y="399" text-anchor="middle" fill="#6B6B6B" font-size="13">重複・上限を制御</text>
+    </g>
+    <g>
+      <rect x="918" y="286" width="154" height="140" rx="20" fill="#FAF8F4" stroke="#D9D1C5"/>
+      <circle cx="995" cy="326" r="22" fill="#1B2A4A"/>
+      <path d="M983 320H1007M983 332H999" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <text x="995" y="374" text-anchor="middle" fill="#1B2A4A" font-size="20" font-weight="700">返信分類</text>
+      <text x="995" y="399" text-anchor="middle" fill="#6B6B6B" font-size="13">次アクションへ分岐</text>
+    </g>
+
+    <g>
+      <rect x="670" y="490" width="154" height="126" rx="20" fill="#FFFFFF" stroke="#D9D1C5"/>
+      <text x="747" y="542" text-anchor="middle" fill="#1B2A4A" font-size="19" font-weight="700">再実行設計</text>
+      <text x="747" y="571" text-anchor="middle" fill="#6B6B6B" font-size="13">失敗バッチだけ復旧</text>
+    </g>
+    <g>
+      <rect x="422" y="490" width="154" height="126" rx="20" fill="#FFFFFF" stroke="#D9D1C5"/>
+      <text x="499" y="542" text-anchor="middle" fill="#1B2A4A" font-size="19" font-weight="700">監査ログ</text>
+      <text x="499" y="571" text-anchor="middle" fill="#6B6B6B" font-size="13">判断理由を保存</text>
+    </g>
+    <g>
+      <rect x="174" y="490" width="154" height="126" rx="20" fill="#FFFFFF" stroke="#D9D1C5"/>
+      <text x="251" y="542" text-anchor="middle" fill="#1B2A4A" font-size="19" font-weight="700">運用改善</text>
+      <text x="251" y="571" text-anchor="middle" fill="#6B6B6B" font-size="13">次回バッチへ反映</text>
+    </g>
+  </g>
+
+  <g opacity="0.88">
+    <rect x="184" y="660" width="258" height="10" rx="5" fill="#D8CFBF"/>
+    <rect x="184" y="660" width="158" height="10" rx="5" fill="url(#gold)"/>
+    <text x="460" y="670" fill="#6B6B6B" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="14">承認済みだけが次工程へ進む</text>
+  </g>
+</svg>
