@@ -724,14 +724,37 @@
 
 
     /* ===== SALES PIPELINE PAGE FIXES ===== */
-    .sales-page .detail-hero { padding: 7.2rem 5% 4.6rem; background: linear-gradient(180deg, #FFFFFF 0%, #FAFAFA 100%); }
+    .sales-page #hero { min-height: auto; display: block; }
+    .sales-page .detail-hero { padding: 7rem 5% 3.6rem; background: linear-gradient(180deg, #FFFFFF 0%, #FAFAFA 100%); }
     .sales-page #hero::before { display: none; }
     .sales-page .detail-hero .detail-wrap { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; }
     .sales-page .hero-layout { display: grid; grid-template-columns: minmax(0, 0.88fr) minmax(420px, 1fr); gap: 3rem; align-items: center; }
     .sales-page .hero-copy { min-width: 0; }
     .sales-page .hero-title { max-width: 720px; font-size: clamp(1.82rem, 3.1vw, 2.65rem); line-height: 1.42; }
     .sales-page .hero-eyebrow { max-width: 100%; overflow-wrap: anywhere; }
-    .sales-page .hero-actions { gap: 1rem; align-items: center; }
+    .sales-page .hero-copy { display: flex; flex-direction: column; gap: 0; }
+    .sales-page .detail-lead { max-width: 600px; margin-top: 0; }
+    .sales-page .hero-tool-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
+    .sales-page .hero-tool-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.48rem 0.78rem;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.9);
+      color: var(--navy);
+      font-size: 0.74rem;
+      letter-spacing: 0.04em;
+      line-height: 1.35;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .sales-page .hero-actions { gap: 1rem; align-items: center; margin-top: 1.45rem; }
     .sales-page .hero-actions .btn-secondary { padding: 0.85rem 0; }
     .sales-page .hero-visual { margin: 0; }
     .sales-page .hero-visual img { display: block; width: 100%; height: auto; border-radius: 22px; box-shadow: 0 28px 62px rgba(27,42,74,0.16); }
@@ -749,6 +772,31 @@
     .sales-page .workflow-map-section { background: linear-gradient(180deg, var(--bg-section) 0%, var(--bg) 100%); }
     .sales-page .workflow-map-section .detail-wrap { max-width: 1180px; }
     .sales-page .workflow-map-shell { border: 1px solid var(--border); background: rgba(255,255,255,0.82); padding: 1.2rem; box-shadow: 0 24px 55px rgba(27,42,74,0.08); }
+    .sales-page .workflow-map-shell-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.9rem;
+    }
+    .sales-page .workflow-map-kicker {
+      color: var(--navy);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .sales-page .workflow-map-hint {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.45rem 0.8rem;
+      background: rgba(184,151,108,0.12);
+      border: 1px solid rgba(184,151,108,0.3);
+      color: var(--navy);
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
     .sales-page .workflow-map-scroll { overflow-x: auto; padding-bottom: 0.3rem; }
     .sales-page .workflow-map-scroll::-webkit-scrollbar { height: 8px; }
     .sales-page .workflow-map-scroll::-webkit-scrollbar-thumb { background: rgba(184,151,108,0.45); border-radius: 999px; }
@@ -759,6 +807,27 @@
     .sales-page .fit-item { border: 1px solid var(--border); background: var(--white); padding: 1.25rem; }
     .sales-page .fit-item strong { display: block; color: var(--navy); font-size: 0.95rem; margin-bottom: 0.45rem; }
     .sales-page .fit-item span { color: var(--muted); font-size: 0.82rem; line-height: 1.75; }
+    .sales-page .scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+    .sales-page .scope-card {
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(250,250,250,0.98) 100%);
+      padding: 1.2rem 1.2rem 1.1rem;
+    }
+    .sales-page .scope-card-title {
+      color: var(--navy);
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.8rem;
+    }
+    .sales-page .scope-card .detail-list { margin-top: 0; }
+    .sales-page .scope-card .detail-list li { font-size: 0.82rem; line-height: 1.8; }
+    .sales-page .scope-note {
+      margin-top: 0.9rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.8;
+    }
     .sales-page .process-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 1rem; margin-top: 1.4rem; }
     .sales-page .process-card { background: var(--white); border: 1px solid var(--border); padding: 1.35rem; }
     .sales-page .process-card .case-num { margin-bottom: 0.7rem; }
@@ -772,6 +841,8 @@
       .sales-page .hero-title { font-size: clamp(1.58rem, 7.2vw, 1.92rem); line-height: 1.5; letter-spacing: 0.02em; }
       .sales-page .detail-hero .detail-wrap { max-width: 100%; margin-left: auto; margin-right: auto; }
       .sales-page .detail-lead { font-size: 0.9rem; line-height: 1.9; }
+      .sales-page .hero-tool-meta { gap: 0.5rem; margin-top: 0.95rem; }
+      .sales-page .hero-tool-chip { font-size: 0.68rem; padding: 0.42rem 0.68rem; }
       .sales-page .hero-visual { order: -1; margin-top: 0.25rem; }
       .sales-page .hero-visual img { border-radius: 14px; box-shadow: 0 18px 38px rgba(27,42,74,0.12); }
       .sales-page .hero-visual figcaption { font-size: 0.68rem; }
@@ -785,9 +856,13 @@
       .sales-page .section-title { font-size: 1.35rem; line-height: 1.55; }
       .sales-page .fit-list,
       .sales-page .process-grid,
-      .sales-page .two-column-note { grid-template-columns: 1fr; }
+      .sales-page .two-column-note,
+      .sales-page .scope-grid { grid-template-columns: 1fr; }
 
       .sales-page .workflow-map-shell { padding: 0.8rem; margin-left: -0.2rem; margin-right: -0.2rem; }
+      .sales-page .workflow-map-shell-head { align-items: flex-start; flex-direction: column; gap: 0.55rem; margin-bottom: 0.75rem; }
+      .sales-page .workflow-map-kicker { font-size: 0.76rem; }
+      .sales-page .workflow-map-hint { width: 100%; justify-content: center; font-size: 0.68rem; }
       .sales-page .workflow-map-scroll { margin-left: -0.1rem; margin-right: -0.1rem; }
       .sales-page .workflow-map img { min-width: 980px; border-radius: 12px; }
       .sales-page .workflow-map figcaption { text-align: left; font-size: 0.7rem; }
@@ -820,10 +895,17 @@
       <div class="hero-copy">
         <p class="hero-eyebrow">AI営業・問い合わせ対応の安全運用設計</p>
         <h1 class="hero-title">AI営業を、誤送信しない運用に落とし込みます。</h1>
-        <p class="detail-lead">AIで営業文を作るだけでは、誤送信、重複送信、返信後の放置、失敗時の手戻りが残ります。Ezlizeでは、Gmail、Googleスプレッドシート、Googleフォーム、HubSpot、Slackなど既存ツールを残したまま、送信前承認・返信分類・監査ログ・再実行手順を追加し、実運用で破綻しにくい流れとして設計します。</p>
-        <div class="hero-actions" style="margin-top:1.6rem;">
+        <p class="detail-lead">AIで営業文を作るだけでは、誤送信、返信後の放置、失敗時の手戻りは残ります。Ezlizeでは、既存の営業・問い合わせフローに送信前承認、重複防止、返信分類、監査ログ、再実行手順を足し、実運用で破綻しにくい流れへ整えます。</p>
+        <div class="hero-tool-meta" aria-label="対応しやすい既存ツール">
+          <span class="hero-tool-chip">Gmail / Googleスプレッドシート</span>
+          <span class="hero-tool-chip">Googleフォーム / Typeform</span>
+          <span class="hero-tool-chip">HubSpot / Salesforce</span>
+          <span class="hero-tool-chip">Slack / Notion / Airtable</span>
+          <span class="hero-tool-chip">Make / Zapier / n8n / Apps Script</span>
+        </div>
+        <div class="hero-actions">
           <a href="/#contact" class="btn-primary">営業運用を相談する</a>
-          <a href="/#works" class="btn-secondary">実績を見る</a>
+          <a href="#workflow-map" class="btn-secondary">導入イメージを見る</a>
         </div>
       </div>
       <figure class="hero-visual" aria-label="営業運用パイプラインの図解">
@@ -861,24 +943,41 @@
     <div class="detail-card reveal">
       <p class="section-label">設計範囲</p>
       <h2 class="section-title">設計に含めるもの</h2>
-      <ul class="detail-list">
-        <li>Gmail送信前の承認ステータスと最終確認フロー</li>
-        <li>Googleスプレッドシート上の重複チェック・送信禁止条件</li>
-        <li>Slack / Notion への返信分類通知と次アクション管理</li>
-        <li>HubSpot / Salesforce への対応履歴・判断理由の反映</li>
-        <li>Make / Zapier / n8n / Apps Script による連携と再実行設計</li>
-        <li>ICP固定・対象外条件・送信上限制御</li>
-        <li>状態遷移管理と運用ダッシュボード</li>
-      </ul>
+      <div class="scope-grid">
+        <div class="scope-card">
+          <h3 class="scope-card-title">業務設計</h3>
+          <ul class="detail-list">
+            <li>Gmail送信前の承認ステータスと最終確認フロー</li>
+            <li>Googleスプレッドシート上の重複チェック・送信禁止条件</li>
+            <li>Slack / Notion への返信分類通知と次アクション管理</li>
+            <li>ICP固定・対象外条件・送信上限制御</li>
+            <li>状態遷移管理と運用ダッシュボード</li>
+          </ul>
+        </div>
+        <div class="scope-card">
+          <h3 class="scope-card-title">連携・実装対象例</h3>
+          <ul class="detail-list">
+            <li>HubSpot / Salesforce への対応履歴・判断理由の反映</li>
+            <li>Googleフォーム / Typeform からの問い合わせ受付整理</li>
+            <li>Make / Zapier / n8n / Apps Script による連携と再実行設計</li>
+            <li>返信分類、送信ログ、承認ログの保存設計</li>
+          </ul>
+        </div>
+      </div>
+      <p class="scope-note">まずは業務ルールを先に固め、その後で利用中ツールに合わせて実装対象を絞ります。特定SaaSへの全面移行より、今ある運用に安全ゲートを追加する設計を優先します。</p>
     </div>
   </div>
 </section>
-<section class="workflow-map-section">
+<section id="workflow-map" class="workflow-map-section">
   <div class="detail-wrap">
     <p class="section-label reveal">ワークフロー図</p>
     <h2 class="section-title reveal">営業AIを、承認・分岐・ログまで含む運用図に落とします</h2>
     <p class="section-subtitle reveal">参照画像のように「何が、どこへ流れ、どこで人が確認し、失敗時にどこへ戻るか」が一目で分かる図として整理します。</p>
     <div class="workflow-map-shell reveal">
+      <div class="workflow-map-shell-head">
+        <p class="workflow-map-kicker">全体像をそのまま共有・レビューできる説明図です</p>
+        <p class="workflow-map-hint">スマートフォンでは左右にスワイプして確認</p>
+      </div>
       <div class="workflow-map-scroll" aria-label="営業運用パイプラインの詳細ワークフロー図。横にスクロールできます。">
         <figure class="workflow-map">
           <img src="assets/sales-ops-workflow-map-image2.png" alt="対象リスト固定、AI下書き生成、送信前承認、安全チェック、バッチ送信、返信分類、監査ログ、再実行、状態管理をつないだ営業運用パイプライン図" width="1536" height="1024" loading="eager" decoding="async">
