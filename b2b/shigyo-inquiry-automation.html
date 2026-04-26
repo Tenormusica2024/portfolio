@@ -733,6 +733,25 @@
       position:relative; padding-left:1rem;
     }
     .hero-mini-flow li::before { content:'—'; position:absolute; left:0; color:var(--gold); }
+    .detail-visual-wrap { max-width: 1180px; margin: 0 auto; }
+    .detail-visual-frame {
+      background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(247,244,239,0.96) 100%);
+      border: 1px solid var(--border);
+      padding: 1.2rem;
+      box-shadow: 0 22px 48px rgba(27,42,74,0.08);
+    }
+    .detail-visual-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(201, 169, 110, 0.18);
+    }
+    .detail-visual-caption {
+      margin-top: 0.95rem;
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.9;
+    }
     .detail-card { background: var(--white); border: 1px solid var(--border); padding: 2rem; }
     .detail-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .detail-list { list-style:none; display:grid; gap:0.8rem; margin-top:1rem; }
@@ -754,6 +773,8 @@
       .hero-panel { padding: 1.1rem; }
       .hero-panel-title { font-size: 1.06rem; }
       .hero-note { font-size: 0.72rem; }
+      .detail-visual-frame { padding: 0.7rem; }
+      .detail-visual-caption { font-size: 0.78rem; }
     }
   </style>
 </head>
@@ -809,6 +830,16 @@
         </ul>
       </aside>
     </div>
+  </div>
+</section>
+<section aria-labelledby="workflow-visual-title">
+  <div class="detail-visual-wrap">
+    <p class="section-label reveal">Visual</p>
+    <h2 id="workflow-visual-title" class="section-title reveal">慎重さを保つための整理フロー</h2>
+    <figure class="detail-visual-frame reveal">
+      <img class="detail-visual-image" src="assets/shigyo-workflow-image2.png" alt="士業向け業務自動化の流れを示す図。問い合わせ受信、要約整理、必要資料案内、返信下書き、共有メモまでの流れを説明している。">
+      <figcaption class="detail-visual-caption">専門判断には踏み込まず、問い合わせ受信から要約整理・必要資料案内・返信下書き・共有メモまでの前後事務を軽くする構成を一目で把握できるイメージです。</figcaption>
+    </figure>
   </div>
 </section>
 <section id="fit">
