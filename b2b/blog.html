@@ -831,10 +831,19 @@
   });
 
   /* ===== スクロールアニメーション ===== */
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  const revealItems = document.querySelectorAll('.reveal');
+  if (typeof window.IntersectionObserver === 'function') {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.08 });
+    revealItems.forEach(el => observer.observe(el));
+  } else {
+    revealItems.forEach(el => el.classList.add('visible'));
+  }
 </script>
 
 </body>

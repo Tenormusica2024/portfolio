@@ -911,7 +911,7 @@
   function closeNav() { document.querySelector('.hamburger').classList.remove('active'); document.getElementById('mobileNav').classList.remove('active'); document.body.style.overflow = ''; }
   window.addEventListener('resize', function() { if (window.innerWidth > 768) closeNav(); });
   const revealItems = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
+  if (typeof window.IntersectionObserver === 'function') {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
