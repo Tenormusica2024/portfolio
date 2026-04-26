@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import argparse
+import difflib
 import json
 import re
+import sys
 from pathlib import Path
 
 
@@ -105,7 +108,7 @@ def remove_existing_tags(text: str, patterns: list[str]) -> str:
     return "\n".join(kept) + ("\n" if text.endswith("\n") else "")
 
 
-def sync_file(path: Path, config: dict[str, dict[str, str | None]]) -> None:
+def render_synced_text(path: Path, config: dict[str, dict[str, str | None]]) -> str:
     rel = str(path.relative_to(ROOT)).replace("\\", "/")
     if rel not in config:
         raise RuntimeError(f"config not found for {rel}")
@@ -125,15 +128,49 @@ def sync_file(path: Path, config: dict[str, dict[str, str | None]]) -> None:
         raise RuntimeError(f"viewport anchor not found: {path}")
 
     text = re.sub(r"\n{3,}", "\n\n", text)
-    path.write_text(text, encoding="utf-8")
+    return text
 
 
-def main() -> None:
+def sync_file(path: Path, config: dict[str, dict[str, str | None]]) -> bool:
+    current = path.read_text(encoding="utf-8")
+    updated = render_synced_text(path, config)
+    if current == updated:
+        return False
+    path.write_text(updated, encoding="utf-8")
+    return True
+
+
+def check_file(path: Path, config: dict[str, dict[str, str | None]]) -> bool:
+    current = path.read_text(encoding="utf-8")
+    updated = render_synced_text(path, config)
+    if current == updated:
+        return False
+    rel = path.relative_to(ROOT)
+    print(rel)
+    return True
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Sync shared B2B head metadata into HTML files")
+    parser.add_argument("--check", action="store_true", help="write せずに drift を検出して non-zero exit")
+    args = parser.parse_args()
+
     config = load_config()
+    changed = False
     for path in TARGETS:
-        sync_file(path, config)
-        print(path.relative_to(ROOT))
+        if args.check:
+            changed = check_file(path, config) or changed
+        else:
+            changed_here = sync_file(path, config)
+            if changed_here:
+                print(path.relative_to(ROOT))
+            changed = changed_here or changed
+
+    if args.check and changed:
+        print("B2B shared head drift detected. Run scripts/sync_b2b_shared_head.py to rewrite files.", file=sys.stderr)
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
