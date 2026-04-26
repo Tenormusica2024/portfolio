@@ -680,22 +680,81 @@
       footer { flex-direction: column; gap: 0.6rem; text-align: center; }
       .footer-links { justify-content: center; gap: 1rem; }
     }
-    .detail-hero { min-height: auto; padding: 9rem 5% 4rem; }
-    .detail-wrap { max-width: 980px; margin: 0 auto; }
-    .detail-lead { max-width: 760px; color: var(--muted); line-height: 1.95; font-size: 0.95rem; margin-top: 1rem; }
+    #hero { min-height: auto; display: block; }
+    .detail-hero { min-height: auto; padding: 7rem 5% 3.4rem; background: linear-gradient(180deg, #FFFFFF 0%, #FAFAFA 100%); }
+    .detail-wrap { max-width: 1120px; margin: 0 auto; }
+    .detail-hero .detail-wrap { position: relative; z-index: 1; }
+    .hero-layout { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.8fr); gap: 2.8rem; align-items: center; }
+    .hero-copy { min-width: 0; }
+    .detail-lead { max-width: 620px; color: var(--muted); line-height: 1.95; font-size: 0.95rem; margin-top: 1rem; }
+    .hero-tool-meta { display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:1.05rem; }
+    .hero-tool-chip {
+      display:inline-flex; align-items:center;
+      padding:0.45rem 0.75rem;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:rgba(255,255,255,0.9);
+      color:var(--navy);
+      font-size:0.74rem; letter-spacing:0.03em;
+      white-space:nowrap;
+    }
+    .hero-actions { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; margin-top:1.45rem; }
+    .hero-note { margin-top:0.8rem; color:var(--muted); font-size:0.78rem; line-height:1.8; }
+    .hero-note strong { color:var(--navy); }
+    .hero-panel {
+      background:linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(244,243,240,0.95) 100%);
+      border:1px solid var(--border);
+      padding:1.4rem;
+      box-shadow:0 22px 48px rgba(27,42,74,0.08);
+    }
+    .hero-panel-label {
+      color:var(--gold); font-size:0.68rem; letter-spacing:0.18em;
+      text-transform:uppercase; margin-bottom:0.8rem;
+    }
+    .hero-panel-title {
+      color:var(--navy); font-family:'Shippori Mincho', serif;
+      font-size:1.2rem; line-height:1.55; margin-bottom:0.8rem;
+    }
+    .hero-panel-desc { color:var(--muted); font-size:0.84rem; line-height:1.85; }
+    .hero-summary { display:grid; grid-template-columns:1fr; gap:0.75rem; margin-top:1rem; }
+    .hero-summary-card {
+      border:1px solid var(--border);
+      background:rgba(255,255,255,0.88);
+      padding:0.9rem 1rem;
+    }
+    .hero-summary-card strong { display:block; color:var(--navy); font-size:0.84rem; margin-bottom:0.3rem; }
+    .hero-summary-card span { color:var(--muted); font-size:0.8rem; line-height:1.75; }
+    .hero-mini-flow {
+      margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border);
+      display:grid; grid-template-columns:1fr; gap:0.55rem; list-style:none;
+    }
+    .hero-mini-flow li {
+      color:var(--muted); font-size:0.8rem; line-height:1.7;
+      position:relative; padding-left:1rem;
+    }
+    .hero-mini-flow li::before { content:'—'; position:absolute; left:0; color:var(--gold); }
     .detail-card { background: var(--white); border: 1px solid var(--border); padding: 2rem; }
     .detail-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .detail-list { list-style:none; display:grid; gap:0.8rem; margin-top:1rem; }
     .detail-list li { position:relative; padding-left:1rem; color:var(--muted); }
     .detail-list li::before { content:'—'; position:absolute; left:0; color:var(--gold); }
-    .back-link { margin-top:1.2rem; display:inline-flex; align-items:center; gap:0.4rem; color:var(--muted); text-decoration:none; }
-    .back-link::before { content:'←'; }
-
     .case-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .case-card { background: var(--white); border: 1px solid var(--border); padding: 1.8rem; }
     .case-label { font-size: 0.72rem; letter-spacing: 0.14em; color: var(--gold); margin-bottom: 0.7rem; }
     .case-text { color: var(--muted); line-height: 1.9; font-size: 0.88rem; }
-    @media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; } .case-grid { grid-template-columns: 1fr; } .detail-hero { padding-top: 7rem; } }
+    @media (max-width: 768px) {
+      .detail-grid { grid-template-columns: 1fr; }
+      .case-grid { grid-template-columns: 1fr; }
+      .detail-hero { padding: 6.5rem 5% 3rem; }
+      .hero-layout { grid-template-columns: 1fr; gap: 1.8rem; }
+      .hero-tool-meta { gap: 0.5rem; }
+      .hero-tool-chip { font-size: 0.68rem; padding: 0.42rem 0.68rem; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .hero-actions .btn-primary, .hero-actions .btn-secondary { width: 100%; text-align: center; justify-content: center; }
+      .hero-panel { padding: 1.1rem; }
+      .hero-panel-title { font-size: 1.06rem; }
+      .hero-note { font-size: 0.72rem; }
+    }
   </style>
 </head>
 <body>
@@ -717,25 +776,50 @@
 </ul>
 <section id="hero" class="detail-hero">
   <div class="detail-wrap">
-    <p class="hero-eyebrow">業種別ページ / 士業向け業務自動化</p>
-    <h1 class="hero-title">士業の専門判断はそのままに、前後の事務整理を軽くする。</h1>
-    <p class="detail-lead">士業では、相談内容の読み取り、必要資料の確認、返信のたたき台、社内共有など、専門判断の前後に多くの事務作業があります。Ezlizeでは、専門部分を置き換えずに、その前後の整理とやり取りを効率化する仕組みを整えます。</p>
-    <div class="hero-actions" style="margin-top:1.6rem;">
-      <a href="/#contact" class="btn-primary">1つだけ困りごとを送る</a>
-      <a href="/#works" class="btn-secondary">実績を見る</a>
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">業種別ページ / 士業向け業務自動化</p>
+        <h1 class="hero-title">士業の専門判断はそのままに、前後の事務整理を軽くする。</h1>
+        <p class="detail-lead">士業では、相談内容の読み取り、必要資料の確認、返信のたたき台、社内共有など、専門判断の前後に多くの事務作業があります。Ezlizeでは、専門部分を置き換えずに、その前後の整理とやり取りを効率化する仕組みを整えます。</p>
+        <div class="hero-tool-meta" aria-label="士業向けで使いやすいツール例">
+          <span class="hero-tool-chip">Gmail / スプレッドシート</span>
+          <span class="hero-tool-chip">必要資料案内</span>
+          <span class="hero-tool-chip">共有メモ / タスク化</span>
+          <span class="hero-tool-chip">メールベース進捗整理</span>
+        </div>
+        <div class="hero-actions">
+          <a href="/#contact" class="btn-primary">士業の困りごとを相談する</a>
+          <a href="#case" class="btn-secondary">改善イメージを見る</a>
+        </div>
+        <p class="hero-note"><strong>専門判断は置き換えません。</strong> 要約・下書き・整理だけを先に軽くする進め方に寄せます。</p>
+      </div>
+      <aside class="hero-panel" aria-label="士業向けの導入イメージ">
+        <p class="hero-panel-label">Overview</p>
+        <h2 class="hero-panel-title">慎重さを保ったまま、前後の事務作業だけを軽くする構成です</h2>
+        <p class="hero-panel-desc">専門判断そのものに踏み込まず、相談内容の要約、必要資料案内、返信下書き、共有メモ化などの周辺業務を整えることで、確認負荷を減らします。</p>
+        <div class="hero-summary">
+          <div class="hero-summary-card"><strong>先に整える工程</strong><span>問い合わせ要約、必要資料の案内、返信下書き、社内共有メモ、進捗整理。</span></div>
+          <div class="hero-summary-card"><strong>人が残す判断</strong><span>最終回答、専門判断、法務・税務・労務などの個別事情を伴う対外判断。</span></div>
+          <div class="hero-summary-card"><strong>納品イメージ</strong><span>要約ルール、返信下書きフロー、共有テンプレート、確認しやすい進捗管理導線。</span></div>
+        </div>
+        <ul class="hero-mini-flow">
+          <li>相談内容を先に要約して読み取り負荷を減らす</li>
+          <li>必要資料の案内と返信下書きを補助する</li>
+          <li>共有メモと進捗整理で属人化を抑える</li>
+        </ul>
+      </aside>
     </div>
-    <a class="back-link" href="/">トップへ戻る</a>
   </div>
 </section>
-<section>
+<section id="fit">
   <div class="detail-wrap detail-grid">
     <div class="detail-card reveal">
-      <p class="section-label">Fit</p>
+      <p class="section-label">適性</p>
       <h2 class="section-title">士業向けに相性が良い理由</h2>
       <p class="section-subtitle" style="margin-bottom:0;">専門判断そのものではなく、その前後の事務整理に絞って導入しやすいからです。慎重な運用が求められる業種でも、人の確認を前提にした補助線として使えます。</p>
     </div>
     <div class="detail-card reveal">
-      <p class="section-label">Examples</p>
+      <p class="section-label">改善テーマ</p>
       <h2 class="section-title">よくある改善テーマ</h2>
       <ul class="detail-list">
           <li>問い合わせ内容の要約と分類</li>
@@ -746,9 +830,9 @@
     </div>
   </div>
 </section>
-<section>
+<section id="case">
   <div class="detail-wrap">
-    <p class="section-label reveal">Case</p>
+    <p class="section-label reveal">改善前後</p>
     <h2 class="section-title reveal">改善イメージ</h2>
     <div class="case-grid">
       <div class="case-card reveal">
@@ -766,7 +850,7 @@
 <section id="faq">
   <div class="detail-wrap">
     <p class="section-label reveal">FAQ</p>
-    <h2 class="section-title reveal">士業向け業務自動化向けのよくあるご質問</h2>
+    <h2 class="section-title reveal">士業向けによくあるご質問</h2>
     <div class="faq-list">
         <div class="faq-item reveal">
           <button class="faq-q" aria-expanded="false">士業でもAIを安全に使えますか？</button>
@@ -781,9 +865,9 @@
 </section>
 <section id="contact">
   <div class="detail-wrap detail-card">
-    <p class="section-label reveal">Contact</p>
+    <p class="section-label reveal">相談</p>
     <h2 class="section-title reveal">まずはご相談ください</h2>
-    <p class="section-subtitle reveal">士業向け業務自動化向けの改善相談も、要件未確定の段階から対応できます。今の運用で困っている点を1つだけ送っていただければ大丈夫です。</p>
+    <p class="section-subtitle reveal">士業向けの改善相談も、要件未確定の段階から対応できます。今の運用で困っている点を1つだけ送っていただければ大丈夫です。</p>
     <a href="/#contact" class="btn-primary reveal">士業の困りごとを相談する</a>
   </div>
 </section>
