@@ -756,6 +756,13 @@
     }
     .sales-page .hero-actions { gap: 1rem; align-items: center; margin-top: 1.45rem; }
     .sales-page .hero-actions .btn-secondary { padding: 0.85rem 0; }
+    .sales-page .hero-cv-note {
+      margin-top: 0.8rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.8;
+    }
+    .sales-page .hero-cv-note strong { color: var(--navy); font-weight: 700; }
     .sales-page .hero-visual { margin: 0; }
     .sales-page .hero-visual img { display: block; width: 100%; height: auto; border-radius: 22px; box-shadow: 0 28px 62px rgba(27,42,74,0.16); }
     .sales-page .hero-visual figcaption { margin-top: 0.75rem; color: var(--muted); font-size: 0.72rem; letter-spacing: 0.08em; text-align: center; }
@@ -835,6 +842,46 @@
     .sales-page .process-card p { color: var(--muted); font-size: 0.82rem; line-height: 1.8; }
     .sales-page .two-column-note { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .sales-page .muted-note { color: var(--muted); font-size: 0.88rem; line-height: 1.9; }
+    .sales-page .contact-help {
+      margin-top: 1.25rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid var(--border);
+    }
+    .sales-page .contact-help-title {
+      color: var(--navy);
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+    .sales-page .contact-help-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.7rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .sales-page .contact-help-list li {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.82);
+      padding: 0.8rem 0.85rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.7;
+    }
+    .sales-page .contact-help-list strong {
+      display: block;
+      color: var(--navy);
+      font-size: 0.78rem;
+      margin-bottom: 0.2rem;
+    }
+    .sales-page .contact-help-note {
+      margin-top: 0.7rem;
+      color: var(--muted);
+      font-size: 0.76rem;
+      line-height: 1.8;
+    }
     @media (max-width: 768px) {
       .sales-page .detail-hero { padding: 6.5rem 5% 3rem; }
       .sales-page .hero-layout { grid-template-columns: 1fr; gap: 2rem; }
@@ -857,7 +904,8 @@
       .sales-page .fit-list,
       .sales-page .process-grid,
       .sales-page .two-column-note,
-      .sales-page .scope-grid { grid-template-columns: 1fr; }
+      .sales-page .scope-grid,
+      .sales-page .contact-help-list { grid-template-columns: 1fr; }
 
       .sales-page .workflow-map-shell { padding: 0.8rem; margin-left: -0.2rem; margin-right: -0.2rem; }
       .sales-page .workflow-map-shell-head { align-items: flex-start; flex-direction: column; gap: 0.55rem; margin-bottom: 0.75rem; }
@@ -866,6 +914,8 @@
       .sales-page .workflow-map-scroll { margin-left: -0.1rem; margin-right: -0.1rem; }
       .sales-page .workflow-map img { min-width: 980px; border-radius: 12px; }
       .sales-page .workflow-map figcaption { text-align: left; font-size: 0.7rem; }
+      .sales-page .hero-cv-note,
+      .sales-page .contact-help-note { font-size: 0.72rem; }
       .sales-page .footer-links { flex-wrap: wrap; }
     }
   </style>
@@ -907,6 +957,7 @@
           <a href="/#contact" class="btn-primary">営業運用を相談する</a>
           <a href="#workflow-map" class="btn-secondary">導入イメージを見る</a>
         </div>
+        <p class="hero-cv-note"><strong>まずは小さくでOK。</strong> 1つの営業リスト・1つの承認フロー単位の相談から始められます。</p>
       </div>
       <figure class="hero-visual" aria-label="営業運用パイプラインの図解">
         <img src="assets/sales-ops-pipeline-hero.png" alt="承認チェック、返信分岐、監査ログ、再実行ループを表現したAI営業運用ワークフローの高品質ビジュアル" width="1586" height="992" loading="eager" decoding="async">
@@ -1060,6 +1111,15 @@
     <h2 class="section-title reveal">まずは1つのリスト・1つの承認フローから整えます</h2>
     <p class="section-subtitle reveal">「営業メールの下書きが散らばる」「返信後の管理が曖昧」「AI化したいが誤送信が怖い」など、今の運用で壊れやすい箇所を1つだけ送ってください。最初から全自動化せず、失敗しにくい最小構成を提案します。</p>
     <a href="/#contact" class="btn-primary reveal">営業運用の困りごとを相談する</a>
+    <div class="contact-help reveal">
+      <p class="contact-help-title">相談時にこの3点があると早いです</p>
+      <ul class="contact-help-list">
+        <li><strong>対象業務</strong>営業メール、問い合わせ一次対応、LinkedIn運用など</li>
+        <li><strong>利用中ツール</strong>Gmail、スプレッドシート、HubSpot、Slack など</li>
+        <li><strong>止まりやすい工程</strong>送信判断、返信管理、ログ不足、再実行の難しさ など</li>
+      </ul>
+      <p class="contact-help-note">まだ整理できていなくても問題ありません。箇条書きのメモだけでも、相談の入口として十分です。</p>
+    </div>
   </div>
 </section>
 </main>
