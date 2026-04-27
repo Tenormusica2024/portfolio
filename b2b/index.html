@@ -329,7 +329,7 @@
       background: linear-gradient(145deg, #F0EDE6 0%, #E4DFD5 100%);
       clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
     }
-    .hero-content { position: relative; z-index: 1; max-width: 620px; }
+    .hero-content { position: relative; z-index: 1; max-width: 760px; }
 
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 0.6rem;
@@ -343,11 +343,15 @@
 
     .hero-title {
       font-family: 'Shippori Mincho', serif;
-      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      font-size: clamp(2rem, 4.1vw, 3.25rem);
       font-weight: 700; color: var(--navy);
-      line-height: 1.35; margin-bottom: 1.4rem;
+      line-height: 1.32; margin-bottom: 1.4rem;
+      max-width: 760px;
+      text-wrap: balance;
     }
-    .hero-title em { font-style: normal; color: var(--gold); }
+    .hero-title em { font-style: normal; color: var(--navy); }
+    .hero-title-line { display: block; }
+    .hero-title .hero-title-accent { color: var(--gold); }
 
     .hero-desc {
       font-size: 0.95rem; color: var(--muted);
@@ -757,6 +761,8 @@
       .mobile-nav { display: flex; }
       section { padding: 4rem 4%; }
       #hero { min-height: auto; display: block; padding-top: 88px; }
+      .hero-content { max-width: 100%; }
+      .hero-title { font-size: clamp(2rem, 9vw, 2.45rem); line-height: 1.34; }
       #hero::before { display: none; }
       .hero-stats { display: grid; grid-template-columns: 1fr 1fr; }
       .stat-item { padding: 0.8rem 1rem; }
@@ -808,8 +814,9 @@
     <div class="hero-status"><span class="hero-status-dot"></span>現在 受注受付中</div>
     <p class="hero-eyebrow">営業運用・問い合わせ運用・業務自動化を中心に支援 | フリーランス受託開発</p>
     <h1 class="hero-title">
-      止まりやすい業務フローを、<br>
-      <em>AIの速度で形にし、現場で使える品質まで仕上げる。</em>
+      <em class="hero-title-line">AIの速度で形にし、</em>
+      <span class="hero-title-line hero-title-accent">現場で使える品質まで</span>
+      <span class="hero-title-line hero-title-accent">仕上げる。</span>
     </h1>
     <p class="hero-desc">
       中小企業・個人事業主向けに、営業運用・問い合わせ対応・日々の業務フロー改善を中心とした業務自動化とAI組み込み開発を提供しています。
