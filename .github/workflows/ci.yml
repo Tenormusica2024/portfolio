@@ -104,6 +104,9 @@ jobs:
         run: htmlhint "**/*.html" --ignore "**/node_modules/**" || true
         continue-on-error: true
 
+      - name: Run B2B hero headline guard
+        run: node scripts/check_b2b_hero_headlines.js
+
   # セキュリティスキャン（全プロジェクト共通）
   security-scan:
     runs-on: ubuntu-latest

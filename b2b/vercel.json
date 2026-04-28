@@ -1,6 +1,6 @@
 {
   "name": "urayahadays-b2b",
-  "buildCommand": null,
+  "buildCommand": "node ../scripts/check_b2b_hero_headlines.js",
   "outputDirectory": ".",
   "framework": null,
   "redirects": [
