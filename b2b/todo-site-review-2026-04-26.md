@@ -334,3 +334,7 @@ sales page くらい具体化した方が強いです。
 - 追加QAで見つかった見出しの1文字改行を修正
   - data-report / komuten / order-inventory / reservation / system-maintenance / website-production の大見出しを短縮・言い換え
   - 全HTML 15ページを desktop / mobile で再確認し、横はみ出し・broken image・見出しの不自然改行が 0 件であることを確認
+- 問い合わせ導線とSEO文言の見直しを実施
+  - トップ / 営業運用のmeta descriptionから、Hero以外で強く見えすぎるAI訴求を抑制
+  - 詳細ページ下部CTAの汎用的な `相談する` を、各サービス文脈に合わせた具体的な相談CTAへ変更
+  - 安めの費用感から問い合わせへ進む流れが分かるよう、トップの `費用感を相談する` は維持
