@@ -1025,7 +1025,7 @@
       background-image:
         linear-gradient(90deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.72) 40%, rgba(255,255,255,0.48) 100%),
         linear-gradient(180deg, rgba(255,255,255,0.48), rgba(42,92,113,0.18)),
-        url("assets/data-report-workflow-photo.jpg");
+        url("assets/data-report-workflow-photo.webp");
       background-size: cover;
       background-position: center;
       filter: saturate(0.82) brightness(1.06);
@@ -1221,7 +1221,7 @@
 <section id="report-workflow" class="report-workflow-section">
   <div class="detail-wrap">
     <p class="section-label reveal">ワークフロー図</p>
-    <h2 class="section-title reveal"><span class="keep-line">集計作業を自動化し、</span><span class="keep-line">毎日見る数字を更新します</span></h2>
+    <h2 class="section-title reveal"><span class="keep-line">集計作業を自動化し</span><span class="keep-line">毎日の数字を更新します</span></h2>
     <p class="section-subtitle reveal">CSV、Google Sheets、売上データ、問い合わせ件数を集め、集計表・グラフ・通知まで毎回同じ手順で更新できるようにします。</p>
     <div class="report-board reveal">
       <div class="report-photo-bg" aria-hidden="true"></div>
@@ -1308,17 +1308,17 @@
   </div></div></div>
 </section>
 <section><div class="detail-wrap">
-  <p class="section-label reveal">対象</p><h2 class="section-title reveal">こんな集計・レポートを自動化します</h2><p class="section-subtitle reveal">売上、問い合わせ、広告、在庫、業務KPIなど、定期的に集めて確認するデータを対象にします。</p>
+  <p class="section-label reveal">対象</p><h2 class="section-title reveal">自動化できる集計例</h2><p class="section-subtitle reveal">売上、問い合わせ、広告、在庫、業務KPIなど、定期的に集めて確認するデータを対象にします。</p>
   <div class="fit-list reveal"><div class="fit-item"><strong>売上・KPI集計</strong><span>日次・週次で更新する売上や指標を自動集計します。</span></div><div class="fit-item"><strong>在庫・発注レポート</strong><span>在庫数、発注状況、欠品候補を見える化します。</span></div><div class="fit-item"><strong>問い合わせ件数分析</strong><span>問い合わせ種別、対応状況、返信速度を集計します。</span></div></div>
 </div></section>
 
 
 <section id="scope"><div class="detail-wrap detail-grid">
-  <div class="detail-card reveal"><p class="section-label">価値</p><h2 class="section-title">数字を見るまでの手作業を減らす</h2><p class="section-subtitle" style="margin-bottom:0;">レポート作成に時間がかかると、判断が遅れます。毎回同じ手順で集計する部分を自動化し、確認と判断に時間を使える状態を作ります。</p></div>
+  <div class="detail-card reveal"><p class="section-label">価値</p><h2 class="section-title">数字確認までを短縮</h2><p class="section-subtitle" style="margin-bottom:0;">レポート作成に時間がかかると、判断が遅れます。毎回同じ手順で集計する部分を自動化し、確認と判断に時間を使える状態を作ります。</p></div>
   <div class="detail-card reveal"><p class="section-label">設計範囲</p><h2 class="section-title">設計に含めるもの</h2><div class="scope-grid"><div class="scope-card"><h3 class="scope-card-title">業務設計</h3><ul class="detail-list"><li>必要指標、更新頻度、確認者の整理</li><li>データ元と集計ロジックの確認</li><li>異常値、欠損、更新漏れの扱い</li><li>共有方法と通知タイミングの設計</li></ul></div><div class="scope-card"><h3 class="scope-card-title">実装・連携</h3><ul class="detail-list"><li>CSV / API / スプレッドシートからのデータ取得</li><li>GAS / Python による集計処理</li><li>Looker Studio / Sheets グラフ化</li><li>Slack / メールへの定期通知</li></ul></div></div><p class="scope-note">既存のツールや運用をできるだけ活かし、置き換えよりも「止まりやすい箇所を安全に補強する」進め方を優先します。</p></div>
 </div></section>
 <section><div class="detail-wrap"><p class="section-label reveal">運用例</p><h2 class="section-title reveal">導入後の流れ</h2><div class="case-grid"><div class="case-card reveal"><span class="case-num">01</span><h3>データを取得</h3><p>CSV、スプレッドシート、APIから必要データを集めます。</p></div><div class="case-card reveal"><span class="case-num">02</span><h3>集計して整形</h3><p>日付、カテゴリ、担当者などの軸で集計します。</p></div><div class="case-card reveal"><span class="case-num">03</span><h3>グラフと通知</h3><p>確認用ダッシュボードと定期通知を用意します。</p></div></div></div></section>
-<section><div class="detail-wrap"><p class="section-label reveal">進め方</p><h2 class="section-title reveal">小さく始めて、使える状態まで整えます</h2><div class="process-grid reveal"><div class="process-card"><span class="case-num">STEP 1</span><h3>現状整理</h3><p>今の作業、使っているツール、手戻りが起きる場面を確認します。</p></div><div class="process-card"><span class="case-num">STEP 2</span><h3>最小範囲の設計</h3><p>最初に自動化する対象、残す手作業、確認ポイントを決めます。</p></div><div class="process-card"><span class="case-num">STEP 3</span><h3>実装・接続</h3><p>既存ツールに合わせて、入力、通知、ログ、確認画面をつなぎます。</p></div><div class="process-card"><span class="case-num">STEP 4</span><h3>運用改善</h3><p>実際の利用ログを見ながら、対象条件やチェック項目を調整します。</p></div></div></div></section>
+<section><div class="detail-wrap"><p class="section-label reveal">進め方</p><h2 class="section-title reveal">小さく始めて運用に乗せます</h2><div class="process-grid reveal"><div class="process-card"><span class="case-num">STEP 1</span><h3>現状整理</h3><p>今の作業、使っているツール、手戻りが起きる場面を確認します。</p></div><div class="process-card"><span class="case-num">STEP 2</span><h3>最小範囲の設計</h3><p>最初に自動化する対象、残す手作業、確認ポイントを決めます。</p></div><div class="process-card"><span class="case-num">STEP 3</span><h3>実装・接続</h3><p>既存ツールに合わせて、入力、通知、ログ、確認画面をつなぎます。</p></div><div class="process-card"><span class="case-num">STEP 4</span><h3>運用改善</h3><p>実際の利用ログを見ながら、対象条件やチェック項目を調整します。</p></div></div></div></section>
 <section><div class="detail-wrap detail-card"><p class="section-label reveal">納品物</p><h2 class="section-title reveal">納品物の例</h2><div class="two-column-note reveal"><ul class="detail-list"><li>自動集計スクリプト</li><li>集計用スプレッドシート</li><li>ダッシュボード・グラフ</li><li>定期通知設定</li><li>更新手順・エラー時メモ</li></ul><p class="muted-note">要件が固まりきっていない段階でも、現状の作業メモ・使っているツール・困っている場面から整理できます。初回は対象範囲を絞り、運用しながら広げる形を推奨します。</p></div></div></section>
 <section id="faq"><div class="detail-wrap"><p class="section-label reveal">よくある質問</p><h2 class="section-title reveal">データ集計・自動レポートに関するご質問</h2><div class="faq-list"><div class="faq-item reveal"><button class="faq-q" aria-expanded="false">ExcelやCSVでもできますか？</button><p class="faq-a">可能です。Excel、CSV、Googleスプレッドシートを起点にした自動集計に対応できます。</p></div><div class="faq-item reveal"><button class="faq-q" aria-expanded="false">毎日自動更新できますか？</button><p class="faq-a">可能です。更新頻度とデータ元に合わせて、日次・週次などの定期実行を設計します。</p></div><div class="faq-item reveal"><button class="faq-q" aria-expanded="false">グラフ化までできますか？</button><p class="faq-a">できます。GoogleスプレッドシートのグラフやLooker Studioなど、用途に合わせて選びます。</p></div></div></div></section>
 <section id="contact"><div class="detail-wrap detail-card"><p class="section-label reveal">相談</p><h2 class="section-title reveal">今作っているレポートを1つ教えてください</h2><p class="section-subtitle reveal">毎週・毎月作っている表やグラフ、元データの形式、確認したい指標を送ってください。</p><a href="/#contact" class="btn-primary reveal">相談する</a><div class="contact-help reveal"><p class="contact-help-title">相談時にこの3点があると早いです</p><ul class="contact-help-list"><li><strong>元データ</strong>CSV、Excel、Sheets、APIなど</li><li><strong>見たい指標</strong>売上、件数、在庫、KPIなど</li><li><strong>頻度</strong>日次、週次、月次など</li></ul><p class="contact-help-note">まだ整理できていなくても問題ありません。箇条書きのメモだけでも、相談の入口として十分です。</p></div></div></section>

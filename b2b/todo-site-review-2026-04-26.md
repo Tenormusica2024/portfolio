@@ -233,9 +233,7 @@ sales page くらい具体化した方が強いです。
 ### 次に進める
 
 4. **未圧縮画像の追加軽量化**
-   - `website-production-workflow-photo.jpg` がまだ約700KB
-   - 他のJPGも画質を見ながらWebP化または再圧縮を検討
-   - 画像の質感を落としすぎないことを優先
+   - 主要JPGはWebP化済み。画質を見ながら必要に応じて追加確認
 
 5. **トップHero右側カードの見た目レビュー**
    - 空白対策としてカードを追加済み
@@ -291,7 +289,7 @@ sales page くらい具体化した方が強いです。
   - 詳細ページの費用目安はトップのサービスカードと一致
   - 特商法表記の目安を `2万円〜50万円` に修正
 
-残りは、未圧縮JPGの追加軽量化、SEO / 構造化データの詳細確認、問い合わせ導線のCV文言レビュー、コード重複整理。
+残りは、SEO / 構造化データの詳細確認、問い合わせ導線のCV文言レビュー、コード重複整理。
 
 ---
 
@@ -322,3 +320,17 @@ sales page くらい具体化した方が強いです。
   - 問い合わせ整理、営業運用、工務店、不動産、士業ページでは、AIそのものより「整理・下書き・人の確認・ログ」に寄せた文言へ調整
   - `AI秘書` など先鋭的に見える呼称は、サービス文脈では `反響対応支援` など実務寄りの表現に変更
   - AI組み込み開発ページはサービス名として残しつつ、本文は `LLM API` / `出力` / `支援ツール` 寄りに整理
+
+
+- 未圧縮JPGの追加軽量化を実施
+  - `website-production-workflow-photo.jpg` / `data-report-workflow-photo.jpg` / `reservation-workflow-photo.jpg` / `system-maintenance-workflow-photo.jpg` をWebP化して参照を更新
+  - 未使用の旧JPG / 旧WebPを削除し、`.jpg` 参照が残っていないことを確認
+- 公開ディレクトリ内の作業用Markdownが本番配信されないよう、`b2b/.vercelignore` を追加
+- SEO / 構造化データ / 内部リンク / 画像参照の簡易チェックを再実施
+  - JSON-LD parse error: 0
+  - missing meta title / description: 0
+  - missing file: 0
+  - old jpg refs: 0
+- 追加QAで見つかった見出しの1文字改行を修正
+  - data-report / komuten / order-inventory / reservation / system-maintenance / website-production の大見出しを短縮・言い換え
+  - 全HTML 15ページを desktop / mobile で再確認し、横はみ出し・broken image・見出しの不自然改行が 0 件であることを確認

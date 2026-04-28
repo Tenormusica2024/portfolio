@@ -1,0 +1,6 @@
+# Keep operational drafts and review notes out of the deployed static site.
+*.md
+
+# Local/editor artifacts
+.vercel
+.env*.local
