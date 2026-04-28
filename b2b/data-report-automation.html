@@ -951,22 +951,123 @@
       background-size: 32px 32px;
       pointer-events: none;
     }
-    .report-bg-note {
+    .report-photo-bg {
       position: absolute;
       z-index: 0;
-      border: 1px solid rgba(42,92,113,0.10);
-      background: rgba(255,255,255,0.46);
-      color: rgba(27,42,74,0.22);
-      font-size: 0.68rem;
-      line-height: 1.7;
-      padding: 0.8rem;
-      border-radius: 12px;
+      inset: 5.4rem 2.4rem 3.7rem 2.4rem;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
       pointer-events: none;
-      box-shadow: 0 12px 32px rgba(27,42,74,0.035);
+      opacity: 0.28;
+      filter: blur(1.1px) saturate(0.9);
+      transform: rotate(-0.8deg);
     }
-    .report-bg-note.sales { left: 3%; top: 18%; width: 210px; transform: rotate(-4deg); }
-    .report-bg-note.kpi { right: 4%; top: 26%; width: 230px; transform: rotate(3deg); }
-    .report-bg-note.monthly { left: 38%; bottom: 8%; width: 250px; transform: rotate(-2deg); }
+    .report-photo-window {
+      width: min(980px, 84%);
+      min-height: 500px;
+      display: grid;
+      grid-template-columns: 142px 1fr;
+      overflow: hidden;
+      border: 1px solid rgba(27,42,74,0.16);
+      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.86), rgba(221,234,238,0.64));
+      box-shadow: 0 30px 90px rgba(27,42,74,0.18);
+    }
+    .report-photo-sidebar {
+      background: linear-gradient(180deg, rgba(27,42,74,0.74), rgba(42,92,113,0.48));
+      border-right: 1px solid rgba(255,255,255,0.38);
+      padding: 1.1rem 0.9rem;
+    }
+    .report-photo-sidebar span {
+      display: block;
+      height: 10px;
+      margin-bottom: 0.82rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.52);
+    }
+    .report-photo-sidebar span:nth-child(1) { width: 70%; height: 16px; margin-bottom: 1.4rem; }
+    .report-photo-sidebar span:nth-child(2) { width: 86%; }
+    .report-photo-sidebar span:nth-child(3) { width: 64%; }
+    .report-photo-sidebar span:nth-child(4) { width: 78%; }
+    .report-photo-main { padding: 1rem 1.1rem 1.2rem; }
+    .report-photo-toolbar {
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(27,42,74,0.10);
+    }
+    .report-photo-toolbar::before,
+    .report-photo-toolbar::after {
+      content: '';
+      display: block;
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(42,92,113,0.34);
+    }
+    .report-photo-toolbar::before { width: 220px; }
+    .report-photo-toolbar::after { width: 120px; background: rgba(191,151,102,0.42); }
+    .report-photo-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.7rem;
+      margin-bottom: 0.9rem;
+    }
+    .report-photo-card {
+      min-height: 72px;
+      border: 1px solid rgba(27,42,74,0.10);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.70);
+      padding: 0.8rem;
+    }
+    .report-photo-card::before,
+    .report-photo-card::after {
+      content: '';
+      display: block;
+      border-radius: 999px;
+      background: rgba(27,42,74,0.26);
+    }
+    .report-photo-card::before { width: 42%; height: 18px; margin-bottom: 0.7rem; }
+    .report-photo-card::after { width: 78%; height: 9px; background: rgba(42,92,113,0.22); }
+    .report-photo-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 0.9rem; }
+    .report-photo-panel {
+      min-height: 260px;
+      border: 1px solid rgba(27,42,74,0.11);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.66);
+      padding: 1rem;
+    }
+    .report-photo-chart {
+      height: 170px;
+      display: flex;
+      align-items: flex-end;
+      gap: 0.55rem;
+      padding: 1.2rem 0.6rem 0.4rem;
+      border-bottom: 1px solid rgba(27,42,74,0.18);
+      background: repeating-linear-gradient(0deg, transparent, transparent 33px, rgba(42,92,113,0.09) 34px);
+    }
+    .report-photo-chart span {
+      flex: 1;
+      border-radius: 3px 3px 0 0;
+      background: linear-gradient(180deg, rgba(42,92,113,0.62), rgba(139,186,195,0.62));
+    }
+    .report-photo-chart span:nth-child(1) { height: 34%; }
+    .report-photo-chart span:nth-child(2) { height: 58%; }
+    .report-photo-chart span:nth-child(3) { height: 45%; }
+    .report-photo-chart span:nth-child(4) { height: 76%; }
+    .report-photo-chart span:nth-child(5) { height: 64%; }
+    .report-photo-chart span:nth-child(6) { height: 84%; }
+    .report-photo-table { display: grid; gap: 0.52rem; }
+    .report-photo-row {
+      height: 20px;
+      border-radius: 6px;
+      background: linear-gradient(90deg, rgba(27,42,74,0.20), rgba(42,92,113,0.08));
+    }
+    .report-photo-row:nth-child(odd) { width: 92%; }
+    .report-photo-row:nth-child(even) { width: 76%; }
     .report-board-head {
       position: relative;
       z-index: 1;
@@ -1075,14 +1176,18 @@
       margin-bottom: 0.72rem;
     }
     .report-chart {
+      position: relative;
       height: 92px;
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       gap: 0.35rem;
       align-items: end;
       margin-top: 0.62rem;
+      padding: 0 0.18rem 0.18rem;
+      border-bottom: 1px solid rgba(27,42,74,0.16);
+      background: repeating-linear-gradient(0deg, transparent, transparent 21px, rgba(42,92,113,0.06) 22px);
     }
-    .report-bar { border-radius: 999px 999px 3px 3px; background: linear-gradient(180deg, #2a5c71, #8bbac3); min-height: 22px; }
+    .report-bar { border-radius: 4px 4px 1px 1px; background: linear-gradient(180deg, #2a5c71, #8bbac3); min-height: 22px; }
     .report-bar:nth-child(1) { height: 38%; } .report-bar:nth-child(2) { height: 54%; } .report-bar:nth-child(3) { height: 46%; } .report-bar:nth-child(4) { height: 74%; } .report-bar:nth-child(5) { height: 66%; } .report-bar:nth-child(6) { height: 88%; }
     .report-kpi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
     .report-kpi { border: 1px solid rgba(27,42,74,0.10); border-radius: 14px; padding: 0.64rem; background: rgba(250,250,250,0.9); }
@@ -1123,10 +1228,8 @@
       .report-board { padding: 0.8rem; border-radius: 16px; margin-left: -0.25rem; margin-right: -0.25rem; }
       .report-board-head { flex-direction: column; align-items: flex-start; gap: 0.55rem; }
       .report-board-hint { width: 100%; text-align: center; white-space: normal; }
-      .report-bg-note { opacity: 0.38; }
-      .report-bg-note.sales { left: 2%; top: 24%; width: 180px; }
-      .report-bg-note.kpi { right: 2%; top: 36%; width: 185px; }
-      .report-bg-note.monthly { display: none; }
+      .report-photo-bg { inset: 4.8rem 0.7rem 3.3rem; opacity: 0.24; filter: blur(1.4px) saturate(0.85); }
+      .report-photo-window { width: 960px; min-height: 470px; }
       .report-map { min-width: 980px; grid-template-columns: 280px 34px 280px 34px 280px; }
       .report-column, .report-transform { min-height: 370px; }
       .report-status-row { min-width: 860px; grid-template-columns: repeat(4, 1fr); }
@@ -1172,9 +1275,19 @@
     <h2 class="section-title reveal"><span class="keep-line">集計作業を自動化し、</span><span class="keep-line">毎日見る数字を更新します</span></h2>
     <p class="section-subtitle reveal">CSV、Google Sheets、売上データ、問い合わせ件数を集め、集計表・グラフ・通知まで毎回同じ手順で更新できるようにします。</p>
     <div class="report-board reveal">
-      <div class="report-bg-note sales">売上CSV<br>2026-04<br>店舗A 328,000<br>店舗B 246,000<br>広告費 52,000</div>
-      <div class="report-bg-note kpi">週次KPIメモ<br>CV 42件 / 返信待ち 7件<br>在庫注意 3品目<br>粗利率 31.4%</div>
-      <div class="report-bg-note monthly">月次レポート<br>売上推移・問い合わせ種別・在庫注意リストを自動更新</div>
+      <div class="report-photo-bg" aria-hidden="true">
+        <div class="report-photo-window">
+          <div class="report-photo-sidebar"><span></span><span></span><span></span><span></span></div>
+          <div class="report-photo-main">
+            <div class="report-photo-toolbar"></div>
+            <div class="report-photo-cards"><div class="report-photo-card"></div><div class="report-photo-card"></div><div class="report-photo-card"></div><div class="report-photo-card"></div></div>
+            <div class="report-photo-grid">
+              <div class="report-photo-panel"><div class="report-photo-chart"><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+              <div class="report-photo-panel report-photo-table"><span class="report-photo-row"></span><span class="report-photo-row"></span><span class="report-photo-row"></span><span class="report-photo-row"></span><span class="report-photo-row"></span><span class="report-photo-row"></span><span class="report-photo-row"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="report-board-head">
         <p class="report-board-kicker">データ集計・自動レポートフロー</p>
         <p class="report-board-hint">スマートフォンでは左右にスワイプして確認</p>
