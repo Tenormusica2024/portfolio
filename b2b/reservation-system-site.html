@@ -1115,17 +1115,18 @@
     }
     .reservation-support-note svg { width: 38px; height: 38px; stroke: currentColor; fill: none; stroke-width: 2; }
     .reservation-caption {
-      max-width: 980px;
-      margin: 0.95rem auto 0;
-      color: #27364d;
-      line-height: 1.8;
-      font-size: 0.84rem;
+      max-width: 860px;
+      margin: 0 auto 1.1rem;
+      color: var(--navy);
+      line-height: 1.85;
+      font-size: 0.92rem;
       text-align: center;
-      background: rgba(255,255,255,0.90);
-      border: 1px solid rgba(27,42,74,0.08);
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(184,151,108,0.24);
       border-radius: 999px;
-      padding: 0.55rem 1rem;
-      box-shadow: 0 8px 20px rgba(27,42,74,0.06);
+      padding: 0.68rem 1.2rem;
+      box-shadow: 0 12px 28px rgba(27,42,74,0.08);
+      font-weight: 700;
     }
     @media (max-width: 768px) {
       .reservation-workflow-section .section-title .keep-line { display: block; }
@@ -1140,7 +1141,7 @@
       .reservation-tool-row { padding: 0 1.2rem; gap: 0.72rem; }
       .reservation-tool-pill { min-width: 155px; }
       .reservation-bottom-row { padding: 0 2.1rem; grid-template-columns: 1fr 0.7fr; }
-      .reservation-caption { text-align: left; border-radius: 16px; font-size: 0.72rem; }
+      .reservation-caption { text-align: left; border-radius: 16px; font-size: 0.76rem; margin-bottom: 0.85rem; }
     }
     .service-detail-page .hero-title { font-size: clamp(2rem, 3.25vw, 2.75rem); line-height: 1.45; word-break: keep-all; overflow-wrap: normal; }
     @media (max-width: 768px) {
@@ -1190,6 +1191,7 @@
         <p class="reservation-board-kicker">予約システム付きサイトワークフロー</p>
         <p class="reservation-board-hint">スマートフォンでは左右にスワイプして確認</p>
       </div>
+      <p class="reservation-caption">予約前に必要な情報を整理し、フォーム・通知・カレンダー管理まで一つの流れとしてつなげるイメージです。</p>
       <div class="reservation-scroll" aria-label="予約システム付きサイトのワークフロー図。横にスクロールできます。">
         <div class="reservation-map">
           <h3 class="reservation-main-title">予約まで迷わない受付導線</h3>
@@ -1214,7 +1216,6 @@
           </div>
         </div>
       </div>
-      <p class="reservation-caption">予約前に必要な情報を整理し、フォーム・通知・カレンダー管理まで一つの流れとしてつなげるイメージです。</p>
     </div>
   </div>
 </section>
