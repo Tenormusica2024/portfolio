@@ -102,6 +102,62 @@ class GA4DataCollector:
         
         response = self.client.run_report(request)
         return response
+
+    def get_data_filter_testing_report(self, start_date: str, end_date: str):
+        """GA4のテスト中データフィルタに一致したアクセスを取得
+
+        GA4のデータフィルタを「テスト」状態にしている間は、通常レポートからは
+        除外されず、Data API の testDataFilterName ディメンションで検出できる。
+        これにより Internal Traffic / Developer Traffic が本当に拾えているかを
+        ローカル集計表で確認できる。
+        """
+        request = RunReportRequest(
+            property=f"properties/{self.property_id}",
+            dimensions=[
+                Dimension(name="date"),
+                Dimension(name="testDataFilterName"),
+                Dimension(name="pagePath"),
+                Dimension(name="pageTitle"),
+            ],
+            metrics=[
+                Metric(name="activeUsers"),
+                Metric(name="sessions"),
+                Metric(name="screenPageViews"),
+            ],
+            date_ranges=[DateRange(start_date=start_date, end_date=end_date)],
+        )
+
+        response = self.client.run_report(request)
+        return response
+
+    def get_lead_events_report(self, start_date: str, end_date: str):
+        """B2B問い合わせ完了イベントを取得"""
+        from google.analytics.data_v1beta.types import FilterExpression, Filter
+
+        request = RunReportRequest(
+            property=f"properties/{self.property_id}",
+            dimensions=[
+                Dimension(name="date"),
+                Dimension(name="pagePath"),
+                Dimension(name="eventName"),
+            ],
+            metrics=[
+                Metric(name="eventCount"),
+            ],
+            date_ranges=[DateRange(start_date=start_date, end_date=end_date)],
+            dimension_filter=FilterExpression(
+                filter=Filter(
+                    field_name="eventName",
+                    string_filter=Filter.StringFilter(
+                        match_type=Filter.StringFilter.MatchType.EXACT,
+                        value="generate_lead"
+                    )
+                )
+            )
+        )
+
+        response = self.client.run_report(request)
+        return response
     
     def parse_response(self, response):
         """レスポンスをパース"""
@@ -321,8 +377,83 @@ class GA4DataCollector:
             'summary': summary,
             'daily': daily,
         }
+
+    def parse_data_filter_testing_response(self, response):
+        """testDataFilterName レポートをダッシュボード用に整形する。"""
+        rows = []
+        by_filter = {}
+        by_date = {}
+
+        for row in response.rows:
+            filter_name = row.dimension_values[1].value
+            if not filter_name or filter_name == '(not set)':
+                continue
+
+            raw_date = row.dimension_values[0].value
+            date_key = f"{raw_date[:4]}-{raw_date[4:6]}-{raw_date[6:8]}" if len(raw_date) == 8 else raw_date
+            entry = {
+                'date': date_key,
+                'filter_name': filter_name,
+                'page_path': row.dimension_values[2].value,
+                'page_title': row.dimension_values[3].value,
+                'active_users': int(row.metric_values[0].value),
+                'sessions': int(row.metric_values[1].value),
+                'page_views': int(row.metric_values[2].value),
+            }
+            rows.append(entry)
+
+            by_filter.setdefault(filter_name, {'active_users': 0, 'sessions': 0, 'page_views': 0})
+            by_filter[filter_name]['active_users'] += entry['active_users']
+            by_filter[filter_name]['sessions'] += entry['sessions']
+            by_filter[filter_name]['page_views'] += entry['page_views']
+
+            by_date.setdefault(date_key, {'active_users': 0, 'sessions': 0, 'page_views': 0})
+            by_date[date_key]['active_users'] += entry['active_users']
+            by_date[date_key]['sessions'] += entry['sessions']
+            by_date[date_key]['page_views'] += entry['page_views']
+
+        return {
+            'summary': {
+                'total_active_users': sum(item['active_users'] for item in by_filter.values()),
+                'total_sessions': sum(item['sessions'] for item in by_filter.values()),
+                'total_page_views': sum(item['page_views'] for item in by_filter.values()),
+                'filters': [
+                    {'filter_name': name, **stats}
+                    for name, stats in sorted(by_filter.items(), key=lambda item: item[1]['sessions'], reverse=True)
+                ],
+                'dates': [
+                    {'date': date, **stats}
+                    for date, stats in sorted(by_date.items(), reverse=True)
+                ],
+            },
+            'rows': sorted(rows, key=lambda item: (item['date'], item['sessions']), reverse=True),
+        }
+
+    def parse_lead_events_response(self, response):
+        """問い合わせ完了イベントを整形する。"""
+        rows = []
+        total = 0
+
+        for row in response.rows:
+            raw_date = row.dimension_values[0].value
+            date_key = f"{raw_date[:4]}-{raw_date[4:6]}-{raw_date[6:8]}" if len(raw_date) == 8 else raw_date
+            event_count = int(row.metric_values[0].value)
+            total += event_count
+            rows.append({
+                'date': date_key,
+                'page_path': row.dimension_values[1].value,
+                'event_name': row.dimension_values[2].value,
+                'event_count': event_count,
+            })
+
+        return {
+            'summary': {
+                'total_events': total,
+            },
+            'rows': sorted(rows, key=lambda item: (item['date'], item['event_count']), reverse=True),
+        }
     
-    def save_data(self, data, summary, project_clicks, project_page_views, page_performance, device_browser, site_comparison_daily, start_date, end_date):
+    def save_data(self, data, summary, project_clicks, project_page_views, page_performance, device_browser, site_comparison_daily, data_filter_testing, lead_events, start_date, end_date):
         """データを保存"""
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         
@@ -339,6 +470,8 @@ class GA4DataCollector:
             'page_performance': page_performance,
             'device_browser': device_browser,
             'site_comparison_daily': site_comparison_daily,
+            'data_filter_testing': data_filter_testing,
+            'lead_events': lead_events,
         }
         
         json_file = self.output_dir / f"ga4_data_{timestamp}.json"
@@ -460,8 +593,34 @@ class GA4DataCollector:
                 f"比較集計: C2C PV={site_comparison_daily['summary']['c2c_total_page_views']}, "
                 f"B2B PV={site_comparison_daily['summary']['b2b_total_page_views']}"
             )
+
+            # GA4データフィルタのテスト一致状況を取得
+            self.log_message("GA4テスト中データフィルタの一致状況を取得中...")
+            try:
+                data_filter_testing_response = self.get_data_filter_testing_report(start_str, end_str)
+                data_filter_testing = self.parse_data_filter_testing_response(data_filter_testing_response)
+                self.log_message(
+                    f"データフィルタ一致: sessions={data_filter_testing['summary']['total_sessions']}, "
+                    f"PV={data_filter_testing['summary']['total_page_views']}"
+                )
+            except Exception as e:
+                self.log_message(
+                    f"データフィルタ一致状況の取得をスキップ: {type(e).__name__}: {str(e)}",
+                    "WARNING"
+                )
+                data_filter_testing = {
+                    'summary': {'total_active_users': 0, 'total_sessions': 0, 'total_page_views': 0, 'filters': [], 'dates': []},
+                    'rows': [],
+                    'error': f"{type(e).__name__}: {str(e)}",
+                }
+
+            # B2B問い合わせ完了イベントを取得
+            self.log_message("B2B問い合わせ完了イベントを取得中...")
+            lead_events_response = self.get_lead_events_report(start_str, end_str)
+            lead_events = self.parse_lead_events_response(lead_events_response)
+            self.log_message(f"問い合わせ完了イベント: {lead_events['summary']['total_events']} 件")
             
-            output_file = self.save_data(data, summary, project_clicks, project_page_views_list, page_performance, device_browser, site_comparison_daily, start_str, end_str)
+            output_file = self.save_data(data, summary, project_clicks, project_page_views_list, page_performance, device_browser, site_comparison_daily, data_filter_testing, lead_events, start_str, end_str)
             
             self.log_message("データ収集完了")
             
