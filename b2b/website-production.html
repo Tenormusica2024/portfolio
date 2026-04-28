@@ -968,106 +968,6 @@
       background: radial-gradient(circle at 50% 48%, rgba(255,255,255,0.28), transparent 45%);
       z-index: 3;
     }
-    .website-desk-left,
-    .website-desk-right,
-    .website-browser-ghost,
-    .website-phone-ghost,
-    .website-wire-ghost,
-    .website-keyboard-ghost {
-      position: absolute;
-      filter: blur(0.7px) saturate(0.92);
-    }
-    .website-desk-left {
-      left: -2%; top: 0; width: 32%; height: 100%;
-      background:
-        radial-gradient(ellipse at 28% 18%, rgba(211,177,126,0.18), transparent 30%),
-        linear-gradient(135deg, rgba(198,156,94,0.10), transparent 52%),
-        repeating-linear-gradient(25deg, rgba(184,151,108,0.08) 0 8px, transparent 8px 28px);
-      opacity: 0.12;
-    }
-    .website-desk-left::before {
-      content: '';
-      position: absolute;
-      left: 18%; top: 12%; width: 170px; height: 118px;
-      border: 12px solid rgba(184,151,108,0.40);
-      border-top-width: 18px;
-      transform: rotate(-8deg);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.38), 24px 22px 0 rgba(184,151,108,0.10);
-    }
-    .website-desk-left::after {
-      content: '';
-      position: absolute;
-      left: 5%; bottom: 5%; width: 178px; height: 160px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.68);
-      border: 1px solid rgba(27,42,74,0.14);
-      transform: rotate(-8deg);
-      box-shadow: 0 12px 34px rgba(27,42,74,0.12);
-    }
-    .website-desk-right {
-      right: -2%; top: 0; width: 32%; height: 100%;
-      background:
-        linear-gradient(135deg, transparent 0 38%, rgba(42,92,113,0.05) 38% 39%, transparent 39% 100%),
-        repeating-linear-gradient(0deg, transparent 0 18px, rgba(27,42,74,0.035) 19px),
-        repeating-linear-gradient(90deg, transparent 0 24px, rgba(27,42,74,0.030) 25px);
-      opacity: 0.12;
-    }
-    .website-desk-right::before {
-      content: '';
-      position: absolute;
-      right: 6%; bottom: 6%; width: 190px; height: 190px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(93,126,80,0.28) 0 14%, transparent 15% 100%);
-      box-shadow: -34px -8px 0 rgba(93,126,80,0.16), -16px 30px 0 rgba(93,126,80,0.18), 24px 24px 0 rgba(93,126,80,0.13);
-    }
-    .website-browser-ghost {
-      left: 20%; top: 16%; width: 62%; height: 60%;
-      border: 1px solid rgba(27,42,74,0.10);
-      border-radius: 18px;
-      background: rgba(255,255,255,0.22);
-      box-shadow: 0 24px 70px rgba(27,42,74,0.08);
-      opacity: 0.10;
-    }
-    .website-browser-ghost::before {
-      content: '';
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 42px;
-      border-bottom: 1px solid rgba(27,42,74,0.10);
-      background: linear-gradient(90deg, rgba(27,42,74,0.16), rgba(42,92,113,0.10), rgba(184,151,108,0.12));
-    }
-    .website-browser-ghost::after {
-      content: '';
-      position: absolute;
-      left: 7%; top: 72px; width: 36%; height: 14px;
-      border-radius: 999px;
-      background: rgba(27,42,74,0.20);
-      box-shadow: 0 42px 0 rgba(42,92,113,0.12), 0 84px 0 rgba(184,151,108,0.14), 420px 10px 0 rgba(42,92,113,0.12), 420px 56px 0 rgba(42,92,113,0.10);
-    }
-    .website-phone-ghost {
-      right: 16%; top: 28%; width: 112px; height: 210px;
-      border: 8px solid rgba(27,42,74,0.16);
-      border-radius: 24px;
-      background: rgba(255,255,255,0.62);
-      opacity: 0.62;
-      transform: rotate(5deg);
-    }
-    .website-wire-ghost {
-      right: 10%; top: 8%; width: 260px; height: 160px;
-      border: 1px solid rgba(27,42,74,0.14);
-      background:
-        linear-gradient(transparent 62%, rgba(42,92,113,0.10) 63% 64%, transparent 65%),
-        linear-gradient(90deg, transparent 46%, rgba(42,92,113,0.10) 47% 48%, transparent 49%);
-      transform: rotate(-10deg);
-      opacity: 0.46;
-    }
-    .website-keyboard-ghost {
-      left: 7%; bottom: 10%; width: 260px; height: 62px;
-      border-radius: 12px;
-      background: repeating-linear-gradient(90deg, rgba(27,42,74,0.12) 0 18px, transparent 18px 24px), rgba(255,255,255,0.42);
-      transform: rotate(-4deg);
-      opacity: 0.52;
-    }
     .website-board-head {
       position: relative;
       z-index: 1;
@@ -1272,9 +1172,7 @@
     <h2 class="section-title reveal"><span class="keep-line">問い合わせにつながるサイトを、</span><span class="keep-line">公開後に直せる形で作ります</span></h2>
     <p class="section-subtitle reveal">事業内容、サービス説明、CTA、問い合わせフォーム、公開環境まで、見た目だけで終わらないWeb制作の流れを整理します。</p>
     <div class="website-board reveal">
-      <div class="website-photo-bg" aria-hidden="true">
-        <div class="website-desk-left"></div><div class="website-desk-right"></div><div class="website-browser-ghost"></div><div class="website-phone-ghost"></div><div class="website-wire-ghost"></div><div class="website-keyboard-ghost"></div>
-      </div>
+      <div class="website-photo-bg" aria-hidden="true"></div>
       <div class="website-board-head">
         <p class="website-board-kicker">ホームページ制作ワークフロー</p>
         <p class="website-board-hint">スマートフォンでは左右にスワイプして確認</p>
