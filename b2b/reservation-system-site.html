@@ -915,6 +915,233 @@
   </style>
 
   <style>
+
+
+    /* ===== RESERVATION WORKFLOW VISUAL ===== */
+    .reservation-workflow-section {
+      background:
+        radial-gradient(circle at 12% 10%, rgba(42,92,113,0.08), transparent 30%),
+        radial-gradient(circle at 86% 18%, rgba(184,151,108,0.12), transparent 26%),
+        linear-gradient(180deg, #F7FAFA 0%, #FAF8F3 100%);
+    }
+    .reservation-workflow-section .detail-wrap { max-width: 1240px; }
+    .reservation-workflow-section .section-title .keep-line { white-space: nowrap; }
+    .reservation-board {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(184,151,108,0.28);
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 30px 76px rgba(27,42,74,0.10);
+      padding: 1.35rem;
+    }
+    .reservation-photo-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: url('/assets/reservation-workflow-photo.jpg') center / cover no-repeat;
+      opacity: 0.96;
+    }
+    .reservation-photo-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.80) 24%, rgba(255,255,255,0.78) 70%, rgba(255,255,255,0.22) 100%);
+    }
+    .reservation-photo-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 48%, rgba(255,255,255,0.30), transparent 45%);
+    }
+    .reservation-board-head,
+    .reservation-scroll,
+    .reservation-caption { position: relative; z-index: 1; }
+    .reservation-board-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.15rem;
+    }
+    .reservation-board-kicker { color: var(--navy); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; }
+    .reservation-board-hint {
+      color: #6d4b20;
+      background: rgba(255,248,236,0.86);
+      border: 1px solid rgba(184,151,108,0.30);
+      padding: 0.5rem 0.86rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .reservation-scroll { overflow-x: auto; padding: 0.2rem 0.1rem 0.7rem; }
+    .reservation-scroll::-webkit-scrollbar { height: 8px; }
+    .reservation-scroll::-webkit-scrollbar-thumb { background: rgba(184,151,108,0.45); border-radius: 999px; }
+    .reservation-map { min-width: 1120px; }
+    .reservation-main-title {
+      text-align: center;
+      color: var(--navy);
+      font-family: 'Shippori Mincho', serif;
+      font-size: clamp(2rem, 4.2vw, 3.55rem);
+      line-height: 1.2;
+      letter-spacing: 0.05em;
+      margin: 0.35rem 0 0.4rem;
+      text-shadow: 0 8px 22px rgba(27,42,74,0.12);
+    }
+    .reservation-main-subtitle {
+      text-align: center;
+      color: var(--gold);
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.7rem;
+      line-height: 1.45;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.65rem;
+      font-weight: 700;
+    }
+    .reservation-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.25rem;
+      align-items: stretch;
+      padding: 0 4.2rem;
+      position: relative;
+    }
+    .reservation-steps::before {
+      content: '';
+      position: absolute;
+      left: 9%; right: 9%; top: 48%; height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(184,151,108,0.26), transparent);
+      z-index: 0;
+    }
+    .reservation-step-card {
+      position: relative;
+      z-index: 1;
+      min-height: 222px;
+      border: 1px solid rgba(184,151,108,0.30);
+      border-radius: 11px;
+      background: rgba(255,255,255,0.97);
+      box-shadow: 0 14px 34px rgba(27,42,74,0.10);
+      padding: 1.9rem 1rem 1.05rem;
+      text-align: center;
+    }
+    .reservation-step-num {
+      position: absolute;
+      left: 50%; top: -22px;
+      transform: translateX(-50%);
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      color: #fff;
+      background: radial-gradient(circle at 32% 26%, #203b68, var(--navy));
+      box-shadow: 0 8px 16px rgba(27,42,74,0.22);
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.32rem;
+      font-weight: 700;
+    }
+    .reservation-step-card:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: -1.05rem; top: 50%;
+      width: 0; height: 0;
+      border-top: 13px solid transparent;
+      border-bottom: 13px solid transparent;
+      border-left: 18px solid rgba(184,151,108,0.56);
+      transform: translateY(-50%);
+    }
+    .reservation-step-icon { height: 58px; display: grid; place-items: center; margin-bottom: 0.8rem; color: var(--navy); }
+    .reservation-step-icon svg { width: 58px; height: 58px; stroke: currentColor; fill: none; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+    .reservation-step-card h3 { color: var(--navy); font-family: 'Shippori Mincho', serif; font-size: 1.35rem; line-height: 1.38; margin-bottom: 0.42rem; }
+    .reservation-step-card p { color: #24324a; font-size: 0.76rem; line-height: 1.7; font-weight: 500; }
+    .reservation-tool-row {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1.45rem auto 1.2rem;
+      padding: 0 2rem;
+    }
+    .reservation-tool-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      min-width: 175px;
+      justify-content: center;
+      border: 1px solid rgba(184,151,108,0.30);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.94);
+      color: var(--navy);
+      padding: 0.72rem 1rem;
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(27,42,74,0.08);
+    }
+    .reservation-tool-pill svg { width: 28px; height: 28px; display: block; }
+    .reservation-bottom-row {
+      display: grid;
+      grid-template-columns: 1fr 0.56fr;
+      gap: 1.1rem;
+      align-items: center;
+      padding: 0 4.2rem;
+    }
+    .reservation-message,
+    .reservation-support-note {
+      border-radius: 18px;
+      border: 1px solid rgba(27,42,74,0.12);
+      background: rgba(255,255,255,0.96);
+      box-shadow: 0 10px 26px rgba(27,42,74,0.10);
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      min-height: 72px;
+      padding: 0.9rem 1.15rem;
+      color: var(--navy);
+      font-weight: 700;
+      line-height: 1.65;
+    }
+    .reservation-message .checkmark {
+      flex: 0 0 auto;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--gold);
+      color: #fff;
+      font-size: 1.5rem;
+    }
+    .reservation-support-note {
+      color: #fff;
+      border: none;
+      background: linear-gradient(135deg, var(--navy), #203b68);
+      justify-content: center;
+    }
+    .reservation-support-note svg { width: 38px; height: 38px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .reservation-caption {
+      max-width: 980px;
+      margin: 0.95rem auto 0;
+      color: #27364d;
+      line-height: 1.8;
+      font-size: 0.84rem;
+      text-align: center;
+      background: rgba(255,255,255,0.90);
+      border: 1px solid rgba(27,42,74,0.08);
+      border-radius: 999px;
+      padding: 0.55rem 1rem;
+      box-shadow: 0 8px 20px rgba(27,42,74,0.06);
+    }
+    @media (max-width: 768px) {
+      .reservation-workflow-section .section-title .keep-line { display: block; }
+      .reservation-board { padding: 0.8rem; margin-left: -0.25rem; margin-right: -0.25rem; }
+      .reservation-board-head { flex-direction: column; align-items: flex-start; gap: 0.55rem; }
+      .reservation-board-hint { width: 100%; text-align: center; white-space: normal; }
+      .reservation-map { min-width: 980px; }
+      .reservation-main-title { font-size: 2.45rem; }
+      .reservation-main-subtitle { font-size: 1.32rem; }
+      .reservation-steps { padding: 0 2.1rem; gap: 0.9rem; }
+      .reservation-step-card { min-height: 212px; padding-left: 0.75rem; padding-right: 0.75rem; }
+      .reservation-tool-row { padding: 0 1.2rem; gap: 0.72rem; }
+      .reservation-tool-pill { min-width: 155px; }
+      .reservation-bottom-row { padding: 0 2.1rem; grid-template-columns: 1fr 0.7fr; }
+      .reservation-caption { text-align: left; border-radius: 16px; font-size: 0.72rem; }
+    }
     .service-detail-page .hero-title { font-size: clamp(2rem, 3.25vw, 2.75rem); line-height: 1.45; word-break: keep-all; overflow-wrap: normal; }
     @media (max-width: 768px) {
       .service-detail-page .hero-visual { order: 0; }
@@ -951,6 +1178,46 @@
   <p class="section-label reveal">対象</p><h2 class="section-title reveal">こんな予約導線を作ります</h2><p class="section-subtitle reveal">美容院、整骨院、飲食店、個人レッスン、相談サービスなど、来店・予約型の業務に対応します。</p>
   <div class="fit-list reveal"><div class="fit-item"><strong>店舗サイト</strong><span>営業時間、アクセス、メニュー、予約導線を整理します。</span></div><div class="fit-item"><strong>個人サービス</strong><span>相談、レッスン、施術などの予約フォームを用意します。</span></div><div class="fit-item"><strong>電話予約の補助</strong><span>営業時間外の仮予約や問い合わせ受付を増やします。</span></div></div>
 </div></section>
+
+<section id="reservation-workflow" class="reservation-workflow-section">
+  <div class="detail-wrap">
+    <p class="section-label reveal">ワークフロー図</p>
+    <h2 class="section-title reveal"><span class="keep-line">予約導線と受付管理を</span><span class="keep-line">スマホで使いやすく整えます</span></h2>
+    <p class="section-subtitle reveal">メニュー、空き枠、予約フォーム、通知、変更対応まで、店舗側が無理なく運用できる流れにします。</p>
+    <div class="reservation-board reveal">
+      <div class="reservation-photo-bg" aria-hidden="true"></div>
+      <div class="reservation-board-head">
+        <p class="reservation-board-kicker">予約システム付きサイトワークフロー</p>
+        <p class="reservation-board-hint">スマートフォンでは左右にスワイプして確認</p>
+      </div>
+      <div class="reservation-scroll" aria-label="予約システム付きサイトのワークフロー図。横にスクロールできます。">
+        <div class="reservation-map">
+          <h3 class="reservation-main-title">予約まで迷わない受付導線</h3>
+          <p class="reservation-main-subtitle">メニュー・空き枠・通知まで無理なく整える</p>
+          <div class="reservation-steps">
+            <div class="reservation-step-card"><span class="reservation-step-num">1</span><div class="reservation-step-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="14" width="40" height="38" rx="5"/><path d="M21 10v8M43 10v8M12 24h40"/><path d="M22 34h8M36 34h8M22 43h8"/></svg></div><h3>メニュー整理</h3><p>予約対象、所要時間、料金、注意事項を分かりやすく並べます。</p></div>
+            <div class="reservation-step-card"><span class="reservation-step-num">2</span><div class="reservation-step-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 16h36v34H14z"/><path d="M22 24h20M22 32h10M22 40h20"/><path d="m42 35 4 4 8-10"/></svg></div><h3>空き枠案内</h3><p>受付可能な曜日、時間帯、定休日をスマホで確認しやすくします。</p></div>
+            <div class="reservation-step-card"><span class="reservation-step-num">3</span><div class="reservation-step-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M18 12h28l6 6v34H18z"/><path d="M46 12v8h6"/><path d="M26 29h18M26 37h18M26 45h10"/><circle cx="22" cy="29" r="1.5"/><circle cx="22" cy="37" r="1.5"/></svg></div><h3>予約受付</h3><p>名前、希望日時、連絡先、備考をフォームで受け付けます。</p></div>
+            <div class="reservation-step-card"><span class="reservation-step-num">4</span><div class="reservation-step-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12 20h40v28H12z"/><path d="m12 22 20 15 20-15"/><path d="M48 14v14M42 20h12"/></svg></div><h3>通知・確認</h3><p>店舗側へメールやLINEで通知し、確認漏れを減らします。</p></div>
+            <div class="reservation-step-card"><span class="reservation-step-num">5</span><div class="reservation-step-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M18 18h28v32H18z"/><path d="M24 28h16M24 36h10"/><path d="M46 13v10h10"/><path d="M52 15a20 20 0 0 1-2 29"/></svg></div><h3>変更対応</h3><p>キャンセル、変更、事前案内を分かる場所にまとめます。</p></div>
+          </div>
+          <div class="reservation-tool-row">
+            <div class="reservation-tool-pill"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="6" width="22" height="21" rx="3" fill="#fff"/><path fill="#4285F4" d="M7 12h18v13H7z"/><path fill="#34A853" d="M7 12h18v4H7z"/><path fill="#FBBC04" d="M7 6h5v6H7z"/><path fill="#EA4335" d="M20 6h5v6h-5z"/><path fill="#fff" d="M13 18h6v5h-6z"/></svg>Googleカレンダー</div>
+            <div class="reservation-tool-pill"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#00B900" d="M16 4C9.4 4 4 8.4 4 13.9c0 4.9 4.4 9 10.3 9.8.4.1.9.3 1 .7.1.4.1.9 0 1.2l-.2 1.2c-.1.4-.3 1.5 1.3.8 1.6-.7 8.5-5 11.6-8.6 2.1-2.3 3-4.7 3-7.1C28 8.4 22.6 4 16 4z"/><path fill="#fff" d="M9 12h2v5H9zm3 0h2v3h2v2h-4zm5 0h2v5h-2zm3 0h4v2h-2v.8h2v1.6h-2v.8h2V17h-4z"/></svg>LINE導線</div>
+            <div class="reservation-tool-pill"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#673AB7" d="M8 4h16v24H8z"/><path fill="#fff" d="M12 10h8v2h-8zm0 5h8v2h-8zm0 5h6v2h-6z"/></svg>Googleフォーム</div>
+            <div class="reservation-tool-pill"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#EA4335" d="M5 9h22v15H5z"/><path fill="#fff" d="M7 11v11h18V11l-9 7z"/><path fill="#FBBC04" d="m5 9 11 9 11-9v3l-11 9L5 12z"/></svg>Gmail通知</div>
+            <div class="reservation-tool-pill"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#1e8e3e" d="M7 3h12l6 6v20H7z"/><path fill="#b7e1c1" d="M19 3v7h6z"/><path fill="#fff" d="M11 14h10v10H11zm2 2v2h2v-2zm4 0v2h2v-2zm-4 4v2h2v-2zm4 0v2h2v-2z"/></svg>Sheets管理</div>
+          </div>
+          <div class="reservation-bottom-row">
+            <div class="reservation-message"><span class="checkmark">✓</span><span>電話だけに頼らず、営業時間外でも予約希望を受け取れる入口を作ります。</span></div>
+            <div class="reservation-support-note"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M18 20h28v28H18z"/><path d="M24 14v10M40 14v10M18 30h28"/><path d="m26 40 4 4 9-11"/></svg><span>予約後の確認・変更も運用しやすく。</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="reservation-caption">予約前に必要な情報を整理し、フォーム・通知・カレンダー管理まで一つの流れとしてつなげるイメージです。</p>
+    </div>
+  </div>
+</section>
 <section id="scope"><div class="detail-wrap detail-grid">
   <div class="detail-card reveal"><p class="section-label">価値</p><h2 class="section-title">予約前の不安を減らす</h2><p class="section-subtitle" style="margin-bottom:0;">予約ボタンだけでなく、メニュー、料金、所要時間、場所、よくある質問を整理することで、予約前の迷いを減らします。</p></div>
   <div class="detail-card reveal"><p class="section-label">設計範囲</p><h2 class="section-title">設計に含めるもの</h2><div class="scope-grid"><div class="scope-card"><h3 class="scope-card-title">業務設計</h3><ul class="detail-list"><li>メニュー、所要時間、料金の整理</li><li>予約受付項目と通知先の設計</li><li>キャンセル・変更時の案内整理</li><li>電話・LINE・フォーム導線の使い分け</li></ul></div><div class="scope-card"><h3 class="scope-card-title">実装・連携</h3><ul class="detail-list"><li>予約フォーム付きサイト制作</li><li>Googleカレンダー等との連携検討</li><li>スマホ対応UI</li><li>通知メール・確認メッセージ設定</li></ul></div></div><p class="scope-note">既存のツールや運用をできるだけ活かし、置き換えよりも「止まりやすい箇所を安全に補強する」進め方を優先します。</p></div>
