@@ -698,7 +698,9 @@
     }
     .contact-links { display: flex; flex-direction: column; gap: 0.9rem; }
     .contact-link {
-      display: flex; align-items: center; gap: 0.75rem;
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      width: fit-content;
+      max-width: 100%;
       font-size: 0.85rem; color: var(--muted);
       text-decoration: none; transition: color 0.2s;
     }
