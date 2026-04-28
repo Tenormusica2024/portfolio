@@ -707,34 +707,29 @@
       opacity: 0.9;
       pointer-events: none;
     }
-    .system-photo-bg { position:absolute; inset:0; pointer-events:none; opacity:0.74; }
-    .system-photo-bg::before {
-      content:"";
+    .system-photo-bg {
       position:absolute;
-      right: 3.5%; top: 15%;
-      width: 38%; height: 58%;
-      border-radius: 22px;
-      background: linear-gradient(140deg, rgba(28,45,79,0.16), rgba(255,255,255,0.12)),
-        linear-gradient(180deg, rgba(16,34,65,0.88), rgba(42,76,102,0.58));
-      box-shadow: 0 28px 55px rgba(27,42,74,0.18);
-      transform: rotate(-2deg);
+      inset:0;
+      pointer-events:none;
+      opacity:0.62;
+      background-image:
+        linear-gradient(90deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.68) 42%, rgba(255,255,255,0.42) 100%),
+        linear-gradient(180deg, rgba(255,255,255,0.5), rgba(27,42,74,0.2)),
+        url("assets/system-maintenance-workflow-photo.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: saturate(0.85) brightness(1.05);
     }
     .system-photo-bg::after {
       content:"";
       position:absolute;
-      left: 4.5%; bottom: 13%;
-      width: 34%; height: 36%;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.42);
-      border: 1px solid rgba(27,42,74,0.08);
-      box-shadow: 0 22px 52px rgba(27,42,74,0.12);
-      backdrop-filter: blur(4px);
+      inset:0;
+      background: radial-gradient(circle at 28% 22%, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.64) 34%, rgba(255,255,255,0.28) 66%, rgba(255,255,255,0.44) 100%);
     }
-    .system-code-ghost, .system-admin-ghost, .system-log-ghost, .system-ticket-ghost { position:absolute; border-radius: 12px; opacity:0.52; }
-    .system-code-ghost { right: 7%; top: 24%; width: 26%; height: 34%; background: repeating-linear-gradient(180deg, rgba(255,255,255,0.72) 0 2px, transparent 2px 16px); }
-    .system-admin-ghost { right: 10%; top: 62%; width: 20%; height: 12%; background: linear-gradient(90deg, rgba(95,173,184,0.55), rgba(255,255,255,0.25)); }
-    .system-log-ghost { left: 7%; bottom: 22%; width: 23%; height: 16%; background: repeating-linear-gradient(90deg, rgba(27,42,74,0.28) 0 16px, rgba(255,255,255,0.35) 16px 42px); }
-    .system-ticket-ghost { left: 11%; top: 18%; width: 18%; height: 14%; background: rgba(255,255,255,0.52); border: 1px solid rgba(184,151,108,0.22); }
+    .system-code-ghost,
+    .system-admin-ghost,
+    .system-log-ghost,
+    .system-ticket-ghost { display:none; }
     .system-board-head { position: relative; z-index:1; display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-bottom:1rem; }
     .system-board-kicker { color: var(--navy); font-size:0.82rem; font-weight:700; letter-spacing:0.04em; }
     .system-board-hint { border:1px solid rgba(184,151,108,0.32); background:rgba(255,248,239,0.78); color:var(--navy); padding:0.55rem 0.9rem; font-size:0.72rem; letter-spacing:0.05em; white-space:nowrap; }
