@@ -1209,55 +1209,55 @@
 <section id="ai-workflow" class="ai-workflow-section">
   <div class="detail-wrap">
     <p class="section-label reveal">ワークフロー図</p>
-    <h2 class="section-title reveal"><span class="keep-line">AIを、既存ツールと</span><span class="keep-line">人の確認に接続します</span></h2>
-    <p class="section-subtitle reveal">AIを単体で置くのではなく、入力データ、プロンプト、RAG、確認ゲート、ログ、評価までを一つの業務部品として設計します。</p>
+    <h2 class="section-title reveal"><span class="keep-line">OpenAI APIやCodexを</span><span class="keep-line">業務の中に組み込みます</span></h2>
+    <p class="section-subtitle reveal">問い合わせ分類、返信下書き、社内FAQ検索、定型コード修正、レビュー補助など、よくある実務の使い方から小さく組み込みます。</p>
     <div class="ai-map-shell reveal">
       <div class="ai-map-head">
-        <p class="ai-map-kicker">AI組み込み開発フロー</p>
+        <p class="ai-map-kicker">OpenAI API / Codex 組み込み例</p>
         <p class="ai-map-hint">スマートフォンでは左右にスワイプして確認</p>
       </div>
       <div class="ai-tool-ribbon" aria-label="AI組み込みで接続する代表的な部品">
-        <div class="ai-tool-chip"><span>{ }</span>API接続</div>
-        <div class="ai-tool-chip"><span>⌕</span>検索 / RAG</div>
-        <div class="ai-tool-chip"><span>✓</span>承認UI</div>
-        <div class="ai-tool-chip"><span>↗</span>通知Bot</div>
-        <div class="ai-tool-chip"><span>▤</span>監査ログ</div>
+        <div class="ai-tool-chip"><span>{ }</span>OpenAI API</div>
+        <div class="ai-tool-chip"><span>⌕</span>FAQ検索</div>
+        <div class="ai-tool-chip"><span>✓</span>人が確認</div>
+        <div class="ai-tool-chip"><span>↗</span>Slack通知</div>
+        <div class="ai-tool-chip"><span>▤</span>実行ログ</div>
       </div>
       <div class="ai-map-scroll" aria-label="AI組み込み開発のワークフロー図。横にスクロールできます。">
         <div class="ai-orbit-map">
           <div class="ai-lane">
-            <p class="ai-lane-title">INPUT / 既存業務</p>
+            <p class="ai-lane-title">INPUT / よくある入口</p>
             <div class="ai-source-list">
-              <div class="ai-source"><span class="ai-source-icon">✉</span><div><h3>メール・問い合わせ</h3><p>Gmailやフォームの文章を要約・分類の入力にします。</p></div></div>
-              <div class="ai-source"><span class="ai-source-icon">▤</span><div><h3>社内資料・FAQ</h3><p>手順書、PDF、ナレッジを検索しやすい単位へ整理します。</p></div></div>
-              <div class="ai-source"><span class="ai-source-icon">◫</span><div><h3>業務データ</h3><p>スプレッドシート、CRM、CSVなど既存の表を活かします。</p></div></div>
+              <div class="ai-source"><span class="ai-source-icon">✉</span><div><h3>フォーム・Gmail</h3><p>問い合わせ文面をOpenAI APIで要約し、緊急度や種別を付けます。</p></div></div>
+              <div class="ai-source"><span class="ai-source-icon">▤</span><div><h3>FAQ・手順書</h3><p>社内資料を検索対象にして、回答候補と参照元を返します。</p></div></div>
+              <div class="ai-source"><span class="ai-source-icon">◫</span><div><h3>GitHub・既存コード</h3><p>Codexで小さな修正、テスト追加、レビュー観点の整理を補助します。</p></div></div>
             </div>
           </div>
           <div class="ai-core-panel" aria-label="AI処理コア">
-            <div class="ai-node prompt">プロンプト<br>設計</div>
-            <div class="ai-node rag">RAG / 検索</div>
-            <div class="ai-node guard">禁止事項<br>安全条件</div>
-            <div class="ai-core"><div><strong>AI CORE</strong><span>LLM / Agent</span></div></div>
-            <div class="ai-human-gate">人の確認ゲート</div>
-            <div class="ai-node log">ログ / 評価</div>
+            <div class="ai-node prompt">返信下書き<br>プロンプト</div>
+            <div class="ai-node rag">FAQ検索<br>参照元</div>
+            <div class="ai-node guard">送信前<br>チェック</div>
+            <div class="ai-core"><div><strong>API</strong><span>OpenAI / Codex</span></div></div>
+            <div class="ai-human-gate">担当者が確認して送信</div>
+            <div class="ai-node log">Sheetsへ<br>記録</div>
           </div>
           <div class="ai-lane">
-            <p class="ai-lane-title">OUTPUT / 現場で使う形</p>
+            <p class="ai-lane-title">OUTPUT / 実際に出すもの</p>
             <div class="ai-output-list">
-              <div class="ai-output"><span class="ai-output-icon">A</span><div><h3>回答候補・要約</h3><p>そのまま送らず、確認しやすい候補として出します。</p></div></div>
-              <div class="ai-output"><span class="ai-output-icon">↗</span><div><h3>通知・担当振り分け</h3><p>Slack、Gmail、Sheetsへ次アクションを渡します。</p></div></div>
-              <div class="ai-output"><span class="ai-output-icon">✓</span><div><h3>承認済みだけ実行</h3><p>送信、登録、更新は人の確認後に進めます。</p></div></div>
+              <div class="ai-output"><span class="ai-output-icon">A</span><div><h3>返信下書き</h3><p>問い合わせごとに件名、要約、返信案を作ります。</p></div></div>
+              <div class="ai-output"><span class="ai-output-icon">↗</span><div><h3>Slack通知・担当振り分け</h3><p>「要確認」「見積」「技術相談」などに分けて通知します。</p></div></div>
+              <div class="ai-output"><span class="ai-output-icon">✓</span><div><h3>Codexの修正案</h3><p>小さなコード修正、テスト追加、差分説明をPR前に確認します。</p></div></div>
             </div>
           </div>
         </div>
         <div class="ai-flow-arrows" aria-label="AI組み込みで固定する運用ルール">
-          <div class="ai-flow-note"><strong>01 入力を固定</strong>AIに読ませる範囲、除外する情報、更新頻度を先に決めます。</div>
-          <div class="ai-flow-note"><strong>02 出力を制限</strong>回答形式、禁止表現、低信頼度時の戻し先を決めます。</div>
-          <div class="ai-flow-note"><strong>03 人が確認</strong>外部送信、契約、個人情報、例外処理は確認ゲートに残します。</div>
-          <div class="ai-flow-note"><strong>04 改善する</strong>ログと評価観点を残し、プロンプト・検索対象を育てます。</div>
+          <div class="ai-flow-note"><strong>01 例：問い合わせ分類</strong>フォーム文面を要約し、営業相談・不具合・資料請求に分類します。</div>
+          <div class="ai-flow-note"><strong>02 例：FAQ回答候補</strong>社内FAQから根拠を探し、回答案と参照元をセットで出します。</div>
+          <div class="ai-flow-note"><strong>03 例：返信下書き</strong>Gmail送信前に担当者が読み、必要なら修正してから送ります。</div>
+          <div class="ai-flow-note"><strong>04 例：Codex補助</strong>既存コードの小修正、テスト追加、差分説明をレビュー前に作ります。</div>
         </div>
       </div>
-      <p class="ai-map-note">設計の要点：AIを「賢い箱」として置くのではなく、入力・出力・確認・ログを固定した業務部品として組み込みます。</p>
+      <p class="ai-map-note">設計の要点：まずは「問い合わせ分類」「FAQ回答候補」「返信下書き」「Codexによる小修正補助」のような、効果と確認ポイントが見えやすい実例から組み込みます。</p>
     </div>
   </div>
 </section>
