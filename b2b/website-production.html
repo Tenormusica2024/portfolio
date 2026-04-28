@@ -684,6 +684,25 @@
       .flow-step::after { display: none; }
     }
 
+
+    @media (min-width: 1500px) {
+      .detail-wrap { max-width: min(1400px, 88vw); }
+      .detail-hero .detail-wrap,
+      .sales-page .detail-hero .detail-wrap { max-width: min(1440px, 88vw); }
+      .hero-layout,
+      .sales-page .hero-layout {
+        gap: clamp(3rem, 4vw, 5rem);
+      }
+      .hero-title,
+      .sales-page .hero-title,
+      .service-detail-page .hero-title {
+        font-size: clamp(2.35rem, 2.7vw, 3.45rem);
+        line-height: 1.36;
+      }
+      .workflow-map-section .detail-wrap,
+      [class*="-workflow-section"] .detail-wrap { max-width: min(1480px, 90vw); }
+    }
+
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -1300,7 +1319,7 @@
   </div>
   <div class="hero-visual detail-card" aria-label="導入時に重視する観点">
     <p class="section-label">運用で守ること</p>
-    <h2 class="section-title">問い合わせまでの導線を作る</h2>
+    <h2 class="section-title">問い合わせ導線を整える</h2>
     <p class="section-subtitle" style="margin-bottom:1rem;">会社紹介、サービス説明、実績、FAQ、問い合わせまでを迷わず読める順番に整えます。</p>
     <div class="safety-strip" aria-label="主要要素"><span class="safety-chip">導線設計</span><span class="safety-chip">スマホ最適化</span><span class="safety-chip">フォーム設置</span><span class="safety-chip">基本SEO</span></div>
   </div></div></div>

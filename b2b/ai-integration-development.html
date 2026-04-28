@@ -684,6 +684,25 @@
       .flow-step::after { display: none; }
     }
 
+
+    @media (min-width: 1500px) {
+      .detail-wrap { max-width: min(1400px, 88vw); }
+      .detail-hero .detail-wrap,
+      .sales-page .detail-hero .detail-wrap { max-width: min(1440px, 88vw); }
+      .hero-layout,
+      .sales-page .hero-layout {
+        gap: clamp(3rem, 4vw, 5rem);
+      }
+      .hero-title,
+      .sales-page .hero-title,
+      .service-detail-page .hero-title {
+        font-size: clamp(2.35rem, 2.7vw, 3.45rem);
+        line-height: 1.36;
+      }
+      .workflow-map-section .detail-wrap,
+      [class*="-workflow-section"] .detail-wrap { max-width: min(1480px, 90vw); }
+    }
+
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }

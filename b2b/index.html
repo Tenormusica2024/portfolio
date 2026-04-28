@@ -839,6 +839,33 @@
     }
 
 
+    @media (min-width: 1500px) {
+      #hero {
+        padding-inline: clamp(5.5rem, 6vw, 9rem);
+      }
+      .hero-content {
+        max-width: clamp(880px, 48vw, 1080px);
+      }
+      .hero-title {
+        font-size: clamp(5rem, 4.9vw, 7.25rem);
+        line-height: 1.26;
+        max-width: 9.7em;
+      }
+      .hero-desc {
+        font-size: clamp(1.05rem, 0.95vw, 1.22rem);
+        max-width: 700px;
+      }
+      .hero-visual-art {
+        right: clamp(4rem, 5.4vw, 8.5rem);
+        width: clamp(720px, 41vw, 980px);
+        transform: translateY(-38%);
+      }
+      .hero-visual-caption strong { font-size: 1.12rem; }
+      .hero-visual-caption span { font-size: 0.78rem; }
+      .stat-item { padding: 1.1rem 2rem; }
+    }
+
+
     @media (max-width: 1100px) {
       #hero { display: block; padding: 112px 5% 72px; }
       #hero::before { display: none; }

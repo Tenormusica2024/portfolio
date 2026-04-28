@@ -673,6 +673,25 @@
       .flow-step::after { display: none; }
     }
 
+
+    @media (min-width: 1500px) {
+      .detail-wrap { max-width: min(1400px, 88vw); }
+      .detail-hero .detail-wrap,
+      .sales-page .detail-hero .detail-wrap { max-width: min(1440px, 88vw); }
+      .hero-layout,
+      .sales-page .hero-layout {
+        gap: clamp(3rem, 4vw, 5rem);
+      }
+      .hero-title,
+      .sales-page .hero-title,
+      .service-detail-page .hero-title {
+        font-size: clamp(2.35rem, 2.7vw, 3.45rem);
+        line-height: 1.36;
+      }
+      .workflow-map-section .detail-wrap,
+      [class*="-workflow-section"] .detail-wrap { max-width: min(1480px, 90vw); }
+    }
+
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -822,7 +841,7 @@
     <div class="hero-layout">
       <div class="hero-copy">
         <p class="hero-eyebrow">業種別ページ / 工務店向け業務自動化</p>
-        <h1 class="hero-title">工務店の見積・発注・日報まわりを、無理なく自動化する</h1>
+        <h1 class="hero-title">工務店の事務まわりを無理なく整える</h1>
         <p class="detail-lead">工務店では、見積、発注、日報、問い合わせ対応が人に寄りやすく、忙しい時期ほど転記や確認漏れが増えがちです。Ezlizeでは、今のExcelやスプレッドシートを活かしながら、現場で回る業務自動化や下書き・整理支援を小さく導入できます。</p>
         <div class="hero-tool-meta" aria-label="工務店向けで使いやすいツール例">
           <span class="hero-tool-chip">Excel / スプレッドシート</span>
