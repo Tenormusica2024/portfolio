@@ -921,6 +921,166 @@
       .service-detail-page .hero-title { font-size: clamp(1.42rem, 6vw, 1.55rem); line-height: 1.6; }
     }
   </style>
+
+
+  <style>
+    .inventory-workflow-section {
+      background:
+        radial-gradient(circle at 15% 12%, rgba(184,151,108,0.16), transparent 30%),
+        radial-gradient(circle at 88% 18%, rgba(42,92,113,0.12), transparent 28%),
+        linear-gradient(180deg, #FBFAF7 0%, #F7F4EE 100%);
+    }
+    .inventory-workflow-section .detail-wrap { max-width: 1240px; }
+    .inventory-workflow-section .section-title .keep-line { white-space: nowrap; }
+    .inventory-board {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(184,151,108,0.28);
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.96), rgba(251,249,244,0.92));
+      box-shadow: 0 30px 76px rgba(27,42,74,0.10);
+      padding: 1.25rem;
+    }
+    .inventory-board::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(184,151,108,0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184,151,108,0.055) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 78%);
+      pointer-events: none;
+    }
+    .inventory-board-head {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .inventory-board-kicker { color: var(--navy); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; }
+    .inventory-board-hint {
+      color: #6d552f;
+      background: rgba(184,151,108,0.12);
+      border: 1px solid rgba(184,151,108,0.34);
+      padding: 0.46rem 0.82rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .inventory-scroll { position: relative; overflow-x: auto; padding: 0.2rem 0.1rem 0.65rem; }
+    .inventory-scroll::-webkit-scrollbar { height: 8px; }
+    .inventory-scroll::-webkit-scrollbar-thumb { background: rgba(184,151,108,0.46); border-radius: 999px; }
+    .inventory-map {
+      min-width: 1080px;
+      display: grid;
+      grid-template-columns: 1.05fr auto 1.05fr auto 1.05fr auto 1.05fr;
+      gap: 0.72rem;
+      align-items: stretch;
+      position: relative;
+    }
+    .inventory-step-card {
+      min-height: 290px;
+      border: 1px solid rgba(27,42,74,0.14);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.88);
+      padding: 1rem;
+      box-shadow: 0 14px 34px rgba(27,42,74,0.07);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .inventory-step-card.is-stock {
+      border-color: rgba(42,92,113,0.35);
+      background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(240,249,250,0.72));
+    }
+    .inventory-step-top { display: grid; grid-template-columns: auto 1fr; gap: 0.7rem; align-items: start; }
+    .inventory-badge {
+      width: 42px; height: 42px; border-radius: 15px;
+      display: grid; place-items: center;
+      background: rgba(184,151,108,0.14);
+      color: #7b5c28;
+      font-weight: 800;
+      font-size: 0.92rem;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    .inventory-step-card.is-stock .inventory-badge { background: rgba(42,92,113,0.12); color: #1e6170; }
+    .inventory-step-card h3 { color: var(--navy); font-size: 0.98rem; line-height: 1.45; margin-bottom: 0.24rem; }
+    .inventory-step-card p { color: var(--muted); font-size: 0.76rem; line-height: 1.75; }
+    .inventory-mini-list { margin-top: 0.8rem; display: grid; gap: 0.42rem; }
+    .inventory-mini-list span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+      color: var(--navy);
+      font-size: 0.72rem;
+      line-height: 1.45;
+      background: rgba(247,244,238,0.74);
+      border: 1px solid rgba(184,151,108,0.18);
+      border-radius: 999px;
+      padding: 0.35rem 0.52rem;
+      width: fit-content;
+    }
+    .inventory-mini-list span::before { content: '✓'; color: #7b5c28; font-weight: 700; }
+    .inventory-arrow {
+      align-self: center;
+      width: 34px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(27,42,74,0.16), rgba(27,42,74,0.70));
+      position: relative;
+    }
+    .inventory-arrow::after {
+      content: '';
+      position: absolute;
+      right: -1px; top: 50%;
+      width: 9px; height: 9px;
+      border-right: 2px solid rgba(27,42,74,0.70);
+      border-top: 2px solid rgba(27,42,74,0.70);
+      transform: translateY(-50%) rotate(45deg);
+    }
+    .inventory-status-row {
+      min-width: 1080px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.72rem;
+      margin-top: 0.85rem;
+    }
+    .inventory-status {
+      border: 1px solid rgba(27,42,74,0.13);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.84);
+      padding: 0.82rem 0.9rem;
+      color: var(--muted);
+      font-size: 0.76rem;
+      line-height: 1.7;
+    }
+    .inventory-status strong { display: block; color: var(--navy); font-size: 0.82rem; margin-bottom: 0.16rem; }
+    .inventory-note {
+      position: relative;
+      margin-top: 1rem;
+      border: 1px solid rgba(184,151,108,0.28);
+      background: rgba(255,248,236,0.76);
+      color: var(--navy);
+      border-radius: 14px;
+      padding: 0.85rem 1rem;
+      font-size: 0.84rem;
+      line-height: 1.75;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .inventory-workflow-section .section-title .keep-line { display: block; }
+      .inventory-board { padding: 0.8rem; border-radius: 16px; margin-left: -0.25rem; margin-right: -0.25rem; }
+      .inventory-board-head { flex-direction: column; align-items: flex-start; gap: 0.55rem; }
+      .inventory-board-hint { width: 100%; text-align: center; white-space: normal; }
+      .inventory-map { min-width: 1000px; grid-template-columns: 220px 34px 220px 34px 220px 34px 220px; }
+      .inventory-step-card { min-height: 300px; padding: 0.9rem; }
+      .inventory-status-row { min-width: 860px; grid-template-columns: repeat(4, 1fr); }
+      .inventory-note { text-align: left; font-size: 0.78rem; }
+    }
+  </style>
+
 </head>
 <body class="sales-page service-detail-page">
 <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" onfocus="this.style.cssText='position:absolute;left:0;top:0;width:auto;height:auto;padding:0.5rem 1rem;background:#1B2A4A;color:#fff;z-index:9999;';" onblur="this.style.cssText='position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;';">本文へスキップ</a>
@@ -951,6 +1111,52 @@
   <p class="section-label reveal">対象</p><h2 class="section-title reveal">こんな受発注・在庫管理をWeb化します</h2><p class="section-subtitle reveal">FAX、電話、紙台帳、Excelで回している受発注を対象に、検索・集計・スマホ確認できる形へ整えます。</p>
   <div class="fit-list reveal"><div class="fit-item"><strong>工務店・小売業</strong><span>注文、納品、発注、在庫確認を一つの画面で追えるようにします。</span></div><div class="fit-item"><strong>紙台帳からの移行</strong><span>今の項目を活かして、入力フォームと検索一覧を作ります。</span></div><div class="fit-item"><strong>現場スタッフの確認</strong><span>スマホから注文状況や在庫数を確認できる導線を整えます。</span></div></div>
 </div></section>
+
+
+<section id="inventory-workflow" class="inventory-workflow-section">
+  <div class="detail-wrap">
+    <p class="section-label reveal">ワークフロー図</p>
+    <h2 class="section-title reveal"><span class="keep-line">注文・在庫・出荷状況を</span><span class="keep-line">同じ画面で追えるようにします</span></h2>
+    <p class="section-subtitle reveal">FAX、電話、Excel、紙台帳で分かれている情報を、注文受付、在庫引当、発注、出荷確認まで一つの流れで見えるようにします。</p>
+    <div class="inventory-board reveal">
+      <div class="inventory-board-head">
+        <p class="inventory-board-kicker">受発注・在庫管理ワークフロー</p>
+        <p class="inventory-board-hint">スマートフォンでは左右にスワイプして確認</p>
+      </div>
+      <div class="inventory-scroll" aria-label="受発注・在庫管理システムのワークフロー図。横にスクロールできます。">
+        <div class="inventory-map">
+          <div class="inventory-step-card">
+            <div class="inventory-step-top"><span class="inventory-badge">01</span><div><h3>注文を受付</h3><p>電話・FAX・メールの注文内容をWebフォームへ登録します。</p></div></div>
+            <div class="inventory-mini-list"><span>取引先</span><span>商品・数量</span><span>希望納期</span></div>
+          </div>
+          <div class="inventory-arrow" aria-hidden="true"></div>
+          <div class="inventory-step-card is-stock">
+            <div class="inventory-step-top"><span class="inventory-badge">02</span><div><h3>在庫を確認</h3><p>商品ごとの現在庫、引当済み、発注残を同じ画面で確認します。</p></div></div>
+            <div class="inventory-mini-list"><span>現在庫</span><span>引当数</span><span>不足数</span></div>
+          </div>
+          <div class="inventory-arrow" aria-hidden="true"></div>
+          <div class="inventory-step-card">
+            <div class="inventory-step-top"><span class="inventory-badge">03</span><div><h3>不足分を発注</h3><p>在庫不足の商品だけを抽出し、仕入先別に発注対象を整理します。</p></div></div>
+            <div class="inventory-mini-list"><span>仕入先別</span><span>発注候補</span><span>CSV出力</span></div>
+          </div>
+          <div class="inventory-arrow" aria-hidden="true"></div>
+          <div class="inventory-step-card is-stock">
+            <div class="inventory-step-top"><span class="inventory-badge">04</span><div><h3>出荷・履歴管理</h3><p>納品済み、未出荷、キャンセルを残し、後から検索できます。</p></div></div>
+            <div class="inventory-mini-list"><span>ステータス</span><span>変更履歴</span><span>スマホ確認</span></div>
+          </div>
+        </div>
+        <div class="inventory-status-row" aria-label="運用で固定する管理項目">
+          <div class="inventory-status"><strong>入力ミス防止</strong>必須項目、選択式の商品名、数量チェックを用意します。</div>
+          <div class="inventory-status"><strong>履歴検索</strong>取引先、商品、日付、ステータスで注文を探せます。</div>
+          <div class="inventory-status"><strong>在庫ずれ対策</strong>入荷、出荷、引当、取消を履歴として残します。</div>
+          <div class="inventory-status"><strong>CSV活用</strong>既存Excelから初期データを取り込み、一覧出力もできます。</div>
+        </div>
+      </div>
+      <p class="inventory-note">設計の要点：最初から大規模ERP化せず、注文受付・在庫確認・履歴検索のような、現場が毎日使う流れからWeb化します。</p>
+    </div>
+  </div>
+</section>
+
 <section id="scope"><div class="detail-wrap detail-grid">
   <div class="detail-card reveal"><p class="section-label">価値</p><h2 class="section-title">現場が入力できるシンプルさを優先する</h2><p class="section-subtitle" style="margin-bottom:0;">機能を増やしすぎると現場に定着しません。まずは日々の入力、検索、確認に必要な項目に絞り、使われる管理画面を作ります。</p></div>
   <div class="detail-card reveal"><p class="section-label">設計範囲</p><h2 class="section-title">設計に含めるもの</h2><div class="scope-grid"><div class="scope-card"><h3 class="scope-card-title">業務設計</h3><ul class="detail-list"><li>注文受付、発注、納品、在庫確認の流れ整理</li><li>商品・取引先・担当者・ステータス項目の整理</li><li>入力ミス防止、必須項目、変更履歴の設計</li><li>権限、スマホ確認、CSV出力の方針決定</li></ul></div><div class="scope-card"><h3 class="scope-card-title">実装・連携</h3><ul class="detail-list"><li>Webフォーム・管理画面の構築</li><li>注文履歴・在庫一覧・検索機能</li><li>スマホ対応画面</li><li>CSVインポート/エクスポート、集計機能</li></ul></div></div><p class="scope-note">既存のツールや運用をできるだけ活かし、置き換えよりも「止まりやすい箇所を安全に補強する」進め方を優先します。</p></div>
