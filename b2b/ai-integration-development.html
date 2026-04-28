@@ -921,6 +921,260 @@
       .service-detail-page .hero-title { font-size: clamp(1.42rem, 6vw, 1.55rem); line-height: 1.6; }
     }
   </style>
+
+  <style>
+    .ai-workflow-section {
+      background:
+        radial-gradient(circle at 50% 22%, rgba(104, 91, 255, 0.16), transparent 28%),
+        radial-gradient(circle at 12% 14%, rgba(71, 180, 190, 0.12), transparent 26%),
+        linear-gradient(180deg, #F7F7FF 0%, #FAFAFA 100%);
+    }
+    .ai-workflow-section .detail-wrap { max-width: 1240px; }
+    .ai-workflow-section .section-title .keep-line { white-space: nowrap; }
+
+    .ai-map-shell {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(27,42,74,0.14);
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.92), rgba(247,248,255,0.88));
+      box-shadow: 0 30px 76px rgba(27,42,74,0.11);
+      padding: 1.2rem;
+    }
+    .ai-map-shell::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(27,42,74,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27,42,74,0.035) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 78%);
+      pointer-events: none;
+    }
+    .ai-map-head {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .ai-map-kicker { color: var(--navy); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; }
+    .ai-map-hint {
+      color: #4a3fd1;
+      background: rgba(104,91,255,0.10);
+      border: 1px solid rgba(104,91,255,0.24);
+      padding: 0.46rem 0.82rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .ai-tool-ribbon {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.62rem;
+      margin: 0.2rem 0 1rem;
+      z-index: 1;
+    }
+    .ai-tool-ribbon::before {
+      content: '';
+      position: absolute;
+      left: 7%; right: 7%; top: 50%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(104,91,255,0.28), rgba(44,130,137,0.24), transparent);
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+    .ai-tool-chip {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.48rem;
+      align-items: center;
+      min-height: 54px;
+      padding: 0.58rem 0.68rem;
+      border: 1px solid rgba(104,91,255,0.18);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.9);
+      color: var(--navy);
+      font-size: 0.72rem;
+      font-weight: 700;
+      line-height: 1.35;
+      box-shadow: 0 10px 24px rgba(27,42,74,0.055);
+    }
+    .ai-tool-chip span {
+      width: 28px; height: 28px;
+      display: grid; place-items: center;
+      border-radius: 10px;
+      color: #4a3fd1;
+      background: rgba(104,91,255,0.11);
+      font-size: 0.86rem;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    .ai-map-scroll { position: relative; overflow-x: auto; padding: 0.3rem 0.1rem 0.7rem; }
+    .ai-map-scroll::-webkit-scrollbar { height: 8px; }
+    .ai-map-scroll::-webkit-scrollbar-thumb { background: rgba(104,91,255,0.38); border-radius: 999px; }
+    .ai-orbit-map {
+      min-width: 1060px;
+      display: grid;
+      grid-template-columns: 1.05fr 1.15fr 1.05fr;
+      gap: 1rem;
+      align-items: stretch;
+      position: relative;
+      padding: 0.3rem 0.1rem 1rem;
+    }
+    .ai-lane {
+      border: 1px solid rgba(27,42,74,0.14);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.74);
+      padding: 1rem;
+      min-height: 390px;
+    }
+    .ai-lane-title { color: var(--navy); font-size: 0.86rem; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 0.82rem; }
+    .ai-source-list, .ai-output-list { display: grid; gap: 0.78rem; }
+    .ai-source, .ai-output {
+      border: 1px solid rgba(27,42,74,0.13);
+      background: #fff;
+      border-radius: 16px;
+      padding: 0.9rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem;
+      align-items: start;
+      box-shadow: 0 12px 28px rgba(27,42,74,0.06);
+    }
+    .ai-source-icon, .ai-output-icon {
+      width: 38px; height: 38px; border-radius: 14px;
+      display: grid; place-items: center;
+      color: #1f6f76; background: rgba(44,130,137,0.10);
+      font-size: 1.08rem;
+    }
+    .ai-output-icon { color: #4a3fd1; background: rgba(104,91,255,0.11); }
+    .ai-source h3, .ai-output h3 { color: var(--navy); font-size: 0.88rem; margin-bottom: 0.15rem; line-height: 1.45; }
+    .ai-source p, .ai-output p { color: var(--muted); font-size: 0.74rem; line-height: 1.65; }
+    .ai-core-panel {
+      position: relative;
+      border: 1px solid rgba(104,91,255,0.24);
+      border-radius: 24px;
+      min-height: 390px;
+      padding: 1rem;
+      background: radial-gradient(circle at 50% 34%, rgba(104,91,255,0.14), rgba(255,255,255,0.84) 54%, rgba(255,255,255,0.72));
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.8), 0 18px 44px rgba(104,91,255,0.10);
+      overflow: hidden;
+    }
+    .ai-core-panel::before,
+    .ai-core-panel::after {
+      content: '';
+      position: absolute;
+      left: 50%; top: 45%; transform: translate(-50%, -50%);
+      border: 1px dashed rgba(104,91,255,0.28);
+      border-radius: 50%; pointer-events: none;
+    }
+    .ai-core-panel::before { width: 270px; height: 270px; }
+    .ai-core-panel::after { width: 190px; height: 190px; }
+    .ai-core {
+      position: absolute;
+      left: 50%; top: 45%; transform: translate(-50%, -50%);
+      width: 148px; height: 148px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #1B2A4A, #4A3FD1);
+      color: #fff;
+      display: grid; place-items: center;
+      text-align: center;
+      box-shadow: 0 24px 54px rgba(27,42,74,0.28);
+      z-index: 2;
+    }
+    .ai-core strong { display: block; font-size: 1.3rem; letter-spacing: 0.04em; }
+    .ai-core span { display: block; font-size: 0.68rem; opacity: 0.78; letter-spacing: 0.12em; }
+    .ai-node {
+      position: absolute;
+      width: 98px;
+      border: 1px solid rgba(27,42,74,0.14);
+      background: rgba(255,255,255,0.92);
+      border-radius: 15px;
+      padding: 0.62rem 0.55rem;
+      text-align: center;
+      color: var(--navy);
+      font-size: 0.74rem;
+      font-weight: 700;
+      line-height: 1.35;
+      z-index: 3;
+      box-shadow: 0 12px 30px rgba(27,42,74,0.09);
+    }
+    .ai-node::before { display: block; font-size: 1rem; margin-bottom: 0.22rem; color: #4a3fd1; }
+    .ai-node.prompt { top: 1.2rem; left: 50%; transform: translateX(-50%); }
+    .ai-node.prompt::before { content: '✦'; }
+    .ai-node.rag { left: 0.85rem; top: 44%; transform: translateY(-50%); }
+    .ai-node.rag::before { content: '⌘'; }
+    .ai-node.guard { right: 0.85rem; top: 44%; transform: translateY(-50%); }
+    .ai-node.guard::before { content: '◇'; }
+    .ai-node.log { bottom: 1rem; left: 50%; transform: translateX(-50%); }
+    .ai-node.log::before { content: '▤'; }
+    .ai-human-gate {
+      position: absolute;
+      left: 50%; bottom: 4.7rem; transform: translateX(-50%);
+      z-index: 4;
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      background: #FFF8EC;
+      border: 1px solid rgba(184,151,108,0.48);
+      color: var(--navy);
+      padding: 0.48rem 0.82rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .ai-flow-arrows {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.7rem;
+      margin-top: 0.9rem;
+      min-width: 1060px;
+    }
+    .ai-flow-note {
+      border: 1px solid rgba(27,42,74,0.13);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.82);
+      padding: 0.86rem 0.95rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.7;
+    }
+    .ai-flow-note strong { color: var(--navy); display: block; font-size: 0.82rem; margin-bottom: 0.18rem; }
+    .ai-map-note {
+      position: relative;
+      margin-top: 1rem;
+      border: 1px solid rgba(104,91,255,0.18);
+      background: rgba(247,247,255,0.86);
+      color: var(--navy);
+      border-radius: 14px;
+      padding: 0.85rem 1rem;
+      font-size: 0.86rem;
+      line-height: 1.75;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .ai-workflow-section .section-title .keep-line { display: block; }
+      .ai-map-shell { padding: 0.8rem; border-radius: 16px; margin-left: -0.25rem; margin-right: -0.25rem; }
+      .ai-map-head { flex-direction: column; align-items: flex-start; gap: 0.55rem; }
+      .ai-map-hint { width: 100%; text-align: center; white-space: normal; }
+      .ai-tool-ribbon { grid-template-columns: repeat(5, 150px); overflow-x: auto; padding-bottom: 0.18rem; }
+      .ai-tool-ribbon::before { left: 0; right: 0; }
+      .ai-tool-chip { min-width: 150px; }
+
+      .ai-orbit-map { min-width: 980px; grid-template-columns: 300px 340px 300px; }
+      .ai-lane, .ai-core-panel { min-height: 370px; }
+      .ai-core { width: 132px; height: 132px; }
+      .ai-core strong { font-size: 1.15rem; }
+      .ai-node { width: 88px; font-size: 0.68rem; }
+      .ai-flow-arrows { min-width: 760px; grid-template-columns: repeat(4, 1fr); }
+      .ai-map-note { text-align: left; font-size: 0.78rem; }
+    }
+  </style>
 </head>
 <body class="sales-page service-detail-page">
 <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" onfocus="this.style.cssText='position:absolute;left:0;top:0;width:auto;height:auto;padding:0.5rem 1rem;background:#1B2A4A;color:#fff;z-index:9999;';" onblur="this.style.cssText='position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;';">本文へスキップ</a>
@@ -951,6 +1205,62 @@
   <p class="section-label reveal">対象</p><h2 class="section-title reveal">こんなAI組み込みに対応します</h2><p class="section-subtitle reveal">社内FAQ、メール下書き、問い合わせ整理、資料要約、担当振り分けなど、既存業務の一部にAIを組み込む用途に向いています。</p>
   <div class="fit-list reveal"><div class="fit-item"><strong>社内FAQ・ナレッジ検索</strong><span>社内資料や手順書をもとに、検索・要約・回答候補を提示します。</span></div><div class="fit-item"><strong>メール・問い合わせ支援</strong><span>受信内容を整理し、返信下書きや担当振り分けにつなげます。</span></div><div class="fit-item"><strong>業務エージェント</strong><span>定型調査、分類、記録、通知などをツール連携で半自動化します。</span></div></div>
 </div></section>
+
+<section id="ai-workflow" class="ai-workflow-section">
+  <div class="detail-wrap">
+    <p class="section-label reveal">ワークフロー図</p>
+    <h2 class="section-title reveal"><span class="keep-line">AIを、既存ツールと</span><span class="keep-line">人の確認に接続します</span></h2>
+    <p class="section-subtitle reveal">AIを単体で置くのではなく、入力データ、プロンプト、RAG、確認ゲート、ログ、評価までを一つの業務部品として設計します。</p>
+    <div class="ai-map-shell reveal">
+      <div class="ai-map-head">
+        <p class="ai-map-kicker">AI組み込み開発フロー</p>
+        <p class="ai-map-hint">スマートフォンでは左右にスワイプして確認</p>
+      </div>
+      <div class="ai-tool-ribbon" aria-label="AI組み込みで接続する代表的な部品">
+        <div class="ai-tool-chip"><span>{ }</span>API接続</div>
+        <div class="ai-tool-chip"><span>⌕</span>検索 / RAG</div>
+        <div class="ai-tool-chip"><span>✓</span>承認UI</div>
+        <div class="ai-tool-chip"><span>↗</span>通知Bot</div>
+        <div class="ai-tool-chip"><span>▤</span>監査ログ</div>
+      </div>
+      <div class="ai-map-scroll" aria-label="AI組み込み開発のワークフロー図。横にスクロールできます。">
+        <div class="ai-orbit-map">
+          <div class="ai-lane">
+            <p class="ai-lane-title">INPUT / 既存業務</p>
+            <div class="ai-source-list">
+              <div class="ai-source"><span class="ai-source-icon">✉</span><div><h3>メール・問い合わせ</h3><p>Gmailやフォームの文章を要約・分類の入力にします。</p></div></div>
+              <div class="ai-source"><span class="ai-source-icon">▤</span><div><h3>社内資料・FAQ</h3><p>手順書、PDF、ナレッジを検索しやすい単位へ整理します。</p></div></div>
+              <div class="ai-source"><span class="ai-source-icon">◫</span><div><h3>業務データ</h3><p>スプレッドシート、CRM、CSVなど既存の表を活かします。</p></div></div>
+            </div>
+          </div>
+          <div class="ai-core-panel" aria-label="AI処理コア">
+            <div class="ai-node prompt">プロンプト<br>設計</div>
+            <div class="ai-node rag">RAG / 検索</div>
+            <div class="ai-node guard">禁止事項<br>安全条件</div>
+            <div class="ai-core"><div><strong>AI CORE</strong><span>LLM / Agent</span></div></div>
+            <div class="ai-human-gate">人の確認ゲート</div>
+            <div class="ai-node log">ログ / 評価</div>
+          </div>
+          <div class="ai-lane">
+            <p class="ai-lane-title">OUTPUT / 現場で使う形</p>
+            <div class="ai-output-list">
+              <div class="ai-output"><span class="ai-output-icon">A</span><div><h3>回答候補・要約</h3><p>そのまま送らず、確認しやすい候補として出します。</p></div></div>
+              <div class="ai-output"><span class="ai-output-icon">↗</span><div><h3>通知・担当振り分け</h3><p>Slack、Gmail、Sheetsへ次アクションを渡します。</p></div></div>
+              <div class="ai-output"><span class="ai-output-icon">✓</span><div><h3>承認済みだけ実行</h3><p>送信、登録、更新は人の確認後に進めます。</p></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="ai-flow-arrows" aria-label="AI組み込みで固定する運用ルール">
+          <div class="ai-flow-note"><strong>01 入力を固定</strong>AIに読ませる範囲、除外する情報、更新頻度を先に決めます。</div>
+          <div class="ai-flow-note"><strong>02 出力を制限</strong>回答形式、禁止表現、低信頼度時の戻し先を決めます。</div>
+          <div class="ai-flow-note"><strong>03 人が確認</strong>外部送信、契約、個人情報、例外処理は確認ゲートに残します。</div>
+          <div class="ai-flow-note"><strong>04 改善する</strong>ログと評価観点を残し、プロンプト・検索対象を育てます。</div>
+        </div>
+      </div>
+      <p class="ai-map-note">設計の要点：AIを「賢い箱」として置くのではなく、入力・出力・確認・ログを固定した業務部品として組み込みます。</p>
+    </div>
+  </div>
+</section>
 <section id="scope"><div class="detail-wrap detail-grid">
   <div class="detail-card reveal"><p class="section-label">価値</p><h2 class="section-title">AI機能より、現場で止まらない接続を重視する</h2><p class="section-subtitle" style="margin-bottom:0;">精度が高いAIでも、例外時の扱い、ログの残し方、確認の入れ方が曖昧だと運用が止まります。AIの出力を業務フローに接続する設計を重視します。</p></div>
   <div class="detail-card reveal"><p class="section-label">設計範囲</p><h2 class="section-title">設計に含めるもの</h2><div class="scope-grid"><div class="scope-card"><h3 class="scope-card-title">業務設計</h3><ul class="detail-list"><li>AIに任せる範囲と人が確認する範囲の整理</li><li>入力データ、禁止事項、出力形式の設計</li><li>例外・低信頼度時のエスカレーション</li><li>ログ、評価、改善サイクルの設計</li></ul></div><div class="scope-card"><h3 class="scope-card-title">実装・連携</h3><ul class="detail-list"><li>OpenAI API等を使った機能実装</li><li>RAG・社内FAQ・要約機能の構築</li><li>Gmail / Slack / Sheets 連携</li><li>プロンプト、評価観点、再実行手順の整備</li></ul></div></div><p class="scope-note">既存のツールや運用をできるだけ活かし、置き換えよりも「止まりやすい箇所を安全に補強する」進め方を優先します。</p></div>
