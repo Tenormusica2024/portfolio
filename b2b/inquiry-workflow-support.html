@@ -89,7 +89,7 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "AIが勝手に返信しますか？",
+          "name": "自動で返信されますか？",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "原則として自動送信ではなく、返信下書きを作って人が確認する運用を推奨します。"
@@ -1205,7 +1205,7 @@
   <div class="detail-wrap">
     <p class="section-label reveal">ワークフロー図</p>
     <h2 class="section-title reveal">問い合わせを、受信から対応ログまで一つの流れにします</h2>
-    <p class="section-subtitle reveal">メールやフォームの入口を増やしても、対応漏れが起きないように、AIが先に整理し、人が確認してから返信・担当振り分けへ進む運用図です。</p>
+    <p class="section-subtitle reveal">メールやフォームの入口を増やしても、対応漏れが起きないように、受信内容を先に整理し、人が確認してから返信・担当振り分けへ進む運用図です。</p>
     <div class="inquiry-map-shell reveal">
       <div class="inquiry-map-head">
         <p class="inquiry-map-kicker">問い合わせ整理・業務支援フロー</p>
@@ -1222,7 +1222,7 @@
           <div class="inquiry-step">
             <span class="inquiry-num">2</span>
             <div class="inquiry-icon" aria-hidden="true">⌕</div>
-            <h3>AIが要約・分類</h3>
+            <h3>要約・分類</h3>
             <p>依頼内容、緊急度、不足情報、対応種別を先に整理します。</p>
           </div>
           <div class="inquiry-step is-human">
@@ -1252,12 +1252,12 @@
           </div>
         </div>
         <div class="inquiry-ops-grid" aria-label="問い合わせ対応を止めないための運用ガード">
-          <div class="inquiry-ops-card"><span class="inquiry-ops-icon">!</span><div><h3>例外ルール</h3><p>クレーム、契約、個人情報、判断不能は自動返信せず確認へ戻します。</p></div></div>
+          <div class="inquiry-ops-card"><span class="inquiry-ops-icon">!</span><div><h3>例外ルール</h3><p>クレーム、契約、個人情報、判断不能は送信せず確認へ戻します。</p></div></div>
           <div class="inquiry-ops-card"><span class="inquiry-ops-icon">↺</span><div><h3>再確認</h3><p>分類ミスや不足情報があれば、問い合わせ単位で安全にやり直せます。</p></div></div>
           <div class="inquiry-ops-card"><span class="inquiry-ops-icon">◎</span><div><h3>状態管理</h3><p>未確認、下書き済み、返信済み、担当者対応中を一覧で見える化します。</p></div></div>
         </div>
       </div>
-      <p class="inquiry-map-note">設計の要点：AIには要約・分類・下書きを任せ、送信判断・例外対応・最終責任は人が確認できる運用に残します。</p>
+      <p class="inquiry-map-note">設計の要点：要約・分類・下書きは支援ツール側で整え、送信判断・例外対応・最終責任は人が確認できる運用に残します。</p>
     </div>
   </div>
 </section>
@@ -1273,7 +1273,7 @@
       </div>
       <div>
         <p class="estimate-copy">問い合わせの分類、要約、返信下書き、担当者通知など、既存のGmailやフォームを活かして始める費用感です。 要件が固まっていない段階でも、最初は対象範囲を絞って見積もります。</p>
-        <div class="estimate-points"><div class="estimate-point"><strong>入口整理</strong>Gmail、フォーム、LINEを対象化</div><div class="estimate-point"><strong>下書き支援</strong>返信テンプレートとAI要約を設計</div><div class="estimate-point"><strong>運用定着</strong>対応ログと例外ルールを残す</div></div>
+        <div class="estimate-points"><div class="estimate-point"><strong>入口整理</strong>Gmail、フォーム、LINEを対象化</div><div class="estimate-point"><strong>下書き支援</strong>返信テンプレートと要約ルールを設計</div><div class="estimate-point"><strong>運用定着</strong>対応ログと例外ルールを残す</div></div>
       </div>
     </div>
   </div>
@@ -1290,7 +1290,7 @@
   <div class="hero-visual detail-card" aria-label="導入時に重視する観点">
     <p class="section-label">運用で守ること</p>
     <h2 class="section-title">返信前に人が確認できる流れ</h2>
-    <p class="section-subtitle" style="margin-bottom:1rem;">AIに任せるのは要約・分類・下書きまで。送信判断や例外対応は人が確認できる形にします。</p>
+    <p class="section-subtitle" style="margin-bottom:1rem;">任せる範囲は要約・分類・下書きまで。送信判断や例外対応は人が確認できる形にします。</p>
     <div class="safety-strip" aria-label="主要要素"><span class="safety-chip">一次分類</span><span class="safety-chip">返信下書き</span><span class="safety-chip">担当振り分け</span><span class="safety-chip">対応ログ</span></div>
   </div></div></div>
 </section>
@@ -1300,13 +1300,13 @@
 </div></section>
 
 <section id="scope"><div class="detail-wrap detail-grid">
-  <div class="detail-card reveal"><p class="section-label">価値</p><h2 class="section-title">AIに丸投げせず、対応前の整理を速くする</h2><p class="section-subtitle" style="margin-bottom:0;">問い合わせ対応で重要なのは、早く返すことだけではありません。内容を正しく読み分け、誰が対応するかを決め、返信前に確認できる状態を作ることです。</p></div>
-  <div class="detail-card reveal"><p class="section-label">設計範囲</p><h2 class="section-title">設計に含めるもの</h2><div class="scope-grid"><div class="scope-card"><h3 class="scope-card-title">業務設計</h3><ul class="detail-list"><li>問い合わせ種別・優先度・担当条件の整理</li><li>返信前確認フローと例外対応ルール</li><li>対応ステータス、期限、履歴の管理</li><li>資料請求・見積依頼・予約相談の分岐設計</li></ul></div><div class="scope-card"><h3 class="scope-card-title">実装・連携</h3><ul class="detail-list"><li>Gmail / Googleフォーム / LINE の受付整理</li><li>スプレッドシートへの対応ログ保存</li><li>Slack / LINE への担当者通知</li><li>AI要約・返信下書きプロンプトの設計</li></ul></div></div><p class="scope-note">既存のツールや運用をできるだけ活かし、置き換えよりも「止まりやすい箇所を安全に補強する」進め方を優先します。</p></div>
+  <div class="detail-card reveal"><p class="section-label">価値</p><h2 class="section-title">自動化に任せきりにせず、対応前の整理を速くする</h2><p class="section-subtitle" style="margin-bottom:0;">問い合わせ対応で重要なのは、早く返すことだけではありません。内容を正しく読み分け、誰が対応するかを決め、返信前に確認できる状態を作ることです。</p></div>
+  <div class="detail-card reveal"><p class="section-label">設計範囲</p><h2 class="section-title">設計に含めるもの</h2><div class="scope-grid"><div class="scope-card"><h3 class="scope-card-title">業務設計</h3><ul class="detail-list"><li>問い合わせ種別・優先度・担当条件の整理</li><li>返信前確認フローと例外対応ルール</li><li>対応ステータス、期限、履歴の管理</li><li>資料請求・見積依頼・予約相談の分岐設計</li></ul></div><div class="scope-card"><h3 class="scope-card-title">実装・連携</h3><ul class="detail-list"><li>Gmail / Googleフォーム / LINE の受付整理</li><li>スプレッドシートへの対応ログ保存</li><li>Slack / LINE への担当者通知</li><li>要約・返信下書きプロンプトの設計</li></ul></div></div><p class="scope-note">既存のツールや運用をできるだけ活かし、置き換えよりも「止まりやすい箇所を安全に補強する」進め方を優先します。</p></div>
 </div></section>
 <section><div class="detail-wrap"><p class="section-label reveal">運用例</p><h2 class="section-title reveal">導入後の流れ</h2><div class="case-grid"><div class="case-card reveal"><span class="case-num">01</span><h3>受信内容を自動で要約</h3><p>長い問い合わせ文を要点、依頼内容、不足情報に分けます。</p></div><div class="case-card reveal"><span class="case-num">02</span><h3>担当者へ通知</h3><p>種別や顧客属性に応じて、担当者と対応期限を付けます。</p></div><div class="case-card reveal"><span class="case-num">03</span><h3>返信下書きを確認</h3><p>人が確認してから返信できる形で、文面候補を残します。</p></div></div></div></section>
-<section><div class="detail-wrap"><p class="section-label reveal">進め方</p><h2 class="section-title reveal">小さく始めて、使える状態まで整えます</h2><div class="process-grid reveal"><div class="process-card"><span class="case-num">STEP 1</span><h3>現状整理</h3><p>今の作業、使っているツール、手戻りが起きる場面を確認します。</p></div><div class="process-card"><span class="case-num">STEP 2</span><h3>最小範囲の設計</h3><p>最初に自動化する対象、残す手作業、確認ポイントを決めます。</p></div><div class="process-card"><span class="case-num">STEP 3</span><h3>実装・接続</h3><p>既存ツールに合わせて、入力、通知、ログ、確認画面をつなぎます。</p></div><div class="process-card"><span class="case-num">STEP 4</span><h3>運用改善</h3><p>実際の利用ログを見ながら、対象条件やチェック項目を調整します。</p></div></div></div></section>
-<section><div class="detail-wrap detail-card"><p class="section-label reveal">納品物</p><h2 class="section-title reveal">納品物の例</h2><div class="two-column-note reveal"><ul class="detail-list"><li>問い合わせ分類ルール表</li><li>返信下書きテンプレートとAIプロンプト</li><li>担当振り分け・通知フロー</li><li>対応ログ用スプレッドシート</li><li>運用手順と例外対応メモ</li></ul><p class="muted-note">要件が固まりきっていない段階でも、現状の作業メモ・使っているツール・困っている場面から整理できます。初回は対象範囲を絞り、運用しながら広げる形を推奨します。</p></div></div></section>
-<section id="faq"><div class="detail-wrap"><p class="section-label reveal">よくある質問</p><h2 class="section-title reveal">問い合わせ整理・業務支援に関するご質問</h2><div class="faq-list"><div class="faq-item reveal"><button class="faq-q" aria-expanded="false">AIが勝手に返信しますか？</button><p class="faq-a">原則として自動送信ではなく、返信下書きを作って人が確認する運用を推奨します。</p></div><div class="faq-item reveal"><button class="faq-q" aria-expanded="false">Gmailだけでも始められますか？</button><p class="faq-a">はい。Gmailとスプレッドシートだけの小さな構成から始められます。</p></div><div class="faq-item reveal"><button class="faq-q" aria-expanded="false">LINEやフォームも対象ですか？</button><p class="faq-a">対象です。入口ごとに取得できる情報を整理し、同じ対応ログに集約する形で設計します。</p></div></div></div></section>
+<section><div class="detail-wrap"><p class="section-label reveal">進め方</p><h2 class="section-title reveal">小さく始めて運用に乗せます</h2><div class="process-grid reveal"><div class="process-card"><span class="case-num">STEP 1</span><h3>現状整理</h3><p>今の作業、使っているツール、手戻りが起きる場面を確認します。</p></div><div class="process-card"><span class="case-num">STEP 2</span><h3>最小範囲の設計</h3><p>最初に自動化する対象、残す手作業、確認ポイントを決めます。</p></div><div class="process-card"><span class="case-num">STEP 3</span><h3>実装・接続</h3><p>既存ツールに合わせて、入力、通知、ログ、確認画面をつなぎます。</p></div><div class="process-card"><span class="case-num">STEP 4</span><h3>運用改善</h3><p>実際の利用ログを見ながら、対象条件やチェック項目を調整します。</p></div></div></div></section>
+<section><div class="detail-wrap detail-card"><p class="section-label reveal">納品物</p><h2 class="section-title reveal">納品物の例</h2><div class="two-column-note reveal"><ul class="detail-list"><li>問い合わせ分類ルール表</li><li>返信下書きテンプレートとプロンプト定義</li><li>担当振り分け・通知フロー</li><li>対応ログ用スプレッドシート</li><li>運用手順と例外対応メモ</li></ul><p class="muted-note">要件が固まりきっていない段階でも、現状の作業メモ・使っているツール・困っている場面から整理できます。初回は対象範囲を絞り、運用しながら広げる形を推奨します。</p></div></div></section>
+<section id="faq"><div class="detail-wrap"><p class="section-label reveal">よくある質問</p><h2 class="section-title reveal">問い合わせ整理・業務支援に関するご質問</h2><div class="faq-list"><div class="faq-item reveal"><button class="faq-q" aria-expanded="false">自動で返信されますか？</button><p class="faq-a">原則として自動送信ではなく、返信下書きを作って人が確認する運用を推奨します。</p></div><div class="faq-item reveal"><button class="faq-q" aria-expanded="false">Gmailだけでも始められますか？</button><p class="faq-a">はい。Gmailとスプレッドシートだけの小さな構成から始められます。</p></div><div class="faq-item reveal"><button class="faq-q" aria-expanded="false">LINEやフォームも対象ですか？</button><p class="faq-a">対象です。入口ごとに取得できる情報を整理し、同じ対応ログに集約する形で設計します。</p></div></div></div></section>
 <section id="contact"><div class="detail-wrap detail-card"><p class="section-label reveal">相談</p><h2 class="section-title reveal">まずは問い合わせの入口を1つだけ整理しましょう</h2><p class="section-subtitle reveal">「返信が遅れる」「誰が見るか曖昧」「資料請求の後追いが漏れる」など、今止まりやすい場面を送ってください。</p><a href="/#contact" class="btn-primary reveal">相談する</a><div class="contact-help reveal"><p class="contact-help-title">相談時にこの3点があると早いです</p><ul class="contact-help-list"><li><strong>入口</strong>Gmail、フォーム、LINEなど</li><li><strong>困りごと</strong>返信遅れ、分類漏れ、担当不明など</li><li><strong>件数感</strong>1日・1週間あたりの問い合わせ数</li></ul><p class="contact-help-note">まだ整理できていなくても問題ありません。箇条書きのメモだけでも、相談の入口として十分です。</p></div></div></section>
 </main>
 <footer><div>© 2026 Ezlize / 幸田 晃典</div><div class="footer-links"><a href="/">トップ</a><a href="/sales-operations-pipeline.html">営業運用</a><a href="/komuten-automation.html">工務店向け</a><a href="/real-estate-ai-secretary.html">不動産向け</a><a href="/shigyo-inquiry-automation.html">士業向け</a><a href="/privacy.html">プライバシーポリシー</a><a href="/tokusho.html">特商法表記</a></div></footer>
