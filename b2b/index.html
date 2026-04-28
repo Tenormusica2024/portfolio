@@ -382,6 +382,71 @@
     .btn-secondary:hover { color: var(--navy); }
     .btn-secondary::after { content: '→'; }
 
+
+    .hero-proof-board {
+      position: absolute;
+      right: 5.5%;
+      top: 50%;
+      transform: translateY(-44%);
+      z-index: 1;
+      width: min(360px, 29vw);
+      display: grid;
+      gap: 0.85rem;
+      pointer-events: none;
+    }
+    .hero-proof-card {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(184,151,108,0.32);
+      box-shadow: 0 22px 70px rgba(27,42,74,0.12);
+      padding: 1.05rem 1.1rem;
+      backdrop-filter: blur(8px);
+    }
+    .hero-proof-kicker {
+      display: block;
+      color: var(--gold);
+      font-size: 0.66rem;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.28rem;
+    }
+    .hero-proof-title {
+      font-family: 'Shippori Mincho', serif;
+      color: var(--navy);
+      font-size: 1.06rem;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+    .hero-proof-row {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .hero-proof-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+    .hero-proof-text {
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.7;
+    }
+    .hero-proof-card.is-accent {
+      margin-left: 2.3rem;
+      background: rgba(27,42,74,0.94);
+      border-color: rgba(27,42,74,0.2);
+    }
+    .hero-proof-card.is-accent .hero-proof-kicker { color: rgba(255,255,255,0.58); }
+    .hero-proof-card.is-accent .hero-proof-title { color: var(--white); }
+    .hero-proof-card.is-accent .hero-proof-text { color: rgba(255,255,255,0.72); }
+
+
     .hero-stats {
       display: inline-flex;
       border: 1px solid var(--border);
@@ -779,6 +844,7 @@
       section { padding: 4rem 4%; }
       #hero { min-height: auto; display: block; padding-top: 88px; }
       .hero-content { max-width: 100%; }
+      .hero-proof-board { display: none; }
       .hero-title { font-size: clamp(2rem, 9vw, 2.45rem); line-height: 1.34; }
       #hero::before { display: none; }
       .hero-stats { display: grid; grid-template-columns: 1fr 1fr; }
@@ -862,6 +928,21 @@
       </div>
     </div>
   </div>
+
+  <aside class="hero-proof-board" aria-label="対応できる業務改善の例">
+    <div class="hero-proof-card">
+      <span class="hero-proof-kicker">SMALL START</span>
+      <p class="hero-proof-title">まずは1つの業務から<br>止まりやすさを減らす</p>
+    </div>
+    <div class="hero-proof-card hero-proof-row">
+      <span class="hero-proof-icon">承</span>
+      <p class="hero-proof-text">AI下書き、送信前承認、ログ保存まで運用に合わせて設計</p>
+    </div>
+    <div class="hero-proof-card hero-proof-row is-accent">
+      <span class="hero-proof-icon">¥</span>
+      <p class="hero-proof-text">2万〜50万円の範囲で、費用対効果が出やすい単位から提案</p>
+    </div>
+  </aside>
 </section>
 
 <!-- SERVICES -->

@@ -912,6 +912,72 @@
       .sales-page .contact-help-note { font-size: 0.72rem; }
       .sales-page .footer-links { flex-wrap: wrap; }
     }
+
+
+
+    .service-estimate {
+      background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(250,247,241,0.92));
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .estimate-card {
+      border: 1px solid rgba(184,151,108,0.32);
+      background: rgba(255,255,255,0.88);
+      box-shadow: 0 18px 55px rgba(27,42,74,0.07);
+    }
+    .estimate-layout {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.72fr) 1.28fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .estimate-amount {
+      font-family: 'Shippori Mincho', serif;
+      color: var(--navy);
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin: 0.35rem 0 0.5rem;
+    }
+    .estimate-tax {
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+    }
+    .estimate-copy {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.95;
+    }
+    .estimate-points {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+    .estimate-point {
+      border: 1px solid var(--border);
+      background: var(--bg);
+      padding: 0.85rem 0.9rem;
+      color: var(--navy);
+      font-size: 0.78rem;
+      line-height: 1.6;
+    }
+    .estimate-point strong {
+      display: block;
+      color: var(--gold);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.16rem;
+    }
+    @media (max-width: 768px) {
+      .estimate-layout { grid-template-columns: 1fr; gap: 1rem; }
+      .estimate-card { padding: 1.25rem; }
+      .estimate-points { grid-template-columns: 1fr; }
+      .estimate-amount { font-size: 2.1rem; }
+    }
+
   </style>
 
   <style>
@@ -920,6 +986,7 @@
       .service-detail-page .hero-visual { order: 0; }
       .service-detail-page .hero-title { font-size: clamp(1.42rem, 6vw, 1.55rem); line-height: 1.6; }
     }
+
   </style>
 
   <style>
@@ -1174,6 +1241,7 @@
       .ai-flow-arrows { min-width: 760px; grid-template-columns: repeat(4, 1fr); }
       .ai-map-note { text-align: left; font-size: 0.78rem; }
     }
+
   </style>
 </head>
 <body class="sales-page service-detail-page">
@@ -1237,6 +1305,23 @@
         </div>
       </div>
       <p class="ai-map-note">設計の要点：まずは「問い合わせ分類」「FAQ回答候補」「返信下書き」「通知・記録」のような、効果と確認ポイントが見えやすい実例から組み込みます。</p>
+    </div>
+  </div>
+</section>
+
+<section class="service-estimate" aria-labelledby="estimate-title">
+  <div class="detail-wrap detail-card estimate-card reveal">
+    <div class="estimate-layout">
+      <div>
+        <p class="section-label">費用目安</p>
+        <h2 id="estimate-title" class="section-title">費用の目安</h2>
+        <p class="estimate-amount">10万〜30万円</p>
+        <p class="estimate-tax">税別・初回制作の目安</p>
+      </div>
+      <div>
+        <p class="estimate-copy">LLM APIやAIエージェントを既存業務に組み込み、要約、分類、下書き、検索補助まで実用範囲で作る費用感です。 要件が固まっていない段階でも、最初は対象範囲を絞って見積もります。</p>
+        <div class="estimate-points"><div class="estimate-point"><strong>機能単位</strong>FAQ、メール下書き、分類から開始</div><div class="estimate-point"><strong>安全設計</strong>ログ、再実行、確認ポイントを追加</div><div class="estimate-point"><strong>拡張余地</strong>運用後に対象業務を広げる</div></div>
+      </div>
     </div>
   </div>
 </section>
