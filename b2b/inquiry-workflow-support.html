@@ -921,6 +921,208 @@
       .service-detail-page .hero-title { font-size: clamp(1.42rem, 6vw, 1.55rem); line-height: 1.6; }
     }
   </style>
+
+  <style>
+    .inquiry-workflow-section {
+      background:
+        radial-gradient(circle at 12% 18%, rgba(44, 130, 137, 0.12), transparent 30%),
+        radial-gradient(circle at 88% 8%, rgba(184, 151, 108, 0.16), transparent 28%),
+        linear-gradient(180deg, #F7FAF9 0%, #FAFAFA 100%);
+    }
+    .inquiry-workflow-section .detail-wrap { max-width: 1240px; }
+    .inquiry-map-shell {
+      border: 1px solid rgba(27,42,74,0.14);
+      background: rgba(255,255,255,0.88);
+      box-shadow: 0 30px 70px rgba(27,42,74,0.10);
+      border-radius: 22px;
+      padding: 1.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .inquiry-map-shell::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(27,42,74,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27,42,74,0.035) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+    .inquiry-map-head {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .inquiry-map-kicker {
+      color: var(--navy);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+    .inquiry-map-hint {
+      color: #1f6f76;
+      background: rgba(44,130,137,0.10);
+      border: 1px solid rgba(44,130,137,0.22);
+      padding: 0.46rem 0.82rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .inquiry-map-scroll { position: relative; overflow-x: auto; padding: 0.2rem 0.1rem 0.7rem; }
+    .inquiry-map-scroll::-webkit-scrollbar { height: 8px; }
+    .inquiry-map-scroll::-webkit-scrollbar-thumb { background: rgba(44,130,137,0.35); border-radius: 999px; }
+    .inquiry-pipeline {
+      min-width: 1040px;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(128px, 1fr));
+      gap: 1rem;
+      align-items: stretch;
+      position: relative;
+      padding: 3rem 0.15rem 1rem;
+    }
+    .inquiry-step {
+      position: relative;
+      border: 1px solid rgba(27,42,74,0.18);
+      background: linear-gradient(180deg, #FFFFFF 0%, #F9FBFB 100%);
+      border-radius: 18px;
+      padding: 1.1rem 0.95rem 1rem;
+      min-height: 178px;
+      box-shadow: 0 16px 35px rgba(27,42,74,0.08);
+    }
+    .inquiry-step::after {
+      content: '→';
+      position: absolute;
+      right: -0.86rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.3rem;
+      height: 1.3rem;
+      border-radius: 999px;
+      background: var(--navy);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 0.8rem;
+      z-index: 2;
+      box-shadow: 0 8px 20px rgba(27,42,74,0.18);
+    }
+    .inquiry-step:last-child::after { display: none; }
+    .inquiry-step.is-human {
+      border-color: rgba(184,151,108,0.85);
+      background: linear-gradient(180deg, #FFFCF7 0%, #FFFFFF 100%);
+      box-shadow: 0 18px 42px rgba(184,151,108,0.18);
+    }
+    .inquiry-num {
+      position: absolute;
+      top: -0.72rem;
+      left: 0.86rem;
+      width: 1.82rem;
+      height: 1.82rem;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--navy);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.86rem;
+      box-shadow: 0 10px 22px rgba(27,42,74,0.22);
+    }
+    .inquiry-step.is-human .inquiry-num { background: var(--gold); }
+    .inquiry-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      margin: 0.35rem 0 0.95rem;
+      color: #1f6f76;
+      background: rgba(44,130,137,0.11);
+      font-size: 1.55rem;
+    }
+    .inquiry-step.is-human .inquiry-icon { color: var(--gold); background: rgba(184,151,108,0.13); }
+    .inquiry-step h3 { color: var(--navy); font-size: 0.98rem; line-height: 1.45; margin-bottom: 0.45rem; }
+    .inquiry-step p { color: var(--muted); font-size: 0.78rem; line-height: 1.75; }
+    .inquiry-human-label {
+      position: absolute;
+      top: -2.45rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--navy);
+      background: #FFF8EC;
+      border: 1px solid rgba(184,151,108,0.5);
+      padding: 0.42rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .inquiry-human-label::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -9px;
+      transform: translateX(-50%);
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-top: 9px solid rgba(184,151,108,0.5);
+    }
+    .inquiry-ops-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 0.9rem;
+    }
+    .inquiry-ops-card {
+      border: 1px solid rgba(27,42,74,0.14);
+      background: rgba(255,255,255,0.86);
+      border-radius: 16px;
+      padding: 1rem 1.05rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.82rem;
+      align-items: start;
+    }
+    .inquiry-ops-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--navy);
+      color: white;
+      font-size: 1.1rem;
+    }
+    .inquiry-ops-card h3 { color: var(--navy); font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .inquiry-ops-card p { color: var(--muted); font-size: 0.78rem; line-height: 1.7; }
+    .inquiry-map-note {
+      position: relative;
+      margin-top: 1rem;
+      border: 1px solid rgba(184,151,108,0.28);
+      background: rgba(255,248,236,0.78);
+      color: var(--navy);
+      border-radius: 14px;
+      padding: 0.85rem 1rem;
+      font-size: 0.86rem;
+      line-height: 1.75;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .inquiry-map-shell { padding: 0.8rem; border-radius: 16px; margin-left: -0.25rem; margin-right: -0.25rem; }
+      .inquiry-map-head { align-items: flex-start; flex-direction: column; gap: 0.55rem; }
+      .inquiry-map-hint { width: 100%; text-align: center; white-space: normal; }
+      .inquiry-pipeline { min-width: 980px; grid-template-columns: repeat(6, 146px); gap: 0.9rem; padding-top: 3rem; }
+      .inquiry-step { min-height: 174px; padding: 1.05rem 0.88rem 0.95rem; }
+      .inquiry-step h3 { font-size: 0.9rem; }
+      .inquiry-step p { font-size: 0.73rem; }
+      .inquiry-ops-grid { min-width: 760px; grid-template-columns: repeat(3, 1fr); }
+      .inquiry-map-note { text-align: left; font-size: 0.78rem; }
+    }
+  </style>
 </head>
 <body class="sales-page service-detail-page">
 <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" onfocus="this.style.cssText='position:absolute;left:0;top:0;width:auto;height:auto;padding:0.5rem 1rem;background:#1B2A4A;color:#fff;z-index:9999;';" onblur="this.style.cssText='position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;';">本文へスキップ</a>
@@ -951,6 +1153,67 @@
   <p class="section-label reveal">対象</p><h2 class="section-title reveal">こんな問い合わせ対応を整えます</h2><p class="section-subtitle reveal">メール、フォーム、LINE、資料請求など、入口が複数ある業務を対象に、対応漏れと判断のばらつきを減らします。</p>
   <div class="fit-list reveal"><div class="fit-item"><strong>メール問い合わせ</strong><span>Gmailの受信内容を要約し、種別ごとに返信下書きと対応期限を作ります。</span></div><div class="fit-item"><strong>フォーム受付</strong><span>GoogleフォームやTypeformの内容を分類し、担当者通知と管理表への記録を行います。</span></div><div class="fit-item"><strong>資料請求・予約調整</strong><span>必要情報の不足確認、返信下書き、次アクションのメモ化までつなげます。</span></div></div>
 </div></section>
+
+<section id="inquiry-workflow" class="inquiry-workflow-section">
+  <div class="detail-wrap">
+    <p class="section-label reveal">ワークフロー図</p>
+    <h2 class="section-title reveal">問い合わせを、受信から対応ログまで一つの流れにします</h2>
+    <p class="section-subtitle reveal">メールやフォームの入口を増やしても、対応漏れが起きないように、AIが先に整理し、人が確認してから返信・担当振り分けへ進む運用図です。</p>
+    <div class="inquiry-map-shell reveal">
+      <div class="inquiry-map-head">
+        <p class="inquiry-map-kicker">問い合わせ整理・業務支援フロー</p>
+        <p class="inquiry-map-hint">スマートフォンでは左右にスワイプして確認</p>
+      </div>
+      <div class="inquiry-map-scroll" aria-label="問い合わせ整理・業務支援のワークフロー図。横にスクロールできます。">
+        <div class="inquiry-pipeline">
+          <div class="inquiry-step">
+            <span class="inquiry-num">1</span>
+            <div class="inquiry-icon" aria-hidden="true">✉</div>
+            <h3>問い合わせを集約</h3>
+            <p>Gmail、フォーム、LINEなどの入口を受付ログにまとめます。</p>
+          </div>
+          <div class="inquiry-step">
+            <span class="inquiry-num">2</span>
+            <div class="inquiry-icon" aria-hidden="true">⌕</div>
+            <h3>AIが要約・分類</h3>
+            <p>依頼内容、緊急度、不足情報、対応種別を先に整理します。</p>
+          </div>
+          <div class="inquiry-step is-human">
+            <span class="inquiry-human-label">人の確認ポイント</span>
+            <span class="inquiry-num">3</span>
+            <div class="inquiry-icon" aria-hidden="true">✓</div>
+            <h3>返信方針を確認</h3>
+            <p>例外・クレーム・高額見積は必ず人が判断します。</p>
+          </div>
+          <div class="inquiry-step">
+            <span class="inquiry-num">4</span>
+            <div class="inquiry-icon" aria-hidden="true">✎</div>
+            <h3>返信下書きを作成</h3>
+            <p>テンプレートと文脈を合わせ、送信前に確認できる形で残します。</p>
+          </div>
+          <div class="inquiry-step">
+            <span class="inquiry-num">5</span>
+            <div class="inquiry-icon" aria-hidden="true">↗</div>
+            <h3>担当者へ振り分け</h3>
+            <p>相談種別、顧客属性、対応期限に応じて通知します。</p>
+          </div>
+          <div class="inquiry-step">
+            <span class="inquiry-num">6</span>
+            <div class="inquiry-icon" aria-hidden="true">▤</div>
+            <h3>対応ログを保存</h3>
+            <p>判断理由、返信案、担当者、ステータスを後から追える状態にします。</p>
+          </div>
+        </div>
+        <div class="inquiry-ops-grid" aria-label="問い合わせ対応を止めないための運用ガード">
+          <div class="inquiry-ops-card"><span class="inquiry-ops-icon">!</span><div><h3>例外ルール</h3><p>クレーム、契約、個人情報、判断不能は自動返信せず確認へ戻します。</p></div></div>
+          <div class="inquiry-ops-card"><span class="inquiry-ops-icon">↺</span><div><h3>再確認</h3><p>分類ミスや不足情報があれば、問い合わせ単位で安全にやり直せます。</p></div></div>
+          <div class="inquiry-ops-card"><span class="inquiry-ops-icon">◎</span><div><h3>状態管理</h3><p>未確認、下書き済み、返信済み、担当者対応中を一覧で見える化します。</p></div></div>
+        </div>
+      </div>
+      <p class="inquiry-map-note">設計の要点：AIには要約・分類・下書きを任せ、送信判断・例外対応・最終責任は人が確認できる運用に残します。</p>
+    </div>
+  </div>
+</section>
 <section id="scope"><div class="detail-wrap detail-grid">
   <div class="detail-card reveal"><p class="section-label">価値</p><h2 class="section-title">AIに丸投げせず、対応前の整理を速くする</h2><p class="section-subtitle" style="margin-bottom:0;">問い合わせ対応で重要なのは、早く返すことだけではありません。内容を正しく読み分け、誰が対応するかを決め、返信前に確認できる状態を作ることです。</p></div>
   <div class="detail-card reveal"><p class="section-label">設計範囲</p><h2 class="section-title">設計に含めるもの</h2><div class="scope-grid"><div class="scope-card"><h3 class="scope-card-title">業務設計</h3><ul class="detail-list"><li>問い合わせ種別・優先度・担当条件の整理</li><li>返信前確認フローと例外対応ルール</li><li>対応ステータス、期限、履歴の管理</li><li>資料請求・見積依頼・予約相談の分岐設計</li></ul></div><div class="scope-card"><h3 class="scope-card-title">実装・連携</h3><ul class="detail-list"><li>Gmail / Googleフォーム / LINE の受付整理</li><li>スプレッドシートへの対応ログ保存</li><li>Slack / LINE への担当者通知</li><li>AI要約・返信下書きプロンプトの設計</li></ul></div></div><p class="scope-note">既存のツールや運用をできるだけ活かし、置き換えよりも「止まりやすい箇所を安全に補強する」進め方を優先します。</p></div>
