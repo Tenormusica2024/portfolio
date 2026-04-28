@@ -684,6 +684,97 @@
       .flow-step::after { display: none; }
     }
 
+
+    .system-workflow-section { background: linear-gradient(180deg, #F4FAFA 0%, var(--bg) 100%); padding-top: 6.8rem; }
+    .system-workflow-section .detail-wrap { max-width: 1180px; }
+    .system-workflow-section .section-title .keep-line { white-space: nowrap; }
+    .system-board {
+      position: relative;
+      overflow: hidden;
+      margin-top: 2.4rem;
+      border: 1px solid rgba(27,42,74,0.16);
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.93) 0%, rgba(246,250,250,0.9) 100%);
+      box-shadow: 0 28px 70px rgba(27,42,74,0.12);
+      padding: 1.35rem;
+    }
+    .system-board::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(32,91,102,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(32,91,102,0.05) 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+    .system-photo-bg { position:absolute; inset:0; pointer-events:none; opacity:0.74; }
+    .system-photo-bg::before {
+      content:"";
+      position:absolute;
+      right: 3.5%; top: 15%;
+      width: 38%; height: 58%;
+      border-radius: 22px;
+      background: linear-gradient(140deg, rgba(28,45,79,0.16), rgba(255,255,255,0.12)),
+        linear-gradient(180deg, rgba(16,34,65,0.88), rgba(42,76,102,0.58));
+      box-shadow: 0 28px 55px rgba(27,42,74,0.18);
+      transform: rotate(-2deg);
+    }
+    .system-photo-bg::after {
+      content:"";
+      position:absolute;
+      left: 4.5%; bottom: 13%;
+      width: 34%; height: 36%;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.42);
+      border: 1px solid rgba(27,42,74,0.08);
+      box-shadow: 0 22px 52px rgba(27,42,74,0.12);
+      backdrop-filter: blur(4px);
+    }
+    .system-code-ghost, .system-admin-ghost, .system-log-ghost, .system-ticket-ghost { position:absolute; border-radius: 12px; opacity:0.52; }
+    .system-code-ghost { right: 7%; top: 24%; width: 26%; height: 34%; background: repeating-linear-gradient(180deg, rgba(255,255,255,0.72) 0 2px, transparent 2px 16px); }
+    .system-admin-ghost { right: 10%; top: 62%; width: 20%; height: 12%; background: linear-gradient(90deg, rgba(95,173,184,0.55), rgba(255,255,255,0.25)); }
+    .system-log-ghost { left: 7%; bottom: 22%; width: 23%; height: 16%; background: repeating-linear-gradient(90deg, rgba(27,42,74,0.28) 0 16px, rgba(255,255,255,0.35) 16px 42px); }
+    .system-ticket-ghost { left: 11%; top: 18%; width: 18%; height: 14%; background: rgba(255,255,255,0.52); border: 1px solid rgba(184,151,108,0.22); }
+    .system-board-head { position: relative; z-index:1; display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-bottom:1rem; }
+    .system-board-kicker { color: var(--navy); font-size:0.82rem; font-weight:700; letter-spacing:0.04em; }
+    .system-board-hint { border:1px solid rgba(184,151,108,0.32); background:rgba(255,248,239,0.78); color:var(--navy); padding:0.55rem 0.9rem; font-size:0.72rem; letter-spacing:0.05em; white-space:nowrap; }
+    .system-caption { position:relative; z-index:1; max-width: 860px; margin: 0 auto 1.15rem; padding:0.8rem 1.2rem; border:1px solid rgba(184,151,108,0.22); border-radius:999px; background:rgba(255,255,255,0.88); color:var(--navy); font-size:0.84rem; font-weight:700; line-height:1.7; text-align:center; box-shadow:0 14px 28px rgba(27,42,74,0.06); }
+    .system-scroll { position:relative; z-index:1; overflow-x:auto; padding-bottom:0.35rem; }
+    .system-scroll::-webkit-scrollbar { height: 8px; }
+    .system-scroll::-webkit-scrollbar-thumb { background: rgba(184,151,108,0.45); border-radius:999px; }
+    .system-map { min-width: 1040px; padding:1.3rem 1.1rem 1.4rem; }
+    .system-main-title { margin:0 0 0.35rem; color:var(--navy); font-family: var(--font-serif); font-size: clamp(2.25rem, 4.5vw, 3.55rem); line-height:1.18; text-align:center; letter-spacing:0.04em; text-shadow:0 8px 22px rgba(255,255,255,0.7); }
+    .system-main-subtitle { margin:0 0 1.35rem; color:var(--gold); font-size:1.05rem; font-weight:700; text-align:center; letter-spacing:0.12em; }
+    .system-steps { display:grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap:0.9rem; align-items:stretch; }
+    .system-step-card { position:relative; min-height:235px; border:1px solid rgba(27,42,74,0.16); border-radius:18px; background:rgba(255,255,255,0.9); padding:1.55rem 1rem 1rem; box-shadow:0 15px 34px rgba(27,42,74,0.08); }
+    .system-step-card::after { content:""; position:absolute; right:-0.72rem; top:50%; width:0; height:0; border-top:12px solid transparent; border-bottom:12px solid transparent; border-left:14px solid rgba(184,151,108,0.72); transform:translateY(-50%); }
+    .system-step-card:last-child::after { display:none; }
+    .system-step-num { position:absolute; left:50%; top:-20px; transform:translateX(-50%); width:42px; height:42px; border-radius:999px; display:grid; place-items:center; background:var(--navy); color:#fff; font-weight:700; box-shadow:0 10px 22px rgba(27,42,74,0.22); }
+    .system-step-icon { width:58px; height:58px; margin:0 auto 0.85rem; border-radius:16px; background:rgba(92,151,164,0.13); display:grid; place-items:center; }
+    .system-step-icon svg { width:34px; height:34px; fill:none; stroke:var(--navy); stroke-width:2.3; stroke-linecap:round; stroke-linejoin:round; }
+    .system-step-card h3 { color:var(--navy); font-size:1rem; line-height:1.45; text-align:center; margin:0 0 0.55rem; }
+    .system-step-card p { color:#4d5665; font-size:0.78rem; line-height:1.75; margin:0; text-align:center; }
+    .system-tool-row { display:grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap:0.8rem; margin:1.05rem auto 0; max-width:860px; }
+    .system-tool-pill { display:flex; align-items:center; justify-content:center; gap:0.48rem; min-height:48px; border:1px solid rgba(27,42,74,0.12); border-radius:12px; background:rgba(255,255,255,0.88); color:var(--navy); font-size:0.82rem; font-weight:700; box-shadow:0 12px 26px rgba(27,42,74,0.06); }
+    .system-tool-pill svg { width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+    .system-bottom-row { display:grid; grid-template-columns:1.35fr 1fr; gap:1rem; margin:1.1rem auto 0; max-width:920px; }
+    .system-message, .system-support-note { display:flex; align-items:center; gap:0.9rem; border-radius:16px; min-height:66px; padding:0.85rem 1rem; font-weight:700; line-height:1.65; }
+    .system-message { background:rgba(255,255,255,0.92); color:var(--navy); border:1px solid rgba(27,42,74,0.12); }
+    .system-message .checkmark { width:44px; height:44px; flex:0 0 auto; display:grid; place-items:center; border-radius:999px; background:var(--gold); color:#fff; font-size:1.5rem; }
+    .system-support-note { background:var(--navy); color:#fff; }
+    .system-support-note svg { width:34px; height:34px; flex:0 0 auto; fill:none; stroke:#fff; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+    @media (max-width:768px) {
+      .system-workflow-section { padding-top: 5.8rem; }
+      .system-workflow-section .section-title .keep-line { display:block; white-space:normal; }
+      .system-board { padding:0.75rem; border-radius:16px; margin-left:-0.2rem; margin-right:-0.2rem; }
+      .system-board-head { align-items:flex-start; flex-direction:column; gap:0.55rem; }
+      .system-board-hint { width:100%; text-align:center; }
+      .system-caption { border-radius:16px; text-align:left; font-size:0.72rem; padding:0.8rem 0.95rem; }
+      .system-map { min-width:1040px; }
+      .system-main-title { font-size:2.45rem; }
+      .system-main-subtitle { font-size:0.9rem; }
+    }
+
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -931,6 +1022,47 @@
 </nav>
 <ul class="mobile-nav" id="mobileNav"><li><a href="/#services" onclick="closeNav()">サービス</a></li><li><a href="/#works" onclick="closeNav()">実績</a></li><li><a href="/#faq" onclick="closeNav()">FAQ</a></li><li><a href="/#contact" class="nav-cta" onclick="closeNav()">相談する</a></li></ul>
 <main id="main-content">
+
+<section id="system-workflow" class="system-workflow-section">
+  <div class="detail-wrap">
+    <p class="section-label reveal">ワークフロー図</p>
+    <h2 class="section-title reveal"><span class="keep-line">壊さず直す既存システム改修</span><span class="keep-line">調査から保守メモまで整えます</span></h2>
+    <p class="section-subtitle reveal">対象画面、再現条件、影響範囲、修正、動作確認、引き継ぎメモまで、止めにくい改修の流れを先に固定します。</p>
+    <div class="system-board reveal">
+      <div class="system-photo-bg" aria-hidden="true"><div class="system-code-ghost"></div><div class="system-admin-ghost"></div><div class="system-log-ghost"></div><div class="system-ticket-ghost"></div></div>
+      <div class="system-board-head">
+        <p class="system-board-kicker">既存システム改修・保守ワークフロー</p>
+        <p class="system-board-hint">スマートフォンでは左右にスワイプして確認</p>
+      </div>
+      <p class="system-caption">いきなり大きく直さず、現状把握・影響確認・小さな修正・記録化を一つの流れにするイメージです。</p>
+      <div class="system-scroll" aria-label="既存システム改修・保守のワークフロー図。横にスクロールできます。">
+        <div class="system-map">
+          <h3 class="system-main-title">壊さず小さく直す保守フロー</h3>
+          <p class="system-main-subtitle">調査・修正・確認・記録を、同じ手順で回す</p>
+          <div class="system-steps">
+            <div class="system-step-card"><span class="system-step-num">1</span><div class="system-step-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 16h36v32H14z"/><path d="M14 25h36"/><path d="M22 35h12M22 42h20"/><circle cx="21" cy="20" r="1"/><circle cx="27" cy="20" r="1"/></svg></div><h3>現状を読む</h3><p>対象画面、既存コード、運用手順、困っている操作を確認します。</p></div>
+            <div class="system-step-card"><span class="system-step-num">2</span><div class="system-step-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M18 14h28l6 6v32H18z"/><path d="M46 14v8h6"/><path d="M25 32h16M25 40h10"/><path d="m42 42 5 5 10-13"/></svg></div><h3>再現条件を確認</h3><p>いつ起きるか、誰の操作か、入力内容やブラウザ条件を整理します。</p></div>
+            <div class="system-step-card"><span class="system-step-num">3</span><div class="system-step-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12 32h40"/><path d="M22 20h20v24H22z"/><path d="M16 24h6M16 40h6M42 24h6M42 40h6"/></svg></div><h3>影響範囲を絞る</h3><p>変更するファイル、触らない画面、戻し方を先に決めます。</p></div>
+            <div class="system-step-card"><span class="system-step-num">4</span><div class="system-step-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M16 42 42 16l8 8-26 26H16z"/><path d="m38 20 8 8"/><path d="M18 54h28"/></svg></div><h3>小さく修正</h3><p>UI改善、バグ修正、項目追加など必要な差分だけを入れます。</p></div>
+            <div class="system-step-card"><span class="system-step-num">5</span><div class="system-step-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 18h36v28H14z"/><path d="M24 54h16M32 46v8"/><path d="m24 32 5 5 11-13"/></svg></div><h3>動作確認</h3><p>修正前後の画面、主要操作、例外パターンを確認します。</p></div>
+            <div class="system-step-card"><span class="system-step-num">6</span><div class="system-step-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M18 12h28l6 6v34H18z"/><path d="M46 12v8h6"/><path d="M25 31h18M25 39h18M25 47h10"/></svg></div><h3>変更メモ化</h3><p>直した内容、確認結果、次に見る場所を保守メモに残します。</p></div>
+          </div>
+          <div class="system-tool-row">
+            <div class="system-tool-pill"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 8h18v16H7z"/><path d="M11 13h10M11 18h6"/></svg>既存コード</div>
+            <div class="system-tool-pill"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 9h20v14H6z"/><path d="M10 13h12M10 18h8"/></svg>管理画面</div>
+            <div class="system-tool-pill"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M9 6h14v20H9z"/><path d="m12 14 3 3 6-7"/></svg>確認リスト</div>
+            <div class="system-tool-pill"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 8h16v16H8z"/><path d="M12 12h8M12 17h8"/></svg>変更ログ</div>
+            <div class="system-tool-pill"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 6v20M8 14l8-8 8 8"/></svg>リリース</div>
+          </div>
+          <div class="system-bottom-row">
+            <div class="system-message"><span class="checkmark">✓</span><span>1画面、1不具合、1追加項目から、影響範囲を絞って安全に直します。</span></div>
+            <div class="system-support-note"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M18 18h28v28H18z"/><path d="M24 30h16M24 38h10"/><path d="m42 16 6 6-6 6"/></svg><span>修正内容を残し、次の保守に引き継ぎやすく。</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <section id="hero" class="detail-hero">
   <div class="detail-wrap"><div class="hero-layout"><div class="hero-copy">
     <p class="hero-eyebrow">既存システムの改善・引き継ぎ</p>
