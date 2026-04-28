@@ -443,6 +443,21 @@
       font-size: 0.83rem; color: var(--muted);
       line-height: 1.85;
     }
+    .service-budget {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.8rem;
+      padding: 0.42rem 0.62rem;
+      border: 1px solid rgba(184,151,108,0.32);
+      background: rgba(184,151,108,0.08);
+      color: var(--navy);
+      font-size: 0.72rem;
+      line-height: 1.45;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+    .service-budget::before { content: '費用目安'; color: var(--gold); font-size: 0.66rem; letter-spacing: 0.08em; }
     .service-link {
       display: inline-block; margin-top: 0.85rem;
       font-size: 0.72rem; color: var(--gold);
@@ -852,7 +867,7 @@
   <p class="section-label reveal">Services</p>
   <h2 class="section-title reveal">提供サービス</h2>
   <p class="section-subtitle reveal">
-    営業運用・問い合わせ対応・日々の業務フロー改善を起点に、必要に応じてWeb制作や周辺システムまでつなぎます。
+    営業運用・問い合わせ対応・日々の業務フロー改善を起点に、必要に応じてWeb制作や周辺システムまでつなぎます。費用は税別の目安です。
   </p>
   <div class="services-grid">
 
@@ -863,6 +878,7 @@
       </span>
       <h3 class="service-name">業務自動化</h3>
       <p class="service-desc">Excel・スプレッドシートの手作業、日報・見積書・発注書の自動生成をGAS・Python・VBAで実現。営業・問い合わせ対応・納品管理など、失敗しやすい業務には送信前承認、重複防止、返信分類、監査ログ、再実行設計を組み込みます。</p>
+      <p class="service-budget">5万〜30万円</p>
       <a href="sales-operations-pipeline.html" class="service-link">営業運用パイプライン設計を見る →</a>
     </div>
     <div class="service-card reveal">
@@ -872,6 +888,7 @@
       </span>
       <h3 class="service-name">問い合わせ整理・業務支援</h3>
       <p class="service-desc">問い合わせ整理、返信下書き、依頼の振り分け、資料要約などを先に整えます。Gmail・スプレッドシート・LINEなど既存運用に合わせて組み込みます。</p>
+      <p class="service-budget">5万〜15万円</p>
       <a href="inquiry-workflow-support.html" class="service-link">問い合わせ整理の詳細を見る →</a>
     </div>
     <div class="service-card reveal">
@@ -881,6 +898,7 @@
       </span>
       <h3 class="service-name">AI組み込み開発</h3>
       <p class="service-desc">LLM・AIエージェントを既存業務やツールへ組み込み。社内FAQ、メール下書き、問い合わせ一次整理、返信下書き、担当振り分けまで対応します。</p>
+      <p class="service-budget">10万〜30万円</p>
       <a href="ai-integration-development.html" class="service-link">AI組み込み開発の詳細を見る →</a>
     </div>
     <div class="service-card reveal">
@@ -890,6 +908,7 @@
       </span>
       <h3 class="service-name">受発注・在庫管理システム</h3>
       <p class="service-desc">FAX・電話・紙で管理していた受発注をデジタル化。工務店・小売業向けのWeb管理システムを構築。</p>
+      <p class="service-budget">20万〜50万円</p>
       <a href="order-inventory-system.html" class="service-link">受発注・在庫管理の詳細を見る →</a>
     </div>
     <div class="service-card reveal">
@@ -899,6 +918,7 @@
       </span>
       <h3 class="service-name">データ集計・自動レポート</h3>
       <p class="service-desc">売上・KPI・在庫データをGoogleスプレッドシートやダッシュボードに自動集計・可視化。</p>
+      <p class="service-budget">8万〜25万円</p>
       <a href="data-report-automation.html" class="service-link">自動レポートの詳細を見る →</a>
     </div>
     <div class="service-card reveal">
@@ -908,6 +928,7 @@
       </span>
       <h3 class="service-name">ホームページ制作</h3>
       <p class="service-desc">集客・ブランディングを目的としたコーポレートサイトを制作。モバイル対応・お問い合わせフォーム付き。</p>
+      <p class="service-budget">8万〜30万円</p>
       <a href="website-production.html" class="service-link">ホームページ制作の詳細を見る →</a>
     </div>
     <div class="service-card reveal">
@@ -917,6 +938,7 @@
       </span>
       <h3 class="service-name">予約システム付きサイト</h3>
       <p class="service-desc">美容院・整骨院・飲食店向けに、Web予約と集客を一体化したサイトを構築。電話予約の手間を削減。</p>
+      <p class="service-budget">15万〜40万円</p>
       <a href="reservation-system-site.html" class="service-link">予約サイトの詳細を見る →</a>
     </div>
     <div class="service-card reveal">
@@ -926,6 +948,7 @@
       </span>
       <h3 class="service-name">既存システム改修・保守</h3>
       <p class="service-desc">使いにくいシステムの機能追加・UI改善・バグ修正。他社が構築したシステムの引き継ぎにも対応。</p>
+      <p class="service-budget">月3万〜10万円</p>
       <a href="system-maintenance-improvement.html" class="service-link">改修・保守の詳細を見る →</a>
     </div>
   </div>
