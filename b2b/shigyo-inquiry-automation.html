@@ -782,12 +782,14 @@
       .hero-panel { padding: 1.1rem; }
       .hero-panel-title { font-size: 1.06rem; }
       .hero-note { font-size: 0.72rem; }
-      .detail-visual-frame { padding: 0.7rem; }
-      .detail-visual-caption { font-size: 0.78rem; }
+      .detail-visual-frame { padding: 0.7rem; overflow-x: auto; }
+      .detail-visual-image { min-width: 920px; max-width: none; }
+      .detail-visual-caption { width: 100%; font-size: 0.78rem; }
     }
   </style>
 </head>
 <body>
+<a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" onfocus="this.style.cssText='position:absolute;left:0;top:0;width:auto;height:auto;padding:0.5rem 1rem;background:#1B2A4A;color:#fff;z-index:9999;';" onblur="this.style.cssText='position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;';">本文へスキップ</a>
 <nav>
   <a href="/" class="nav-logo">Ezlize / 幸田 晃典</a>
   <ul class="nav-links">
@@ -804,6 +806,7 @@
   <li><a href="/#faq" onclick="closeNav()">FAQ</a></li>
   <li><a href="/#contact" class="nav-cta" onclick="closeNav()">相談する</a></li>
 </ul>
+<main id="main-content">
 <section aria-labelledby="workflow-visual-title">
   <div class="detail-visual-wrap">
     <p class="section-label reveal">Visual</p>
@@ -819,7 +822,7 @@
     <div class="hero-layout">
       <div class="hero-copy">
         <p class="hero-eyebrow">業種別ページ / 士業向け業務自動化</p>
-        <h1 class="hero-title">士業の専門判断はそのままに、前後の事務整理を軽くする。</h1>
+        <h1 class="hero-title">士業の専門判断はそのままに、前後の事務整理を軽くする</h1>
         <p class="detail-lead">士業では、相談内容の読み取り、必要資料の確認、返信のたたき台、社内共有など、専門判断の前後に多くの事務作業があります。Ezlizeでは、専門部分を置き換えずに、その前後の整理とやり取りを効率化する仕組みを整えます。</p>
         <div class="hero-tool-meta" aria-label="士業向けで使いやすいツール例">
           <span class="hero-tool-chip">Gmail / スプレッドシート</span>
@@ -940,6 +943,7 @@
     </ul>
   </div>
 </section>
+</main>
 <footer>
   <div>© 2026 Ezlize / 幸田 晃典</div>
   <div class="footer-links"><a href="/">トップ</a><a href="/sales-operations-pipeline.html">営業運用</a><a href="/komuten-automation.html">工務店向け</a><a href="/real-estate-ai-secretary.html">不動産向け</a><a href="/shigyo-inquiry-automation.html">士業向け</a><a href="/privacy.html">プライバシーポリシー</a><a href="/tokusho.html">特商法表記</a></div>
