@@ -921,6 +921,219 @@
       .service-detail-page .hero-title { font-size: clamp(1.42rem, 6vw, 1.55rem); line-height: 1.6; }
     }
   </style>
+
+
+  <style>
+    .report-workflow-section {
+      background:
+        radial-gradient(circle at 14% 16%, rgba(42,92,113,0.14), transparent 28%),
+        radial-gradient(circle at 86% 12%, rgba(184,151,108,0.13), transparent 26%),
+        linear-gradient(180deg, #F7FAFA 0%, #FAF8F3 100%);
+    }
+    .report-workflow-section .detail-wrap { max-width: 1240px; }
+    .report-workflow-section .section-title .keep-line { white-space: nowrap; }
+    .report-board {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(42,92,113,0.20);
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(246,250,250,0.90));
+      box-shadow: 0 30px 76px rgba(27,42,74,0.10);
+      padding: 1.25rem;
+    }
+    .report-board::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(42,92,113,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(42,92,113,0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+    .report-bg-note {
+      position: absolute;
+      z-index: 0;
+      border: 1px solid rgba(42,92,113,0.10);
+      background: rgba(255,255,255,0.46);
+      color: rgba(27,42,74,0.22);
+      font-size: 0.68rem;
+      line-height: 1.7;
+      padding: 0.8rem;
+      border-radius: 12px;
+      pointer-events: none;
+      box-shadow: 0 12px 32px rgba(27,42,74,0.035);
+    }
+    .report-bg-note.sales { left: 3%; top: 18%; width: 210px; transform: rotate(-4deg); }
+    .report-bg-note.kpi { right: 4%; top: 26%; width: 230px; transform: rotate(3deg); }
+    .report-bg-note.monthly { left: 38%; bottom: 8%; width: 250px; transform: rotate(-2deg); }
+    .report-board-head {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .report-board-kicker { color: var(--navy); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; }
+    .report-board-hint {
+      color: #1f6170;
+      background: rgba(42,92,113,0.08);
+      border: 1px solid rgba(42,92,113,0.22);
+      padding: 0.46rem 0.82rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .report-scroll { position: relative; z-index: 1; overflow-x: auto; padding: 0.2rem 0.1rem 0.65rem; }
+    .report-scroll::-webkit-scrollbar { height: 8px; }
+    .report-scroll::-webkit-scrollbar-thumb { background: rgba(42,92,113,0.38); border-radius: 999px; }
+    .report-map {
+      min-width: 1080px;
+      display: grid;
+      grid-template-columns: 1fr 0.22fr 1fr 0.22fr 1fr;
+      gap: 0.78rem;
+      align-items: stretch;
+      position: relative;
+    }
+    .report-column {
+      border: 1px solid rgba(27,42,74,0.13);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.88);
+      padding: 1rem;
+      min-height: 360px;
+      box-shadow: 0 14px 34px rgba(27,42,74,0.07);
+    }
+    .report-column.is-dashboard { background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(240,249,250,0.78)); border-color: rgba(42,92,113,0.28); }
+    .report-column-title { color: var(--navy); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.06em; margin-bottom: 0.82rem; }
+    .report-source-list, .report-output-list { display: grid; gap: 0.72rem; }
+    .report-source, .report-output {
+      border: 1px solid rgba(27,42,74,0.12);
+      background: rgba(255,255,255,0.94);
+      border-radius: 15px;
+      padding: 0.82rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.68rem;
+      align-items: start;
+    }
+    .report-icon {
+      width: 36px; height: 36px;
+      border-radius: 13px;
+      display: grid; place-items: center;
+      color: #1f6170;
+      background: rgba(42,92,113,0.10);
+      font-size: 0.92rem;
+      font-weight: 700;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    .report-source h3, .report-output h3 { color: var(--navy); font-size: 0.86rem; line-height: 1.45; margin-bottom: 0.12rem; }
+    .report-source p, .report-output p { color: var(--muted); font-size: 0.72rem; line-height: 1.7; }
+    .report-transform {
+      border: 1px solid rgba(184,151,108,0.30);
+      border-radius: 20px;
+      background: rgba(255,248,236,0.76);
+      padding: 1rem;
+      min-height: 360px;
+      display: grid;
+      gap: 0.8rem;
+      align-content: center;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.65);
+    }
+    .report-transform-step {
+      border: 1px solid rgba(184,151,108,0.24);
+      background: rgba(255,255,255,0.76);
+      border-radius: 15px;
+      padding: 0.74rem 0.8rem;
+      color: var(--navy);
+      font-size: 0.78rem;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+    .report-transform-step span { display: block; color: var(--muted); font-size: 0.68rem; font-weight: 400; margin-top: 0.12rem; }
+    .report-arrow {
+      align-self: center;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(27,42,74,0.18), rgba(27,42,74,0.68));
+      position: relative;
+    }
+    .report-arrow::after {
+      content: '';
+      position: absolute;
+      right: -1px; top: 50%;
+      width: 9px; height: 9px;
+      border-right: 2px solid rgba(27,42,74,0.68);
+      border-top: 2px solid rgba(27,42,74,0.68);
+      transform: translateY(-50%) rotate(45deg);
+    }
+    .report-dashboard-card {
+      border: 1px solid rgba(42,92,113,0.16);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.94);
+      padding: 0.88rem;
+      margin-bottom: 0.72rem;
+    }
+    .report-chart {
+      height: 92px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.35rem;
+      align-items: end;
+      margin-top: 0.62rem;
+    }
+    .report-bar { border-radius: 999px 999px 3px 3px; background: linear-gradient(180deg, #2a5c71, #8bbac3); min-height: 22px; }
+    .report-bar:nth-child(1) { height: 38%; } .report-bar:nth-child(2) { height: 54%; } .report-bar:nth-child(3) { height: 46%; } .report-bar:nth-child(4) { height: 74%; } .report-bar:nth-child(5) { height: 66%; } .report-bar:nth-child(6) { height: 88%; }
+    .report-kpi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+    .report-kpi { border: 1px solid rgba(27,42,74,0.10); border-radius: 14px; padding: 0.64rem; background: rgba(250,250,250,0.9); }
+    .report-kpi strong { color: var(--navy); font-size: 0.9rem; display: block; }
+    .report-kpi span { color: var(--muted); font-size: 0.66rem; }
+    .report-status-row {
+      min-width: 1080px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.72rem;
+      margin-top: 0.85rem;
+    }
+    .report-status {
+      border: 1px solid rgba(27,42,74,0.13);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.84);
+      padding: 0.82rem 0.9rem;
+      color: var(--muted);
+      font-size: 0.76rem;
+      line-height: 1.7;
+    }
+    .report-status strong { display: block; color: var(--navy); font-size: 0.82rem; margin-bottom: 0.16rem; }
+    .report-note {
+      position: relative;
+      z-index: 1;
+      margin-top: 1rem;
+      border: 1px solid rgba(42,92,113,0.20);
+      background: rgba(240,249,250,0.70);
+      color: var(--navy);
+      border-radius: 14px;
+      padding: 0.85rem 1rem;
+      font-size: 0.84rem;
+      line-height: 1.75;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .report-workflow-section .section-title .keep-line { display: block; }
+      .report-board { padding: 0.8rem; border-radius: 16px; margin-left: -0.25rem; margin-right: -0.25rem; }
+      .report-board-head { flex-direction: column; align-items: flex-start; gap: 0.55rem; }
+      .report-board-hint { width: 100%; text-align: center; white-space: normal; }
+      .report-bg-note { opacity: 0.38; }
+      .report-bg-note.sales { left: 2%; top: 24%; width: 180px; }
+      .report-bg-note.kpi { right: 2%; top: 36%; width: 185px; }
+      .report-bg-note.monthly { display: none; }
+      .report-map { min-width: 980px; grid-template-columns: 280px 34px 280px 34px 280px; }
+      .report-column, .report-transform { min-height: 370px; }
+      .report-status-row { min-width: 860px; grid-template-columns: repeat(4, 1fr); }
+      .report-note { text-align: left; font-size: 0.78rem; }
+    }
+  </style>
+
 </head>
 <body class="sales-page service-detail-page">
 <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" onfocus="this.style.cssText='position:absolute;left:0;top:0;width:auto;height:auto;padding:0.5rem 1rem;background:#1B2A4A;color:#fff;z-index:9999;';" onblur="this.style.cssText='position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;';">本文へスキップ</a>
@@ -951,6 +1164,66 @@
   <p class="section-label reveal">対象</p><h2 class="section-title reveal">こんな集計・レポートを自動化します</h2><p class="section-subtitle reveal">売上、問い合わせ、広告、在庫、業務KPIなど、定期的に集めて確認するデータを対象にします。</p>
   <div class="fit-list reveal"><div class="fit-item"><strong>売上・KPI集計</strong><span>日次・週次で更新する売上や指標を自動集計します。</span></div><div class="fit-item"><strong>在庫・発注レポート</strong><span>在庫数、発注状況、欠品候補を見える化します。</span></div><div class="fit-item"><strong>問い合わせ件数分析</strong><span>問い合わせ種別、対応状況、返信速度を集計します。</span></div></div>
 </div></section>
+
+
+<section id="report-workflow" class="report-workflow-section">
+  <div class="detail-wrap">
+    <p class="section-label reveal">ワークフロー図</p>
+    <h2 class="section-title reveal"><span class="keep-line">集計作業を自動化し、</span><span class="keep-line">毎日見る数字を更新します</span></h2>
+    <p class="section-subtitle reveal">CSV、Google Sheets、売上データ、問い合わせ件数を集め、集計表・グラフ・通知まで毎回同じ手順で更新できるようにします。</p>
+    <div class="report-board reveal">
+      <div class="report-bg-note sales">売上CSV<br>2026-04<br>店舗A 328,000<br>店舗B 246,000<br>広告費 52,000</div>
+      <div class="report-bg-note kpi">週次KPIメモ<br>CV 42件 / 返信待ち 7件<br>在庫注意 3品目<br>粗利率 31.4%</div>
+      <div class="report-bg-note monthly">月次レポート<br>売上推移・問い合わせ種別・在庫注意リストを自動更新</div>
+      <div class="report-board-head">
+        <p class="report-board-kicker">データ集計・自動レポートフロー</p>
+        <p class="report-board-hint">スマートフォンでは左右にスワイプして確認</p>
+      </div>
+      <div class="report-scroll" aria-label="データ集計・自動レポートのワークフロー図。横にスクロールできます。">
+        <div class="report-map">
+          <div class="report-column">
+            <p class="report-column-title">INPUT / 元データ</p>
+            <div class="report-source-list">
+              <div class="report-source"><span class="report-icon">CSV</span><div><h3>売上CSV</h3><p>POS、請求データ、EC売上などを取り込みます。</p></div></div>
+              <div class="report-source"><span class="report-icon">表</span><div><h3>Google Sheets</h3><p>手入力の管理表や既存の集計表を活かします。</p></div></div>
+              <div class="report-source"><span class="report-icon">API</span><div><h3>広告・問い合わせ</h3><p>広告費、フォーム件数、対応状況を集めます。</p></div></div>
+            </div>
+          </div>
+          <div class="report-arrow" aria-hidden="true"></div>
+          <div class="report-transform" aria-label="集計処理">
+            <div class="report-transform-step">01 取得<span>CSV / Sheets / API からデータを集める</span></div>
+            <div class="report-transform-step">02 整形<span>日付、店舗、商品、担当者の表記をそろえる</span></div>
+            <div class="report-transform-step">03 集計<span>売上、件数、在庫、KPIを日次・週次で集計</span></div>
+            <div class="report-transform-step">04 確認<span>更新漏れ、異常値、空欄をチェックする</span></div>
+          </div>
+          <div class="report-arrow" aria-hidden="true"></div>
+          <div class="report-column is-dashboard">
+            <p class="report-column-title">OUTPUT / 見る画面</p>
+            <div class="report-dashboard-card">
+              <h3>売上ダッシュボード</h3>
+              <p>月次推移、店舗別、商品別の数字をグラフ化します。</p>
+              <div class="report-chart" aria-hidden="true"><span class="report-bar"></span><span class="report-bar"></span><span class="report-bar"></span><span class="report-bar"></span><span class="report-bar"></span><span class="report-bar"></span></div>
+            </div>
+            <div class="report-kpi-grid">
+              <div class="report-kpi"><strong>42件</strong><span>問い合わせ</span></div>
+              <div class="report-kpi"><strong>3品目</strong><span>在庫注意</span></div>
+              <div class="report-kpi"><strong>+18%</strong><span>前月比</span></div>
+              <div class="report-kpi"><strong>毎朝</strong><span>Slack通知</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="report-status-row" aria-label="運用で固定する確認項目">
+          <div class="report-status"><strong>更新ログ</strong>いつ、どのデータを更新したか記録します。</div>
+          <div class="report-status"><strong>異常値チェック</strong>急な増減、空欄、重複データを見つけます。</div>
+          <div class="report-status"><strong>定期通知</strong>毎朝・毎週など、確認タイミングに合わせて通知します。</div>
+          <div class="report-status"><strong>手動修正欄</strong>例外や補足メモは人が追記できる形にします。</div>
+        </div>
+      </div>
+      <p class="report-note">設計の要点：見た目のダッシュボードだけでなく、元データ取得・集計処理・更新ログ・通知まで固定し、毎回の手作業を減らします。</p>
+    </div>
+  </div>
+</section>
+
 <section id="scope"><div class="detail-wrap detail-grid">
   <div class="detail-card reveal"><p class="section-label">価値</p><h2 class="section-title">数字を見るまでの手作業を減らす</h2><p class="section-subtitle" style="margin-bottom:0;">レポート作成に時間がかかると、判断が遅れます。毎回同じ手順で集計する部分を自動化し、確認と判断に時間を使える状態を作ります。</p></div>
   <div class="detail-card reveal"><p class="section-label">設計範囲</p><h2 class="section-title">設計に含めるもの</h2><div class="scope-grid"><div class="scope-card"><h3 class="scope-card-title">業務設計</h3><ul class="detail-list"><li>必要指標、更新頻度、確認者の整理</li><li>データ元と集計ロジックの確認</li><li>異常値、欠損、更新漏れの扱い</li><li>共有方法と通知タイミングの設計</li></ul></div><div class="scope-card"><h3 class="scope-card-title">実装・連携</h3><ul class="detail-list"><li>CSV / API / スプレッドシートからのデータ取得</li><li>GAS / Python による集計処理</li><li>Looker Studio / Sheets グラフ化</li><li>Slack / メールへの定期通知</li></ul></div></div><p class="scope-note">既存のツールや運用をできるだけ活かし、置き換えよりも「止まりやすい箇所を安全に補強する」進め方を優先します。</p></div>
