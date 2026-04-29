@@ -1,8 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ1WP1J2NQ"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-YJ1WP1J2NQ',{'linker':{'domains':['ezlize.com']}});</script>
+  <script>
+    (function() {
+      var productionHosts = ['ezlize.com', 'www.ezlize.com'];
+      if (!productionHosts.includes(window.location.hostname)) return;
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-YJ1WP1J2NQ';
+      document.head.appendChild(script);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-YJ1WP1J2NQ', { 'linker': { 'domains': ['ezlize.com'] } });
+    })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- BEGIN B2B_PAGE_HEAD -->

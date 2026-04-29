@@ -531,3 +531,17 @@ Cloudflare Pages移行、DNS切替、Search Console sitemap成功、GA4タグ確
   - `consultation_topic`: CTAやURL queryから取得した相談テーマ。
   - `source_url`: フォーム到達時のURL。
   - メール本文だけでなく送信メタデータとしても、どの導線から来た相談か確認できるようにした。
+
+### 6. GA4計測対象の整理
+
+- 2026-04-29: GA4 Data APIで当日データを確認。
+  - B2B本番 `ezlize.com`: 3 users / 6 sessions / 7 PV。
+  - Cloudflare preview `ezlize-b2b.pages.dev`: 7 users / 7 sessions / 7 PV。
+  - local `127.0.0.1`: 1 users / 2 sessions / 7 PV。
+  - `testDataFilterName` はすべて `(not set)` で、Internal Traffic / Developer Traffic のテスト一致は確認できなかった。
+- 判断:
+  - 今日時点では、local / preview の確認アクセスがGA4に入っていた。
+  - 「僕とCodexの確認アクセスを取らない」は完全には反映されていなかった。
+- 対応:
+  - B2B側のGA4タグを `ezlize.com` / `www.ezlize.com` の本番ホストでのみ読み込むように変更。
+  - `127.0.0.1` / `localhost` / `ezlize-b2b.pages.dev` では今後GA4送信しない。
