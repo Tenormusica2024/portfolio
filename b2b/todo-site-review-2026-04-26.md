@@ -424,6 +424,25 @@ Cloudflare Pages移行、DNS切替、Search Console sitemap成功、GA4タグ確
   - 主要サービスページで構造化データの内容がページ本文と一致
   - Rich Results Test相当で重大エラーなし
 
+進捗:
+
+- 2026-04-29: 既存JSON-LDを確認。
+  - 主要サービスページには `Organization` / `WebSite` / `ProfessionalService` / `FAQPage` / `BreadcrumbList` / `WebPage` が既に存在。
+  - トップには `Organization` / `WebSite` / `ProfessionalService` / `FAQPage` / `CollectionPage` が存在。
+- 実施した拡充:
+  - 詳細ページの `ProfessionalService` に、ページ本文の費用目安と一致する `priceRange` を追加。
+  - 費用レンジが明確な詳細ページには `Offer` + `PriceSpecification` を追加。
+  - 月額/単発が混在する「既存システム改修・保守」は、誤解を避けるため `priceRange` のみに留めた。
+  - `WebPage` / `CollectionPage` から対象 `ProfessionalService` へ `mainEntity` を追加。
+  - トップの `ProfessionalService` に `hasOfferCatalog` を追加し、主要8サービスと費用目安を整理。
+- 検証:
+  - JSON-LD parse error: 0
+  - 主要ページのmobile実表示で横はみ出しなし
+  - 構造化データの料金はページ本文に表示されている費用目安と一致
+- 注意:
+  - FAQPageは既に入っているが、GoogleのFAQ rich resultは表示対象が限定されるため、FAQを増やす方向ではなく、ページ内容との整合を優先する。
+  - 料金やサービス内容を盛らず、本文に出ている範囲だけを構造化する。
+
 ### 3. robots.txt / Cloudflare Managed Content確認
 
 - 現在の `robots.txt` はCloudflare Managed ContentのAI crawler制御が入っている。

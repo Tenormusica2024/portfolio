@@ -59,7 +59,9 @@
       "url": "https://ezlize.com/",
       "name": "Ezlize",
       "inLanguage": "ja-JP",
-      "publisher": { "@id": "https://ezlize.com/#organization" }
+      "publisher": {
+        "@id": "https://ezlize.com/#organization"
+      }
     },
     {
       "@type": "ProfessionalService",
@@ -67,9 +69,14 @@
       "name": "Ezlize - 壊れにくい営業運用パイプライン設計",
       "description": "Gmail、Googleスプレッドシート、HubSpot、Slackなど既存ツールを使った営業・問い合わせ対応を、誤送信しない運用に落とし込む設計。送信前承認、重複防止、返信分類、監査ログ、再実行手順まで整えます。",
       "url": "https://ezlize.com/sales-operations-pipeline.html",
-      "areaServed": { "@type": "Country", "name": "JP" },
+      "areaServed": {
+        "@type": "Country",
+        "name": "JP"
+      },
       "inLanguage": "ja-JP",
-      "provider": { "@id": "https://ezlize.com/#organization" },
+      "provider": {
+        "@id": "https://ezlize.com/#organization"
+      },
       "serviceType": "営業運用パイプライン設計",
       "knowsAbout": [
         "AI営業運用",
@@ -93,7 +100,26 @@
       "sameAs": [
         "https://github.com/Tenormusica2024",
         "https://zenn.dev/tenormusica"
-      ]
+      ],
+      "priceRange": "3万〜30万円",
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://ezlize.com/sales-operations-pipeline.html",
+        "availableLanguage": "ja-JP"
+      },
+      "offers": {
+        "@type": "Offer",
+        "name": "営業運用パイプライン設計",
+        "url": "https://ezlize.com/sales-operations-pipeline.html",
+        "priceCurrency": "JPY",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "JPY",
+          "minPrice": "30000",
+          "maxPrice": "300000"
+        }
+      }
     },
     {
       "@type": "FAQPage",
@@ -144,8 +170,18 @@
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Ezlize", "item": "https://ezlize.com/" },
-        { "@type": "ListItem", "position": 2, "name": "壊れにくい営業運用パイプライン設計", "item": "https://ezlize.com/sales-operations-pipeline.html" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Ezlize",
+          "item": "https://ezlize.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "壊れにくい営業運用パイプライン設計",
+          "item": "https://ezlize.com/sales-operations-pipeline.html"
+        }
       ]
     },
     {
@@ -153,7 +189,12 @@
       "@id": "https://ezlize.com/sales-operations-pipeline.html#webpage",
       "url": "https://ezlize.com/sales-operations-pipeline.html",
       "inLanguage": "ja-JP",
-      "isPartOf": { "@id": "https://ezlize.com/#website" }
+      "isPartOf": {
+        "@id": "https://ezlize.com/#website"
+      },
+      "mainEntity": {
+        "@id": "https://ezlize.com/sales-operations-pipeline.html#service"
+      }
     }
   ]
 }
