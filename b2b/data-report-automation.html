@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ1WP1J2NQ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -994,7 +996,6 @@
       .estimate-points { grid-template-columns: 1fr; }
       .estimate-amount { font-size: 2.1rem; }
     }
-
   </style>
 
   <style>
@@ -1225,6 +1226,15 @@
       .report-note { text-align: left; font-size: 0.78rem; }
     }
 
+
+    @media (max-width: 760px) {
+      .report-photo-bg {
+        background-image:
+          linear-gradient(90deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.72) 40%, rgba(255,255,255,0.48) 100%),
+          linear-gradient(180deg, rgba(255,255,255,0.48), rgba(42,92,113,0.18)),
+          url("assets/data-report-workflow-photo-mobile.webp");
+      }
+    }
   </style>
 
 </head>

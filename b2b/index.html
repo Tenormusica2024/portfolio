@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ1WP1J2NQ"></script>
   <script>
@@ -209,7 +211,8 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet"></noscript>
   <style>
     :root {
       --navy:       #1B2A4A;
@@ -976,7 +979,7 @@
 
   <aside class="hero-visual-art" aria-label="フリーランス受託で整える業務ツールのイメージ">
     <figure class="hero-visual-frame">
-      <img src="assets/home-hero-freelance-ai-workflow.webp" width="1500" height="938" alt="ノートPCに業務フロー、承認チェック、問い合わせ整理、集計表が表示され、机上に提案書やノートが置かれたフリーランス受託開発の信頼感を伝えるビジュアル" loading="eager" decoding="async">
+      <img src="assets/home-hero-freelance-ai-workflow.webp" srcset="assets/home-hero-freelance-ai-workflow-mobile.webp 640w, assets/home-hero-freelance-ai-workflow.webp 1500w" sizes="(max-width: 760px) 92vw, (max-width: 1100px) 70vw, 42vw" width="1500" height="938" alt="ノートPCに業務フロー、承認チェック、問い合わせ整理、集計表が表示され、机上に提案書やノートが置かれたフリーランス受託開発の信頼感を伝えるビジュアル" loading="eager" fetchpriority="high" decoding="async">
       <figcaption class="hero-visual-caption">
         <span><strong>作って終わりにしない業務ツールを提供</strong><span>下書き・承認・ログまで、運用で使える形に整えます</span></span>
       </figcaption>

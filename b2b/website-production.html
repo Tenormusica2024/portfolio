@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ1WP1J2NQ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -996,7 +998,6 @@
       .estimate-points { grid-template-columns: 1fr; }
       .estimate-amount { font-size: 2.1rem; }
     }
-
   </style>
 
   <style>
@@ -1241,6 +1242,12 @@
       .service-detail-page .hero-title { font-size: clamp(1.42rem, 6vw, 1.55rem); line-height: 1.6; }
     }
 
+
+    @media (max-width: 760px) {
+      .website-photo-bg {
+        background-image: url('/assets/website-production-workflow-photo-mobile.webp');
+      }
+    }
   </style>
 </head>
 <body class="sales-page service-detail-page">
