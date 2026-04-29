@@ -1147,7 +1147,7 @@
       個人受託の費用感とスピードで、設計・実装・運用確認まで対応します。
     </p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">費用感を相談する</a>
+      <a href="#contact" class="btn-primary" data-consult-topic="費用感の相談">費用感を相談する</a>
       <a href="#works" class="btn-secondary">実績と料金を見る</a>
     </div>
     <div class="hero-stats">
@@ -1292,7 +1292,7 @@
   <div class="service-choice-cta reveal">
     <p class="service-choice-copy"><strong>どのサービスに近いかわからない場合</strong>今の作業メモや画面のスクリーンショットだけでも大丈夫です。近い進め方と費用感をこちらで整理します。</p>
     <div class="service-choice-actions">
-      <a href="#contact" class="btn-primary">まず相談する</a>
+      <a href="#contact" class="btn-primary" data-consult-topic="サービス選定の相談">まず相談する</a>
       <a href="#price" class="btn-secondary">料金目安を見る</a>
     </div>
   </div>
@@ -1401,7 +1401,7 @@
 <!-- WORKS → CTA橋渡し -->
 <div class="works-cta">
   <p class="reveal">「うちにも使えるかも」と思ったら、まずは困っている作業を1つだけお知らせください。<br>相談・お見積りまでは費用は一切かかりません。</p>
-  <a href="#contact" class="btn-primary reveal">困りごとを相談する</a>
+  <a href="#contact" class="btn-primary reveal" data-consult-topic="困りごとの相談">困りごとを相談する</a>
 </div>
 
 <!-- FLOW -->
@@ -1456,7 +1456,7 @@
         <li>既存システムの軽微な改修</li>
         <li>LINE Bot（シンプル応答）</li>
       </ul>
-      <a href="#contact" class="price-link">この範囲で相談する →</a>
+      <a href="#contact" class="price-link" data-consult-topic="料金プランの相談">この範囲で相談する →</a>
     </div>
     <div class="price-card featured reveal">
       <p class="price-name">STANDARD</p>
@@ -1468,7 +1468,7 @@
         <li>業務自動化（中規模）</li>
         <li>問い合わせ支援ツール開発</li>
       </ul>
-      <a href="#contact" class="price-link">この範囲で相談する →</a>
+      <a href="#contact" class="price-link" data-consult-topic="料金プランの相談">この範囲で相談する →</a>
     </div>
     <div class="price-card reveal">
       <p class="price-name">ADVANCED</p>
@@ -1480,7 +1480,7 @@
         <li>複数システムの連携・統合</li>
         <li>データ基盤・分析ダッシュボード</li>
       </ul>
-      <a href="#contact" class="price-link">この範囲で相談する →</a>
+      <a href="#contact" class="price-link" data-consult-topic="料金プランの相談">この範囲で相談する →</a>
     </div>
   </div>
 </section>
@@ -1488,7 +1488,7 @@
 <!-- PRICE → CTA橋渡し -->
 <div class="works-cta">
   <p class="reveal">料金はあくまで目安です。ご要望に合わせて最適なプランをお見積りいたします。</p>
-  <a href="#contact" class="btn-primary reveal">費用感を相談する</a>
+  <a href="#contact" class="btn-primary reveal" data-consult-topic="費用感の相談">費用感を相談する</a>
 </div>
 
 <!-- FAQ -->
@@ -1676,6 +1676,22 @@
   } else {
     revealItems.forEach(el => el.classList.add('visible'));
   }
+
+  // CTAから来た相談テーマをフォームへ反映
+  function setConsultTopic(topic) {
+    const messageEl = document.getElementById('cf-message');
+    if (!messageEl || !topic || messageEl.value.trim()) return;
+    messageEl.value = `相談したい内容：${topic}
+
+困っている作業：
+今使っているツール：
+希望する費用感・時期：`;
+  }
+  const params = new URLSearchParams(window.location.search);
+  setConsultTopic(params.get('topic'));
+  document.querySelectorAll('[data-consult-topic]').forEach(link => {
+    link.addEventListener('click', () => setConsultTopic(link.getAttribute('data-consult-topic')));
+  });
 
   // お問い合わせフォーム送信
   let formSubmitted = false;
