@@ -357,3 +357,86 @@ sales page くらい具体化した方が強いです。
   - トップHeroは 1500px 以上で見出し・右ビジュアル・本文・統計カードを画面幅に合わせて拡大
   - 詳細ページは 1500px 以上で detail-wrap / workflow セクションの最大幅を拡張
   - 920px / 1366px / 2048px / mobile で横はみ出し・broken image・不自然改行が 0 件であることを確認
+
+---
+
+## 2026-04-29 追加: SEO / アクセス最適化 TODO
+
+Cloudflare Pages移行、DNS切替、Search Console sitemap成功、GA4タグ確認、DMARC追加までは完了済み。  
+ここからは公開後のSEO・流入・CV改善フェーズとして進める。
+
+### 1. Core Web Vitals / 表示速度確認
+
+- PageSpeed Insights または Lighthouse で desktop / mobile を測定する。
+- 対象:
+  - `/`
+  - `/inquiry-workflow-support.html`
+  - `/sales-operations-pipeline.html`
+  - `/data-report-automation.html`
+  - `/website-production.html`
+- 確認観点:
+  - LCP
+  - INP
+  - CLS
+  - 画像のLCP化・遅延読み込みの妥当性
+  - Cloudflare移行後にキャッシュ・圧縮が効いているか
+- 完了条件:
+  - 大きな赤信号がない
+  - 改善が必要な場合は、画像・CSS・JS・フォントのどれが原因か切り分ける
+
+### 2. 構造化データの拡充
+
+- 既存JSON-LDのparse errorがない状態は維持する。
+- ページ別に追加候補を検討する:
+  - `Service`
+  - `FAQPage`
+  - `BreadcrumbList`
+  - `Organization` / `LocalBusiness` 相当
+- 注意:
+  - 盛りすぎない。
+  - 実際にページ上で読める内容とJSON-LDを一致させる。
+  - 料金レンジはトップ・詳細ページ・FAQと矛盾させない。
+- 完了条件:
+  - 主要サービスページで構造化データの内容がページ本文と一致
+  - Rich Results Test相当で重大エラーなし
+
+### 3. robots.txt / Cloudflare Managed Content確認
+
+- 現在の `robots.txt` はCloudflare Managed ContentのAI crawler制御が入っている。
+- 確認観点:
+  - `search=yes` / `Allow: /` により通常検索クロールを妨げていないか
+  - AI crawler拒否設定が意図通りか
+  - `Sitemap: https://ezlize.com/sitemap.xml` が維持されているか
+- 完了条件:
+  - Googlebot / Bingbotの通常クロールを阻害しない
+  - AI学習拒否方針と矛盾しない
+
+### 4. Search Console URL検査
+
+- sitemapは送信済み・成功済み・20ページ検出済み。
+- 追加で主要ページをURL検査し、必要ならインデックス登録をリクエストする。
+- 対象:
+  - `/`
+  - `/sales-operations-pipeline.html`
+  - `/inquiry-workflow-support.html`
+  - `/data-report-automation.html`
+  - `/order-inventory-system.html`
+  - `/website-production.html`
+  - `/reservation-system-site.html`
+  - `/system-maintenance-improvement.html`
+- 完了条件:
+  - トップと主要サービスページが取得可能
+  - 旧Vercel配信や404のキャッシュが残っていない
+
+### 5. CTA / アクセス導線改善
+
+- GA4 / Search Console / 実画面レビューを見ながら、問い合わせ導線を改善する。
+- 確認観点:
+  - トップHeroの `費用感を相談する`
+  - サービスカードの費用目安と詳細リンク
+  - 詳細ページ上部の画像・費用・CTAの並び
+  - footer/contactのクリック範囲
+  - 電話よりフォーム・メール起点に見えるか
+- 完了条件:
+  - 初見で「何を相談できるか」「だいたいいくらか」「どこから相談するか」が迷いにくい
+  - AI感より、実務品質・安全運用・小さく始められる印象が勝っている
