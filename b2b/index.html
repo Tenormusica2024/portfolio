@@ -1608,6 +1608,8 @@
         <label class="form-label" for="cf-message">ご相談内容</label>
         <textarea id="cf-message" name="message" class="form-textarea" placeholder="例：問い合わせメールの返信を楽にしたい / 見積作成の手間を減らしたい / どこまで自動化できるか相談したい" required aria-required="true"></textarea>
       </div>
+      <input type="hidden" id="cf-topic" name="consultation_topic" value="">
+      <input type="hidden" id="cf-source" name="source_url" value="">
       <!-- Formspree honeypot: botはこの隠しフィールドに値を入れるためスパム判定される -->
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
       <p style="font-size:0.72rem; color:var(--muted); line-height:1.7;">
@@ -1680,7 +1682,10 @@
   // CTAから来た相談テーマをフォームへ反映
   function setConsultTopic(topic) {
     const messageEl = document.getElementById('cf-message');
-    if (!messageEl || !topic || messageEl.value.trim()) return;
+    const topicEl = document.getElementById('cf-topic');
+    if (!topic) return;
+    if (topicEl) topicEl.value = topic;
+    if (!messageEl || messageEl.value.trim()) return;
     messageEl.value = `相談したい内容：${topic}
 
 困っている作業：
@@ -1688,6 +1693,8 @@
 希望する費用感・時期：`;
   }
   const params = new URLSearchParams(window.location.search);
+  const sourceEl = document.getElementById('cf-source');
+  if (sourceEl) sourceEl.value = window.location.href;
   setConsultTopic(params.get('topic'));
   document.querySelectorAll('[data-consult-topic]').forEach(link => {
     link.addEventListener('click', () => setConsultTopic(link.getAttribute('data-consult-topic')));
@@ -1705,6 +1712,8 @@
     const email = document.getElementById('cf-email').value.trim();
     const tel = document.getElementById('cf-tel').value.trim();
     const message = document.getElementById('cf-message').value.trim();
+    const consultationTopic = document.getElementById('cf-topic').value.trim();
+    const sourceUrl = document.getElementById('cf-source').value.trim();
 
     // 送信中の状態
     btn.disabled = true;
@@ -1718,7 +1727,15 @@
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
-        body: JSON.stringify({ name, email, tel, message, _gotcha: document.querySelector('input[name="_gotcha"]').value }),
+        body: JSON.stringify({
+          name,
+          email,
+          tel,
+          message,
+          consultation_topic: consultationTopic,
+          source_url: sourceUrl,
+          _gotcha: document.querySelector('input[name="_gotcha"]').value
+        }),
       });
       const data = await res.json();
 
