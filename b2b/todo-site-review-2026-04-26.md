@@ -454,6 +454,26 @@ Cloudflare Pages移行、DNS切替、Search Console sitemap成功、GA4タグ確
   - Googlebot / Bingbotの通常クロールを阻害しない
   - AI学習拒否方針と矛盾しない
 
+進捗:
+
+- 2026-04-29: 本番 `https://ezlize.com/robots.txt` / `https://www.ezlize.com/robots.txt` を確認。
+  - HTTP 200 / Cloudflare配信。
+  - `User-agent: *` + `Allow: /` あり。
+  - `Sitemap: https://ezlize.com/sitemap.xml` あり。
+  - `https://ezlize.com/sitemap.xml` も HTTP 200 / XMLとして取得可能。
+- Cloudflare Managed Contentの状態:
+  - `Content-Signal: search=yes,ai-train=no`
+  - Amazonbot / Applebot-Extended / Bytespider / CCBot / ClaudeBot / CloudflareBrowserRenderingCrawler / Google-Extended / GPTBot / meta-externalagent は `Disallow: /`
+- 判断:
+  - 通常検索クロールは許可されている。
+  - Googlebot / Bingbotを明示的に拒否する指定はない。
+  - AI学習・AI拡張系botの拒否方針は、現状のデータ保護・AI学習拒否方針と矛盾しない。
+  - Cloudflareの `Content-Signal` はGoogle標準robotsディレクティブではないが、`Allow: /` と `Sitemap` があるため通常SEO上の阻害要因にはなっていない。
+- ローカル確認:
+  - `b2b/robots.txt` は `User-agent: *` / `Allow: /` / `Sitemap: https://ezlize.com/sitemap.xml`。
+  - B2B HTML内に `noindex` / `nofollow` はなし。
+  - canonical は主要HTMLに存在。
+
 ### 4. Search Console URL検査
 
 - sitemapは送信済み・成功済み・20ページ検出済み。
