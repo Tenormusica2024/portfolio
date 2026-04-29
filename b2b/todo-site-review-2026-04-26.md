@@ -384,6 +384,30 @@ Cloudflare Pages移行、DNS切替、Search Console sitemap成功、GA4タグ確
   - 大きな赤信号がない
   - 改善が必要な場合は、画像・CSS・JS・フォントのどれが原因か切り分ける
 
+進捗:
+
+- 2026-04-29: Lighthouseで主要ページを測定し、mobile LCPが重い箇所を確認。
+- 実施した改善:
+  - Google Fontsをrender-blockingな通常CSS読み込みから `preload` + `onload` に変更
+  - GTM / GA向け `preconnect` を追加
+  - トップHero / 営業運用Hero / 営業運用ワークフローに `srcset` を追加
+  - mobile用WebPを追加
+    - `home-hero-freelance-ai-workflow-mobile.webp`
+    - `sales-ops-pipeline-hero-mobile.webp`
+    - `sales-ops-workflow-map-image2-mobile.webp`
+    - `data-report-workflow-photo-mobile.webp`
+    - `website-production-workflow-photo-mobile.webp`
+  - salesページの下部Hero画像を `loading="lazy"` に変更
+- 本番再測定結果（Lighthouse mobile / 2026-04-29）:
+  - `/`（wwwで測定）: performance 84 / LCP 3568ms / CLS 0
+  - `/data-report-automation.html`: performance 86 / LCP 4152ms / CLS 0
+  - `/website-production.html`: performance 86 / LCP 4124ms / CLS 0
+  - `/sales-operations-pipeline.html`: performance 82 / LCP 4836ms / CLS 0
+- desktopはおおむね performance 91〜98。
+- 残りの改善余地:
+  - mobile LCPをさらに詰めるなら、GA/GTMの遅延読み込み、Cloudflare Web Analyticsの扱い、ファーストビュー画像のさらなる軽量化を検討。
+  - ただし現状は大きな赤信号なし。見た目を崩してまで削る段階ではない。
+
 ### 2. 構造化データの拡充
 
 - 既存JSON-LDのparse errorがない状態は維持する。
