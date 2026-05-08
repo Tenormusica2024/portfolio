@@ -1,10 +1,11 @@
 # Next Public AI Secretary Proof Candidates 2026-05-08
 
-目的: `daily-decision-assistant-proof`、`gmail-triage-assistant-proof`、`support-ticket-triage-proof` の次に作る公開AI秘書proof候補を、sample-first / public-safe / B2B説明力の観点で順位化する。
+目的: `daily-decision-assistant-proof`、`gmail-triage-assistant-proof`、`support-ticket-triage-proof`、`schedule-digest-assistant-proof` の次に作る公開AI秘書proof候補を、sample-first / public-safe / B2B説明力の観点で順位化する。
 
 更新メモ:
 - `Support Ticket Triage Assistant Proof` は `support-ticket-triage-proof` として実装・公開済み。
-- 以後の候補は、既存3本との差分が明確で、かつ公開境界を単純に保てるものを優先する。
+- `Schedule Digest Assistant Proof` は `schedule-digest-assistant-proof` として実装・公開済み。
+- 以後の候補は、既存4本との差分が明確で、かつ公開境界を単純に保てるものを優先する。
 
 前提:
 - private実装を直接コピーしない。
@@ -25,40 +26,21 @@
 - 返信案や次アクション案は作るが、ticket更新・コメント投稿・ラベル変更はしない。
 - 外部更新が必要なものは confirmation queue に入れる。
 
-以後の候補では、このrepoと同じく「sample-first」「外部操作なし」「確認キュー分離」「公開境界チェック」を最低基準にする。
+### Schedule Digest Assistant Proof
+
+公開repo:
+- `schedule-digest-assistant-proof`: https://github.com/Tenormusica2024/schedule-digest-assistant-proof
+
+位置づけ:
+- sample schedule / deadline / travel buffer / preparation task を日次digestへ整理する公開proof。
+- 予定変更や通知送信はせず、確認が必要な予定は confirmation queue に入れる。
+- Calendar APIやOAuthなしで、sample-firstの安全境界を示す。
+
+以後の候補では、「sample-first」「実サービス連携を主役にしない」「外部操作なし」「確認キュー分離」「公開境界チェック」を最低基準にする。
 
 ## 次の推奨順位
 
-### 1. Schedule Digest Assistant Proof
-
-公開名候補:
-- `schedule-digest-assistant-proof`
-- `daily-schedule-brief-proof`
-
-概要:
-- sample schedule / deadline / travel buffer / preparation task を日次digestへ整理する。
-- 予定変更や通知送信はしない。
-- 変更提案や確認が必要な予定は confirmation queue に入れる。
-
-なぜ次候補として強いか:
-- AI秘書らしさが分かりやすい。
-- daily-decision proof と接続しやすいが、出力を「予定・準備・移動余裕」に絞れば差分が明確。
-- 「予定を勝手に変えない」安全境界を説明しやすい。
-- Calendar APIなしでも、sample JSON / CSV で価値を示せる。
-
-最小サンプル:
-- 固定ミーティング
-- 締切付きタスク
-- 移動余裕が必要な予定
-- 事前準備が必要な予定
-- 確認待ちの予定変更候補
-
-注意:
-- Calendar連携が主役に見えないよう、READMEでは「sample schedule input」を中心に説明する。
-- OAuth取得手順は任意の発展項目に留める。
-- daily-decision proof と重複しないよう、判断軸を「今日の予定運用」に寄せる。
-
-### 2. Reminder Confirmation Assistant Proof
+### 1. Reminder Confirmation Assistant Proof
 
 公開名候補:
 - `reminder-confirmation-assistant-proof`
@@ -69,16 +51,17 @@
 - 通知送信はせず、送る候補を confirmation queue に入れる。
 - reminder理由、期限、相手、必要確認を出す。
 
-良い点:
-- シンプルで短時間にrepo化しやすい。
-- no-send / confirmation queue の価値が明確。
-- B2Bではフォローアップ漏れ防止として説明しやすい。
+なぜ次候補として強いか:
+- 既存4本と並べた時に、AI秘書の用途が「意思決定」「メール整理」「問い合わせ整理」「予定整理」「フォローアップ確認」へ広がる。
+- no-send / confirmation queue の安全境界を最小構成で示しやすい。
+- 連絡先や相手情報をsample化すれば、実データなしで価値を説明できる。
+- B2Bではフォローアップ漏れ防止として伝わりやすい。
 
 懸念:
 - 単体だと機能が小さく、proofとしての見栄えはSchedule Digestより弱い。
 - 相手や連絡先が絡むため、サンプルデータの匿名性に注意が必要。
 
-### 3. Meeting Prep Assistant Proof
+### 2. Meeting Prep Assistant Proof
 
 公開名候補:
 - `meeting-prep-assistant-proof`
@@ -100,21 +83,21 @@
 
 ## 結論
 
-次に着手するなら `Schedule Digest Assistant Proof` が最適。
+次に着手するなら `Reminder Confirmation Assistant Proof` が最適。
 
 理由:
-- 既存3本と並べた時に、AI秘書の用途が「意思決定」「メール整理」「問い合わせ整理」「予定整理」へ広がる。
-- Calendar APIなしでもsample-firstで成立する。
-- 予定変更や通知送信をconfirmation queueへ分離することで、安全境界を説明しやすい。
-- B2Bでは「日次予定の整理・準備漏れ防止」として伝わりやすい。
+- 既存4本と並べた時に、AI秘書の用途がフォローアップ確認まで広がる。
+- no-send / confirmation queue の安全境界を最小構成で示しやすい。
+- 連絡先や相手情報をsample化すれば、実データなしで価値を説明できる。
+- B2Bではフォローアップ漏れ防止として伝わりやすい。
 
 ## 次の実装一手
 
-1. public repo名は第一候補を `schedule-digest-assistant-proof`、代替候補を `daily-schedule-brief-proof` として決める。
-2. sample schedules を5〜7件作る。
-3. 出力カテゴリを `fixed`, `prepare`, `travel_buffer`, `deadline`, `needs_confirmation` にする。
-4. 予定変更・通知・連絡が必要なものは confirmation queue に入れる。
-5. README / privacy-boundary / public-export-checklist / showcase-copy / public boundary check / pytest CI を既存3repoの型で作る。
+1. public repo名は第一候補を `reminder-confirmation-assistant-proof`、代替候補を `follow-up-reminder-proof` として決める。
+2. sample reminder candidates を5〜7件作る。
+3. 出力カテゴリを `send_candidate`, `hold`, `skip`, `needs_context`, `needs_confirmation` にする。
+4. 通知・メール・DM送信が必要なものは confirmation queue に入れる。
+5. README / privacy-boundary / public-export-checklist / showcase-copy / public boundary check / pytest CI を既存4repoの型で作る。
 
 ## B2B掲載前ガード
 
