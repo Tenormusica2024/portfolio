@@ -145,4 +145,3 @@ Support Ticket Triage Proof
 1. このplanを元に、B2B UI用の最終3カード文案を1ファイルに切り出す。
 2. その後、目視確認できるタイミングでUI実装する。
 3. UI実装後は desktop / mobile / production URL のスクリーンショット確認を必須にする。
-
