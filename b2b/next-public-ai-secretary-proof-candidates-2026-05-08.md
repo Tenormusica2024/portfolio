@@ -14,6 +14,7 @@
 - `提案文案化` は `b2b/public-ai-secretary-proof-proposal-copy-2026-05-08.md` として作成済み。
 - `問い合わせ返信テンプレート化` は `b2b/public-ai-secretary-proof-inquiry-reply-template-2026-05-08.md` として作成済み。
 - `返信チャネル別短縮版` は `b2b/public-ai-secretary-proof-channel-reply-short-copy-2026-05-08.md` として作成済み。
+- `営業FAQ化` は `b2b/public-ai-secretary-proof-sales-faq-2026-05-08.md` として作成済み。
 - これでAI秘書の公開proofは、意思決定・メール整理・問い合わせ整理・予定整理・リマインダー確認・会議準備の6本になった。
 
 ## 完成済み基準線
@@ -35,7 +36,7 @@
 - local / production URL のdesktop・mobile目視確認を必須にする。
 
 なぜ次候補として強いか:
-- repo、文案、構成、index、readiness review、提案文案、返信テンプレートが揃った。
+- repo、文案、構成、index、readiness review、提案文案、返信テンプレート、営業FAQが揃った。
 - 次は実際にB2Bポートフォリオ上で見せる段階。
 - ただしUI変更は目視確認できる状況でのみ進める。
 
@@ -44,27 +45,27 @@
 - CTAや既存ページ全体の導線を不用意に変えない。
 - 変更範囲をproofセクション追加または既存proofセクション更新に限定する。
 
-### 2. UI反映前にさらに進める場合: 営業FAQ化
+### 2. UI反映前にさらに進める場合: 提案資料1ページ化
 
 概要:
-- AI秘書proof群について、よく聞かれる質問と回答を短く整理する。
+- AI秘書proof群を提案資料向けの1ページ構成へ圧縮する。
 - UI本体には触らない。
 
 良い点:
 - 目視確認できない状況でも進められる。
-- 提案・返信・初回打ち合わせで使い回せる。
+- 営業・提案・初回打ち合わせで使い回せる。
 
 ## 結論
 
-次に着手するなら、目視確認できる場合は `B2B UI反映`、できない場合は `営業FAQ化` が最適。
+次に着手するなら、目視確認できる場合は `B2B UI反映`、できない場合は `提案資料1ページ化` が最適。
 
 理由:
 - UI反映前のdocs素材は揃った。
 - ただしUI変更にはdesktop / mobile / production URLの確認が必要。
-- 確認できない状況では、UIを触らず営業・提案で使うFAQを整える方が安全。
+- 確認できない状況では、UIを触らず提案資料に転用しやすい1ページ構成を作る方が安全。
 
 ## 次の実装一手
 
 1. UI確認できる場合: B2Bページへ代表3カードを実装し、desktop / mobile / production URLを確認する。
-2. UI確認できない場合: `b2b/public-ai-secretary-proof-sales-faq-2026-05-08.md` を作る。
+2. UI確認できない場合: `b2b/public-ai-secretary-proof-one-page-proposal-2026-05-08.md` を作る。
 3. どちらの場合も、既存CTAやページ全体の導線を不用意に変えない。
