@@ -8,6 +8,7 @@
 - `Reminder Confirmation Assistant Proof` は `reminder-confirmation-assistant-proof` として実装・公開済み。
 - `Meeting Prep Assistant Proof` は `meeting-prep-assistant-proof` として実装・公開済み。
 - `B2B掲載構成の整理` は `b2b/public-ai-secretary-proof-section-plan-2026-05-08.md` として作成済み。
+- `B2B UI用の最終3カード文案` は `b2b/public-ai-secretary-proof-final-card-copy-2026-05-08.md` として作成済み。
 - これでAI秘書の公開proofは、意思決定・メール整理・問い合わせ整理・予定整理・リマインダー確認・会議準備の6本になった。
 
 ## 完成済み基準線
@@ -21,48 +22,47 @@
 
 ## 次の推奨順位
 
-### 1. B2B UI用の最終3カード文案作成
-
-概要:
-- 作成済みsection planの推奨案Aをもとに、実装直前の3カード文案だけを切り出す。
-- 既存B2Bページの文体へ寄せる前段として、カードタイトル・2文本文・リンク方針を固定する。
-- まだ本番UI・CTA・レイアウトは触らない。
-
-なぜ次候補として強いか:
-- 代表3本方針が固まり、UI実装前の最後のテキスト整理に進める。
-- UI反映時の迷いを減らせる。
-- 目視確認できない状況でもdocsだけなら安全に進められる。
-
-ガード:
-- 本番UI・CTA・レイアウト変更はまだ行わない。
-- desktop / mobile / production URLで目視確認できるタイミングまでUI反映は分離する。
-
-### 2. proof群の横断README / index作成
+### 1. UI反映前のproof index / 横断README作成
 
 概要:
 - 6本のrepoリンク、役割、安全境界、確認キューの違いを1枚にまとめる。
-- portfolio側docsとして作るか、専用のproof index repoにするかは別判断にする。
+- B2B UIにはまだ触らず、リンク集兼説明資産としてdocsに置く。
+- 最終3カード文案から参照できる補助資料にする。
+
+なぜ次候補として強いか:
+- 6本の成果を一つの説明資産にまとめやすい。
+- B2B掲載文案、提案資料、GitHub紹介文へ転用できる。
+- UI反映前でも安全に進められる。
+
+ガード:
+- 本番UI・CTA・レイアウト変更はまだ行わない。
+- proof indexを作る場合も、公開repo URLと一般化した説明だけに留める。
+
+### 2. B2B UI反映
+
+概要:
+- `public-ai-secretary-proof-final-card-copy-2026-05-08.md` の代表3カードをB2B UIへ反映する。
+- local / production URL のdesktop・mobile目視確認を必須にする。
 
 良い点:
-- 6本の成果を一つの説明資産にまとめやすい。
-- B2B掲載文案や提案資料に転用できる。
+- proof群を実際のB2Bポートフォリオで見せられる。
 
 懸念:
-- 新規repo化より、編集・構成判断が中心になる。
-- UI掲載と混同しないよう、docs段階に留める必要がある。
+- UI変更は目視確認が必要。
+- 目視確認できない状況では避ける。
 
 ## 結論
 
-次に着手するなら `B2B UI用の最終3カード文案作成` が最適。
+次に着手するなら `UI反映前のproof index / 横断README作成` が最適。
 
 理由:
-- B2B掲載構成はdocsで整理済みのため、次はUI実装に渡せる粒度へ圧縮する段階。
-- UI本体を触らず、タイトル・本文・リンク方針だけ固められる。
-- 代表proofの選定理由を保ったまま、実装時のテキスト迷いを減らせる。
+- final-card-copyは作成済みで、UI実装に入る前の補助資料を整える段階。
+- UI本体を触らず、6本の役割と安全境界を一覧化できる。
+- 代表3カードだけでは拾いきれない残り3本の価値も説明できる。
 
 ## 次の実装一手
 
-1. `b2b/public-ai-secretary-proof-final-card-copy-2026-05-08.md` を作る。
-2. 代表3本のタイトル・2文本文・GitHubリンクを固定する。
-3. 補助リンクとして残り3本を1行ずつ置くか判断する。
+1. `b2b/public-ai-secretary-proof-index-2026-05-08.md` を作る。
+2. 6本のrepo URL、役割、安全境界、使いどころを1表にまとめる。
+3. 代表3本と補助3本の違いを明記する。
 4. UI反映は別タスクとして残す。
