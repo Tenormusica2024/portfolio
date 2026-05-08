@@ -1,6 +1,6 @@
 # Public AI Secretary Proof Section Plan 2026-05-08
 
-目的: 6本の公開AI秘書proofを、B2Bポートフォリオへ載せる前に情報設計として整理する。  
+目的: 6本の公開AI秘書proofを、B2Bポートフォリオへ載せる前に情報設計として整理する。
 このファイルは掲載構成案であり、B2B本番UI・CTA・レイアウトにはまだ反映していない。
 
 ## 対象proof
@@ -145,3 +145,4 @@ Support Ticket Triage Proof
 1. このplanを元に、B2B UI用の最終3カード文案を1ファイルに切り出す。
 2. その後、目視確認できるタイミングでUI実装する。
 3. UI実装後は desktop / mobile / production URL のスクリーンショット確認を必須にする。
+
