@@ -1,12 +1,13 @@
 # Public AI Secretary Proof Checklist 2026-05-08
 
-目的: AI秘書系の公開proof repoを増やす時に、既存4本と同じ品質・公開境界で揃えるための横断チェックリスト。
+目的: AI秘書系の公開proof repoを増やす時に、既存5本と同じ品質・公開境界で揃えるための横断チェックリスト。
 
 対象:
 - `daily-decision-assistant-proof`: https://github.com/Tenormusica2024/daily-decision-assistant-proof
 - `gmail-triage-assistant-proof`: https://github.com/Tenormusica2024/gmail-triage-assistant-proof
 - `support-ticket-triage-proof`: https://github.com/Tenormusica2024/support-ticket-triage-proof
 - `schedule-digest-assistant-proof`: https://github.com/Tenormusica2024/schedule-digest-assistant-proof
+- `reminder-confirmation-assistant-proof`: https://github.com/Tenormusica2024/reminder-confirmation-assistant-proof
 
 ## 現在の基準線
 
@@ -22,7 +23,7 @@
 | public/private docs | `privacy-boundary` と `public-export-checklist` を入れる |
 | B2B copy draft | UI反映前に短文版と掲載案を分ける |
 
-## 現在の公開proof 4本
+## 現在の公開proof 5本
 
 1. `daily-decision-assistant-proof`
    - 日次シグナルを focus / defer / no-go に整理する。
@@ -36,6 +37,9 @@
 4. `schedule-digest-assistant-proof`
    - sample schedule を fixed / prepare / travel_buffer / deadline / needs_confirmation に整理する。
    - 予定変更・通知・連絡は自動実行せず、確認キューに分離する。
+5. `reminder-confirmation-assistant-proof`
+   - sample reminder candidates を send_candidate / hold / skip / needs_context / needs_confirmation に整理する。
+   - メール・チャット・SMS・カレンダー通知は自動実行せず、確認キューに分離する。
 
 ## 次回proof repoの最小構成
 
@@ -109,17 +113,13 @@ scripts/check_public_boundary.py
 
 ## 現時点の次候補メモ
 
-1. Reminder confirmation assistant proof
-   - sample reminder candidatesを、送る / 保留 / 不要に分ける。
-   - 通知送信はせず、確認キューだけ作る。
-
-2. Meeting prep assistant proof
+1. Meeting prep assistant proof
    - sample agenda / participants / open questions / previous notes を会議前ブリーフに整理する。
    - 送信やカレンダー更新はせず、確認が必要な質問や送付物だけconfirmation queueへ入れる。
 
 ## 運用メモ
 
-- `daily-decision-assistant-proof`、`gmail-triage-assistant-proof`、`support-ticket-triage-proof`、`schedule-digest-assistant-proof` は、公開proof repoの初期基準線として扱える。
-- `support-ticket-triage-proof` と `schedule-digest-assistant-proof` は候補ではなく完成済みの基準線に移動済み。
+- 既存5本は、公開proof repoの初期基準線として扱える。
+- `support-ticket-triage-proof`、`schedule-digest-assistant-proof`、`reminder-confirmation-assistant-proof` は候補ではなく完成済みの基準線に移動済み。
 - 次回以降は、このチェックリストを先に満たしてからB2B掲載文案へ進む。
 - B2B本番UI反映は、copy draft作成とは別タスクに分ける。
