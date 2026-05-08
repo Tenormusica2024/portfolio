@@ -51,11 +51,11 @@ Repo: https://github.com/Tenormusica2024/schedule-digest-assistant-proof
 
 ## 補助Proofの説明
 
-- Gmail Triage Assistant Proof: inbox風入力を分類し、draft-only返信と確認キューに分けるProof。  
+- Gmail Triage Assistant Proof: inbox風入力を分類し、draft-only返信と確認キューに分けるProof。
   https://github.com/Tenormusica2024/gmail-triage-assistant-proof
-- Reminder Confirmation Assistant Proof: フォローアップ候補を送信前レビューし、外部送信を確認キューへ分離するProof。  
+- Reminder Confirmation Assistant Proof: フォローアップ候補を送信前レビューし、外部送信を確認キューへ分離するProof。
   https://github.com/Tenormusica2024/reminder-confirmation-assistant-proof
-- Meeting Prep Assistant Proof: 会議前briefと確認事項を整理し、参加者送付やカレンダー更新を確認キューへ分離するProof。  
+- Meeting Prep Assistant Proof: 会議前briefと確認事項を整理し、参加者送付やカレンダー更新を確認キューへ分離するProof。
   https://github.com/Tenormusica2024/meeting-prep-assistant-proof
 
 ## 提案時に強調すること
