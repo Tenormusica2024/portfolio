@@ -78,7 +78,7 @@ scripts/check_public_boundary.py
 
 優先する候補:
 - sample-firstにしやすい
-- llmwikiや個人運用に強く依存しない
+- private knowledge-baseや個人運用に強く依存しない
 - 外部操作をconfirmation queueへ分離できる
 - B2Bで説明しやすい安全境界がある
 - 30〜90分で最小repo化できる
@@ -108,3 +108,4 @@ scripts/check_public_boundary.py
 - `daily-decision-assistant-proof` と `gmail-triage-assistant-proof` は、公開proof repoの初期基準線として扱える。
 - 次回以降は、このチェックリストを先に満たしてからB2B掲載文案へ進む。
 - B2B本番UI反映は、copy draft作成とは別タスクに分ける。
+
