@@ -3,7 +3,7 @@
 ## サイト概要
 - **ブランド**: Urayaha Days（C2C・個人向けポートフォリオ）
 - **URL**: https://tenormusica2024.github.io/portfolio/
-- **B2Bサイト**: Ezlize（`b2b/` ディレクトリ。Vercelプロジェクト `urayahadays-b2b` でデプロイ）
+- **B2Bサイト**: Ezlize（`b2b/` ディレクトリ。公開面はCloudflare配信を確認済み。Cloudflare Pagesのproject/branch/build settingsはdashboard未確認。Vercel設定はlegacy/fallbackとして残存）
 - **B2B URL**: https://ezlize.com/
 
 ## C2C方針（必須）
@@ -33,20 +33,46 @@
 - AIモデルのバージョン・リリース状況など、知識カットオフ以降の情報は **必ずWebSearchで確認してから提案する**
 - grok-3-miniはweb非対応のため、最新技術情報はWebSearch toolを使用
 
-## Vercel デプロイ構成と ezlize.com 3層防御
+## B2B デプロイ構成と ezlize.com 防御
+
+**2026-04-30 現状確認:**
+- `ezlize.com` / `www.ezlize.com` のNSは Cloudflare（`elma.ns.cloudflare.com`, `eugene.ns.cloudflare.com`）
+- HTTPSレスポンスは `Server: cloudflare` で、主要B2Bページは 200 を返す
+- `scripts/build_b2b_cloudflare.js` で `b2b/` を `dist/b2b` へ静的出力する構成が追加済み
+- Cloudflare Pages の project名・production branch はローカルだけでは未確定。`wrangler` は利用可能だが、2026-04-30時点の非対話実行では `CLOUDFLARE_API_TOKEN` 未設定のため project list は取得不可
+- 2026-05-08のdashboard確認試行では、CiC / Claude in Chromeが未接続のため dashboard 項目は `needs-verification` のまま
+- 旧Vercelプロジェクト/設定は残っているため、Vercel前提の記述や障害切り分けは legacy/fallback として扱い、現在の公開経路を決め打ちしないこと
+
+**Cloudflare配信用のB2B build候補:**
+```bash
+node scripts/build_b2b_cloudflare.js
+```
+
+- Local source: `b2b/`
+- Local output candidate: `dist/b2b`
+- 確認できていない項目: Cloudflare Pages project名 / production branch / Dashboard側のBuild command
+- 確認方法: Cloudflare Dashboard、または `CLOUDFLARE_API_TOKEN` 設定後に `npx wrangler pages project list`
+- API token なしで公開面だけ確認する場合: `node scripts/check_b2b_cloudflare_public.js`
+  - Cloudflare NS
+  - 主要5ページの HTTP 200
+  - `Server: cloudflare`
+  - canonical WebP参照
 
 **リポジトリ構成:**
 - ルート `/` → C2C ポートフォリオ（GitHub Pages: tenormusica2024.github.io/portfolio/）
-- `b2b/` → B2B ポートフォリオ（Vercel: ezlize.com）
+- `b2b/` → B2B ポートフォリオ（ezlize.com。公開面はCloudflare配信確認済み、Pages dashboard設定は未確認）
 - `corporate/` → コーポレートサイト（デプロイ先別途）
 - その他 `beauty-salon/`, `clinic/`, `designer-portfolio/` → 各デモサイト
 
-**Vercelプロジェクト `urayahadays-b2b`:**
+**Legacy / fallback Vercelプロジェクト `urayahadays-b2b`:**
+
+以下は旧Vercel運用の再発防止メモ。2026-05-08時点では、Ezlizeの公開面はCloudflare配信を確認済み。Cloudflare Pages dashboard項目は未確認のため、Vercel設定を現行公開経路として扱わない。
+
 - Root Directory: `b2b`（ダッシュボード Build & Deployment で設定）
 - GitHub連携: `Tenormusica2024/portfolio` リポジトリの `main` ブランチ
 - 自動デプロイ: push ごとに発火（`update-analytics.yml` が毎日 09:00 JST に push）
 
-**ezlize.com に c2c が表示される問題の再発防止（3層防御）:**
+**Legacy Vercelで ezlize.com に c2c が表示される問題の再発防止（3層防御）:**
 1. **Vercel Root Directory = `b2b`** - ダッシュボードで設定。正常時はこれだけで b2b がデプロイされる
 2. **フェイルセーフリダイレクト** - ルート `index.html` の `<head>` 直後に `window.location.hostname === 'ezlize.com'` 検出スクリプトを設置。Root Directory が `./` に戻っても ezlize.com アクセス時は `/b2b/index.html` にリダイレクト
 3. **ルート `.vercel/project.json` 削除済み** - CLI からルートで `vercel deploy` した際の誤デプロイを防止（`.gitignore` で `.vercel` は除外済み）

@@ -7,7 +7,7 @@ Web制作スキルを示すポートフォリオサイト群。AI/MLプロジェ
 | Site | URL | Hosting |
 |------|-----|---------|
 | Main Portfolio (C2C) | https://tenormusica2024.github.io/portfolio/ | GitHub Pages |
-| B2B Business Site (Ezlize) | https://ezlize.com/ | Vercel |
+| B2B Business Site (Ezlize) | https://ezlize.com/ | Cloudflare-served; Pages dashboard settings unverified |
 | Beauty Salon Demo | https://beauty-salon-lumiere.vercel.app/ | Vercel |
 | Clinic Demo | https://clinic-peach-seven.vercel.app/ | Vercel |
 | Designer Portfolio | https://designer-portfolio-plum.vercel.app/ | Vercel |
@@ -25,11 +25,11 @@ Web制作スキルを示すポートフォリオサイト群。AI/MLプロジェ
 - `ai-trends.html` - AI trend dashboard
 - `code-reviewer-system.html` - Code reviewer system showcase
 
-### Sub-projects (Vercel)
+### Sub-projects
 - `designer-portfolio/` - Designer portfolio (index.html, about.html, works.html + style.css, script.js)
 - `beauty-salon/` - Beauty salon booking demo (single-file HTML with inline CSS/JS)
 - `clinic/` - Medical clinic demo (single-file HTML with inline CSS/JS)
-- `b2b/` - B2B business site (index.html, tokusho.html, privacy.html)
+- `b2b/` - B2B business site (index.html, tokusho.html, privacy.html; Cloudflare-served public surface)
 - `corporate/` - Corporate site demo (6 pages: index, about, services, works, recruit, contact + style.css, script.js)
 
 ## 関連システム
@@ -57,13 +57,45 @@ Web制作スキルを示すポートフォリオサイト群。AI/MLプロジェ
 
 ## Deployment
 
-Vercelサブプロジェクトはリポジトリ連携なし。手動デプロイ:（リポジトリルートで実行）
+### B2B / Ezlize (Cloudflare-served public surface)
+
+2026-05-08時点では、`ezlize.com` は Cloudflare 経由で配信されている。Cloudflare Pages の project名・production branch・dashboard側build settings は未確認。
+
+- Production URL: `https://ezlize.com/`
+- DNS: Cloudflare NS（`elma.ns.cloudflare.com`, `eugene.ns.cloudflare.com`）
+- Local build candidate: `node scripts/build_b2b_cloudflare.js`
+- Local output candidate: `dist/b2b`
+- Local source: `b2b/`
+
+```bash
+node scripts/build_b2b_cloudflare.js
+```
+
+Cloudflare Pages の project名・production branch・dashboard側build command/output directory はローカルだけでは未確定。
+確認する場合は Cloudflare Dashboard、または `CLOUDFLARE_API_TOKEN` を設定した上で:
+
+```bash
+npx wrangler pages project list
+```
+
+を実行する。
+
+API token なしで公開面だけ確認する場合は:
+
+```bash
+node scripts/check_b2b_cloudflare_public.js
+```
+
+このチェックは `ezlize.com` のCloudflare NS、主要5ページのHTTP 200、`Server: cloudflare`、各ページのcanonical WebP参照を確認する。
+
+旧Vercel設定（`b2b/vercel.json`, `b2b/.vercel/`）は legacy/fallback として残っている。Ezlizeの現行公開経路を判断するときは、古いVercel前提の記述ではなく DNS / HTTP header / Cloudflare配信用build scriptを優先して確認する。ただし、Cloudflare Pages dashboard確認ログが残るまでは Pages project / branch / build settings を断定しない。
+
+B2B以外のVercelサブプロジェクトはリポジトリ連携なし。手動デプロイ:（リポジトリルートで実行）
 
 ```bash
 (cd beauty-salon && npx vercel --prod --yes)
 (cd clinic && npx vercel --prod --yes)
 (cd designer-portfolio && npx vercel --prod --yes)
-(cd b2b && npx vercel --prod --yes)
 (cd corporate && npx vercel --prod --yes)
 ```
 
