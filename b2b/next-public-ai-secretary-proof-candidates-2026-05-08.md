@@ -9,6 +9,7 @@
 - `Meeting Prep Assistant Proof` は `meeting-prep-assistant-proof` として実装・公開済み。
 - `B2B掲載構成の整理` は `b2b/public-ai-secretary-proof-section-plan-2026-05-08.md` として作成済み。
 - `B2B UI用の最終3カード文案` は `b2b/public-ai-secretary-proof-final-card-copy-2026-05-08.md` として作成済み。
+- `proof index / 横断README` は `b2b/public-ai-secretary-proof-index-2026-05-08.md` として作成済み。
 - これでAI秘書の公開proofは、意思決定・メール整理・問い合わせ整理・予定整理・リマインダー確認・会議準備の6本になった。
 
 ## 完成済み基準線
@@ -22,21 +23,21 @@
 
 ## 次の推奨順位
 
-### 1. UI反映前のproof index / 横断README作成
+### 1. B2B UI反映前の実装準備レビュー
 
 概要:
-- 6本のrepoリンク、役割、安全境界、確認キューの違いを1枚にまとめる。
-- B2B UIにはまだ触らず、リンク集兼説明資産としてdocsに置く。
-- 最終3カード文案から参照できる補助資料にする。
+- final-card-copy と proof index を見比べ、B2B UIへ入れる文案として過不足がないか確認する。
+- UI実装前に、カード数、リンク数、CTA位置、補助リンクの扱いを最終確認する。
+- まだ本番UI・CTA・レイアウトは触らない。
 
 なぜ次候補として強いか:
-- 6本の成果を一つの説明資産にまとめやすい。
-- B2B掲載文案、提案資料、GitHub紹介文へ転用できる。
-- UI反映前でも安全に進められる。
+- docs側の素材は揃ったため、次はUI実装に入る前のレビュー段階。
+- 目視確認できない状況でも、文案と構成の過不足確認なら進められる。
+- UI反映時の手戻りを減らせる。
 
 ガード:
 - 本番UI・CTA・レイアウト変更はまだ行わない。
-- proof indexを作る場合も、公開repo URLと一般化した説明だけに留める。
+- UI反映はdesktop / mobile / production URLで目視確認できるタイミングに分離する。
 
 ### 2. B2B UI反映
 
@@ -53,16 +54,16 @@
 
 ## 結論
 
-次に着手するなら `UI反映前のproof index / 横断README作成` が最適。
+次に着手するなら `B2B UI反映前の実装準備レビュー` が最適。
 
 理由:
-- final-card-copyは作成済みで、UI実装に入る前の補助資料を整える段階。
-- UI本体を触らず、6本の役割と安全境界を一覧化できる。
-- 代表3カードだけでは拾いきれない残り3本の価値も説明できる。
+- proof repo、section plan、final-card-copy、proof index は作成済み。
+- UI本体を触らず、反映前の文案・構成・リンク方針を確認できる。
+- 目視確認できるタイミングでUI反映へ移るための準備になる。
 
 ## 次の実装一手
 
-1. `b2b/public-ai-secretary-proof-index-2026-05-08.md` を作る。
-2. 6本のrepo URL、役割、安全境界、使いどころを1表にまとめる。
-3. 代表3本と補助3本の違いを明記する。
+1. `b2b/public-ai-secretary-proof-ui-readiness-review-2026-05-08.md` を作る。
+2. final-card-copy と proof index の整合性を確認する。
+3. UI反映前のリスク、未決事項、推奨実装方針をまとめる。
 4. UI反映は別タスクとして残す。
