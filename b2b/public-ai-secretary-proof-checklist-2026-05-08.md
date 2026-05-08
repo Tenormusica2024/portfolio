@@ -1,6 +1,6 @@
 # Public AI Secretary Proof Checklist 2026-05-08
 
-目的: AI秘書系の公開proof repoを増やす時に、既存5本と同じ品質・公開境界で揃えるための横断チェックリスト。
+目的: AI秘書系の公開proof repoを増やす時に、既存6本と同じ品質・公開境界で揃えるための横断チェックリスト。
 
 対象:
 - `daily-decision-assistant-proof`: https://github.com/Tenormusica2024/daily-decision-assistant-proof
@@ -8,6 +8,7 @@
 - `support-ticket-triage-proof`: https://github.com/Tenormusica2024/support-ticket-triage-proof
 - `schedule-digest-assistant-proof`: https://github.com/Tenormusica2024/schedule-digest-assistant-proof
 - `reminder-confirmation-assistant-proof`: https://github.com/Tenormusica2024/reminder-confirmation-assistant-proof
+- `meeting-prep-assistant-proof`: https://github.com/Tenormusica2024/meeting-prep-assistant-proof
 
 ## 現在の基準線
 
@@ -23,23 +24,14 @@
 | public/private docs | `privacy-boundary` と `public-export-checklist` を入れる |
 | B2B copy draft | UI反映前に短文版と掲載案を分ける |
 
-## 現在の公開proof 5本
+## 現在の公開proof 6本
 
-1. `daily-decision-assistant-proof`
-   - 日次シグナルを focus / defer / no-go に整理する。
-   - 判断結果と確認キューを分け、外部操作はしない。
-2. `gmail-triage-assistant-proof`
-   - sample mailbox を urgent / review / low priority に分類する。
-   - 返信案は draft-only とし、送信はしない。
-3. `support-ticket-triage-proof`
-   - sample support ticket / inquiry を urgent / needs_reply / backlog / blocked / no_action に分類する。
-   - 返信案と次アクション候補を作るが、ticket更新・コメント投稿・ラベル変更はしない。
-4. `schedule-digest-assistant-proof`
-   - sample schedule を fixed / prepare / travel_buffer / deadline / needs_confirmation に整理する。
-   - 予定変更・通知・連絡は自動実行せず、確認キューに分離する。
-5. `reminder-confirmation-assistant-proof`
-   - sample reminder candidates を send_candidate / hold / skip / needs_context / needs_confirmation に整理する。
-   - メール・チャット・SMS・カレンダー通知は自動実行せず、確認キューに分離する。
+1. `daily-decision-assistant-proof` — 日次シグナルを focus / defer / no-go に整理する。
+2. `gmail-triage-assistant-proof` — sample mailbox を分類し、返信案は draft-only に留める。
+3. `support-ticket-triage-proof` — sample support ticket / inquiry を分類し、外部更新はしない。
+4. `schedule-digest-assistant-proof` — sample schedule を日次digestへ整理し、予定変更・通知は確認キューへ分離する。
+5. `reminder-confirmation-assistant-proof` — sample reminder candidates を送信前レビューし、外部送信は確認キューへ分離する。
+6. `meeting-prep-assistant-proof` — sample meeting inputs を会議前briefへ整理し、参加者送付・カレンダー更新は確認キューへ分離する。
 
 ## 次回proof repoの最小構成
 
@@ -113,13 +105,12 @@ scripts/check_public_boundary.py
 
 ## 現時点の次候補メモ
 
-1. Meeting prep assistant proof
-   - sample agenda / participants / open questions / previous notes を会議前ブリーフに整理する。
-   - 送信やカレンダー更新はせず、確認が必要な質問や送付物だけconfirmation queueへ入れる。
+- 6本揃ったため、次は新規repo追加よりもB2B掲載構成の整理・代表proofの選定を優先する。
+- UI本体への反映は、desktop / mobile / production URLで目視確認できるタイミングに分離する。
 
 ## 運用メモ
 
-- 既存5本は、公開proof repoの初期基準線として扱える。
-- `support-ticket-triage-proof`、`schedule-digest-assistant-proof`、`reminder-confirmation-assistant-proof` は候補ではなく完成済みの基準線に移動済み。
+- 既存6本は、公開proof repoの初期基準線として扱える。
+- `support-ticket-triage-proof`、`schedule-digest-assistant-proof`、`reminder-confirmation-assistant-proof`、`meeting-prep-assistant-proof` は候補ではなく完成済みの基準線に移動済み。
 - 次回以降は、このチェックリストを先に満たしてからB2B掲載文案へ進む。
 - B2B本番UI反映は、copy draft作成とは別タスクに分ける。

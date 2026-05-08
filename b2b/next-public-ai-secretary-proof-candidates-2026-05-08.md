@@ -1,12 +1,13 @@
 # Next Public AI Secretary Proof Candidates 2026-05-08
 
-目的: 既存5本の公開AI秘書proofの次に作る候補を、sample-first / public-safe / B2B説明力の観点で順位化する。
+目的: 既存6本の公開AI秘書proofを踏まえて、次に進めるべき残タスクを sample-first / public-safe / B2B説明力の観点で順位化する。
 
 更新メモ:
 - `Support Ticket Triage Assistant Proof` は `support-ticket-triage-proof` として実装・公開済み。
 - `Schedule Digest Assistant Proof` は `schedule-digest-assistant-proof` として実装・公開済み。
 - `Reminder Confirmation Assistant Proof` は `reminder-confirmation-assistant-proof` として実装・公開済み。
-- 以後の候補は、既存5本との差分が明確で、かつ公開境界を単純に保てるものを優先する。
+- `Meeting Prep Assistant Proof` は `meeting-prep-assistant-proof` として実装・公開済み。
+- これでAI秘書の公開proofは、意思決定・メール整理・問い合わせ整理・予定整理・リマインダー確認・会議準備の6本になった。
 
 ## 完成済み基準線
 
@@ -15,52 +16,52 @@
 - `support-ticket-triage-proof`: support ticket / inquiry triage
 - `schedule-digest-assistant-proof`: 日次予定digestと準備漏れ防止
 - `reminder-confirmation-assistant-proof`: リマインダー候補の送信前レビュー
-
-以後の候補では、「sample-first」「実サービス連携を主役にしない」「外部操作なし」「確認キュー分離」「公開境界チェック」を最低基準にする。
+- `meeting-prep-assistant-proof`: 会議前briefと確認事項整理
 
 ## 次の推奨順位
 
-### 1. Meeting Prep Assistant Proof
-
-公開名候補:
-- `meeting-prep-assistant-proof`
-- `meeting-brief-assistant-proof`
+### 1. B2B掲載構成の整理
 
 概要:
-- sample agenda / participants / open questions / previous notes を会議前ブリーフに整理する。
-- 参加者への送信やカレンダー更新はしない。
-- 確認が必要な質問や送付物だけ confirmation queue へ入れる。
+- 6本すべてを本番UIに並べるか、代表3本に絞るかを決める。
+- 各proofの短縮コピーを同じトーンへ揃える。
+- UI実装前に、掲載セクションの情報設計だけをdocsで固める。
 
 なぜ次候補として強いか:
-- 既存5本と並べた時に、AI秘書の用途が「会議前準備」まで広がる。
-- B2Bで「会議前に論点・未確認事項・送付前確認を整理する型」として説明しやすい。
-- 外部送信やカレンダー更新をconfirmation queueへ分離すれば、安全境界を維持しやすい。
+- 公開repoを増やす段階から、見せ方を整える段階に移れる。
+- B2B本番UIを直接触らずに進められる。
+- 代表proofを選ぶことで、掲載時の情報過多を避けられる。
+
+ガード:
+- 本番UI・CTA・レイアウト変更はまだ行わない。
+- desktop / mobile / production URLで目視確認できるタイミングまでUI反映は分離する。
+
+### 2. proof群の横断README / index作成
+
+概要:
+- 6本のrepoリンク、役割、安全境界、確認キューの違いを1枚にまとめる。
+- portfolio側docsとして作るか、専用のproof index repoにするかは別判断にする。
+
+良い点:
+- 6本の成果を一つの説明資産にまとめやすい。
+- B2B掲載文案や提案資料に転用できる。
 
 懸念:
-- previous notes がprivate knowledge-base依存に見えやすい。
-- 個人固有の会議運用に寄ると公開proofとして弱くなる。
-- sample notes を使う場合は、実会議ログ風にしすぎない。
+- 新規repo化より、編集・構成判断が中心になる。
+- UI掲載と混同しないよう、docs段階に留める必要がある。
 
 ## 結論
 
-次に着手するなら `Meeting Prep Assistant Proof` が最適。
+次に着手するなら `B2B掲載構成の整理` が最適。
 
 理由:
-- 既存5本で意思決定・メール・問い合わせ・予定・リマインダーは揃ったため、次は会議準備が自然な拡張になる。
-- sample agenda と sample open questions だけで成立し、実会議ログや実参加者情報を使わずに公開proof化できる。
-- B2Bでは会議前準備の抜け漏れ防止として説明しやすい。
+- 新規proofは6本揃い、これ以上増やすより見せ方の設計に移る方が効果が高い。
+- 代表proofの選定、短縮コピーの統一、掲載順の整理は、UIを触らず今すぐ進められる。
+- B2B本番UI反映前の判断材料として使える。
 
 ## 次の実装一手
 
-1. public repo名は第一候補を `meeting-prep-assistant-proof`、代替候補を `meeting-brief-assistant-proof` として決める。
-2. sample meetings を5件前後作る。
-3. 出力カテゴリを `ready`, `needs_agenda`, `needs_context`, `needs_confirmation`, `send_later` にする。
-4. 参加者への送付・カレンダー更新が必要なものは confirmation queue に入れる。
-5. README / privacy-boundary / public-export-checklist / showcase-copy / public boundary check / pytest CI を既存5repoの型で作る。
-
-## B2B掲載前ガード
-
-- 初期repo完成後、`v0.1.0` releaseを作る。
-- topics は `ai-secretary`, `public-proof`, `showcase-proof`, `human-in-the-loop`, `confirmation-queue`, `python` を基本にする。
-- B2B本番UIへはすぐ載せず、まずcopy draftだけ作る。
-- UI反映は、desktop / mobile / production URLで目視確認できるタイミングに分離する。
+1. `b2b/public-ai-secretary-proof-section-plan-2026-05-08.md` を作る。
+2. 6本全掲載案と代表3本案を比較する。
+3. 推奨掲載順、カードタイトル、3文コピー、リンク方針を整理する。
+4. UI反映は別タスクとして残す。
