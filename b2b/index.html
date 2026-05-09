@@ -384,12 +384,16 @@
     }
     .nav-links a:hover { color: var(--navy); }
     .nav-cta {
-      background: var(--navy);
-      color: var(--white) !important;
-      padding: 0.45rem 1.1rem;
+      color: var(--navy) !important;
+      padding: 0.42rem 0.9rem;
       border-radius: 2px;
+      border: 1px solid rgba(27,42,74,0.18);
+      background: rgba(255,255,255,0.45);
     }
-    .nav-cta:hover { background: var(--navy-light) !important; }
+    .nav-cta:hover {
+      background: rgba(27,42,74,0.06) !important;
+      border-color: rgba(27,42,74,0.32);
+    }
 
     /* ===== HAMBURGER ===== */
     .hamburger {
@@ -661,7 +665,7 @@
     .service-choice-cta {
       margin-top: 2.4rem;
       border: 1px solid var(--border);
-      background: var(--white);
+      background: rgba(255,255,255,0.72);
       padding: 1.35rem 1.45rem;
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
@@ -691,6 +695,16 @@
     }
     .service-choice-actions .btn-primary,
     .service-choice-actions .btn-secondary { white-space: nowrap; }
+    .service-choice-actions .btn-primary {
+      background: transparent;
+      color: var(--navy);
+      border: 1px solid rgba(27,42,74,0.16);
+      padding: 0.7rem 1.1rem;
+    }
+    .service-choice-actions .btn-primary:hover {
+      background: rgba(27,42,74,0.05);
+      transform: none;
+    }
     .service-choice-actions .btn-secondary {
       border-bottom: 1px solid var(--border);
       padding-bottom: 0.18rem;
@@ -829,6 +843,21 @@
     .price-items li { color: var(--muted); }
     .price-card.featured .price-items li { color: rgba(255,255,255,0.65); }
     .price-items li::before { content: '— '; color: var(--gold); }
+    .price-note-after {
+      margin-top: 1.35rem;
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.8;
+    }
+    .price-note-after a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(184,151,108,0.4);
+    }
+    .price-note-after a:hover {
+      color: var(--navy);
+      border-color: var(--navy);
+    }
 
     /* ===== FAQ ===== */
     #faq { background: var(--bg-section); }
@@ -983,21 +1012,27 @@
       letter-spacing: 0.03em;
     }
 
-    /* ===== WORKS → CTA橋渡し ===== */
-    .works-cta {
-      background: var(--navy);
-      padding: 3rem 5%; text-align: center;
+    /* ===== SOFT CTA ===== */
+    .works-cta,
+    .soft-cta {
+      background: #F6F3ED;
+      border-block: 1px solid var(--border);
+      padding: 2.2rem 5%;
+      text-align: center;
     }
-    .works-cta p {
-      color: rgba(255,255,255,0.75);
-      font-size: 0.95rem; margin-bottom: 1.4rem;
+    .works-cta p,
+    .soft-cta p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 0;
       line-height: 1.8;
     }
-    /* 紺背景の上ではゴールドボタンに */
-    .works-cta .btn-primary {
-      background: var(--gold); color: var(--white);
+    .soft-cta-link {
+      color: var(--navy);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(27,42,74,0.22);
     }
-    .works-cta .btn-primary:hover { background: #a07b55; }
+    .soft-cta-link:hover { border-color: var(--navy); }
 
     /* ===== FOOTER ===== */
     footer {
@@ -1117,7 +1152,7 @@
     <li><a href="#price">料金目安</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="blog.html">技術ブログ</a></li>
-    <li><a href="#contact" class="nav-cta">相談する</a></li>
+    <li><a href="#contact" class="nav-cta">問い合わせ</a></li>
   </ul>
   <button class="hamburger" onclick="toggleNav()" aria-label="メニュー">
     <span></span><span></span><span></span>
@@ -1130,7 +1165,7 @@
   <li><a href="#price" onclick="closeNav()">料金目安</a></li>
   <li><a href="#faq" onclick="closeNav()">FAQ</a></li>
   <li><a href="blog.html" onclick="closeNav()">技術ブログ</a></li>
-  <li><a href="#contact" class="nav-cta" onclick="closeNav()">相談する</a></li>
+  <li><a href="#contact" class="nav-cta" onclick="closeNav()">問い合わせ</a></li>
 </ul>
 
 <main id="main-content">
@@ -1295,8 +1330,8 @@
   <div class="service-choice-cta reveal">
     <p class="service-choice-copy"><strong>どのサービスに近いかわからない場合</strong>今の作業メモや画面のスクリーンショットだけでも大丈夫です。近い進め方と費用感をこちらで整理します。</p>
     <div class="service-choice-actions">
-      <a href="#contact" class="btn-primary" data-consult-topic="サービス選定の相談">まず相談する</a>
       <a href="#price" class="btn-secondary">料金目安を見る</a>
+      <a href="#contact" class="btn-primary" data-consult-topic="サービス選定の相談">フォームへ進む</a>
     </div>
   </div>
 </section>
@@ -1415,9 +1450,8 @@
 </section>
 
 <!-- WORKS → CTA橋渡し -->
-<div class="works-cta">
-  <p class="reveal">「うちにも使えるかも」と思ったら、まずは困っている作業を1つだけお知らせください。<br>相談・お見積りまでは費用は一切かかりません。</p>
-  <a href="#contact" class="btn-primary reveal" data-consult-topic="困りごとの相談">困りごとを相談する</a>
+<div class="soft-cta">
+  <p class="reveal">気になる例があれば、ページ下部のフォームで作業内容を1つだけ送れます。<br><a href="#contact" class="soft-cta-link" data-consult-topic="困りごとの相談">問い合わせフォームへ</a></p>
 </div>
 
 <!-- FLOW -->
@@ -1472,7 +1506,6 @@
         <li>既存システムの軽微な改修</li>
         <li>LINE Bot（シンプル応答）</li>
       </ul>
-      <a href="#contact" class="price-link" data-consult-topic="料金プランの相談">この範囲で相談する →</a>
     </div>
     <div class="price-card featured reveal">
       <p class="price-name">STANDARD</p>
@@ -1484,7 +1517,6 @@
         <li>業務自動化（中規模）</li>
         <li>問い合わせ支援ツール開発</li>
       </ul>
-      <a href="#contact" class="price-link" data-consult-topic="料金プランの相談">この範囲で相談する →</a>
     </div>
     <div class="price-card reveal">
       <p class="price-name">ADVANCED</p>
@@ -1496,16 +1528,10 @@
         <li>複数システムの連携・統合</li>
         <li>データ基盤・分析ダッシュボード</li>
       </ul>
-      <a href="#contact" class="price-link" data-consult-topic="料金プランの相談">この範囲で相談する →</a>
     </div>
   </div>
+  <p class="price-note-after reveal">料金はあくまで目安です。具体的な範囲は、<a href="#contact" data-consult-topic="費用感の相談">問い合わせフォーム</a>で確認できます。</p>
 </section>
-
-<!-- PRICE → CTA橋渡し -->
-<div class="works-cta">
-  <p class="reveal">料金はあくまで目安です。ご要望に合わせて最適なプランをお見積りいたします。</p>
-  <a href="#contact" class="btn-primary reveal" data-consult-topic="費用感の相談">費用感を相談する</a>
-</div>
 
 <!-- FAQ -->
 <section id="faq">
