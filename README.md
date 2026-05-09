@@ -68,13 +68,16 @@ Web制作スキルを示すポートフォリオサイト群。AI/MLプロジェ
 - DNS: Cloudflare NS（`elma.ns.cloudflare.com`, `eugene.ns.cloudflare.com`）
 - Build command: `node scripts/build_b2b_cloudflare.js`
 - Output directory: `dist/b2b`
+- Build system: Cloudflare Pages `Version 3`
+- Effective Node.js: Cloudflare Pages v3 default `22.16.0`
+- Package manager: not used for this repo build（no `package.json` / lockfile / package manager config）
 - Local source: `b2b/`
 
 ```bash
 node scripts/build_b2b_cloudflare.js
 ```
 
-Node.js version / package manager は dashboard上で明示確認できていない。運用上必要になった場合のみ Cloudflare Dashboard read-only、または `CLOUDFLARE_API_TOKEN` を設定した上で:
+Build system / env vars / package files が変わった場合のみ Cloudflare Dashboard read-only、または `CLOUDFLARE_API_TOKEN` を設定した上で:
 
 ```bash
 npx wrangler pages project list

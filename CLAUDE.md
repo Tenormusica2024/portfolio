@@ -44,7 +44,9 @@
 - Dashboard側 output directory: `dist/b2b`
 - Custom domains: `ezlize.com` / `www.ezlize.com` は dashboard上で active / SSL enabled
 - Environment variables / bindings: dashboardで見える範囲では variable rows なし。secret値は読んでいない・記録していない
-- Node.js version / package manager はdashboard上で明示確認できなかったため、必要になった場合のみread-onlyで追加確認する
+- Cloudflare Pages build system: `Version 3`
+- Effective Node.js: Cloudflare Pages v3 build image default `22.16.0`
+- Package manager: このrepo buildでは未使用（`package.json` / lockfile / package manager configなし。build commandはNode built-inのみで実行）
 - 旧Vercelプロジェクト/設定は残っているため、Vercel前提の記述や障害切り分けは legacy/fallback として扱い、現在の公開経路を決め打ちしないこと
 
 **Cloudflare Pages verified B2B build:**
@@ -56,7 +58,7 @@ node scripts/build_b2b_cloudflare.js
 - Dashboard output directory: `dist/b2b`
 - Dashboard project: `ezlize-b2b`
 - Dashboard production branch: `main`
-- 追加確認方法: Cloudflare Dashboard read-only、または `CLOUDFLARE_API_TOKEN` 設定後に `npx wrangler pages project list`
+- 追加確認方法: build system / env vars / package files が変わった場合のみ Cloudflare Dashboard read-only、または `CLOUDFLARE_API_TOKEN` 設定後に `npx wrangler pages project list`
 - API token なしで公開面だけ確認する場合: `node scripts/check_b2b_cloudflare_public.js`
   - Cloudflare NS
   - 主要5ページの HTTP 200
