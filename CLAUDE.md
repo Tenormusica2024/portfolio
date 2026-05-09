@@ -3,7 +3,7 @@
 ## サイト概要
 - **ブランド**: Urayaha Days（C2C・個人向けポートフォリオ）
 - **URL**: https://tenormusica2024.github.io/portfolio/
-- **B2Bサイト**: Ezlize（`b2b/` ディレクトリ。公開面はCloudflare配信を確認済み。Cloudflare Pagesのproject/branch/build settingsはdashboard未確認。Vercel設定はlegacy/fallbackとして残存）
+- **B2Bサイト**: Ezlize（`b2b/` ディレクトリ。Cloudflare Pages project `ezlize-b2b` / repo `Tenormusica2024/portfolio` / production branch `main` / build command `node scripts/build_b2b_cloudflare.js` / output `dist/b2b` を2026-05-09にdashboard read-only確認済み。Vercel設定はlegacy/fallbackとして残存）
 - **B2B URL**: https://ezlize.com/
 
 ## C2C方針（必須）
@@ -35,23 +35,28 @@
 
 ## B2B デプロイ構成と ezlize.com 防御
 
-**2026-04-30 現状確認:**
+**2026-05-09 現状確認:**
 - `ezlize.com` / `www.ezlize.com` のNSは Cloudflare（`elma.ns.cloudflare.com`, `eugene.ns.cloudflare.com`）
 - HTTPSレスポンスは `Server: cloudflare` で、主要B2Bページは 200 を返す
 - `scripts/build_b2b_cloudflare.js` で `b2b/` を `dist/b2b` へ静的出力する構成が追加済み
-- Cloudflare Pages の project名・production branch はローカルだけでは未確定。`wrangler` は利用可能だが、2026-04-30時点の非対話実行では `CLOUDFLARE_API_TOKEN` 未設定のため project list は取得不可
-- 2026-05-08のdashboard確認試行では、CiC / Claude in Chromeが未接続のため dashboard 項目は `needs-verification` のまま
+- Cloudflare Pages dashboard read-only確認済み: project `ezlize-b2b`, connected repo `Tenormusica2024/portfolio`, production branch `main`
+- Dashboard側 build command: `node scripts/build_b2b_cloudflare.js`
+- Dashboard側 output directory: `dist/b2b`
+- Custom domains: `ezlize.com` / `www.ezlize.com` は dashboard上で active / SSL enabled
+- Environment variables / bindings: dashboardで見える範囲では variable rows なし。secret値は読んでいない・記録していない
+- Node.js version / package manager はdashboard上で明示確認できなかったため、必要になった場合のみread-onlyで追加確認する
 - 旧Vercelプロジェクト/設定は残っているため、Vercel前提の記述や障害切り分けは legacy/fallback として扱い、現在の公開経路を決め打ちしないこと
 
-**Cloudflare配信用のB2B build候補:**
+**Cloudflare Pages verified B2B build:**
 ```bash
 node scripts/build_b2b_cloudflare.js
 ```
 
 - Local source: `b2b/`
-- Local output candidate: `dist/b2b`
-- 確認できていない項目: Cloudflare Pages project名 / production branch / Dashboard側のBuild command
-- 確認方法: Cloudflare Dashboard、または `CLOUDFLARE_API_TOKEN` 設定後に `npx wrangler pages project list`
+- Dashboard output directory: `dist/b2b`
+- Dashboard project: `ezlize-b2b`
+- Dashboard production branch: `main`
+- 追加確認方法: Cloudflare Dashboard read-only、または `CLOUDFLARE_API_TOKEN` 設定後に `npx wrangler pages project list`
 - API token なしで公開面だけ確認する場合: `node scripts/check_b2b_cloudflare_public.js`
   - Cloudflare NS
   - 主要5ページの HTTP 200
@@ -60,13 +65,13 @@ node scripts/build_b2b_cloudflare.js
 
 **リポジトリ構成:**
 - ルート `/` → C2C ポートフォリオ（GitHub Pages: tenormusica2024.github.io/portfolio/）
-- `b2b/` → B2B ポートフォリオ（ezlize.com。公開面はCloudflare配信確認済み、Pages dashboard設定は未確認）
+- `b2b/` → B2B ポートフォリオ（ezlize.com。Cloudflare Pages `ezlize-b2b` / `main` / `dist/b2b` をdashboard確認済み）
 - `corporate/` → コーポレートサイト（デプロイ先別途）
 - その他 `beauty-salon/`, `clinic/`, `designer-portfolio/` → 各デモサイト
 
 **Legacy / fallback Vercelプロジェクト `urayahadays-b2b`:**
 
-以下は旧Vercel運用の再発防止メモ。2026-05-08時点では、Ezlizeの公開面はCloudflare配信を確認済み。Cloudflare Pages dashboard項目は未確認のため、Vercel設定を現行公開経路として扱わない。
+以下は旧Vercel運用の再発防止メモ。2026-05-09時点では、Ezlizeの現行公開経路は Cloudflare Pages project `ezlize-b2b` としてdashboard確認済み。Vercel設定を現行公開経路として扱わない。
 
 - Root Directory: `b2b`（ダッシュボード Build & Deployment で設定）
 - GitHub連携: `Tenormusica2024/portfolio` リポジトリの `main` ブランチ

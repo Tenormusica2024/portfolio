@@ -7,7 +7,7 @@ Web制作スキルを示すポートフォリオサイト群。AI/MLプロジェ
 | Site | URL | Hosting |
 |------|-----|---------|
 | Main Portfolio (C2C) | https://tenormusica2024.github.io/portfolio/ | GitHub Pages |
-| B2B Business Site (Ezlize) | https://ezlize.com/ | Cloudflare-served; Pages dashboard settings unverified |
+| B2B Business Site (Ezlize) | https://ezlize.com/ | Cloudflare Pages (`ezlize-b2b`, branch `main`) |
 | Beauty Salon Demo | https://beauty-salon-lumiere.vercel.app/ | Vercel |
 | Clinic Demo | https://clinic-peach-seven.vercel.app/ | Vercel |
 | Designer Portfolio | https://designer-portfolio-plum.vercel.app/ | Vercel |
@@ -47,8 +47,8 @@ Web制作スキルを示すポートフォリオサイト群。AI/MLプロジェ
 
 ## Tech Stack
 
-- Static HTML/CSS/JS (no build step)
-- GitHub Pages / Vercel hosting
+- Static HTML/CSS/JS
+- GitHub Pages / Cloudflare Pages / Vercel hosting
 - EmailJS (contact form) / Formspree (B2B, Corporate forms)
 - GA4 with cross-domain linker
 - JSON-LD structured data (Schema.org)
@@ -57,28 +57,30 @@ Web制作スキルを示すポートフォリオサイト群。AI/MLプロジェ
 
 ## Deployment
 
-### B2B / Ezlize (Cloudflare-served public surface)
+### B2B / Ezlize (Cloudflare Pages)
 
-2026-05-08時点では、`ezlize.com` は Cloudflare 経由で配信されている。Cloudflare Pages の project名・production branch・dashboard側build settings は未確認。
+2026-05-09時点では、`ezlize.com` は Cloudflare Pages project `ezlize-b2b` で配信されている。Dashboard read-only確認済み。secret値は読んでいない・記録していない。
 
 - Production URL: `https://ezlize.com/`
+- Cloudflare Pages project: `ezlize-b2b`
+- Connected repo: `Tenormusica2024/portfolio`
+- Production branch: `main`
 - DNS: Cloudflare NS（`elma.ns.cloudflare.com`, `eugene.ns.cloudflare.com`）
-- Local build candidate: `node scripts/build_b2b_cloudflare.js`
-- Local output candidate: `dist/b2b`
+- Build command: `node scripts/build_b2b_cloudflare.js`
+- Output directory: `dist/b2b`
 - Local source: `b2b/`
 
 ```bash
 node scripts/build_b2b_cloudflare.js
 ```
 
-Cloudflare Pages の project名・production branch・dashboard側build command/output directory はローカルだけでは未確定。
-確認する場合は Cloudflare Dashboard、または `CLOUDFLARE_API_TOKEN` を設定した上で:
+Node.js version / package manager は dashboard上で明示確認できていない。運用上必要になった場合のみ Cloudflare Dashboard read-only、または `CLOUDFLARE_API_TOKEN` を設定した上で:
 
 ```bash
 npx wrangler pages project list
 ```
 
-を実行する。
+を実行して追加確認する。
 
 API token なしで公開面だけ確認する場合は:
 
@@ -88,7 +90,7 @@ node scripts/check_b2b_cloudflare_public.js
 
 このチェックは `ezlize.com` のCloudflare NS、主要5ページのHTTP 200、`Server: cloudflare`、各ページのcanonical WebP参照を確認する。
 
-旧Vercel設定（`b2b/vercel.json`, `b2b/.vercel/`）は legacy/fallback として残っている。Ezlizeの現行公開経路を判断するときは、古いVercel前提の記述ではなく DNS / HTTP header / Cloudflare配信用build scriptを優先して確認する。ただし、Cloudflare Pages dashboard確認ログが残るまでは Pages project / branch / build settings を断定しない。
+旧Vercel設定（`b2b/vercel.json`, `b2b/.vercel/`）は legacy/fallback として残っている。Ezlizeの現行公開経路を判断するときは、古いVercel前提の記述ではなく Cloudflare Pages dashboard確認ログ、DNS / HTTP header / Cloudflare配信用build scriptを優先して確認する。
 
 B2B以外のVercelサブプロジェクトはリポジトリ連携なし。手動デプロイ:（リポジトリルートで実行）
 
