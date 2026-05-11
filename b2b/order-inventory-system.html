@@ -7,6 +7,32 @@
     (function() {
       var productionHosts = ['ezlize.com', 'www.ezlize.com'];
       if (!productionHosts.includes(window.location.hostname)) return;
+
+      var optOutKey = 'ezlize_ga_opt_out';
+      var params = new URLSearchParams(window.location.search);
+      var enableKeys = ['ga_on', 'analytics_on'];
+      var disableKeys = ['ga_off', 'analytics_off', 'internal_preview', 'preview', 'no_ga'];
+      var shouldEnable = enableKeys.some(function(key) { return params.has(key); });
+      var shouldDisable = disableKeys.some(function(key) { return params.has(key); });
+
+      try {
+        if (shouldEnable) window.localStorage.removeItem(optOutKey);
+        if (shouldDisable) window.localStorage.setItem(optOutKey, '1');
+      } catch (e) {}
+
+      var isOptedOut = false;
+      try { isOptedOut = window.localStorage.getItem(optOutKey) === '1'; } catch (e) {}
+
+      var referrer = document.referrer || '';
+      var userAgent = navigator.userAgent || '';
+      var isAutomation = navigator.webdriver === true || /HeadlessChrome|Playwright|Puppeteer|Cypress|Selenium/i.test(userAgent);
+      var isLocalPreviewReferrer = /^https?:\/\/(localhost|127\.0\.0\.1|0\.0\.0\.0)(:\d+)?\//.test(referrer) || referrer.indexOf('file://') === 0;
+
+      if (isOptedOut || isAutomation || isLocalPreviewReferrer) {
+        window.ezlizeAnalyticsSuppressed = true;
+        return;
+      }
+
       var script = document.createElement('script');
       script.async = true;
       script.src = 'https://www.googletagmanager.com/gtag/js?id=G-YJ1WP1J2NQ';
