@@ -1,5 +1,5 @@
 {
-  "collected_at": "2026-05-11T14:47:51.625455",
+  "collected_at": "2026-05-11T14:50:48.569419",
   "period": {
     "start_date": "2026-04-11",
     "end_date": "2026-05-11"
@@ -41393,6 +41393,43 @@
         "date": "2026-05-09",
         "page_path": "/",
         "event_name": "generate_lead",
+        "event_count": 1
+      }
+    ]
+  },
+  "lead_attribution": {
+    "summary": {
+      "total_events": 1,
+      "source_medium": [
+        {
+          "source_medium": "(direct) / (none)",
+          "event_count": 1
+        }
+      ],
+      "campaigns": [
+        {
+          "campaign": "(direct)",
+          "event_count": 1
+        }
+      ],
+      "referrers": [
+        {
+          "referrer": "(empty)",
+          "event_count": 1
+        }
+      ]
+    },
+    "rows": [
+      {
+        "date": "2026-05-09",
+        "page_path": "/",
+        "landing_page": "/",
+        "event_name": "generate_lead",
+        "session_source": "(direct)",
+        "session_medium": "(none)",
+        "session_campaign": "(direct)",
+        "session_content": "(not set)",
+        "page_referrer": "",
         "event_count": 1
       }
     ]
