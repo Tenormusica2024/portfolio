@@ -158,6 +158,32 @@ class GA4DataCollector:
 
         response = self.client.run_report(request)
         return response
+
+    def get_traffic_attribution_report(self, start_date: str, end_date: str):
+        """B2B流入経路をUTM単位で確認するためのセッション流入レポートを取得"""
+        request = RunReportRequest(
+            property=f"properties/{self.property_id}",
+            dimensions=[
+                Dimension(name="date"),
+                Dimension(name="landingPage"),
+                Dimension(name="pagePath"),
+                Dimension(name="pageTitle"),
+                Dimension(name="sessionSource"),
+                Dimension(name="sessionMedium"),
+                Dimension(name="sessionCampaignName"),
+                Dimension(name="sessionManualAdContent"),
+                Dimension(name="pageReferrer"),
+            ],
+            metrics=[
+                Metric(name="activeUsers"),
+                Metric(name="sessions"),
+                Metric(name="screenPageViews"),
+            ],
+            date_ranges=[DateRange(start_date=start_date, end_date=end_date)],
+        )
+
+        response = self.client.run_report(request)
+        return response
     
     def parse_response(self, response):
         """レスポンスをパース"""
@@ -452,8 +478,87 @@ class GA4DataCollector:
             },
             'rows': sorted(rows, key=lambda item: (item['date'], item['event_count']), reverse=True),
         }
+
+    def parse_traffic_attribution_response(self, response):
+        """UTM / referrer ベースのB2B流入経路を整形する。"""
+        rows = []
+        by_source_medium = {}
+        by_campaign = {}
+        by_referrer = {}
+
+        def is_b2b_row(page_path: str, page_title: str, page_referrer: str, landing_page: str) -> bool:
+            return (
+                'Ezlize' in page_title
+                or 'ezlize.com' in page_referrer
+                or 'urayahadays-b2b.vercel.app' in page_referrer
+                or (landing_page in ('/', '/index.html') and 'Ezlize' in page_title)
+            )
+
+        def add_bucket(bucket, key, entry):
+            if key not in bucket:
+                bucket[key] = {'active_users': 0, 'sessions': 0, 'page_views': 0}
+            bucket[key]['active_users'] += entry['active_users']
+            bucket[key]['sessions'] += entry['sessions']
+            bucket[key]['page_views'] += entry['page_views']
+
+        for row in response.rows:
+            raw_date = row.dimension_values[0].value
+            date_key = f"{raw_date[:4]}-{raw_date[4:6]}-{raw_date[6:8]}" if len(raw_date) == 8 else raw_date
+            landing_page = row.dimension_values[1].value
+            page_path = row.dimension_values[2].value
+            page_title = row.dimension_values[3].value
+            session_source = row.dimension_values[4].value
+            session_medium = row.dimension_values[5].value
+            session_campaign = row.dimension_values[6].value
+            session_content = row.dimension_values[7].value
+            page_referrer = row.dimension_values[8].value
+
+            if not is_b2b_row(page_path, page_title, page_referrer, landing_page):
+                continue
+
+            entry = {
+                'date': date_key,
+                'landing_page': landing_page,
+                'page_path': page_path,
+                'page_title': page_title,
+                'session_source': session_source,
+                'session_medium': session_medium,
+                'session_campaign': session_campaign,
+                'session_content': session_content,
+                'page_referrer': page_referrer,
+                'active_users': int(row.metric_values[0].value),
+                'sessions': int(row.metric_values[1].value),
+                'page_views': int(row.metric_values[2].value),
+            }
+            rows.append(entry)
+
+            source_medium = f"{session_source} / {session_medium}"
+            add_bucket(by_source_medium, source_medium, entry)
+            add_bucket(by_campaign, session_campaign or '(not set)', entry)
+            add_bucket(by_referrer, page_referrer or '(empty)', entry)
+
+        return {
+            'summary': {
+                'total_active_users': sum(item['active_users'] for item in by_source_medium.values()),
+                'total_sessions': sum(item['sessions'] for item in by_source_medium.values()),
+                'total_page_views': sum(item['page_views'] for item in by_source_medium.values()),
+                'source_medium': [
+                    {'source_medium': name, **stats}
+                    for name, stats in sorted(by_source_medium.items(), key=lambda item: item[1]['sessions'], reverse=True)
+                ],
+                'campaigns': [
+                    {'campaign': name, **stats}
+                    for name, stats in sorted(by_campaign.items(), key=lambda item: item[1]['sessions'], reverse=True)
+                ],
+                'referrers': [
+                    {'referrer': name, **stats}
+                    for name, stats in sorted(by_referrer.items(), key=lambda item: item[1]['sessions'], reverse=True)
+                ][:30],
+            },
+            'rows': sorted(rows, key=lambda item: (item['date'], item['sessions']), reverse=True),
+        }
     
-    def save_data(self, data, summary, project_clicks, project_page_views, page_performance, device_browser, site_comparison_daily, data_filter_testing, lead_events, start_date, end_date):
+    def save_data(self, data, summary, project_clicks, project_page_views, page_performance, device_browser, site_comparison_daily, data_filter_testing, lead_events, traffic_attribution, start_date, end_date):
         """データを保存"""
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         
@@ -472,6 +577,7 @@ class GA4DataCollector:
             'site_comparison_daily': site_comparison_daily,
             'data_filter_testing': data_filter_testing,
             'lead_events': lead_events,
+            'traffic_attribution': traffic_attribution,
         }
         
         json_file = self.output_dir / f"ga4_data_{timestamp}.json"
@@ -619,8 +725,35 @@ class GA4DataCollector:
             lead_events_response = self.get_lead_events_report(start_str, end_str)
             lead_events = self.parse_lead_events_response(lead_events_response)
             self.log_message(f"問い合わせ完了イベント: {lead_events['summary']['total_events']} 件")
+
+            # UTM / referrer つきB2B流入経路を取得
+            self.log_message("B2B流入経路レポートを取得中...")
+            try:
+                traffic_attribution_response = self.get_traffic_attribution_report(start_str, end_str)
+                traffic_attribution = self.parse_traffic_attribution_response(traffic_attribution_response)
+                self.log_message(
+                    f"B2B流入経路: sessions={traffic_attribution['summary']['total_sessions']}, "
+                    f"campaigns={len(traffic_attribution['summary']['campaigns'])}"
+                )
+            except Exception as e:
+                self.log_message(
+                    f"B2B流入経路レポートの取得をスキップ: {type(e).__name__}: {str(e)}",
+                    "WARNING"
+                )
+                traffic_attribution = {
+                    'summary': {
+                        'total_active_users': 0,
+                        'total_sessions': 0,
+                        'total_page_views': 0,
+                        'source_medium': [],
+                        'campaigns': [],
+                        'referrers': [],
+                    },
+                    'rows': [],
+                    'error': f"{type(e).__name__}: {str(e)}",
+                }
             
-            output_file = self.save_data(data, summary, project_clicks, project_page_views_list, page_performance, device_browser, site_comparison_daily, data_filter_testing, lead_events, start_str, end_str)
+            output_file = self.save_data(data, summary, project_clicks, project_page_views_list, page_performance, device_browser, site_comparison_daily, data_filter_testing, lead_events, traffic_attribution, start_str, end_str)
             
             self.log_message("データ収集完了")
             
