@@ -411,14 +411,11 @@
     .nav-links a:hover { color: var(--navy); }
     .nav-cta {
       color: var(--navy) !important;
-      padding: 0.42rem 0.9rem;
-      border-radius: 2px;
-      border: 1px solid rgba(27,42,74,0.18);
-      background: rgba(255,255,255,0.45);
+      padding-bottom: 0.18rem;
+      border-bottom: 1px solid rgba(27,42,74,0.18);
     }
     .nav-cta:hover {
-      background: rgba(27,42,74,0.06) !important;
-      border-color: rgba(27,42,74,0.32);
+      border-color: rgba(27,42,74,0.42);
     }
 
     /* ===== HAMBURGER ===== */
@@ -454,7 +451,7 @@
       font-weight: 500;
     }
     .mobile-nav .nav-cta {
-      margin-top: 0.5rem; padding: 0.65rem 1.6rem;
+      margin-top: 0.5rem; padding: 0 0 0.2rem;
       font-size: 0.9rem;
     }
 
@@ -537,6 +534,16 @@
       transition: background 0.2s, transform 0.2s;
     }
     .btn-primary:hover { background: var(--navy-light); transform: translateY(-1px); }
+    .btn-primary.is-soft {
+      background: transparent;
+      color: var(--navy);
+      border: 1px solid rgba(27,42,74,0.16);
+      padding: 0.7rem 1.1rem;
+    }
+    .btn-primary.is-soft:hover {
+      background: rgba(27,42,74,0.05);
+      transform: none;
+    }
     .btn-secondary {
       display: inline-flex; align-items: center; gap: 0.4rem;
       font-size: 0.875rem; color: var(--muted);
@@ -722,14 +729,7 @@
     .service-choice-actions .btn-primary,
     .service-choice-actions .btn-secondary { white-space: nowrap; }
     .service-choice-actions .btn-primary {
-      background: transparent;
-      color: var(--navy);
-      border: 1px solid rgba(27,42,74,0.16);
       padding: 0.7rem 1.1rem;
-    }
-    .service-choice-actions .btn-primary:hover {
-      background: rgba(27,42,74,0.05);
-      transform: none;
     }
     .service-choice-actions .btn-secondary {
       border-bottom: 1px solid var(--border);
@@ -1211,7 +1211,7 @@
       個人受託の費用感とスピードで、設計・実装・運用確認まで対応します。
     </p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary" data-consult-topic="費用感の相談">費用感を相談する</a>
+      <a href="#contact" class="btn-primary" data-consult-topic="費用感の相談">費用感を確認する</a>
       <a href="#works" class="btn-secondary">実績と料金を見る</a>
     </div>
     <div class="hero-stats">
@@ -1357,7 +1357,7 @@
     <p class="service-choice-copy"><strong>どのサービスに近いかわからない場合</strong>今の作業メモや画面のスクリーンショットだけでも大丈夫です。近い進め方と費用感をこちらで整理します。</p>
     <div class="service-choice-actions">
       <a href="#price" class="btn-secondary">料金目安を見る</a>
-      <a href="#contact" class="btn-primary" data-consult-topic="サービス選定の相談">フォームへ進む</a>
+      <a href="#contact" class="btn-primary is-soft" data-consult-topic="サービス選定の相談">作業メモから確認する</a>
     </div>
   </div>
 </section>
@@ -1477,7 +1477,7 @@
 
 <!-- WORKS → CTA橋渡し -->
 <div class="soft-cta">
-  <p class="reveal">気になる例があれば、ページ下部のフォームで作業内容を1つだけ送れます。<br><a href="#contact" class="soft-cta-link" data-consult-topic="困りごとの相談">問い合わせフォームへ</a></p>
+  <p class="reveal">気になる例があれば、無理に整理せず作業内容を1つだけ送れます。<br><a href="#contact" class="soft-cta-link" data-consult-topic="困りごとの相談">入力欄まで移動する</a></p>
 </div>
 
 <!-- FLOW -->
@@ -1556,7 +1556,7 @@
       </ul>
     </div>
   </div>
-  <p class="price-note-after reveal">料金はあくまで目安です。具体的な範囲は、<a href="#contact" data-consult-topic="費用感の相談">問い合わせフォーム</a>で確認できます。</p>
+  <p class="price-note-after reveal">料金はあくまで目安です。具体的な範囲は、<a href="#contact" data-consult-topic="費用感の相談">下の入力欄</a>で確認できます。</p>
 </section>
 
 <!-- FAQ -->
@@ -1606,8 +1606,8 @@
 <!-- CONTACT -->
 <section id="contact">
   <p class="section-label reveal">Contact</p>
-  <h2 class="section-title reveal">まずはご相談ください</h2>
-  <p class="section-subtitle reveal">まだ要件が固まっていなくても大丈夫です。フォームかメールで、困っている作業や直したい流れをわかる範囲でお送りください。電話番号は任意です。</p>
+  <h2 class="section-title reveal">作業内容のメモを送れます</h2>
+  <p class="section-subtitle reveal">まだ要件が固まっていなくても大丈夫です。フォームかメールで、困っている作業や直したい流れをわかる範囲で送れるようにしています。電話番号は任意です。</p>
   <div class="contact-grid">
     <div class="reveal">
       <p class="contact-name">幸田 晃典</p>
@@ -1673,7 +1673,7 @@
         <input id="cf-tel" name="tel" type="tel" class="form-input" placeholder="例：080-1234-5678（任意）">
       </div>
       <div class="form-group">
-        <label class="form-label" for="cf-message">ご相談内容</label>
+        <label class="form-label" for="cf-message">作業内容メモ</label>
         <textarea id="cf-message" name="message" class="form-textarea" placeholder="例：問い合わせメールの返信を楽にしたい / 見積作成の手間を減らしたい / どこまで自動化できるか相談したい" required aria-required="true"></textarea>
       </div>
       <input type="hidden" id="cf-topic" name="consultation_topic" value="">
@@ -1683,7 +1683,7 @@
       <p style="font-size:0.72rem; color:var(--muted); line-height:1.7;">
         送信をもって<a href="privacy.html" style="color:var(--gold)">プライバシーポリシー</a>に同意したものとみなします。
       </p>
-      <button type="submit" id="cf-submit" class="form-submit">送信する</button>
+      <button type="submit" id="cf-submit" class="form-submit">内容を送る</button>
       <div id="cf-result" role="status" aria-live="polite" style="display:none; margin-top:0.75rem; padding:0.75rem 1rem; border-radius:4px; font-size:0.88rem;"></div>
     </form>
   </div>
