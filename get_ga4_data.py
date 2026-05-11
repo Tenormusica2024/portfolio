@@ -159,6 +159,41 @@ class GA4DataCollector:
         response = self.client.run_report(request)
         return response
 
+    def get_lead_attribution_report(self, start_date: str, end_date: str):
+        """B2B問い合わせ完了イベントの流入元を取得"""
+        from google.analytics.data_v1beta.types import FilterExpression, Filter
+
+        request = RunReportRequest(
+            property=f"properties/{self.property_id}",
+            dimensions=[
+                Dimension(name="date"),
+                Dimension(name="pagePath"),
+                Dimension(name="landingPage"),
+                Dimension(name="eventName"),
+                Dimension(name="sessionSource"),
+                Dimension(name="sessionMedium"),
+                Dimension(name="sessionCampaignName"),
+                Dimension(name="sessionManualAdContent"),
+                Dimension(name="pageReferrer"),
+            ],
+            metrics=[
+                Metric(name="eventCount"),
+            ],
+            date_ranges=[DateRange(start_date=start_date, end_date=end_date)],
+            dimension_filter=FilterExpression(
+                filter=Filter(
+                    field_name="eventName",
+                    string_filter=Filter.StringFilter(
+                        match_type=Filter.StringFilter.MatchType.EXACT,
+                        value="generate_lead"
+                    )
+                )
+            )
+        )
+
+        response = self.client.run_report(request)
+        return response
+
     def get_traffic_attribution_report(self, start_date: str, end_date: str):
         """B2B流入経路をUTM単位で確認するためのセッション流入レポートを取得"""
         request = RunReportRequest(
@@ -479,6 +514,72 @@ class GA4DataCollector:
             'rows': sorted(rows, key=lambda item: (item['date'], item['event_count']), reverse=True),
         }
 
+    def parse_lead_attribution_response(self, response):
+        """問い合わせ完了イベントの流入元を整形する。"""
+        rows = []
+        total = 0
+        by_source_medium = {}
+        by_campaign = {}
+        by_referrer = {}
+
+        def add_bucket(bucket, key, event_count):
+            if key not in bucket:
+                bucket[key] = {'event_count': 0}
+            bucket[key]['event_count'] += event_count
+
+        for row in response.rows:
+            raw_date = row.dimension_values[0].value
+            date_key = f"{raw_date[:4]}-{raw_date[4:6]}-{raw_date[6:8]}" if len(raw_date) == 8 else raw_date
+            event_count = int(row.metric_values[0].value)
+            total += event_count
+
+            page_path = row.dimension_values[1].value
+            landing_page = row.dimension_values[2].value
+            event_name = row.dimension_values[3].value
+            session_source = row.dimension_values[4].value
+            session_medium = row.dimension_values[5].value
+            session_campaign = row.dimension_values[6].value
+            session_content = row.dimension_values[7].value
+            page_referrer = row.dimension_values[8].value
+
+            entry = {
+                'date': date_key,
+                'page_path': page_path,
+                'landing_page': landing_page,
+                'event_name': event_name,
+                'session_source': session_source,
+                'session_medium': session_medium,
+                'session_campaign': session_campaign,
+                'session_content': session_content,
+                'page_referrer': page_referrer,
+                'event_count': event_count,
+            }
+            rows.append(entry)
+
+            source_medium = f"{session_source} / {session_medium}"
+            add_bucket(by_source_medium, source_medium, event_count)
+            add_bucket(by_campaign, session_campaign or '(not set)', event_count)
+            add_bucket(by_referrer, page_referrer or '(empty)', event_count)
+
+        return {
+            'summary': {
+                'total_events': total,
+                'source_medium': [
+                    {'source_medium': name, **stats}
+                    for name, stats in sorted(by_source_medium.items(), key=lambda item: item[1]['event_count'], reverse=True)
+                ],
+                'campaigns': [
+                    {'campaign': name, **stats}
+                    for name, stats in sorted(by_campaign.items(), key=lambda item: item[1]['event_count'], reverse=True)
+                ],
+                'referrers': [
+                    {'referrer': name or '(empty)', **stats}
+                    for name, stats in sorted(by_referrer.items(), key=lambda item: item[1]['event_count'], reverse=True)
+                ],
+            },
+            'rows': sorted(rows, key=lambda item: (item['date'], item['event_count']), reverse=True),
+        }
+
     def parse_traffic_attribution_response(self, response):
         """UTM / referrer ベースのB2B流入経路を整形する。"""
         rows = []
@@ -558,7 +659,7 @@ class GA4DataCollector:
             'rows': sorted(rows, key=lambda item: (item['date'], item['sessions']), reverse=True),
         }
     
-    def save_data(self, data, summary, project_clicks, project_page_views, page_performance, device_browser, site_comparison_daily, data_filter_testing, lead_events, traffic_attribution, start_date, end_date):
+    def save_data(self, data, summary, project_clicks, project_page_views, page_performance, device_browser, site_comparison_daily, data_filter_testing, lead_events, lead_attribution, traffic_attribution, start_date, end_date):
         """データを保存"""
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         
@@ -577,6 +678,7 @@ class GA4DataCollector:
             'site_comparison_daily': site_comparison_daily,
             'data_filter_testing': data_filter_testing,
             'lead_events': lead_events,
+            'lead_attribution': lead_attribution,
             'traffic_attribution': traffic_attribution,
         }
         
@@ -726,6 +828,31 @@ class GA4DataCollector:
             lead_events = self.parse_lead_events_response(lead_events_response)
             self.log_message(f"問い合わせ完了イベント: {lead_events['summary']['total_events']} 件")
 
+            # B2B問い合わせ完了イベントの流入元を取得
+            self.log_message("B2B問い合わせ完了イベントの流入元を取得中...")
+            try:
+                lead_attribution_response = self.get_lead_attribution_report(start_str, end_str)
+                lead_attribution = self.parse_lead_attribution_response(lead_attribution_response)
+                self.log_message(
+                    f"問い合わせ流入元: events={lead_attribution['summary']['total_events']}, "
+                    f"sources={len(lead_attribution['summary']['source_medium'])}"
+                )
+            except Exception as e:
+                self.log_message(
+                    f"B2B問い合わせ流入元レポートの取得をスキップ: {type(e).__name__}: {str(e)}",
+                    "WARNING"
+                )
+                lead_attribution = {
+                    'summary': {
+                        'total_events': 0,
+                        'source_medium': [],
+                        'campaigns': [],
+                        'referrers': [],
+                    },
+                    'rows': [],
+                    'error': f"{type(e).__name__}: {str(e)}",
+                }
+
             # UTM / referrer つきB2B流入経路を取得
             self.log_message("B2B流入経路レポートを取得中...")
             try:
@@ -753,7 +880,7 @@ class GA4DataCollector:
                     'error': f"{type(e).__name__}: {str(e)}",
                 }
             
-            output_file = self.save_data(data, summary, project_clicks, project_page_views_list, page_performance, device_browser, site_comparison_daily, data_filter_testing, lead_events, traffic_attribution, start_str, end_str)
+            output_file = self.save_data(data, summary, project_clicks, project_page_views_list, page_performance, device_browser, site_comparison_daily, data_filter_testing, lead_events, lead_attribution, traffic_attribution, start_str, end_str)
             
             self.log_message("データ収集完了")
             
