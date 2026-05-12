@@ -1028,8 +1028,6 @@
                 project_asteroid_desc: "GPT-5プロンプトから生成された2Dスペースシューティングゲーム。リアルタイム物理エンジン、AI敵船、パーティクルエフェクトを実装。HTML5 Canvasによる60FPS描画。Cloud Runで配信。",
                 project_web_remote_title: "Web Remote Desktop",
                 project_web_remote_desc: "スマートフォンからPCのリアルタイム画面表示とテキスト入力ができるリモートデスクトップシステム。Cloud RunにデプロイしたFlaskバックエンド + WebSocketで低遅延ストリーミングを実現。スマホのブラウザから任意のテキストをPCにペーストできるClipboard Proxy機能搭載。外出先からPCを操作するユースケースに対応。",
-                project_llm_ide_title: "LLM統合開発環境",
-                project_llm_ide_desc: "Cursor IDE + Claude Code + GitHub Copilotを統合したAI駆動開発フロー構築。コード生成速度を従来比3倍に向上、デバッグ時間50%削減。MCP Serverによるツール拡張、Hookシステムによる自動化ワークフローに対応。",
                 project_claude_hooks_title: "Claude Code Hooks System",
                 project_claude_hooks_desc: "Claude CodeのStop/UserPromptSubmit hooksで、テスト丸投げ・根拠のない完了宣言・低シグナルなワークフロー逸脱を検出してblockする品質ガードレール。Windows + PowerShell環境に最適化し、テスト誘導・ドキュメント文脈注入・ローカル記録でAIコーディングの安全性と自律性を高める。",
                 project_review_pipeline_title: "Review Fix Pipeline",
@@ -1125,8 +1123,6 @@
                 project_asteroid_desc: "2D space shooting game generated from GPT-5 prompt. Implements real-time physics engine, AI enemy ships, and particle effects. 60FPS rendering via HTML5 Canvas. Deployed on Cloud Run.",
                 project_web_remote_title: "Web Remote Desktop",
                 project_web_remote_desc: "Real-time smartphone remote desktop system enabling live PC screen streaming and text input via mobile browser. Flask backend deployed on Cloud Run with WebSocket for low-latency streaming. Features Clipboard Proxy for pasting text from smartphone to PC. Designed for controlling your PC from anywhere.",
-                project_llm_ide_title: "LLM Integrated Development Environment",
-                project_llm_ide_desc: "Built AI-driven development flow integrating Cursor IDE + Claude Code + GitHub Copilot. Achieved 3x faster code generation and 50% reduced debugging time from baseline. Implemented automated workflow via MCP Server tool extensions and Hook system.",
                 project_claude_hooks_title: "Claude Code Hooks System",
                 project_claude_hooks_desc: "Quality guardrails for Claude Code Stop and UserPromptSubmit hooks. It blocks user-delegated testing, unsupported completion claims, and low-signal workflow slips, then routes Claude toward tests, documentation context, and local evidence. Optimized for Windows + PowerShell workflows where AI coding should stay autonomous but safe.",
                 project_review_pipeline_title: "Review Fix Pipeline",
@@ -1775,11 +1771,14 @@
                     <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
-                <div style="margin: 1rem 0;">
-                    <img src="https://tenormusica2024.github.io/portfolio/claude-hook-system.png" 
-                         alt="Claude Code Hook自動化システム" 
-                         style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
-                </div>
+                <img src="images/repo-heroes/claude-code-hook-automation-ja.webp"
+                     data-src-ja="images/repo-heroes/claude-code-hook-automation-ja.webp"
+                     data-src-en="images/repo-heroes/claude-code-hook-automation-en.webp"
+                     data-alt-ja="Claude Code Hook 自動化システム: Hook検知からIssue報告まで"
+                     data-alt-en="Claude Code Hook Automation System: hook detection to issue reporting"
+                     alt="Claude Code Hook 自動化システム: Hook検知からIssue報告まで"
+                     class="project-screenshot localized-project-image"
+                     loading="lazy">
                 <p class="project-description" data-i18n="project_claude_hook_desc">
                     Claude Code のイベント駆動型Hook機能を活用した完全自動GitHub Issue報告システム。
                     SessionEnd HookとToolResult Hookにより、タスク完了・ツール実行を自動検知し、
@@ -1805,6 +1804,14 @@
                     <span class="new-badge">NEW</span>
                     <span class="project-year">2026</span>
                 </div>
+                <img src="images/repo-heroes/claude-skills-scheduled-execution-ja.webp"
+                     data-src-ja="images/repo-heroes/claude-skills-scheduled-execution-ja.webp"
+                     data-src-en="images/repo-heroes/claude-skills-scheduled-execution-en.webp"
+                     data-alt-ja="Claude Skills Scheduled Execution: Claude Code Skillsを定期実行"
+                     data-alt-en="Claude Skills Scheduled Execution: schedule Claude Code Skills"
+                     alt="Claude Skills Scheduled Execution: Claude Code Skillsを定期実行"
+                     class="project-screenshot localized-project-image"
+                     loading="lazy">
                 <p class="project-description">
                     Claude Code SkillsをTask Scheduler（Windows）やcron（Mac/Linux）で定期実行するスターターキット。
                     Claude Pro/Maxサブスクリプションを活用し、追加API課金なしでAIエージェントを自動実行。
@@ -1888,24 +1895,6 @@
                        class="project-link"
                        target="_blank" rel="noopener noreferrer"
                        onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'Web_Remote', 'value': 1});">Repository</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title" data-i18n="project_llm_ide_title">LLM統合開発環境</h3>
-                    <span class="project-status">Development</span>
-                    <span class="project-year">2025</span>
-                </div>
-                <p class="project-description" data-i18n="project_llm_ide_desc">
-                    Cursor IDE、Claude Code、GitHub Copilotを活用したAI駆動開発環境の構築。
-                    効率的なコード生成、デバッグ、ドキュメント作成を可能にする統合ワークフロー。
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Cursor IDE</span>
-                    <span class="tech-tag">Claude Code</span>
-                    <span class="tech-tag">GitHub Copilot</span>
-                    <span class="tech-tag">WSL2</span>
                 </div>
             </div>
 
