@@ -1046,6 +1046,12 @@
                 project_x_bookmark_desc: "Xブックマークのエクスポート/抽出データを、ローカルで閲覧できる静的ギャラリーとAIエージェント投入用JSONに変換する知識パック生成ツール。公開版はサンプルデータと匿名化・sanitize前提で、個人データを出さずに再利用導線を示す。",
                 project_hf_insights_title: "Hugging Face Daily Insights API",
                 project_hf_insights_desc: "Hugging Faceモデル、arXiv AI/ML論文、LMArenaランキングを日次スナップショット化し、CSVリリース・静的ダッシュボード・APIで参照できるデータパイプライン。上流が保持しない履歴データを時系列で追えるようにする。",
+                project_meeting_prep_title: "Meeting Prep Assistant Proof",
+                project_meeting_prep_desc: "会議サンプルを準備状況で分類し、不足アジェンダ・確認事項・事前ブリーフを作るAI秘書proof。カレンダー更新や参加者送信は行わず、外部アクションは人間確認キューへ置くため、公開版でも安全境界を説明しやすい。",
+                project_support_ticket_title: "Support Ticket Triage Proof",
+                project_support_ticket_desc: "サンプルの問い合わせチケットを緊急度・返信要否・保留理由で分類し、返信下書きと人間確認キューを出力するAI秘書proof。外部チケットシステム更新や通知送信を行わないため、support intakeのHITL設計をpublic-safeに示せる。",
+                project_daily_decision_title: "Daily Decision Assistant Proof",
+                project_daily_decision_desc: "日次シグナルをスコアリングし、今日やる・保留・やらないに分けるAI秘書proof。メール、カレンダー、タスク管理ツールへ直接書き込まず、意思決定理由と確認キューを先に出すことで、自律実行前の安全な優先順位付けを示す。",
                 project_faq_system_title: "FAQデータベース検索システム",
                 project_faq_system_desc: "RAG技術によるFAQ検索システム。1000件超のFAQをOpenAI Embeddingsでベクトル化、平均回答時間を5分→30秒に短縮。FAISS + LangChainによる高速検索、利用者満足度90%。開発ナレッジをドキュメント化し現場展開。",
                 project_daily_automation_title: "デイリータスク自動化スイート",
@@ -1137,6 +1143,12 @@
                 project_x_bookmark_desc: "Local-first knowledge-pack generator that turns exported or pre-extracted X bookmarks into a static gallery for humans and JSON outputs for AI-agent ingestion. The public track uses sanitized sample data to show reusable workflows without exposing personal bookmark content.",
                 project_hf_insights_title: "Hugging Face Daily Insights API",
                 project_hf_insights_desc: "Data pipeline that snapshots Hugging Face models, arXiv AI/ML papers, and LMArena rankings every day, then exposes them through CSV releases, a static dashboard, and a self-hostable API. It makes historical AI trend data queryable even when upstream sources only expose the current state.",
+                project_meeting_prep_title: "Meeting Prep Assistant Proof",
+                project_meeting_prep_desc: "AI-secretary proof that classifies sample meetings by readiness, surfaces missing agenda/context, and creates a compact pre-meeting brief. It does not update calendars or message participants; external actions are placed in a human confirmation queue, making the safety boundary easy to review publicly.",
+                project_support_ticket_title: "Support Ticket Triage Proof",
+                project_support_ticket_desc: "AI-secretary proof that classifies synthetic support tickets by urgency, reply need, and blocking reason, then outputs draft-only replies and a human confirmation queue. It demonstrates public-safe support intake HITL design without updating ticket systems or sending notifications.",
+                project_daily_decision_title: "Daily Decision Assistant Proof",
+                project_daily_decision_desc: "AI-secretary proof that scores mixed daily signals and routes them into today focus, defer, and no-go groups. Instead of writing to email, calendar, or task tools, it returns decision reasons and a confirmation queue first, showing safe prioritization before autonomous execution.",
                 project_faq_system_title: "Internal FAQ Database Search System",
                 project_faq_system_desc: "FAQ search system via RAG technology. Vectorized 1000+ FAQs with OpenAI Embeddings, reduced average response time from 5 minutes to 30 seconds. High-speed search with FAISS + LangChain, achieved 90% user satisfaction and promoted knowledge sharing.",
                 project_daily_automation_title: "Daily Task Automation Suite",
@@ -2154,6 +2166,102 @@
                        class="project-link"
                        target="_blank" rel="noopener noreferrer"
                        onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'HF_Daily_Insights', 'value': 1});">Repository</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-i18n="project_meeting_prep_title">Meeting Prep Assistant Proof</h3>
+                    <span class="new-badge">NEW</span>
+                    <span class="project-year">2026</span>
+                </div>
+                <img src="images/repo-heroes/meeting-prep-assistant-proof-ja.webp"
+                     data-src-ja="images/repo-heroes/meeting-prep-assistant-proof-ja.webp"
+                     data-src-en="images/repo-heroes/meeting-prep-assistant-proof-en.webp"
+                     data-alt-ja="Meeting Prep Assistant Proof: 会議準備をブリーフと人間確認へ整理"
+                     data-alt-en="Meeting Prep Assistant Proof: meeting inputs to brief and human confirmation"
+                     alt="Meeting Prep Assistant Proof: 会議準備をブリーフと人間確認へ整理"
+                     class="project-screenshot localized-project-image"
+                     loading="lazy">
+                <p class="project-description" data-i18n="project_meeting_prep_desc">
+                    会議サンプルを準備状況で分類し、不足アジェンダ・確認事項・事前ブリーフを作るAI秘書proof。カレンダー更新や参加者送信は行わず、外部アクションは人間確認キューへ置くため、公開版でも安全境界を説明しやすい。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Pytest</span>
+                    <span class="tech-tag">Meeting Prep</span>
+                    <span class="tech-tag">HITL</span>
+                    <span class="tech-tag">Public-safe</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Tenormusica2024/meeting-prep-assistant-proof?utm_source=portfolio&utm_medium=project_card&utm_campaign=meeting_prep_github"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'Meeting_Prep_Assistant_Proof', 'value': 1});">Repository</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-i18n="project_support_ticket_title">Support Ticket Triage Proof</h3>
+                    <span class="new-badge">NEW</span>
+                    <span class="project-year">2026</span>
+                </div>
+                <img src="images/repo-heroes/support-ticket-triage-proof-ja.webp"
+                     data-src-ja="images/repo-heroes/support-ticket-triage-proof-ja.webp"
+                     data-src-en="images/repo-heroes/support-ticket-triage-proof-en.webp"
+                     data-alt-ja="Support Ticket Triage Proof: 問い合わせを分類し返信下書きと人間確認へ整理"
+                     data-alt-en="Support Ticket Triage Proof: tickets to draft-only replies and human confirmation"
+                     alt="Support Ticket Triage Proof: 問い合わせを分類し返信下書きと人間確認へ整理"
+                     class="project-screenshot localized-project-image"
+                     loading="lazy">
+                <p class="project-description" data-i18n="project_support_ticket_desc">
+                    サンプルの問い合わせチケットを緊急度・返信要否・保留理由で分類し、返信下書きと人間確認キューを出力するAI秘書proof。外部チケットシステム更新や通知送信を行わないため、support intakeのHITL設計をpublic-safeに示せる。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Pytest</span>
+                    <span class="tech-tag">Triage</span>
+                    <span class="tech-tag">Draft-only</span>
+                    <span class="tech-tag">HITL</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Tenormusica2024/support-ticket-triage-proof?utm_source=portfolio&utm_medium=project_card&utm_campaign=support_ticket_github"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'Support_Ticket_Triage_Proof', 'value': 1});">Repository</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-i18n="project_daily_decision_title">Daily Decision Assistant Proof</h3>
+                    <span class="new-badge">NEW</span>
+                    <span class="project-year">2026</span>
+                </div>
+                <img src="images/repo-heroes/daily-decision-assistant-proof-ja.webp"
+                     data-src-ja="images/repo-heroes/daily-decision-assistant-proof-ja.webp"
+                     data-src-en="images/repo-heroes/daily-decision-assistant-proof-en.webp"
+                     data-alt-ja="Daily Decision Assistant Proof: 日次シグナルを今日やる・保留・やらないへ整理"
+                     data-alt-en="Daily Decision Assistant Proof: daily signals to focus, defer, no-go"
+                     alt="Daily Decision Assistant Proof: 日次シグナルを今日やる・保留・やらないへ整理"
+                     class="project-screenshot localized-project-image"
+                     loading="lazy">
+                <p class="project-description" data-i18n="project_daily_decision_desc">
+                    日次シグナルをスコアリングし、今日やる・保留・やらないに分けるAI秘書proof。メール、カレンダー、タスク管理ツールへ直接書き込まず、意思決定理由と確認キューを先に出すことで、自律実行前の安全な優先順位付けを示す。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Prioritization</span>
+                    <span class="tech-tag">Scoring</span>
+                    <span class="tech-tag">HITL</span>
+                    <span class="tech-tag">Public-safe</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Tenormusica2024/daily-decision-assistant-proof?utm_source=portfolio&utm_medium=project_card&utm_campaign=daily_decision_github"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'Daily_Decision_Assistant_Proof', 'value': 1});">Repository</a>
                 </div>
             </div>
 
