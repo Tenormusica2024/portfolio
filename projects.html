@@ -1040,6 +1040,12 @@
                 project_doc_freshness_desc: "READMEやdocsの記載を実コード・repo構造・exports・routes・設定ファイルと照合し、古い手順や存在しないファイル参照、バージョン不一致を検出するドキュメント鮮度チェックツール。CIやPRレビューで使える修正候補つきレポートを生成。",
                 project_agent_workflow_reliability_title: "Agent Workflow Reliability Dashboard",
                 project_agent_workflow_reliability_desc: "AIエージェント開発ワークフローを、受付・計画・実行・評価・HITLレビュー・リリース・改善の流れで説明するpublic-safeな静的ダッシュボード。eval、traceability、rollback、人間レビューを可視化し、AI運用設計をポートフォリオ上で説明可能にする。",
+                project_claude_worktree_title: "Claude Worktree Parallel Dev",
+                project_claude_worktree_desc: "Claude Codeの実装・コードレビュー・UI検証をGit Worktreeで物理的に分離し、並列に進める開発ワークフロー。main作業、レビュー専用worktree、UI検証専用worktreeを分けることで、レビュー待ち・競合・目視確認漏れを減らす。",
+                project_x_bookmark_title: "X Bookmark Knowledge Pack",
+                project_x_bookmark_desc: "Xブックマークのエクスポート/抽出データを、ローカルで閲覧できる静的ギャラリーとAIエージェント投入用JSONに変換する知識パック生成ツール。公開版はサンプルデータと匿名化・sanitize前提で、個人データを出さずに再利用導線を示す。",
+                project_hf_insights_title: "Hugging Face Daily Insights API",
+                project_hf_insights_desc: "Hugging Faceモデル、arXiv AI/ML論文、LMArenaランキングを日次スナップショット化し、CSVリリース・静的ダッシュボード・APIで参照できるデータパイプライン。上流が保持しない履歴データを時系列で追えるようにする。",
                 project_faq_system_title: "FAQデータベース検索システム",
                 project_faq_system_desc: "RAG技術によるFAQ検索システム。1000件超のFAQをOpenAI Embeddingsでベクトル化、平均回答時間を5分→30秒に短縮。FAISS + LangChainによる高速検索、利用者満足度90%。開発ナレッジをドキュメント化し現場展開。",
                 project_daily_automation_title: "デイリータスク自動化スイート",
@@ -1125,6 +1131,12 @@
                 project_doc_freshness_desc: "Documentation freshness checker that verifies README and docs claims against the real codebase, repository structure, exports, routes, and config files. It detects stale setup steps, missing file references, and version mismatches, then produces actionable reports suitable for CI or PR review.",
                 project_agent_workflow_reliability_title: "Agent Workflow Reliability Dashboard",
                 project_agent_workflow_reliability_desc: "Public-safe static dashboard that explains AI-agent development workflow reliability from intake, planning, execution, eval, HITL review, release, and improvement. It visualizes evals, traceability, rollback, and human review so agent operations design can be shown clearly in a portfolio.",
+                project_claude_worktree_title: "Claude Worktree Parallel Dev",
+                project_claude_worktree_desc: "Git Worktree-based AI development workflow that physically separates Claude Code implementation, code review, and UI verification so they can run in parallel. It reduces review blocking, branch conflicts, and missed visual checks by keeping main work, review worktree, and UI verification worktree isolated.",
+                project_x_bookmark_title: "X Bookmark Knowledge Pack",
+                project_x_bookmark_desc: "Local-first knowledge-pack generator that turns exported or pre-extracted X bookmarks into a static gallery for humans and JSON outputs for AI-agent ingestion. The public track uses sanitized sample data to show reusable workflows without exposing personal bookmark content.",
+                project_hf_insights_title: "Hugging Face Daily Insights API",
+                project_hf_insights_desc: "Data pipeline that snapshots Hugging Face models, arXiv AI/ML papers, and LMArena rankings every day, then exposes them through CSV releases, a static dashboard, and a self-hostable API. It makes historical AI trend data queryable even when upstream sources only expose the current state.",
                 project_faq_system_title: "Internal FAQ Database Search System",
                 project_faq_system_desc: "FAQ search system via RAG technology. Vectorized 1000+ FAQs with OpenAI Embeddings, reduced average response time from 5 minutes to 30 seconds. High-speed search with FAISS + LangChain, achieved 90% user satisfaction and promoted knowledge sharing.",
                 project_daily_automation_title: "Daily Task Automation Suite",
@@ -2044,6 +2056,104 @@
                        class="project-link"
                        target="_blank" rel="noopener noreferrer"
                        onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'Agent_Workflow_Reliability', 'value': 1});">Repository</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-i18n="project_claude_worktree_title">Claude Worktree Parallel Dev</h3>
+                    <span class="new-badge">NEW</span>
+                    <span class="project-year">2026</span>
+                </div>
+                <img src="images/repo-heroes/claude-worktree-parallel-dev-ja.webp"
+                     data-src-ja="images/repo-heroes/claude-worktree-parallel-dev-ja.webp"
+                     data-src-en="images/repo-heroes/claude-worktree-parallel-dev-en.webp"
+                     data-alt-ja="Claude Worktree Parallel Dev: 実装・レビュー・UI検証を並列化"
+                     data-alt-en="Claude Worktree Parallel Dev: parallel implementation, review, and UI verification"
+                     alt="Claude Worktree Parallel Dev: 実装・レビュー・UI検証を並列化"
+                     class="project-screenshot localized-project-image"
+                     loading="lazy">
+                <p class="project-description" data-i18n="project_claude_worktree_desc">
+                    Claude Codeの実装・コードレビュー・UI検証をGit Worktreeで物理的に分離し、並列に進める開発ワークフロー。main作業、レビュー専用worktree、UI検証専用worktreeを分けることで、レビュー待ち・競合・目視確認漏れを減らす。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Claude Code</span>
+                    <span class="tech-tag">Git Worktree</span>
+                    <span class="tech-tag">Parallel Review</span>
+                    <span class="tech-tag">UI Verification</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Tenormusica2024/claude-worktree-parallel-dev?utm_source=portfolio&utm_medium=project_card&utm_campaign=claude_worktree_github"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'Claude_Worktree', 'value': 1});">Repository</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-i18n="project_x_bookmark_title">X Bookmark Knowledge Pack</h3>
+                    <span class="new-badge">NEW</span>
+                    <span class="project-year">2026</span>
+                </div>
+                <img src="images/repo-heroes/x-bookmark-knowledge-pack-ja.webp"
+                     data-src-ja="images/repo-heroes/x-bookmark-knowledge-pack-ja.webp"
+                     data-src-en="images/repo-heroes/x-bookmark-knowledge-pack-en.webp"
+                     data-alt-ja="X Bookmark Knowledge Pack: ブックマークをローカル知識資産に変換"
+                     data-alt-en="X Bookmark Knowledge Pack: turn bookmarks into local knowledge assets"
+                     alt="X Bookmark Knowledge Pack: ブックマークをローカル知識資産に変換"
+                     class="project-screenshot localized-project-image"
+                     loading="lazy">
+                <p class="project-description" data-i18n="project_x_bookmark_desc">
+                    Xブックマークのエクスポート/抽出データを、ローカルで閲覧できる静的ギャラリーとAIエージェント投入用JSONに変換する知識パック生成ツール。公開版はサンプルデータと匿名化・sanitize前提で、個人データを出さずに再利用導線を示す。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Local-first</span>
+                    <span class="tech-tag">Static Gallery</span>
+                    <span class="tech-tag">JSON</span>
+                    <span class="tech-tag">Sanitize</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Tenormusica2024/x-bookmark-knowledge-pack?utm_source=portfolio&utm_medium=project_card&utm_campaign=x_bookmark_pack_github"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'X_Bookmark_Knowledge_Pack', 'value': 1});">Repository</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-i18n="project_hf_insights_title">Hugging Face Daily Insights API</h3>
+                    <span class="new-badge">NEW</span>
+                    <span class="project-year">2026</span>
+                </div>
+                <img src="images/repo-heroes/huggingface-daily-insights-api-ja.webp"
+                     data-src-ja="images/repo-heroes/huggingface-daily-insights-api-ja.webp"
+                     data-src-en="images/repo-heroes/huggingface-daily-insights-api-en.webp"
+                     data-alt-ja="Hugging Face Daily Insights API: AIトレンドを日次で蓄積"
+                     data-alt-en="Hugging Face Daily Insights API: daily AI trend snapshots"
+                     alt="Hugging Face Daily Insights API: AIトレンドを日次で蓄積"
+                     class="project-screenshot localized-project-image"
+                     loading="lazy">
+                <p class="project-description" data-i18n="project_hf_insights_desc">
+                    Hugging Faceモデル、arXiv AI/ML論文、LMArenaランキングを日次スナップショット化し、CSVリリース・静的ダッシュボード・APIで参照できるデータパイプライン。上流が保持しない履歴データを時系列で追えるようにする。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">GitHub Actions</span>
+                    <span class="tech-tag">CSV</span>
+                    <span class="tech-tag">API</span>
+                    <span class="tech-tag">GitHub Pages</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://tenormusica2024.github.io/huggingface-daily-insights-api/?utm_source=portfolio&utm_medium=project_card&utm_campaign=hf_insights_live"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_live', 'event_label': 'HF_Daily_Insights', 'value': 1});">Live Demo</a>
+                    <a href="https://github.com/Tenormusica2024/huggingface-daily-insights-api?utm_source=portfolio&utm_medium=project_card&utm_campaign=hf_insights_github"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'HF_Daily_Insights', 'value': 1});">Repository</a>
                 </div>
             </div>
 
