@@ -458,10 +458,15 @@
 
         .project-title {
             font-size: 1.4rem;
+            line-height: 1.35;
             color: #222;
             font-weight: 600;
             opacity: 0;
             transform: translateY(10px);
+        }
+
+        .project-title-spacer {
+            visibility: hidden;
         }
 
         /* Title fade-in animation after panel appears */
@@ -1172,7 +1177,7 @@
                 lang_button: "日本語",
                 page_title: "PROJECTS",
                 page_subtitle: "Implementation Portfolio",
-                featured_sound_title: "AI Integrated Sound Platform - First Account System Implementation",
+                featured_sound_title: "AI Integrated Sound Platform",
                 featured_sound_desc: "Music and podcast distribution platform with secure user management via Firebase Authentication + Cloud Firestore. Extends music experience through playlist creation, friend registration, and track sharing features. Offline playback support via Progressive Web App technology, responsive design and dark mode complete UI/UX. Flask + Cloud Run architecture enables 24/7 uptime.",
                 section_data_viz: "Data Visualization & Analysis Projects",
                 section_ai_dev: "AI-Driven Development Projects",
@@ -1312,6 +1317,7 @@
 
             updateLocalizedImages();
             updateLocalizedFrames();
+            normalizeProjectTitleHeights();
             document.querySelector('.lang-switch').textContent = t.lang_button;
         }
 
@@ -1336,6 +1342,29 @@
                 const src = currentLang === 'ja' ? frame.dataset.srcJa : frame.dataset.srcEn;
                 if (src && frame.getAttribute('src') !== src) {
                     frame.setAttribute('src', src);
+                }
+            });
+        }
+
+        function normalizeProjectTitleHeights() {
+            document.querySelectorAll('.project-title').forEach(title => {
+                const spacer = title.querySelector('.project-title-spacer');
+                if (spacer) {
+                    const previous = spacer.previousSibling;
+                    if (previous && previous.nodeName === 'BR') {
+                        previous.remove();
+                    }
+                    spacer.remove();
+                }
+
+                const computed = window.getComputedStyle(title);
+                const fontSize = parseFloat(computed.fontSize) || 22;
+                const lineHeight = parseFloat(computed.lineHeight) || fontSize * 1.35;
+                const height = title.getBoundingClientRect().height;
+                const appearsSingleLine = height <= lineHeight * 1.35;
+
+                if (appearsSingleLine) {
+                    title.insertAdjacentHTML('beforeend', '<br><span class="project-title-spacer" aria-hidden="true">&nbsp;</span>');
                 }
             });
         }
@@ -1483,6 +1512,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             updateContent();
             initProjectImageLightbox();
+        });
+
+        let projectTitleResizeTimer = null;
+        window.addEventListener('resize', function() {
+            window.clearTimeout(projectTitleResizeTimer);
+            projectTitleResizeTimer = window.setTimeout(normalizeProjectTitleHeights, 150);
         });
     </script>
 
