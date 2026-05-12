@@ -1031,7 +1031,7 @@
                 project_llm_ide_title: "LLM統合開発環境",
                 project_llm_ide_desc: "Cursor IDE + Claude Code + GitHub Copilotを統合したAI駆動開発フロー構築。コード生成速度を従来比3倍に向上、デバッグ時間50%削減。MCP Serverによるツール拡張、Hookシステムによる自動化ワークフローに対応。",
                 project_claude_hooks_title: "Claude Code Hooks System",
-                project_claude_hooks_desc: "Claude Codeのイベント駆動型Hook機能を活用した自動化フレームワーク。SessionStart/Stop/PreCompact等のライフサイクルフックで音声通知・スクリーンショット・セッション管理を自動実行。Python/Node.js連携によりユーザー操作なしで開発ワークフローを継続的に記録・管理。",
+                project_claude_hooks_desc: "Claude CodeのStop/UserPromptSubmit hooksで、テスト丸投げ・根拠のない完了宣言・低シグナルなワークフロー逸脱を検出してblockする品質ガードレール。Windows + PowerShell環境に最適化し、テスト誘導・ドキュメント文脈注入・ローカル記録でAIコーディングの安全性と自律性を高める。",
                 project_review_pipeline_title: "Review Fix Pipeline",
                 project_review_pipeline_desc: "意図先読み型コードレビュー + 自動修正ループ。独立したサブエージェントコンテキストで自己レビューバイアスを構造的に排除し、レビュー→修正→再レビューを最大5ループ自動実行。CriticalからSuggestionまで優先度別に整理されたフィードバックと数値スコアで品質を定量化。",
                 project_faq_system_title: "FAQデータベース検索システム",
@@ -1110,7 +1110,7 @@
                 project_llm_ide_title: "LLM Integrated Development Environment",
                 project_llm_ide_desc: "Built AI-driven development flow integrating Cursor IDE + Claude Code + GitHub Copilot. Achieved 3x faster code generation and 50% reduced debugging time from baseline. Implemented automated workflow via MCP Server tool extensions and Hook system.",
                 project_claude_hooks_title: "Claude Code Hooks System",
-                project_claude_hooks_desc: "Automation framework leveraging Claude Code's event-driven Hook functionality. Lifecycle hooks (SessionStart/Stop/PreCompact, etc.) automatically trigger voice notifications, screenshots, and session management without user intervention. Python/Node.js integration continuously records and manages development workflows.",
+                project_claude_hooks_desc: "Quality guardrails for Claude Code Stop and UserPromptSubmit hooks. It blocks user-delegated testing, unsupported completion claims, and low-signal workflow slips, then routes Claude toward tests, documentation context, and local evidence. Optimized for Windows + PowerShell workflows where AI coding should stay autonomous but safe.",
                 project_review_pipeline_title: "Review Fix Pipeline",
                 project_review_pipeline_desc: "Intent-first code review with automated fix loop. Structurally eliminates self-review bias by running independent sub-agent contexts, executing review→fix→re-review up to 5 loops automatically. Prioritized feedback (Critical to Suggestion) with numerical quality scores for quantifiable code improvement.",
                 project_faq_system_title: "Internal FAQ Database Search System",
@@ -1564,6 +1564,14 @@
                     <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
+                <img src="images/repo-heroes/7-agent-parallel-code-review-ja.webp"
+                     data-src-ja="images/repo-heroes/7-agent-parallel-code-review-ja.webp"
+                     data-src-en="images/repo-heroes/7-agent-parallel-code-review-en.webp"
+                     data-alt-ja="7-Agent Parallel Code Review: 並列AIレビューのコマンドセンター"
+                     data-alt-en="7-Agent Parallel Code Review: parallel AI review command center"
+                     alt="7-Agent Parallel Code Review: 並列AIレビューのコマンドセンター"
+                     class="project-screenshot localized-project-image"
+                     loading="lazy">
                 <p class="project-description" data-i18n="project_code_reviewer_desc">
                     複数の専門AIエージェントが並列実行し、多角的にコードを分析するレビューツール。
                     3つのモード（Standard 7エージェント/Full 12エージェント/Release 17エージェント）で
@@ -1870,15 +1878,23 @@
                     <h3 class="project-title" data-i18n="project_claude_hooks_title">Claude Code Hooks System</h3>
                     <span class="project-year">2026</span>
                 </div>
+                <img src="images/repo-heroes/claude-code-hooks-ja.webp"
+                     data-src-ja="images/repo-heroes/claude-code-hooks-ja.webp"
+                     data-src-en="images/repo-heroes/claude-code-hooks-en.webp"
+                     data-alt-ja="Claude Code Hooks System: AIコーディングを安全にするイベント駆動ガードレール"
+                     data-alt-en="Claude Code Hooks System: event-driven guardrails for safer AI coding"
+                     alt="Claude Code Hooks System: AIコーディングを安全にするイベント駆動ガードレール"
+                     class="project-screenshot localized-project-image"
+                     loading="lazy">
                 <p class="project-description" data-i18n="project_claude_hooks_desc">
-                    Claude Codeのイベント駆動型Hook機能を活用した自動化フレームワーク。SessionStart/Stop/PreCompact等のライフサイクルフックで音声通知・スクリーンショット・セッション管理を自動実行。Python/Node.js連携によりユーザー操作なしで開発ワークフローを継続的に記録・管理。
+                    Claude CodeのStop/UserPromptSubmit hooksで、テスト丸投げ・根拠のない完了宣言・低シグナルなワークフロー逸脱を検出してblockする品質ガードレール。Windows + PowerShell環境に最適化し、テスト誘導・ドキュメント文脈注入・ローカル記録でAIコーディングの安全性と自律性を高める。
                 </p>
                 <div class="tech-stack">
                     <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Node.js</span>
-                    <span class="tech-tag">Event-Driven</span>
-                    <span class="tech-tag">Automation</span>
-                    <span class="tech-tag">Claude Code</span>
+                    <span class="tech-tag">Claude Code Hooks</span>
+                    <span class="tech-tag">Guardrails</span>
+                    <span class="tech-tag">PowerShell</span>
+                    <span class="tech-tag">Testing</span>
                 </div>
                 <div class="project-links">
                     <a href="https://github.com/Tenormusica2024/claude-code-hooks?utm_source=portfolio&utm_medium=project_card&utm_campaign=claude_hooks_github"
@@ -1893,6 +1909,14 @@
                     <h3 class="project-title" data-i18n="project_review_pipeline_title">Review Fix Pipeline</h3>
                     <span class="project-year">2026</span>
                 </div>
+                <img src="images/repo-heroes/review-fix-pipeline-ja.webp"
+                     data-src-ja="images/repo-heroes/review-fix-pipeline-ja.webp"
+                     data-src-en="images/repo-heroes/review-fix-pipeline-en.webp"
+                     data-alt-ja="Review Fix Pipeline: 意図先読みレビュー、安全な修正、新しい視点での再レビュー"
+                     data-alt-en="Review Fix Pipeline: intent-first review, safe fixes, and fresh re-review"
+                     alt="Review Fix Pipeline: 意図先読みレビュー、安全な修正、新しい視点での再レビュー"
+                     class="project-screenshot localized-project-image"
+                     loading="lazy">
                 <p class="project-description" data-i18n="project_review_pipeline_desc">
                     意図先読み型コードレビュー + 自動修正ループ。独立したサブエージェントコンテキストで自己レビューバイアスを構造的に排除し、レビュー→修正→再レビューを最大5ループ自動実行。CriticalからSuggestionまで優先度別に整理されたフィードバックと数値スコアで品質を定量化。
                 </p>
