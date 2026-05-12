@@ -1034,6 +1034,12 @@
                 project_claude_hooks_desc: "Claude CodeのStop/UserPromptSubmit hooksで、テスト丸投げ・根拠のない完了宣言・低シグナルなワークフロー逸脱を検出してblockする品質ガードレール。Windows + PowerShell環境に最適化し、テスト誘導・ドキュメント文脈注入・ローカル記録でAIコーディングの安全性と自律性を高める。",
                 project_review_pipeline_title: "Review Fix Pipeline",
                 project_review_pipeline_desc: "意図先読み型コードレビュー + 自動修正ループ。独立したサブエージェントコンテキストで自己レビューバイアスを構造的に排除し、レビュー→修正→再レビューを最大5ループ自動実行。CriticalからSuggestionまで優先度別に整理されたフィードバックと数値スコアで品質を定量化。",
+                project_claude_review_pdca_title: "Claude Review PDCA",
+                project_claude_review_pdca_desc: "コードレビュー指摘をSQLiteに保存し、実装時に関連ファイルへ再注入するclosed-loop PDCA。Claude Code hook modeとCodex/manual modeの両方に対応し、過去の指摘・判断・学習パターンを必要なタイミングで戻すことで、同じミスの再発とレビュー知見の埋没を防ぐ。",
+                project_doc_freshness_title: "Doc Freshness Analyzer",
+                project_doc_freshness_desc: "READMEやdocsの記載を実コード・repo構造・exports・routes・設定ファイルと照合し、古い手順や存在しないファイル参照、バージョン不一致を検出するドキュメント鮮度チェックツール。CIやPRレビューで使える修正候補つきレポートを生成。",
+                project_agent_workflow_reliability_title: "Agent Workflow Reliability Dashboard",
+                project_agent_workflow_reliability_desc: "AIエージェント開発ワークフローを、受付・計画・実行・評価・HITLレビュー・リリース・改善の流れで説明するpublic-safeな静的ダッシュボード。eval、traceability、rollback、人間レビューを可視化し、AI運用設計をポートフォリオ上で説明可能にする。",
                 project_faq_system_title: "FAQデータベース検索システム",
                 project_faq_system_desc: "RAG技術によるFAQ検索システム。1000件超のFAQをOpenAI Embeddingsでベクトル化、平均回答時間を5分→30秒に短縮。FAISS + LangChainによる高速検索、利用者満足度90%。開発ナレッジをドキュメント化し現場展開。",
                 project_daily_automation_title: "デイリータスク自動化スイート",
@@ -1113,6 +1119,12 @@
                 project_claude_hooks_desc: "Quality guardrails for Claude Code Stop and UserPromptSubmit hooks. It blocks user-delegated testing, unsupported completion claims, and low-signal workflow slips, then routes Claude toward tests, documentation context, and local evidence. Optimized for Windows + PowerShell workflows where AI coding should stay autonomous but safe.",
                 project_review_pipeline_title: "Review Fix Pipeline",
                 project_review_pipeline_desc: "Intent-first code review with automated fix loop. Structurally eliminates self-review bias by running independent sub-agent contexts, executing review→fix→re-review up to 5 loops automatically. Prioritized feedback (Critical to Suggestion) with numerical quality scores for quantifiable code improvement.",
+                project_claude_review_pdca_title: "Claude Review PDCA",
+                project_claude_review_pdca_desc: "Closed-loop PDCA for storing code-review findings in SQLite and reinjecting relevant lessons at implementation time. Supports both Claude Code hook mode and Codex/manual mode, helping past findings, decisions, and learned patterns return exactly when the next edit needs them. Prevents repeated mistakes and forgotten review knowledge.",
+                project_doc_freshness_title: "Doc Freshness Analyzer",
+                project_doc_freshness_desc: "Documentation freshness checker that verifies README and docs claims against the real codebase, repository structure, exports, routes, and config files. It detects stale setup steps, missing file references, and version mismatches, then produces actionable reports suitable for CI or PR review.",
+                project_agent_workflow_reliability_title: "Agent Workflow Reliability Dashboard",
+                project_agent_workflow_reliability_desc: "Public-safe static dashboard that explains AI-agent development workflow reliability from intake, planning, execution, eval, HITL review, release, and improvement. It visualizes evals, traceability, rollback, and human review so agent operations design can be shown clearly in a portfolio.",
                 project_faq_system_title: "Internal FAQ Database Search System",
                 project_faq_system_desc: "FAQ search system via RAG technology. Vectorized 1000+ FAQs with OpenAI Embeddings, reduced average response time from 5 minutes to 30 seconds. High-speed search with FAISS + LangChain, achieved 90% user satisfaction and promoted knowledge sharing.",
                 project_daily_automation_title: "Daily Task Automation Suite",
@@ -1932,6 +1944,106 @@
                        class="project-link"
                        target="_blank" rel="noopener noreferrer"
                        onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'Review_Pipeline', 'value': 1});">Repository</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-i18n="project_claude_review_pdca_title">Claude Review PDCA</h3>
+                    <span class="new-badge">NEW</span>
+                    <span class="project-year">2026</span>
+                </div>
+                <img src="images/repo-heroes/claude-review-pdca-ja.webp"
+                     data-src-ja="images/repo-heroes/claude-review-pdca-ja.webp"
+                     data-src-en="images/repo-heroes/claude-review-pdca-en.webp"
+                     data-alt-ja="Claude Review PDCA: レビュー指摘を実装時に再注入するPDCA"
+                     data-alt-en="Claude Review PDCA: review findings return at implementation time"
+                     alt="Claude Review PDCA: レビュー指摘を実装時に再注入するPDCA"
+                     class="project-screenshot localized-project-image"
+                     loading="lazy">
+                <p class="project-description" data-i18n="project_claude_review_pdca_desc">
+                    コードレビュー指摘をSQLiteに保存し、実装時に関連ファイルへ再注入するclosed-loop PDCA。Claude Code hook modeとCodex/manual modeの両方に対応し、過去の指摘・判断・学習パターンを必要なタイミングで戻すことで、同じミスの再発とレビュー知見の埋没を防ぐ。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Claude Code</span>
+                    <span class="tech-tag">PDCA</span>
+                    <span class="tech-tag">SQLite</span>
+                    <span class="tech-tag">Hooks</span>
+                    <span class="tech-tag">Review Memory</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Tenormusica2024/claude-review-pdca?utm_source=portfolio&utm_medium=project_card&utm_campaign=claude_review_pdca_github"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'Claude_Review_PDCA', 'value': 1});">Repository</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-i18n="project_doc_freshness_title">Doc Freshness Analyzer</h3>
+                    <span class="new-badge">NEW</span>
+                    <span class="project-year">2026</span>
+                </div>
+                <img src="images/repo-heroes/doc-freshness-analyzer-ja.webp"
+                     data-src-ja="images/repo-heroes/doc-freshness-analyzer-ja.webp"
+                     data-src-en="images/repo-heroes/doc-freshness-analyzer-en.webp"
+                     data-alt-ja="Doc Freshness Analyzer: ドキュメントの主張を実コードで検証する"
+                     data-alt-en="Doc Freshness Analyzer: verify documentation claims against the real codebase"
+                     alt="Doc Freshness Analyzer: ドキュメントの主張を実コードで検証する"
+                     class="project-screenshot localized-project-image"
+                     loading="lazy">
+                <p class="project-description" data-i18n="project_doc_freshness_desc">
+                    READMEやdocsの記載を実コード・repo構造・exports・routes・設定ファイルと照合し、古い手順や存在しないファイル参照、バージョン不一致を検出するドキュメント鮮度チェックツール。CIやPRレビューで使える修正候補つきレポートを生成。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Documentation QA</span>
+                    <span class="tech-tag">Claude Code</span>
+                    <span class="tech-tag">CI</span>
+                    <span class="tech-tag">Repo Analysis</span>
+                    <span class="tech-tag">Freshness</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Tenormusica2024/doc-freshness-analyzer?utm_source=portfolio&utm_medium=project_card&utm_campaign=doc_freshness_github"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'Doc_Freshness', 'value': 1});">Repository</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-i18n="project_agent_workflow_reliability_title">Agent Workflow Reliability Dashboard</h3>
+                    <span class="new-badge">NEW</span>
+                    <span class="project-year">2026</span>
+                </div>
+                <img src="images/repo-heroes/agent-workflow-reliability-dashboard-ja.webp"
+                     data-src-ja="images/repo-heroes/agent-workflow-reliability-dashboard-ja.webp"
+                     data-src-en="images/repo-heroes/agent-workflow-reliability-dashboard-en.webp"
+                     data-alt-ja="Agent Workflow Reliability Dashboard: AIエージェント作業を観測・評価・レビュー可能にする"
+                     data-alt-en="Agent Workflow Reliability Dashboard: observable, evaluable, reviewable AI-agent work"
+                     alt="Agent Workflow Reliability Dashboard: AIエージェント作業を観測・評価・レビュー可能にする"
+                     class="project-screenshot localized-project-image"
+                     loading="lazy">
+                <p class="project-description" data-i18n="project_agent_workflow_reliability_desc">
+                    AIエージェント開発ワークフローを、受付・計画・実行・評価・HITLレビュー・リリース・改善の流れで説明するpublic-safeな静的ダッシュボード。eval、traceability、rollback、人間レビューを可視化し、AI運用設計をポートフォリオ上で説明可能にする。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Agent Operations</span>
+                    <span class="tech-tag">HITL</span>
+                    <span class="tech-tag">Eval</span>
+                    <span class="tech-tag">Traceability</span>
+                    <span class="tech-tag">GitHub Pages</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://tenormusica2024.github.io/agent-workflow-reliability-dashboard-pages/?utm_source=portfolio&utm_medium=project_card&utm_campaign=agent_workflow_reliability_live"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_live', 'event_label': 'Agent_Workflow_Reliability', 'value': 1});">Live Demo</a>
+                    <a href="https://github.com/Tenormusica2024/agent-workflow-reliability-dashboard-pages?utm_source=portfolio&utm_medium=project_card&utm_campaign=agent_workflow_reliability_github"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'Agent_Workflow_Reliability', 'value': 1});">Repository</a>
                 </div>
             </div>
 
