@@ -934,8 +934,17 @@
                 position: relative;
             }
 
-            .section-title[data-i18n="section_data_viz"]::after {
+            html[lang="ja"] .section-title[data-i18n="section_data_viz"]::after {
                 content: "データ可視化\A分析プロジェクト";
+                white-space: pre;
+                visibility: visible;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+
+            html[lang="en"] .section-title[data-i18n="section_data_viz"]::after {
+                content: "Data Visualization\A& Analysis Projects";
                 white-space: pre;
                 visibility: visible;
                 position: absolute;
@@ -1057,10 +1066,16 @@
                 profile_vision: "AI Philosophy & Vision",
                 music_project_title: "🎵 Alternative Rock - AI駆動による音楽制作プロジェクト",
                 music_project_desc: "Suno AI作曲 + Midjourney ビジュアル + Canva編集による統合制作ワークフロー実例。AIツール連携による効率的な音楽プロダクション。オルタナティブロックトラックとして制作。",
+                project_flowchart_title: "Flowchart Hover Viewer",
+                project_flowchart_desc: "Mermaid.jsフローチャートをホバーで詳細表示できるインタラクティブビューワー。ノードにマウスオーバーで説明パネルが表示され、ドラッグ操作でレイアウト切り替えも可能。Glassmorphism UIによる美しいダークテーマを採用。単一HTMLファイルでオフライン動作。",
+                project_ai_adoption_title: "AI導入分析レポート",
+                project_ai_adoption_desc: "経産省・日銀・McKinsey・BCG等の公的データに基づく、日本企業のAI導入成功vs失敗ケーススタディ分析。三菱UFJ・パナソニック等の実在企業事例と、投資配分・ROI比較を37枚のインタラクティブスライドで可視化。McKinsey/BCGレベルのコンサルティング資料デザインを再現。",
                 project_ai_trend_title: "AIツールトレンド分析",
                 project_ai_trend_desc: "GitHub TrendingとWikipedia Pageviews APIを活用し、AIプロジェクト・画像生成・動画生成ツールのトレンドランキングを自動収集・可視化。GitHub Trendは毎日9時、AI画像/動画ランキングは3時間ごとに自動更新。Gemini API翻訳機能により全ての説明文を自然な日本語で提供。",
                 project_sp500_title: "市場指数チャート",
                 project_sp500_desc: "SP500とFANG+指数の価格推移を同時に可視化。Cyberpunk Matrix風とSynthwave Retro風のデザインで、日次・週次・月次の時間軸切り替え機能を実装。Chart.jsによるリアルタイム更新とCSS3アニメーション。",
+                project_gemini_seo_title: "Gemini 3 SEO環境分析",
+                project_gemini_seo_desc: "Gemini 3登場後のSEO環境変化を可視化したインタラクティブスライド。検索クエリの変化、コンテンツ戦略の転換、技術的SEO要件の進化をアニメーション付きグラフとチャートで解説。",
                 project_bi_dashboard_title: "インタラクティブ分析ダッシュボード",
                 project_bi_dashboard_desc: "カスタムBIデザインの設計から実装まで一貫して担当。Chart.js / D3.jsによる動的データ可視化、フィルタリング・ドリルダウン機能を実装。売上分析ダッシュボードとして実務運用中。",
                 project_cloud_racing_title: "Cloud Market Racing Chart",
@@ -1081,6 +1096,8 @@
                 project_voicevox_desc: "VOICEVOX APIとNode.jsで、AIエージェントやシェルから短い進捗・完了メッセージをずんだもんの声で通知するCLIツール。追加の通知サーバー設定なしで実行でき、WindowsではVOICEVOX Engineの自動起動にも対応。公開版は実験要素を除いたclean history repoとして整理。",
                 project_claude_hook_title: "Claude Code Hook 自動化システム",
                 project_claude_hook_desc: "Claude Code のイベント駆動型Hook機能を活用した自動GitHub Issue報告システム。SessionEnd HookとToolResult Hookにより、タスク完了・ツール実行を自動検知し、GitHub Issue #1へ報告を投稿。Node.jsとPythonの連携により、ユーザーの手動指示なしで自動化ワークフローを構築。開発プロセスの追跡可能性と継続的なドキュメント化に対応。",
+                project_claude_skills_scheduled_title: "Claude Skills Scheduled Execution",
+                project_claude_skills_scheduled_desc: "Claude Code SkillsをTask Scheduler（Windows）やcron（Mac/Linux）で定期実行するスターターキット。Claude Pro/Maxサブスクリプションを活用し、追加API課金なしでAIエージェントを自動実行。クロスプラットフォーム対応、シンプルなセットアップ手順、セキュリティ考慮事項も完備。日次レポート生成、定期データ収集、自動メンテナンスタスクなど多様なユースケースに対応。",
                 project_zenn_audio_title: "Zenn Article Audio Reader",
                 project_zenn_audio_desc: "Zenn投稿記事を高品質音声で朗読するWebアプリケーション。Google Cloud TTS（Neural2音声）とVOICEVOXによる自然な音声合成、チャンク分割による長文対応、再生速度調整・シーク機能を実装。GitHub Pagesで配信し、複数記事のプレイリスト再生に対応。レスポンシブデザインでモバイル・デスクトップ両対応。",
                 project_esports_title: "Esports Tournament Landing",
@@ -1117,6 +1134,27 @@
                 project_daily_automation_desc: "Excel集計・レポート生成・メール送信を自動化するPythonスクリプト集。pandas + openpyxl + smtplib実装により、毎日2時間の手作業を5分に短縮。GitHub Actionsスケジュール実行で月間40時間の工数を削減。",
                 project_web_scraping_title: "マルチサイト情報収集システム",
                 project_web_scraping_desc: "EC価格比較・ニュース記事・SNS投稿を自動収集するスクレイピングシステム。BeautifulSoup + Selenium + Playwright実装、JavaScript動的コンテンツ対応。Claude API要約により1日500件の情報を構造化データとして出力。",
+                section_web_design: "Webデザインプロジェクト",
+                project_work_mv_title: "作業用MV制作",
+                project_work_mv_desc: "Suno AIで楽曲制作、Midjourneyでビジュアル生成、Canvaで動画編集を行ったオルタナティブロックトラック。AI生成ボーカルとAI制作による楽曲の組み合わせです。複数のAIツールを駆使した、クリエイティブワークフローの実践例としてもご覧いただけます。",
+                project_work_mv_button: "YouTubeで視聴",
+                project_media_portfolio_title: "Media Portfolio - AI Video Gallery",
+                project_media_portfolio_desc: "Kling AI Image to Video技術で生成したAI動画作品を展示するメディアポートフォリオ。漆黒から青みがかった黒へのグラデーション背景、ゴールド・ブラウン系のアクセントカラーで高級感のあるギャラリーデザインを採用。AI生成動画の可能性を視覚的に表現。",
+                project_editorial_gallery_title: "エディトリアルギャラリー",
+                project_editorial_gallery_desc: "雑誌のような洗練されたエディトリアルデザインを採用したWebギャラリー。Bodoni Modaセリフフォント、大胆なタイポグラフィ、全画面プロジェクトセクション、視差スクロール効果により、印刷物のような高級感を表現。各プロジェクトに専用の背景画像とアニメーション効果を配置し、ポートフォリオサイトに適したビジュアル表現を追求。",
+                project_neon_blue_title: "ネオンブルー",
+                project_neon_blue_desc: "2130年のネオン輝く東京を舞台にしたサイバーパンクアニメのランディングページ。ネオンブルー(#00f3ff)・ネオンピンク(#ff006e)のグラデーション、パーティクルアニメーション、グリッチエフェクトによる近未来的な演出。Canvas API実装のパーティクル背景、スムーススクロール、レスポンシブデザインにより、サイバーパンク世界観を完全再現。",
+                project_zerocost_router_title: "zerocost-router",
+                project_zerocost_router_desc: "複数の無料LLM APIキーを1本の統一キーで管理するOpenAI互換ルーター。Groq・Cerebras・OpenRouter・Gemini・HuggingFaceの5プロバイダーに対応。429/5xx検知で自動フェイルオーバー。AES-256-GCM暗号化BYOK方式でCloudflare D1に保存。code1行変えるだけで既存アプリがゼロコストLLMに移行できる。",
+                cta_title: "制作依頼・お問い合わせ",
+                cta_desc: "AI駆動開発による業務効率化、Webアプリケーション開発、データ分析基盤構築など、お気軽にご相談ください。",
+                cta_primary: "制作依頼はこちら",
+                cta_secondary: "プロフィールを見る",
+                related_projects_label: "他のプロジェクトも見る",
+                quick_data_viz: "データ可視化",
+                quick_automation: "業務自動化",
+                quick_ai_creation: "AI創作",
+                quick_profile: "プロフィール",
                 footer_rights: "© 2026 Urayaha Days. All rights reserved.",
                 contact_title: "Contact",
                 contact_form: "お問い合わせフォーム",
@@ -1152,10 +1190,16 @@
                 profile_vision: "AI Philosophy & Vision",
                 music_project_title: "🎵 Alternative Rock - AI-Driven Music Production Project",
                 music_project_desc: "Integrated production workflow example with Suno AI composition + Midjourney visuals + Canva editing. Efficient music production through AI tool integration. Achieved high-quality alternative rock track as finished work.",
+                project_flowchart_title: "Flowchart Hover Viewer",
+                project_flowchart_desc: "Interactive viewer for inspecting Mermaid.js flowcharts with hover details. Mouse over a node to open an explanation panel, and drag the canvas to adjust the layout. Uses a polished dark glassmorphism UI and runs offline as a single HTML file.",
+                project_ai_adoption_title: "AI Adoption Analysis Report",
+                project_ai_adoption_desc: "Case-study analysis of successful and failed AI adoption in Japanese companies, based on public data from METI, the Bank of Japan, McKinsey, BCG, and other sources. Visualizes real enterprise examples such as MUFG and Panasonic, investment allocation, and ROI comparisons across 37 interactive slides with a consulting-style presentation design.",
                 project_ai_trend_title: "AI Tool Trend Analysis",
                 project_ai_trend_desc: "Automated collection and visualization of AI project, image generation, and video generation tool trend rankings using GitHub Trending and Wikipedia Pageviews API. GitHub Trends update daily at 9 AM, AI image/video rankings update every 3 hours. All descriptions are provided in natural Japanese through Gemini API translation.",
                 project_sp500_title: "Market Index Chart",
                 project_sp500_desc: "Simultaneously visualizes SP500 and FANG+ index price trends. Features Cyberpunk Matrix and Synthwave Retro designs with daily/weekly/monthly time-axis switching. Real-time updates using Chart.js with CSS3 animations.",
+                project_gemini_seo_title: "Gemini 3 SEO Environment Analysis",
+                project_gemini_seo_desc: "Interactive slide deck visualizing how the SEO environment changes after Gemini 3. Explains shifts in search queries, content strategy, and technical SEO requirements through animated graphs and charts.",
                 project_bi_dashboard_title: "Interactive Analysis Dashboard",
                 project_bi_dashboard_desc: "End-to-end custom BI design from concept to implementation. Dynamic data visualization with Chart.js / D3.js, implementing filtering and drill-down features. Achieved practical quality as sales analysis dashboard.",
                 project_cloud_racing_title: "Cloud Market Racing Chart",
@@ -1176,6 +1220,8 @@
                 project_voicevox_desc: "CLI tool that speaks short progress and completion messages from AI agents or shell scripts through VOICEVOX API and Node.js, using Zundamon voice feedback by default. It runs without extra notification server setup and supports VOICEVOX Engine auto-start on Windows. The public repo is a clean-history release without experimental assets.",
                 project_claude_hook_title: "Claude Code Hook Automation System",
                 project_claude_hook_desc: "Automated GitHub Issue reporting system leveraging Claude Code's event-driven Hook functionality. SessionEnd Hook and ToolResult Hook automatically detect task completion and tool execution, posting reports to GitHub Issue #1. Node.js and Python integration realizes automated workflow eliminating manual user instructions. Provides traceability of development process and continuous documentation.",
+                project_claude_skills_scheduled_title: "Claude Skills Scheduled Execution",
+                project_claude_skills_scheduled_desc: "Starter kit for running Claude Code Skills on a schedule with Task Scheduler on Windows or cron on Mac/Linux. Uses Claude Pro/Max subscriptions to automate AI-agent jobs without additional API charges. Includes cross-platform setup, simple operating steps, security notes, and use cases such as daily reports, recurring data collection, and automated maintenance.",
                 project_zenn_audio_title: "Zenn Article Audio Reader",
                 project_zenn_audio_desc: "Web application that reads Zenn articles aloud with high-quality voice synthesis. Implements natural voice synthesis using Google Cloud TTS (Neural2 voices) and VOICEVOX, chunk-based processing for long articles, playback speed control, and seek functionality. Deployed on GitHub Pages with multi-article playlist support. Responsive design compatible with both mobile and desktop devices.",
                 project_esports_title: "Esports Tournament Landing",
@@ -1212,6 +1258,27 @@
                 project_daily_automation_desc: "Python script suite for complete automation of Excel aggregation, report generation, and email sending. pandas + openpyxl + smtplib implementation reduced daily 2-hour manual work to 5 minutes. GitHub Actions scheduled execution achieved 40 hours monthly effort reduction.",
                 project_web_scraping_title: "Multi-Site Information Collection System",
                 project_web_scraping_desc: "Scraping system auto-collecting EC price comparison, news articles, and SNS posts. BeautifulSoup + Selenium + Playwright implementation with JavaScript dynamic content support. Claude API summarization outputs 500 daily items as structured data.",
+                section_web_design: "Web Design Projects",
+                project_work_mv_title: "Work MV Production",
+                project_work_mv_desc: "Alternative rock track produced with Suno AI for music, Midjourney for visuals, and Canva for video editing. Combines AI-generated vocals and AI-assisted production, and also serves as a practical example of a multi-tool creative workflow.",
+                project_work_mv_button: "Watch on YouTube",
+                project_media_portfolio_title: "Media Portfolio - AI Video Gallery",
+                project_media_portfolio_desc: "Media portfolio showcasing AI video works generated with Kling AI Image to Video. Uses a premium gallery design with a black-to-blue-black gradient background and gold/brown accent colors, visually demonstrating the potential of AI-generated video.",
+                project_editorial_gallery_title: "Editorial Gallery",
+                project_editorial_gallery_desc: "Web gallery with a refined magazine-like editorial design. Bodoni Moda serif typography, bold layout, full-screen project sections, and parallax scrolling create a premium print-inspired feel. Dedicated background imagery and animation effects give each project a portfolio-ready visual presentation.",
+                project_neon_blue_title: "Neon Blue",
+                project_neon_blue_desc: "Cyberpunk anime landing page set in a neon-lit Tokyo in 2130. Neon blue (#00f3ff) and neon pink (#ff006e) gradients, particle animation, and glitch effects create a futuristic atmosphere. Canvas API particle backgrounds, smooth scrolling, and responsive design recreate the cyberpunk world across devices.",
+                project_zerocost_router_title: "zerocost-router",
+                project_zerocost_router_desc: "OpenAI-compatible router that manages multiple free LLM API keys behind one unified key. Supports Groq, Cerebras, OpenRouter, Gemini, and Hugging Face, with automatic failover on 429/5xx errors. Keys are stored in Cloudflare D1 using AES-256-GCM BYOK encryption, so existing apps can move to zero-cost LLM routing with a one-line code change.",
+                cta_title: "Project Requests & Contact",
+                cta_desc: "Feel free to contact me about AI-driven workflow automation, web application development, data analysis infrastructure, or related implementation projects.",
+                cta_primary: "Request a Project",
+                cta_secondary: "View Profile",
+                related_projects_label: "See more projects",
+                quick_data_viz: "Data Visualization",
+                quick_automation: "Automation",
+                quick_ai_creation: "AI Creation",
+                quick_profile: "Profile",
                 footer_rights: "© 2026 Urayaha Days. All rights reserved.",
                 contact_title: "Contact",
                 contact_form: "Contact Form",
@@ -1244,6 +1311,7 @@
             });
 
             updateLocalizedImages();
+            updateLocalizedFrames();
             document.querySelector('.lang-switch').textContent = t.lang_button;
         }
 
@@ -1259,6 +1327,15 @@
                     if (img.classList.contains('thumbnail-zoom-target')) {
                         img.setAttribute('aria-label', getThumbnailZoomLabel(alt));
                     }
+                }
+            });
+        }
+
+        function updateLocalizedFrames() {
+            document.querySelectorAll('.localized-frame').forEach(frame => {
+                const src = currentLang === 'ja' ? frame.dataset.srcJa : frame.dataset.srcEn;
+                if (src && frame.getAttribute('src') !== src) {
+                    frame.setAttribute('src', src);
                 }
             });
         }
@@ -1469,7 +1546,7 @@
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title" style="white-space: nowrap;">Flowchart Hover Viewer</h3>
+                    <h3 class="project-title" data-i18n="project_flowchart_title" style="white-space: nowrap;">Flowchart Hover Viewer</h3>
                 </div>
                 <div style="margin: 1rem 0;">
                     <img src="images/repo-heroes/flowchart-hover-viewer-ja.webp"
@@ -1482,7 +1559,7 @@
                          loading="lazy"
                          style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
                 </div>
-                <p class="project-description">
+                <p class="project-description" data-i18n="project_flowchart_desc">
                     Mermaid.jsフローチャートをホバーで詳細表示できるインタラクティブビューワー。
                     ノードにマウスオーバーで説明パネルが表示され、ドラッグ操作でレイアウト切り替えも可能。
                     Glassmorphism UIによる美しいダークテーマを採用。単一HTMLファイルでオフライン動作。
@@ -1507,7 +1584,7 @@
 
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title">AI導入分析レポート</h3>
+                    <h3 class="project-title" data-i18n="project_ai_adoption_title">AI導入分析レポート</h3>
                 </div>
                 <div style="margin: 1rem 0; position: relative; overflow: hidden; border-radius: 8px; border: 1px solid #e5e5e5;"
                      onmouseenter="var v=this.querySelector('video');var i=this.querySelector('img');if(v){v.style.opacity='1';i.style.opacity='0';v.currentTime=0;v.play();}"
@@ -1526,7 +1603,7 @@
                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s;">
                     </video>
                 </div>
-                <p class="project-description">
+                <p class="project-description" data-i18n="project_ai_adoption_desc">
                     経産省・日銀・McKinsey・BCG等の公的データに基づく、日本企業のAI導入成功vs失敗ケーススタディ分析。
                     三菱UFJ・パナソニック等の実在企業事例と、投資配分・ROI比較を37枚のインタラクティブスライドで可視化。
                     McKinsey/BCGレベルのコンサルティング資料デザインを再現。
@@ -1623,7 +1700,7 @@
 
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title">Gemini 3 SEO環境分析</h3>
+                    <h3 class="project-title" data-i18n="project_gemini_seo_title">Gemini 3 SEO環境分析</h3>
                 </div>
                 <div style="margin: 1rem 0;">
                     <img src="images/repo-heroes/gemini3-seo-environment-analysis-ja.webp"
@@ -1636,7 +1713,7 @@
                          loading="lazy"
                          style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
                 </div>
-                <p class="project-description">
+                <p class="project-description" data-i18n="project_gemini_seo_desc">
                     Gemini 3登場後のSEO環境変化を可視化したインタラクティブスライド。
                     検索クエリの変化、コンテンツ戦略の転換、技術的SEO要件の進化を
                     アニメーション付きグラフとチャートで解説。
@@ -2000,7 +2077,7 @@
 
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title">Claude Skills<br>Scheduled Execution</h3>
+                    <h3 class="project-title" data-i18n="project_claude_skills_scheduled_title">Claude Skills<br>Scheduled Execution</h3>
                 </div>
                 <img src="images/repo-heroes/claude-skills-scheduled-execution-ja.webp"
                      data-src-ja="images/repo-heroes/claude-skills-scheduled-execution-ja.webp"
@@ -2010,7 +2087,7 @@
                      alt="Claude Skills Scheduled Execution: Claude Code Skillsを定期実行"
                      class="project-screenshot localized-project-image"
                      loading="lazy">
-                <p class="project-description">
+                <p class="project-description" data-i18n="project_claude_skills_scheduled_desc">
                     Claude Code SkillsをTask Scheduler（Windows）やcron（Mac/Linux）で定期実行するスターターキット。
                     Claude Pro/Maxサブスクリプションを活用し、追加API課金なしでAIエージェントを自動実行。
                     クロスプラットフォーム対応、シンプルなセットアップ手順、セキュリティ考慮事項も完備。
@@ -2453,12 +2530,12 @@
         
         <!-- Related Projects Navigation -->
         <div style="text-align: center; margin: 3rem 0; padding: 2rem; background: #f8f9fa; border-radius: 12px;">
-            <p style="color: #666; margin-bottom: 1rem;">他のプロジェクトも見る</p>
+            <p style="color: #666; margin-bottom: 1rem;" data-i18n="related_projects_label">他のプロジェクトも見る</p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="#section-data-viz" style="padding: 0.75rem 1.5rem; background: white; border: 2px solid #e5e5e5; border-radius: 8px; text-decoration: none; color: #222; font-weight: 500; transition: all 0.3s;">データ可視化</a>
-                <a href="#section-automation" style="padding: 0.75rem 1.5rem; background: white; border: 2px solid #e5e5e5; border-radius: 8px; text-decoration: none; color: #222; font-weight: 500; transition: all 0.3s;">業務自動化</a>
-                <a href="#section-ai-creation" style="padding: 0.75rem 1.5rem; background: white; border: 2px solid #e5e5e5; border-radius: 8px; text-decoration: none; color: #222; font-weight: 500; transition: all 0.3s;">AI創作</a>
-                <a href="profile.html" style="padding: 0.75rem 1.5rem; background: white; border: 2px solid #e5e5e5; border-radius: 8px; text-decoration: none; color: #222; font-weight: 500; transition: all 0.3s;">プロフィール</a>
+                <a href="#section-data-viz" data-i18n="quick_data_viz" style="padding: 0.75rem 1.5rem; background: white; border: 2px solid #e5e5e5; border-radius: 8px; text-decoration: none; color: #222; font-weight: 500; transition: all 0.3s;">データ可視化</a>
+                <a href="#section-automation" data-i18n="quick_automation" style="padding: 0.75rem 1.5rem; background: white; border: 2px solid #e5e5e5; border-radius: 8px; text-decoration: none; color: #222; font-weight: 500; transition: all 0.3s;">業務自動化</a>
+                <a href="#section-ai-creation" data-i18n="quick_ai_creation" style="padding: 0.75rem 1.5rem; background: white; border: 2px solid #e5e5e5; border-radius: 8px; text-decoration: none; color: #222; font-weight: 500; transition: all 0.3s;">AI創作</a>
+                <a href="profile.html" data-i18n="quick_profile" style="padding: 0.75rem 1.5rem; background: white; border: 2px solid #e5e5e5; border-radius: 8px; text-decoration: none; color: #222; font-weight: 500; transition: all 0.3s;">プロフィール</a>
             </div>
         </div>
 
@@ -2548,18 +2625,21 @@
         <div class="projects-grid">
             <div class="project-card" id="work-mv-project-ai-creation">
                 <div class="project-header">
-                    <h3 class="project-title">作業用MV制作</h3>
+                    <h3 class="project-title" data-i18n="project_work_mv_title">作業用MV制作</h3>
                 </div>
                 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 1rem; border-radius: 8px;">
-                    <iframe 
+                    <iframe
+                        class="localized-frame"
+                        data-src-ja="https://www.youtube.com/embed/COqLy7Rnfzo?hl=ja"
+                        data-src-en="https://www.youtube.com/embed/COqLy7Rnfzo?hl=en"
                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
-                        src="https://www.youtube.com/embed/COqLy7Rnfzo" 
+                        src="https://www.youtube.com/embed/COqLy7Rnfzo?hl=ja" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
                     </iframe>
                 </div>
-                <p class="project-description">
+                <p class="project-description" data-i18n="project_work_mv_desc">
                     Suno AIで楽曲制作、Midjourneyでビジュアル生成、Canvaで動画編集を行ったオルタナティブロックトラック。
                     AI生成ボーカルとAI制作による楽曲の組み合わせです。
                     複数のAIツールを駆使した、クリエイティブワークフローの実践例としてもご覧いただけます。
@@ -2575,18 +2655,19 @@
                     <a href="https://www.youtube.com/watch?v=COqLy7Rnfzo&list=LL&utm_source=portfolio&utm_medium=project_card&utm_campaign=work_mv_youtube" 
                        class="project-link" 
                        target="_blank" rel="noopener noreferrer"
-                       onclick="gtag('event', 'cta_click', {'event_category': 'project_live', 'event_label': 'Work_MV', 'value': 1});">YouTubeで視聴</a>
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_live', 'event_label': 'Work_MV', 'value': 1});"
+                       data-i18n="project_work_mv_button">YouTubeで視聴</a>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title">Media Portfolio - AI Video Gallery</h3>
+                    <h3 class="project-title" data-i18n="project_media_portfolio_title">Media Portfolio - AI Video Gallery</h3>
                 </div>
                 <div style="width: 100%; height: 250px; background: #000; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; position: relative;">
                     <img src="images/repo-heroes/media-portfolio-ai-video-gallery.webp" alt="Kling AI Video Gallery Thumbnail" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                 </div>
-                <p class="project-description">
+                <p class="project-description" data-i18n="project_media_portfolio_desc">
                     Kling AI Image to Video技術で生成したAI動画作品を展示するメディアポートフォリオ。
                     漆黒から青みがかった黒へのグラデーション背景、ゴールド・ブラウン系のアクセントカラーで
                     高級感のあるギャラリーデザインを採用。AI生成動画の可能性を視覚的に表現。
@@ -2610,18 +2691,18 @@
             </div>
         </div>
 
-        <h2 class="section-title">Webデザインプロジェクト</h2>
+        <h2 class="section-title" data-i18n="section_web_design">Webデザインプロジェクト</h2>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title">エディトリアルギャラリー</h3>
+                    <h3 class="project-title" data-i18n="project_editorial_gallery_title">エディトリアルギャラリー</h3>
                 </div>
                 <div style="width: 100%; height: 250px; margin: 1rem 0; overflow: hidden; border-radius: 8px;">
                     <img src="https://tenormusica2024.github.io/portfolio/editorial-gallery-preview.png" 
                          alt="エディトリアルギャラリー デザイン例" 
                          style="width: 100%; height: 100%; object-fit: cover; display: block;">
                 </div>
-                <p class="project-description">
+                <p class="project-description" data-i18n="project_editorial_gallery_desc">
                     雑誌のような洗練されたエディトリアルデザインを採用したWebギャラリー。
                     Bodoni Modaセリフフォント、大胆なタイポグラフィ、全画面プロジェクトセクション、
                     視差スクロール効果により、印刷物のような高級感を表現。
@@ -2649,14 +2730,14 @@
 
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title">ネオンブルー</h3>
+                    <h3 class="project-title" data-i18n="project_neon_blue_title">ネオンブルー</h3>
                 </div>
                 <div style="margin: 1rem 0; height: 250px; overflow: hidden;">
                     <img src="https://tenormusica2024.github.io/portfolio/cyberpunk_anime/assets/character_3view.jpg" 
                          alt="NEON REQUIEM サイバーパンクアニメLP キャラクターデザイン" 
                          style="width: 100%; height: 100%; object-fit: cover; object-position: center top; border-radius: 8px; border: 1px solid #e5e5e5;">
                 </div>
-                <p class="project-description">
+                <p class="project-description" data-i18n="project_neon_blue_desc">
                     2130年のネオン輝く東京を舞台にしたサイバーパンクアニメのランディングページ。
                     ネオンブルー(#00f3ff)・ネオンピンク(#ff006e)のグラデーション、
                     パーティクルアニメーション、グリッチエフェクトによる近未来的な演出。
@@ -2684,14 +2765,14 @@
 
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title">zerocost-router</h3>
+                    <h3 class="project-title" data-i18n="project_zerocost_router_title">zerocost-router</h3>
                 </div>
                 <div style="margin: 1rem 0;">
                     <img src="zerocost-router-thumbnail.png"
                          alt="zerocost-router - 無料LLMルーター ランディングページ"
                          style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
                 </div>
-                <p class="project-description">
+                <p class="project-description" data-i18n="project_zerocost_router_desc">
                     複数の無料LLM APIキーを1本の統一キーで管理するOpenAI互換ルーター。
                     Groq・Cerebras・OpenRouter・Gemini・HuggingFaceの5プロバイダーに対応。
                     429/5xx検知で自動フェイルオーバー。AES-256-GCM暗号化BYOK方式でCloudflare D1に保存。
@@ -2720,15 +2801,17 @@
 
     <!-- CTA Section -->
     <div class="hero-cta">
-        <h2>制作依頼・お問い合わせ</h2>
-        <p>AI駆動開発による業務効率化、Webアプリケーション開発、データ分析基盤構築など、お気軽にご相談ください。</p>
+        <h2 data-i18n="cta_title">制作依頼・お問い合わせ</h2>
+        <p data-i18n="cta_desc">AI駆動開発による業務効率化、Webアプリケーション開発、データ分析基盤構築など、お気軽にご相談ください。</p>
         <div class="cta-buttons">
             <a href="contact.html" 
                class="btn-primary"
-               onclick="gtag('event', 'cta_click', {'event_category': 'engagement', 'event_label': '制作依頼CTA', 'value': 1});">制作依頼はこちら</a>
+               onclick="gtag('event', 'cta_click', {'event_category': 'engagement', 'event_label': '制作依頼CTA', 'value': 1});"
+               data-i18n="cta_primary">制作依頼はこちら</a>
             <a href="profile.html?utm_source=gallery&utm_medium=cta&utm_campaign=view_profile" 
                class="btn-secondary"
-               onclick="gtag('event', 'cta_click', {'event_category': 'engagement', 'event_label': 'プロフィール閲覧CTA', 'value': 1});">プロフィールを見る</a>
+               onclick="gtag('event', 'cta_click', {'event_category': 'engagement', 'event_label': 'プロフィール閲覧CTA', 'value': 1});"
+               data-i18n="cta_secondary">プロフィールを見る</a>
         </div>
     </div>
 
