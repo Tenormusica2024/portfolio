@@ -399,6 +399,7 @@
 
         .thumbnail-lightbox__panel {
             position: relative;
+            z-index: 1;
             width: min(96vw, 1440px);
             max-height: 92vh;
             display: flex;
@@ -428,15 +429,28 @@
             position: fixed;
             top: max(1rem, env(safe-area-inset-top));
             right: max(1rem, env(safe-area-inset-right));
-            width: 44px;
-            height: 44px;
+            z-index: 2;
+            display: grid;
+            place-items: center;
+            width: 56px;
+            height: 56px;
+            padding: 0;
+            box-sizing: border-box;
             border: 1px solid rgba(255, 255, 255, 0.35);
-            border-radius: 999px;
+            border-radius: 50%;
             background: rgba(255, 255, 255, 0.12);
             color: #fff;
-            font-size: 1.8rem;
+            font-size: 2rem;
             line-height: 1;
             cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        .thumbnail-lightbox__close::before {
+            content: "";
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
         }
 
         .thumbnail-lightbox__close:hover,
