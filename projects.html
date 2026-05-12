@@ -366,6 +366,84 @@
             transform: scale(1.02);
         }
 
+        .project-card img.thumbnail-zoom-target,
+        .project-card video.thumbnail-zoom-target {
+            cursor: zoom-in;
+        }
+
+        .project-card img.thumbnail-zoom-target:focus-visible,
+        .project-card video.thumbnail-zoom-target:focus-visible {
+            outline: 3px solid #222;
+            outline-offset: 4px;
+        }
+
+        body.lightbox-open {
+            overflow: hidden;
+        }
+
+        .thumbnail-lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(1rem, 3vw, 2.5rem);
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(8px);
+        }
+
+        .thumbnail-lightbox.is-open {
+            display: flex;
+        }
+
+        .thumbnail-lightbox__panel {
+            position: relative;
+            width: min(96vw, 1440px);
+            max-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .thumbnail-lightbox__image {
+            max-width: 100%;
+            max-height: 82vh;
+            object-fit: contain;
+            border-radius: 14px;
+            background: #fff;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+        }
+
+        .thumbnail-lightbox__caption {
+            max-width: min(90vw, 960px);
+            color: #f5f5f5;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .thumbnail-lightbox__close {
+            position: fixed;
+            top: max(1rem, env(safe-area-inset-top));
+            right: max(1rem, env(safe-area-inset-right));
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            font-size: 1.8rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .thumbnail-lightbox__close:hover,
+        .thumbnail-lightbox__close:focus-visible {
+            background: rgba(255, 255, 255, 0.22);
+        }
+
         .project-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
@@ -403,15 +481,6 @@
         }
 
         .project-badge {
-            background: #222;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .new-badge {
             background: #222;
             color: white;
             padding: 0.3rem 0.8rem;
@@ -1162,6 +1231,8 @@
         };
 
         let currentLang = localStorage.getItem('language') || 'ja';
+        let projectLightboxInitialized = false;
+        let lastLightboxTrigger = null;
 
         function switchLanguage() {
             currentLang = currentLang === 'ja' ? 'en' : 'ja';
@@ -1193,8 +1264,121 @@
                 }
                 if (alt) {
                     img.setAttribute('alt', alt);
+                    if (img.classList.contains('thumbnail-zoom-target')) {
+                        img.setAttribute('aria-label', getThumbnailZoomLabel(alt));
+                    }
                 }
             });
+        }
+
+        function getThumbnailZoomLabel(altText) {
+            const label = altText || 'Project thumbnail';
+            return currentLang === 'ja'
+                ? `${label}を拡大表示`
+                : `Open enlarged thumbnail: ${label}`;
+        }
+
+        function initProjectImageLightbox() {
+            if (projectLightboxInitialized) {
+                return;
+            }
+            projectLightboxInitialized = true;
+
+            const lightbox = document.createElement('div');
+            lightbox.id = 'projectImageLightbox';
+            lightbox.className = 'thumbnail-lightbox';
+            lightbox.setAttribute('role', 'dialog');
+            lightbox.setAttribute('aria-modal', 'true');
+            lightbox.setAttribute('aria-label', 'サムネイル拡大表示');
+            lightbox.innerHTML = `
+                <button type="button" class="thumbnail-lightbox__close" aria-label="閉じる">&times;</button>
+                <div class="thumbnail-lightbox__panel">
+                    <img class="thumbnail-lightbox__image" alt="">
+                    <p class="thumbnail-lightbox__caption"></p>
+                </div>
+            `;
+            document.body.appendChild(lightbox);
+
+            document.querySelectorAll('.project-card img, .project-card video').forEach(media => {
+                media.classList.add('thumbnail-zoom-target');
+                media.setAttribute('tabindex', '0');
+                media.setAttribute('role', 'button');
+                const fallbackAlt = media.getAttribute('alt') || media.closest('.project-card')?.querySelector('.project-title')?.textContent?.trim() || 'Project thumbnail';
+                media.setAttribute('aria-label', getThumbnailZoomLabel(fallbackAlt));
+            });
+
+            document.addEventListener('click', event => {
+                const media = event.target.closest('.project-card img, .project-card video');
+                if (!media) {
+                    return;
+                }
+                event.preventDefault();
+                openProjectImageLightbox(media);
+            });
+
+            document.addEventListener('keydown', event => {
+                const media = event.target.closest?.('.project-card img, .project-card video');
+                if (!media || (event.key !== 'Enter' && event.key !== ' ')) {
+                    return;
+                }
+                event.preventDefault();
+                openProjectImageLightbox(media);
+            });
+
+            lightbox.addEventListener('click', event => {
+                if (event.target === lightbox || event.target.closest('.thumbnail-lightbox__close')) {
+                    closeProjectImageLightbox();
+                }
+            });
+        }
+
+        function openProjectImageLightbox(media) {
+            const sourceImage = media.tagName === 'VIDEO'
+                ? media.closest('div')?.querySelector('img')
+                : media;
+            if (!sourceImage) {
+                return;
+            }
+
+            const src = sourceImage.currentSrc || sourceImage.getAttribute('src');
+            if (!src) {
+                return;
+            }
+
+            const lightbox = document.getElementById('projectImageLightbox');
+            const lightboxImage = lightbox?.querySelector('.thumbnail-lightbox__image');
+            const caption = lightbox?.querySelector('.thumbnail-lightbox__caption');
+            const closeButton = lightbox?.querySelector('.thumbnail-lightbox__close');
+            if (!lightbox || !lightboxImage || !caption) {
+                return;
+            }
+
+            lastLightboxTrigger = media;
+            const cardTitle = sourceImage.closest('.project-card')?.querySelector('.project-title')?.textContent?.trim();
+            const alt = sourceImage.getAttribute('alt') || cardTitle || '';
+            lightboxImage.src = src;
+            lightboxImage.alt = alt;
+            caption.textContent = alt;
+            lightbox.classList.add('is-open');
+            document.body.classList.add('lightbox-open');
+            closeButton?.focus();
+        }
+
+        function closeProjectImageLightbox() {
+            const lightbox = document.getElementById('projectImageLightbox');
+            if (!lightbox || !lightbox.classList.contains('is-open')) {
+                return;
+            }
+
+            const lightboxImage = lightbox.querySelector('.thumbnail-lightbox__image');
+            lightbox.classList.remove('is-open');
+            document.body.classList.remove('lightbox-open');
+            if (lightboxImage) {
+                lightboxImage.removeAttribute('src');
+                lightboxImage.removeAttribute('alt');
+            }
+            lastLightboxTrigger?.focus?.();
+            lastLightboxTrigger = null;
         }
 
         function openEmailOptions() {
@@ -1217,6 +1401,7 @@
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeDropdown();
+                closeProjectImageLightbox();
             }
         });
 
@@ -1228,6 +1413,7 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             updateContent();
+            initProjectImageLightbox();
         });
     </script>
 
@@ -1331,7 +1517,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title">AI導入分析レポート</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2026</span>
                 </div>
                 <div style="margin: 1rem 0; position: relative; overflow: hidden; border-radius: 8px; border: 1px solid #e5e5e5;"
@@ -1474,7 +1659,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_bi_dashboard_title">インタラクティブ分析ダッシュボード</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <div style="margin: 1rem 0;">
@@ -1557,7 +1741,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title">AI Buzz Extractor<br>&nbsp;</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <div style="margin: 1rem 0;">
@@ -1586,7 +1769,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="featured_sound_title">AI Integrated Sound Platform</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <img src="images/sound_platform_screenshot.png" alt="Sound Platform Main Menu" class="project-screenshot">
@@ -1611,7 +1793,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_code_reviewer_title">7-Agent Parallel<br>Code Review</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <img src="images/repo-heroes/7-agent-parallel-code-review-ja.webp"
@@ -1648,7 +1829,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_codex_kanban_title">Codex Session Kanban</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2026</span>
                 </div>
                 <img src="images/repo-heroes/codex-session-kanban-ja.webp"
@@ -1686,7 +1866,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_gmail_triage_title">Gmail Triage Assistant Proof</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2026</span>
                 </div>
                 <img src="images/repo-heroes/gmail-triage-assistant-ja.webp"
@@ -1720,7 +1899,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_screen_capture_title">AI Screen Capture Tools</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2026</span>
                 </div>
                 <img src="images/repo-heroes/ai-screen-capture-tools-ja.webp"
@@ -1754,7 +1932,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_voicevox_title">VOICEVOX CLI Notifier</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2026</span>
                 </div>
                 <div style="margin: 1rem 0;">
@@ -1786,7 +1963,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_claude_hook_title">Claude Code Hook<br>自動化システム</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <img src="images/repo-heroes/claude-code-hook-automation-ja.webp"
@@ -1819,7 +1995,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title">Claude Skills<br>Scheduled Execution</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2026</span>
                 </div>
                 <img src="images/repo-heroes/claude-skills-scheduled-execution-ja.webp"
@@ -1855,7 +2030,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_zenn_audio_title">Zenn Article Audio Reader</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <img src="images/repo-heroes/zenn-article-audio-reader-ja.webp"
@@ -1992,7 +2166,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_claude_review_pdca_title">Claude Review PDCA</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2026</span>
                 </div>
                 <img src="images/repo-heroes/claude-review-pdca-ja.webp"
@@ -2024,7 +2197,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_doc_freshness_title">Doc Freshness Analyzer</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2026</span>
                 </div>
                 <img src="images/repo-heroes/doc-freshness-analyzer-ja.webp"
@@ -2056,7 +2228,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_agent_workflow_reliability_title">Agent Workflow Reliability Dashboard</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2026</span>
                 </div>
                 <img src="images/repo-heroes/agent-workflow-reliability-dashboard-ja.webp"
@@ -2092,7 +2263,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_claude_worktree_title">Claude Worktree Parallel Dev</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2026</span>
                 </div>
                 <img src="images/repo-heroes/claude-worktree-parallel-dev-ja.webp"
@@ -2123,7 +2293,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_x_bookmark_title">X Bookmark Knowledge Pack</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2026</span>
                 </div>
                 <img src="images/repo-heroes/x-bookmark-knowledge-pack-ja.webp"
@@ -2154,7 +2323,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_hf_insights_title">Hugging Face Daily Insights API</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2026</span>
                 </div>
                 <img src="images/repo-heroes/huggingface-daily-insights-api-ja.webp"
@@ -2190,7 +2358,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_meeting_prep_title">Meeting Prep Assistant Proof</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2026</span>
                 </div>
                 <img src="images/repo-heroes/meeting-prep-assistant-proof-ja.webp"
@@ -2222,7 +2389,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_support_ticket_title">Support Ticket Triage Proof</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2026</span>
                 </div>
                 <img src="images/repo-heroes/support-ticket-triage-proof-ja.webp"
@@ -2254,7 +2420,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_daily_decision_title">Daily Decision Assistant Proof</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2026</span>
                 </div>
                 <img src="images/repo-heroes/daily-decision-assistant-proof-ja.webp"
@@ -2395,7 +2560,6 @@
             <div class="project-card" id="work-mv-project-ai-creation">
                 <div class="project-header">
                     <h3 class="project-title">作業用MV制作</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 1rem; border-radius: 8px;">
@@ -2430,7 +2594,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title">Media Portfolio - AI Video Gallery</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <div style="width: 100%; height: 250px; background: #000; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; position: relative;">
@@ -2465,7 +2628,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title">エディトリアルギャラリー</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <div style="width: 100%; height: 250px; margin: 1rem 0; overflow: hidden; border-radius: 8px;">
@@ -2502,7 +2664,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title">ネオンブルー</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2025</span>
                 </div>
                 <div style="margin: 1rem 0; height: 250px; overflow: hidden;">
@@ -2539,7 +2700,6 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title">zerocost-router</h3>
-                    <span class="new-badge">NEW</span>
                     <span class="project-year">2026</span>
                 </div>
                 <div style="margin: 1rem 0;">
