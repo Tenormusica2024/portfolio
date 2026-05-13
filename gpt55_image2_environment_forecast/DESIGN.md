@@ -1,77 +1,54 @@
----
-version: "alpha"
-name: "Analyst Slide Deck / Warm Editorial"
-description: "Presentation system for the GPT-5.5 x GPT Image 2 environment forecast. Built to avoid generic Codex neon-dashboard styling."
-colors:
-  ink: "#151411"
-  graphite: "#34312C"
-  muted: "#746F66"
-  hairline: "#D8D0C4"
-  paper: "#F7F1E8"
-  paperDeep: "#EDE2D2"
-  panel: "#FFFDF8"
-  clay: "#A6472C"
-  blue: "#315C8A"
-  sage: "#6B7B52"
-  amber: "#C48121"
-typography:
-  hero:
-    fontFamily: "'Noto Sans JP', 'Yu Gothic', system-ui, sans-serif"
-    fontSize: "clamp(2.9rem, 7vw, 6.9rem)"
-    fontWeight: 700
-    lineHeight: 0.92
-    letterSpacing: "-0.075em"
-  heading:
-    fontFamily: "'Noto Sans JP', 'Yu Gothic', system-ui, sans-serif"
-    fontSize: "clamp(2rem, 4vw, 4.2rem)"
-    fontWeight: 760
-    lineHeight: 1.02
-    letterSpacing: "-0.055em"
-  body:
-    fontFamily: "'Noto Sans JP', 'Yu Gothic', system-ui, sans-serif"
-    fontSize: "clamp(1rem, 1.45vw, 1.28rem)"
-    fontWeight: 400
-    lineHeight: 1.68
-  caption:
-    fontFamily: "'Noto Sans JP', 'Yu Gothic', system-ui, sans-serif"
-    fontSize: "0.74rem"
-    fontWeight: 600
-    lineHeight: 1.4
-    letterSpacing: "0.08em"
-rounded:
-  sm: "8px"
-  md: "16px"
-  lg: "28px"
-spacing:
-  xs: "6px"
-  sm: "12px"
-  md: "20px"
-  lg: "36px"
-  xl: "64px"
----
+# Design Notes: GPT-5.5 × GPT Image 2 Public Forecast Deck
 
-## Overview
+## Intent
 
-Warm editorial slide deck for a strategy report. The deck should feel like a high-trust consulting memo converted into slides: calm, source-aware, sharply structured, and readable from a distance.
+This deck is an external-facing analysis report about the post-GPT Image 2 visual information environment. It is intentionally not tailored to any specific owner, site, customer segment, or internal business strategy.
 
-## Rules
+The deck should feel like a public research briefing: large slide canvas, restrained typography, high signal density, and imagegen illustrations used as explanatory visuals rather than decorative filler.
 
-- Do not use neon cyan/purple gradients, glowing dashboards, generic metric bars, or sci-fi grid backgrounds.
-- Do not use thin, narrow, condensed, or typewriter-like fonts for visible slide text.
-- The visual frame should feel like a PPT slide: large 16:9 canvas that uses most of the viewport.
-- A slide must be one-screen complete. Do not rely on internal slide scrollbars for normal desktop/laptop viewing.
-- Use imagegen illustrations for selected slides when the visual idea benefits from texture, composition, and a polished raster asset.
-- Use one main accent at a time. Clay is for judgment, blue for evidence, sage for strategy, amber for caution.
-- Slides must be actual slides, not a long scrolling article. One message per slide, with supporting evidence below.
-- Keep typography to three levels: hero/title, heading, body/caption. Avoid decorative font stacks beyond one serif hero accent.
-- Prefer diagrams, matrices, timelines, and cards over long bullet lists.
-- Every slide should have a footer with slide number and enough source context to be credible.
-- Mobile should reflow without fixed-width assumptions and keep tap targets at least 44px.
+## Design Direction
 
-## Rationale
+- Format: 16:9 presentation-like slide deck.
+- Tone: public forecast, research-backed, calm but premium.
+- Visual motif: paper, clay, blue, and muted research-board colors.
+- Typography: Japanese-friendly sans-serif stack, avoiding narrow/condensed display fonts.
+- Illustration role: make abstract shifts visible: AI search surface, visual proof compression, workbench-style multimodal production.
 
-The source guidance used for this deck:
+## Content Boundary
 
-- Claude design guidance: native feel, clear hierarchy, accessibility, responsive layout, limited type scale.
-- Google DESIGN.md concept: explicit tokens + rationale so agents stop guessing visual taste.
-- Slide-specific guidance: do not treat a deck as markdown bullets; solve sparse slides with scale, rhythm, and layout.
+Allowed:
+
+- OpenAI GPT-5.5 / GPT Image 2 public information.
+- Google AI Search / AI Overviews / AI Mode public documentation.
+- arXiv papers and public research signals about AI search, traffic, answer surfaces, and synthetic media.
+- C2PA / Content Credentials / provenance discussion.
+- General market impacts across ads, ecommerce, news, education, search, and media operations.
+
+Not allowed:
+
+- Owner-specific strategy.
+- Site-specific optimization advice.
+- Site-owner-specific marketing or acquisition advice.
+- Claims that are not grounded in public sources or clearly marked as forecast.
+
+## Slide Structure
+
+1. Public title and thesis.
+2. Executive shifts.
+3. GPT-5.5 as a long-context work environment.
+4. GPT Image 2 as visual evidence compression.
+5. AI search and discovery surfaces.
+6. Research signals from AI-search studies.
+7. Market impact matrix.
+8. Provenance and trust layer.
+9. 30/90/180-day forecast.
+10. Operating checklist and sources.
+
+## Verification Standard
+
+- No inner slide scrollbars at common desktop sizes.
+- Mobile can scroll page-level if necessary, but slide content must remain readable and not clip.
+- No owner-specific, site-optimization, or private-context language.
+- Source list must be visible in the final slide and expanded in `report.md`.
+
+

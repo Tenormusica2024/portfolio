@@ -481,3 +481,11 @@ tr:last-child td { border-bottom: 0; }
   }
   .source-list li { margin-bottom: 6px; }
 }
+
+@media (max-width: 560px) {
+  .matrix { margin-top: 16px; }
+  .matrix table { font-size: .72rem; line-height: 1.25; }
+  .matrix th,
+  .matrix td { padding: 6px 7px; }
+  .matrix .badge { padding: 2px 6px; font-size: .56rem; }
+}
