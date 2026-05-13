@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIツールトレンド分析 | Hugging Face Downloads</title>
-    <meta name="description" content="Hugging Face Hub APIのdownloadsを使って画像生成AI、動画生成AI、AIモデル人気ランキングを客観的に集計するダッシュボード。">
+    <title>AIツールトレンド分析 | Service Rankings</title>
+    <meta name="description" content="画像生成AIサービス、動画生成AIサービスを公開リーダーボードと公式情報で集計するダッシュボード。">
     <style>
         * {
             margin: 0;
@@ -320,49 +320,41 @@
 
         <div class="description">
             <h2 data-i18n="about_title">About This Dashboard</h2>
-            <p data-i18n="about_desc1">最新のAIモデル・生成AI技術のトレンドを客観指標で追跡するダッシュボードです。</p>
-            <p data-i18n="about_desc2">Hugging Face Hub APIの公開モデルdownloadsを使い、画像生成AI・動画生成AI・AIモデル人気を同じ基準で集計します。</p>
-            <p data-i18n="about_desc3">downloadsはユニーク利用者数ではありませんが、主観的なおすすめ表より再取得しやすい公開利用シグナルとして扱います。</p>
+            <p data-i18n="about_desc1">最新の画像生成AIサービス・動画生成AIサービスのトレンドを公開指標で追跡するダッシュボードです。</p>
+            <p data-i18n="about_desc2">GPT Image 2やSeedance 2.0のようなクローズドサービスも含めるため、Artificial Analysisの盲検ユーザー投票Eloと公式情報を主な根拠にします。</p>
+            <p data-i18n="about_desc3">Hugging Face downloadsだけではQwenなど公開モデルに偏るため、サービス比較では補助情報に留めています。</p>
         </div>
 
         <div class="pages-grid">
-            <a href="#ai_model_popularity" class="page-card">
-                <div class="page-card-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="trendGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#4a9eff;stop-opacity:1" /><stop offset="100%" style="stop-color:#66b3ff;stop-opacity:1" /></linearGradient></defs><path d="M 8 48 L 18 38 L 28 42 L 38 28 L 48 32 L 56 16" stroke="url(#trendGradient)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="48" r="3" fill="url(#trendGradient)"/><circle cx="18" cy="38" r="3" fill="url(#trendGradient)"/><circle cx="28" cy="42" r="3" fill="url(#trendGradient)"/><circle cx="38" cy="28" r="3" fill="url(#trendGradient)"/><circle cx="48" cy="32" r="3" fill="url(#trendGradient)"/><circle cx="56" cy="16" r="3" fill="url(#trendGradient)"/><path d="M 50 10 L 56 16 L 50 16 Z" fill="url(#trendGradient)"/></svg></div>
-                <div class="page-card-title" data-i18n="model_title">AIモデル人気ランキング</div>
-                <div class="page-card-description" data-i18n="model_desc">Hugging Face上のテキスト生成モデルをdownloads順にランキング化。客観的な公開利用シグナルとして比較。</div>
-                <div class="card-top-model" data-top-for="ai_model_popularity"></div>
-                <span class="page-card-link" data-i18n="view_ranking">View Ranking</span>
-            </a>
-
-            <a href="#image_generation" class="page-card">
+            <a href="#image_generation_services" class="page-card">
                 <div class="page-card-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="imageGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ff6b9d;stop-opacity:1" /><stop offset="50%" style="stop-color:#c44569;stop-opacity:1" /><stop offset="100%" style="stop-color:#ffa502;stop-opacity:1" /></linearGradient></defs><rect x="8" y="8" width="48" height="48" rx="4" stroke="url(#imageGradient)" stroke-width="2.5" fill="none"/><circle cx="20" cy="20" r="4" fill="url(#imageGradient)"/><path d="M 8 45 L 20 32 L 32 40 L 56 20" stroke="url(#imageGradient)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 32 56 L 38 50 L 48 56" stroke="url(#imageGradient)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                <div class="page-card-title" data-i18n="image_title">画像生成AIランキング</div>
-                <div class="page-card-description" data-i18n="image_desc">text-to-image公開モデルをdownloads順に集計。Stable Diffusion系やFLUX系などの利用動向を確認。</div>
-                <div class="card-top-model" data-top-for="image_generation"></div>
+                <div class="page-card-title" data-i18n="image_title">画像生成AIサービス</div>
+                <div class="page-card-description" data-i18n="image_desc">GPT Image 2などの画像生成AIサービスを、公開リーダーボードと公式情報で比較。</div>
+                <div class="card-top-model" data-top-for="image_generation_services"></div>
                 <span class="page-card-link" data-i18n="view_ranking">View Ranking</span>
             </a>
 
-            <a href="#video_generation" class="page-card">
+            <a href="#video_generation_services" class="page-card">
                 <div class="page-card-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="videoGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#8e44ad;stop-opacity:1" /><stop offset="50%" style="stop-color:#3498db;stop-opacity:1" /><stop offset="100%" style="stop-color:#1abc9c;stop-opacity:1" /></linearGradient></defs><rect x="8" y="16" width="40" height="32" rx="3" stroke="url(#videoGradient)" stroke-width="2.5" fill="none"/><path d="M 48 24 L 56 20 L 56 44 L 48 40 Z" fill="url(#videoGradient)"/><path d="M 20 28 L 20 36 L 28 32 Z" fill="url(#videoGradient)"/><circle cx="16" cy="22" r="1.5" fill="url(#videoGradient)"/></svg></div>
-                <div class="page-card-title" data-i18n="video_title">動画生成AIランキング</div>
-                <div class="page-card-description" data-i18n="video_desc">image-to-video / text-to-video / video-to-video を統合し、公開動画生成モデルのdownloadsを比較。</div>
-                <div class="card-top-model" data-top-for="video_generation"></div>
+                <div class="page-card-title" data-i18n="video_title">動画生成AIサービス</div>
+                <div class="page-card-description" data-i18n="video_desc">Seedance 2.0などの動画生成AIサービスを、T2V/I2V/音声対応まで含めて比較。</div>
+                <div class="card-top-model" data-top-for="video_generation_services"></div>
                 <span class="page-card-link" data-i18n="view_ranking">View Ranking</span>
             </a>
         </div>
 
         <div class="method-note">
             <strong data-i18n="method_title">集計方針:</strong>
-            <span data-i18n="method_desc">評価軸はHugging Face公開モデルのdownloadsです。Midjourney、DALL-E、Soraなどのクローズド商用サービスはHF downloadsで直接比較できないため、必要に応じて別指標として追加します。</span>
+            <span data-i18n="method_desc">評価軸はサービス単位です。HF downloadsは公開モデルの取得回数であり、GPT Image 2やSeedance 2.0を拾えないため、主指標から外しました。主にArtificial Analysisの盲検ユーザー投票Eloと公式情報で補正しています。</span>
         </div>
 
         <div class="ranking-sections" id="rankingSections"></div>
 
         <div class="footer">
             <p><a href="https://tenormusica2024.github.io/portfolio/projects.html" style="display: inline-block; padding: 0.8rem 2rem; background: linear-gradient(135deg, rgba(20, 20, 20, 0.8) 0%, rgba(35, 35, 35, 0.8) 100%); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: #ffffff; text-decoration: none; font-weight: 600; transition: all 0.3s ease; margin-bottom: 1rem;" data-i18n="footer_portfolio">← ポートフォリオに戻る</a></p>
-            <p>Data Source: <a href="https://huggingface.co/api/models" target="_blank" rel="noopener">Hugging Face Hub API</a></p>
-            <p>Method Note: <a href="https://huggingface.co/docs/hub/en/models-download-stats" target="_blank" rel="noopener">Hugging Face model download stats</a></p>
-            <p>Data JSON: <a href="hf_rankings.json" target="_blank" rel="noopener">hf_rankings.json</a></p>
+            <p>Data Source: <a href="https://artificialanalysis.ai/" target="_blank" rel="noopener">Artificial Analysis</a> / official product pages</p>
+            <p>Method Note: service ranking; HF downloads are not treated as user-count rankings</p>
+            <p>Data JSON: <a href="service_rankings.json" target="_blank" rel="noopener">service_rankings.json</a></p>
         </div>
     </div>
 
@@ -373,44 +365,42 @@
                 main_title: "AIツールトレンド分析",
                 main_subtitle: "AI Tools Trend Analysis Dashboard",
                 about_title: "About This Dashboard",
-                about_desc1: "最新のAIモデル・生成AI技術のトレンドを客観指標で追跡するダッシュボードです。",
-                about_desc2: "Hugging Face Hub APIの公開モデルdownloadsを使い、画像生成AI・動画生成AI・AIモデル人気を同じ基準で集計します。",
-                about_desc3: "downloadsはユニーク利用者数ではありませんが、主観的なおすすめ表より再取得しやすい公開利用シグナルとして扱います。",
-                model_title: "AIモデル人気ランキング",
-                model_desc: "Hugging Face上のテキスト生成モデルをdownloads順にランキング化。客観的な公開利用シグナルとして比較。",
-                image_title: "画像生成AIランキング",
-                image_desc: "text-to-image公開モデルをdownloads順に集計。Stable Diffusion系やFLUX系などの利用動向を確認。",
-                video_title: "動画生成AIランキング",
-                video_desc: "image-to-video / text-to-video / video-to-video を統合し、公開動画生成モデルのdownloadsを比較。",
+                about_desc1: "最新の画像生成AIサービス・動画生成AIサービスのトレンドを公開指標で追跡するダッシュボードです。",
+                about_desc2: "GPT Image 2やSeedance 2.0のようなクローズドサービスも含めるため、Artificial Analysisの盲検ユーザー投票Eloと公式情報を主な根拠にします。",
+                about_desc3: "Hugging Face downloadsだけではQwenなど公開モデルに偏るため、サービス比較では補助情報に留めています。",
+                image_title: "画像生成AIサービス",
+                image_desc: "GPT Image 2などの画像生成AIサービスを、公開リーダーボードと公式情報で比較。",
+                video_title: "動画生成AIサービス",
+                video_desc: "Seedance 2.0などの動画生成AIサービスを、T2V/I2V/音声対応まで含めて比較。",
                 view_ranking: "View Ranking",
                 method_title: "集計方針:",
-                method_desc: "評価軸はHugging Face公開モデルのdownloadsです。Midjourney、DALL-E、Soraなどのクローズド商用サービスはHF downloadsで直接比較できないため、必要に応じて別指標として追加します。",
+                method_desc: "評価軸はサービス単位です。HF downloadsは公開モデルの取得回数であり、GPT Image 2やSeedance 2.0を拾えないため、主指標から外しました。主にArtificial Analysisの盲検ユーザー投票Eloと公式情報で補正しています。",
                 footer_portfolio: "← ポートフォリオに戻る",
                 downloads: "downloads",
                 likes: "likes",
-                top: "現在の1位"
+                top: "現在の1位",
+                score: "score"
             },
             en: {
                 lang_button: "JA",
                 main_title: "AI Tool Trend Analysis",
                 main_subtitle: "AI Tools Trend Analysis Dashboard",
                 about_title: "About This Dashboard",
-                about_desc1: "A dashboard that tracks AI model and generative AI trends with objective public metrics.",
-                about_desc2: "It uses Hugging Face Hub API downloads to compare image generation, video generation, and text-generation model popularity on the same basis.",
-                about_desc3: "Downloads are not unique users, but they are a reproducible public usage signal and less subjective than hand-curated recommendation lists.",
-                model_title: "AI Model Popularity Ranking",
-                model_desc: "Text-generation models on Hugging Face ranked by downloads as an objective public usage signal.",
-                image_title: "Image Generation AI Ranking",
-                image_desc: "Public text-to-image models ranked by downloads, including Stable Diffusion and FLUX-style model trends.",
-                video_title: "Video Generation AI Ranking",
-                video_desc: "Public video-generation models merged across image-to-video, text-to-video, and video-to-video tasks.",
+                about_desc1: "A dashboard that tracks image generation and video generation AI services with public evidence.",
+                about_desc2: "It includes closed services such as GPT Image 2 and Seedance 2.0, using Artificial Analysis blind user-preference Elo and official product sources.",
+                about_desc3: "Hugging Face downloads are no longer the primary metric because they over-represent open models and miss closed services.",
+                image_title: "Image Generation AI Services",
+                image_desc: "Image generation AI services such as GPT Image 2 ranked with public leaderboards and official sources.",
+                video_title: "Video Generation AI Services",
+                video_desc: "Video generation AI services such as Seedance 2.0 compared across T2V, I2V, and audio-capable workflows.",
                 view_ranking: "View Ranking",
                 method_title: "Method:",
-                method_desc: "The ranking metric is Hugging Face public model downloads. Closed commercial services such as Midjourney, DALL-E, and Sora are not directly comparable through HF downloads, so they should be added later with a separate metric if needed.",
+                method_desc: "Rankings are service-level. HF downloads are model file downloads and cannot capture GPT Image 2 or Seedance 2.0, so the primary metric is Artificial Analysis blind user-preference Elo plus official source context.",
                 footer_portfolio: "← Back to Portfolio",
                 downloads: "downloads",
                 likes: "likes",
-                top: "Current #1"
+                top: "Current #1",
+                score: "score"
             }
         };
 
@@ -450,7 +440,7 @@
         function renderRankings(data) {
             const t = translations[currentLang];
             const ordered = [...(data.categories || [])].sort((a, b) => {
-                const order = { ai_model_popularity: 0, image_generation: 1, video_generation: 2 };
+                const order = { image_generation_services: 0, video_generation_services: 1 };
                 return (order[a.key] ?? 99) - (order[b.key] ?? 99);
             });
             document.getElementById('rankingSections').innerHTML = ordered.map(category => `
@@ -460,20 +450,20 @@
                             <h2>${escapeHtml(categoryTitle(category))}</h2>
                             <p class="ranking-section-summary">${escapeHtml(categorySummary(category))}</p>
                         </div>
-                        <div class="ranking-meta-pill">HF downloads · Top ${category.top_n || 10}</div>
+                        <div class="ranking-meta-pill">${escapeHtml(category.metric || "service ranking")} · Top ${(category.items || []).length}</div>
                     </div>
                     <div class="ranking-list">
                         ${(category.items || []).map(item => `
                             <article class="rank-row">
                                 <div class="rank-number">${item.rank}</div>
                                 <div class="rank-model">
-                                    <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(item.id)}</a>
-                                    <div class="rank-detail">${escapeHtml(item.pipeline_tag)} &middot; ${escapeHtml(item.library_name || 'unknown library')}</div>
+                                    <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(item.name || item.id)}</a>
+                                    <div class="rank-detail">${escapeHtml(item.provider || "")} &middot; ${escapeHtml(item.service_family || item.availability || "service")}</div>
                                     <div class="rank-tags">${tagsHtml(item.tags)}</div>
                                 </div>
                                 <div class="rank-metric">
-                                    <div class="rank-downloads">${numberFmt.format(item.downloads)}</div>
-                                    <div class="rank-likes">${t.downloads} &middot; ${numberFmt.format(item.likes)} ${t.likes}</div>
+                                    <div class="rank-downloads">${numberFmt.format(item.metric_value || item.downloads || 0)}</div>
+                                    <div class="rank-likes">${escapeHtml(item.metric_label || t.score)}</div>
                                 </div>
                             </article>
                         `).join('')}
@@ -485,14 +475,14 @@
                 const target = document.querySelector(`[data-top-for="${category.key}"]`);
                 const topItem = category.items && category.items[0];
                 if (target && topItem) {
-                    target.innerHTML = `<strong>${t.top}:</strong> ${escapeHtml(topItem.id)}<br>${numberFmt.format(topItem.downloads)} ${t.downloads}`;
+                    target.innerHTML = `<strong>${t.top}:</strong> ${escapeHtml(topItem.name || topItem.id)}<br>${numberFmt.format(topItem.metric_value || topItem.downloads || 0)} ${escapeHtml(topItem.metric_label || t.score)}`;
                 }
             });
         }
 
         async function loadRankings() {
-            const response = await fetch(`hf_rankings.json?v=${Date.now()}`, { cache: 'no-store' });
-            if (!response.ok) throw new Error(`Failed to load hf_rankings.json: ${response.status}`);
+            const response = await fetch(`service_rankings.json?v=${Date.now()}`, { cache: 'no-store' });
+            if (!response.ok) throw new Error(`Failed to load service_rankings.json: ${response.status}`);
             rankingData = await response.json();
             renderRankings(rankingData);
         }
