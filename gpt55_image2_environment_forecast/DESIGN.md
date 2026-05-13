@@ -16,24 +16,24 @@ colors:
   amber: "#C48121"
 typography:
   hero:
-    fontFamily: "Georgia, 'Times New Roman', serif"
+    fontFamily: "'Noto Sans JP', 'Yu Gothic', system-ui, sans-serif"
     fontSize: "clamp(2.9rem, 7vw, 6.9rem)"
     fontWeight: 700
     lineHeight: 0.92
     letterSpacing: "-0.075em"
   heading:
-    fontFamily: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Noto Sans JP', sans-serif"
+    fontFamily: "'Noto Sans JP', 'Yu Gothic', system-ui, sans-serif"
     fontSize: "clamp(2rem, 4vw, 4.2rem)"
     fontWeight: 760
     lineHeight: 1.02
     letterSpacing: "-0.055em"
   body:
-    fontFamily: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Noto Sans JP', sans-serif"
+    fontFamily: "'Noto Sans JP', 'Yu Gothic', system-ui, sans-serif"
     fontSize: "clamp(1rem, 1.45vw, 1.28rem)"
     fontWeight: 400
     lineHeight: 1.68
   caption:
-    fontFamily: "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+    fontFamily: "'Noto Sans JP', 'Yu Gothic', system-ui, sans-serif"
     fontSize: "0.74rem"
     fontWeight: 600
     lineHeight: 1.4
@@ -57,6 +57,9 @@ Warm editorial slide deck for a strategy report. The deck should feel like a hig
 ## Rules
 
 - Do not use neon cyan/purple gradients, glowing dashboards, generic metric bars, or sci-fi grid backgrounds.
+- Do not use thin, narrow, condensed, or typewriter-like fonts for visible slide text.
+- The visual frame should feel like a PPT slide: large 16:9 canvas that uses most of the viewport.
+- Use imagegen illustrations for selected slides when the visual idea benefits from texture, composition, and a polished raster asset.
 - Use one main accent at a time. Clay is for judgment, blue for evidence, sage for strategy, amber for caution.
 - Slides must be actual slides, not a long scrolling article. One message per slide, with supporting evidence below.
 - Keep typography to three levels: hero/title, heading, body/caption. Avoid decorative font stacks beyond one serif hero accent.

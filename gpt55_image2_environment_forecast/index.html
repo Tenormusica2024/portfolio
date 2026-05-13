@@ -22,11 +22,11 @@
               <div class="eyebrow">C2C Portfolio Intelligence</div>
               <h1 class="hero-title">AI検索と<br><span class="accent">視覚証拠</span><br>競争の次局面</h1>
               <p class="slide-subtitle">GPT-5.5 と GPT Image 2 のリリース後、検索・比較・引用・画像化・購買候補化がAI側で進む。Webページは「読まれる場所」から、AIに使われる証拠資産へ変わる。</p>
+              <div class="callout-inline">結論: SEOは順位競争から、AIが引用・比較・再構成できる証拠設計へ移る。</div>
             </div>
-            <aside class="cover-card">
-              <strong>結論: SEOは順位競争から、証拠設計へ移る。</strong>
-              <p>この資料は、既存のGemini 3 SEO分析を単に模倣せず、OpenAI / Google公式情報と研究ソースをもとに、C2Cポートフォリオで取るべき実務アクションへ落とす。</p>
-            </aside>
+            <figure class="art-card cover-art">
+              <img src="assets/slide-01-ai-search-visual-evidence.webp" alt="AIがWeb資料と画像証拠を探索して回答へ変換するイメージ">
+            </figure>
           </div>
           <footer class="slide-footer"><span>01 / 10</span><span class="source-note">Updated 2026-05-13</span></footer>
         </div>
@@ -49,16 +49,19 @@
 
       <section class="slide" data-slide="3" aria-label="GPT-5.5 changes">
         <div class="slide-canvas">
-          <div class="slide-inner">
-            <div class="eyebrow">Model Capability</div>
-            <h2 class="slide-title">GPT-5.5は、回答モデルではなく作業モデルとして見る</h2>
-            <p class="slide-subtitle">OpenAI API docs上では、大規模コンテキストと複数ツールの接続が示されている。これは「ページを読んで終わり」ではなく、調べて、比較して、ファイル化するユーザー行動を増やす。</p>
-            <div class="grid-4">
-              <article class="metric"><div class="metric-value">105万</div><div class="metric-label">API docs上のコンテキスト規模。長い資料・複数ページの一括把握が前提になる。</div></article>
-              <article class="metric"><div class="metric-value">128K</div><div class="metric-label">最大出力規模。調査結果をレポートや資料として出しやすくなる。</div></article>
-              <article class="metric"><div class="metric-value">Tools</div><div class="metric-label">Web search、File search、Code interpreter、Computer use、MCPなど。</div></article>
-              <article class="metric"><div class="metric-value">Agent</div><div class="metric-label">ユーザーの比較・検討・発注前作業をAIが肩代わりする比率が上がる。</div></article>
+          <div class="slide-inner visual-split">
+            <div class="visual-copy">
+              <div class="eyebrow">Model Capability</div>
+              <h2 class="slide-title">GPT-5.5は、回答モデルではなく作業モデルとして見る</h2>
+              <p class="slide-subtitle">OpenAI API docs上では、大規模コンテキストと複数ツールの接続が示されている。これは「ページを読んで終わり」ではなく、調べて、比較して、ファイル化するユーザー行動を増やす。</p>
+              <div class="compact-metrics">
+                <div class="compact-metric"><strong>105万</strong><span>長い資料・複数ページの一括把握が前提になる。</span></div>
+                <div class="compact-metric"><strong>Tools</strong><span>Web search、File search、Code interpreter、Computer use、MCPなど。</span></div>
+              </div>
             </div>
+            <figure class="art-card visual-art">
+              <img src="assets/slide-03-gpt55-workbench.webp" alt="資料・コード・Web情報をAI作業台で整理してレポートへ変換するイメージ">
+            </figure>
           </div>
           <footer class="slide-footer"><span>03 / 10</span><span class="source-note">OpenAI: GPT-5.5 announcement / API model docs</span></footer>
         </div>
@@ -66,29 +69,19 @@
 
       <section class="slide" data-slide="4" aria-label="GPT Image 2 changes">
         <div class="slide-canvas">
-          <div class="slide-inner">
-            <div class="eyebrow">Visual Layer</div>
-            <h2 class="slide-title">GPT Image 2で、画像は“きれい”から“理解を圧縮する”へ進む</h2>
-            <div class="axis-diagram">
-              <div class="axis-panel">
-                <h3>Before: 生成画像が目立った時期</h3>
-                <ul>
-                  <li>未来都市・抽象背景・派手なサムネイル</li>
-                  <li>見た目の新奇性でクリックを取る</li>
-                  <li>本文の根拠とは分離しやすい</li>
-                </ul>
+          <div class="slide-inner visual-split">
+            <figure class="art-card visual-art">
+              <img src="assets/slide-04-visual-proof-compression.webp" alt="散らばった資料とグラフが整理された図解ボードへ圧縮されるイメージ">
+            </figure>
+            <div class="visual-copy">
+              <div class="eyebrow">Visual Layer</div>
+              <h2 class="slide-title">GPT Image 2で、画像は“きれい”から“理解を圧縮する”へ進む</h2>
+              <div class="grid-2">
+                <article class="card"><span class="kicker">Before</span><h3>生成画像が目立った時期</h3><p>未来都市・抽象背景・派手なサムネイル。本文の根拠とは分離しやすい。</p></article>
+                <article class="card"><span class="kicker">After</span><h3>視覚証拠が評価される時期</h3><p>比較表、ワークフロー、Before/After。データと判断軸を一枚に圧縮する。</p></article>
               </div>
-              <div class="arrow" aria-hidden="true">→</div>
-              <div class="axis-panel">
-                <h3>After: 視覚証拠が評価される時期</h3>
-                <ul>
-                  <li>比較表、ワークフロー、Before/After</li>
-                  <li>データと判断軸を一枚に圧縮する</li>
-                  <li>AIにも人間にも引用しやすい</li>
-                </ul>
-              </div>
+              <div class="callout-inline">品質差は、画像生成の上手さではなく、何を証拠として見せるかで決まる。</div>
             </div>
-            <div class="quote">サムネイルの品質差は、画像生成の上手さではなく、何を比較し、何を証拠として見せるかで決まる。</div>
           </div>
           <footer class="slide-footer"><span>04 / 10</span><span class="source-note">OpenAI: ChatGPT Images 2.0 / GPT Image 2 docs</span></footer>
         </div>
