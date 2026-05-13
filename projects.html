@@ -51,8 +51,8 @@
           {
             "@type": "CreativeWork",
             "name": "AIツールトレンド分析",
-            "description": "GitHub TrendingとWikipedia Pageviews APIを活用したAIプロジェクト・画像生成・動画生成ツールのトレンドランキング自動収集・可視化",
-            "url": "https://tenormusica2024.github.io/ai-trend-daily/home.html"
+            "description": "Hugging Face Hub APIのdownloadsを使い、画像生成AI・動画生成AI・AIモデル人気を客観指標でランキング化するダッシュボード",
+            "url": "https://tenormusica2024.github.io/portfolio/ai-trend-daily/home.html"
           },
           {
             "@type": "CreativeWork",
@@ -1098,7 +1098,7 @@
                 project_ai_adoption_title: "AI導入分析レポート",
                 project_ai_adoption_desc: "経産省・日銀・McKinsey・BCG等の公的データに基づく、日本企業のAI導入成功vs失敗ケーススタディ分析。三菱UFJ・パナソニック等の実在企業事例と、投資配分・ROI比較を37枚のインタラクティブスライドで可視化。McKinsey/BCGレベルのコンサルティング資料デザインを再現。",
                 project_ai_trend_title: "AIツールトレンド分析",
-                project_ai_trend_desc: "GitHub TrendingとWikipedia Pageviews APIを活用し、AIプロジェクト・画像生成・動画生成ツールのトレンドランキングを自動収集・可視化。GitHub Trendは毎日9時、AI画像/動画ランキングは3時間ごとに自動更新。Gemini API翻訳機能により全ての説明文を自然な日本語で提供。",
+                project_ai_trend_desc: "Hugging Face Hub APIのdownloadsを使い、画像生成AI・動画生成AI・AIモデル人気ランキングを客観指標で自動集計。主観的なおすすめ表ではなく、公開モデルの利用シグナルを再取得可能な形で可視化。",
                 project_sp500_title: "市場指数チャート",
                 project_sp500_desc: "SP500とFANG+指数の価格推移を同時に可視化。Cyberpunk Matrix風とSynthwave Retro風のデザインで、日次・週次・月次の時間軸切り替え機能を実装。Chart.jsによるリアルタイム更新とCSS3アニメーション。",
                 project_gemini_seo_title: "Gemini 3 SEO環境分析",
@@ -1224,7 +1224,7 @@
                 project_ai_adoption_title: "AI Adoption Analysis Report",
                 project_ai_adoption_desc: "Case-study analysis of successful and failed AI adoption in Japanese companies, based on public data from METI, the Bank of Japan, McKinsey, BCG, and other sources. Visualizes real enterprise examples such as MUFG and Panasonic, investment allocation, and ROI comparisons across 37 interactive slides with a consulting-style presentation design.",
                 project_ai_trend_title: "AI Tool Trend Analysis",
-                project_ai_trend_desc: "Automated collection and visualization of AI project, image generation, and video generation tool trend rankings using GitHub Trending and Wikipedia Pageviews API. GitHub Trends update daily at 9 AM, AI image/video rankings update every 3 hours. All descriptions are provided in natural Japanese through Gemini API translation.",
+                project_ai_trend_desc: "Objective AI trend dashboard using Hugging Face Hub API downloads for image generation, video generation, and AI model popularity rankings. It replaces subjective recommendations with reproducible public model usage signals.",
                 project_sp500_title: "Market Index Chart",
                 project_sp500_desc: "Simultaneously visualizes SP500 and FANG+ index price trends. Features Cyberpunk Matrix and Synthwave Retro designs with daily/weekly/monthly time-axis switching. Real-time updates using Chart.js with CSS3 animations.",
                 project_gemini_seo_title: "Gemini 3 SEO Environment Analysis",
@@ -1809,25 +1809,25 @@
                          style="width: 100%; border-radius: 8px; border: 1px solid #e5e5e5;">
                 </div>
                 <p class="project-description" data-i18n="project_ai_trend_desc">
-                    GitHub TrendingとWikipedia Pageviews APIを活用し、AIプロジェクト・画像生成・動画生成ツールの
-                    トレンドランキングを自動収集・可視化。GitHub Trendは毎日9時、AI画像/動画ランキングは3時間ごとに
-                    自動更新。Gemini API翻訳機能により全ての説明文を自然な日本語で提供。
+                    Hugging Face Hub APIのdownloadsを使い、画像生成AI・動画生成AI・AIモデル人気ランキングを
+                    客観指標で自動集計。主観的なおすすめ表ではなく、公開モデルの利用シグナルを
+                    再取得可能な形で可視化。
                 </p>
                 <div class="tech-stack">
-                    <span class="tech-tag">GitHub Trending</span>
-                    <span class="tech-tag">Wikipedia API</span>
-                    <span class="tech-tag">Gemini API</span>
-                    <span class="tech-tag">Auto-Update</span>
+                    <span class="tech-tag">Hugging Face API</span>
+                    <span class="tech-tag">Downloads Metric</span>
+                    <span class="tech-tag">Static Dashboard</span>
+                    <span class="tech-tag">Objective Ranking</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://tenormusica2024.github.io/ai-trend-daily/home.html?utm_source=portfolio&utm_medium=project_card&utm_campaign=ai_trend_live"
+                    <a href="https://tenormusica2024.github.io/portfolio/ai-trend-daily/home.html?utm_source=portfolio&utm_medium=project_card&utm_campaign=ai_trend_live"
                        class="project-link"
                        target="_blank" rel="noopener noreferrer"
                        onclick="gtag('event', 'cta_click', {'event_category': 'project_live', 'event_label': 'AI_Trend', 'value': 1});">Dashboard</a>
-                    <a href="https://github.com/Tenormusica2024/ai-trend-daily?utm_source=portfolio&utm_medium=project_card&utm_campaign=ai_trend_github"
+                    <a href="https://tenormusica2024.github.io/portfolio/ai-trend-daily/hf_rankings.json?utm_source=portfolio&utm_medium=project_card&utm_campaign=ai_trend_data"
                        class="project-link"
                        target="_blank" rel="noopener noreferrer"
-                       onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'AI_Trend', 'value': 1});">GitHub</a>
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_data', 'event_label': 'AI_Trend', 'value': 1});">Data JSON</a>
                 </div>
             </div>
 

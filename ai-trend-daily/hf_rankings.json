@@ -1,0 +1,803 @@
+{
+  "schema_version": "2026-05-13.hf-rankings.v1",
+  "generated_at": "2026-05-13T16:18:50+09:00",
+  "updated_at_label": "2026-05-13T16:18:50+09:00",
+  "project": "AI Tool Trend Analysis",
+  "source_policy": {
+    "primary_metric": "Hugging Face public model downloads",
+    "why": "主観的な比較表ではなく、再取得可能な公開APIの数値をランキング根拠にするため。",
+    "caveats": [
+      "downloadsはユニーク利用者数ではなく、モデルファイル取得回数ベースの人気・利用近似指標。",
+      "Midjourney、DALL-E、Soraなどのクローズド商用サービスは、Hugging Face公開モデルdownloadsでは直接比較できない。",
+      "自動化・CI・ミラー・派生モデルの影響を受けるため、絶対的な市場シェアではなくトレンド観測指標として扱う。"
+    ]
+  },
+  "sources": [
+    {
+      "name": "Hugging Face Hub API /api/models",
+      "url": "https://huggingface.co/api/models",
+      "docs": "https://huggingface.co/docs/hub/en/api",
+      "checked_at": "2026-05-13T16:18:50+09:00"
+    },
+    {
+      "name": "Hugging Face Models Download Stats",
+      "url": "https://huggingface.co/docs/hub/en/models-download-stats",
+      "checked_at": "2026-05-13T16:18:50+09:00"
+    }
+  ],
+  "categories": [
+    {
+      "key": "image_generation",
+      "title_ja": "画像生成AIモデル",
+      "title_en": "Image Generation Models",
+      "summary_ja": "Hugging Face上の text-to-image モデルをdownloads順に集計。",
+      "summary_en": "Public text-to-image models ranked by Hugging Face downloads.",
+      "metric": "huggingface_downloads",
+      "sort": "downloads_desc",
+      "top_n": 10,
+      "queries": [
+        {
+          "pipeline_tag": "text-to-image",
+          "url": "https://huggingface.co/api/models?pipeline_tag=text-to-image&sort=downloads&direction=-1&limit=30",
+          "fetched": 30
+        }
+      ],
+      "items": [
+        {
+          "id": "stabilityai/stable-diffusion-xl-base-1.0",
+          "owner": "stabilityai",
+          "name": "stable-diffusion-xl-base-1.0",
+          "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0",
+          "downloads": 2063379,
+          "likes": 7706,
+          "pipeline_tag": "text-to-image",
+          "matched_query_tag": "text-to-image",
+          "library_name": "diffusers",
+          "created_at": "2023-07-25T13:25:51.000Z",
+          "last_modified": null,
+          "tags": [
+            "diffusers",
+            "safetensors",
+            "text-to-image",
+            "arxiv:2307.01952",
+            "arxiv:2211.01324",
+            "arxiv:2108.01073",
+            "arxiv:2112.10752",
+            "license:openrail++"
+          ],
+          "rank": 1
+        },
+        {
+          "id": "stable-diffusion-v1-5/stable-diffusion-v1-5",
+          "owner": "stable-diffusion-v1-5",
+          "name": "stable-diffusion-v1-5",
+          "url": "https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5",
+          "downloads": 1672917,
+          "likes": 1104,
+          "pipeline_tag": "text-to-image",
+          "matched_query_tag": "text-to-image",
+          "library_name": "diffusers",
+          "created_at": "2024-08-30T09:48:48.000Z",
+          "last_modified": null,
+          "tags": [
+            "diffusers",
+            "safetensors",
+            "text-to-image",
+            "arxiv:2207.12598",
+            "arxiv:2112.10752",
+            "arxiv:2103.00020",
+            "arxiv:2205.11487",
+            "arxiv:1910.09700"
+          ],
+          "rank": 2
+        },
+        {
+          "id": "Tongyi-MAI/Z-Image-Turbo",
+          "owner": "Tongyi-MAI",
+          "name": "Z-Image-Turbo",
+          "url": "https://huggingface.co/Tongyi-MAI/Z-Image-Turbo",
+          "downloads": 1291333,
+          "likes": 4610,
+          "pipeline_tag": "text-to-image",
+          "matched_query_tag": "text-to-image",
+          "library_name": "diffusers",
+          "created_at": "2025-11-25T15:09:48.000Z",
+          "last_modified": null,
+          "tags": [
+            "diffusers",
+            "safetensors",
+            "text-to-image",
+            "arxiv:2511.22699",
+            "arxiv:2511.22677",
+            "arxiv:2511.13649",
+            "license:apache-2.0",
+            "en"
+          ],
+          "rank": 3
+        },
+        {
+          "id": "stabilityai/sdxl-turbo",
+          "owner": "stabilityai",
+          "name": "sdxl-turbo",
+          "url": "https://huggingface.co/stabilityai/sdxl-turbo",
+          "downloads": 981758,
+          "likes": 2571,
+          "pipeline_tag": "text-to-image",
+          "matched_query_tag": "text-to-image",
+          "library_name": "diffusers",
+          "created_at": "2023-11-27T15:19:11.000Z",
+          "last_modified": null,
+          "tags": [
+            "diffusers",
+            "safetensors",
+            "text-to-image",
+            "license:other",
+            "onnx",
+            "diffusers:StableDiffusionXLPipeline",
+            "region:us"
+          ],
+          "rank": 4
+        },
+        {
+          "id": "black-forest-labs/FLUX.1-dev",
+          "owner": "black-forest-labs",
+          "name": "FLUX.1-dev",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.1-dev",
+          "downloads": 731204,
+          "likes": 12795,
+          "pipeline_tag": "text-to-image",
+          "matched_query_tag": "text-to-image",
+          "library_name": "diffusers",
+          "created_at": "2024-07-31T21:13:44.000Z",
+          "last_modified": null,
+          "tags": [
+            "diffusers",
+            "safetensors",
+            "text-to-image",
+            "image-generation",
+            "license:other",
+            "flux",
+            "en",
+            "endpoints_compatible"
+          ],
+          "rank": 5
+        },
+        {
+          "id": "black-forest-labs/FLUX.1-schnell",
+          "owner": "black-forest-labs",
+          "name": "FLUX.1-schnell",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.1-schnell",
+          "downloads": 686828,
+          "likes": 4868,
+          "pipeline_tag": "text-to-image",
+          "matched_query_tag": "text-to-image",
+          "library_name": "diffusers",
+          "created_at": "2024-07-31T19:58:05.000Z",
+          "last_modified": null,
+          "tags": [
+            "diffusers",
+            "safetensors",
+            "text-to-image",
+            "image-generation",
+            "license:apache-2.0",
+            "flux",
+            "en",
+            "endpoints_compatible"
+          ],
+          "rank": 6
+        },
+        {
+          "id": "crynux-network/sdxl-turbo",
+          "owner": "crynux-network",
+          "name": "sdxl-turbo",
+          "url": "https://huggingface.co/crynux-network/sdxl-turbo",
+          "downloads": 671031,
+          "likes": 3,
+          "pipeline_tag": "text-to-image",
+          "matched_query_tag": "text-to-image",
+          "library_name": "diffusers",
+          "created_at": "2025-07-17T08:10:14.000Z",
+          "last_modified": null,
+          "tags": [
+            "diffusers",
+            "license:apache-2.0",
+            "endpoints_compatible",
+            "diffusers:StableDiffusionXLPipeline",
+            "region:us"
+          ],
+          "rank": 7
+        },
+        {
+          "id": "CompVis/stable-diffusion-v1-4",
+          "owner": "CompVis",
+          "name": "stable-diffusion-v1-4",
+          "url": "https://huggingface.co/CompVis/stable-diffusion-v1-4",
+          "downloads": 640452,
+          "likes": 7008,
+          "pipeline_tag": "text-to-image",
+          "matched_query_tag": "text-to-image",
+          "library_name": "diffusers",
+          "created_at": "2022-08-20T13:26:13.000Z",
+          "last_modified": null,
+          "tags": [
+            "diffusers",
+            "safetensors",
+            "text-to-image",
+            "arxiv:2207.12598",
+            "arxiv:2112.10752",
+            "arxiv:2103.00020",
+            "arxiv:2205.11487",
+            "arxiv:1910.09700"
+          ],
+          "rank": 8
+        },
+        {
+          "id": "crynux-network/stable-diffusion-v1-5",
+          "owner": "crynux-network",
+          "name": "stable-diffusion-v1-5",
+          "url": "https://huggingface.co/crynux-network/stable-diffusion-v1-5",
+          "downloads": 574357,
+          "likes": 1,
+          "pipeline_tag": "text-to-image",
+          "matched_query_tag": "text-to-image",
+          "library_name": "diffusers",
+          "created_at": "2025-07-17T07:24:57.000Z",
+          "last_modified": null,
+          "tags": [
+            "diffusers",
+            "safetensors",
+            "arxiv:1910.09700",
+            "endpoints_compatible",
+            "diffusers:StableDiffusionPipeline",
+            "region:us"
+          ],
+          "rank": 9
+        },
+        {
+          "id": "stabilityai/sd-turbo",
+          "owner": "stabilityai",
+          "name": "sd-turbo",
+          "url": "https://huggingface.co/stabilityai/sd-turbo",
+          "downloads": 551643,
+          "likes": 449,
+          "pipeline_tag": "text-to-image",
+          "matched_query_tag": "text-to-image",
+          "library_name": "diffusers",
+          "created_at": "2023-11-27T16:41:20.000Z",
+          "last_modified": null,
+          "tags": [
+            "diffusers",
+            "safetensors",
+            "text-to-image",
+            "diffusers:StableDiffusionPipeline",
+            "region:us"
+          ],
+          "rank": 10
+        }
+      ]
+    },
+    {
+      "key": "video_generation",
+      "title_ja": "動画生成AIモデル",
+      "title_en": "Video Generation Models",
+      "summary_ja": "text-to-video / image-to-video / video-to-video を統合しdownloads順に集計。",
+      "summary_en": "Public video-generation models merged across text/image/video-to-video tasks and ranked by downloads.",
+      "metric": "huggingface_downloads",
+      "sort": "downloads_desc",
+      "top_n": 10,
+      "queries": [
+        {
+          "pipeline_tag": "image-to-video",
+          "url": "https://huggingface.co/api/models?pipeline_tag=image-to-video&sort=downloads&direction=-1&limit=30",
+          "fetched": 30
+        },
+        {
+          "pipeline_tag": "text-to-video",
+          "url": "https://huggingface.co/api/models?pipeline_tag=text-to-video&sort=downloads&direction=-1&limit=30",
+          "fetched": 30
+        },
+        {
+          "pipeline_tag": "video-to-video",
+          "url": "https://huggingface.co/api/models?pipeline_tag=video-to-video&sort=downloads&direction=-1&limit=30",
+          "fetched": 30
+        }
+      ],
+      "items": [
+        {
+          "id": "Lightricks/LTX-2.3",
+          "owner": "Lightricks",
+          "name": "LTX-2.3",
+          "url": "https://huggingface.co/Lightricks/LTX-2.3",
+          "downloads": 1726442,
+          "likes": 1166,
+          "pipeline_tag": "image-to-video",
+          "matched_query_tag": "image-to-video",
+          "library_name": "diffusers",
+          "created_at": "2026-03-04T22:28:28.000Z",
+          "last_modified": null,
+          "tags": [
+            "diffusers",
+            "image-to-video",
+            "text-to-video",
+            "video-to-video",
+            "arxiv:2601.03233",
+            "license:other",
+            "image-text-to-video",
+            "audio-to-video"
+          ],
+          "rank": 1
+        },
+        {
+          "id": "Lightricks/LTX-2.3-fp8",
+          "owner": "Lightricks",
+          "name": "LTX-2.3-fp8",
+          "url": "https://huggingface.co/Lightricks/LTX-2.3-fp8",
+          "downloads": 1615162,
+          "likes": 96,
+          "pipeline_tag": "image-to-video",
+          "matched_query_tag": "image-to-video",
+          "library_name": "diffusers",
+          "created_at": "2026-03-05T22:49:14.000Z",
+          "last_modified": null,
+          "tags": [
+            "diffusers",
+            "image-to-video",
+            "text-to-video",
+            "video-to-video",
+            "arxiv:2601.03233",
+            "license:other",
+            "image-text-to-video",
+            "audio-to-video"
+          ],
+          "rank": 2
+        },
+        {
+          "id": "lightx2v/Wan2.2-Distill-Loras",
+          "owner": "lightx2v",
+          "name": "Wan2.2-Distill-Loras",
+          "url": "https://huggingface.co/lightx2v/Wan2.2-Distill-Loras",
+          "downloads": 1141241,
+          "likes": 243,
+          "pipeline_tag": "image-to-video",
+          "matched_query_tag": "image-to-video",
+          "library_name": "diffusers",
+          "created_at": "2025-10-16T07:23:10.000Z",
+          "last_modified": null,
+          "tags": [
+            "diffusers",
+            "image-to-video",
+            "base_model:Wan-AI/Wan2.2-I2V-A14B",
+            "base_model:adapter:Wan-AI/Wan2.2-I2V-A14B",
+            "license:apache-2.0",
+            "diffusion-single-file",
+            "comfyui",
+            "distillation"
+          ],
+          "rank": 3
+        },
+        {
+          "id": "Lightricks/LTX-2",
+          "owner": "Lightricks",
+          "name": "LTX-2",
+          "url": "https://huggingface.co/Lightricks/LTX-2",
+          "downloads": 707224,
+          "likes": 1708,
+          "pipeline_tag": "image-to-video",
+          "matched_query_tag": "image-to-video",
+          "library_name": "diffusers",
+          "created_at": "2026-01-03T10:23:39.000Z",
+          "last_modified": null,
+          "tags": [
+            "diffusers",
+            "safetensors",
+            "image-to-video",
+            "text-to-video",
+            "video-to-video",
+            "arxiv:2601.03233",
+            "license:other",
+            "image-text-to-video"
+          ],
+          "rank": 4
+        },
+        {
+          "id": "Lightricks/LTX-Video",
+          "owner": "Lightricks",
+          "name": "LTX-Video",
+          "url": "https://huggingface.co/Lightricks/LTX-Video",
+          "downloads": 388446,
+          "likes": 2173,
+          "pipeline_tag": "image-to-video",
+          "matched_query_tag": "image-to-video",
+          "library_name": "diffusers",
+          "created_at": "2024-10-31T12:36:00.000Z",
+          "last_modified": null,
+          "tags": [
+            "diffusers",
+            "safetensors",
+            "image-to-video",
+            "license:other",
+            "ltx-video",
+            "en",
+            "diffusers:LTXPipeline",
+            "region:us"
+          ],
+          "rank": 5
+        },
+        {
+          "id": "stabilityai/stable-video-diffusion-img2vid-xt",
+          "owner": "stabilityai",
+          "name": "stable-video-diffusion-img2vid-xt",
+          "url": "https://huggingface.co/stabilityai/stable-video-diffusion-img2vid-xt",
+          "downloads": 319700,
+          "likes": 3291,
+          "pipeline_tag": "image-to-video",
+          "matched_query_tag": "image-to-video",
+          "library_name": "diffusers",
+          "created_at": "2023-11-20T23:45:55.000Z",
+          "last_modified": null,
+          "tags": [
+            "diffusers",
+            "safetensors",
+            "image-to-video",
+            "license:other",
+            "diffusers:StableVideoDiffusionPipeline",
+            "region:us"
+          ],
+          "rank": 6
+        },
+        {
+          "id": "unsloth/LTX-2.3-GGUF",
+          "owner": "unsloth",
+          "name": "LTX-2.3-GGUF",
+          "url": "https://huggingface.co/unsloth/LTX-2.3-GGUF",
+          "downloads": 293420,
+          "likes": 387,
+          "pipeline_tag": "image-to-video",
+          "matched_query_tag": "image-to-video",
+          "library_name": "ggml",
+          "created_at": "2026-03-05T17:47:55.000Z",
+          "last_modified": null,
+          "tags": [
+            "gguf",
+            "image-to-video",
+            "text-to-video",
+            "video-to-video",
+            "arxiv:2601.03233",
+            "base_model:Lightricks/LTX-2.3",
+            "base_model:quantized:Lightricks/LTX-2.3",
+            "license:other"
+          ],
+          "rank": 7
+        },
+        {
+          "id": "numz/SeedVR2_comfyUI",
+          "owner": "numz",
+          "name": "SeedVR2_comfyUI",
+          "url": "https://huggingface.co/numz/SeedVR2_comfyUI",
+          "downloads": 196362,
+          "likes": 263,
+          "pipeline_tag": "video-to-video",
+          "matched_query_tag": "video-to-video",
+          "library_name": "diffusers",
+          "created_at": "2025-06-20T05:05:46.000Z",
+          "last_modified": null,
+          "tags": [
+            "diffusers",
+            "video-to-video",
+            "base_model:ByteDance-Seed/SeedVR2-3B",
+            "base_model:finetune:ByteDance-Seed/SeedVR2-3B",
+            "license:apache-2.0",
+            "art",
+            "region:us"
+          ],
+          "rank": 8
+        },
+        {
+          "id": "QuantStack/Wan2.2-I2V-A14B-GGUF",
+          "owner": "QuantStack",
+          "name": "Wan2.2-I2V-A14B-GGUF",
+          "url": "https://huggingface.co/QuantStack/Wan2.2-I2V-A14B-GGUF",
+          "downloads": 183923,
+          "likes": 329,
+          "pipeline_tag": "image-to-video",
+          "matched_query_tag": "image-to-video",
+          "library_name": "gguf",
+          "created_at": "2025-07-28T14:21:18.000Z",
+          "last_modified": null,
+          "tags": [
+            "gguf",
+            "image-to-video",
+            "base_model:Wan-AI/Wan2.2-I2V-A14B",
+            "base_model:quantized:Wan-AI/Wan2.2-I2V-A14B",
+            "license:apache-2.0",
+            "en",
+            "zh",
+            "region:us"
+          ],
+          "rank": 9
+        },
+        {
+          "id": "SulphurAI/Sulphur-2-base",
+          "owner": "SulphurAI",
+          "name": "Sulphur-2-base",
+          "url": "https://huggingface.co/SulphurAI/Sulphur-2-base",
+          "downloads": 157648,
+          "likes": 757,
+          "pipeline_tag": "text-to-video",
+          "matched_query_tag": "text-to-video",
+          "library_name": "diffusers",
+          "created_at": "2026-05-03T00:33:24.000Z",
+          "last_modified": null,
+          "tags": [
+            "diffusers",
+            "gguf",
+            "text-to-video",
+            "conversational",
+            "endpoints_compatible",
+            "region:us"
+          ],
+          "rank": 10
+        }
+      ]
+    },
+    {
+      "key": "ai_model_popularity",
+      "title_ja": "AIモデル人気ランキング",
+      "title_en": "AI Model Popularity Ranking",
+      "summary_ja": "テキスト生成系モデルをdownloads順に集計。主観評価ではなく公開モデル利用の近似指標として扱う。",
+      "summary_en": "Text-generation models ranked by downloads as an objective proxy for public model usage.",
+      "metric": "huggingface_downloads",
+      "sort": "downloads_desc",
+      "top_n": 10,
+      "queries": [
+        {
+          "pipeline_tag": "text-generation",
+          "url": "https://huggingface.co/api/models?pipeline_tag=text-generation&sort=downloads&direction=-1&limit=30",
+          "fetched": 30
+        }
+      ],
+      "items": [
+        {
+          "id": "Qwen/Qwen3-0.6B",
+          "owner": "Qwen",
+          "name": "Qwen3-0.6B",
+          "url": "https://huggingface.co/Qwen/Qwen3-0.6B",
+          "downloads": 18238415,
+          "likes": 1240,
+          "pipeline_tag": "text-generation",
+          "matched_query_tag": "text-generation",
+          "library_name": "transformers",
+          "created_at": "2025-04-27T03:40:08.000Z",
+          "last_modified": null,
+          "tags": [
+            "transformers",
+            "safetensors",
+            "text-generation",
+            "conversational",
+            "arxiv:2505.09388",
+            "base_model:Qwen/Qwen3-0.6B-Base",
+            "base_model:finetune:Qwen/Qwen3-0.6B-Base",
+            "license:apache-2.0"
+          ],
+          "rank": 1
+        },
+        {
+          "id": "openai-community/gpt2",
+          "owner": "openai-community",
+          "name": "gpt2",
+          "url": "https://huggingface.co/openai-community/gpt2",
+          "downloads": 16195419,
+          "likes": 3238,
+          "pipeline_tag": "text-generation",
+          "matched_query_tag": "text-generation",
+          "library_name": "transformers",
+          "created_at": "2022-03-02T23:29:04.000Z",
+          "last_modified": null,
+          "tags": [
+            "transformers",
+            "safetensors",
+            "text-generation",
+            "license:mit",
+            "pytorch",
+            "tf",
+            "jax",
+            "tflite"
+          ],
+          "rank": 2
+        },
+        {
+          "id": "Qwen/Qwen2.5-7B-Instruct",
+          "owner": "Qwen",
+          "name": "Qwen2.5-7B-Instruct",
+          "url": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct",
+          "downloads": 12797133,
+          "likes": 1273,
+          "pipeline_tag": "text-generation",
+          "matched_query_tag": "text-generation",
+          "library_name": "transformers",
+          "created_at": "2024-09-16T11:55:40.000Z",
+          "last_modified": null,
+          "tags": [
+            "transformers",
+            "safetensors",
+            "text-generation",
+            "chat",
+            "conversational",
+            "arxiv:2309.00071",
+            "arxiv:2407.10671",
+            "base_model:Qwen/Qwen2.5-7B"
+          ],
+          "rank": 3
+        },
+        {
+          "id": "Qwen/Qwen2.5-1.5B-Instruct",
+          "owner": "Qwen",
+          "name": "Qwen2.5-1.5B-Instruct",
+          "url": "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct",
+          "downloads": 12262870,
+          "likes": 692,
+          "pipeline_tag": "text-generation",
+          "matched_query_tag": "text-generation",
+          "library_name": "transformers",
+          "created_at": "2024-09-17T14:10:29.000Z",
+          "last_modified": null,
+          "tags": [
+            "transformers",
+            "safetensors",
+            "text-generation",
+            "chat",
+            "conversational",
+            "arxiv:2407.10671",
+            "base_model:Qwen/Qwen2.5-1.5B",
+            "base_model:finetune:Qwen/Qwen2.5-1.5B"
+          ],
+          "rank": 4
+        },
+        {
+          "id": "Qwen/Qwen3-8B",
+          "owner": "Qwen",
+          "name": "Qwen3-8B",
+          "url": "https://huggingface.co/Qwen/Qwen3-8B",
+          "downloads": 11478261,
+          "likes": 1086,
+          "pipeline_tag": "text-generation",
+          "matched_query_tag": "text-generation",
+          "library_name": "transformers",
+          "created_at": "2025-04-27T03:42:21.000Z",
+          "last_modified": null,
+          "tags": [
+            "transformers",
+            "safetensors",
+            "text-generation",
+            "conversational",
+            "arxiv:2309.00071",
+            "arxiv:2505.09388",
+            "base_model:Qwen/Qwen3-8B-Base",
+            "base_model:finetune:Qwen/Qwen3-8B-Base"
+          ],
+          "rank": 5
+        },
+        {
+          "id": "deepseek-ai/DeepSeek-V3.2",
+          "owner": "deepseek-ai",
+          "name": "DeepSeek-V3.2",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2",
+          "downloads": 11120947,
+          "likes": 1432,
+          "pipeline_tag": "text-generation",
+          "matched_query_tag": "text-generation",
+          "library_name": "transformers",
+          "created_at": "2025-12-01T02:34:49.000Z",
+          "last_modified": null,
+          "tags": [
+            "transformers",
+            "safetensors",
+            "text-generation",
+            "conversational",
+            "base_model:deepseek-ai/DeepSeek-V3.2-Exp-Base",
+            "base_model:finetune:deepseek-ai/DeepSeek-V3.2-Exp-Base",
+            "license:mit",
+            "deepseek_v32"
+          ],
+          "rank": 6
+        },
+        {
+          "id": "Qwen/Qwen3-4B-Instruct-2507",
+          "owner": "Qwen",
+          "name": "Qwen3-4B-Instruct-2507",
+          "url": "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507",
+          "downloads": 10701536,
+          "likes": 840,
+          "pipeline_tag": "text-generation",
+          "matched_query_tag": "text-generation",
+          "library_name": "transformers",
+          "created_at": "2025-08-05T10:58:03.000Z",
+          "last_modified": null,
+          "tags": [
+            "transformers",
+            "safetensors",
+            "text-generation",
+            "conversational",
+            "arxiv:2505.09388",
+            "license:apache-2.0",
+            "qwen3",
+            "eval-results"
+          ],
+          "rank": 7
+        },
+        {
+          "id": "meta-llama/Llama-3.1-8B-Instruct",
+          "owner": "meta-llama",
+          "name": "Llama-3.1-8B-Instruct",
+          "url": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct",
+          "downloads": 9708754,
+          "likes": 5819,
+          "pipeline_tag": "text-generation",
+          "matched_query_tag": "text-generation",
+          "library_name": "transformers",
+          "created_at": "2024-07-18T08:56:00.000Z",
+          "last_modified": null,
+          "tags": [
+            "transformers",
+            "safetensors",
+            "text-generation",
+            "conversational",
+            "arxiv:2204.05149",
+            "base_model:meta-llama/Llama-3.1-8B",
+            "base_model:finetune:meta-llama/Llama-3.1-8B",
+            "license:llama3.1"
+          ],
+          "rank": 8
+        },
+        {
+          "id": "facebook/opt-125m",
+          "owner": "facebook",
+          "name": "opt-125m",
+          "url": "https://huggingface.co/facebook/opt-125m",
+          "downloads": 9062002,
+          "likes": 251,
+          "pipeline_tag": "text-generation",
+          "matched_query_tag": "text-generation",
+          "library_name": "transformers",
+          "created_at": "2022-05-11T08:25:17.000Z",
+          "last_modified": null,
+          "tags": [
+            "transformers",
+            "text-generation",
+            "arxiv:2205.01068",
+            "arxiv:2005.14165",
+            "license:other",
+            "pytorch",
+            "tf",
+            "jax"
+          ],
+          "rank": 9
+        },
+        {
+          "id": "Qwen/Qwen2.5-3B-Instruct",
+          "owner": "Qwen",
+          "name": "Qwen2.5-3B-Instruct",
+          "url": "https://huggingface.co/Qwen/Qwen2.5-3B-Instruct",
+          "downloads": 8277613,
+          "likes": 455,
+          "pipeline_tag": "text-generation",
+          "matched_query_tag": "text-generation",
+          "library_name": "transformers",
+          "created_at": "2024-09-17T14:08:52.000Z",
+          "last_modified": null,
+          "tags": [
+            "transformers",
+            "safetensors",
+            "text-generation",
+            "chat",
+            "conversational",
+            "arxiv:2407.10671",
+            "base_model:Qwen/Qwen2.5-3B",
+            "base_model:finetune:Qwen/Qwen2.5-3B"
+          ],
+          "rank": 10
+        }
+      ]
+    }
+  ]
+}
