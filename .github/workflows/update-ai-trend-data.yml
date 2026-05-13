@@ -1,0 +1,50 @@
+name: Update AI Trend Data
+
+on:
+  schedule:
+    - cron: '0 21 * * *'  # 06:00 JST daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-ai-trend-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Regenerate public AI trend JSON
+        run: |
+          python scripts/update_ai_trend_service_rankings.py \
+            --output ai-trend-daily/service_rankings.json \
+            --legacy-output ai-trend-daily/hf_rankings.json
+
+      - name: Commit updated data
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add ai-trend-daily/service_rankings.json ai-trend-daily/hf_rankings.json
+          git diff --staged --quiet || git commit -m "🤖 Update public AI trend data ($(date +'%Y-%m-%d %H:%M:%S'))"
+
+      - name: Push updated data
+        run: |
+          git pull --rebase origin main || true
+          git push origin main || echo "No AI trend data commit pushed"
