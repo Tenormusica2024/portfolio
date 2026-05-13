@@ -2,7 +2,7 @@
 
 ## Intent
 
-This deck is an external-facing analysis report about the post-GPT Image 2 visual information environment. It is intentionally not tailored to any specific owner, site, customer segment, or internal business strategy.
+This deck is an external-facing analysis report about the post-GPT Image 2 AI search and image-generation environment. It is intentionally not tailored to any specific owner, site, customer segment, or internal business strategy.
 
 The deck should feel like a public research briefing: large slide canvas, restrained typography, high signal density, and imagegen illustrations used as explanatory visuals rather than decorative filler.
 
@@ -36,7 +36,7 @@ Not allowed:
 1. Public title and thesis.
 2. Executive shifts.
 3. GPT-5.5 as a long-context work environment.
-4. GPT Image 2 as visual evidence compression.
+4. GPT Image 2 as evidence-backed visual explanation.
 5. AI search and discovery surfaces.
 6. Research signals from AI-search studies.
 7. Market impact matrix.
