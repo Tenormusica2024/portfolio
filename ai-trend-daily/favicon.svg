@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AI Tool Trend Analysis favicon">
+  <defs>
+    <linearGradient id="bg" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="0.45" stop-color="#1f2937"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="line" x1="13" y1="48" x2="53" y2="16" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4a9eff"/>
+      <stop offset="0.5" stop-color="#8e44ad"/>
+      <stop offset="1" stop-color="#ffa502"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#bg)"/>
+  <path d="M13 47h38" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+  <path d="M17 44l9-11 9 5 12-17" fill="none" stroke="url(#line)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="17" cy="44" r="4" fill="#4a9eff"/>
+  <circle cx="26" cy="33" r="4" fill="#6c63ff"/>
+  <circle cx="35" cy="38" r="4" fill="#8e44ad"/>
+  <circle cx="47" cy="21" r="4" fill="#ffa502"/>
+  <path d="M19 17h8M19 24h13" stroke="#e5e7eb" stroke-width="3" stroke-linecap="round" opacity="0.92"/>
+</svg>
