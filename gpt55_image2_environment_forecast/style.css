@@ -80,7 +80,7 @@ button { font: inherit; }
 .slide.prev { transform: translateX(-56px) scale(.985); }
 .slide-canvas {
   position: relative;
-  width: min(calc(100vw - 20px), calc((100dvh - 94px) * 16 / 9));
+  width: min(calc(100vw - 48px), calc((100dvh - 94px) * 16 / 9));
   aspect-ratio: 16 / 9;
   height: auto;
   min-height: 0;
@@ -255,7 +255,7 @@ button { font: inherit; }
   position: absolute;
   top: clamp(34px, 3.8vw, 58px);
   right: clamp(28px, 4vw, 58px);
-  width: min(27%, 360px);
+  width: min(20%, 280px);
   aspect-ratio: 16 / 9;
   z-index: 2;
   pointer-events: none;
@@ -659,6 +659,18 @@ tr:last-child td { border-bottom: 0; }
   }
   .source-list li {
     margin-bottom: 7px;
+  }
+}
+
+@media (max-height: 940px) and (min-width: 981px) {
+  .has-corner-art .slide-title {
+    max-width: min(800px, 66%);
+  }
+  .has-corner-art .corner-art {
+    display: block;
+    top: clamp(24px, 2.6vw, 36px);
+    right: clamp(26px, 3vw, 42px);
+    width: min(14.5vw, 220px);
   }
 }
 
