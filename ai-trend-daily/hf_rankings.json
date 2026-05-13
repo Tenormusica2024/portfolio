@@ -1,15 +1,16 @@
 {
-  "schema_version": "2026-05-13.service-rankings.v1",
-  "generated_at": "2026-05-13T17:20:43+09:00",
+  "schema_version": "2026-05-13.service-rankings.v2",
+  "generated_at": "2026-05-13T18:03:24+09:00",
   "project": "AI Tool Trend Analysis",
   "ranking_policy": {
-    "primary_scope": "AI generation services, not only open Hugging Face models",
+    "primary_scope": "AI generation services plus AI coding agent CLI momentum/share proxy",
     "reason_for_change": "HF downloads miss closed services such as GPT Image 2 and Seedance 2.0, so service ranking needs benchmark/official-source evidence.",
     "primary_metric": "Artificial Analysis blind user-preference Elo where available",
     "caveats": [
       "Unified real user counts are not publicly available across OpenAI, Google, ByteDance, Runway, Kling, and other closed services.",
       "Elo is a user-preference quality signal, not a user-count metric. It is used because it covers closed services more fairly than HF downloads.",
-      "For service-level ranking, multimodal availability, official launch status, and leaderboard category coverage are used as tie-break context."
+      "For service-level ranking, multimodal availability, official launch status, and leaderboard category coverage are used as tie-break context.",
+      "AI coding agent CLI share uses npm last-month downloads within tracked packages; this is not exact active-user market share."
     ]
   },
   "sources": [
@@ -18,35 +19,42 @@
       "name": "Artificial Analysis Text to Image Leaderboard",
       "url": "https://artificialanalysis.ai/image/leaderboard/text-to-image/",
       "usage": "Blind human-preference Elo ranking for image generation services/models.",
-      "checked_at": "2026-05-13T17:20:43+09:00"
+      "checked_at": "2026-05-13T18:03:24+09:00"
     },
     {
       "key": "aa_video_t2v",
       "name": "Artificial Analysis Text to Video Leaderboard",
       "url": "https://artificialanalysis.ai/video/leaderboard/text-to-video",
       "usage": "Blind human-preference Elo ranking for text-to-video generation.",
-      "checked_at": "2026-05-13T17:20:43+09:00"
+      "checked_at": "2026-05-13T18:03:24+09:00"
     },
     {
       "key": "aa_video_i2v",
       "name": "Artificial Analysis Image to Video Leaderboard",
       "url": "https://artificialanalysis.ai/video/leaderboard/image-to-video",
       "usage": "Blind human-preference Elo ranking for image-to-video generation, including with-audio FAQ rankings.",
-      "checked_at": "2026-05-13T17:20:43+09:00"
+      "checked_at": "2026-05-13T18:03:24+09:00"
     },
     {
       "key": "openai_gpt_image_2",
       "name": "OpenAI GPT Image 2 model docs",
       "url": "https://developers.openai.com/api/docs/models/gpt-image-2",
       "usage": "Official model availability and capability reference for GPT Image 2.",
-      "checked_at": "2026-05-13T17:20:43+09:00"
+      "checked_at": "2026-05-13T18:03:24+09:00"
     },
     {
       "key": "bytedance_seedance_2",
       "name": "ByteDance Seedance 2.0 official page",
       "url": "https://seed.bytedance.com/en/seedance2_0",
       "usage": "Official model capability and multimodal service reference for Seedance 2.0.",
-      "checked_at": "2026-05-13T17:20:43+09:00"
+      "checked_at": "2026-05-13T18:03:24+09:00"
+    },
+    {
+      "key": "npm_downloads_api",
+      "name": "npm Downloads API",
+      "url": "https://api.npmjs.org/downloads/point/last-month/",
+      "usage": "Objective last-30-day package downloads for CLI coding agents. Used as a momentum/share proxy, not exact active users.",
+      "checked_at": "2026-05-13T18:03:24+09:00"
     }
   ],
   "categories": [
@@ -363,6 +371,165 @@
             "video generation",
             "text-to-video",
             "closed service"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ai_coding_agent_cli_share",
+      "title_ja": "AIコーディングエージェントCLIシェア",
+      "title_en": "AI Coding Agent CLI Share",
+      "summary_ja": "Codex、Claude Code、Gemini CLIなどnpm配布CLIの直近30日downloadsから、対象パッケージ内シェアを算出。実ユーザー数ではなく、現在の利用モメンタムに近い客観API指標。",
+      "summary_en": "Tracked share of last-30-day npm downloads for CLI coding agents such as Codex, Claude Code, and Gemini CLI. This is an objective momentum proxy, not active-user market share.",
+      "metric": "npm_last_month_download_share_within_tracked_cli_agents",
+      "total_downloads_last_month": 290742421,
+      "query_errors": [],
+      "items": [
+        {
+          "rank": 1,
+          "name": "Codex CLI",
+          "provider": "OpenAI",
+          "service_family": "CLI coding agent",
+          "url": "https://www.npmjs.com/package/@openai/codex",
+          "package": "@openai/codex",
+          "metric_label": "% of tracked npm downloads",
+          "metric_value": 82.0,
+          "metric_value_display": "82.0%",
+          "downloads_last_month": 238398420,
+          "secondary_metric_label": "npm downloads last month",
+          "secondary_metric_display": "238,398,420",
+          "metric_detail": "238,398,420 npm downloads from 2026-04-13 to 2026-05-12. This is a momentum/share proxy, not active users.",
+          "availability": "npm CLI package",
+          "source_refs": [
+            "npm_downloads_api"
+          ],
+          "tags": [
+            "coding agent",
+            "CLI",
+            "OpenAI",
+            "agentic coding"
+          ]
+        },
+        {
+          "rank": 2,
+          "name": "Claude Code",
+          "provider": "Anthropic",
+          "service_family": "CLI coding agent",
+          "url": "https://www.npmjs.com/package/@anthropic-ai/claude-code",
+          "package": "@anthropic-ai/claude-code",
+          "metric_label": "% of tracked npm downloads",
+          "metric_value": 14.7,
+          "metric_value_display": "14.7%",
+          "downloads_last_month": 42818541,
+          "secondary_metric_label": "npm downloads last month",
+          "secondary_metric_display": "42,818,541",
+          "metric_detail": "42,818,541 npm downloads from 2026-04-13 to 2026-05-12. This is a momentum/share proxy, not active users.",
+          "availability": "npm CLI package",
+          "source_refs": [
+            "npm_downloads_api"
+          ],
+          "tags": [
+            "coding agent",
+            "CLI",
+            "Anthropic",
+            "agentic coding"
+          ]
+        },
+        {
+          "rank": 3,
+          "name": "OpenCode",
+          "provider": "SST / OpenCode",
+          "service_family": "CLI coding agent",
+          "url": "https://www.npmjs.com/package/opencode-ai",
+          "package": "opencode-ai",
+          "metric_label": "% of tracked npm downloads",
+          "metric_value": 1.9,
+          "metric_value_display": "1.9%",
+          "downloads_last_month": 5404297,
+          "secondary_metric_label": "npm downloads last month",
+          "secondary_metric_display": "5,404,297",
+          "metric_detail": "5,404,297 npm downloads from 2026-04-13 to 2026-05-12. This is a momentum/share proxy, not active users.",
+          "availability": "npm CLI package",
+          "source_refs": [
+            "npm_downloads_api"
+          ],
+          "tags": [
+            "coding agent",
+            "CLI",
+            "terminal"
+          ]
+        },
+        {
+          "rank": 4,
+          "name": "Gemini CLI",
+          "provider": "Google",
+          "service_family": "CLI coding agent",
+          "url": "https://www.npmjs.com/package/@google/gemini-cli",
+          "package": "@google/gemini-cli",
+          "metric_label": "% of tracked npm downloads",
+          "metric_value": 1.2,
+          "metric_value_display": "1.2%",
+          "downloads_last_month": 3608512,
+          "secondary_metric_label": "npm downloads last month",
+          "secondary_metric_display": "3,608,512",
+          "metric_detail": "3,608,512 npm downloads from 2026-04-13 to 2026-05-12. This is a momentum/share proxy, not active users.",
+          "availability": "npm CLI package",
+          "source_refs": [
+            "npm_downloads_api"
+          ],
+          "tags": [
+            "coding agent",
+            "CLI",
+            "Google",
+            "Gemini"
+          ]
+        },
+        {
+          "rank": 5,
+          "name": "Qwen Code",
+          "provider": "Alibaba / Qwen",
+          "service_family": "CLI coding agent",
+          "url": "https://www.npmjs.com/package/@qwen-code/qwen-code",
+          "package": "@qwen-code/qwen-code",
+          "metric_label": "% of tracked npm downloads",
+          "metric_value": 0.2,
+          "metric_value_display": "0.2%",
+          "downloads_last_month": 448134,
+          "secondary_metric_label": "npm downloads last month",
+          "secondary_metric_display": "448,134",
+          "metric_detail": "448,134 npm downloads from 2026-04-13 to 2026-05-12. This is a momentum/share proxy, not active users.",
+          "availability": "npm CLI package",
+          "source_refs": [
+            "npm_downloads_api"
+          ],
+          "tags": [
+            "coding agent",
+            "CLI",
+            "Qwen"
+          ]
+        },
+        {
+          "rank": 6,
+          "name": "Crush",
+          "provider": "Charm",
+          "service_family": "CLI coding agent",
+          "url": "https://www.npmjs.com/package/@charmland/crush",
+          "package": "@charmland/crush",
+          "metric_label": "% of tracked npm downloads",
+          "metric_value": 0.0,
+          "metric_value_display": "0.0%",
+          "downloads_last_month": 64517,
+          "secondary_metric_label": "npm downloads last month",
+          "secondary_metric_display": "64,517",
+          "metric_detail": "64,517 npm downloads from 2026-04-13 to 2026-05-12. This is a momentum/share proxy, not active users.",
+          "availability": "npm CLI package",
+          "source_refs": [
+            "npm_downloads_api"
+          ],
+          "tags": [
+            "coding agent",
+            "CLI",
+            "terminal"
           ]
         }
       ]

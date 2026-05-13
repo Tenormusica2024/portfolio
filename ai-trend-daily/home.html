@@ -320,7 +320,7 @@
 
         <div class="description">
             <h2 data-i18n="about_title">About This Dashboard</h2>
-            <p data-i18n="about_desc1">最新の画像生成AIサービス・動画生成AIサービスのトレンドを公開指標で追跡するダッシュボードです。</p>
+            <p data-i18n="about_desc1">最新の画像生成AIサービス・動画生成AIサービス・AIコーディングエージェントCLIのトレンドを公開指標で追跡するダッシュボードです。</p>
             <p data-i18n="about_desc2">GPT Image 2やSeedance 2.0のようなクローズドサービスも含めるため、Artificial Analysisの盲検ユーザー投票Eloと公式情報を主な根拠にします。</p>
             <p data-i18n="about_desc3">Hugging Face downloadsだけではQwenなど公開モデルに偏るため、サービス比較では補助情報に留めています。</p>
         </div>
@@ -341,11 +341,19 @@
                 <div class="card-top-model" data-top-for="video_generation_services"></div>
                 <span class="page-card-link" data-i18n="view_ranking">View Ranking</span>
             </a>
+
+            <a href="#ai_coding_agent_cli_share" class="page-card">
+                <div class="page-card-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="codingGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#4a9eff;stop-opacity:1"/><stop offset="100%" style="stop-color:#8e44ad;stop-opacity:1"/></linearGradient></defs><path d="M22 20 L10 32 L22 44" stroke="url(#codingGradient)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M42 20 L54 32 L42 44" stroke="url(#codingGradient)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M35 14 L29 50" stroke="url(#codingGradient)" stroke-width="3" fill="none" stroke-linecap="round"/></svg></div>
+                <div class="page-card-title" data-i18n="coding_title">AIコーディングエージェントCLIシェア</div>
+                <div class="page-card-description" data-i18n="coding_desc">Codex、Claude Code、Gemini CLIなどのnpm配布CLIを直近30日downloadsから比較。</div>
+                <div class="card-top-model" data-top-for="ai_coding_agent_cli_share"></div>
+                <span class="page-card-link" data-i18n="view_ranking">View Ranking</span>
+            </a>
         </div>
 
         <div class="method-note">
             <strong data-i18n="method_title">集計方針:</strong>
-            <span data-i18n="method_desc">評価軸はサービス単位です。HF downloadsは公開モデルの取得回数であり、GPT Image 2やSeedance 2.0を拾えないため、主指標から外しました。主にArtificial Analysisの盲検ユーザー投票Eloと公式情報で補正しています。</span>
+            <span data-i18n="method_desc">画像/動画はサービス単位、AIコーディングエージェントCLIはnpm直近30日downloads内シェアで見ます。HF downloadsは公開モデルの取得回数であり、生成AIサービス比較の主指標から外しています。</span>
         </div>
 
         <div class="ranking-sections" id="rankingSections"></div>
@@ -365,7 +373,7 @@
                 main_title: "AIツールトレンド分析",
                 main_subtitle: "AI Tools Trend Analysis Dashboard",
                 about_title: "About This Dashboard",
-                about_desc1: "最新の画像生成AIサービス・動画生成AIサービスのトレンドを公開指標で追跡するダッシュボードです。",
+                about_desc1: "最新の画像生成AIサービス・動画生成AIサービス・AIコーディングエージェントCLIのトレンドを公開指標で追跡するダッシュボードです。",
                 about_desc2: "GPT Image 2やSeedance 2.0のようなクローズドサービスも含めるため、Artificial Analysisの盲検ユーザー投票Eloと公式情報を主な根拠にします。",
                 about_desc3: "Hugging Face downloadsだけではQwenなど公開モデルに偏るため、サービス比較では補助情報に留めています。",
                 image_title: "画像生成AIサービス",
@@ -374,7 +382,9 @@
                 video_desc: "Seedance 2.0などの動画生成AIサービスを、T2V/I2V/音声対応まで含めて比較。",
                 view_ranking: "View Ranking",
                 method_title: "集計方針:",
-                method_desc: "評価軸はサービス単位です。HF downloadsは公開モデルの取得回数であり、GPT Image 2やSeedance 2.0を拾えないため、主指標から外しました。主にArtificial Analysisの盲検ユーザー投票Eloと公式情報で補正しています。",
+                method_desc: "画像/動画はサービス単位、AIコーディングエージェントCLIはnpm直近30日downloads内シェアで見ます。HF downloadsは公開モデルの取得回数であり、生成AIサービス比較の主指標から外しています。",
+                coding_title: "AIコーディングエージェントCLIシェア",
+                coding_desc: "Codex、Claude Code、Gemini CLIなどのnpm配布CLIを直近30日downloadsから比較。",
                 footer_portfolio: "← ポートフォリオに戻る",
                 downloads: "downloads",
                 likes: "likes",
@@ -395,7 +405,9 @@
                 video_desc: "Video generation AI services such as Seedance 2.0 compared across T2V, I2V, and audio-capable workflows.",
                 view_ranking: "View Ranking",
                 method_title: "Method:",
-                method_desc: "Rankings are service-level. HF downloads are model file downloads and cannot capture GPT Image 2 or Seedance 2.0, so the primary metric is Artificial Analysis blind user-preference Elo plus official source context.",
+                method_desc: "Image/video rankings are service-level. AI coding agent CLI share uses last-30-day npm downloads within tracked packages. HF downloads are not used as the primary signal for generation services.",
+                coding_title: "AI Coding Agent CLI Share",
+                coding_desc: "Codex, Claude Code, Gemini CLI, and other npm-distributed CLI agents compared by last-30-day downloads.",
                 footer_portfolio: "← Back to Portfolio",
                 downloads: "downloads",
                 likes: "likes",
@@ -440,7 +452,7 @@
         function renderRankings(data) {
             const t = translations[currentLang];
             const ordered = [...(data.categories || [])].sort((a, b) => {
-                const order = { image_generation_services: 0, video_generation_services: 1 };
+                const order = { image_generation_services: 0, video_generation_services: 1, ai_coding_agent_cli_share: 2 };
                 return (order[a.key] ?? 99) - (order[b.key] ?? 99);
             });
             document.getElementById('rankingSections').innerHTML = ordered.map(category => `
@@ -462,8 +474,8 @@
                                     <div class="rank-tags">${tagsHtml(item.tags)}</div>
                                 </div>
                                 <div class="rank-metric">
-                                    <div class="rank-downloads">${numberFmt.format(item.metric_value || item.downloads || 0)}</div>
-                                    <div class="rank-likes">${escapeHtml(item.metric_label || t.score)}</div>
+                                    <div class="rank-downloads">${escapeHtml(item.metric_value_display || numberFmt.format(item.metric_value || item.downloads || 0))}</div>
+                                    <div class="rank-likes">${escapeHtml(item.metric_label || t.score)}${item.secondary_metric_display ? `<br>${escapeHtml(item.secondary_metric_display)} ${escapeHtml(item.secondary_metric_label || "")}` : ""}</div>
                                 </div>
                             </article>
                         `).join('')}
@@ -475,7 +487,7 @@
                 const target = document.querySelector(`[data-top-for="${category.key}"]`);
                 const topItem = category.items && category.items[0];
                 if (target && topItem) {
-                    target.innerHTML = `<strong>${t.top}:</strong> ${escapeHtml(topItem.name || topItem.id)}<br>${numberFmt.format(topItem.metric_value || topItem.downloads || 0)} ${escapeHtml(topItem.metric_label || t.score)}`;
+                    target.innerHTML = `<strong>${t.top}:</strong> ${escapeHtml(topItem.name || topItem.id)}<br>${escapeHtml(topItem.metric_value_display || numberFmt.format(topItem.metric_value || topItem.downloads || 0))} ${escapeHtml(topItem.metric_label || t.score)}`;
                 }
             });
         }
