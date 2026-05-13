@@ -171,6 +171,7 @@ button { font: inherit; }
   max-width: 980px;
 }
 .hero-title .accent { color: var(--clay); letter-spacing: -.055em; }
+.hero-title .title-fit { font-size: .86em; letter-spacing: -.045em; }
 .slide-title {
   margin: 0;
   max-width: 1060px;
@@ -513,5 +514,8 @@ tr:last-child td { border-bottom: 0; }
   .matrix td { padding: 6px 7px; }
   .matrix .badge { padding: 2px 6px; font-size: .56rem; }
 }
+
+
+
 
 
