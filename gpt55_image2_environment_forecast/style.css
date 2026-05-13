@@ -139,6 +139,28 @@ button { font: inherit; }
   height: 1px;
   background: currentColor;
 }
+
+/* Japanese headline wrapping support: semantic line breaks first, CSS as fallback. */
+.hero-title,
+.slide-title,
+.card h3,
+.note-card h3,
+.axis-panel h3,
+.timeline-step h3 {
+  line-break: strict;
+  word-break: auto-phrase;
+  overflow-wrap: normal;
+  text-wrap: balance;
+}
+
+.hero-title .line,
+.slide-title .line {
+  display: block;
+}
+
+.nowrap-ja {
+  white-space: nowrap;
+}
 .hero-title {
   margin: 0;
   font-family: var(--display);
@@ -452,14 +474,16 @@ tr:last-child td { border-bottom: 0; }
 
 @media (max-height: 800px) and (min-width: 981px) {
   .slide-inner { padding: 30px 42px; }
-  .hero-title { font-size: clamp(2.6rem, 5vw, 5.2rem); line-height: .96; }
+  
+.hero-title { font-size: clamp(2.6rem, 5vw, 5.2rem); line-height: .96; }
   .slide-subtitle { margin-top: 14px; font-size: 1.02rem; line-height: 1.58; }
   .callout-inline { margin-top: 14px; padding: 12px 15px; font-size: .92rem; }
   .cover-art { aspect-ratio: 16 / 8.8; }
 }
 
 @media (max-width: 560px) {
-  .hero-title { font-size: clamp(2.15rem, 9.5vw, 3rem); line-height: 1.02; letter-spacing: -.055em; }
+  
+.hero-title { font-size: clamp(2.15rem, 9.5vw, 3rem); line-height: 1.02; letter-spacing: -.055em; }
   .slide-title { font-size: clamp(2rem, 11vw, 3.2rem); }
   .slide-subtitle { font-size: 1rem; }
   .slide-canvas { min-height: 0; height: calc(100vh - 104px); }
@@ -489,3 +513,5 @@ tr:last-child td { border-bottom: 0; }
   .matrix td { padding: 6px 7px; }
   .matrix .badge { padding: 2px 6px; font-size: .56rem; }
 }
+
+
