@@ -248,6 +248,32 @@ button { font: inherit; }
 }
 .visual-copy .slide-title { font-size: clamp(1.95rem, 3.35vw, 3.75rem); }
 .visual-art { aspect-ratio: 16 / 9; min-height: 0; }
+.has-corner-art .slide-title {
+  max-width: min(760px, 62%);
+}
+.corner-art {
+  position: absolute;
+  top: clamp(34px, 3.8vw, 58px);
+  right: clamp(28px, 4vw, 58px);
+  width: min(27%, 360px);
+  aspect-ratio: 16 / 9;
+  z-index: 2;
+  pointer-events: none;
+}
+.corner-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,.14), transparent 44%);
+}
+.corner-art.float-a { transform: rotate(1.5deg); border-radius: 28px 18px 34px 20px; }
+.corner-art.float-b { transform: rotate(-1.4deg); border-radius: 18px 34px 20px 28px; }
+.corner-art.float-c { transform: rotate(.8deg); border-radius: 34px 24px 24px 18px; }
+.corner-art.float-d { transform: rotate(-.8deg); border-radius: 20px 20px 36px 24px; }
+.corner-art.float-e { transform: rotate(1deg); border-radius: 34px 18px 22px 30px; }
+.corner-art.float-f { transform: rotate(-1deg); border-radius: 22px 32px 18px 34px; }
+.corner-art.float-g { transform: rotate(.7deg); border-radius: 18px 28px 34px 24px; }
 .compact-metrics {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -470,6 +496,8 @@ tr:last-child td { border-bottom: 0; }
   table { font-size: .86rem; }
   th, td { padding: 12px; }
   .cover-art, .visual-art { min-height: 0; aspect-ratio: 16 / 9; }
+  .has-corner-art .slide-title { max-width: 100%; }
+  .corner-art { display: none; }
   .compact-metrics { grid-template-columns: 1fr; }
 }
 
