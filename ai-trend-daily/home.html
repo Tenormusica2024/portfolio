@@ -1,242 +1,512 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AI Tool Trend Analysis | Hugging Face Download Rankings</title>
-  <meta name="description" content="画像生成AI、動画生成AI、AIモデル人気をHugging Face downloadsで客観ランキング化するダッシュボード。">
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #070812;
-      --panel: rgba(18, 21, 38, 0.82);
-      --panel-strong: rgba(26, 31, 55, 0.94);
-      --line: rgba(255,255,255,0.12);
-      --text: #f7f8ff;
-      --muted: #a9b0c6;
-      --soft: #dce2ff;
-      --cyan: #68e4ff;
-      --pink: #ff7acb;
-      --lime: #a6ff8f;
-      --amber: #ffd36e;
-      --shadow: 0 24px 90px rgba(0,0,0,0.45);
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at 12% 5%, rgba(104,228,255,0.22), transparent 34rem),
-        radial-gradient(circle at 85% 0%, rgba(255,122,203,0.18), transparent 36rem),
-        linear-gradient(135deg, #060711 0%, #111827 54%, #070812 100%);
-      color: var(--text);
-    }
-    a { color: inherit; }
-    .shell { max-width: 1220px; margin: 0 auto; padding: 44px 24px 64px; }
-    .hero {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 32px;
-      padding: 34px;
-      background: linear-gradient(145deg, rgba(18,21,38,0.92), rgba(15,19,36,0.66));
-      box-shadow: var(--shadow);
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: -40% -20% auto auto;
-      width: 520px;
-      height: 520px;
-      background: conic-gradient(from 160deg, rgba(104,228,255,.26), rgba(255,122,203,.21), transparent, rgba(166,255,143,.16));
-      filter: blur(18px);
-      opacity: .75;
-      pointer-events: none;
-    }
-    .hero-content { position: relative; z-index: 1; display: grid; grid-template-columns: 1.4fr .9fr; gap: 28px; align-items: end; }
-    .eyebrow { color: var(--cyan); letter-spacing: .16em; text-transform: uppercase; font-size: 12px; font-weight: 800; }
-    h1 { margin: 12px 0 16px; font-size: clamp(34px, 6vw, 74px); line-height: .94; letter-spacing: -0.065em; }
-    .lead { max-width: 760px; margin: 0; color: var(--soft); font-size: clamp(16px, 2vw, 20px); line-height: 1.8; }
-    .hero-meta { display: grid; gap: 12px; }
-    .metric-card { border: 1px solid var(--line); border-radius: 22px; padding: 18px; background: rgba(255,255,255,0.06); backdrop-filter: blur(14px); }
-    .metric-label { color: var(--muted); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; }
-    .metric-value { margin-top: 6px; font-size: 20px; font-weight: 850; }
-    .nav { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 30px; }
-    .nav a, .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 11px 15px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      color: var(--soft);
-      text-decoration: none;
-      font-weight: 750;
-      font-size: 14px;
-    }
-    .section { margin-top: 28px; }
-    .section-head { display: flex; justify-content: space-between; gap: 18px; align-items: end; margin-bottom: 16px; }
-    .section-title { margin: 0; font-size: clamp(24px, 3vw, 38px); letter-spacing: -0.035em; }
-    .section-summary { margin: 8px 0 0; color: var(--muted); line-height: 1.75; }
-    .ranking-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-    .rank-card {
-      position: relative;
-      display: grid;
-      grid-template-columns: 64px minmax(0, 1fr) auto;
-      gap: 14px;
-      align-items: center;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 16px;
-      background: var(--panel);
-      box-shadow: 0 14px 36px rgba(0,0,0,0.22);
-      min-height: 112px;
-    }
-    .rank-card:nth-child(1) { grid-column: 1 / -1; background: linear-gradient(135deg, rgba(104,228,255,0.18), rgba(255,122,203,0.13), rgba(18,21,38,0.92)); }
-    .rank-num { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 18px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); font-weight: 950; font-size: 22px; color: white; }
-    .model-name { font-weight: 900; font-size: 18px; line-height: 1.25; letter-spacing: -0.02em; overflow-wrap: anywhere; }
-    .model-owner { color: var(--muted); font-size: 13px; margin-top: 5px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-    .tag { border: 1px solid rgba(255,255,255,.11); color: #cbd3ea; background: rgba(255,255,255,.055); border-radius: 999px; padding: 4px 8px; font-size: 11px; }
-    .numbers { text-align: right; min-width: 132px; }
-    .downloads { font-size: 21px; font-weight: 950; color: var(--lime); letter-spacing: -0.02em; }
-    .likes { color: var(--muted); font-size: 12px; margin-top: 5px; }
-    .open { margin-top: 12px; display: inline-flex; color: var(--cyan); font-size: 12px; text-decoration: none; font-weight: 850; }
-    .policy {
-      margin-top: 30px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-    .policy-card { border: 1px solid var(--line); border-radius: 24px; background: var(--panel-strong); padding: 20px; color: var(--soft); line-height: 1.75; }
-    .policy-card h2 { margin: 0 0 10px; font-size: 18px; }
-    .policy-card ul { margin: 8px 0 0; padding-left: 1.2rem; color: var(--muted); }
-    .footer { margin-top: 34px; color: var(--muted); display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; font-size: 13px; }
-    .error { border: 1px solid rgba(255,90,90,.35); background: rgba(255,90,90,.10); color: #ffd4d4; padding: 16px; border-radius: 18px; }
-    @media (max-width: 880px) {
-      .hero-content, .policy { grid-template-columns: 1fr; }
-      .ranking-grid { grid-template-columns: 1fr; }
-      .rank-card { grid-template-columns: 52px minmax(0, 1fr); }
-      .numbers { grid-column: 2; text-align: left; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIツールトレンド分析 | Hugging Face Downloads</title>
+    <meta name="description" content="Hugging Face Hub APIのdownloadsを使って画像生成AI、動画生成AI、AIモデル人気ランキングを客観的に集計するダッシュボード。">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            color: #ffffff;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(74, 158, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(138, 43, 226, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, 
+                rgba(15, 15, 15, 0.95) 0%, 
+                rgba(30, 30, 30, 0.95) 30%,
+                rgba(50, 50, 50, 0.95) 70%,
+                rgba(35, 35, 35, 0.95) 100%);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header {
+            position: relative;
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #333;
+        }
+        
+        .lang-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: linear-gradient(135deg, rgba(74, 158, 255, 0.1), rgba(138, 43, 226, 0.1));
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .lang-switch:hover {
+            background: linear-gradient(135deg, rgba(74, 158, 255, 0.2), rgba(138, 43, 226, 0.2));
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74, 158, 255, 0.2);
+        }
+        
+        h1 {
+            background: linear-gradient(90deg, 
+                #b8b8b8 0%, 
+                #ffffff 20%,
+                #e0e0e0 40%,
+                #ffffff 60%,
+                #d0d0d0 80%,
+                #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            cursor: default;
+        }
+        
+        .subtitle {
+            color: #999;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+        
+        .description {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid #4a9eff;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .description:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-left-color: #66b3ff;
+            box-shadow: 0 4px 12px rgba(74, 158, 255, 0.15);
+            transform: translateX(4px);
+        }
+        
+        .description h2 {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .description p {
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .pages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .page-card {
+            background: linear-gradient(135deg, 
+                rgba(20, 20, 20, 0.8) 0%, 
+                rgba(35, 35, 35, 0.8) 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .page-card:hover {
+            transform: translateY(-4px);
+            background: linear-gradient(135deg, 
+                rgba(28, 28, 28, 0.92) 0%, 
+                rgba(38, 38, 38, 0.92) 50%,
+                rgba(32, 32, 32, 0.92) 100%);
+            border-color: rgba(255, 255, 255, 0.18);
+            box-shadow: 
+                0 12px 32px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        }
+        
+        .page-card-icon {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        
+        .page-card-icon svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+            transition: all 0.3s ease;
+        }
+        
+        .page-card:hover .page-card-icon svg {
+            transform: scale(1.1);
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
+        }
+        
+        .page-card-title {
+            color: #ffffff;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        
+        .page-card-description {
+            color: #888;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .page-card-link {
+            color: #4a9eff;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .page-card-link::after {
+            content: '→';
+            transition: transform 0.2s;
+        }
+        
+        .page-card:hover .page-card-link::after {
+            transform: translateX(4px);
+        }
+        
+        .page-card-thumbnail {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 1rem 0 1.5rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .page-card:hover .page-card-thumbnail {
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .footer a {
+            color: #4a9eff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .footer a:hover {
+            color: #66b3ff;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+            
+            .container {
+                padding: 2rem 1rem;
+                border-radius: 12px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .pages-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .page-card {
+                padding: 1.5rem;
+            }
+        }
+    
+
+        .ranking-sections { margin-top: 2rem; display: grid; gap: 2rem; }
+        .ranking-section { background: linear-gradient(135deg, rgba(20, 20, 20, 0.72) 0%, rgba(35, 35, 35, 0.72) 100%); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 1.6rem; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.26); }
+        .ranking-section-header { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; margin-bottom: 1.2rem; }
+        .ranking-section h2 { color: #ffffff; font-size: 1.45rem; margin: 0 0 0.4rem; }
+        .ranking-section-summary { color: #9a9a9a; font-size: 0.95rem; line-height: 1.65; margin: 0; }
+        .ranking-meta-pill { white-space: nowrap; color: #4a9eff; border: 1px solid rgba(74, 158, 255, 0.26); background: rgba(74, 158, 255, 0.08); border-radius: 999px; padding: 0.45rem 0.8rem; font-size: 0.78rem; font-weight: 700; }
+        .ranking-list { display: grid; gap: 0.75rem; }
+        .rank-row { display: grid; grid-template-columns: 48px minmax(0, 1fr) 140px; gap: 1rem; align-items: center; padding: 1rem; background: rgba(255, 255, 255, 0.035); border: 1px solid rgba(255, 255, 255, 0.07); border-radius: 12px; transition: all 0.2s ease; }
+        .rank-row:hover { background: rgba(255, 255, 255, 0.055); border-color: rgba(74, 158, 255, 0.24); transform: translateY(-1px); }
+        .rank-number { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; color: #ffffff; font-weight: 800; background: linear-gradient(135deg, rgba(74, 158, 255, 0.32), rgba(138, 43, 226, 0.24)); border: 1px solid rgba(255, 255, 255, 0.12); }
+        .rank-model a { color: #ffffff; text-decoration: none; font-weight: 700; overflow-wrap: anywhere; }
+        .rank-model a:hover { color: #66b3ff; }
+        .rank-detail { color: #858585; font-size: 0.82rem; margin-top: 0.35rem; }
+        .rank-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.55rem; }
+        .rank-tag { color: #b6b6b6; background: rgba(255, 255, 255, 0.055); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 999px; padding: 0.2rem 0.5rem; font-size: 0.72rem; }
+        .rank-metric { text-align: right; }
+        .rank-downloads { color: #66b3ff; font-size: 1.05rem; font-weight: 800; }
+        .rank-likes { color: #777; font-size: 0.78rem; margin-top: 0.2rem; }
+        .method-note { margin-top: 2rem; background: rgba(255, 255, 255, 0.03); border-left: 3px solid #4a9eff; border-radius: 8px; padding: 1.3rem; color: #9a9a9a; line-height: 1.7; font-size: 0.95rem; }
+        .method-note strong { color: #ffffff; }
+        .card-top-model { margin-top: 0.9rem; color: #9d9d9d; font-size: 0.84rem; line-height: 1.5; }
+        .card-top-model strong { color: #66b3ff; }
+        @media (max-width: 768px) { .ranking-section-header { display: block; } .ranking-meta-pill { display: inline-block; margin-top: 0.8rem; } .rank-row { grid-template-columns: 40px minmax(0, 1fr); } .rank-metric { grid-column: 2; text-align: left; } }
+
+    </style>
 </head>
 <body>
-  <main class="shell">
-    <a class="back-link" href="https://tenormusica2024.github.io/portfolio/projects.html">← Portfolio</a>
-    <section class="hero">
-      <div class="hero-content">
-        <div>
-          <div class="eyebrow">Objective AI Trend Board</div>
-          <h1>AI Tool Trend Analysis</h1>
-          <p class="lead">画像生成AI・動画生成AI・AIモデル人気を、Hugging Face公開モデルのdownloadsでランキング化。主観的なおすすめ表ではなく、再取得できる客観指標を使うポートフォリオ用ダッシュボードです。</p>
+    <div class="container">
+        <div class="header">
+            <button class="lang-switch" id="langSwitch">EN</button>
+            <h1 data-i18n="main_title">AIツールトレンド分析</h1>
+            <p class="subtitle" data-i18n="main_subtitle">AI Tools Trend Analysis Dashboard</p>
         </div>
-        <div class="hero-meta">
-          <div class="metric-card">
-            <div class="metric-label">Primary metric</div>
-            <div class="metric-value">HF downloads</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-label">Updated</div>
-            <div class="metric-value" id="updatedAt">Loading...</div>
-          </div>
+
+        <div class="description">
+            <h2 data-i18n="about_title">About This Dashboard</h2>
+            <p data-i18n="about_desc1">最新のAIモデル・生成AI技術のトレンドを客観指標で追跡するダッシュボードです。</p>
+            <p data-i18n="about_desc2">Hugging Face Hub APIの公開モデルdownloadsを使い、画像生成AI・動画生成AI・AIモデル人気を同じ基準で集計します。</p>
+            <p data-i18n="about_desc3">downloadsはユニーク利用者数ではありませんが、主観的なおすすめ表より再取得しやすい公開利用シグナルとして扱います。</p>
         </div>
-      </div>
-    </section>
 
-    <nav class="nav" id="categoryNav" aria-label="Ranking categories"></nav>
-    <div id="app"></div>
+        <div class="pages-grid">
+            <a href="#ai_model_popularity" class="page-card">
+                <div class="page-card-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="trendGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#4a9eff;stop-opacity:1" /><stop offset="100%" style="stop-color:#66b3ff;stop-opacity:1" /></linearGradient></defs><path d="M 8 48 L 18 38 L 28 42 L 38 28 L 48 32 L 56 16" stroke="url(#trendGradient)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="48" r="3" fill="url(#trendGradient)"/><circle cx="18" cy="38" r="3" fill="url(#trendGradient)"/><circle cx="28" cy="42" r="3" fill="url(#trendGradient)"/><circle cx="38" cy="28" r="3" fill="url(#trendGradient)"/><circle cx="48" cy="32" r="3" fill="url(#trendGradient)"/><circle cx="56" cy="16" r="3" fill="url(#trendGradient)"/><path d="M 50 10 L 56 16 L 50 16 Z" fill="url(#trendGradient)"/></svg></div>
+                <div class="page-card-title" data-i18n="model_title">AIモデル人気ランキング</div>
+                <div class="page-card-description" data-i18n="model_desc">Hugging Face上のテキスト生成モデルをdownloads順にランキング化。客観的な公開利用シグナルとして比較。</div>
+                <div class="card-top-model" data-top-for="ai_model_popularity"></div>
+                <span class="page-card-link" data-i18n="view_ranking">View Ranking</span>
+            </a>
 
-    <section class="policy" aria-label="Data policy">
-      <article class="policy-card">
-        <h2>評価方針</h2>
-        <p>ランキング根拠は Hugging Face Hub API の公開モデルdownloadsです。恣意的な採点ではなく、同じ条件で再取得できる数値を優先します。</p>
-      </article>
-      <article class="policy-card">
-        <h2>注意点</h2>
-        <ul>
-          <li>downloadsはユニーク利用者数ではなく、モデル取得回数ベースの近似指標です。</li>
-          <li>クローズドサービスはHF公開モデルdownloadsでは直接比較できないため、必要なら別指標を追加します。</li>
-          <li>CI、自動ダウンロード、派生モデルの影響があるため、市場シェアではなくトレンド観測に使います。</li>
-        </ul>
-      </article>
-    </section>
+            <a href="#image_generation" class="page-card">
+                <div class="page-card-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="imageGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ff6b9d;stop-opacity:1" /><stop offset="50%" style="stop-color:#c44569;stop-opacity:1" /><stop offset="100%" style="stop-color:#ffa502;stop-opacity:1" /></linearGradient></defs><rect x="8" y="8" width="48" height="48" rx="4" stroke="url(#imageGradient)" stroke-width="2.5" fill="none"/><circle cx="20" cy="20" r="4" fill="url(#imageGradient)"/><path d="M 8 45 L 20 32 L 32 40 L 56 20" stroke="url(#imageGradient)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 32 56 L 38 50 L 48 56" stroke="url(#imageGradient)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div class="page-card-title" data-i18n="image_title">画像生成AIランキング</div>
+                <div class="page-card-description" data-i18n="image_desc">text-to-image公開モデルをdownloads順に集計。Stable Diffusion系やFLUX系などの利用動向を確認。</div>
+                <div class="card-top-model" data-top-for="image_generation"></div>
+                <span class="page-card-link" data-i18n="view_ranking">View Ranking</span>
+            </a>
 
-    <footer class="footer">
-      <span>Data source: <a href="https://huggingface.co/api/models" target="_blank" rel="noopener">Hugging Face Hub API</a></span>
-      <span>Method note: <a href="https://huggingface.co/docs/hub/en/models-download-stats" target="_blank" rel="noopener">Model download stats</a></span>
-    </footer>
-  </main>
+            <a href="#video_generation" class="page-card">
+                <div class="page-card-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="videoGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#8e44ad;stop-opacity:1" /><stop offset="50%" style="stop-color:#3498db;stop-opacity:1" /><stop offset="100%" style="stop-color:#1abc9c;stop-opacity:1" /></linearGradient></defs><rect x="8" y="16" width="40" height="32" rx="3" stroke="url(#videoGradient)" stroke-width="2.5" fill="none"/><path d="M 48 24 L 56 20 L 56 44 L 48 40 Z" fill="url(#videoGradient)"/><path d="M 20 28 L 20 36 L 28 32 Z" fill="url(#videoGradient)"/><circle cx="16" cy="22" r="1.5" fill="url(#videoGradient)"/></svg></div>
+                <div class="page-card-title" data-i18n="video_title">動画生成AIランキング</div>
+                <div class="page-card-description" data-i18n="video_desc">image-to-video / text-to-video / video-to-video を統合し、公開動画生成モデルのdownloadsを比較。</div>
+                <div class="card-top-model" data-top-for="video_generation"></div>
+                <span class="page-card-link" data-i18n="view_ranking">View Ranking</span>
+            </a>
+        </div>
 
-  <script>
-    const numberFmt = new Intl.NumberFormat('en-US');
-    const dateFmt = new Intl.DateTimeFormat('ja-JP', { dateStyle: 'medium', timeStyle: 'short' });
+        <div class="method-note">
+            <strong data-i18n="method_title">集計方針:</strong>
+            <span data-i18n="method_desc">評価軸はHugging Face公開モデルのdownloadsです。Midjourney、DALL-E、Soraなどのクローズド商用サービスはHF downloadsで直接比較できないため、必要に応じて別指標として追加します。</span>
+        </div>
 
-    function formatDate(value) {
-      const date = new Date(value);
-      return Number.isNaN(date.getTime()) ? value : dateFmt.format(date);
-    }
+        <div class="ranking-sections" id="rankingSections"></div>
 
-    function tagHtml(tags) {
-      return (tags || []).slice(0, 5).map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('');
-    }
+        <div class="footer">
+            <p><a href="https://tenormusica2024.github.io/portfolio/projects.html" style="display: inline-block; padding: 0.8rem 2rem; background: linear-gradient(135deg, rgba(20, 20, 20, 0.8) 0%, rgba(35, 35, 35, 0.8) 100%); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: #ffffff; text-decoration: none; font-weight: 600; transition: all 0.3s ease; margin-bottom: 1rem;" data-i18n="footer_portfolio">← ポートフォリオに戻る</a></p>
+            <p>Data Source: <a href="https://huggingface.co/api/models" target="_blank" rel="noopener">Hugging Face Hub API</a></p>
+            <p>Method Note: <a href="https://huggingface.co/docs/hub/en/models-download-stats" target="_blank" rel="noopener">Hugging Face model download stats</a></p>
+            <p>Data JSON: <a href="hf_rankings.json" target="_blank" rel="noopener">hf_rankings.json</a></p>
+        </div>
+    </div>
 
-    function escapeHtml(value) {
-      return String(value ?? '').replace(/[&<>'"]/g, char => ({
-        '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
-      }[char]));
-    }
+    <script>
+        const translations = {
+            ja: {
+                lang_button: "EN",
+                main_title: "AIツールトレンド分析",
+                main_subtitle: "AI Tools Trend Analysis Dashboard",
+                about_title: "About This Dashboard",
+                about_desc1: "最新のAIモデル・生成AI技術のトレンドを客観指標で追跡するダッシュボードです。",
+                about_desc2: "Hugging Face Hub APIの公開モデルdownloadsを使い、画像生成AI・動画生成AI・AIモデル人気を同じ基準で集計します。",
+                about_desc3: "downloadsはユニーク利用者数ではありませんが、主観的なおすすめ表より再取得しやすい公開利用シグナルとして扱います。",
+                model_title: "AIモデル人気ランキング",
+                model_desc: "Hugging Face上のテキスト生成モデルをdownloads順にランキング化。客観的な公開利用シグナルとして比較。",
+                image_title: "画像生成AIランキング",
+                image_desc: "text-to-image公開モデルをdownloads順に集計。Stable Diffusion系やFLUX系などの利用動向を確認。",
+                video_title: "動画生成AIランキング",
+                video_desc: "image-to-video / text-to-video / video-to-video を統合し、公開動画生成モデルのdownloadsを比較。",
+                view_ranking: "View Ranking",
+                method_title: "集計方針:",
+                method_desc: "評価軸はHugging Face公開モデルのdownloadsです。Midjourney、DALL-E、Soraなどのクローズド商用サービスはHF downloadsで直接比較できないため、必要に応じて別指標として追加します。",
+                footer_portfolio: "← ポートフォリオに戻る",
+                downloads: "downloads",
+                likes: "likes",
+                top: "現在の1位"
+            },
+            en: {
+                lang_button: "JA",
+                main_title: "AI Tool Trend Analysis",
+                main_subtitle: "AI Tools Trend Analysis Dashboard",
+                about_title: "About This Dashboard",
+                about_desc1: "A dashboard that tracks AI model and generative AI trends with objective public metrics.",
+                about_desc2: "It uses Hugging Face Hub API downloads to compare image generation, video generation, and text-generation model popularity on the same basis.",
+                about_desc3: "Downloads are not unique users, but they are a reproducible public usage signal and less subjective than hand-curated recommendation lists.",
+                model_title: "AI Model Popularity Ranking",
+                model_desc: "Text-generation models on Hugging Face ranked by downloads as an objective public usage signal.",
+                image_title: "Image Generation AI Ranking",
+                image_desc: "Public text-to-image models ranked by downloads, including Stable Diffusion and FLUX-style model trends.",
+                video_title: "Video Generation AI Ranking",
+                video_desc: "Public video-generation models merged across image-to-video, text-to-video, and video-to-video tasks.",
+                view_ranking: "View Ranking",
+                method_title: "Method:",
+                method_desc: "The ranking metric is Hugging Face public model downloads. Closed commercial services such as Midjourney, DALL-E, and Sora are not directly comparable through HF downloads, so they should be added later with a separate metric if needed.",
+                footer_portfolio: "← Back to Portfolio",
+                downloads: "downloads",
+                likes: "likes",
+                top: "Current #1"
+            }
+        };
 
-    function renderCategory(category) {
-      const items = category.items || [];
-      return `
-        <section class="section" id="${escapeHtml(category.key)}">
-          <div class="section-head">
-            <div>
-              <h2 class="section-title">${escapeHtml(category.title_ja)}</h2>
-              <p class="section-summary">${escapeHtml(category.summary_ja)}</p>
-            </div>
-          </div>
-          <div class="ranking-grid">
-            ${items.map(item => `
-              <article class="rank-card">
-                <div class="rank-num">${item.rank}</div>
-                <div>
-                  <div class="model-name">${escapeHtml(item.id)}</div>
-                  <div class="model-owner">${escapeHtml(item.pipeline_tag)} · ${escapeHtml(item.library_name || 'unknown library')}</div>
-                  <div class="tags">${tagHtml(item.tags)}</div>
-                  <a class="open" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">Open model ↗</a>
-                </div>
-                <div class="numbers">
-                  <div class="downloads">${numberFmt.format(item.downloads)}</div>
-                  <div class="likes">downloads · ${numberFmt.format(item.likes)} likes</div>
-                </div>
-              </article>
-            `).join('')}
-          </div>
-        </section>`;
-    }
+        let currentLang = localStorage.getItem('language') || 'ja';
+        let rankingData = null;
+        const numberFmt = new Intl.NumberFormat('en-US');
 
-    async function main() {
-      const app = document.getElementById('app');
-      try {
-        const response = await fetch(`hf_rankings.json?v=${Date.now()}`, { cache: 'no-store' });
-        if (!response.ok) throw new Error(`JSON load failed: ${response.status}`);
-        const data = await response.json();
-        document.getElementById('updatedAt').textContent = formatDate(data.generated_at || data.updated_at_label);
-        document.getElementById('categoryNav').innerHTML = (data.categories || []).map(category =>
-          `<a href="#${escapeHtml(category.key)}">${escapeHtml(category.title_ja)}</a>`
-        ).join('');
-        app.innerHTML = (data.categories || []).map(renderCategory).join('');
-      } catch (error) {
-        app.innerHTML = `<div class="error">ランキングデータを読み込めませんでした: ${escapeHtml(error.message)}</div>`;
-        document.getElementById('updatedAt').textContent = 'Load failed';
-      }
-    }
+        function escapeHtml(value) {
+            return String(value ?? '').replace(/[&<>'"]/g, char => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+            }[char]));
+        }
 
-    main();
-  </script>
+        function updateLanguage() {
+            const t = translations[currentLang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) el.textContent = t[key];
+            });
+            document.getElementById('langSwitch').textContent = t.lang_button;
+            document.documentElement.lang = currentLang;
+            if (rankingData) renderRankings(rankingData);
+        }
+
+        function tagsHtml(tags) {
+            return (tags || []).slice(0, 4).map(tag => `<span class="rank-tag">${escapeHtml(tag)}</span>`).join('');
+        }
+
+        function categoryTitle(category) {
+            return currentLang === 'ja' ? category.title_ja : category.title_en;
+        }
+
+        function categorySummary(category) {
+            return currentLang === 'ja' ? category.summary_ja : category.summary_en;
+        }
+
+        function renderRankings(data) {
+            const t = translations[currentLang];
+            const ordered = [...(data.categories || [])].sort((a, b) => {
+                const order = { ai_model_popularity: 0, image_generation: 1, video_generation: 2 };
+                return (order[a.key] ?? 99) - (order[b.key] ?? 99);
+            });
+            document.getElementById('rankingSections').innerHTML = ordered.map(category => `
+                <section class="ranking-section" id="${escapeHtml(category.key)}">
+                    <div class="ranking-section-header">
+                        <div>
+                            <h2>${escapeHtml(categoryTitle(category))}</h2>
+                            <p class="ranking-section-summary">${escapeHtml(categorySummary(category))}</p>
+                        </div>
+                        <div class="ranking-meta-pill">HF downloads · Top ${category.top_n || 10}</div>
+                    </div>
+                    <div class="ranking-list">
+                        ${(category.items || []).map(item => `
+                            <article class="rank-row">
+                                <div class="rank-number">${item.rank}</div>
+                                <div class="rank-model">
+                                    <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(item.id)}</a>
+                                    <div class="rank-detail">${escapeHtml(item.pipeline_tag)} &middot; ${escapeHtml(item.library_name || 'unknown library')}</div>
+                                    <div class="rank-tags">${tagsHtml(item.tags)}</div>
+                                </div>
+                                <div class="rank-metric">
+                                    <div class="rank-downloads">${numberFmt.format(item.downloads)}</div>
+                                    <div class="rank-likes">${t.downloads} &middot; ${numberFmt.format(item.likes)} ${t.likes}</div>
+                                </div>
+                            </article>
+                        `).join('')}
+                    </div>
+                </section>
+            `).join('');
+
+            ordered.forEach(category => {
+                const target = document.querySelector(`[data-top-for="${category.key}"]`);
+                const topItem = category.items && category.items[0];
+                if (target && topItem) {
+                    target.innerHTML = `<strong>${t.top}:</strong> ${escapeHtml(topItem.id)}<br>${numberFmt.format(topItem.downloads)} ${t.downloads}`;
+                }
+            });
+        }
+
+        async function loadRankings() {
+            const response = await fetch(`hf_rankings.json?v=${Date.now()}`, { cache: 'no-store' });
+            if (!response.ok) throw new Error(`Failed to load hf_rankings.json: ${response.status}`);
+            rankingData = await response.json();
+            renderRankings(rankingData);
+        }
+
+        document.getElementById('langSwitch').addEventListener('click', () => {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            localStorage.setItem('language', currentLang);
+            updateLanguage();
+        });
+
+        updateLanguage();
+        loadRankings().catch(error => {
+            document.getElementById('rankingSections').innerHTML = `<div class="method-note">ランキングデータを読み込めませんでした: ${escapeHtml(error.message)}</div>`;
+        });
+    </script>
 </body>
 </html>
