@@ -59,6 +59,7 @@ Warm editorial slide deck for a strategy report. The deck should feel like a hig
 - Do not use neon cyan/purple gradients, glowing dashboards, generic metric bars, or sci-fi grid backgrounds.
 - Do not use thin, narrow, condensed, or typewriter-like fonts for visible slide text.
 - The visual frame should feel like a PPT slide: large 16:9 canvas that uses most of the viewport.
+- A slide must be one-screen complete. Do not rely on internal slide scrollbars for normal desktop/laptop viewing.
 - Use imagegen illustrations for selected slides when the visual idea benefits from texture, composition, and a polished raster asset.
 - Use one main accent at a time. Clay is for judgment, blue for evidence, sage for strategy, amber for caution.
 - Slides must be actual slides, not a long scrolling article. One message per slide, with supporting evidence below.
