@@ -44,6 +44,12 @@
         "itemListElement": [
           {
             "@type": "CreativeWork",
+            "name": "AIエージェント実行トリアージ",
+            "description": "AIエージェントの実行トレース、スパン、評価、ログを一画面で可視化し、失敗原因と次アクションを切り分けるダッシュボード",
+            "url": "https://tenormusica2024.github.io/agent-workflow-reliability-dashboard-pages/"
+          },
+          {
+            "@type": "CreativeWork",
             "name": "AIツールトレンド分析",
             "description": "GitHub TrendingとWikipedia Pageviews APIを活用したAIプロジェクト・画像生成・動画生成ツールのトレンドランキング自動収集・可視化",
             "url": "https://tenormusica2024.github.io/ai-trend-daily/home.html"
@@ -1085,6 +1091,8 @@
                 profile_vision: "AI Philosophy & Vision",
                 music_project_title: "🎵 Alternative Rock - AI駆動による音楽制作プロジェクト",
                 music_project_desc: "Suno AI作曲 + Midjourney ビジュアル + Canva編集による統合制作ワークフロー実例。AIツール連携による効率的な音楽プロダクション。オルタナティブロックトラックとして制作。",
+                project_agent_trace_triage_title: "Agent Trace Triage",
+                project_agent_trace_triage_desc: "AIエージェント実行のトレース、スパン、ツール呼び出し、評価結果、ログを一画面で確認し、失敗原因と次の確認手順を切り分けるダッシュボード。public-safeなサンプルデータで、誤判定やfalse OK/false FAILを防ぐ運用トリアージ設計を示す。",
                 project_flowchart_title: "Flowchart Hover Viewer",
                 project_flowchart_desc: "Mermaid.jsフローチャートをホバーで詳細表示できるインタラクティブビューワー。ノードにマウスオーバーで説明パネルが表示され、ドラッグ操作でレイアウト切り替えも可能。Glassmorphism UIによる美しいダークテーマを採用。単一HTMLファイルでオフライン動作。",
                 project_ai_adoption_title: "AI導入分析レポート",
@@ -1209,6 +1217,8 @@
                 profile_vision: "AI Philosophy & Vision",
                 music_project_title: "🎵 Alternative Rock - AI-Driven Music Production Project",
                 music_project_desc: "Integrated production workflow example with Suno AI composition + Midjourney visuals + Canva editing. Efficient music production through AI tool integration. Achieved high-quality alternative rock track as finished work.",
+                project_agent_trace_triage_title: "Agent Trace Triage Console",
+                project_agent_trace_triage_desc: "Dashboard for triaging AI-agent execution traces, spans, tool calls, evaluations, and logs in one screen. It uses public-safe sample data to show how an operations team can isolate failure causes, choose the next check, and reduce false OK / false FAIL decisions.",
                 project_flowchart_title: "Flowchart Hover Viewer",
                 project_flowchart_desc: "Interactive viewer for inspecting Mermaid.js flowcharts with hover details. Mouse over a node to open an explanation panel, and drag the canvas to adjust the layout. Uses a polished dark glassmorphism UI and runs offline as a single HTML file.",
                 project_ai_adoption_title: "AI Adoption Analysis Report",
@@ -1593,6 +1603,41 @@
     <div class="container">
         <h2 id="section-data-viz" class="section-title" data-i18n="section_data_viz">データ可視化・分析プロジェクト</h2>
         <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-i18n="project_agent_trace_triage_title">Agent Trace Triage</h3>
+                    <span class="project-badge">NEW</span>
+                </div>
+                <img src="images/repo-heroes/agent-trace-triage-console-ja.webp"
+                     data-src-ja="images/repo-heroes/agent-trace-triage-console-ja.webp"
+                     data-src-en="images/repo-heroes/agent-trace-triage-console-en.webp"
+                     data-alt-ja="Agent Trace Triage Console: AIエージェント実行トレースの失敗原因を可視化"
+                     data-alt-en="Agent Trace Triage Console: visualize AI-agent trace failure causes"
+                     alt="Agent Trace Triage Console: AIエージェント実行トレースの失敗原因を可視化"
+                     class="project-screenshot localized-project-image"
+                     loading="lazy">
+                <p class="project-description" data-i18n="project_agent_trace_triage_desc">
+                    AIエージェント実行のトレース、スパン、ツール呼び出し、評価結果、ログを一画面で確認し、失敗原因と次の確認手順を切り分けるダッシュボード。public-safeなサンプルデータで、誤判定やfalse OK/false FAILを防ぐ運用トリアージ設計を示す。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Trace Triage</span>
+                    <span class="tech-tag">RCA</span>
+                    <span class="tech-tag">Eval</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">GitHub Pages</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://tenormusica2024.github.io/agent-workflow-reliability-dashboard-pages/?utm_source=portfolio&utm_medium=project_card&utm_campaign=agent_trace_triage_live"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_live', 'event_label': 'Agent_Trace_Triage', 'value': 1});">Live Demo</a>
+                    <a href="https://github.com/Tenormusica2024/agent-workflow-reliability-dashboard-pages?utm_source=portfolio&utm_medium=project_card&utm_campaign=agent_trace_triage_github"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'Agent_Trace_Triage', 'value': 1});">GitHub</a>
+                </div>
+            </div>
+
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_flowchart_title" style="white-space: nowrap;">Flowchart Hover Viewer</h3>
