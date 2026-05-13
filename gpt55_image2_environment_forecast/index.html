@@ -3,469 +3,227 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GPT-5.5 × GPT Image 2 環境変化予測レポート 2026</title>
-  <meta name="description" content="GPT-5.5とGPT Image 2リリース後に、AI検索・視覚コンテンツ・C2Cポートフォリオ環境がどう変わるかを分析した予測レポート。">
-  <style>
-    :root {
-      --bg: #070A12;
-      --panel: rgba(255,255,255,.075);
-      --panel-strong: rgba(255,255,255,.12);
-      --line: rgba(255,255,255,.16);
-      --text: #F5F7FB;
-      --muted: #AEB7C8;
-      --soft: #D7DCE8;
-      --blue: #6CE7FF;
-      --violet: #A78BFA;
-      --pink: #FF6BAA;
-      --green: #63F2B2;
-      --amber: #FFD166;
-      --red: #FF6B6B;
-      --shadow: 0 24px 80px rgba(0,0,0,.4);
-      --radius: 28px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-      --sans: "Inter", "BIZ UDPGothic", "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: var(--sans);
-      color: var(--text);
-      background:
-        radial-gradient(circle at 14% 8%, rgba(108,231,255,.24), transparent 28rem),
-        radial-gradient(circle at 84% 0%, rgba(167,139,250,.22), transparent 24rem),
-        radial-gradient(circle at 50% 42%, rgba(255,107,170,.12), transparent 34rem),
-        linear-gradient(180deg, #070A12 0%, #0B1020 46%, #060812 100%);
-      line-height: 1.72;
-      letter-spacing: .01em;
-      overflow-x: hidden;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-      background-size: 52px 52px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,.8), rgba(0,0,0,.05));
-      opacity: .35;
-      z-index: -1;
-    }
-    a { color: var(--blue); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .page { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      border-bottom: 1px solid var(--line);
-      background: rgba(7,10,18,.72);
-      backdrop-filter: blur(18px);
-    }
-    .topbar-inner {
-      width: min(1180px, calc(100% - 36px));
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 12px 0;
-    }
-    .brand { display:flex; align-items:center; gap:10px; font-family: var(--mono); font-size:.8rem; color: var(--muted); }
-    .brand-mark { width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--pink)); box-shadow: 0 0 24px rgba(108,231,255,.7); }
-    .nav { display:flex; gap: 8px; flex-wrap: wrap; justify-content:flex-end; }
-    .nav a { color: var(--soft); border: 1px solid transparent; padding: 7px 10px; border-radius: 999px; font-size: .78rem; }
-    .nav a:hover { border-color: var(--line); background: rgba(255,255,255,.06); text-decoration: none; }
-    .hero {
-      min-height: 84vh;
-      display: grid;
-      grid-template-columns: 1.08fr .92fr;
-      align-items: center;
-      gap: 42px;
-      padding: 92px 0 72px;
-    }
-    .kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 12px;
-      border: 1px solid rgba(108,231,255,.35);
-      background: rgba(108,231,255,.08);
-      color: var(--blue);
-      border-radius: 999px;
-      font-family: var(--mono);
-      font-size: .78rem;
-      margin-bottom: 22px;
-    }
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(2.55rem, 6.6vw, 5.9rem);
-      line-height: .96;
-      letter-spacing: -.08em;
-      max-width: 830px;
-    }
-    .hero h1 span { display:block; }
-    .gradient-text {
-      background: linear-gradient(100deg, #fff 0%, var(--blue) 42%, var(--violet) 70%, var(--pink) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .hero-lead {
-      margin: 28px 0 0;
-      max-width: 720px;
-      color: var(--soft);
-      font-size: clamp(1.03rem, 1.55vw, 1.24rem);
-    }
-    .hero-actions { display:flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
-    .button {
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
-      padding: 12px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      color: var(--text);
-      background: rgba(255,255,255,.08);
-      box-shadow: 0 16px 42px rgba(0,0,0,.22);
-      font-weight: 700;
-    }
-    .button.primary { background: linear-gradient(135deg, rgba(108,231,255,.28), rgba(167,139,250,.24)); border-color: rgba(108,231,255,.36); }
-    .button:hover { transform: translateY(-1px); text-decoration:none; }
-    .hero-card {
-      position: relative;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 22px;
-      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.055));
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-    .hero-card::before {
-      content: "";
-      position:absolute;
-      inset:-1px;
-      background: radial-gradient(circle at 20% 20%, rgba(108,231,255,.18), transparent 30%), radial-gradient(circle at 90% 10%, rgba(255,107,170,.18), transparent 28%);
-      pointer-events:none;
-    }
-    .radar { position: relative; display:grid; gap: 16px; }
-    .metric-row { display:grid; grid-template-columns: 118px 1fr 54px; gap: 12px; align-items:center; position: relative; z-index:1; }
-    .metric-row span { color: var(--muted); font-family: var(--mono); font-size:.75rem; }
-    .bar { height: 11px; background: rgba(255,255,255,.10); border-radius: 999px; overflow:hidden; border:1px solid rgba(255,255,255,.08); }
-    .bar i { display:block; height:100%; border-radius:inherit; background: linear-gradient(90deg, var(--blue), var(--violet), var(--pink)); box-shadow: 0 0 18px rgba(108,231,255,.45); }
-    .hero-card h2 { position:relative; z-index:1; margin:0 0 18px; font-size: 1rem; color: var(--soft); font-family: var(--mono); }
-    .mini-grid { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; position:relative; z-index:1; }
-    .mini-card { border:1px solid var(--line); border-radius: 18px; padding: 14px; background: rgba(0,0,0,.18); }
-    .mini-card strong { display:block; font-size:1.7rem; line-height:1; margin-bottom:8px; }
-    .mini-card small { color: var(--muted); }
-    section { padding: 74px 0; }
-    .section-head { display:flex; align-items:end; justify-content:space-between; gap: 22px; margin-bottom: 24px; }
-    .section-label { font-family: var(--mono); color: var(--blue); font-size:.78rem; letter-spacing:.12em; text-transform: uppercase; margin:0 0 8px; }
-    h2.section-title { margin:0; font-size: clamp(2rem, 4vw, 3.5rem); line-height:1.04; letter-spacing:-.055em; }
-    .section-note { max-width: 520px; color: var(--muted); margin:0; }
-    .grid-3 { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
-    .grid-2 { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
-    .card {
-      border:1px solid var(--line);
-      border-radius: 24px;
-      padding: 22px;
-      background: var(--panel);
-      box-shadow: 0 16px 50px rgba(0,0,0,.18);
-    }
-    .card h3 { margin: 0 0 12px; font-size: 1.14rem; line-height:1.35; letter-spacing:-.02em; }
-    .card p { margin:0; color: var(--soft); }
-    .tag { display:inline-flex; align-items:center; gap: 6px; padding: 5px 9px; border-radius:999px; background: rgba(255,255,255,.08); color: var(--muted); border:1px solid var(--line); font-family:var(--mono); font-size:.7rem; margin-bottom: 12px; }
-    .tag.fact { color: var(--green); border-color: rgba(99,242,178,.3); background: rgba(99,242,178,.08); }
-    .tag.inference { color: var(--amber); border-color: rgba(255,209,102,.35); background: rgba(255,209,102,.08); }
-    .thesis {
-      display:grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 18px;
-      align-items: stretch;
-    }
-    .thesis-main {
-      min-height: 330px;
-      border-radius: 30px;
-      border:1px solid rgba(108,231,255,.28);
-      background:
-        linear-gradient(135deg, rgba(108,231,255,.18), rgba(167,139,250,.12)),
-        rgba(255,255,255,.05);
-      padding: 28px;
-      position:relative;
-      overflow:hidden;
-    }
-    .thesis-main::after {
-      content:"AI-READABLE PROOF ASSET";
-      position:absolute;
-      right:-56px;
-      bottom:30px;
-      font-family: var(--mono);
-      font-size: 2.5rem;
-      letter-spacing:.04em;
-      color: rgba(255,255,255,.055);
-      transform: rotate(-10deg);
-      white-space:nowrap;
-    }
-    .thesis-main h3 { margin:0; font-size: clamp(1.8rem,3.2vw,3rem); line-height:1.05; letter-spacing:-.05em; }
-    .thesis-main p { margin-top: 20px; color: var(--soft); font-size:1.05rem; }
-    .timeline { display:grid; gap:14px; }
-    .timeline-item { display:grid; grid-template-columns: 96px 1fr; gap:16px; align-items:start; }
-    .time { font-family:var(--mono); color: var(--blue); font-size:.8rem; padding-top:4px; }
-    .timeline-item .card { padding:18px; }
-    .matrix { overflow:auto; border-radius: 22px; border:1px solid var(--line); background: rgba(255,255,255,.055); }
-    table { border-collapse: collapse; width: 100%; min-width: 820px; }
-    th, td { border-bottom: 1px solid rgba(255,255,255,.11); padding: 16px; text-align:left; vertical-align:top; }
-    th { color: var(--blue); font-family: var(--mono); font-size:.76rem; letter-spacing:.06em; background: rgba(255,255,255,.06); }
-    td { color: var(--soft); }
-    tr:last-child td { border-bottom:0; }
-    .pill { display:inline-flex; padding: 4px 9px; border-radius:999px; font-size:.72rem; font-family:var(--mono); border:1px solid var(--line); }
-    .high { color: var(--red); background: rgba(255,107,107,.08); border-color: rgba(255,107,107,.32); }
-    .mid { color: var(--amber); background: rgba(255,209,102,.08); border-color: rgba(255,209,102,.32); }
-    .good { color: var(--green); background: rgba(99,242,178,.08); border-color: rgba(99,242,178,.32); }
-    .playbook { counter-reset: play; display:grid; gap: 14px; }
-    .play { display:grid; grid-template-columns: 48px 1fr; gap: 16px; align-items:start; border:1px solid var(--line); border-radius: 22px; padding: 18px; background: rgba(255,255,255,.06); }
-    .play::before { counter-increment: play; content: counter(play); width:48px; height:48px; display:grid; place-items:center; border-radius:16px; background: linear-gradient(135deg, rgba(108,231,255,.24), rgba(255,107,170,.18)); color:#fff; font-family:var(--mono); font-weight:800; }
-    .play h3 { margin:0 0 8px; font-size:1rem; }
-    .play p { margin:0; color:var(--soft); }
-    .source-list { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
-    .source-list a { display:block; border:1px solid var(--line); background:rgba(255,255,255,.055); border-radius: 16px; padding: 13px; color: var(--soft); }
-    .source-list a:hover { background: rgba(108,231,255,.08); text-decoration:none; }
-    .source-list span { display:block; color:var(--muted); font-family:var(--mono); font-size:.72rem; margin-top:4px; }
-    .footer { padding: 54px 0 70px; color:var(--muted); border-top:1px solid var(--line); margin-top:40px; }
-    .filters { display:flex; gap:8px; flex-wrap:wrap; margin: 16px 0 0; }
-    .filter { cursor:pointer; border:1px solid var(--line); border-radius:999px; padding:8px 12px; color:var(--soft); background:rgba(255,255,255,.055); }
-    .filter.active { color:#061018; background: var(--blue); border-color: transparent; font-weight:800; }
-    [data-horizon].hidden { display:none; }
-    .quote-panel { border-left: 3px solid var(--blue); padding: 16px 18px; color: var(--soft); background: rgba(108,231,255,.07); border-radius: 0 18px 18px 0; }
-    .small { color:var(--muted); font-size:.9rem; }
-    @media (max-width: 900px) {
-      .topbar { position: static; }
-      .topbar-inner { align-items:flex-start; flex-direction:column; }
-      .hero, .thesis, .grid-2, .grid-3 { grid-template-columns: 1fr; }
-      .hero { min-height: auto; padding-top: 58px; }
-      .section-head { display:block; }
-      .section-note { margin-top: 12px; }
-      .source-list { grid-template-columns: 1fr; }
-      .timeline-item { grid-template-columns: 1fr; gap: 8px; }
-    }
-    @media (max-width: 560px) {
-      .page, .topbar-inner { width: min(100% - 24px, 1180px); }
-      .hero h1 { font-size: 3rem; }
-      .mini-grid { grid-template-columns:1fr; }
-      .metric-row { grid-template-columns: 88px 1fr 44px; }
-      .nav a { font-size:.72rem; padding:6px 8px; }
-      section { padding: 54px 0; }
-    }
-  </style>
+  <title>GPT-5.5 × GPT Image 2 環境変化予測スライド 2026</title>
+  <meta name="description" content="GPT-5.5とGPT Image 2リリース後のAI検索・視覚コンテンツ・C2Cポートフォリオ環境変化をスライド形式で分析。">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand"><span class="brand-mark"></span> C2C PORTFOLIO INTELLIGENCE / 2026-05-13</div>
-      <nav class="nav" aria-label="ページ内ナビゲーション">
-        <a href="#thesis">結論</a>
-        <a href="#facts">変化の根拠</a>
-        <a href="#forecast">予測</a>
-        <a href="#strategy">戦略</a>
-        <a href="#sources">Sources</a>
-      </nav>
-    </div>
-  </header>
+  <div class="deck-shell">
+    <header class="deck-header" aria-label="Deck header">
+      <div class="deck-brand">GPT-5.5 × GPT Image 2 / Environment Forecast</div>
+      <div class="deck-mode"><a href="report.md">Read full markdown report</a></div>
+    </header>
 
-  <main>
-    <section class="hero page">
-      <div>
-        <div class="kicker">GPT-5.5 × GPT Image 2 / AI SEARCH FORECAST</div>
-        <h1>
-          <span>AI検索と</span>
-          <span class="gradient-text">視覚証拠</span>
-          <span>競争の次局面</span>
-        </h1>
-        <p class="hero-lead">GPT-5.5 と GPT Image 2 のリリース後、SEOは「順位」だけでなく、AIが調査・比較・引用・画像化・購買候補化に使える証拠設計へ移る。C2Cポートフォリオは、作品集からAIにも人間にも読まれる能力証明へ変わる。</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#strategy">実装戦略を見る</a>
-          <a class="button" href="report.md">Markdown版を読む</a>
+    <main id="deck" aria-label="GPT-5.5 and GPT Image 2 forecast slide deck">
+      <section class="slide active" data-slide="1" aria-label="Title slide">
+        <div class="slide-canvas">
+          <div class="slide-inner lead-grid">
+            <div>
+              <div class="eyebrow">C2C Portfolio Intelligence</div>
+              <h1 class="hero-title">AI検索と<br><span class="accent">視覚証拠</span><br>競争の次局面</h1>
+              <p class="slide-subtitle">GPT-5.5 と GPT Image 2 のリリース後、検索・比較・引用・画像化・購買候補化がAI側で進む。Webページは「読まれる場所」から、AIに使われる証拠資産へ変わる。</p>
+            </div>
+            <aside class="cover-card">
+              <strong>結論: SEOは順位競争から、証拠設計へ移る。</strong>
+              <p>この資料は、既存のGemini 3 SEO分析を単に模倣せず、OpenAI / Google公式情報と研究ソースをもとに、C2Cポートフォリオで取るべき実務アクションへ落とす。</p>
+            </aside>
+          </div>
+          <footer class="slide-footer"><span>01 / 10</span><span class="source-note">Updated 2026-05-13</span></footer>
         </div>
-      </div>
-      <aside class="hero-card" aria-label="環境変化の強度">
-        <h2>ENVIRONMENT SHIFT INTENSITY</h2>
-        <div class="radar">
-          <div class="metric-row"><span>AI Search</span><div class="bar"><i style="width:92%"></i></div><span>92</span></div>
-          <div class="metric-row"><span>Visual Proof</span><div class="bar"><i style="width:88%"></i></div><span>88</span></div>
-          <div class="metric-row"><span>Zero Click</span><div class="bar"><i style="width:81%"></i></div><span>81</span></div>
-          <div class="metric-row"><span>Agent Work</span><div class="bar"><i style="width:95%"></i></div><span>95</span></div>
-          <div class="metric-row"><span>Portfolio Gap</span><div class="bar"><i style="width:76%"></i></div><span>76</span></div>
-        </div>
-        <div class="mini-grid">
-          <div class="mini-card"><strong>105万</strong><small>GPT-5.5 API docs上のコンテキスト規模</small></div>
-          <div class="mini-card"><strong>51.5%</strong><small>研究で観測されたAIO生成率</small></div>
-          <div class="mini-card"><strong>-15%</strong><small>AIO露出によるWikipedia日次流入推定減</small></div>
-          <div class="mini-card"><strong>3面</strong><small>Google / ChatGPT / AI回答内露出を同時観測</small></div>
-        </div>
-      </aside>
-    </section>
+      </section>
 
-    <section id="thesis" class="page">
-      <div class="section-head">
-        <div>
-          <p class="section-label">Executive Thesis</p>
-          <h2 class="section-title">順位から証拠パケットへ</h2>
+      <section class="slide" data-slide="2" aria-label="Executive takeaways">
+        <div class="slide-canvas">
+          <div class="slide-inner">
+            <div class="eyebrow">Executive Takeaways</div>
+            <h2 class="slide-title">変化は検索順位ではなく、AIが成果物を作る前段で起きる</h2>
+            <div class="grid-3">
+              <article class="card"><span class="kicker">Shift 01</span><h3>検索は入口ではなく作業の途中になる</h3><p>ユーザーはページを巡回する前に、AIへ調査・比較・要約・表作成・画像化まで依頼する。</p></article>
+              <article class="card"><span class="kicker">Shift 02</span><h3>画像生成は装飾から説明メディアへ移る</h3><p>GPT Image 2で図解、商品比較、教育スライド、インフォグラフィックの平均品質が上がる。</p></article>
+              <article class="card"><span class="kicker">Shift 03</span><h3>小規模ポートフォリオは検証可能性で勝つ</h3><p>一般論より、実装ログ、比較方法、更新履歴、スクリーンショットを束ねた証拠カードが強い。</p></article>
+            </div>
+          </div>
+          <footer class="slide-footer"><span>02 / 10</span><span class="source-note">Inference from OpenAI / Google / arXiv sources</span></footer>
         </div>
-        <p class="section-note">Gemini 3 SEO分析の延長ではなく、ChatGPT側の検索・商品発見・画像生成・エージェント作業が合流した後の環境変化として読む。</p>
-      </div>
-      <div class="thesis">
-        <div class="thesis-main">
-          <span class="tag inference">Forecast</span>
-          <h3>Webページは、読まれる場所からAIに使われる入力資産へ変わる</h3>
-          <p>ユーザーは「検索して読む」より先に、AIへ「調べて比較して、表と結論と画像にして」と依頼する。勝つのは、一般論を多く持つサイトではなく、AIが安全に引用・比較・再構成できる証拠を持つサイト。</p>
-        </div>
-        <div class="grid-2">
-          <article class="card"><span class="tag fact">Fact</span><h3>GPT-5.5はツール接続前提の作業モデル</h3><p>API docs上でWeb search、File search、Image generation、Code interpreter、Hosted shell、Computer use、MCPなどの対応が示される。回答だけでなく作業完了に近づく。</p></article>
-          <article class="card"><span class="tag fact">Fact</span><h3>GPT Image 2は説明画像の品質基準を上げる</h3><p>高品質な画像生成・編集、柔軟なサイズ、画像入力を備える。図解・比較・教育・商品理解の視覚レイヤーが一般化する。</p></article>
-          <article class="card"><span class="tag fact">Fact</span><h3>Google公式は基本SEO継続を明示</h3><p>AI Overviews / AI Modeに特別要件はないと説明。一方で、プレビュー制御やrobotsの扱いはAI機能にも影響する。</p></article>
-          <article class="card"><span class="tag inference">Inference</span><h3>C2Cは作品集より検証資産が強い</h3><p>AI生成物が増えるほど、実装ログ、比較方法、失敗例、更新履歴、スクリーンショットを束ねたページが差別化しやすい。</p></article>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="facts" class="page">
-      <div class="section-head">
-        <div>
-          <p class="section-label">What Changed</p>
-          <h2 class="section-title">4つの根拠</h2>
+      <section class="slide" data-slide="3" aria-label="GPT-5.5 changes">
+        <div class="slide-canvas">
+          <div class="slide-inner">
+            <div class="eyebrow">Model Capability</div>
+            <h2 class="slide-title">GPT-5.5は、回答モデルではなく作業モデルとして見る</h2>
+            <p class="slide-subtitle">OpenAI API docs上では、大規模コンテキストと複数ツールの接続が示されている。これは「ページを読んで終わり」ではなく、調べて、比較して、ファイル化するユーザー行動を増やす。</p>
+            <div class="grid-4">
+              <article class="metric"><div class="metric-value">105万</div><div class="metric-label">API docs上のコンテキスト規模。長い資料・複数ページの一括把握が前提になる。</div></article>
+              <article class="metric"><div class="metric-value">128K</div><div class="metric-label">最大出力規模。調査結果をレポートや資料として出しやすくなる。</div></article>
+              <article class="metric"><div class="metric-value">Tools</div><div class="metric-label">Web search、File search、Code interpreter、Computer use、MCPなど。</div></article>
+              <article class="metric"><div class="metric-value">Agent</div><div class="metric-label">ユーザーの比較・検討・発注前作業をAIが肩代わりする比率が上がる。</div></article>
+            </div>
+          </div>
+          <footer class="slide-footer"><span>03 / 10</span><span class="source-note">OpenAI: GPT-5.5 announcement / API model docs</span></footer>
         </div>
-        <p class="section-note">公式ソースと研究結果を分けて扱い、断定できる事実と予測を混同しない。</p>
-      </div>
-      <div class="grid-2">
-        <article class="card"><span class="tag fact">OpenAI</span><h3>GPT-5.5は複雑な専門作業向け</h3><p>OpenAIはGPT-5.5を、コード、オンライン調査、データ分析、文書・スプレッドシート作成、ソフトウェア操作を横断するモデルとして説明している。API docsでも大規模コンテキストと多様なツール接続が確認できる。</p></article>
-        <article class="card"><span class="tag fact">OpenAI</span><h3>GPT Image 2は画像を成果物化する</h3><p>画像生成は装飾だけでなく、商品グリッド、教育図解、インフォグラフィック、漫画、ブランド素材のような説明メディアへ広がる。視覚的に理解できる証拠の価値が増す。</p></article>
-        <article class="card"><span class="tag fact">OpenAI</span><h3>ChatGPTは商品発見面を持ち始めた</h3><p>ChatGPT上で商品を視覚的に探し、比較し、条件を会話で絞る体験が提示されている。サイト側はOAI-SearchBot、商品情報、フィード、構造化情報を意識する必要がある。</p></article>
-        <article class="card"><span class="tag fact">Research</span><h3>AI回答は従来検索と違うソースを選ぶ</h3><p>arXiv研究では、Google検索、AI Overview、Geminiで取得ソースの重なりが小さく、AI Overviewは微小なクエリ変更にも不安定と報告されている。順位だけでAI露出を説明できない。</p></article>
-      </div>
-    </section>
+      </section>
 
-    <section id="forecast" class="page">
-      <div class="section-head">
-        <div>
-          <p class="section-label">Forecast Horizon</p>
-          <h2 class="section-title">30・90・180日予測</h2>
+      <section class="slide" data-slide="4" aria-label="GPT Image 2 changes">
+        <div class="slide-canvas">
+          <div class="slide-inner">
+            <div class="eyebrow">Visual Layer</div>
+            <h2 class="slide-title">GPT Image 2で、画像は“きれい”から“理解を圧縮する”へ進む</h2>
+            <div class="axis-diagram">
+              <div class="axis-panel">
+                <h3>Before: 生成画像が目立った時期</h3>
+                <ul>
+                  <li>未来都市・抽象背景・派手なサムネイル</li>
+                  <li>見た目の新奇性でクリックを取る</li>
+                  <li>本文の根拠とは分離しやすい</li>
+                </ul>
+              </div>
+              <div class="arrow" aria-hidden="true">→</div>
+              <div class="axis-panel">
+                <h3>After: 視覚証拠が評価される時期</h3>
+                <ul>
+                  <li>比較表、ワークフロー、Before/After</li>
+                  <li>データと判断軸を一枚に圧縮する</li>
+                  <li>AIにも人間にも引用しやすい</li>
+                </ul>
+              </div>
+            </div>
+            <div class="quote">サムネイルの品質差は、画像生成の上手さではなく、何を比較し、何を証拠として見せるかで決まる。</div>
+          </div>
+          <footer class="slide-footer"><span>04 / 10</span><span class="source-note">OpenAI: ChatGPT Images 2.0 / GPT Image 2 docs</span></footer>
         </div>
-        <div class="filters" aria-label="予測期間フィルター">
-          <button class="filter active" data-filter="all">All</button>
-          <button class="filter" data-filter="30">30日</button>
-          <button class="filter" data-filter="90">90日</button>
-          <button class="filter" data-filter="180">180日</button>
+      </section>
+
+      <section class="slide" data-slide="5" aria-label="AI search surfaces">
+        <div class="slide-canvas">
+          <div class="slide-inner">
+            <div class="eyebrow">Search Surface Split</div>
+            <h2 class="slide-title">AI検索の可視性は、Google単独では測れなくなる</h2>
+            <div class="grid-3">
+              <article class="card"><span class="kicker">Google AI Search</span><h3>AI Overviews / AI Mode</h3><p>Google公式は基本SEOの継続を示す。一方、スニペット制御やrobotsはAI機能の表示にも影響する。</p></article>
+              <article class="card"><span class="kicker">ChatGPT Search</span><h3>回答・比較・商品発見</h3><p>ChatGPT内で商品や候補を会話的に絞る体験が進む。OAI-SearchBotや商品情報の発見可能性が重要になる。</p></article>
+              <article class="card"><span class="kicker">Other AI Surfaces</span><h3>Perplexity / SNS検索 / AIブラウザ</h3><p>ユーザー接点は分散する。順位ではなく、引用・候補化・要約内容を観測する必要がある。</p></article>
+            </div>
+          </div>
+          <footer class="slide-footer"><span>05 / 10</span><span class="source-note">Google Search Central / OpenAI Product Discovery</span></footer>
         </div>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item" data-horizon="30"><div class="time">0-30日</div><article class="card"><h3>生成品質の平均値が上がる</h3><p>調査レポート、図解、サムネイル、比較表が短時間で作られる。差別化は「AIを使ったか」ではなく、根拠・観測・更新性へ移る。</p></article></div>
-        <div class="timeline-item" data-horizon="90"><div class="time">30-90日</div><article class="card"><h3>AI検索面での可視性格差が広がる</h3><p>通常検索順位はあるがAI回答では使われにくいページが出る。Google、ChatGPT、Perplexity等での引用・候補化を観測しないと、流入変化の原因が見えにくい。</p></article></div>
-        <div class="timeline-item" data-horizon="180"><div class="time">90-180日</div><article class="card"><h3>WebページはAIエージェント用の入力資産になる</h3><p>比較、問い合わせ、購買、発注前検討の一部がAI内で進む。強いページは、AIが誤解しにくい構造と人間が信頼できる証拠を両方持つ。</p></article></div>
-      </div>
-    </section>
+      </section>
 
-    <section class="page">
-      <div class="section-head">
-        <div>
-          <p class="section-label">Risk / Opportunity Matrix</p>
-          <h2 class="section-title">領域別の勝ち筋</h2>
+      <section class="slide" data-slide="6" aria-label="Research signals">
+        <div class="slide-canvas">
+          <div class="slide-inner">
+            <div class="eyebrow">Research Signals</div>
+            <h2 class="slide-title">研究結果は、従来順位だけではAI露出を説明できないことを示す</h2>
+            <div class="grid-3">
+              <article class="metric"><div class="metric-value">51.5%</div><div class="metric-label">実ユーザークエリでAI Overviewが生成された割合として研究が報告。</div></article>
+              <article class="metric"><div class="metric-value">低重複</div><div class="metric-label">Google検索・AI Overview・Geminiの取得ソースは重なりが小さいと報告。</div></article>
+              <article class="metric"><div class="metric-value">-15%</div><div class="metric-label">AI検索サマリー露出によるWikipedia日次流入への推定影響。</div></article>
+            </div>
+            <p class="slide-subtitle">注: 研究値は対象期間・データセット・測定方法に依存する。ここでは絶対値ではなく、AI回答面を別指標として観測すべき根拠として扱う。</p>
+          </div>
+          <footer class="slide-footer"><span>06 / 10</span><span class="source-note">arXiv: 2604.27790 / 2602.18455 / 2603.16138</span></footer>
         </div>
-      </div>
-      <div class="matrix">
-        <table>
-          <thead><tr><th>領域</th><th>リスク</th><th>機会</th><th>優先対応</th></tr></thead>
-          <tbody>
-            <tr><td>情報系SEO記事</td><td><span class="pill high">High</span></td><td><span class="pill mid">Medium</span></td><td>一般論から、検証ログ・比較表・一次観測へ寄せる</td></tr>
-            <tr><td>ツール比較・おすすめ記事</td><td><span class="pill high">High</span></td><td><span class="pill good">High</span></td><td>価格・用途・制約・実測の更新履歴を明示する</td></tr>
-            <tr><td>画像・サムネイル制作</td><td><span class="pill mid">Medium</span></td><td><span class="pill good">High</span></td><td>生成画像単体ではなく、データに基づく図解へ寄せる</td></tr>
-            <tr><td>C2Cポートフォリオ</td><td><span class="pill mid">Medium</span></td><td><span class="pill good">High</span></td><td>実装証跡・スクショ・GitHub・検証結果を束ねる</td></tr>
-            <tr><td>B2B小規模受託</td><td><span class="pill mid">Medium</span></td><td><span class="pill good">High</span></td><td>AI検索可視性診断、視覚証拠資産、運用チェックリストに商品化する</td></tr>
-            <tr><td>EC / 商品紹介</td><td><span class="pill high">High</span></td><td><span class="pill good">High</span></td><td>OAI-SearchBot、商品メタデータ、商品フィード、画像の整備</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+      </section>
 
-    <section id="strategy" class="page">
-      <div class="section-head">
-        <div>
-          <p class="section-label">Portfolio Strategy</p>
-          <h2 class="section-title">C2Cで今やること</h2>
+      <section class="slide" data-slide="7" aria-label="Risk opportunity matrix">
+        <div class="slide-canvas">
+          <div class="slide-inner">
+            <div class="eyebrow">Risk / Opportunity</div>
+            <h2 class="slide-title">C2Cと小規模B2Bにとっての勝ち筋</h2>
+            <div class="matrix">
+              <table>
+                <thead><tr><th>領域</th><th>リスク</th><th>機会</th><th>優先対応</th></tr></thead>
+                <tbody>
+                  <tr><td>情報系SEO記事</td><td><span class="badge high">High</span></td><td><span class="badge mid">Medium</span></td><td>一般論から、検証ログ・比較表・一次観測へ寄せる</td></tr>
+                  <tr><td>ツール比較記事</td><td><span class="badge high">High</span></td><td><span class="badge good">High</span></td><td>価格・用途・制約・実測の更新履歴を明示する</td></tr>
+                  <tr><td>画像・サムネイル制作</td><td><span class="badge mid">Medium</span></td><td><span class="badge good">High</span></td><td>生成画像単体ではなく、データに基づく図解へ寄せる</td></tr>
+                  <tr><td>C2Cポートフォリオ</td><td><span class="badge mid">Medium</span></td><td><span class="badge good">High</span></td><td>実装証跡・スクショ・GitHub・検証結果を束ねる</td></tr>
+                  <tr><td>B2B小規模受託</td><td><span class="badge mid">Medium</span></td><td><span class="badge good">High</span></td><td>AI検索可視性診断と視覚証拠資産を商品化する</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <footer class="slide-footer"><span>07 / 10</span><span class="source-note">Forecast matrix for portfolio strategy</span></footer>
         </div>
-        <p class="section-note">単なるAI生成コンテンツではなく、AIにも人間にも読まれる証拠資産へ寄せる。</p>
-      </div>
-      <div class="playbook">
-        <div class="play"><div><h3>AI Search Visibility Audit を作る</h3><p>自分の名前、活動名、代表プロジェクト名、技術テーマ名で、Google AI Overviews、ChatGPT Search、Perplexityなどにどう出るかを月次記録する。</p></div></div>
-        <div class="play"><div><h3>各プロジェクトを証拠カード化する</h3><p>目的、入力データ、実装内容、検証方法、Before / After、失敗と修正、スクリーンショット、更新日を固定ブロック化する。</p></div></div>
-        <div class="play"><div><h3>画像生成を理解圧縮に使う</h3><p>綺麗な抽象画像ではなく、ワークフロー図、評価指標、失敗パターン、実装前後の比較など、一枚で価値が伝わる図解を作る。</p></div></div>
-        <div class="play"><div><h3>更新されるリサーチ資産を増やす</h3><p>単発記事より、更新日、差分、観測ログを持つページを増やす。AI検索が再クロール・再引用する理由を作る。</p></div></div>
-        <div class="play"><div><h3>B2B導線へ転用する</h3><p>AI検索可視性診断、ChatGPT / Google AI Mode表示チェック、既存サイトの証拠カード化、図解つき営業資料作成として商品化できる。</p></div></div>
-      </div>
-    </section>
+      </section>
 
-    <section class="page">
-      <div class="section-head">
-        <div>
-          <p class="section-label">Do / Don't</p>
-          <h2 class="section-title">やることと避けること</h2>
+      <section class="slide" data-slide="8" aria-label="Portfolio strategy">
+        <div class="slide-canvas">
+          <div class="slide-inner">
+            <div class="eyebrow">Portfolio Strategy</div>
+            <h2 class="slide-title">作品集を、AIに読まれる能力証明へ変える</h2>
+            <div class="axis-diagram">
+              <div class="axis-panel">
+                <h3>従来の作品カード</h3>
+                <ul>
+                  <li>タイトル</li>
+                  <li>スクリーンショット</li>
+                  <li>使用技術</li>
+                  <li>短い説明</li>
+                </ul>
+              </div>
+              <div class="arrow" aria-hidden="true">→</div>
+              <div class="axis-panel">
+                <h3>AI時代の証拠カード</h3>
+                <ul>
+                  <li>目的 / 前提 / 入力データ</li>
+                  <li>実装内容 / 検証方法</li>
+                  <li>Before / After / 失敗と修正</li>
+                  <li>更新日 / GitHub / 記事 / デモ</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <footer class="slide-footer"><span>08 / 10</span><span class="source-note">Recommended structure for C2C proof assets</span></footer>
         </div>
-      </div>
-      <div class="grid-2">
-        <article class="card"><span class="tag fact">Do</span><h3>証拠・構造・視覚化をセットにする</h3><p>プロジェクトページごとに、検証ログ、スクショ、図解、リンク、更新日をまとめる。AIが誤解しにくい構造を優先する。</p></article>
-        <article class="card"><span class="tag inference">Don't</span><h3>綺麗なだけの生成画像を量産しない</h3><p>GPT Image 2以後は見た目の平均品質が上がる。差は、画像の背後にあるデータ、比較方法、独自観測、運用改善で出す。</p></article>
-        <article class="card"><span class="tag fact">Do</span><h3>クロールと引用の観測を分ける</h3><p>Googlebot、OAI-SearchBot、通常順位、AI回答引用、ChatGPT商品発見を同じものとして扱わず、それぞれ観測する。</p></article>
-        <article class="card"><span class="tag inference">Don't</span><h3>AI向けキーワード詰め込みに寄せない</h3><p>LLM向けの薄いチャンク化や一般論量産は弱い。人間が読んで信頼でき、AIが読んでも根拠が追えるページを作る。</p></article>
-      </div>
-      <div class="quote-panel" style="margin-top:18px;">
-        推奨ポジショニング: AI検索時代に、調査・可視化・実装・検証ログまでを一体化して、AIにも人間にも読まれる証拠資産を作る。
-      </div>
-    </section>
+      </section>
 
-    <section id="sources" class="page">
-      <div class="section-head">
-        <div>
-          <p class="section-label">Source Stack</p>
-          <h2 class="section-title">参照ソース</h2>
+      <section class="slide" data-slide="9" aria-label="Timeline forecast">
+        <div class="slide-canvas">
+          <div class="slide-inner">
+            <div class="eyebrow">Forecast Horizon</div>
+            <h2 class="slide-title">30・90・180日で見る変化</h2>
+            <div class="timeline">
+              <article class="timeline-step" data-step="30"><h3>生成品質の平均値が上がる</h3><p>調査レポート、図解、サムネイル、比較表が短時間で作られる。差別化は根拠と観測へ移る。</p></article>
+              <article class="timeline-step" data-step="90"><h3>AI検索面の格差が見え始める</h3><p>通常検索順位はあるがAI回答では使われにくいページが出る。引用・候補化の観測が必要になる。</p></article>
+              <article class="timeline-step" data-step="180"><h3>ページはエージェント入力資産になる</h3><p>比較、問い合わせ、発注前検討の一部がAI内で進む。誤解されにくい構造が重要になる。</p></article>
+            </div>
+          </div>
+          <footer class="slide-footer"><span>09 / 10</span><span class="source-note">Short-term operating forecast</span></footer>
         </div>
-        <p class="section-note">公式情報はOpenAI / Googleを優先し、AI検索影響は研究ソースで補強。</p>
-      </div>
-      <div class="source-list">
-        <a href="https://openai.com/index/introducing-gpt-5-5/" target="_blank" rel="noopener noreferrer">OpenAI: Introducing GPT-5.5<span>モデル能力・提供状況・評価</span></a>
-        <a href="https://developers.openai.com/api/docs/models/gpt-5.5" target="_blank" rel="noopener noreferrer">OpenAI API Docs: GPT-5.5 Model<span>コンテキスト・価格・ツール対応</span></a>
-        <a href="https://openai.com/index/introducing-chatgpt-images-2-0/" target="_blank" rel="noopener noreferrer">OpenAI: ChatGPT Images 2.0<span>画像生成の表現例と方向性</span></a>
-        <a href="https://developers.openai.com/api/docs/models/gpt-image-2" target="_blank" rel="noopener noreferrer">OpenAI API Docs: GPT Image 2<span>画像生成・編集モデル仕様</span></a>
-        <a href="https://openai.com/index/powering-product-discovery-in-chatgpt/" target="_blank" rel="noopener noreferrer">OpenAI: Product Discovery in ChatGPT<span>商品発見・比較体験</span></a>
-        <a href="https://chatgpt.com/merchants/" target="_blank" rel="noopener noreferrer">OpenAI / ChatGPT merchants<span>OAI-SearchBotと商品発見導線</span></a>
-        <a href="https://developers.google.com/search/docs/appearance/ai-features?hl=en" target="_blank" rel="noopener noreferrer">Google Search Central: AI features and your website<span>AI Overviews / AI Modeとサイト制御</span></a>
-        <a href="https://developers.google.com/search/blog/2025/05/succeeding-in-ai-search" target="_blank" rel="noopener noreferrer">Google Search Central Blog: AI Search tips<span>AI検索での基本SEO方針</span></a>
-        <a href="https://arxiv.org/abs/2604.27790" target="_blank" rel="noopener noreferrer">arXiv: How Generative AI Disrupts Search<span>AIO生成率・ソース差分・不安定性</span></a>
-        <a href="https://arxiv.org/abs/2602.18455" target="_blank" rel="noopener noreferrer">arXiv: Impact of AI Search Summaries<span>Wikipedia流入への推定影響</span></a>
-        <a href="https://arxiv.org/abs/2603.16138" target="_blank" rel="noopener noreferrer">arXiv: Answer Bubbles<span>AI検索の引用バイアスと情報露出</span></a>
-      </div>
-      <p class="small" style="margin-top:18px;">注: 本レポートの予測部分は、上記ソースからの推論です。数値は直接出典のある観測値と、ポートフォリオ運用上の判断を区別して扱っています。</p>
-    </section>
-  </main>
+      </section>
 
-  <footer class="footer page">
-    <div>GPT-5.5 × GPT Image 2 Environment Forecast / C2C Portfolio Research Asset</div>
-    <div class="small">Created for Tenormusica portfolio. Last updated 2026-05-13.</div>
-  </footer>
+      <section class="slide" data-slide="10" aria-label="Actions and sources">
+        <div class="slide-canvas">
+          <div class="slide-inner">
+            <div class="eyebrow">Action Plan</div>
+            <h2 class="slide-title">今やることは、AI向け小細工ではなく証拠資産化</h2>
+            <div class="grid-2">
+              <article class="note-card"><h3>Do</h3><ul class="dense-list"><li>主要プロジェクトを証拠カード化する</li><li>AI検索での引用・候補化を月次観測する</li><li>画像生成を図解・比較・検証の圧縮に使う</li><li>B2B側にAI検索可視性診断を転用する</li></ul></article>
+              <article class="note-card"><h3>Don't</h3><ul class="dense-list"><li>綺麗なだけの生成画像を量産しない</li><li>LLM向けキーワード詰め込みに寄せない</li><li>Google順位だけで環境変化を判断しない</li><li>出典・日付・検証方法のない予測記事を増やさない</li></ul></article>
+            </div>
+            <ol class="source-list">
+              <li><a href="https://openai.com/index/introducing-gpt-5-5/">OpenAI: Introducing GPT-5.5</a></li>
+              <li><a href="https://developers.openai.com/api/docs/models/gpt-5.5">OpenAI API Docs: GPT-5.5</a></li>
+              <li><a href="https://openai.com/index/introducing-chatgpt-images-2-0/">OpenAI: ChatGPT Images 2.0</a></li>
+              <li><a href="https://developers.openai.com/api/docs/models/gpt-image-2">OpenAI API Docs: GPT Image 2</a></li>
+              <li><a href="https://openai.com/index/powering-product-discovery-in-chatgpt/">OpenAI: Product Discovery in ChatGPT</a></li>
+              <li><a href="https://developers.google.com/search/docs/appearance/ai-features?hl=en">Google Search Central: AI features</a></li>
+              <li><a href="https://arxiv.org/abs/2604.27790">arXiv: How Generative AI Disrupts Search</a></li>
+              <li><a href="https://arxiv.org/abs/2602.18455">arXiv: Impact of AI Search Summaries</a></li>
+            </ol>
+          </div>
+          <footer class="slide-footer"><span>10 / 10</span><span class="source-note">Full text: report.md / Design notes: DESIGN.md</span></footer>
+        </div>
+      </section>
+    </main>
 
-  <script>
-    const buttons = document.querySelectorAll('.filter');
-    const items = document.querySelectorAll('[data-horizon]');
-    buttons.forEach((button) => {
-      button.addEventListener('click', () => {
-        buttons.forEach((b) => b.classList.remove('active'));
-        button.classList.add('active');
-        const filter = button.dataset.filter;
-        items.forEach((item) => {
-          item.classList.toggle('hidden', filter !== 'all' && item.dataset.horizon !== filter);
-        });
-      });
-    });
-  </script>
+    <nav class="controls" aria-label="Slide controls">
+      <button class="control-btn" type="button" data-prev aria-label="Previous slide">←</button>
+      <div class="dots" aria-label="Slide dots"></div>
+      <button class="control-btn" type="button" data-next aria-label="Next slide">→</button>
+    </nav>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
