@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="GPT Image 2 forecast favicon">
+  <defs>
+    <linearGradient id="bg" x1="8" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#151411"/>
+      <stop offset="0.55" stop-color="#243b59"/>
+      <stop offset="1" stop-color="#a6472c"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="18" y1="45" x2="48" y2="17" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f7f1e8"/>
+      <stop offset="0.45" stop-color="#c48121"/>
+      <stop offset="1" stop-color="#74a8d9"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="17" fill="url(#bg)"/>
+  <rect x="12" y="14" width="40" height="30" rx="6" fill="#fffdf8" opacity="0.93"/>
+  <path d="M17 36l8-9 7 6 7-11 8 14H17z" fill="#315c8a" opacity="0.72"/>
+  <circle cx="24" cy="23" r="4" fill="#c48121"/>
+  <path d="M18 49h28" stroke="#fffdf8" stroke-width="4" stroke-linecap="round" opacity="0.92"/>
+  <path d="M18 49c8-17 20-25 32-30" fill="none" stroke="url(#glow)" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="50" cy="19" r="5" fill="#74a8d9"/>
+</svg>
