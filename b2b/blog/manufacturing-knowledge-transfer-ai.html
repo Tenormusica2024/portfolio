@@ -1,0 +1,1133 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <script>
+    (function() {
+      var productionHosts = ['ezlize.com', 'www.ezlize.com'];
+      if (!productionHosts.includes(window.location.hostname)) return;
+      var optOutKey = 'ezlize_ga_opt_out';
+      var params = new URLSearchParams(window.location.search);
+      var enableKeys = ['ga_on', 'analytics_on'];
+      var disableKeys = ['ga_off', 'analytics_off', 'internal_preview', 'preview', 'no_ga'];
+      var shouldEnable = enableKeys.some(function(key) { return params.has(key); });
+      var shouldDisable = disableKeys.some(function(key) { return params.has(key); });
+      try {
+        if (shouldEnable) window.localStorage.removeItem(optOutKey);
+        if (shouldDisable) window.localStorage.setItem(optOutKey, '1');
+      } catch (e) {}
+      var isOptedOut = false;
+      try { isOptedOut = window.localStorage.getItem(optOutKey) === '1'; } catch (e) {}
+      var referrer = document.referrer || '';
+      var userAgent = navigator.userAgent || '';
+      var isAutomation = navigator.webdriver === true || /HeadlessChrome|Playwright|Puppeteer|Cypress|Selenium/i.test(userAgent);
+      var isLocalPreviewReferrer = /^https?:\/\/(localhost|127\.0\.0\.1|0\.0\.0\.0)(:\d+)?\//.test(referrer) || referrer.indexOf('file://') === 0;
+      if (isOptedOut || isAutomation || isLocalPreviewReferrer) {
+        window.ezlizeAnalyticsSuppressed = true;
+        return;
+      }
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-YJ1WP1J2NQ';
+      document.head.appendChild(script);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-YJ1WP1J2NQ', { 'linker': { 'domains': ['ezlize.com'] } });
+    })();
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>製造業の知見継承AI導入ベーシックパターン | 技術ブログ | Ezlize</title>
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="description" content="ヤンマー、ライオン、CADDi Drawer導入企業などの公開事例から、製造業における知見継承AI・既存資料RAG・図面検索・暗黙知抽出の基本パターンを整理した公開レポート。">
+  <link rel="canonical" href="https://ezlize.com/blog/manufacturing-knowledge-transfer-ai.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://ezlize.com/blog/manufacturing-knowledge-transfer-ai.html">
+  <link rel="alternate" hreflang="x-default" href="https://ezlize.com/blog/manufacturing-knowledge-transfer-ai.html">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="Ezlize">
+  <meta property="og:title" content="製造業の知見継承AI導入ベーシックパターン | Ezlize 技術ブログ">
+  <meta property="og:description" content="ヤンマー、ライオン、CADDi Drawer導入企業などの公開事例から、製造業における知見継承AI・既存資料RAG・図面検索・暗黙知抽出の基本パターンを整理した公開レポート。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://ezlize.com/blog/manufacturing-knowledge-transfer-ai.html">
+  <meta property="og:image" content="https://ezlize.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="製造業の知見継承AI導入ベーシックパターン | Ezlize 技術ブログ">
+  <meta name="twitter:description" content="ヤンマー、ライオン、CADDi Drawer導入企業などの公開事例から、製造業における知見継承AI・既存資料RAG・図面検索・暗黙知抽出の基本パターンを整理した公開レポート。">
+  <meta name="twitter:image" content="https://ezlize.com/og-image.png">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=b2b-k-20260426">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png?v=b2b-k-20260426">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png?v=b2b-k-20260426">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon-180x180.png?v=b2b-k-20260426">
+  <script type="application/ld+json">{
+    "@context":"https://schema.org",
+    "@graph":[{
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Ezlize","item":"https://ezlize.com/"},
+        {"@type":"ListItem","position":2,"name":"技術ブログ","item":"https://ezlize.com/blog.html"},
+        {"@type":"ListItem","position":3,"name":"製造業の知見継承AI導入ベーシックパターン","item":"https://ezlize.com/blog/manufacturing-knowledge-transfer-ai.html"}
+      ]
+    },{
+      "@type":"BlogPosting",
+      "headline":"製造業の知見継承AI導入ベーシックパターン",
+      "description":"ヤンマー、ライオン、CADDi Drawer導入企業などの公開事例から、製造業における知見継承AI・既存資料RAG・図面検索・暗黙知抽出の基本パターンを整理した公開レポート。",
+      "url":"https://ezlize.com/blog/manufacturing-knowledge-transfer-ai.html",
+      "mainEntityOfPage":"https://ezlize.com/blog/manufacturing-knowledge-transfer-ai.html",
+      "datePublished":"2026-05-14",
+      "dateModified":"2026-05-14",
+      "inLanguage":"ja-JP",
+      "author":{"@type":"Person","name":"幸田 晃典","url":"https://ezlize.com/"},
+      "publisher":{"@type":"Organization","name":"Ezlize","url":"https://ezlize.com/","logo":{"@type":"ImageObject","url":"https://ezlize.com/og-image.png"}}
+    }]
+  }</script>
+  <style>
+:root {
+  color-scheme: light;
+  --bg: #f6f8fb;
+  --paper: #ffffff;
+  --ink: #172033;
+  --muted: #65728a;
+  --line: #d9e1ec;
+  --accent: #2563eb;
+  --accent-2: #0f766e;
+  --soft: #eaf2ff;
+  --code: #0f172a;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
+  background: radial-gradient(circle at top left, #e8f2ff 0, transparent 32rem), var(--bg);
+  color: var(--ink);
+  line-height: 1.85;
+}
+a { color: var(--accent); }
+.page-shell { max-width: 1120px; margin: 0 auto; padding: 28px 18px 72px; }
+.top-nav { display: flex; justify-content: space-between; gap: 16px; align-items: center; margin-bottom: 28px; }
+.top-nav a { text-decoration: none; color: var(--muted); font-weight: 700; font-size: 0.92rem; }
+.hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 52%, #0f766e 100%);
+  color: white;
+  border-radius: 28px;
+  padding: clamp(28px, 6vw, 64px);
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.22);
+}
+.eyebrow { letter-spacing: .14em; text-transform: uppercase; color: #bfdbfe; font-size: .78rem; font-weight: 800; margin: 0 0 12px; }
+h1 { font-size: clamp(2rem, 5vw, 4.2rem); line-height: 1.08; margin: 0; letter-spacing: -0.045em; }
+.hero .subtitle { font-size: clamp(1.05rem, 2vw, 1.35rem); max-width: 780px; color: rgba(255,255,255,.86); margin: 22px 0 0; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.badge { border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.12); color: white; border-radius: 999px; padding: 6px 12px; font-size: .84rem; font-weight: 700; }
+.notice {
+  margin: 22px 0;
+  padding: 14px 18px;
+  border: 1px solid #bfdbfe;
+  background: var(--soft);
+  border-radius: 16px;
+  color: #1e3a8a;
+  font-size: .94rem;
+}
+.layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 26px; align-items: start; margin-top: 28px; }
+.toc {
+  position: sticky; top: 18px;
+  background: rgba(255,255,255,.82);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 18px;
+  max-height: calc(100vh - 36px);
+  overflow: auto;
+}
+.toc-title { margin: 0 0 10px; font-weight: 900; color: #0f172a; }
+.toc a { display: block; text-decoration: none; color: var(--muted); padding: 6px 0; border-bottom: 1px dashed rgba(101,114,138,.22); font-size: .9rem; }
+.toc a:hover { color: var(--accent); }
+.report {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: clamp(22px, 4vw, 46px);
+  box-shadow: 0 18px 60px rgba(15,23,42,.08);
+  overflow: hidden;
+}
+.report h1, .report h2, .report h3, .report h4 { line-height: 1.35; letter-spacing: -0.02em; scroll-margin-top: 24px; }
+.report h1 { font-size: 2rem; margin-top: 0; }
+.report h2 { font-size: 1.55rem; margin-top: 2.4em; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
+.report h3 { font-size: 1.18rem; margin-top: 1.9em; color: #1e3a8a; }
+.report h4 { font-size: 1rem; margin-top: 1.4em; color: #0f766e; }
+p { margin: .86em 0; }
+ul, ol { padding-left: 1.45em; }
+li { margin: .24em 0; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 2em 0; }
+pre { background: var(--code); color: #e5e7eb; padding: 16px; border-radius: 16px; overflow-x: auto; line-height: 1.6; font-size: .9rem; }
+code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+:not(pre) > code { background: #edf2ff; color: #1e3a8a; padding: .12em .32em; border-radius: 6px; }
+.table-wrap { overflow-x: auto; margin: 18px 0; border: 1px solid var(--line); border-radius: 16px; }
+table { border-collapse: collapse; min-width: 760px; width: 100%; background: white; }
+th, td { border-bottom: 1px solid #e5eaf2; border-right: 1px solid #edf1f7; padding: 10px 12px; vertical-align: top; }
+th { background: #f1f5fb; text-align: left; font-weight: 900; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.blockquote { border-left: 4px solid var(--accent); padding: 8px 14px; background: #f8fbff; border-radius: 10px; color: #334155; }
+.next-links { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin: 24px 0 0; }
+.next-link { display: block; text-decoration: none; color: var(--ink); background: white; border: 1px solid var(--line); border-radius: 16px; padding: 14px; }
+.next-link strong { display: block; color: var(--accent); }
+.footer { margin-top: 36px; color: var(--muted); font-size: .88rem; }
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; }
+  .toc { position: relative; top: auto; max-height: 280px; }
+  .top-nav { align-items: flex-start; flex-direction: column; }
+  table { min-width: 640px; }
+}
+</style>
+</head>
+<body>
+  <div class="page-shell">
+    <nav class="top-nav" aria-label="breadcrumb">
+      <a href="../index.html">← Ezlize Home</a>
+      <a href="../blog.html">技術ブログ一覧</a>
+    </nav>
+    <header class="hero">
+      <p class="eyebrow">Manufacturing AI / Knowledge Transfer</p>
+      <h1>製造業の知見継承AI導入ベーシックパターン</h1>
+      <p class="subtitle">ベテラン依存・図面検索・既存資料RAGを会社別事例から読む</p>
+      <div class="hero-meta">
+        <span class="badge">Ezlize Research</span>
+        <span class="badge">FDE perspective</span>
+        <span class="badge">Published 2026-05-14</span>
+      </div>
+    </header>
+    <div class="notice">リサーチメモを公開向けに整形。内部向けの節は公開版では省略・一般化しています。</div>
+    <div class="layout">
+      <aside class="toc">
+        <p class="toc-title">目次</p>
+        <a href="#製造業の知見継承AI導入ベーシックパターン" style="padding-left:0px">製造業の知見継承AI導入ベーシックパターン</a>
+<a href="#目的" style="padding-left:10px">目的</a>
+<a href="#全体像" style="padding-left:10px">全体像</a>
+<a href="#用語表記ルール" style="padding-left:10px">用語表記ルール</a>
+<a href="#パターン0-まず押さえる結論" style="padding-left:0px">パターン0: まず押さえる結論</a>
+<a href="#ベテラン直接ヒアリングは-発展型" style="padding-left:10px">ベテラン直接ヒアリングは「発展型」</a>
+<a href="#事例1-ヤンマー-DXコミュニティ起点の社内文書RAG型" style="padding-left:0px">事例1: ヤンマー — DXコミュニティ起点の社内文書RAG型</a>
+<a href="#会社・業種" style="padding-left:10px">会社・業種</a>
+<a href="#導入前の具体課題" style="padding-left:10px">導入前の具体課題</a>
+<a href="#参画体制" style="padding-left:10px">参画体制</a>
+<a href="#具体的な実装フロー" style="padding-left:10px">具体的な実装フロー</a>
+<a href="#JMAS事例で補足される具体作業" style="padding-left:10px">JMAS事例で補足される具体作業</a>
+<a href="#何を知見継承したのか" style="padding-left:10px">何を知見継承したのか</a>
+<a href="#成果" style="padding-left:10px">成果</a>
+<a href="#ベテラン側のリターン" style="padding-left:10px">ベテラン側のリターン</a>
+<a href="#FDE視点の質問" style="padding-left:10px">FDE視点の質問</a>
+<a href="#事例2-中小製造業向けRAG-数百件の社内文書を2種類のチャットボットへ" style="padding-left:0px">事例2: 中小製造業向けRAG — 数百件の社内文書を2種類のチャットボットへ</a>
+<a href="#会社・業種-2" style="padding-left:10px">会社・業種</a>
+<a href="#導入前の具体課題-2" style="padding-left:10px">導入前の具体課題</a>
+<a href="#実装したもの" style="padding-left:10px">実装したもの</a>
+<a href="#1-社内文書チャットボット" style="padding-left:20px">1. 社内文書チャットボット</a>
+<a href="#2-資料検索チャットボット" style="padding-left:20px">2. 資料検索チャットボット</a>
+<a href="#実装の具体作業" style="padding-left:10px">実装の具体作業</a>
+<a href="#成果-2" style="padding-left:10px">成果</a>
+<a href="#この事例の学び" style="padding-left:10px">この事例の学び</a>
+<a href="#事例3-ライオン-2023-研究領域の知識伝承AI化" style="padding-left:0px">事例3: ライオン 2023 — 研究領域の知識伝承AI化</a>
+<a href="#会社・業種-3" style="padding-left:10px">会社・業種</a>
+<a href="#導入前の具体課題-3" style="padding-left:10px">導入前の具体課題</a>
+<a href="#実装したもの-2" style="padding-left:10px">実装したもの</a>
+<a href="#使い方" style="padding-left:10px">使い方</a>
+<a href="#成果-3" style="padding-left:10px">成果</a>
+<a href="#この事例の学び-2" style="padding-left:10px">この事例の学び</a>
+<a href="#事例4-ライオン-NTTデータ-2024-直接ヒアリングも使う発展型" style="padding-left:0px">事例4: ライオン × NTTデータ 2024 — 直接ヒアリングも使う発展型</a>
+<a href="#会社・業種-4" style="padding-left:10px">会社・業種</a>
+<a href="#導入前の具体課題-4" style="padding-left:10px">導入前の具体課題</a>
+<a href="#実装前の既存取り組み" style="padding-left:10px">実装前の既存取り組み</a>
+<a href="#具体的な実施フロー" style="padding-left:10px">具体的な実施フロー</a>
+<a href="#生成AIの使いどころ" style="padding-left:10px">生成AIの使いどころ</a>
+<a href="#1-知識伝承AIシステムとして使う" style="padding-left:20px">1. 知識伝承AIシステムとして使う</a>
+<a href="#2-インタビュー結果をまとめる工程にも使う予定" style="padding-left:20px">2. インタビュー結果をまとめる工程にも使う予定</a>
+<a href="#この事例の学び-3" style="padding-left:10px">この事例の学び</a>
+<a href="#事例5-エバ工業-ベテランが価値を見抜き-過去図面を検索可能にした例" style="padding-left:0px">事例5: エバ工業 — ベテランが価値を見抜き、過去図面を検索可能にした例</a>
+<a href="#会社・業種-5" style="padding-left:10px">会社・業種</a>
+<a href="#導入前の具体課題-5" style="padding-left:10px">導入前の具体課題</a>
+<a href="#ベテラン側の関与" style="padding-left:10px">ベテラン側の関与</a>
+<a href="#導入後の定着フロー" style="padding-left:10px">導入後の定着フロー</a>
+<a href="#起きた変化" style="padding-left:10px">起きた変化</a>
+<a href="#この事例の学び-4" style="padding-left:10px">この事例の学び</a>
+<a href="#事例6-アルファーシステムズ-図面資産と部品表チェッカーへ広がった例" style="padding-left:0px">事例6: アルファーシステムズ — 図面資産と部品表チェッカーへ広がった例</a>
+<a href="#会社・業種-6" style="padding-left:10px">会社・業種</a>
+<a href="#導入前の具体課題-6" style="padding-left:10px">導入前の具体課題</a>
+<a href="#導入後の具体変化" style="padding-left:10px">導入後の具体変化</a>
+<a href="#この事例の学び-5" style="padding-left:10px">この事例の学び</a>
+<a href="#事例7-日新電機-有識者への聞き込みが不要になった例" style="padding-left:0px">事例7: 日新電機 — 有識者への聞き込みが不要になった例</a>
+<a href="#会社・業種-7" style="padding-left:10px">会社・業種</a>
+<a href="#導入前の具体課題-7" style="padding-left:10px">導入前の具体課題</a>
+<a href="#導入後の具体変化-2" style="padding-left:10px">導入後の具体変化</a>
+<a href="#この事例の学び-6" style="padding-left:10px">この事例の学び</a>
+<a href="#横断比較" style="padding-left:0px">横断比較</a>
+<a href="#既存資料検索型と暗黙知抽出型の違い" style="padding-left:10px">既存資料検索型と暗黙知抽出型の違い</a>
+<a href="#ベーシックパターンはどれか" style="padding-left:10px">ベーシックパターンはどれか</a>
+<a href="#現場参画フローの具体化" style="padding-left:0px">現場参画フローの具体化</a>
+<a href="#現実的な導入フロー" style="padding-left:10px">現実的な導入フロー</a>
+<a href="#ベテラン本人にいきなり全部聞かない理由" style="padding-left:10px">ベテラン本人にいきなり全部聞かない理由</a>
+<a href="#ベテラン側のリターン-2" style="padding-left:0px">ベテラン側のリターン</a>
+<a href="#明示されているリターンに近いもの" style="padding-left:10px">明示されているリターンに近いもの</a>
+<a href="#エバ工業" style="padding-left:20px">エバ工業</a>
+<a href="#日新電機" style="padding-left:20px">日新電機</a>
+<a href="#ヤンマー" style="padding-left:20px">ヤンマー</a>
+<a href="#推定されるリターン" style="padding-left:10px">推定されるリターン</a>
+<a href="#FDE向けヒアリングテンプレート" style="padding-left:0px">FDE向けヒアリングテンプレート</a>
+<a href="#最初に聞く質問" style="padding-left:10px">最初に聞く質問</a>
+<a href="#資料確認の質問" style="padding-left:10px">資料確認の質問</a>
+<a href="#現場協力者を見つける質問" style="padding-left:10px">現場協力者を見つける質問</a>
+<a href="#ベテランに聞く前に確認する質問" style="padding-left:10px">ベテランに聞く前に確認する質問</a>
+<a href="#実装パターン対応表" style="padding-left:0px">実装パターン対応表</a>
+<a href="#FDE実務への変換" style="padding-left:0px">FDE実務への変換</a>
+<a href="#1-知見資産の棚卸し" style="padding-left:10px">1. 知見資産の棚卸し</a>
+<a href="#2-検索体験の設計" style="padding-left:10px">2. 検索体験の設計</a>
+<a href="#3-現場協力者の巻き込み" style="padding-left:10px">3. 現場協力者の巻き込み</a>
+<a href="#4-参照元付き回答の設計" style="padding-left:10px">4. 参照元付き回答の設計</a>
+<a href="#5-検索ログから暗黙知を発見する" style="padding-left:10px">5. 検索ログから暗黙知を発見する</a>
+<a href="#出典" style="padding-left:0px">出典</a>
+<a href="#ヤンマー-AWS" style="padding-left:10px">ヤンマー / AWS</a>
+<a href="#ヤンマー-JMAS" style="padding-left:10px">ヤンマー / JMAS</a>
+<a href="#ゼットリンカー-製造業向けRAG" style="padding-left:10px">ゼットリンカー / 製造業向けRAG</a>
+<a href="#ライオン-2023" style="padding-left:10px">ライオン 2023</a>
+<a href="#ライオン-NTTデータ-2024" style="padding-left:10px">ライオン × NTTデータ 2024</a>
+<a href="#エバ工業-CADDi-Drawer" style="padding-left:10px">エバ工業 / CADDi Drawer</a>
+<a href="#アルファーシステムズ-CADDi-Drawer" style="padding-left:10px">アルファーシステムズ / CADDi Drawer</a>
+<a href="#日新電機-CADDi-Drawer" style="padding-left:10px">日新電機 / CADDi Drawer</a>
+<a href="#関連詳細調査-知見アクセスへの反対処理" style="padding-left:10px">関連詳細調査: 知見アクセスへの反対処理</a>
+      </aside>
+      <article class="report">
+        <h1 id="製造業の知見継承AI導入ベーシックパターン">製造業の知見継承AI導入ベーシックパターン</h1>
+<h2 id="目的">目的</h2>
+<p>このメモは、製造業における「ベテラン知見継承」「暗黙知継承」「属人化解消」を、AI導入の実事例から具体化するためのメモ。</p>
+<p>特に確認したい問いはこれ。</p>
+<pre><code>ベテラン個人から直接聞いてAIに覚えさせるのが基本なのか。
+それとも、既存の社内資料・手順書・図面・対応履歴をAI検索可能にするのが基本なのか。</code></pre>
+<p>結論から言うと、公開事例で多く確認できるベーシックパターンは後者。</p>
+<pre><code>既存資料・図面・手順書・過去対応・実験データを集める
+↓
+デジタルに関心がある現場メンバー / DX推進者が対象を選ぶ
+↓
+検索できる形に整える
+↓
+AI検索・RAG（検索拡張生成。社内文書を参照して回答する方式）・図面検索で誰でも探せるようにする
+↓
+若手・経験の浅い人が自力で情報に到達する
+↓
+ベテランへの質問・教育負荷・属人化が減る</code></pre>
+<p>つまり、最初からベテランの頭の中を完全に吸い出すのではなく、まずは <strong>ベテランが普段参照していた既存資産を若手が検索できる状態にする</strong> のが現実的な基本形。</p>
+<hr>
+<h2 id="全体像">全体像</h2>
+<pre class="mermaid">flowchart TD
+  A[課題: ベテラン依存・資料検索困難] --&gt; B[現場/DX推進者がテーマ化]
+  B --&gt; C[既存資料を集める]
+  C --&gt; C1[技術資料]
+  C --&gt; C2[手順書・マニュアル]
+  C --&gt; C3[内規・規程]
+  C --&gt; C4[対応履歴]
+  C --&gt; C5[過去設計資料・図面]
+  C --&gt; C6[実験データ・研究知見]
+  C --&gt; D[検索・索引化・データ整形]
+  D --&gt; E[AI検索/RAG/図面検索]
+  E --&gt; F[回答・要約・参照元リンク]
+  F --&gt; G[若手・経験浅い人が自力で到達]
+  G --&gt; H[有識者への聞き込み削減]
+  G --&gt; I[教育負荷削減]
+  G --&gt; J[属人化リスク低下]</pre>
+<hr>
+<h2 id="用語表記ルール">用語表記ルール</h2>
+<p>このメモでは、英語用語はなるべく単独で置かず、このAI導入文脈での意味を併記する。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>用語</th><th>この文脈での意味</th></tr></thead>
+<tbody>
+<tr><td>RAG</td><td>RAG（検索拡張生成。社内文書を検索し、その根拠を使ってAIが回答する方式）</td></tr>
+<tr><td>indexing</td><td>indexing（文書や図面を検索できるよう索引化すること）</td></tr>
+<tr><td>data shaping</td><td>data shaping（AIが読み取りやすい形にデータを整えること）</td></tr>
+<tr><td>source link</td><td>source link（AI回答の根拠となる参照元リンク）</td></tr>
+<tr><td>retrieval</td><td>retrieval（必要な文書・図面・根拠を検索して取り出すこと）</td></tr>
+<tr><td>DX community</td><td>DX community（デジタル活用に関心のある現場メンバーを含む横断コミュニティ）</td></tr>
+<tr><td>customer success</td><td>customer success（導入後の定着・活用支援）</td></tr>
+</tbody></table></div>
+<hr>
+<h1 id="パターン0-まず押さえる結論">パターン0: まず押さえる結論</h1>
+<h2 id="ベテラン直接ヒアリングは-発展型">ベテラン直接ヒアリングは「発展型」</h2>
+<p>ベテランから直接聞いて暗黙知を抽出する事例はある。ライオン×NTTデータの「勘所集」作成がそれに近い。</p>
+<p>ただし、公開事例から見える基本形は、いきなり全ベテランへインタビューすることではない。</p>
+<p>多くの事例で先に行っているのは次。</p>
+<pre><code>既存の社内資料・図面・手順書・対応履歴・実験データを検索可能にする</code></pre>
+<p>なぜなら、ベテランの知見の多くは、完全に頭の中だけにあるわけではなく、次の形で社内に散らばっているから。</p>
+<ul>
+<li>過去図面</li>
+<li>過去設計資料</li>
+<li>技術資料</li>
+<li>不具合対処資料</li>
+<li>手順書</li>
+<li>内規</li>
+<li>対応履歴</li>
+<li>実験データ</li>
+<li>報告書</li>
+<li>議事録</li>
+<li>研究メモ</li>
+<li>設計検討資料</li>
+</ul>
+<p>問題は、それらが「存在しない」ことではなく、<strong>探せない・使えない・若手がたどり着けない</strong> こと。</p>
+<hr>
+<h1 id="事例1-ヤンマー-DXコミュニティ起点の社内文書RAG型">事例1: ヤンマー — DXコミュニティ起点の社内文書RAG型</h1>
+<h2 id="会社・業種">会社・業種</h2>
+<ul>
+<li>会社: ヤンマーホールディングス</li>
+<li>業種: 製造業、農機、建機、マリン、エンジン、エネルギーシステム</li>
+<li>主要技術: Amazon Bedrock + Amazon Kendra</li>
+<li>支援企業: JMAS（ジェーエムエーシステムズ）</li>
+</ul>
+<h2 id="導入前の具体課題">導入前の具体課題</h2>
+<p>ヤンマーでは、社内に多くの技術資料や手順書が存在していた。</p>
+<p>ただし、次の問題があった。</p>
+<ul>
+<li>製品の使い方や不具合対処法などの資料は豊富にある</li>
+<li>しかし担当者がうまく活用できる形になっていない</li>
+<li>熟練者には経験と知見がある</li>
+<li>新入社員や経験の浅い担当者は、情報の検索・活用が難しい</li>
+<li>ナレッジ再利用が難しい</li>
+<li>ベテランの技や知見の継承が経営課題になっている</li>
+</ul>
+<p>つまり、課題は「資料がない」ではなく、<strong>ある資料に若手がたどり着けない</strong> こと。</p>
+<h2 id="参画体制">参画体制</h2>
+<p>公開事例に明確に出ている体制は次。</p>
+<pre><code>AI戦略推進部 / DX部門
+↓
+国内外グループ全体のDXコミュニティ
+↓
+ビジネス現場でAIを使えるよう活動
+↓
+社内ドキュメント有効活用ニーズが浮上
+↓
+JMASと共同でAWS上のRAGシステムを構築</code></pre>
+<p>重要なのは、本社DX部門だけでは全社展開が難しいと判断して、デジタル技術に興味のある人材が参加する <strong>DXコミュニティ（デジタル活用に関心のある現場メンバーを含む横断コミュニティ）</strong> を組織した点。</p>
+<p>ここから、社内の膨大なドキュメントを使いたいというニーズが出ている。</p>
+<h2 id="具体的な実装フロー">具体的な実装フロー</h2>
+<p>ヤンマー事例の構造は次。</p>
+<pre><code>普段使っている社内情報共有基盤に文書を保存
+↓
+システムが自動的に文書を読み込む
+↓
+Amazon Kendraが社内文書を検索・索引化
+↓
+Amazon Bedrockが生成AI回答を作る
+↓
+ユーザーはチャットで自然言語質問
+↓
+AIが関連文書をもとに回答
+↓
+回答と参照元リンクを同時に表示</code></pre>
+<p>ポイントは、既存業務フローを大きく変えない設計。</p>
+<p>ユーザーは普段の情報共有基盤にドキュメントを置き、そこからAI検索できる状態にする。</p>
+<h2 id="JMAS事例で補足される具体作業">JMAS事例で補足される具体作業</h2>
+<p>JMAS側の事例では、さらに実装の細部が見える。</p>
+<ul>
+<li>2023年11月ごろから、Amazon Kendra + Amazon Bedrockを組み合わせたRAGシステム構築を開始</li>
+<li>約3週間でRAG型ナレッジ検索システムを構築</li>
+<li>Amazon Kendraのindexing（文書を検索できるよう索引化すること）作成時に、S3バケットや検索対象データの準備要点を共同で押さえた</li>
+<li>JMASのコンサルタントとともにデータを整形し、生成AIの回答精度を高めた</li>
+<li>S3上のデータへのアクセス権限設定にも対応</li>
+<li>生成AIを使うWeb UI（ブラウザ画面）のカスタマイズにも対応</li>
+<li>テーマ検証と評価のオペレーション支援も実施</li>
+</ul>
+<p>つまり、単にAIをつないだだけではなく、次の地味な作業が本体だった。</p>
+<pre><code>検索対象データを準備する
+データを整形する
+アクセス権限を設定する
+Web UIを現場利用向けに調整する
+テーマ検証と評価運用を支援する</code></pre>
+<h2 id="何を知見継承したのか">何を知見継承したのか</h2>
+<p>公開事例に出てくる対象は次。</p>
+<ul>
+<li>社内の技術資料</li>
+<li>手順書</li>
+<li>製品の使い方資料</li>
+<li>不具合対処法</li>
+<li>内規</li>
+<li>マニュアル</li>
+<li>対応履歴</li>
+<li>過去設計資料</li>
+</ul>
+<p>これは「ベテラン本人の頭の中を直接AIに吸い出した」というより、<strong>ベテランや現場が使っていた既存資料・過去対応・設計資料へ、経験の浅い社員が自然言語で到達できるようにした</strong> と読むのが正確。</p>
+<h2 id="成果">成果</h2>
+<p>公開事例で出ている成果は具体的。</p>
+<ul>
+<li>DXコミュニティから80以上のテーマを創出</li>
+<li>品質管理、製造、コンタクトセンター、お客様対応など多様な部門で活用</li>
+<li>エンジン事業の内規検索で、1人あたり月20分の検索時間短縮</li>
+<li>ユーザー60数人で、全体として月1,200分程度の効果</li>
+<li>エネルギーシステム事業で、マニュアルや対応履歴活用により月100分のカスタマーサービス時間短縮</li>
+<li>エンジン開発事業で、過去設計資料活用により1人あたり月20分の効果</li>
+<li>専門的な質問でも、回答と参照元リンクから正確性を確認できるため高評価</li>
+<li>新しく入ってきた人にとって役立ち、「適切な回答に行き着いた」という声が出た</li>
+</ul>
+<h2 id="ベテラン側のリターン">ベテラン側のリターン</h2>
+<p>公開記事に「ベテラン側の個別インセンティブ」は明記されていない。</p>
+<p>ただし、実務上のリターンは次と考えられる。</p>
+<ul>
+<li>同じ質問に何度も答える負荷が減る</li>
+<li>新人が自力で資料を探せる</li>
+<li>過去の設計資料や対応履歴が再利用される</li>
+<li>ベテランが本来の高度な判断・設計・改善業務に集中しやすくなる</li>
+<li>組織として属人化リスクが下がる</li>
+</ul>
+<p>ただし、これは推定。ヤンマー公開事例で明示されているのは、主に「経験の浅い社員がベテランに教えてもらいながら仕事するような状態を目指した」という点。</p>
+<h2 id="FDE視点の質問">FDE視点の質問</h2>
+<pre><code>ベテランに聞かないと進まない質問は何ですか？
+その答えは、実はどこかの資料に書かれていますか？
+その資料はどこにありますか？
+新人はその資料に自力でたどり着けますか？
+過去の対応履歴や設計資料は検索できますか？
+回答に参照元リンクがあれば、現場は信頼できますか？
+どの部署に、デジタル化に協力してくれる現場メンバーがいますか？
+AI回答の正しさを確認できる人は誰ですか？</code></pre>
+<hr>
+<h1 id="事例2-中小製造業向けRAG-数百件の社内文書を2種類のチャットボットへ">事例2: 中小製造業向けRAG — 数百件の社内文書を2種類のチャットボットへ</h1>
+<h2 id="会社・業種-2">会社・業種</h2>
+<ul>
+<li>導入企業: 非公開の中小製造業企業</li>
+<li>支援企業: ゼットリンカー</li>
+<li>技術: OpenAI API + Azure + Mastra</li>
+<li>方式: RAG（検索拡張生成。社内文書を参照して回答する方式）</li>
+</ul>
+<h2 id="導入前の具体課題-2">導入前の具体課題</h2>
+<p>公開事例では、次の課題が明示されている。</p>
+<ul>
+<li>数百件の社内文書・資料が人力で管理されていた</li>
+<li>必要な情報を探すのに時間がかかっていた</li>
+<li>検索の手がかりがファイル名やフォルダ構成に依存していた</li>
+<li>過去の経緯を知る担当者でなければ目的の資料にたどり着けない</li>
+<li>製造現場の知識は属人化しやすい</li>
+<li>ベテランの異動・退職とともに知識が失われやすい</li>
+</ul>
+<p>これはヤンマー型とほぼ同じ基本課題。</p>
+<pre><code>資料はある
+でも探せない
+過去の経緯を知る人しか見つけられない
+新人が自力で到達できない</code></pre>
+<h2 id="実装したもの">実装したもの</h2>
+<p>この事例では、社内文書を2種類の検索体験に分けている。</p>
+<h3 id="1-社内文書チャットボット">1. 社内文書チャットボット</h3>
+<p>対象:</p>
+<ul>
+<li>マニュアル</li>
+<li>手順書</li>
+<li>規程類</li>
+</ul>
+<p>用途:</p>
+<ul>
+<li>業務上必要だが探しにくい情報を自然言語で検索</li>
+<li>どの規程に書いてあるかを提示</li>
+</ul>
+<h3 id="2-資料検索チャットボット">2. 資料検索チャットボット</h3>
+<p>対象:</p>
+<ul>
+<li>過去の報告書</li>
+<li>議事録</li>
+<li>技術文書</li>
+</ul>
+<p>用途:</p>
+<ul>
+<li>過去の知見資産を横断的に検索</li>
+<li>関連資料を提示</li>
+</ul>
+<h2 id="実装の具体作業">実装の具体作業</h2>
+<ul>
+<li>数百件規模の社内文書を対象化</li>
+<li>ドキュメント取り込み</li>
+<li>chunk分割（文書をAIが扱いやすい小単位に分けること）</li>
+<li>vector化（意味検索できる数値表現に変換すること）</li>
+<li>検索</li>
+<li>応答生成</li>
+<li>Azure環境へのデプロイ</li>
+<li>社内利用前提の認証・ネットワーク・データ管理設計</li>
+<li>ドキュメント追加・更新を継続的に取り込む運用フロー設計</li>
+</ul>
+<h2 id="成果-2">成果</h2>
+<ul>
+<li>社内文書検索時間を大幅に短縮</li>
+<li>ベテラン社員の退職・異動による知識流出リスクを低減</li>
+<li>新人が即座に必要情報へアクセスでき、教育コストを削減</li>
+<li>自然言語で質問できるため、検索キーワードを思いつかない初心者でも情報に到達可能</li>
+<li>業務文書とナレッジ資産を混同しないよう、用途別に索引を分けた</li>
+<li>Azure環境により社内データを外部に出さない安全運用体制を確立</li>
+</ul>
+<h2 id="この事例の学び">この事例の学び</h2>
+<p>この事例は、ベテラン直接ヒアリングをしなくても、社内に既にある文書を整理してAI検索化するだけで、かなり実務的な知見継承になることを示している。</p>
+<p>特に重要なのは、文書を1つの巨大検索に入れるのではなく、用途で分けている点。</p>
+<pre><code>業務文書チャットボット
+= マニュアル・手順書・規程類
+
+資料検索チャットボット
+= 報告書・議事録・技術文書</code></pre>
+<p>これはFDE的にかなり重要。文書種別によって、質問の仕方・回答の期待値・参照元の意味が違うため。</p>
+<hr>
+<h1 id="事例3-ライオン-2023-研究領域の知識伝承AI化">事例3: ライオン 2023 — 研究領域の知識伝承AI化</h1>
+<h2 id="会社・業種-3">会社・業種</h2>
+<ul>
+<li>会社: ライオン</li>
+<li>業種: 日用品、研究開発、製造</li>
+<li>対象領域: 研究領域</li>
+<li>方式: 生成AI + 検索サービス</li>
+</ul>
+<h2 id="導入前の具体課題-3">導入前の具体課題</h2>
+<p>ライオンは、研究領域でこれまで蓄積された多くの技術的知見や実験データを有効活用したいという課題を持っていた。</p>
+<p>研究領域では、次のような情報が蓄積される。</p>
+<ul>
+<li>技術的知見</li>
+<li>実験データ</li>
+<li>過去の研究成果</li>
+<li>試行錯誤の記録</li>
+<li>関連文書</li>
+</ul>
+<p>問題は、それらの情報が膨大で、必要な情報に効率よく到達しにくいこと。</p>
+<h2 id="実装したもの-2">実装したもの</h2>
+<p>ライオンは「知識伝承のAI化」ツールを自社開発した。</p>
+<p>構造は次。</p>
+<pre><code>膨大な社内情報
+↓
+検索サービスで該当文書を取得
+↓
+生成AIが抽出文書を分析・評価
+↓
+質問に沿って簡潔にまとめる
+↓
+研究員が必要情報を取得</code></pre>
+<p>ここでいう「分析・評価」は、AIが抽出された文書の中身を読み、質問に対して必要な情報を整理するという意味。</p>
+<h2 id="使い方">使い方</h2>
+<p>ユーザーは自然な表現の検索文章を入力する。</p>
+<p>すると、システムが膨大な社内情報から該当文書を短時間で取得し、生成AIが内容をまとめて表示する。</p>
+<h2 id="成果-3">成果</h2>
+<ul>
+<li>研究領域での検証を完了</li>
+<li>文書取得時間が従来の情報検索と比較して約5分の1に短縮</li>
+<li>生成された文章から迅速に必要な情報を抽出できることを確認</li>
+<li>研究員の誰もが効率的に情報を取得できる環境を整備</li>
+<li>新たな価値・習慣の創造につなげる狙い</li>
+</ul>
+<h2 id="この事例の学び-2">この事例の学び</h2>
+<p>ライオン2023年事例は、既存の研究知見・実験データをAI検索化する典型。</p>
+<pre><code>研究員・ベテランが直接全部説明する</code></pre>
+<p>のではなく、まずは蓄積済みの技術的知見と実験データを検索しやすくしている。</p>
+<p>これは製造業の技術継承にかなり近い。</p>
+<hr>
+<h1 id="事例4-ライオン-NTTデータ-2024-直接ヒアリングも使う発展型">事例4: ライオン × NTTデータ 2024 — 直接ヒアリングも使う発展型</h1>
+<h2 id="会社・業種-4">会社・業種</h2>
+<ul>
+<li>会社: ライオン + NTTデータ</li>
+<li>業種: 日用品、製造、生産技術</li>
+<li>対象: 衣料用粉末洗剤の生産技術領域</li>
+<li>方式: 熟練者インタビュー + ワークショップ + 勘所集 + 知識伝承AIシステム</li>
+</ul>
+<h2 id="導入前の具体課題-4">導入前の具体課題</h2>
+<p>この事例は、既存資料RAGだけでは足りない「暗黙知」へ踏み込んでいる。</p>
+<p>背景:</p>
+<ul>
+<li>少子高齢化、労働力人口減少により、熟練技術者の技術継承・人材確保が難しくなっている</li>
+<li>新規参画者への技術継承にはスキルと時間が必要</li>
+<li>熟練者に多大な負担がかかる</li>
+<li>いかに効率的かつスピーディーに知識を伝承するかが課題</li>
+</ul>
+<p>対象テーマ:</p>
+<ul>
+<li>衣料用粉末洗剤の生産技術領域</li>
+</ul>
+<p>この領域では、次のような暗黙知が重要だった。</p>
+<ul>
+<li>製造プロセス開発を効率的に進めるノウハウ</li>
+<li>工場生産時に原料の性状などを考慮して運転条件を設定するノウハウ</li>
+<li>マニュアルや手順書だけでは学ぶのに時間がかかる判断</li>
+</ul>
+<h2 id="実装前の既存取り組み">実装前の既存取り組み</h2>
+<p>ライオンはそれ以前から、形式知化された社内情報を効率的に集めて提供する技術開発を進めていた。</p>
+<p>また、生産技術領域では以下を活用していた。</p>
+<ul>
+<li>OJT（現場で実務を通じて教える教育）</li>
+<li>マニュアル</li>
+<li>手順書</li>
+</ul>
+<p>ただし、これだけでは暗黙知の習得に時間がかかっていた。</p>
+<h2 id="具体的な実施フロー">具体的な実施フロー</h2>
+<p>ライオン×NTTデータの流れは次。</p>
+<pre><code>熟練者へのインタビュー
++ 幅広い役職の社員間ワークショップ
+↓
+暗黙知化している技術・知識・ノウハウを抽出
+↓
+「勘所集」として文書化
+↓
+ライオンの知識伝承AIシステムに取り込む
+↓
+新規メンバーがAIを通じて参照
+↓
+熟練者のノウハウを効率的に継承</code></pre>
+<p>ここで重要なのは、ベテランに直接聞く場合でも、そのままAIに入れるのではないこと。</p>
+<pre><code>インタビュー・ワークショップ
+↓
+勘所集として文書化
+↓
+知識伝承AIシステムに取り込む</code></pre>
+<p>という中間成果物を作っている。</p>
+<h2 id="生成AIの使いどころ">生成AIの使いどころ</h2>
+<p>生成AIは2箇所で使われる。</p>
+<h3 id="1-知識伝承AIシステムとして使う">1. 知識伝承AIシステムとして使う</h3>
+<p>勘所集や関連情報を検索・回答するために使う。</p>
+<h3 id="2-インタビュー結果をまとめる工程にも使う予定">2. インタビュー結果をまとめる工程にも使う予定</h3>
+<p>NTTデータの技術や知見を使い、インタビュー結果をまとめる工程への生成AI適用を検討している。</p>
+<p>つまり、AIは「回答するAI」だけでなく、「暗黙知を文書化する支援」にも使われる。</p>
+<h2 id="この事例の学び-3">この事例の学び</h2>
+<p>これはベーシックパターンより一段深い。</p>
+<pre><code>既存資料検索型
+= 既にある資料・データを検索できるようにする
+
+暗黙知抽出型
+= 熟練者や幅広い社員から話を聞き、勘所集として文書化してからAI検索に入れる</code></pre>
+<p>いきなり全社で暗黙知抽出をやるのは重い。まず既存資料検索型で始め、足りない領域だけ勘所集を作るのが現実的。</p>
+<hr>
+<h1 id="事例5-エバ工業-ベテランが価値を見抜き-過去図面を検索可能にした例">事例5: エバ工業 — ベテランが価値を見抜き、過去図面を検索可能にした例</h1>
+<h2 id="会社・業種-5">会社・業種</h2>
+<ul>
+<li>会社: エバ工業</li>
+<li>業種: 一品一様の受注生産、設計業務</li>
+<li>ツール: CADDi Drawer</li>
+<li>方式: 図面・過去実績検索</li>
+</ul>
+<h2 id="導入前の具体課題-5">導入前の具体課題</h2>
+<p>エバ工業では、都度発生する設計業務で、過去の類似図面を探し出す必要があった。</p>
+<p>しかし、その検索は個々の設計者の「記憶」に依存していた。</p>
+<p>つまり、課題は次。</p>
+<pre><code>過去実績はある
+過去図面もある
+でも、誰がどの案件を覚えているかに依存している
+記憶にない図面は見つけにくい</code></pre>
+<h2 id="ベテラン側の関与">ベテラン側の関与</h2>
+<p>この事例は、ベテランが直接知見をAIに入力したというより、ベテランが導入価値を見抜いた事例として重要。</p>
+<p>技術部門に長く携わり、後進指導も担うエグゼクティブアドバイザーが、CADDi Drawerの価値を判断した。</p>
+<p>公開事例の要点:</p>
+<ul>
+<li>これまでは、設計者が自分の過去の記憶から近い実績を探していた</li>
+<li>CADDi Drawerを使うと、自分の記憶にないものも引っ張り出せる</li>
+<li>図番や名称だけでなく、図面内のキーワードから本当に欲しいものを呼び出せる点に価値を感じた</li>
+<li>導入事例が少なく、大きな投資だったが、経験と課題意識から価値を確信</li>
+<li>経営層へ直接働きかけ、導入決断に至った</li>
+</ul>
+<h2 id="導入後の定着フロー">導入後の定着フロー</h2>
+<p>導入推進は技術部長が担った。</p>
+<p>具体的には次。</p>
+<ul>
+<li>ベトナムの設計部隊が早期にメリットを実感できるようにした</li>
+<li>CADDi Drawerへのデータ投入を急いだ</li>
+<li>3D CAD作成図面だけでなく、2D CAD作成図面も対象に加えた</li>
+<li>活用が進んでいないメンバーには個別にリンクを送った</li>
+<li>簡単なマニュアルだけでも活用できるようにした</li>
+</ul>
+<h2 id="起きた変化">起きた変化</h2>
+<ul>
+<li>日本側以上に、ベトナムの設計部隊が積極的に活用し始めた</li>
+<li>詳細な使い方を指導していなくても、簡単なマニュアルで活用が進んだ</li>
+<li>ベトナム側から「このような図面や情報がありますよ」と自発的提案が出るようになった</li>
+<li>これまで日本側が多くの参考資料を準備し、細かな指示を出していた設計プロセスが変わった</li>
+<li>最小限の情報共有で、ベトナム側が自律的に類似図面を探し、設計を進められるようになった</li>
+<li>若手営業担当者も過去類似案件を調べ、原価や価格調整に活用できるようになった</li>
+<li>技術部への問い合わせが減り、技術部は本来の設計業務に集中できるようになった</li>
+<li>人員を大幅に増やさず、約1.2倍の案件に対応できる体制になった</li>
+</ul>
+<h2 id="この事例の学び-4">この事例の学び</h2>
+<p>この事例は、ベテランのリターンがかなり見えやすい。</p>
+<pre><code>ベテランが毎回教える
+日本側が毎回資料を準備する
+技術部が営業や海外拠点から毎回聞かれる</code></pre>
+<p>この状態が、過去図面検索によって軽くなる。</p>
+<p>ベテラン側・技術部側のリターン:</p>
+<ul>
+<li>同じ説明・資料準備を減らせる</li>
+<li>若手や海外拠点が自力で探せる</li>
+<li>技術部が本来の設計業務に集中できる</li>
+<li>過去資産が使われる</li>
+<li>組織全体の案件対応力が上がる</li>
+</ul>
+<hr>
+<h1 id="事例6-アルファーシステムズ-図面資産と部品表チェッカーへ広がった例">事例6: アルファーシステムズ — 図面資産と部品表チェッカーへ広がった例</h1>
+<h2 id="会社・業種-6">会社・業種</h2>
+<ul>
+<li>会社: アルファーシステムズ</li>
+<li>業種: 一般産業機械、自動化システム、機械・制御装置の設計製造</li>
+<li>ツール: CADDi Drawer</li>
+</ul>
+<h2 id="導入前の具体課題-6">導入前の具体課題</h2>
+<p>公開事例では、導入前課題がかなり明確。</p>
+<ul>
+<li>創業から30年以上の実績があり、膨大な図面資産を持っていた</li>
+<li>しかし体系的に管理されていなかった</li>
+<li>図面が見つけられない</li>
+<li>同じ図面が複数存在する</li>
+<li>設計から部品表への情報転記でミスが発生する</li>
+<li>業務フローが属人化していた</li>
+<li>技術者の高齢化が進む中で、ベテラン層の暗黙知をどう継承するかが課題だった</li>
+</ul>
+<h2 id="導入後の具体変化">導入後の具体変化</h2>
+<ul>
+<li>過去の類似図面を短時間で探せるようになった</li>
+<li>価格情報も探せるようになった</li>
+<li>若手設計者が部品設計時の参考情報として活用し始めた</li>
+<li>CADDi Drawerの機能を応用して、部品表チェッカーも開発された</li>
+<li>当初想定していなかった活用方法が生まれた</li>
+<li>キャディの伴走支援により、デジタル活用文化が根付き始めた</li>
+<li>今後は、設計根拠となる計算結果なども情報資産化する方針</li>
+</ul>
+<h2 id="この事例の学び-5">この事例の学び</h2>
+<p>ここでも、ベーシックパターンは「直接聞く」ではない。</p>
+<pre><code>膨大な図面資産
+価格情報
+設計根拠
+計算結果
+部品表</code></pre>
+<p>を情報資産として扱い、若手が設計時に参照できるようにしている。</p>
+<p>また、導入後に新しい活用が生まれている。</p>
+<pre><code>図面検索
+↓
+若手設計者の参考情報
+↓
+部品表チェッカー
+↓
+設計根拠・計算結果の情報資産化</code></pre>
+<p>これは、知見継承AIの重要な現象。</p>
+<p>最初は検索から始まり、現場が使い始めると、次の業務改善アイデアが出てくる。</p>
+<hr>
+<h1 id="事例7-日新電機-有識者への聞き込みが不要になった例">事例7: 日新電機 — 有識者への聞き込みが不要になった例</h1>
+<h2 id="会社・業種-7">会社・業種</h2>
+<ul>
+<li>会社: 日新電機</li>
+<li>業種: 電力機器・設備関連</li>
+<li>ツール: CADDi Drawer</li>
+</ul>
+<h2 id="導入前の具体課題-7">導入前の具体課題</h2>
+<p>日新電機では、設計検討資料の検索に課題があった。</p>
+<p>従来は、登録台帳の題名でしか検索できなかった。</p>
+<p>そのため、必要な情報を探すには、有識者への聞き込みが必要になりやすかった。</p>
+<h2 id="導入後の具体変化-2">導入後の具体変化</h2>
+<ul>
+<li>CADDi Drawerにより、設計検討資料内のキーワードまで幅広く検索可能になった</li>
+<li>調査時間が大幅に削減された</li>
+<li>有識者への聞き込みが不要になった</li>
+<li>自分自身で効率的に情報を見つけられるようになった</li>
+<li>知識や設計的な考察の幅が広がった</li>
+<li>検討時間を本来業務に充てられるようになった</li>
+<li>業務の属人化が解消された</li>
+<li>他部署ともデータ連携して活用する意識が芽生えた</li>
+<li>組織全体のDX推進や文化変化にも寄与した</li>
+</ul>
+<h2 id="この事例の学び-6">この事例の学び</h2>
+<p>日新電機の事例は、FDE的に非常に分かりやすい。</p>
+<p>現場ペイン:</p>
+<pre><code>資料はあるが、題名でしか検索できない
+↓
+有識者に聞かないと見つからない</code></pre>
+<p>解決:</p>
+<pre><code>資料内のキーワードまで検索可能にする
+↓
+自分で必要情報を見つけられる
+↓
+有識者への聞き込みが不要になる</code></pre>
+<p>これは、ベテラン知見継承の基本形そのもの。</p>
+<hr>
+<h1 id="横断比較">横断比較</h1>
+<h2 id="既存資料検索型と暗黙知抽出型の違い">既存資料検索型と暗黙知抽出型の違い</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>型</th><th>主な対象</th><th>代表事例</th><th>具体的なやり方</th><th>向いている場面</th></tr></thead>
+<tbody>
+<tr><td>既存資料RAG型</td><td>技術資料、手順書、内規、対応履歴、報告書</td><td>ヤンマー、ゼットリンカー事例</td><td>社内文書を取り込み、検索・参照元付き回答にする</td><td>まず小さく始めたい。資料はあるが探せない</td></tr>
+<tr><td>研究知見検索型</td><td>技術的知見、実験データ、研究成果</td><td>ライオン2023</td><td>生成AI + 検索サービスで研究員が自然文検索</td><td>R&amp;D領域で過去知見が膨大</td></tr>
+<tr><td>図面検索型</td><td>図面、過去設計資料、価格情報、設計検討資料</td><td>エバ工業、アルファーシステムズ、日新電機</td><td>図面内キーワードや類似図面を検索可能にする</td><td>設計・見積・調達が図面資産に依存</td></tr>
+<tr><td>暗黙知抽出型</td><td>熟練者の判断基準、運転条件、勘所</td><td>ライオン×NTTデータ</td><td>インタビュー・ワークショップで勘所集を作りAIに取り込む</td><td>既存資料だけでは判断基準が足りない</td></tr>
+</tbody></table></div>
+<h2 id="ベーシックパターンはどれか">ベーシックパターンはどれか</h2>
+<p>最初に狙うべきは、多くの場合これ。</p>
+<pre><code>既存資料RAG型
+または
+図面検索型</code></pre>
+<p>理由:</p>
+<ul>
+<li>既に社内に資産がある</li>
+<li>ベテランの直接ヒアリングより負荷が低い</li>
+<li>現場にとって効果が見えやすい</li>
+<li>若手や経験浅い人がすぐ使える</li>
+<li>参照元が出せるため信頼されやすい</li>
+<li>使われると、足りない暗黙知が見えてくる</li>
+</ul>
+<p>その後、足りない部分だけ暗黙知抽出型へ進む。</p>
+<pre><code>既存資料検索で見つからない質問がある
+↓
+その質問をログ化
+↓
+ベテランに確認
+↓
+勘所集・FAQ・手順書として文書化
+↓
+AI検索対象へ追加</code></pre>
+<hr>
+<h1 id="現場参画フローの具体化">現場参画フローの具体化</h1>
+<h2 id="現実的な導入フロー">現実的な導入フロー</h2>
+<pre><code>1. DX部門 / AI推進部が旗を立てる
+2. 各部署からデジタルに関心がある現場メンバーを巻き込む
+3. 「ベテランに聞かないと進まない業務」を洗い出す
+4. その答えが書かれていそうな資料群を特定する
+5. 技術資料・手順書・図面・対応履歴・実験データを集める
+6. 検索しやすいようにデータを整える
+7. AI検索 / RAG / 図面検索へ投入する
+8. 若手・新人・海外拠点・営業など、困っているユーザーに試してもらう
+9. 使われない人には個別リンク・簡単マニュアル・活用例を渡す
+10. 検索ログや質問ログを見て、足りない資料・足りない暗黙知を特定する
+11. 必要な箇所だけベテランに確認し、FAQ・勘所集・手順書へ追加する
+12. 検索対象を継続更新する</code></pre>
+<h2 id="ベテラン本人にいきなり全部聞かない理由">ベテラン本人にいきなり全部聞かない理由</h2>
+<ul>
+<li>ベテランの時間が足りない</li>
+<li>暗黙知は本人も言語化しにくい</li>
+<li>何を聞くべきか分からないとインタビューが散る</li>
+<li>既存資料に書いてある内容まで聞くと負担が大きい</li>
+<li>まず検索ログを見た方が、足りない知識が明確になる</li>
+</ul>
+<p>したがって、FDE的には次の順番がよい。</p>
+<pre><code>既存資料をAI検索化
+↓
+若手が使う
+↓
+検索しても出ない質問を集める
+↓
+そこだけベテランに聞く
+↓
+勘所集・FAQとして追加</code></pre>
+<hr>
+<h1 id="ベテラン側のリターン-2">ベテラン側のリターン</h1>
+<p>公開事例に明示されている/推定できるリターンを分ける。</p>
+<h2 id="明示されているリターンに近いもの">明示されているリターンに近いもの</h2>
+<h3 id="エバ工業">エバ工業</h3>
+<ul>
+<li>技術部への問い合わせが減る</li>
+<li>営業が自分で過去類似案件を調べられる</li>
+<li>技術部は本来の設計業務に集中できる</li>
+<li>人員を大幅に増やさず、約1.2倍の案件に対応できる体制になった</li>
+</ul>
+<h3 id="日新電機">日新電機</h3>
+<ul>
+<li>有識者への聞き込みが不要になった</li>
+<li>自分で必要情報を見つけられるようになった</li>
+<li>検討時間を本来業務に充てられるようになった</li>
+<li>業務の属人化が解消された</li>
+</ul>
+<h3 id="ヤンマー">ヤンマー</h3>
+<ul>
+<li>新人・経験の浅い人が適切な回答に到達しやすくなった</li>
+<li>カスタマーサービスや内規検索の時間が短縮された</li>
+<li>属人化解消と新人教育支援による組織力向上が示されている</li>
+</ul>
+<h2 id="推定されるリターン">推定されるリターン</h2>
+<ul>
+<li>同じ質問に何度も答える負担が減る</li>
+<li>若手・海外拠点・営業が自力で調べられる</li>
+<li>過去に作った図面・資料・判断材料が再利用される</li>
+<li>ベテランの知見が組織資産として残る</li>
+<li>属人化リスクが下がる</li>
+<li>技術部や有識者が高度な判断・設計・改善に集中できる</li>
+</ul>
+<hr>
+<h1 id="FDE向けヒアリングテンプレート">FDE向けヒアリングテンプレート</h1>
+<h2 id="最初に聞く質問">最初に聞く質問</h2>
+<pre><code>ベテランに聞かないと進まない業務は何ですか？
+その答えは、実はどこかの資料・図面・履歴に残っていますか？
+その資料に若手は自力でたどり着けますか？
+有識者への聞き込みが発生するのは、どの検索ができないからですか？
+過去の類似案件・類似図面・対応履歴はどこにありますか？</code></pre>
+<h2 id="資料確認の質問">資料確認の質問</h2>
+<pre><code>対象資料は何ですか？
+技術資料、手順書、内規、対応履歴、図面、報告書、議事録、実験データのどれですか？
+ファイル名・フォルダ構成だけで探していますか？
+文書内キーワードで検索できますか？
+参照元リンクが出れば現場は信頼できますか？
+資料の更新責任者は誰ですか？</code></pre>
+<h2 id="現場協力者を見つける質問">現場協力者を見つける質問</h2>
+<pre><code>その部署でデジタル化に前向きな人は誰ですか？
+若手・中堅・ベテランのうち、誰が困りごとを具体的に話せますか？
+過去資料の所在を知っている人は誰ですか？
+AI回答の正しさを確認できる人は誰ですか？
+導入後に使い方を広めてくれる人は誰ですか？</code></pre>
+<h2 id="ベテランに聞く前に確認する質問">ベテランに聞く前に確認する質問</h2>
+<pre><code>既存資料検索で解決できる質問ですか？
+検索しても出ない質問だけを集めていますか？
+その質問は、判断基準・例外処理・勘所のどれですか？
+ベテランに聞いた内容をFAQ・勘所集・手順書にできますか？</code></pre>
+<hr>
+<h1 id="実装パターン対応表">実装パターン対応表</h1>
+<div class="table-wrap"><table>
+<thead><tr><th>課題</th><th>最初にやること</th><th>AI/システム化</th><th>現場定着の工夫</th><th>次の発展</th></tr></thead>
+<tbody>
+<tr><td>資料はあるが探せない</td><td>資料棚卸し</td><td>RAG（検索拡張生成）</td><td>参照元リンクを出す</td><td>質問ログからFAQ追加</td></tr>
+<tr><td>図面が記憶依存</td><td>過去図面を集める</td><td>図面内キーワード検索・類似図面検索</td><td>若手・営業・海外拠点に使わせる</td><td>価格情報・部品表・設計根拠も接続</td></tr>
+<tr><td>有識者に聞かないと分からない</td><td>聞き込み発生箇所を特定</td><td>文書内検索・設計検討資料検索</td><td>有識者への聞き込み削減をKPI化</td><td>足りない勘所を文書化</td></tr>
+<tr><td>新人教育が重い</td><td>新人が詰まる質問を集める</td><td>FAQ/RAGチャット</td><td>簡単マニュアル・リンク共有</td><td>教育カリキュラム化</td></tr>
+<tr><td>暗黙知が資料にない</td><td>検索しても出ない質問を集める</td><td>インタビュー支援AI</td><td>ベテラン確認会</td><td>勘所集を作りAI検索に追加</td></tr>
+<tr><td>使われない</td><td>推進者を決める</td><td>利用ログ確認</td><td>個別リンク送付・活用例共有</td><td>champion（推進役）育成</td></tr>
+</tbody></table></div>
+<hr>
+<h1 id="FDE実務への変換">FDE実務への変換</h1>
+<p>この領域で伸ばすべきスキルは、AIモデルそのものより、次の実務設計。</p>
+<h2 id="1-知見資産の棚卸し">1. 知見資産の棚卸し</h2>
+<pre><code>どの資料があるか
+どこにあるか
+誰が使っているか
+誰が探せず困っているか</code></pre>
+<p>を整理する力。</p>
+<h2 id="2-検索体験の設計">2. 検索体験の設計</h2>
+<pre><code>業務文書検索
+技術資料検索
+図面検索
+対応履歴検索
+研究データ検索</code></pre>
+<p>を混ぜずに、用途別に分ける力。</p>
+<h2 id="3-現場協力者の巻き込み">3. 現場協力者の巻き込み</h2>
+<pre><code>DX部門だけで進めない
+現場で困っている人を巻き込む
+資料の所在を知る人を巻き込む
+回答の正しさを確認できる人を巻き込む</code></pre>
+<h2 id="4-参照元付き回答の設計">4. 参照元付き回答の設計</h2>
+<p>AI回答だけでなく、必ず参照元を出す。</p>
+<pre><code>回答
++ 根拠資料
++ 該当箇所
++ 更新日
++ 担当部署</code></pre>
+<p>これがないと、製造業・品質・設計・内規系では信頼されにくい。</p>
+<h2 id="5-検索ログから暗黙知を発見する">5. 検索ログから暗黙知を発見する</h2>
+<pre><code>検索しても答えが出ない質問
+何度も聞かれる質問
+回答に自信が持てない質問
+ベテラン確認が必要になった質問</code></pre>
+<p>を集める。</p>
+<p>そこから、ベテランに聞くべき対象を絞る。</p>
+<hr>
+<h1 id="出典">出典</h1>
+<h2 id="ヤンマー-AWS">ヤンマー / AWS</h2>
+<ul>
+<li><a href="https://aws.amazon.com/jp/solutions/case-studies/yanmar-case-study/" target="_blank" rel="noopener noreferrer">https://aws.amazon.com/jp/solutions/case-studies/yanmar-case-study/</a></li>
+</ul>
+<p>主な確認内容:</p>
+<ul>
+<li>DXコミュニティからアイデアを募った</li>
+<li>社内ドキュメント有効活用ニーズが浮上</li>
+<li>Amazon Bedrock + Amazon Kendraで統合ナレッジ検索基盤を構築</li>
+<li>既存情報共有基盤に文書を保存すると自動で読み込む</li>
+<li>チャットで質問し、回答と参照元リンクを取得</li>
+<li>80以上のテーマ創出</li>
+<li>内規検索で1人あたり月20分、全体で月1,200分程度の効果</li>
+<li>カスタマーサービスで月100分短縮</li>
+<li>属人化解消と新人教育支援</li>
+</ul>
+<h2 id="ヤンマー-JMAS">ヤンマー / JMAS</h2>
+<ul>
+<li><a href="https://www.jmas.co.jp/case/cloud22.php" target="_blank" rel="noopener noreferrer">https://www.jmas.co.jp/case/cloud22.php</a></li>
+</ul>
+<p>主な確認内容:</p>
+<ul>
+<li>Amazon Kendra + Amazon BedrockのRAG型ナレッジ検索を約3週間で構築</li>
+<li>S3バケットや検索対象データ準備</li>
+<li>データ整形で回答精度向上</li>
+<li>Web UIカスタマイズ</li>
+<li>テーマ検証と評価オペレーション支援</li>
+</ul>
+<h2 id="ゼットリンカー-製造業向けRAG">ゼットリンカー / 製造業向けRAG</h2>
+<ul>
+<li><a href="https://zetlinker.com/works/manufacturing-rag-system" target="_blank" rel="noopener noreferrer">https://zetlinker.com/works/manufacturing-rag-system</a></li>
+</ul>
+<p>主な確認内容:</p>
+<ul>
+<li>中小製造業の数百件の社内文書を対象</li>
+<li>社内文書チャットボットと資料検索チャットボットを実装</li>
+<li>マニュアル・手順書・規程類、報告書・議事録・技術文書を分けて検索</li>
+<li>ベテランの退職・異動による知識流出リスク低減</li>
+<li>新人教育コスト削減</li>
+</ul>
+<h2 id="ライオン-2023">ライオン 2023</h2>
+<ul>
+<li><a href="https://www.lion.co.jp/ja/news/2023/4464" target="_blank" rel="noopener noreferrer">https://www.lion.co.jp/ja/news/2023/4464</a></li>
+</ul>
+<p>主な確認内容:</p>
+<ul>
+<li>生成AIと検索サービスを用いた知識伝承AI化ツール</li>
+<li>研究領域で検証完了</li>
+<li>技術的知見や実験データを効率取得</li>
+<li>文書取得時間が従来比約5分の1</li>
+</ul>
+<h2 id="ライオン-NTTデータ-2024">ライオン × NTTデータ 2024</h2>
+<ul>
+<li><a href="https://www.nttdata.com/global/ja/news/release/2024/060300/" target="_blank" rel="noopener noreferrer">https://www.nttdata.com/global/ja/news/release/2024/060300/</a></li>
+</ul>
+<p>主な確認内容:</p>
+<ul>
+<li>衣料用粉末洗剤の生産技術領域を対象</li>
+<li>熟練者インタビューと社員ワークショップで暗黙知を抽出</li>
+<li>勘所集として文書化</li>
+<li>知識伝承AIシステムに取り込む</li>
+<li>インタビュー結果をまとめる工程にも生成AI適用を検討</li>
+</ul>
+<h2 id="エバ工業-CADDi-Drawer">エバ工業 / CADDi Drawer</h2>
+<ul>
+<li><a href="https://caddi.com/ja-jp/case-studies/eba2/" target="_blank" rel="noopener noreferrer">https://caddi.com/ja-jp/case-studies/eba2/</a></li>
+</ul>
+<p>主な確認内容:</p>
+<ul>
+<li>過去の類似図面検索が設計者の記憶に依存</li>
+<li>ベテランがCADDi Drawerの価値を見抜き、経営層へ働きかけ</li>
+<li>3D/2D CAD図面を投入</li>
+<li>活用が進まない人には個別リンク送付</li>
+<li>ベトナム設計部隊が自律的に類似図面検索</li>
+<li>若手営業が過去類似案件・原価を調べられるようになった</li>
+<li>約1.2倍の案件対応体制</li>
+</ul>
+<h2 id="アルファーシステムズ-CADDi-Drawer">アルファーシステムズ / CADDi Drawer</h2>
+<ul>
+<li><a href="https://caddi.com/ja-jp/case-studies/alpha-drw/" target="_blank" rel="noopener noreferrer">https://caddi.com/ja-jp/case-studies/alpha-drw/</a></li>
+</ul>
+<p>主な確認内容:</p>
+<ul>
+<li>膨大な図面資産が体系管理されず活用しきれていなかった</li>
+<li>図面が見つからない、同じ図面が複数存在、転記ミス</li>
+<li>ベテラン層の暗黙知継承が課題</li>
+<li>過去の類似図面や価格情報を短時間で検索</li>
+<li>若手設計者が部品設計時の参考情報として活用</li>
+<li>部品表チェッカーなど想定外の活用も発生</li>
+</ul>
+<h2 id="日新電機-CADDi-Drawer">日新電機 / CADDi Drawer</h2>
+<ul>
+<li><a href="https://caddi.com/ja-jp/case-studies/nisshin-electric/" target="_blank" rel="noopener noreferrer">https://caddi.com/ja-jp/case-studies/nisshin-electric/</a></li>
+</ul>
+<p>主な確認内容:</p>
+<ul>
+<li>登録台帳の題名でしか検索できなかった設計検討資料が、資料内キーワードまで検索可能になった</li>
+<li>有識者への聞き込みが不要になった</li>
+<li>自分で効率的に情報を見つけられるようになった</li>
+<li>業務属人化が解消され、他部署とのデータ連携意識も生まれた</li>
+</ul>
+<h2 id="関連詳細調査-知見アクセスへの反対処理">関連詳細調査: 知見アクセスへの反対処理</h2>
+<ul>
+<li><code>fde-knowledge-access-resistance-playbook-2026-05-09.md</code></li>
+<li>部署固有の技術文書や知見を新規FDE・新規担当者に見せたくないという反対がある場合の説得・小実験・権限管理・監査ログ設計を整理したプレイブック。</li>
+<li>重要結論: 「全部見せてください」ではなく、「既存権限を守ったまま、必要範囲だけ、参照元付き・監査ログ付きで検索できる小実験」として提案する。</li>
+</ul>
+        <div class="next-links">
+          <a class="next-link" href="fde-ai-adoption-pain-map.html"><strong>FDE向け エンタープライズAI導入ペインマップ</strong><span>実在企業のAI導入事例を、成功事例ではなく導入前ペインから読む</span></a>
+          <a class="next-link" href="../blog.html"><strong>技術ブログ一覧</strong><span>Ezlizeの公開メモ・技術記事一覧へ戻る</span></a>
+          <a class="next-link" href="../index.html#contact"><strong>無料相談</strong><span>AI導入・業務自動化の相談導線へ進む</span></a>
+        </div>
+      </article>
+    </div>
+    <footer class="footer">
+      <p>© 2026 幸田 晃典 / Ezlize. This page is a public-edition research note converted from an llmwiki source.</p>
+    </footer>
+  </div>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });
+  </script>
+</body>
+</html>

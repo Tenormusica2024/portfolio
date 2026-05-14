@@ -88,6 +88,16 @@
     "blogPost": [
       {
         "@type": "BlogPosting",
+        "headline": "FDE向け エンタープライズAI導入ペインマップ",
+        "url": "https://ezlize.com/blog/fde-ai-adoption-pain-map.html"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "製造業の知見継承AI導入ベーシックパターン",
+        "url": "https://ezlize.com/blog/manufacturing-knowledge-transfer-ai.html"
+      },
+      {
+        "@type": "BlogPosting",
         "headline": "AnthropicがAI SREの限界を公式認定。「相関関係を因果関係と誤認し続ける」",
         "url": "https://ezlize.com/blog/anthropic-ai-sre-limits-qcon-2026.html",
         "interactionStatistic": [
@@ -397,6 +407,9 @@
     .platform-badge--hatena {
       background: #00A4DE;
     }
+    .platform-badge--research {
+      background: var(--navy);
+    }
 
     .article-date {
       font-size: 0.7rem;
@@ -510,6 +523,7 @@
     }
     .platform-dot--zenn { background: #3EA8FF; }
     .platform-dot--hatena { background: #00A4DE; }
+    .platform-dot--research { background: var(--navy); }
 
     /* Zennプロフィールリンク */
     .sidebar-link {
@@ -660,8 +674,8 @@
   <p class="blog-hero-label">Tech Blog</p>
   <h1 class="blog-hero-title">技術ブログ</h1>
   <p class="blog-hero-desc">
-    AI・システム開発の現場で得た技術知見を、Ezlize内の要点ページとZenn原文で発信しています。
-    アーキテクチャ解析、開発ツール活用術、AI比較分析など、実務に直結する内容を中心に執筆。
+    AI・システム開発の現場で得た技術知見と、業種別AI導入パターンを公開しています。
+    アーキテクチャ解析、開発ツール活用術、FDE視点のAI課題整理など、実務に直結する内容を中心に掲載。
   </p>
 </section>
 
@@ -670,6 +684,53 @@
 
   <!-- ARTICLE LIST -->
   <div class="article-list">
+
+    <!-- Research 1: FDE AI adoption pain map -->
+    <a href="blog/fde-ai-adoption-pain-map.html" class="article-card reveal" aria-label="FDE向け エンタープライズAI導入ペインマップ（Ezlize Research）">
+      <div class="article-left">
+        <div class="article-metric">
+          <span class="article-metric-count">8</span>
+          <span class="article-metric-label">cases</span>
+        </div>
+      </div>
+      <div class="article-right">
+        <div class="article-header">
+          <span class="platform-badge platform-badge--research">Research</span>
+          <span class="article-date">2026-05-14</span>
+        </div>
+        <h2 class="article-title">FDE向け エンタープライズAI導入ペインマップ</h2>
+        <p class="article-desc">Morgan Stanley、ヤンマー、Wayfair、Allianz、Microsoft CSS、三井物産などの公開事例から、AI導入前の現場課題をFDE視点で整理。</p>
+        <div class="article-tags">
+          <span class="article-tag">FDE</span>
+          <span class="article-tag">Enterprise AI</span>
+          <span class="article-tag">AI導入</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Research 2: Manufacturing knowledge transfer AI -->
+    <a href="blog/manufacturing-knowledge-transfer-ai.html" class="article-card reveal" aria-label="製造業の知見継承AI導入ベーシックパターン（Ezlize Research）">
+      <div class="article-left">
+        <div class="article-metric">
+          <span class="article-metric-count">3</span>
+          <span class="article-metric-label">patterns</span>
+        </div>
+      </div>
+      <div class="article-right">
+        <div class="article-header">
+          <span class="platform-badge platform-badge--research">Research</span>
+          <span class="article-date">2026-05-14</span>
+        </div>
+        <h2 class="article-title">製造業の知見継承AI導入ベーシックパターン</h2>
+        <p class="article-desc">ヤンマー、ライオン、CADDi Drawer導入企業などの公開事例から、既存資料RAG・図面検索・暗黙知抽出の基本形を整理。</p>
+        <div class="article-tags">
+          <span class="article-tag">製造業AI</span>
+          <span class="article-tag">ナレッジ継承</span>
+          <span class="article-tag">RAG</span>
+        </div>
+      </div>
+    </a>
+
 
     <!-- Article 1: Zenn 107 likes + Hatena 345 bookmarks (same article, cross-posted) -->
     <a href="blog/anthropic-ai-sre-limits-qcon-2026.html" class="article-card reveal" aria-label="AnthropicがAI SREの限界を公式認定。「相関関係を因果関係と誤認し続ける」（Zenn）">
@@ -806,7 +867,7 @@
           <div class="highlight-label">Zenn累計いいね</div>
         </div>
         <div class="highlight-item">
-          <div class="highlight-num">5</div>
+          <div class="highlight-num">7</div>
           <div class="highlight-label">掲載記事数</div>
         </div>
         <div class="highlight-item">
@@ -822,6 +883,10 @@
         <div class="platform-item">
           <span class="platform-dot platform-dot--zenn"></span>
           Zenn（5記事）
+        </div>
+        <div class="platform-item">
+          <span class="platform-dot platform-dot--research"></span>
+          Ezlize Research（2本）
         </div>
         <div class="platform-item">
           <span class="platform-dot platform-dot--hatena"></span>
