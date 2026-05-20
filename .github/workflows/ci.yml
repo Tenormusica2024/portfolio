@@ -1,8 +1,10 @@
 # 汎用CI/CDワークフロー - 言語自動検出型
-# PR時のみ自動実行 / 手動実行可能
+# PR / main push / 手動実行で自動実行
 name: CI
 
 on:
+  push:
+    branches: [main]
   pull_request:
     branches: [main, master]
   workflow_dispatch:  # 手動実行ボタン
@@ -97,8 +99,11 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Run analytics self-access wiring guard
+      - name: Run root C2C/B2B analytics self-access wiring guard
         run: node scripts/check_analytics_self_access_wiring.js
+
+      - name: Test root C2C/B2B analytics self-access wiring guard mutations
+        run: node scripts/test_analytics_self_access_wiring_mutations.js
 
       - name: Install HTMLHint
         run: npm install -g htmlhint
