@@ -107,6 +107,9 @@ jobs:
       - name: Run B2B hero headline guard
         run: node scripts/check_b2b_hero_headlines.js
 
+      - name: Run analytics self-access wiring guard
+        run: node scripts/check_analytics_self_access_wiring.js
+
   # セキュリティスキャン（全プロジェクト共通）
   security-scan:
     runs-on: ubuntu-latest
