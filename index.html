@@ -4,7 +4,7 @@
     <!-- Failsafe: ezlize.com should always serve b2b content -->
     <script>
       if (window.location.hostname === 'ezlize.com' || window.location.hostname === 'www.ezlize.com') {
-        window.location.replace('/b2b/index.html');
+        window.location.replace('/b2b/index.html' + window.location.search + window.location.hash);
       }
     </script>
     <!-- Urayaha GA4 self-access opt-out guard -->
@@ -34,7 +34,7 @@
         var isAutomation = navigator.webdriver === true || /HeadlessChrome|Playwright|Puppeteer|Cypress|Selenium/i.test(userAgent);
         var isLocalPreviewReferrer = /^https?:\/\/(localhost|127\.0\.0\.1|0\.0\.0\.0)(:\d+)?\//.test(referrer) || referrer.indexOf('file://') === 0;
 
-        if (!isProductionHost || isOptedOut || isAutomation || isLocalPreviewReferrer) {
+        if (!isProductionHost || shouldDisable || isOptedOut || isAutomation || isLocalPreviewReferrer) {
           window['ga-disable-' + measurementId] = true;
           window.urayahaAnalyticsSuppressed = true;
         }

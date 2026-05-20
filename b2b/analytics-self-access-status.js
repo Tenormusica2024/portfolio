@@ -5,6 +5,7 @@
   if (!params.has('ga_status')) return;
 
   var optOutKey = 'ezlize_ga_opt_out';
+  var disableKeys = ['ga_off', 'analytics_off', 'internal_preview', 'preview', 'no_ga', 'ga_status'];
 
   function readLocalStorage(key) {
     try {
@@ -52,20 +53,23 @@
   function renderStatus() {
     var optOutValue = readLocalStorage(optOutKey);
     var optOut = optOutValue === '1';
+    var urlOptOut = disableKeys.some(function(key) { return params.has(key); });
     var suppressed = window.ezlizeAnalyticsSuppressed === true;
     var gtagFunction = typeof window.gtag === 'function';
     var gtagScriptPresent = !!document.querySelector('script[src*="googletagmanager.com/gtag/js"]');
-    var statusOk = optOut && suppressed && !gtagFunction && !gtagScriptPresent;
+    var statusOk = (optOut || urlOptOut) && suppressed && !gtagFunction && !gtagScriptPresent;
 
     var panel = ensurePanel();
     panel.dataset.gaOptOutStatus = statusOk ? 'OK' : 'FAILED';
     panel.dataset.b2bOptOut = asText(optOut);
+    panel.dataset.b2bUrlOptOut = asText(urlOptOut);
     panel.dataset.b2bSuppressed = asText(suppressed);
     panel.dataset.b2bGtagFunction = asText(gtagFunction);
     panel.textContent = [
       'EZLIZE_GA_STATUS',
       'GA_OPT_OUT_STATUS=' + (statusOk ? 'OK' : 'FAILED'),
       'B2B_OPT_OUT=' + asText(optOut),
+      'B2B_URL_OPT_OUT=' + asText(urlOptOut),
       'B2B_SUPPRESSED=' + asText(suppressed),
       'B2B_GTAG_FUNCTION=' + asText(gtagFunction),
       'B2B_GTAG_SCRIPT_PRESENT=' + asText(gtagScriptPresent),

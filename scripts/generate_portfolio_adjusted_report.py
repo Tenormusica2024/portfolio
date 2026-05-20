@@ -151,6 +151,8 @@ def render_markdown(report: Dict[str, Any]) -> str:
         "",
         "This is an operational estimate. GA4 aggregate exports do not expose owner identity or IP, so historical self-access cannot be removed with forensic certainty. The adjusted values below subtract date-level traffic that was identified during the 2026-05-20 cleanup session as owner / AI-agent verification traffic.",
         "",
+        "`users` in the raw columns comes from the period summary. `excluded users` is a date-level active-user observation sum for the excluded days, not a forensic period-unique user deletion. Therefore `adjusted users` should be read as a rough estimate only; PV and sessions are the more reliable adjusted metrics.",
+        "",
         "## Summary",
         "",
     ]
@@ -167,7 +169,7 @@ def render_markdown(report: Dict[str, Any]) -> str:
             adjusted["page_views"], adjusted["sessions"], adjusted["users"],
         ])
     lines.append(table(
-        ["site", "raw PV", "raw sessions", "raw users", "excluded PV", "excluded sessions", "excluded users", "adjusted PV", "adjusted sessions", "adjusted users"],
+        ["site", "raw PV", "raw sessions", "raw users", "excluded PV", "excluded sessions", "excluded user obs.", "adjusted PV", "adjusted sessions", "adjusted users est."],
         summary_rows,
     ))
     lines.append("")
@@ -186,8 +188,8 @@ def render_markdown(report: Dict[str, Any]) -> str:
         "",
         "- Future owner/agent verification traffic should use `?ga_status=1` or `?ga_off=1` before normal browsing.",
         "- `?ga_status=1` is itself an opt-out trigger and shows an in-page diagnostic panel.",
-        "- B2B OK markers: `GA_OPT_OUT_STATUS=OK`, `B2B_OPT_OUT=true`, `B2B_SUPPRESSED=true`, `B2B_GTAG_FUNCTION=false`, `B2B_GTAG_SCRIPT_PRESENT=false`.",
-        "- C2C OK markers: `GA_OPT_OUT_STATUS=OK`, `C2C_OPT_OUT=true`, `C2C_SUPPRESSED=true`, `C2C_GA_DISABLE=true`.",
+        "- B2B OK markers: `GA_OPT_OUT_STATUS=OK`, `B2B_OPT_OUT=true` or `B2B_URL_OPT_OUT=true`, `B2B_SUPPRESSED=true`, `B2B_GTAG_FUNCTION=false`, `B2B_GTAG_SCRIPT_PRESENT=false`.",
+        "- C2C OK markers: `GA_OPT_OUT_STATUS=OK`, `C2C_OPT_OUT=true` or `C2C_URL_OPT_OUT=true`, `C2C_SUPPRESSED=true`, `C2C_GA_DISABLE=true`.",
     ])
     return "\n".join(lines) + "\n"
 

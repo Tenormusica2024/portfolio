@@ -28,7 +28,7 @@
         var isAutomation = navigator.webdriver === true || /HeadlessChrome|Playwright|Puppeteer|Cypress|Selenium/i.test(userAgent);
         var isLocalPreviewReferrer = /^https?:\/\/(localhost|127\.0\.0\.1|0\.0\.0\.0)(:\d+)?\//.test(referrer) || referrer.indexOf('file://') === 0;
 
-        if (!isProductionHost || isOptedOut || isAutomation || isLocalPreviewReferrer) {
+        if (!isProductionHost || shouldDisable || isOptedOut || isAutomation || isLocalPreviewReferrer) {
           window['ga-disable-' + measurementId] = true;
           window.urayahaAnalyticsSuppressed = true;
         }

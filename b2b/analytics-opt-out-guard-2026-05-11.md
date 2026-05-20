@@ -25,10 +25,10 @@ When suppression runs, `window.ezlizeAnalyticsSuppressed = true` is set for veri
 ## Status diagnostics
 
 - Open a B2B page with `?ga_status=1` to show a fixed in-page diagnostic panel.
-- `?ga_status=1` also behaves as an opt-out trigger, so the diagnostic check itself should not create a normal GA4 hit.
+- `?ga_status=1` also behaves as a current-visit opt-out trigger, so the diagnostic check itself should not create a normal GA4 hit even before considering the persisted browser opt-out.
 - Expected OK marker on a suppressed B2B page:
   - `GA_OPT_OUT_STATUS=OK`
-  - `B2B_OPT_OUT=true`
+  - `B2B_OPT_OUT=true` or `B2B_URL_OPT_OUT=true`
   - `B2B_SUPPRESSED=true`
   - `B2B_GTAG_FUNCTION=false`
   - `B2B_GTAG_SCRIPT_PRESENT=false`

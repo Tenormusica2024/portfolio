@@ -54,3 +54,4 @@ Current generated artifacts:
 - Do not treat same-day GA4 values as final; wait for processing delay.
 - Do not expose analytics URL, credentials, or private management links in public repo or public pages.
 - Treat historical adjusted values as estimates because GA4 aggregate data does not expose IP or exact owner identity.
+- In adjusted reports, `excluded users` is a date-level active-user observation sum for the excluded days, not a forensic period-unique user deletion. Treat `adjusted users` as a rough estimate; PV and sessions are the more reliable adjusted metrics.

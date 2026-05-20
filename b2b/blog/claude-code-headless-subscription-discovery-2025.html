@@ -4,12 +4,12 @@
   <script>
     (function() {
       var productionHosts = ['ezlize.com', 'www.ezlize.com'];
-      if (!productionHosts.includes(window.location.hostname)) return;
+      var isProductionHost = productionHosts.includes(window.location.hostname);
 
       var optOutKey = 'ezlize_ga_opt_out';
       var params = new URLSearchParams(window.location.search);
       var enableKeys = ['ga_on', 'analytics_on'];
-      var disableKeys = ['ga_off', 'analytics_off', 'internal_preview', 'preview', 'no_ga'];
+      var disableKeys = ['ga_off', 'analytics_off', 'internal_preview', 'preview', 'no_ga', 'ga_status'];
       var shouldEnable = enableKeys.some(function(key) { return params.has(key); });
       var shouldDisable = disableKeys.some(function(key) { return params.has(key); });
 
@@ -26,7 +26,7 @@
       var isAutomation = navigator.webdriver === true || /HeadlessChrome|Playwright|Puppeteer|Cypress|Selenium/i.test(userAgent);
       var isLocalPreviewReferrer = /^https?:\/\/(localhost|127\.0\.0\.1|0\.0\.0\.0)(:\d+)?\//.test(referrer) || referrer.indexOf('file://') === 0;
 
-      if (isOptedOut || isAutomation || isLocalPreviewReferrer) {
+      if (!isProductionHost || shouldDisable || isOptedOut || isAutomation || isLocalPreviewReferrer) {
         window.ezlizeAnalyticsSuppressed = true;
         return;
       }
@@ -42,6 +42,8 @@
       gtag('config', 'G-YJ1WP1J2NQ', { 'linker': { 'domains': ['ezlize.com'] } });
     })();
   </script>
+  <!-- Analytics self-access status panel: shown only with ?ga_status=1 -->
+  <script src="../analytics-self-access-status.js" defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- BEGIN B2B_PAGE_HEAD -->

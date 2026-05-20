@@ -6,7 +6,7 @@
   <script>
     (function() {
       var productionHosts = ['ezlize.com', 'www.ezlize.com'];
-      if (!productionHosts.includes(window.location.hostname)) return;
+      var isProductionHost = productionHosts.includes(window.location.hostname);
 
       var optOutKey = 'ezlize_ga_opt_out';
       var params = new URLSearchParams(window.location.search);
@@ -28,7 +28,7 @@
       var isAutomation = navigator.webdriver === true || /HeadlessChrome|Playwright|Puppeteer|Cypress|Selenium/i.test(userAgent);
       var isLocalPreviewReferrer = /^https?:\/\/(localhost|127\.0\.0\.1|0\.0\.0\.0)(:\d+)?\//.test(referrer) || referrer.indexOf('file://') === 0;
 
-      if (isOptedOut || isAutomation || isLocalPreviewReferrer) {
+      if (!isProductionHost || shouldDisable || isOptedOut || isAutomation || isLocalPreviewReferrer) {
         window.ezlizeAnalyticsSuppressed = true;
         return;
       }

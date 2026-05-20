@@ -6,6 +6,7 @@
 
   var measurementId = 'G-YJ1WP1J2NQ';
   var optOutKey = 'urayaha_ga_opt_out';
+  var disableKeys = ['ga_off', 'analytics_off', 'internal_preview', 'preview', 'no_ga', 'ga_status'];
 
   function readLocalStorage(key) {
     try {
@@ -53,21 +54,24 @@
   function renderStatus() {
     var optOutValue = readLocalStorage(optOutKey);
     var optOut = optOutValue === '1';
+    var urlOptOut = disableKeys.some(function(key) { return params.has(key); });
     var gaDisable = window['ga-disable-' + measurementId] === true;
     var suppressed = window.urayahaAnalyticsSuppressed === true || gaDisable;
     var gtagFunction = typeof window.gtag === 'function';
     var gtagScriptPresent = !!document.querySelector('script[src*="googletagmanager.com/gtag/js"]');
-    var statusOk = optOut && suppressed && gaDisable;
+    var statusOk = (optOut || urlOptOut) && suppressed && gaDisable;
 
     var panel = ensurePanel();
     panel.dataset.gaOptOutStatus = statusOk ? 'OK' : 'FAILED';
     panel.dataset.c2cOptOut = asText(optOut);
+    panel.dataset.c2cUrlOptOut = asText(urlOptOut);
     panel.dataset.c2cSuppressed = asText(suppressed);
     panel.dataset.c2cGaDisable = asText(gaDisable);
     panel.textContent = [
       'URAYAHA_GA_STATUS',
       'GA_OPT_OUT_STATUS=' + (statusOk ? 'OK' : 'FAILED'),
       'C2C_OPT_OUT=' + asText(optOut),
+      'C2C_URL_OPT_OUT=' + asText(urlOptOut),
       'C2C_SUPPRESSED=' + asText(suppressed),
       'C2C_GA_DISABLE=' + asText(gaDisable),
       'C2C_GTAG_FUNCTION=' + asText(gtagFunction),

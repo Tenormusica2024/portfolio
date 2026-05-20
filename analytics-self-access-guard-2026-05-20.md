@@ -39,10 +39,10 @@ When suppression runs, the page sets:
 ## Status diagnostics
 
 - Open a C2C portfolio page with `?ga_status=1` to show a fixed in-page diagnostic panel.
-- `?ga_status=1` also behaves as an opt-out trigger, so the diagnostic check itself should not create a normal GA4 hit.
+- `?ga_status=1` also behaves as a current-visit opt-out trigger, so the diagnostic check itself should not create a normal GA4 hit even before considering the persisted browser opt-out.
 - Expected OK marker on a suppressed C2C page:
   - `GA_OPT_OUT_STATUS=OK`
-  - `C2C_OPT_OUT=true`
+  - `C2C_OPT_OUT=true` or `C2C_URL_OPT_OUT=true`
   - `C2C_SUPPRESSED=true`
   - `C2C_GA_DISABLE=true`
 
