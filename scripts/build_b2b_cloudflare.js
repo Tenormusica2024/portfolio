@@ -11,6 +11,11 @@ execFileSync('node', [path.join(repoRoot, 'scripts', 'check_b2b_hero_headlines.j
   stdio: 'inherit',
 });
 
+execFileSync('node', [path.join(repoRoot, 'scripts', 'check_analytics_self_access_wiring.js')], {
+  cwd: repoRoot,
+  stdio: 'inherit',
+});
+
 fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(out, { recursive: true });
 
