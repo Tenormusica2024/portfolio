@@ -1,6 +1,39 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <!-- Urayaha GA4 self-access opt-out guard -->
+    <script>
+      (function() {
+        var measurementId = 'G-YJ1WP1J2NQ';
+        var productionHosts = ['tenormusica2024.github.io'];
+        var optOutKey = 'urayaha_ga_opt_out';
+        var params = new URLSearchParams(window.location.search);
+        var enableKeys = ['ga_on', 'analytics_on'];
+        var disableKeys = ['ga_off', 'analytics_off', 'internal_preview', 'preview', 'no_ga'];
+        var shouldEnable = enableKeys.some(function(key) { return params.has(key); });
+        var shouldDisable = disableKeys.some(function(key) { return params.has(key); });
+
+        try {
+          if (shouldEnable) window.localStorage.removeItem(optOutKey);
+          if (shouldDisable) window.localStorage.setItem(optOutKey, '1');
+        } catch (e) {}
+
+        var isOptedOut = false;
+        try { isOptedOut = window.localStorage.getItem(optOutKey) === '1'; } catch (e) {}
+
+        var hostname = window.location.hostname;
+        var referrer = document.referrer || '';
+        var userAgent = navigator.userAgent || '';
+        var isProductionHost = productionHosts.indexOf(hostname) !== -1;
+        var isAutomation = navigator.webdriver === true || /HeadlessChrome|Playwright|Puppeteer|Cypress|Selenium/i.test(userAgent);
+        var isLocalPreviewReferrer = /^https?:\/\/(localhost|127\.0\.0\.1|0\.0\.0\.0)(:\d+)?\//.test(referrer) || referrer.indexOf('file://') === 0;
+
+        if (!isProductionHost || isOptedOut || isAutomation || isLocalPreviewReferrer) {
+          window['ga-disable-' + measurementId] = true;
+          window.urayahaAnalyticsSuppressed = true;
+        }
+      })();
+    </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ1WP1J2NQ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
