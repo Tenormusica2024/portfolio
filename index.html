@@ -15,7 +15,7 @@
         var optOutKey = 'urayaha_ga_opt_out';
         var params = new URLSearchParams(window.location.search);
         var enableKeys = ['ga_on', 'analytics_on'];
-        var disableKeys = ['ga_off', 'analytics_off', 'internal_preview', 'preview', 'no_ga'];
+        var disableKeys = ['ga_off', 'analytics_off', 'internal_preview', 'preview', 'no_ga', 'ga_status'];
         var shouldEnable = enableKeys.some(function(key) { return params.has(key); });
         var shouldDisable = disableKeys.some(function(key) { return params.has(key); });
 
@@ -40,6 +40,8 @@
         }
       })();
     </script>
+    <!-- Analytics self-access status panel: shown only with ?ga_status=1 -->
+    <script src="analytics-self-access-status.js" defer></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ1WP1J2NQ"></script>
     <!-- Google AdSense -->
