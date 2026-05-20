@@ -97,6 +97,9 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Run analytics self-access wiring guard
+        run: node scripts/check_analytics_self_access_wiring.js
+
       - name: Install HTMLHint
         run: npm install -g htmlhint
 
@@ -106,9 +109,6 @@ jobs:
 
       - name: Run B2B hero headline guard
         run: node scripts/check_b2b_hero_headlines.js
-
-      - name: Run analytics self-access wiring guard
-        run: node scripts/check_analytics_self_access_wiring.js
 
   # セキュリティスキャン（全プロジェクト共通）
   security-scan:

@@ -12,6 +12,13 @@ const C2C_MEASUREMENT_ID = 'G-YJ1WP1J2NQ';
 const B2B_MEASUREMENT_ID = 'G-YJ1WP1J2NQ';
 const C2C_OPT_OUT_KEY = 'urayaha_ga_opt_out';
 const B2B_OPT_OUT_KEY = 'ezlize_ga_opt_out';
+const REQUIRED_SUPPRESSION_TERMS = [
+  '!isProductionHost',
+  'shouldDisable',
+  'isOptedOut',
+  'isAutomation',
+  'isLocalPreviewReferrer',
+];
 const EXPECTED_C2C_GA_PAGES = new Set([
   'archive.html',
   'code-reviewer-system.html',
@@ -62,6 +69,96 @@ function hasOptOutKey(html, key) {
   return new RegExp(`var\\s+optOutKey\\s*=\\s*['"]${escapeRegExp(key)}['"]\\s*;`, 'u').test(html);
 }
 
+function maskHtmlComments(html) {
+  return html.replace(/<!--[\s\S]*?-->/gu, (comment) => ' '.repeat(comment.length));
+}
+
+function getScriptSrcAttribute(attrs) {
+  let index = 0;
+  while (index < attrs.length) {
+    while (index < attrs.length && /\s/u.test(attrs[index])) index += 1;
+
+    const nameStart = index;
+    while (index < attrs.length && !/[\s=]/u.test(attrs[index])) index += 1;
+    const name = attrs.slice(nameStart, index).toLowerCase();
+    while (index < attrs.length && /\s/u.test(attrs[index])) index += 1;
+
+    if (attrs[index] !== '=') continue;
+    index += 1;
+    while (index < attrs.length && /\s/u.test(attrs[index])) index += 1;
+
+    const quote = attrs[index];
+    let value = '';
+    if (quote === '"' || quote === "'") {
+      index += 1;
+      const valueStart = index;
+      while (index < attrs.length && attrs[index] !== quote) index += 1;
+      value = attrs.slice(valueStart, index);
+      if (index < attrs.length) index += 1;
+    } else {
+      const valueStart = index;
+      while (index < attrs.length && !/\s/u.test(attrs[index])) index += 1;
+      value = attrs.slice(valueStart, index);
+    }
+
+    if (name === 'src') return value;
+  }
+
+  return null;
+}
+
+function scriptTags(html) {
+  const htmlWithoutComments = maskHtmlComments(html);
+  return [...htmlWithoutComments.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/giu)]
+    .map((match) => ({
+      index: match.index,
+      src: getScriptSrcAttribute(match[1]),
+      content: match[2],
+    }));
+}
+
+function scriptSrcEntries(html) {
+  return scriptTags(html)
+    .filter((tag) => tag.src)
+    .map(({ index, src }) => ({ index, src }));
+}
+
+function scriptSrcValues(html) {
+  return scriptSrcEntries(html).map(({ src }) => src);
+}
+
+function scriptSrcMatches(actual, expected) {
+  const normalizedActual = actual.replace(/&amp;/giu, '&');
+  if (normalizedActual === expected) return true;
+  if (expected.includes('?')) return normalizedActual.startsWith(`${expected}&`);
+  return normalizedActual.startsWith(`${expected}?`);
+}
+
+function isGtagScriptSrcForMeasurement(actual, measurementId) {
+  try {
+    const url = new URL(actual.replace(/&amp;/giu, '&'));
+    return url.origin === 'https://www.googletagmanager.com'
+      && url.pathname === '/gtag/js'
+      && url.searchParams.get('id') === measurementId;
+  } catch (_) {
+    return false;
+  }
+}
+
+function hasScriptTagSrc(html, src) {
+  return scriptSrcValues(html).some((actual) => scriptSrcMatches(actual, src));
+}
+
+function countScriptTagSrc(html, src) {
+  return scriptSrcValues(html).filter((actual) => scriptSrcMatches(actual, src)).length;
+}
+
+function inlineScripts(html) {
+  return scriptTags(html)
+    .filter((tag) => !tag.src)
+    .map((tag) => tag.content);
+}
+
 function conditionHasExplicitOrChain(condition, requiredTerms) {
   const normalized = condition.replace(/\s+/gu, ' ').trim();
   const terms = normalized.split('||')
@@ -76,44 +173,45 @@ function hasSuppressionCondition(html, requiredTerms) {
   return conditionHasExplicitOrChain(match[1], requiredTerms);
 }
 
-function countMatches(html, pattern) {
-  return [...html.matchAll(pattern)].length;
-}
-
 function usesC2cMeasurement(html) {
-  return html.includes(C2C_MEASUREMENT_ID)
-    || html.includes(`googletagmanager.com/gtag/js?id=${C2C_MEASUREMENT_ID}`);
+  return scriptSrcValues(html).some((src) => isGtagScriptSrcForMeasurement(src, C2C_MEASUREMENT_ID))
+    || new RegExp(`gtag\\(['"]config['"]\\s*,\\s*['"]${escapeRegExp(C2C_MEASUREMENT_ID)}['"]`, 'u').test(html);
 }
 
 function hasC2cGuardBeforeGa(html) {
   const blockMatch = html.match(/if\s*\(([^(){};]*?)\)\s*\{\s*window\['ga-disable-' \+ measurementId\] = true;\s*window\.urayahaAnalyticsSuppressed = true;\s*\}/u);
-  const gaScriptIndex = html.indexOf(`googletagmanager.com/gtag/js?id=${C2C_MEASUREMENT_ID}`);
+  const gaScriptEntry = scriptSrcEntries(html)
+    .find((entry) => isGtagScriptSrcForMeasurement(entry.src, C2C_MEASUREMENT_ID));
   const gaConfigIndex = html.indexOf(`gtag('config', '${C2C_MEASUREMENT_ID}'`);
 
   return blockMatch !== null
-    && conditionHasExplicitOrChain(blockMatch[1], ['!isProductionHost', 'shouldDisable', 'isOptedOut'])
-    && gaScriptIndex !== -1
+    && conditionHasExplicitOrChain(blockMatch[1], REQUIRED_SUPPRESSION_TERMS)
+    && gaScriptEntry !== undefined
     && gaConfigIndex !== -1
-    && blockMatch.index < gaScriptIndex
+    && blockMatch.index < gaScriptEntry.index
     && blockMatch.index < gaConfigIndex;
 }
 
+function scriptHasB2bSuppressionReturnBeforeGtag(script) {
+  const blockMatch = script.match(/if\s*\(([^(){};]*?)\)\s*\{\s*window\.ezlizeAnalyticsSuppressed = true;\s*return;\s*\}/u);
+  const scriptIndex = script.indexOf("var script = document.createElement('script')");
+  const configIndex = script.indexOf(`gtag('config', '${B2B_MEASUREMENT_ID}'`);
+
+  return blockMatch !== null
+    && conditionHasExplicitOrChain(blockMatch[1], REQUIRED_SUPPRESSION_TERMS)
+    && scriptIndex !== -1
+    && configIndex !== -1
+    && blockMatch.index < scriptIndex
+    && blockMatch.index < configIndex;
+}
+
 function hasB2bSuppressionReturnBeforeGtag(html) {
-  const inlineScripts = [...html.matchAll(/<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/giu)]
-    .map((match) => match[1]);
+  const b2bGaScripts = inlineScripts(html)
+    .filter((script) => script.includes(`googletagmanager.com/gtag/js?id=${B2B_MEASUREMENT_ID}`)
+      || script.includes(`gtag('config', '${B2B_MEASUREMENT_ID}'`));
 
-  return inlineScripts.some((script) => {
-    const blockMatch = script.match(/if\s*\(([^(){};]*?)\)\s*\{\s*window\.ezlizeAnalyticsSuppressed = true;\s*return;\s*\}/u);
-    const scriptIndex = script.indexOf("var script = document.createElement('script')");
-    const configIndex = script.indexOf(`gtag('config', '${B2B_MEASUREMENT_ID}'`);
-
-    return blockMatch !== null
-      && conditionHasExplicitOrChain(blockMatch[1], ['!isProductionHost', 'shouldDisable', 'isOptedOut'])
-      && scriptIndex !== -1
-      && configIndex !== -1
-      && blockMatch.index < scriptIndex
-      && blockMatch.index < configIndex;
-  });
+  return b2bGaScripts.length > 0
+    && b2bGaScripts.every((script) => scriptHasB2bSuppressionReturnBeforeGtag(script));
 }
 
 function checkC2cPage(filePath, html) {
@@ -126,8 +224,8 @@ function checkC2cPage(filePath, html) {
   if (!hasDisableKey(html, 'ga_status')) {
     errors.push(`${rel}: C2C guard disableKeys must include ga_status`);
   }
-  if (!hasSuppressionCondition(html, ['!isProductionHost', 'shouldDisable', 'isOptedOut'])) {
-    errors.push(`${rel}: C2C suppression condition must include !isProductionHost, shouldDisable, and isOptedOut`);
+  if (!hasSuppressionCondition(html, REQUIRED_SUPPRESSION_TERMS)) {
+    errors.push(`${rel}: C2C suppression condition must include ${REQUIRED_SUPPRESSION_TERMS.join(', ')}`);
   }
   if (!html.includes("window['ga-disable-' + measurementId] = true")) {
     errors.push(`${rel}: C2C guard must set ga-disable measurement flag`);
@@ -135,10 +233,10 @@ function checkC2cPage(filePath, html) {
   if (!html.includes('window.urayahaAnalyticsSuppressed = true')) {
     errors.push(`${rel}: C2C guard must set urayahaAnalyticsSuppressed`);
   }
-  if (!html.includes(`src="${C2C_STATUS_SCRIPT}"`)) {
+  if (!hasScriptTagSrc(html, C2C_STATUS_SCRIPT)) {
     errors.push(`${rel}: C2C page must load ${C2C_STATUS_SCRIPT}`);
   }
-  if (html.includes(`src="/${C2C_STATUS_SCRIPT}"`)) {
+  if (hasScriptTagSrc(html, `/${C2C_STATUS_SCRIPT}`)) {
     errors.push(`${rel}: C2C status script must stay relative for GitHub Pages /portfolio/ deployment`);
   }
   if (!hasC2cGuardBeforeGa(html)) {
@@ -164,19 +262,25 @@ function checkB2bPage(filePath, html) {
   if (/if\s*\(\s*!productionHosts\.includes\(window\.location\.hostname\)\s*\)\s*return;/u.test(html)) {
     errors.push(`${rel}: B2B guard must not early-return before marking suppression`);
   }
-  if (!hasSuppressionCondition(html, ['!isProductionHost', 'shouldDisable', 'isOptedOut'])) {
-    errors.push(`${rel}: B2B suppression condition must include !isProductionHost, shouldDisable, and isOptedOut`);
+  if (!hasSuppressionCondition(html, REQUIRED_SUPPRESSION_TERMS)) {
+    errors.push(`${rel}: B2B suppression condition must include ${REQUIRED_SUPPRESSION_TERMS.join(', ')}`);
   }
   if (!html.includes('window.ezlizeAnalyticsSuppressed = true')) {
     errors.push(`${rel}: B2B guard must set ezlizeAnalyticsSuppressed`);
   }
+  if (scriptSrcValues(html).some((src) => isGtagScriptSrcForMeasurement(src, B2B_MEASUREMENT_ID))) {
+    errors.push(`${rel}: B2B GA script must be dynamically inserted after the suppression return, not loaded by a static script tag`);
+  }
   if (!hasB2bSuppressionReturnBeforeGtag(html)) {
     errors.push(`${rel}: B2B suppression block must return before dynamic gtag script insertion`);
   }
-  if (!html.includes(`src="${B2B_STATUS_SCRIPT}"`)) {
+  if (!hasScriptTagSrc(html, B2B_STATUS_SCRIPT)) {
     errors.push(`${rel}: B2B page must load ${B2B_STATUS_SCRIPT}`);
   }
-  if (/src="(?:\.\.\/)?analytics-self-access-status\.js"/u.test(html)) {
+  const invalidB2bStatusRefs = scriptSrcValues(html)
+    .filter((src) => src.includes('analytics-self-access-status.js')
+      && !scriptSrcMatches(src, B2B_STATUS_SCRIPT));
+  if (invalidB2bStatusRefs.length > 0) {
     errors.push(`${rel}: B2B status script must be root-absolute, not relative`);
   }
 
@@ -211,7 +315,7 @@ function checkStatusScript(filePath, html, expected) {
 const errors = [];
 
 const rootPages = rootHtmlFiles()
-  .map((filePath) => ({ filePath, html: read(filePath) }))
+  .map((filePath) => ({ filePath, html: read(filePath) }));
 const c2cPages = rootPages
   .filter(({ html }) => usesC2cMeasurement(html));
 const actualC2cNames = new Set(c2cPages.map(({ filePath }) => path.basename(filePath)));
@@ -270,7 +374,7 @@ errors.push(...checkStatusScript(
 
 const b2bStatusRefs = b2bPages
   .map((filePath) => read(filePath))
-  .reduce((sum, html) => sum + countMatches(html, /analytics-self-access-status\.js/gu), 0);
+  .reduce((sum, html) => sum + countScriptTagSrc(html, B2B_STATUS_SCRIPT), 0);
 
 if (b2bStatusRefs !== b2bPages.length) {
   errors.push(`B2B status script reference count mismatch: expected ${b2bPages.length}, found ${b2bStatusRefs}`);
