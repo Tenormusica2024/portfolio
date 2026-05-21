@@ -564,6 +564,17 @@
             margin-bottom: 1.5rem;
         }
 
+        .project-role-note {
+            margin: -0.35rem 0 1rem;
+            padding-left: 0.75rem;
+            border-left: 3px solid #111827;
+            color: #1f2937;
+            font-size: 0.9rem;
+            font-weight: 700;
+            line-height: 1.5;
+            letter-spacing: 0.02em;
+        }
+
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
@@ -1127,9 +1138,11 @@
                 music_project_title: "🎵 Alternative Rock - AI駆動による音楽制作プロジェクト",
                 music_project_desc: "Suno AI作曲 + Midjourney ビジュアル + Canva編集による統合制作ワークフロー実例。AIツール連携による効率的な音楽プロダクション。オルタナティブロックトラックとして制作。",
                 project_agent_trace_triage_title: "Agent Trace Triage",
-                project_agent_trace_triage_desc: "AIエージェント実行のトレース、スパン、ツール呼び出し、評価結果、ログを一画面で確認し、失敗原因と次の確認手順を切り分けるダッシュボード。public-safeなサンプルデータで、誤判定やfalse OK/false FAILを防ぐ運用トリアージ設計を示す。",
+                project_agent_trace_triage_role: "既存パネル: 実行ログの失敗原因トリアージ",
+                project_agent_trace_triage_desc: "AIエージェント実行後のトレース、スパン、ツール呼び出し、評価結果、ログを一画面で確認し、失敗原因と次の確認手順を切り分ける既存ダッシュボード。Runtime Flowとは別に、public-safeなサンプルデータで誤判定やfalse OK/false FAILを防ぐ運用トリアージ設計を示す。",
                 project_agent_runtime_flow_title: "AI Agent Runtime Flow",
-                project_agent_runtime_flow_desc: "複雑なAIエージェント内部処理を、Intent Parser / Planner / Retriever / Tool Selector などの依存関係・遅延・失敗から監視するv9版ダッシュボード。外部業務フローではなく、実行中のAI内部コンポーネント健全性、異常イベント、根本原因候補に絞って確認できる。",
+                project_agent_runtime_flow_role: "新規パネル: AI内部ワークフロー監視 / Runtime Flow",
+                project_agent_runtime_flow_desc: "複雑なAIエージェント内部処理を、Intent Parser / Planner / Retriever / Tool Selector などの依存関係・遅延・失敗から監視するv9版ダッシュボード。既存の実行トリアージとは別に、実行中のAI内部コンポーネント健全性、異常イベント、根本原因候補に絞って確認できる。",
                 project_flowchart_title: "Flowchart Hover Viewer",
                 project_flowchart_desc: "Mermaid.jsフローチャートをホバーで詳細表示できるインタラクティブビューワー。ノードにマウスオーバーで説明パネルが表示され、ドラッグ操作でレイアウト切り替えも可能。Glassmorphism UIによる美しいダークテーマを採用。単一HTMLファイルでオフライン動作。",
                 project_ai_adoption_title: "AI導入分析レポート",
@@ -1179,7 +1192,8 @@
                 project_doc_freshness_title: "Doc Freshness Analyzer",
                 project_doc_freshness_desc: "READMEやdocsの記載を実コード・repo構造・exports・routes・設定ファイルと照合し、古い手順や存在しないファイル参照、バージョン不一致を検出するドキュメント鮮度チェックツール。CIやPRレビューで使える修正候補つきレポートを生成。",
                 project_agent_workflow_reliability_title: "Agent Workflow Reliability Dashboard",
-                project_agent_workflow_reliability_desc: "AIエージェント開発ワークフローを、受付・計画・実行・評価・HITLレビュー・リリース・改善の流れで説明するpublic-safeな静的ダッシュボード。eval、traceability、rollback、人間レビューを可視化し、AI運用設計をポートフォリオ上で説明可能にする。",
+                project_agent_workflow_reliability_role: "既存パネル: 作業ワークフロー信頼性設計の説明",
+                project_agent_workflow_reliability_desc: "AIエージェント開発ワークフローを、受付・計画・実行・評価・レビュー・改善の流れで説明するpublic-safeな静的ダッシュボード。Runtime Flowのような内部コンポーネント監視ではなく、eval、traceability、rollback、レビュー境界を可視化し、AI運用設計をポートフォリオ上で説明可能にする。",
                 project_claude_worktree_title: "Claude Worktree Parallel Dev",
                 project_claude_worktree_desc: "Claude Codeの実装・コードレビュー・UI検証をGit Worktreeで物理的に分離し、並列に進める開発ワークフロー。main作業、レビュー専用worktree、UI検証専用worktreeを分けることで、レビュー待ち・競合・目視確認漏れを減らす。",
                 project_x_bookmark_title: "X Bookmark Knowledge Pack",
@@ -1255,9 +1269,11 @@
                 music_project_title: "🎵 Alternative Rock - AI-Driven Music Production Project",
                 music_project_desc: "Integrated production workflow example with Suno AI composition + Midjourney visuals + Canva editing. Efficient music production through AI tool integration. Achieved high-quality alternative rock track as finished work.",
                 project_agent_trace_triage_title: "Agent Trace Triage Console",
-                project_agent_trace_triage_desc: "Dashboard for triaging AI-agent execution traces, spans, tool calls, evaluations, and logs in one screen. It uses public-safe sample data to show how an operations team can isolate failure causes, choose the next check, and reduce false OK / false FAIL decisions.",
+                project_agent_trace_triage_role: "Existing panel: trace and failure-cause triage",
+                project_agent_trace_triage_desc: "Dashboard for triaging AI-agent execution traces, spans, tool calls, evaluations, and logs after a run. It stays separate from Runtime Flow: this panel focuses on failure-cause isolation, next checks, and reducing false OK / false FAIL decisions with public-safe sample data.",
                 project_agent_runtime_flow_title: "AI Agent Runtime Flow",
-                project_agent_runtime_flow_desc: "v9 dashboard focused on runtime observability inside complex AI-agent workflows. It tracks dependency flow, latency, retries, failures, component health, anomaly events, and root-cause candidates without turning the screen into a generic business-process board.",
+                project_agent_runtime_flow_role: "New panel: internal AI-agent runtime flow",
+                project_agent_runtime_flow_desc: "v9 dashboard focused on runtime observability inside complex AI-agent workflows. It tracks dependency flow, latency, retries, failures, component health, anomaly events, and root-cause candidates as a separate panel from the existing trace-triage dashboard.",
                 project_flowchart_title: "Flowchart Hover Viewer",
                 project_flowchart_desc: "Interactive viewer for inspecting Mermaid.js flowcharts with hover details. Mouse over a node to open an explanation panel, and drag the canvas to adjust the layout. Uses a polished dark glassmorphism UI and runs offline as a single HTML file.",
                 project_ai_adoption_title: "AI Adoption Analysis Report",
@@ -1307,7 +1323,8 @@
                 project_doc_freshness_title: "Doc Freshness Analyzer",
                 project_doc_freshness_desc: "Documentation freshness checker that verifies README and docs claims against the real codebase, repository structure, exports, routes, and config files. It detects stale setup steps, missing file references, and version mismatches, then produces actionable reports suitable for CI or PR review.",
                 project_agent_workflow_reliability_title: "Agent Workflow Reliability Dashboard",
-                project_agent_workflow_reliability_desc: "Public-safe static dashboard that explains AI-agent development workflow reliability from intake, planning, execution, eval, HITL review, release, and improvement. It visualizes evals, traceability, rollback, and human review so agent operations design can be shown clearly in a portfolio.",
+                project_agent_workflow_reliability_role: "Existing panel: workflow reliability design",
+                project_agent_workflow_reliability_desc: "Public-safe static dashboard that explains AI-agent workflow reliability across intake, planning, execution, eval, review boundaries, and improvement. Unlike Runtime Flow's internal component monitor, it shows evals, traceability, rollback, and review boundaries as an operations-design proof.",
                 project_claude_worktree_title: "Claude Worktree Parallel Dev",
                 project_claude_worktree_desc: "Git Worktree-based AI development workflow that physically separates Claude Code implementation, code review, and UI verification so they can run in parallel. It reduces review blocking, branch conflicts, and missed visual checks by keeping main work, review worktree, and UI verification worktree isolated.",
                 project_x_bookmark_title: "X Bookmark Knowledge Pack",
@@ -1655,8 +1672,9 @@
                      alt="AI Agent Runtime Flow: AIエージェント内部処理の依存関係・遅延・失敗を監視"
                      class="project-screenshot localized-project-image"
                      loading="lazy">
+                <p class="project-role-note" data-i18n="project_agent_runtime_flow_role">新規パネル: AI内部ワークフロー監視 / Runtime Flow</p>
                 <p class="project-description" data-i18n="project_agent_runtime_flow_desc">
-                    複雑なAIエージェント内部処理を、Intent Parser / Planner / Retriever / Tool Selector などの依存関係・遅延・失敗から監視するv9版ダッシュボード。外部業務フローではなく、実行中のAI内部コンポーネント健全性、異常イベント、根本原因候補に絞って確認できる。
+                    複雑なAIエージェント内部処理を、Intent Parser / Planner / Retriever / Tool Selector などの依存関係・遅延・失敗から監視するv9版ダッシュボード。既存の実行トリアージとは別に、実行中のAI内部コンポーネント健全性、異常イベント、根本原因候補に絞って確認できる。
                 </p>
                 <div class="tech-stack">
                     <span class="tech-tag">Agent Ops</span>
@@ -1690,8 +1708,9 @@
                      alt="Agent Trace Triage Console: AIエージェント実行トレースの失敗原因を可視化"
                      class="project-screenshot localized-project-image"
                      loading="lazy">
+                <p class="project-role-note" data-i18n="project_agent_trace_triage_role">既存パネル: 実行ログの失敗原因トリアージ</p>
                 <p class="project-description" data-i18n="project_agent_trace_triage_desc">
-                    AIエージェント実行のトレース、スパン、ツール呼び出し、評価結果、ログを一画面で確認し、失敗原因と次の確認手順を切り分けるダッシュボード。public-safeなサンプルデータで、誤判定やfalse OK/false FAILを防ぐ運用トリアージ設計を示す。
+                    AIエージェント実行後のトレース、スパン、ツール呼び出し、評価結果、ログを一画面で確認し、失敗原因と次の確認手順を切り分ける既存ダッシュボード。Runtime Flowとは別に、public-safeなサンプルデータで誤判定やfalse OK/false FAILを防ぐ運用トリアージ設計を示す。
                 </p>
                 <div class="tech-stack">
                     <span class="tech-tag">Trace Triage</span>
@@ -2496,8 +2515,9 @@
                      alt="Agent Workflow Reliability Dashboard: AIエージェント作業を観測・評価・レビュー可能にする"
                      class="project-screenshot localized-project-image"
                      loading="lazy">
+                <p class="project-role-note" data-i18n="project_agent_workflow_reliability_role">既存パネル: 作業ワークフロー信頼性設計の説明</p>
                 <p class="project-description" data-i18n="project_agent_workflow_reliability_desc">
-                    AIエージェント開発ワークフローを、受付・計画・実行・評価・HITLレビュー・リリース・改善の流れで説明するpublic-safeな静的ダッシュボード。eval、traceability、rollback、人間レビューを可視化し、AI運用設計をポートフォリオ上で説明可能にする。
+                    AIエージェント開発ワークフローを、受付・計画・実行・評価・レビュー・改善の流れで説明するpublic-safeな静的ダッシュボード。Runtime Flowのような内部コンポーネント監視ではなく、eval、traceability、rollback、レビュー境界を可視化し、AI運用設計をポートフォリオ上で説明可能にする。
                 </p>
                 <div class="tech-stack">
                     <span class="tech-tag">Agent Operations</span>
