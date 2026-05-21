@@ -1128,6 +1128,8 @@
                 music_project_desc: "Suno AI作曲 + Midjourney ビジュアル + Canva編集による統合制作ワークフロー実例。AIツール連携による効率的な音楽プロダクション。オルタナティブロックトラックとして制作。",
                 project_agent_trace_triage_title: "Agent Trace Triage",
                 project_agent_trace_triage_desc: "AIエージェント実行のトレース、スパン、ツール呼び出し、評価結果、ログを一画面で確認し、失敗原因と次の確認手順を切り分けるダッシュボード。public-safeなサンプルデータで、誤判定やfalse OK/false FAILを防ぐ運用トリアージ設計を示す。",
+                project_agent_runtime_flow_title: "AI Agent Runtime Flow",
+                project_agent_runtime_flow_desc: "複雑なAIエージェント内部処理を、Intent Parser / Planner / Retriever / Tool Selector などの依存関係・遅延・失敗から監視するv9版ダッシュボード。外部業務フローではなく、実行中のAI内部コンポーネント健全性、異常イベント、根本原因候補に絞って確認できる。",
                 project_flowchart_title: "Flowchart Hover Viewer",
                 project_flowchart_desc: "Mermaid.jsフローチャートをホバーで詳細表示できるインタラクティブビューワー。ノードにマウスオーバーで説明パネルが表示され、ドラッグ操作でレイアウト切り替えも可能。Glassmorphism UIによる美しいダークテーマを採用。単一HTMLファイルでオフライン動作。",
                 project_ai_adoption_title: "AI導入分析レポート",
@@ -1254,6 +1256,8 @@
                 music_project_desc: "Integrated production workflow example with Suno AI composition + Midjourney visuals + Canva editing. Efficient music production through AI tool integration. Achieved high-quality alternative rock track as finished work.",
                 project_agent_trace_triage_title: "Agent Trace Triage Console",
                 project_agent_trace_triage_desc: "Dashboard for triaging AI-agent execution traces, spans, tool calls, evaluations, and logs in one screen. It uses public-safe sample data to show how an operations team can isolate failure causes, choose the next check, and reduce false OK / false FAIL decisions.",
+                project_agent_runtime_flow_title: "AI Agent Runtime Flow",
+                project_agent_runtime_flow_desc: "v9 dashboard focused on runtime observability inside complex AI-agent workflows. It tracks dependency flow, latency, retries, failures, component health, anomaly events, and root-cause candidates without turning the screen into a generic business-process board.",
                 project_flowchart_title: "Flowchart Hover Viewer",
                 project_flowchart_desc: "Interactive viewer for inspecting Mermaid.js flowcharts with hover details. Mouse over a node to open an explanation panel, and drag the canvas to adjust the layout. Uses a polished dark glassmorphism UI and runs offline as a single HTML file.",
                 project_ai_adoption_title: "AI Adoption Analysis Report",
@@ -1638,6 +1642,41 @@
     <div class="container">
         <h2 id="section-data-viz" class="section-title" data-i18n="section_data_viz">データ可視化・分析プロジェクト</h2>
         <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-i18n="project_agent_runtime_flow_title">AI Agent Runtime Flow</h3>
+                    <span class="project-badge">NEW</span>
+                </div>
+                <img src="images/repo-heroes/agent-runtime-flow-dashboard-v9.webp"
+                     data-src-ja="images/repo-heroes/agent-runtime-flow-dashboard-v9.webp"
+                     data-src-en="images/repo-heroes/agent-runtime-flow-dashboard-v9.webp"
+                     data-alt-ja="AI Agent Runtime Flow: AIエージェント内部処理の依存関係・遅延・失敗を監視"
+                     data-alt-en="AI Agent Runtime Flow: monitor internal AI-agent dependencies, latency, and failures"
+                     alt="AI Agent Runtime Flow: AIエージェント内部処理の依存関係・遅延・失敗を監視"
+                     class="project-screenshot localized-project-image"
+                     loading="lazy">
+                <p class="project-description" data-i18n="project_agent_runtime_flow_desc">
+                    複雑なAIエージェント内部処理を、Intent Parser / Planner / Retriever / Tool Selector などの依存関係・遅延・失敗から監視するv9版ダッシュボード。外部業務フローではなく、実行中のAI内部コンポーネント健全性、異常イベント、根本原因候補に絞って確認できる。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Agent Ops</span>
+                    <span class="tech-tag">Runtime Flow</span>
+                    <span class="tech-tag">Observability</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">GitHub Pages</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://tenormusica2024.github.io/agent-workflow-reliability-dashboard-pages/?utm_source=portfolio&utm_medium=project_card&utm_campaign=agent_runtime_flow_live"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_live', 'event_label': 'Agent_Runtime_Flow', 'value': 1});">Live Demo</a>
+                    <a href="https://github.com/Tenormusica2024/agent-workflow-reliability-dashboard-pages?utm_source=portfolio&utm_medium=project_card&utm_campaign=agent_runtime_flow_github"
+                       class="project-link"
+                       target="_blank" rel="noopener noreferrer"
+                       onclick="gtag('event', 'cta_click', {'event_category': 'project_github', 'event_label': 'Agent_Runtime_Flow', 'value': 1});">GitHub</a>
+                </div>
+            </div>
+
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title" data-i18n="project_agent_trace_triage_title">Agent Trace Triage</h3>
