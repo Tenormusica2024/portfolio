@@ -1,6 +1,6 @@
 {
   "schema_version": "2026-05-13.service-rankings.v2",
-  "generated_at": "2026-10-10T00:21:25+00:00",
+  "generated_at": "2026-10-10T23:55:15+00:00",
   "project": "AI Tool Trend Analysis",
   "ranking_policy": {
     "primary_scope": "AI generation services plus AI coding agent CLI momentum/share proxy",
@@ -20,42 +20,42 @@
       "name": "Artificial Analysis Text to Image Leaderboard",
       "url": "https://artificialanalysis.ai/image/leaderboard/text-to-image/",
       "usage": "Blind human-preference Elo ranking for image generation services/models.",
-      "checked_at": "2026-10-10T00:21:25+00:00"
+      "checked_at": "2026-10-10T23:55:15+00:00"
     },
     {
       "key": "aa_video_t2v",
       "name": "Artificial Analysis Text to Video Leaderboard",
       "url": "https://artificialanalysis.ai/video/leaderboard/text-to-video",
       "usage": "Blind human-preference Elo ranking for text-to-video generation.",
-      "checked_at": "2026-10-10T00:21:25+00:00"
+      "checked_at": "2026-10-10T23:55:15+00:00"
     },
     {
       "key": "aa_video_i2v",
       "name": "Artificial Analysis Image to Video Leaderboard",
       "url": "https://artificialanalysis.ai/video/leaderboard/image-to-video",
       "usage": "Blind human-preference Elo ranking for image-to-video generation, including with-audio FAQ rankings.",
-      "checked_at": "2026-10-10T00:21:25+00:00"
+      "checked_at": "2026-10-10T23:55:15+00:00"
     },
     {
       "key": "openai_gpt_image_2",
       "name": "OpenAI GPT Image 2 model docs",
       "url": "https://developers.openai.com/api/docs/models/gpt-image-2",
       "usage": "Official model availability and capability reference for GPT Image 2.",
-      "checked_at": "2026-10-10T00:21:25+00:00"
+      "checked_at": "2026-10-10T23:55:15+00:00"
     },
     {
       "key": "bytedance_seedance_2",
       "name": "ByteDance Seedance 2.0 official page",
       "url": "https://seed.bytedance.com/en/seedance2_0",
       "usage": "Official model capability and multimodal service reference for Seedance 2.0.",
-      "checked_at": "2026-10-10T00:21:25+00:00"
+      "checked_at": "2026-10-10T23:55:15+00:00"
     },
     {
       "key": "npm_downloads_api",
       "name": "npm Downloads API",
       "url": "https://api.npmjs.org/downloads/range/",
       "usage": "Objective package downloads for CLI coding agents. The dashboard uses 30 complete days of daily downloads and ranks by median daily share to reduce release/automation spike distortion. This is a momentum/share proxy, not exact active users.",
-      "checked_at": "2026-10-10T00:21:25+00:00"
+      "checked_at": "2026-10-10T23:55:15+00:00"
     }
   ],
   "categories": [
@@ -385,8 +385,8 @@
       "metric": "npm_30_complete_day_median_daily_download_share_within_tracked_cli_agents",
       "period_start": "2026-09-10",
       "period_end": "2026-10-09",
-      "total_median_daily_downloads": 6137523,
-      "total_downloads_last_month_raw": 161963758,
+      "total_median_daily_downloads": 6296510,
+      "total_downloads_last_month_raw": 170433183,
       "query_errors": [],
       "items": [
         {
@@ -397,16 +397,16 @@
           "url": "https://www.npmjs.com/package/@openai/codex",
           "package": "@openai/codex",
           "metric_label": "% of tracked median daily npm downloads",
-          "metric_value": 56.6,
-          "metric_value_display": "56.6%",
-          "median_daily_downloads": 3475924,
-          "average_daily_downloads": 3131974,
-          "max_daily_downloads": 4483448,
-          "downloads_last_month": 93080104,
-          "raw_last_month_share_pct": 57.5,
+          "metric_value": 56.3,
+          "metric_value_display": "56.3%",
+          "median_daily_downloads": 3544341,
+          "average_daily_downloads": 3282118,
+          "max_daily_downloads": 4504319,
+          "downloads_last_month": 98463525,
+          "raw_last_month_share_pct": 57.8,
           "secondary_metric_label": "median daily npm downloads",
-          "secondary_metric_display": "3,475,924",
-          "metric_detail": "3,475,924 median daily npm downloads from 2026-09-10 to 2026-10-09. Raw npm last-month total was 93,080,104 (57.5% of tracked raw total), but raw totals can be distorted by release/update automation spikes, so median daily share is used for ranking.",
+          "secondary_metric_display": "3,544,341",
+          "metric_detail": "3,544,341 median daily npm downloads from 2026-09-10 to 2026-10-09. Raw npm last-month total was 98,463,525 (57.8% of tracked raw total), but raw totals can be distorted by release/update automation spikes, so median daily share is used for ranking.",
           "availability": "npm CLI package",
           "source_refs": [
             "npm_downloads_api"
@@ -426,16 +426,16 @@
           "url": "https://www.npmjs.com/package/@anthropic-ai/claude-code",
           "package": "@anthropic-ai/claude-code",
           "metric_label": "% of tracked median daily npm downloads",
-          "metric_value": 35.4,
-          "metric_value_display": "35.4%",
-          "median_daily_downloads": 2170692,
-          "average_daily_downloads": 1853379,
+          "metric_value": 35.8,
+          "metric_value_display": "35.8%",
+          "median_daily_downloads": 2255151,
+          "average_daily_downloads": 1935992,
           "max_daily_downloads": 3178059,
-          "downloads_last_month": 55552211,
-          "raw_last_month_share_pct": 34.3,
+          "downloads_last_month": 58079751,
+          "raw_last_month_share_pct": 34.1,
           "secondary_metric_label": "median daily npm downloads",
-          "secondary_metric_display": "2,170,692",
-          "metric_detail": "2,170,692 median daily npm downloads from 2026-09-10 to 2026-10-09. Raw npm last-month total was 55,552,211 (34.3% of tracked raw total), but raw totals can be distorted by release/update automation spikes, so median daily share is used for ranking.",
+          "secondary_metric_display": "2,255,151",
+          "metric_detail": "2,255,151 median daily npm downloads from 2026-09-10 to 2026-10-09. Raw npm last-month total was 58,079,751 (34.1% of tracked raw total), but raw totals can be distorted by release/update automation spikes, so median daily share is used for ranking.",
           "availability": "npm CLI package",
           "source_refs": [
             "npm_downloads_api"
@@ -457,14 +457,14 @@
           "metric_label": "% of tracked median daily npm downloads",
           "metric_value": 6.7,
           "metric_value_display": "6.7%",
-          "median_daily_downloads": 413653,
-          "average_daily_downloads": 377038,
+          "median_daily_downloads": 419575,
+          "average_daily_downloads": 391543,
           "max_daily_downloads": 632159,
-          "downloads_last_month": 11263464,
-          "raw_last_month_share_pct": 7.0,
+          "downloads_last_month": 11746297,
+          "raw_last_month_share_pct": 6.9,
           "secondary_metric_label": "median daily npm downloads",
-          "secondary_metric_display": "413,653",
-          "metric_detail": "413,653 median daily npm downloads from 2026-09-10 to 2026-10-09. Raw npm last-month total was 11,263,464 (7.0% of tracked raw total), but raw totals can be distorted by release/update automation spikes, so median daily share is used for ranking.",
+          "secondary_metric_display": "419,575",
+          "metric_detail": "419,575 median daily npm downloads from 2026-09-10 to 2026-10-09. Raw npm last-month total was 11,746,297 (6.9% of tracked raw total), but raw totals can be distorted by release/update automation spikes, so median daily share is used for ranking.",
           "availability": "npm CLI package",
           "source_refs": [
             "npm_downloads_api"
@@ -485,14 +485,14 @@
           "metric_label": "% of tracked median daily npm downloads",
           "metric_value": 1.0,
           "metric_value_display": "1.0%",
-          "median_daily_downloads": 64438,
-          "average_daily_downloads": 56382,
+          "median_daily_downloads": 64540,
+          "average_daily_downloads": 58886,
           "max_daily_downloads": 89578,
-          "downloads_last_month": 1703850,
-          "raw_last_month_share_pct": 1.1,
+          "downloads_last_month": 1766577,
+          "raw_last_month_share_pct": 1.0,
           "secondary_metric_label": "median daily npm downloads",
-          "secondary_metric_display": "64,438",
-          "metric_detail": "64,438 median daily npm downloads from 2026-09-10 to 2026-10-09. Raw npm last-month total was 1,703,850 (1.1% of tracked raw total), but raw totals can be distorted by release/update automation spikes, so median daily share is used for ranking.",
+          "secondary_metric_display": "64,540",
+          "metric_detail": "64,540 median daily npm downloads from 2026-09-10 to 2026-10-09. Raw npm last-month total was 1,766,577 (1.0% of tracked raw total), but raw totals can be distorted by release/update automation spikes, so median daily share is used for ranking.",
           "availability": "npm CLI package",
           "source_refs": [
             "npm_downloads_api"
@@ -515,13 +515,13 @@
           "metric_value": 0.2,
           "metric_value_display": "0.2%",
           "median_daily_downloads": 11888,
-          "average_daily_downloads": 10899,
+          "average_daily_downloads": 11247,
           "max_daily_downloads": 19822,
-          "downloads_last_month": 329303,
+          "downloads_last_month": 337404,
           "raw_last_month_share_pct": 0.2,
           "secondary_metric_label": "median daily npm downloads",
           "secondary_metric_display": "11,888",
-          "metric_detail": "11,888 median daily npm downloads from 2026-09-10 to 2026-10-09. Raw npm last-month total was 329,303 (0.2% of tracked raw total), but raw totals can be distorted by release/update automation spikes, so median daily share is used for ranking.",
+          "metric_detail": "11,888 median daily npm downloads from 2026-09-10 to 2026-10-09. Raw npm last-month total was 337,404 (0.2% of tracked raw total), but raw totals can be distorted by release/update automation spikes, so median daily share is used for ranking.",
           "availability": "npm CLI package",
           "source_refs": [
             "npm_downloads_api"
@@ -542,14 +542,14 @@
           "metric_label": "% of tracked median daily npm downloads",
           "metric_value": 0.0,
           "metric_value_display": "0.0%",
-          "median_daily_downloads": 927,
-          "average_daily_downloads": 1191,
+          "median_daily_downloads": 1014,
+          "average_daily_downloads": 1321,
           "max_daily_downloads": 4265,
-          "downloads_last_month": 34826,
+          "downloads_last_month": 39629,
           "raw_last_month_share_pct": 0.0,
           "secondary_metric_label": "median daily npm downloads",
-          "secondary_metric_display": "927",
-          "metric_detail": "927 median daily npm downloads from 2026-09-10 to 2026-10-09. Raw npm last-month total was 34,826 (0.0% of tracked raw total), but raw totals can be distorted by release/update automation spikes, so median daily share is used for ranking.",
+          "secondary_metric_display": "1,014",
+          "metric_detail": "1,014 median daily npm downloads from 2026-09-10 to 2026-10-09. Raw npm last-month total was 39,629 (0.0% of tracked raw total), but raw totals can be distorted by release/update automation spikes, so median daily share is used for ranking.",
           "availability": "npm CLI package",
           "source_refs": [
             "npm_downloads_api"
