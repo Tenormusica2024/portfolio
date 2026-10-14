@@ -1,17 +1,17 @@
 {
-  "collected_at": "2026-10-13T06:12:32.797735",
+  "collected_at": "2026-10-14T04:14:59.820758",
   "period": {
-    "start_date": "2026-09-13",
-    "end_date": "2026-10-13"
+    "start_date": "2026-09-14",
+    "end_date": "2026-10-14"
   },
   "summary": {
-    "total_users": 707,
-    "total_sessions": 791,
-    "total_page_views": 851,
-    "unique_countries": 13,
+    "total_users": 701,
+    "total_sessions": 789,
+    "total_page_views": 842,
+    "unique_countries": 14,
     "unique_pages": 46,
     "unique_sources": 19,
-    "avg_page_views_per_session": 1.08
+    "avg_page_views_per_session": 1.07
   },
   "details": [
     {
@@ -133,21 +133,6 @@
       "sessions": 4,
       "page_views": 4,
       "avg_session_duration": 227.63271975
-    },
-    {
-      "date": "20260913",
-      "page_path": "/tenormusica/articles/remotion-agent-skills-video-ai-2026",
-      "page_title": "Remotion Agent Skillsの本当の強みは「AIが動画の中身を理解できる」こと",
-      "country": "Japan",
-      "session_source": "google",
-      "page_referrer": "https://www.google.com/",
-      "landing_page": "/tenormusica/articles/remotion-agent-skills-video-ai-2026",
-      "device_category": "desktop",
-      "browser": "Chrome",
-      "active_users": 3,
-      "sessions": 3,
-      "page_views": 4,
-      "avg_session_duration": 95.46293066666668
     },
     {
       "date": "20260914",
@@ -373,21 +358,6 @@
       "sessions": 3,
       "page_views": 3,
       "avg_session_duration": 11.619766333333333
-    },
-    {
-      "date": "20260913",
-      "page_path": "/tenormusica/articles/claude-skill-creator-evals-2026",
-      "page_title": "スキルクリエイターにeval自動生成が追加 — Agent Skillsのベンチマークとモデル更新対応が変わる",
-      "country": "Japan",
-      "session_source": "google",
-      "page_referrer": "https://www.google.com/",
-      "landing_page": "/tenormusica/articles/claude-skill-creator-evals-2026",
-      "device_category": "desktop",
-      "browser": "Chrome",
-      "active_users": 2,
-      "sessions": 2,
-      "page_views": 3,
-      "avg_session_duration": 33.4576405
     },
     {
       "date": "20260914",
@@ -1080,169 +1050,19 @@
       "avg_session_duration": 452.662241
     },
     {
-      "date": "20260913",
+      "date": "20261013",
       "page_path": "/tenormusica/articles/ai-app-builder-comparison-2026",
       "page_title": "AIフロントエンドツール5選徹底比較 Lovable/v0/Stitch/Figma MCP/Pencil.dev【2026】",
       "country": "Japan",
       "session_source": "google",
       "page_referrer": "https://www.google.com/",
       "landing_page": "/tenormusica/articles/ai-app-builder-comparison-2026",
-      "device_category": "mobile",
-      "browser": "Safari",
-      "active_users": 1,
-      "sessions": 1,
-      "page_views": 1,
-      "avg_session_duration": 287.781896
-    },
-    {
-      "date": "20260913",
-      "page_path": "/tenormusica/articles/anthropic-ai-sre-limits-qcon-2026",
-      "page_title": "AnthropicがAI SREの限界を公式認定。「相関関係を因果関係と誤認し続ける」",
-      "country": "Japan",
-      "session_source": "b.hatena.ne.jp",
-      "page_referrer": "https://b.hatena.ne.jp/",
-      "landing_page": "/tenormusica/articles/anthropic-ai-sre-limits-qcon-2026",
       "device_category": "desktop",
       "browser": "Chrome",
-      "active_users": 1,
-      "sessions": 1,
+      "active_users": 2,
+      "sessions": 2,
       "page_views": 2,
-      "avg_session_duration": 5.878351
-    },
-    {
-      "date": "20260913",
-      "page_path": "/tenormusica/articles/chatgpt-memory-no-rag-2025",
-      "page_title": "ChatGPTの記憶システムはRAGを使っていなかった - 4層アーキテクチャの衝撃",
-      "country": "Japan",
-      "session_source": "(direct)",
-      "page_referrer": "",
-      "landing_page": "/tenormusica/articles/chatgpt-memory-no-rag-2025",
-      "device_category": "mobile",
-      "browser": "Safari",
-      "active_users": 1,
-      "sessions": 1,
-      "page_views": 1,
-      "avg_session_duration": 0.0
-    },
-    {
-      "date": "20260913",
-      "page_path": "/tenormusica/articles/claude-code-headless-subscription-discovery-2025",
-      "page_title": "Claude CodeでSkillsを定期実行で自動化する方法",
-      "country": "Japan",
-      "session_source": "google",
-      "page_referrer": "https://www.google.com/",
-      "landing_page": "/tenormusica/articles/claude-code-headless-subscription-discovery-2025",
-      "device_category": "desktop",
-      "browser": "Chrome",
-      "active_users": 1,
-      "sessions": 1,
-      "page_views": 1,
-      "avg_session_duration": 21.995661
-    },
-    {
-      "date": "20260913",
-      "page_path": "/tenormusica/articles/claude-code-web-release-2025-v2",
-      "page_title": "Claude Code がウェブ・iOS版を正式リリース！CLI版との違いなど",
-      "country": "Japan",
-      "session_source": "google",
-      "page_referrer": "https://www.google.com/",
-      "landing_page": "/tenormusica/articles/claude-code-web-release-2025-v2",
-      "device_category": "desktop",
-      "browser": "Chrome",
-      "active_users": 1,
-      "sessions": 1,
-      "page_views": 1,
-      "avg_session_duration": 13.974945
-    },
-    {
-      "date": "20260913",
-      "page_path": "/tenormusica/articles/claude-code-web-release-2025-v2",
-      "page_title": "Claude Code がウェブ・iOS版を正式リリース！CLI版との違いなど",
-      "country": "Japan",
-      "session_source": "yahoo",
-      "page_referrer": "https://search.yahoo.co.jp/",
-      "landing_page": "/tenormusica/articles/claude-code-web-release-2025-v2",
-      "device_category": "mobile",
-      "browser": "Safari",
-      "active_users": 1,
-      "sessions": 1,
-      "page_views": 1,
-      "avg_session_duration": 24.667253
-    },
-    {
-      "date": "20260913",
-      "page_path": "/tenormusica/articles/claude-mem-endless-mode-context-limit-2025",
-      "page_title": "Claude Codeの50回制限を20倍に拡張するclaude-mem - コンテキスト枯渇問題の解決策",
-      "country": "Japan",
-      "session_source": "google",
-      "page_referrer": "https://www.google.com/",
-      "landing_page": "/tenormusica/articles/claude-mem-endless-mode-context-limit-2025",
-      "device_category": "mobile",
-      "browser": "Chrome",
-      "active_users": 1,
-      "sessions": 1,
-      "page_views": 2,
-      "avg_session_duration": 113.611334
-    },
-    {
-      "date": "20260913",
-      "page_path": "/tenormusica/articles/claude-skill-creator-evals-2026",
-      "page_title": "スキルクリエイターにeval自動生成が追加 — Agent Skillsのベンチマークとモデル更新対応が変わる",
-      "country": "Japan",
-      "session_source": "google",
-      "page_referrer": "https://www.google.com/",
-      "landing_page": "(not set)",
-      "device_category": "desktop",
-      "browser": "Chrome",
-      "active_users": 1,
-      "sessions": 1,
-      "page_views": 0,
-      "avg_session_duration": 0.0
-    },
-    {
-      "date": "20260913",
-      "page_path": "/tenormusica/articles/codex-vs-claude-code-review-advantages-2026",
-      "page_title": "Codex vs Claude Code：コードレビューでCodexが選ばれる4つの理由",
-      "country": "Japan",
-      "session_source": "google",
-      "page_referrer": "https://www.google.com/",
-      "landing_page": "/tenormusica/articles/codex-vs-claude-code-review-advantages-2026",
-      "device_category": "mobile",
-      "browser": "Safari",
-      "active_users": 1,
-      "sessions": 1,
-      "page_views": 1,
-      "avg_session_duration": 0.0
-    },
-    {
-      "date": "20260913",
-      "page_path": "/tenormusica/articles/dev-browser-claude-skill-persistent-state-2025",
-      "page_title": "Playwrightの永続的課題を解決するdev-browser - スクリプト実行ごとのブラウザ状態リセット問題",
-      "country": "Japan",
-      "session_source": "google",
-      "page_referrer": "https://www.google.com/",
-      "landing_page": "/tenormusica/articles/dev-browser-claude-skill-persistent-state-2025",
-      "device_category": "desktop",
-      "browser": "Chrome",
-      "active_users": 1,
-      "sessions": 1,
-      "page_views": 1,
-      "avg_session_duration": 51.67009
-    },
-    {
-      "date": "20260913",
-      "page_path": "/tenormusica/articles/gpt52-claude-audience-awareness-2026",
-      "page_title": "GPT-5.2 vs Claude Opus 4.5、なぜ「伝わる」感覚が違うのか【設計思想から比較】",
-      "country": "Japan",
-      "session_source": "(direct)",
-      "page_referrer": "",
-      "landing_page": "/tenormusica/articles/gpt52-claude-audience-awareness-2026",
-      "device_category": "desktop",
-      "browser": "Edge",
-      "active_users": 1,
-      "sessions": 1,
-      "page_views": 1,
-      "avg_session_duration": 0.0
+      "avg_session_duration": 12.5141545
     },
     {
       "date": "20260914",
@@ -8911,6 +8731,36 @@
     },
     {
       "date": "20261013",
+      "page_path": "/",
+      "page_title": "あおぞら内科クリニック | 柏駅西口 徒歩3分",
+      "country": "Germany",
+      "session_source": "(not set)",
+      "page_referrer": "",
+      "landing_page": "",
+      "device_category": "desktop",
+      "browser": "Chrome",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20261013",
+      "page_path": "/",
+      "page_title": "業務自動化・問い合わせ整理・Web開発 | Ezlize / 幸田 晃典",
+      "country": "Taiwan",
+      "session_source": "(direct)",
+      "page_referrer": "",
+      "landing_page": "/",
+      "device_category": "desktop",
+      "browser": "Chrome",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20261013",
       "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
       "page_title": "Affinityが完全無料化 - Canvaの「基本無料・AI有料」戦略",
       "country": "Japan",
@@ -8971,6 +8821,36 @@
     },
     {
       "date": "20261013",
+      "page_path": "/tenormusica/articles/anthropic-ai-engineering-deep-dive-2026",
+      "page_title": "Anthropic社内調査が明かすAI時代のエンジニアリング：生産性革命の裏側にある技能喪失・雇用不安・評価法の進化",
+      "country": "United States",
+      "session_source": "(direct)",
+      "page_referrer": "",
+      "landing_page": "/tenormusica/articles/anthropic-ai-engineering-deep-dive-2026",
+      "device_category": "desktop",
+      "browser": "Chrome",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20261013",
+      "page_path": "/tenormusica/articles/anthropic-ai-sre-limits-qcon-2026",
+      "page_title": "AnthropicがAI SREの限界を公式認定。「相関関係を因果関係と誤認し続ける」",
+      "country": "Japan",
+      "session_source": "google",
+      "page_referrer": "https://www.google.com/",
+      "landing_page": "/tenormusica/articles/anthropic-ai-sre-limits-qcon-2026",
+      "device_category": "desktop",
+      "browser": "Chrome",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 184.352132
+    },
+    {
+      "date": "20261013",
       "page_path": "/tenormusica/articles/anthropic-ai-sre-limits-qcon-2026",
       "page_title": "AnthropicがAI SREの限界を公式認定。「相関関係を因果関係と誤認し続ける」",
       "country": "Singapore",
@@ -9016,6 +8896,36 @@
     },
     {
       "date": "20261013",
+      "page_path": "/tenormusica/articles/claude-mem-endless-mode-context-limit-2025",
+      "page_title": "Claude Codeの50回制限を20倍に拡張するclaude-mem - コンテキスト枯渇問題の解決策",
+      "country": "Japan",
+      "session_source": "google",
+      "page_referrer": "https://www.google.com/",
+      "landing_page": "/tenormusica/articles/claude-mem-endless-mode-context-limit-2025",
+      "device_category": "mobile",
+      "browser": "Chrome",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 18.359394
+    },
+    {
+      "date": "20261013",
+      "page_path": "/tenormusica/articles/claude-skill-creator-evals-2026",
+      "page_title": "スキルクリエイターにeval自動生成が追加 — Agent Skillsのベンチマークとモデル更新対応が変わる",
+      "country": "Japan",
+      "session_source": "google",
+      "page_referrer": "https://www.google.com/",
+      "landing_page": "/tenormusica/articles/claude-skill-creator-evals-2026",
+      "device_category": "desktop",
+      "browser": "Chrome",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20261013",
       "page_path": "/tenormusica/articles/codex-vs-claude-code-review-advantages-2026",
       "page_title": "Codex vs Claude Code：コードレビューでCodexが選ばれる4つの理由",
       "country": "Japan",
@@ -9028,6 +8938,36 @@
       "sessions": 1,
       "page_views": 2,
       "avg_session_duration": 900.711058
+    },
+    {
+      "date": "20261013",
+      "page_path": "/tenormusica/articles/dev-browser-claude-skill-persistent-state-2025",
+      "page_title": "Playwrightの永続的課題を解決するdev-browser - スクリプト実行ごとのブラウザ状態リセット問題",
+      "country": "Japan",
+      "session_source": "google",
+      "page_referrer": "https://www.google.com/",
+      "landing_page": "/tenormusica/articles/dev-browser-claude-skill-persistent-state-2025",
+      "device_category": "desktop",
+      "browser": "Chrome",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20261013",
+      "page_path": "/tenormusica/articles/remotion-agent-skills-video-ai-2026",
+      "page_title": "Remotion Agent Skillsの本当の強みは「AIが動画の中身を理解できる」こと",
+      "country": "Japan",
+      "session_source": "google",
+      "page_referrer": "https://www.google.com/",
+      "landing_page": "/tenormusica/articles/remotion-agent-skills-video-ai-2026",
+      "device_category": "mobile",
+      "browser": "Chrome",
+      "active_users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 62.56766
     },
     {
       "date": "20260916",
@@ -9439,6 +9379,66 @@
       "page_path": "/tenormusica/articles/anthropic-ai-sre-limits-qcon-2026",
       "page_title": "AnthropicがAI SREの限界を公式認定。「相関関係を因果関係と誤認し続ける」",
       "country": "Japan",
+      "session_source": "(direct)",
+      "page_referrer": "",
+      "landing_page": "",
+      "device_category": "desktop",
+      "browser": "Chrome",
+      "active_users": 0,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20261013",
+      "page_path": "/tenormusica/articles/anthropic-ai-sre-limits-qcon-2026",
+      "page_title": "AnthropicがAI SREの限界を公式認定。「相関関係を因果関係と誤認し続ける」",
+      "country": "Japan",
+      "session_source": "login.microsoftonline.com",
+      "page_referrer": "",
+      "landing_page": "/tenormusica/articles/anthropic-ai-sre-limits-qcon-2026",
+      "device_category": "desktop",
+      "browser": "Edge",
+      "active_users": 0,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20261013",
+      "page_path": "/tenormusica/articles/claude-skill-creator-evals-2026",
+      "page_title": "スキルクリエイターにeval自動生成が追加 — Agent Skillsのベンチマークとモデル更新対応が変わる",
+      "country": "Japan",
+      "session_source": "google",
+      "page_referrer": "https://www.google.com/",
+      "landing_page": "",
+      "device_category": "desktop",
+      "browser": "Chrome",
+      "active_users": 0,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20261013",
+      "page_path": "/tenormusica/articles/dev-browser-claude-skill-persistent-state-2025",
+      "page_title": "Playwrightの永続的課題を解決するdev-browser - スクリプト実行ごとのブラウザ状態リセット問題",
+      "country": "Japan",
+      "session_source": "google",
+      "page_referrer": "https://www.google.com/",
+      "landing_page": "",
+      "device_category": "desktop",
+      "browser": "Chrome",
+      "active_users": 0,
+      "sessions": 1,
+      "page_views": 0,
+      "avg_session_duration": 0.0
+    },
+    {
+      "date": "20261014",
+      "page_path": "/tenormusica/articles/anthropic-ai-sre-limits-qcon-2026",
+      "page_title": "AnthropicがAI SREの限界を公式認定。「相関関係を因果関係と誤認し続ける」",
+      "country": "Japan",
       "session_source": "login.microsoftonline.com",
       "page_referrer": "",
       "landing_page": "/tenormusica/articles/anthropic-ai-sre-limits-qcon-2026",
@@ -9483,11 +9483,11 @@
     {
       "page_path": "/tenormusica/articles/codex-vs-claude-code-review-advantages-2026",
       "page_title": "Codex vs Claude Code：コードレビューでCodexが選ばれる4つの理由",
-      "users": 42,
-      "sessions": 73,
-      "page_views": 96,
-      "avg_time_seconds": 170.99,
-      "avg_time_formatted": "2m 50s"
+      "users": 41,
+      "sessions": 72,
+      "page_views": 95,
+      "avg_time_seconds": 173.36,
+      "avg_time_formatted": "2m 53s"
     },
     {
       "page_path": "/tenormusica/articles/karpathy-ai-agents-decade-not-year",
@@ -9499,6 +9499,15 @@
       "avg_time_formatted": "2m 49s"
     },
     {
+      "page_path": "/tenormusica/articles/gpt52-claude-audience-awareness-2026",
+      "page_title": "GPT-5.2 vs Claude Opus 4.5、なぜ「伝わる」感覚が違うのか【設計思想から比較】",
+      "users": 12,
+      "sessions": 15,
+      "page_views": 14,
+      "avg_time_seconds": 150.94,
+      "avg_time_formatted": "2m 30s"
+    },
+    {
       "page_path": "/tenormusica/articles/ai-screen-capture-tools-2025",
       "page_title": "AIエージェントのための画面キャプチャツールを作った話",
       "users": 23,
@@ -9506,15 +9515,6 @@
       "page_views": 22,
       "avg_time_seconds": 149.15,
       "avg_time_formatted": "2m 29s"
-    },
-    {
-      "page_path": "/tenormusica/articles/gpt52-claude-audience-awareness-2026",
-      "page_title": "GPT-5.2 vs Claude Opus 4.5、なぜ「伝わる」感覚が違うのか【設計思想から比較】",
-      "users": 13,
-      "sessions": 16,
-      "page_views": 15,
-      "avg_time_seconds": 141.5,
-      "avg_time_formatted": "2m 21s"
     },
     {
       "page_path": "/tenormusica/articles/test-long-article-100chunks",
@@ -9528,38 +9528,38 @@
     {
       "page_path": "/tenormusica/articles/remotion-agent-skills-video-ai-2026",
       "page_title": "Remotion Agent Skillsの本当の強みは「AIが動画の中身を理解できる」こと",
-      "users": 92,
-      "sessions": 97,
-      "page_views": 97,
-      "avg_time_seconds": 104.34,
+      "users": 90,
+      "sessions": 95,
+      "page_views": 94,
+      "avg_time_seconds": 104.18,
       "avg_time_formatted": "1m 44s"
     },
     {
       "page_path": "/tenormusica/articles/claude-skill-creator-evals-2026",
       "page_title": "スキルクリエイターにeval自動生成が追加 — Agent Skillsのベンチマークとモデル更新対応が変わる",
-      "users": 57,
-      "sessions": 63,
-      "page_views": 73,
-      "avg_time_seconds": 95.1,
+      "users": 55,
+      "sessions": 62,
+      "page_views": 71,
+      "avg_time_seconds": 95.56,
       "avg_time_formatted": "1m 35s"
     },
     {
       "page_path": "/tenormusica/articles/anthropic-ai-sre-limits-qcon-2026",
       "page_title": "AnthropicがAI SREの限界を公式認定。「相関関係を因果関係と誤認し続ける」",
       "users": 110,
-      "sessions": 130,
+      "sessions": 132,
       "page_views": 145,
-      "avg_time_seconds": 80.68,
+      "avg_time_seconds": 80.81,
       "avg_time_formatted": "1m 20s"
     },
     {
       "page_path": "/tenormusica/articles/claude-code-headless-subscription-discovery-2025",
       "page_title": "Claude CodeでSkillsを定期実行で自動化する方法",
-      "users": 43,
-      "sessions": 44,
-      "page_views": 45,
-      "avg_time_seconds": 76.05,
-      "avg_time_formatted": "1m 16s"
+      "users": 42,
+      "sessions": 43,
+      "page_views": 44,
+      "avg_time_seconds": 77.31,
+      "avg_time_formatted": "1m 17s"
     },
     {
       "page_path": "/tenormusica/articles/cursor-2-composer-parallel-agents-2025",
@@ -9582,11 +9582,11 @@
     {
       "page_path": "/tenormusica/articles/claude-code-web-release-2025-v2",
       "page_title": "Claude Code がウェブ・iOS版を正式リリース！CLI版との違いなど",
-      "users": 53,
-      "sessions": 55,
-      "page_views": 56,
-      "avg_time_seconds": 52.55,
-      "avg_time_formatted": "0m 52s"
+      "users": 51,
+      "sessions": 53,
+      "page_views": 54,
+      "avg_time_seconds": 53.81,
+      "avg_time_formatted": "0m 53s"
     },
     {
       "page_path": "/tenormusica/articles/affinity-3-free-canva-ai-strategy-2025",
@@ -9609,46 +9609,46 @@
     {
       "page_path": "/tenormusica/articles/ai-app-builder-comparison-2026",
       "page_title": "AIフロントエンドツール5選徹底比較 Lovable/v0/Stitch/Figma MCP/Pencil.dev【2026】",
-      "users": 60,
-      "sessions": 67,
-      "page_views": 72,
-      "avg_time_seconds": 48.47,
-      "avg_time_formatted": "0m 48s"
+      "users": 61,
+      "sessions": 68,
+      "page_views": 73,
+      "avg_time_seconds": 43.9,
+      "avg_time_formatted": "0m 43s"
     },
     {
       "page_path": "/tenormusica/articles/dev-browser-claude-skill-persistent-state-2025",
       "page_title": "Playwrightの永続的課題を解決するdev-browser - スクリプト実行ごとのブラウザ状態リセット問題",
       "users": 10,
-      "sessions": 10,
+      "sessions": 11,
       "page_views": 11,
-      "avg_time_seconds": 47.12,
-      "avg_time_formatted": "0m 47s"
+      "avg_time_seconds": 38.14,
+      "avg_time_formatted": "0m 38s"
     },
     {
       "page_path": "/tenormusica/articles/anthropic-ai-engineering-deep-dive-2026",
       "page_title": "Anthropic社内調査が明かすAI時代のエンジニアリング：生産性革命の裏側にある技能喪失・雇用不安・評価法の進化",
-      "users": 8,
-      "sessions": 9,
-      "page_views": 8,
-      "avg_time_seconds": 34.99,
-      "avg_time_formatted": "0m 34s"
+      "users": 9,
+      "sessions": 10,
+      "page_views": 9,
+      "avg_time_seconds": 31.49,
+      "avg_time_formatted": "0m 31s"
     }
   ],
   "device_browser": {
     "devices": [
       {
         "device": "desktop",
-        "users": 576,
-        "sessions": 626,
-        "page_views": 666,
-        "percentage": 81.5
+        "users": 573,
+        "sessions": 627,
+        "page_views": 661,
+        "percentage": 81.7
       },
       {
         "device": "mobile",
-        "users": 128,
-        "sessions": 162,
-        "page_views": 181,
-        "percentage": 18.1
+        "users": 125,
+        "sessions": 159,
+        "page_views": 177,
+        "percentage": 17.8
       },
       {
         "device": "tablet",
@@ -9661,24 +9661,24 @@
     "browsers": [
       {
         "browser": "Chrome",
-        "users": 490,
-        "sessions": 555,
-        "page_views": 604,
-        "percentage": 69.3
+        "users": 489,
+        "sessions": 557,
+        "page_views": 599,
+        "percentage": 69.8
       },
       {
         "browser": "Edge",
-        "users": 88,
+        "users": 87,
         "sessions": 96,
         "page_views": 114,
         "percentage": 12.4
       },
       {
         "browser": "Safari",
-        "users": 85,
-        "sessions": 96,
-        "page_views": 89,
-        "percentage": 12.0
+        "users": 81,
+        "sessions": 92,
+        "page_views": 85,
+        "percentage": 11.6
       },
       {
         "browser": "Firefox",
@@ -9720,23 +9720,32 @@
   "site_comparison_daily": {
     "summary": {
       "c2c_total_page_views": 1,
-      "b2b_total_page_views": 58,
+      "b2b_total_page_views": 59,
       "c2c_total_sessions": 1,
-      "b2b_total_sessions": 57,
+      "b2b_total_sessions": 58,
       "c2c_total_users": 0,
-      "b2b_total_users": 57,
+      "b2b_total_users": 58,
       "days_with_c2c_traffic": 1,
-      "days_with_b2b_traffic": 19
+      "days_with_b2b_traffic": 20
     },
     "daily": [
       {
-        "date": "2026-10-13",
+        "date": "2026-10-14",
         "c2c_page_views": 0,
         "c2c_sessions": 0,
         "c2c_users": 0,
         "b2b_page_views": 0,
         "b2b_sessions": 0,
         "b2b_users": 0
+      },
+      {
+        "date": "2026-10-13",
+        "c2c_page_views": 0,
+        "c2c_sessions": 0,
+        "c2c_users": 0,
+        "b2b_page_views": 1,
+        "b2b_sessions": 1,
+        "b2b_users": 1
       },
       {
         "date": "2026-10-12",
@@ -9998,15 +10007,6 @@
         "b2b_page_views": 0,
         "b2b_sessions": 0,
         "b2b_users": 0
-      },
-      {
-        "date": "2026-09-13",
-        "c2c_page_views": 0,
-        "c2c_sessions": 0,
-        "c2c_users": 0,
-        "b2b_page_views": 0,
-        "b2b_sessions": 0,
-        "b2b_users": 0
       }
     ]
   },
@@ -10037,15 +10037,15 @@
   },
   "traffic_attribution": {
     "summary": {
-      "total_active_users": 54,
-      "total_sessions": 54,
-      "total_page_views": 58,
+      "total_active_users": 55,
+      "total_sessions": 55,
+      "total_page_views": 59,
       "source_medium": [
         {
           "source_medium": "(direct) / (none)",
-          "active_users": 46,
-          "sessions": 46,
-          "page_views": 50
+          "active_users": 47,
+          "sessions": 47,
+          "page_views": 51
         },
         {
           "source_medium": "bing / organic",
@@ -10075,9 +10075,9 @@
       "campaigns": [
         {
           "campaign": "(direct)",
-          "active_users": 46,
-          "sessions": 46,
-          "page_views": 50
+          "active_users": 47,
+          "sessions": 47,
+          "page_views": 51
         },
         {
           "campaign": "(organic)",
@@ -10101,9 +10101,9 @@
       "referrers": [
         {
           "referrer": "(empty)",
-          "active_users": 46,
-          "sessions": 46,
-          "page_views": 50
+          "active_users": 47,
+          "sessions": 47,
+          "page_views": 51
         },
         {
           "referrer": "https://bing.com/",
@@ -10132,6 +10132,20 @@
       ]
     },
     "rows": [
+      {
+        "date": "2026-10-13",
+        "landing_page": "/",
+        "page_path": "/",
+        "page_title": "業務自動化・問い合わせ整理・Web開発 | Ezlize / 幸田 晃典",
+        "session_source": "(direct)",
+        "session_medium": "(none)",
+        "session_campaign": "(direct)",
+        "session_content": "",
+        "page_referrer": "",
+        "active_users": 1,
+        "sessions": 1,
+        "page_views": 1
+      },
       {
         "date": "2026-10-12",
         "landing_page": "/",
